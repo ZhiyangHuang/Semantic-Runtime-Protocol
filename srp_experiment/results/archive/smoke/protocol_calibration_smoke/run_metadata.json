@@ -1,0 +1,17 @@
+{
+  "backend": {
+    "backend": "mock",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120
+  },
+  "cycles": 1,
+  "methods": [
+    "srp",
+    "rag_srp_v2"
+  ],
+  "srp_max_cycle_drift": 0.35,
+  "srp_min_keyword_score": 0.5,
+  "task_count": 3,
+  "results_file": "srp_experiment\\results\\protocol_calibration_smoke\\results.json",
+  "summary_file": "srp_experiment\\results\\protocol_calibration_smoke\\summary.json"
+}

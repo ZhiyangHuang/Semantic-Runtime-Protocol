@@ -1,0 +1,26 @@
+{
+  "raw_prompt": {
+    "mean_drift": 0.3541,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 1.0,
+    "mean_tokens": 150.27
+  },
+  "summarization": {
+    "mean_drift": 0.559,
+    "mean_task_success": 0.5833,
+    "mean_query_success": 0.8444,
+    "mean_tokens": 25.27
+  },
+  "rag": {
+    "mean_drift": 0.1219,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 1.0,
+    "mean_tokens": 33.67
+  },
+  "srp": {
+    "mean_drift": 0.4169,
+    "mean_task_success": 0.95,
+    "mean_query_success": 0.7778,
+    "mean_tokens": 27.33
+  }
+}

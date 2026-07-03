@@ -1,0 +1,9 @@
+{
+  "rag_srp_v2": {
+    "mean_drift": 0.0492,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 0.9524,
+    "mean_tokens": 19.33,
+    "mean_latency_seconds": 1.1737
+  }
+}

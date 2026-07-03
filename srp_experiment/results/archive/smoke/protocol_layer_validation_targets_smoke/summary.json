@@ -1,0 +1,34 @@
+{
+  "srp": {
+    "mean_drift": 0.0,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 0.8889,
+    "mean_tokens": 34.33,
+    "mean_latency_seconds": 0.0004,
+    "mean_prompt_tokens": null,
+    "mean_completion_tokens": null,
+    "mean_total_tokens": null,
+    "mean_query_prompt_tokens": null,
+    "mean_query_completion_tokens": null,
+    "mean_query_total_tokens": null,
+    "mean_judge_prompt_tokens": null,
+    "mean_judge_completion_tokens": null,
+    "mean_judge_total_tokens": null
+  },
+  "rag_srp_v2": {
+    "mean_drift": 0.0,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 0.8889,
+    "mean_tokens": 35.67,
+    "mean_latency_seconds": 0.0003,
+    "mean_prompt_tokens": null,
+    "mean_completion_tokens": null,
+    "mean_total_tokens": null,
+    "mean_query_prompt_tokens": null,
+    "mean_query_completion_tokens": null,
+    "mean_query_total_tokens": null,
+    "mean_judge_prompt_tokens": null,
+    "mean_judge_completion_tokens": null,
+    "mean_judge_total_tokens": null
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "description": "Formal paper-facing local run package under the frozen public evaluation layer.",
+  "shared": {
+    "backend": "local",
+    "output_root": "srp_experiment/results/batch_runs/first_paper_formal_local"
+  },
+  "runs": [
+    {
+      "name": "formal_p0_core_four_methods",
+      "cycles": [3, 5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["raw_prompt", "summarization", "rag", "srp"]
+      ]
+    },
+    {
+      "name": "formal_p1_srp_vs_summarization",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["summarization", "srp"]
+      ]
+    },
+    {
+      "name": "formal_p1_rag_vs_srp",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag", "srp"]
+      ]
+    }
+  ]
+}

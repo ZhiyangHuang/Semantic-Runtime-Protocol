@@ -1,0 +1,634 @@
+[Target] submission -> main_submission.tex
+[Clean] Removing auxiliary files for main_submission...
+[Build] Starting main_submission.tex
+[Build] Using manual pdflatex + bibtex for submission.
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main_submission.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo)
+) (acl.sty
+Conference Style for ACL
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.st
+y
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\col
+or.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdf
+tex.def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcol
+or.ltx))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.st
+y
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
+x.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvopti
+ons.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmd
+s.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetk
+eys.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.s
+ty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.st
+y))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.cfg))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3
+.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperre
+f.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\k
+vdefinekeys.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfe
+scape.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdf
+texcmds.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infw
+arerr.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref
+.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcoun
+t.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring
+\gettitlestring.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stri
+ngenc.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.
+def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcal
+c.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.d
+ef) (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\big
+intcalc.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex
+.def
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\r
+erunfilecheck.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\
+uniquecounter.sty))))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd)
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype-pdftex.def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.cfg))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\inco
+nsolata.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyva
+l.tex
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvuti
+ls.tex))))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.
+sty
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.s
+ty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.s
+ty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.s
+ty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb
+.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfont
+s.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+x.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+s.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\gra
+phics.cfg)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktab
+s.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumite
+m.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3back
+end-pdftex.def)
+No file main_submission.aux.
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp
+-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\eps
+topdf-base.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopd
+f-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.
+sty)
+
+Package lineno Warning: Line number reference failed, re-run to get it right.
+
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb
+.cfg) [1{C:/Users/ZhiyangHuang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map
+}{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.e
+nc}] (../../srp_experiment/results/camera_ready_table.tex
+Overfull \hbox (71.10289pt too wide) in paragraph at lines 5--11
+ [][] 
+) [2]
+Underfull \hbox (badness 1062) in paragraph at lines 198--199
+[]\T1/ptm/m/n/10.95 (+20) runtime life-cy-cle ex-ten-sions such as freeze,
+No file main_submission.bbl.
+[3 <../../srp_experiment/results/paper_figure_pack/main_3panel_figure.png>]
+(main_submission.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main_submission.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)<C:/Users/ZhiyangHuang/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Z
+hiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ZhiyangHuang/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Zhiyan
+gHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
+vb8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
+imes/utmb8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type
+1/urw/times/utmr8a.pfb>
+Output written on main_submission.pdf (3 pages, 319541 bytes).
+Transcript written on main_submission.log.
+This is BibTeX, Version 0.99e (MiKTeX 26.5)
+The top-level auxiliary file: main_submission.aux
+The style file: acl_natbib.bst
+Database file #1: references.bib
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main_submission.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo)
+) (acl.sty
+Conference Style for ACL
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.st
+y
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\col
+or.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdf
+tex.def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcol
+or.ltx))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.st
+y
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
+x.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvopti
+ons.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmd
+s.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetk
+eys.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.s
+ty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.st
+y))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.cfg))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3
+.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperre
+f.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\k
+vdefinekeys.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfe
+scape.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdf
+texcmds.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infw
+arerr.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref
+.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcoun
+t.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring
+\gettitlestring.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stri
+ngenc.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.
+def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcal
+c.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.d
+ef) (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\big
+intcalc.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex
+.def
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\r
+erunfilecheck.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\
+uniquecounter.sty))))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd)
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype-pdftex.def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.cfg))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\inco
+nsolata.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyva
+l.tex
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvuti
+ls.tex))))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.
+sty
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.s
+ty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.s
+ty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.s
+ty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb
+.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfont
+s.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+x.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+s.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\gra
+phics.cfg)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktab
+s.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumite
+m.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3back
+end-pdftex.def) (main_submission.aux)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp
+-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\eps
+topdf-base.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopd
+f-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(main_submission.out) (main_submission.out)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb
+.cfg) [1{C:/Users/ZhiyangHuang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map
+}{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.e
+nc}] (../../srp_experiment/results/camera_ready_table.tex
+Overfull \hbox (71.10289pt too wide) in paragraph at lines 5--11
+ [][] 
+) [2]
+Underfull \hbox (badness 1062) in paragraph at lines 198--199
+[]\T1/ptm/m/n/10.95 (+20) runtime life-cy-cle ex-ten-sions such as freeze,
+(main_submission.bbl
+
+Package lineno Warning: Line number reference failed, re-run to get it right.
+
+
+Underfull \hbox (badness 3271) in paragraph at lines 28--34
+[][]\T1/ptm/m/n/10 (+20) Retrieval-augmented gen-er-a-tion for knowledge-
+[3 <../../srp_experiment/results/paper_figure_pack/main_3panel_figure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 81--86
+[]\T1/ptm/m/n/10 (+20) Amirhossein Razavi, Mina Soltangheis, Ne-gar
+
+Underfull \hbox (badness 1087) in paragraph at lines 89--94
+[]\T1/ptm/m/n/10 (+20) Harald Sem-mel-rock, Tony Ross-Hellauer, Si-mone
+) [4] (main_submission.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+) )
+(see the transcript file for additional information)<C:/Users/ZhiyangHuang/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Z
+hiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ZhiyangHuang/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Zhiyan
+gHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
+vb8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
+imes/utmb8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type
+1/urw/times/utmr8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on main_submission.pdf (4 pages, 361096 bytes).
+Transcript written on main_submission.log.
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main_submission.tex
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-06-18>
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo)
+) (acl.sty
+Conference Style for ACL
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.st
+y
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\col
+or.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdf
+tex.def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcol
+or.ltx))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lineno\lineno.st
+y
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
+x.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvopti
+ons.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmd
+s.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetk
+eys.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.s
+ty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.st
+y))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometr
+y.cfg))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3
+.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperre
+f.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\k
+vdefinekeys.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfe
+scape.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdf
+texcmds.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infw
+arerr.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref
+.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcoun
+t.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring
+\gettitlestring.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stri
+ngenc.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.
+def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcal
+c.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.d
+ef) (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\big
+intcalc.sty)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex
+.def
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\r
+erunfilecheck.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\
+uniquecounter.sty))))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\latexsym.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd)
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype-pdftex.def)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microt
+ype.cfg))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/inconsolata\inco
+nsolata.sty
+`inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyva
+l.tex
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvuti
+ls.tex))))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.
+sty
+For additional information on amsmath, use the `?' option.
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.
+sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.s
+ty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.s
+ty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.s
+ty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb
+.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfont
+s.sty))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+x.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphic
+s.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.st
+y)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\gra
+phics.cfg)))
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktab
+s.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumite
+m.sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3back
+end-pdftex.def) (main_submission.aux)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp
+-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\eps
+topdf-base.sty
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopd
+f-sys.cfg))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(main_submission.out) (main_submission.out)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/upquote\upquote.
+sty)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa
+.cfg)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb
+.cfg) [1{C:/Users/ZhiyangHuang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map
+}{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.e
+nc}] (../../srp_experiment/results/camera_ready_table.tex
+Overfull \hbox (71.10289pt too wide) in paragraph at lines 5--11
+ [][] 
+) [2]
+Underfull \hbox (badness 1062) in paragraph at lines 198--199
+[]\T1/ptm/m/n/10.95 (+20) runtime life-cy-cle ex-ten-sions such as freeze,
+(main_submission.bbl
+Underfull \hbox (badness 3271) in paragraph at lines 28--34
+[][]\T1/ptm/m/n/10 (+20) Retrieval-augmented gen-er-a-tion for knowledge-
+[3 <../../srp_experiment/results/paper_figure_pack/main_3panel_figure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 81--86
+[]\T1/ptm/m/n/10 (+20) Amirhossein Razavi, Mina Soltangheis, Ne-gar
+
+Underfull \hbox (badness 1087) in paragraph at lines 89--94
+[]\T1/ptm/m/n/10 (+20) Harald Sem-mel-rock, Tony Ross-Hellauer, Si-mone
+) [4] (main_submission.aux) )
+(see the transcript file for additional information)<C:/Users/ZhiyangHuang/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Z
+hiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmr10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ZhiyangHuang/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Zhiyan
+gHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
+vb8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/urw/t
+imes/utmb8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type
+1/urw/times/utmr8a.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fon
+ts/type1/urw/times/utmri8a.pfb>
+Output written on main_submission.pdf (4 pages, 361110 bytes).
+Transcript written on main_submission.log.
+[Done] Full build completed. PDF should be in C:\Users\ZhiyangHuang\Semantic-Runtime-Protocol\first_paper\latex

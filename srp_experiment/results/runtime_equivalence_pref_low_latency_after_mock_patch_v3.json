@@ -1,0 +1,221 @@
+[
+  {
+    "task_id": "pref_low_latency",
+    "deterministic_path": {
+      "label": "client_none",
+      "compressed_state": {
+        "memory": "The user prefers low-latency systems and minimal architectures.",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "global_vocab": [
+          "prefers",
+          "low-latency",
+          "systems",
+          "minimal",
+          "architectures"
+        ],
+        "local_vocab": [
+          "prefers",
+          "low-latency",
+          "systems",
+          "minimal",
+          "architectures"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "The user prefers low-latency systems and minimal architectures.",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.7671,
+        "alignment": 1.0,
+        "coverage": 1.0,
+        "drift": 0.0,
+        "drift_risk": "low",
+        "passed": true
+      }
+    },
+    "backend_mock_path": {
+      "label": "backend_mock",
+      "compressed_state": {
+        "memory": "",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "global_vocab": [
+          "prefers",
+          "low-latency",
+          "systems",
+          "minimal",
+          "architectures"
+        ],
+        "local_vocab": [
+          "prefer",
+          "latency",
+          "minimal",
+          "architecture"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "The user prefers low-latency systems and minimal architectures.",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.7671,
+        "alignment": 1.0,
+        "coverage": 1.0,
+        "drift": 0.0,
+        "drift_risk": "low",
+        "passed": true
+      }
+    },
+    "diff": {
+      "compressed_state": {
+        "local_vocab": {
+          "left": [
+            "prefers",
+            "low-latency",
+            "systems",
+            "minimal",
+            "architectures"
+          ],
+          "right": [
+            "prefer",
+            "latency",
+            "minimal",
+            "architecture"
+          ]
+        },
+        "memory": {
+          "left": "The user prefers low-latency systems and minimal architectures.",
+          "right": ""
+        }
+      },
+      "recovered_state": null,
+      "validation": null
+    }
+  }
+]

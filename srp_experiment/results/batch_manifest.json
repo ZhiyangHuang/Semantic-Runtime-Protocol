@@ -1,0 +1,106 @@
+[
+  {
+    "name": "formal_p0_core_four_methods",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 3,
+    "methods": [
+      "raw_prompt",
+      "summarization",
+      "rag",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "formal_p0_core_four_methods",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 5,
+    "methods": [
+      "raw_prompt",
+      "summarization",
+      "rag",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "formal_p0_core_four_methods",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 7,
+    "methods": [
+      "raw_prompt",
+      "summarization",
+      "rag",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p0_core_four_methods__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "formal_p1_srp_vs_summarization",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 5,
+    "methods": [
+      "summarization",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c5__summarization-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c5__summarization-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c5__summarization-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c5__summarization-srp\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "formal_p1_srp_vs_summarization",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 7,
+    "methods": [
+      "summarization",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c7__summarization-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c7__summarization-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c7__summarization-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c7__summarization-srp\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "formal_p1_rag_vs_srp",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 5,
+    "methods": [
+      "rag",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c5__rag-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c5__rag-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c5__rag-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c5__rag-srp\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "formal_p1_rag_vs_srp",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 7,
+    "methods": [
+      "rag",
+      "srp"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c7__rag-srp",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c7__rag-srp\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c7__rag-srp\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_rag_vs_srp__local__qwen_qwen3-4b-awq__c7__rag-srp\\run_metadata.json\n",
+    "stderr": ""
+  }
+]

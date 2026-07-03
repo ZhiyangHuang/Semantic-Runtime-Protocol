@@ -1,0 +1,30 @@
+{
+  "status": "FAILED",
+  "config": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\configs\\generated\\raw_prompt__group_1__formal__20260701_195340.json",
+  "manifest_path": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\srp_experiment\\results\\batch_runs\\longbench_launcher_formal_single\\raw_prompt__group_1__formal__20260701_195340\\batch_manifest.json",
+  "total_runs": 2,
+  "completed_runs": 2,
+  "failed_runs": 2,
+  "remaining_runs": 0,
+  "started_at": "2026-07-01T23:53:41.789994+00:00",
+  "updated_at": "2026-07-02T00:26:25.115836+00:00",
+  "current_run": null,
+  "last_completed_run": {
+    "name": "launcher_raw_prompt_group_1_formal",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 1000,
+    "methods": [
+      "raw_prompt"
+    ],
+    "task_file": "srp_experiment/data/longbench_v2/tasks_group_1.json",
+    "task_source": null,
+    "repeat_id": 1,
+    "repeats": 1,
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\longbench_launcher_formal_single\\raw_prompt__group_1__formal__20260701_195340\\launcher_raw_prompt_group_1_formal__local__qwen_qwen3-4b-awq__c1000__raw_prompt",
+    "returncode": 1,
+    "started_at": "2026-07-02T00:26:25.114387+00:00",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\model_backend.py\", line 192, in _local_generate\n    with urllib.request.urlopen(request, timeout=self.config.timeout_seconds) as response:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\ZhiyangHuang\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\urllib\\request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\ZhiyangHuang\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\urllib\\request.py\", line 493, in open\n    response = meth(req, response)\n  File \"C:\\Users\\ZhiyangHuang\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\urllib\\request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"C:\\Users\\ZhiyangHuang\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\urllib\\request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\ZhiyangHuang\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\urllib\\request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"C:\\Users\\ZhiyangHuang\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\urllib\\request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 400: Bad Request\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\run_experiment.py\", line 320, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\run_experiment.py\", line 290, in main\n    rows.extend(summarize_records(method, task, records, client))\n                ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\run_experiment.py\", line 126, in summarize_records\n    query_eval = run_shared_query_evaluation(\n        candidate,\n    ...<3 lines>...\n        client=client,\n    )\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\eval\\query_flow.py\", line 24, in run_shared_query_evaluation\n    model_result = client.generate_with_usage(\n        prompt,\n        system_prompt=\"You are answering a controlled evaluation query for an SRP experiment.\",\n        max_output_tokens=120,\n    )\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\model_backend.py\", line 84, in generate_with_usage\n    return self._local_generate(prompt, system_prompt, max_output_tokens)\n           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\model_backend.py\", line 200, in _local_generate\n    raise RuntimeError(f\"Local model request failed: {exc.code} {details}\") from exc\nRuntimeError: Local model request failed: 400 {\"error\":{\"message\":\"This model's maximum context length is 1024 tokens. However, you requested 120 output tokens and your prompt contains at least 905 input tokens, for a total of at least 1025 tokens. Please reduce the length of the input prompt or the number of requested output tokens. (parameter=input_tokens, value=905)\",\"type\":\"BadRequestError\",\"param\":\"input_tokens\",\"code\":400}}\n"
+  }
+}

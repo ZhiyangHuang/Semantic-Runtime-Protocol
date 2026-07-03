@@ -1,0 +1,26 @@
+{
+  "description": "Local OpenAI-compatible model sweep for SRP experiments.",
+  "shared": {
+    "backend": "local",
+    "output_root": "srp_experiment/results/batch_runs/local"
+  },
+  "runs": [
+    {
+      "name": "local_core_methods",
+      "cycles": [3, 5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["raw_prompt", "summarization", "rag", "srp"]
+      ]
+    },
+    {
+      "name": "local_srp_ablation",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["summarization", "srp"],
+        ["rag", "srp"]
+      ]
+    }
+  ]
+}

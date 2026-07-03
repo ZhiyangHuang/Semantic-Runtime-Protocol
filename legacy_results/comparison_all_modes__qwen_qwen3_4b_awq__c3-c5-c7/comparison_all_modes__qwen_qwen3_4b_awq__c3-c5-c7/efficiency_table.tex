@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{4pt}
+\scriptsize
+\begin{tabular}{llrrrrrrrrrrrrrrr}
+\toprule
+B & M & C & RP T & RP L & Sum T & Sum L & RAG T & RAG L & SRP T & SRP L & R+S T & R+S L & R+SA T & R+SA L & R+S2 T & R+S2 L \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 3 & 91.44 & \textbf{0.2607} & 25.67 & 0.2811 & 33.67 & 0.3327 & \textbf{19.33} & 0.7848 & 19.44 & 1.1681 & 22.67 & 1.3012 & \textbf{19.33} & 1.1370 \\
+local & Qwen/Qwen3-4B-AWQ & 5 & 150.27 & \textbf{0.2626} & 25.27 & 0.2745 & 33.67 & 0.3325 & \textbf{19.33} & 0.8137 & 19.40 & 1.1195 & 23.20 & 1.3763 & \textbf{19.33} & 1.1567 \\
+local & Qwen/Qwen3-4B-AWQ & 7 & 181.10 & \textbf{0.2679} & 24.81 & \textbf{0.2679} & 35.24 & 0.3491 & \textbf{19.33} & 0.8062 & 19.38 & 1.1302 & 23.43 & 1.4080 & \textbf{19.33} & 1.1349 \\
+\bottomrule
+\end{tabular}
+\caption{Efficiency comparison. B = backend, M = model, C = cycles, RP = raw prompt, Sum = summarization, RAG = retrieval-augmented generation, SRP = Semantic Runtime Protocol. T = mean tokens and L = mean latency in seconds. Bold indicates the lowest value in each row for each efficiency metric.}
+\label{tab:srp-efficiency-table}
+\end{table}

@@ -1,0 +1,25 @@
+{
+  "description": "Default batch sweep for SRP baseline experiments.",
+  "shared": {
+    "backend": "mock",
+    "output_root": "srp_experiment/results/batch_runs"
+  },
+  "runs": [
+    {
+      "name": "mock_core_methods",
+      "cycles": [3, 5, 7],
+      "methods": [
+        ["raw_prompt", "summarization", "rag", "srp"]
+      ],
+      "models": ["gpt-4o-mini"]
+    },
+    {
+      "name": "mock_srp_vs_summary",
+      "cycles": [5, 9],
+      "methods": [
+        ["summarization", "srp"]
+      ],
+      "models": ["gpt-4o-mini"]
+    }
+  ]
+}

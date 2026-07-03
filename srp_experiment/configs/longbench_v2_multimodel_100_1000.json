@@ -1,0 +1,43 @@
+{
+  "description": "Frozen public-benchmark plan for LongBench v2 with reusable multi-model 100/1000-cycle evaluation.",
+  "shared": {
+    "backend": "local",
+    "task_file": "srp_experiment/data/longbench_v2/tasks.json",
+    "output_root": "srp_experiment/results/batch_runs/longbench_v2_multimodel_100_1000",
+    "repeats": 20
+  },
+  "runs": [
+    {
+      "name": "longbench_v2_core_100_cycles",
+      "cycles": [100],
+      "models": [
+        "Qwen/Qwen3-4B-AWQ"
+      ],
+      "methods": [
+        [
+          "raw_prompt",
+          "summarization",
+          "rag",
+          "srp",
+          "rag_srp_v2"
+        ]
+      ]
+    },
+    {
+      "name": "longbench_v2_core_1000_cycles",
+      "cycles": [1000],
+      "models": [
+        "Qwen/Qwen3-4B-AWQ"
+      ],
+      "methods": [
+        [
+          "raw_prompt",
+          "summarization",
+          "rag",
+          "srp",
+          "rag_srp_v2"
+        ]
+      ]
+    }
+  ]
+}

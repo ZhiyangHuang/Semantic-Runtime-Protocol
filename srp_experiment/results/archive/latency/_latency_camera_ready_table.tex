@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{2pt}
+\scriptsize
+\begin{tabular}{llrlrrrrrrrrrrrr}
+\toprule
+B & M & C & Base & Base D & Base S & Base T & Base L & SRP D & SRP S & SRP T & SRP L & $\Delta$D & $\Delta$S & $\Delta$T & $\Delta$L \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 1 & RP & \textbf{0.737} & \textbf{1.000} & 139.33 & - & 0.813 & 0.750 & \textbf{108.00} & - & 0.076 & -0.250 & -31.33 & - \\
+local & Qwen/Qwen3-4B-AWQ & 3 & RAG & \textbf{0.122} & \textbf{0.917} & 33.67 & - & 0.806 & 0.722 & \textbf{24.78} & - & 0.684 & -0.195 & -8.89 & - \\
+local & Qwen/Qwen3-4B-AWQ & 5 & RAG_SRP_ANCHOR & 0.561 & \textbf{1.000} & 27.87 & - & \textbf{0.417} & 0.950 & \textbf{27.33} & - & -0.144 & -0.050 & -0.54 & - \\
+local & Qwen/Qwen3-4B-AWQ & 7 & RP & \textbf{0.360} & \textbf{0.929} & 181.10 & - & 0.408 & 0.917 & \textbf{29.00} & - & 0.048 & -0.012 & -152.10 & - \\
+mock & Qwen/Qwen3-4B-AWQ & 1 & RAG_SRP & 0.846 & 0.167 & 36.00 & - & - & - & - & - & - & - & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 3 & RP & \textbf{0.480} & \textbf{0.917} & 108.11 & 0.0000 & 0.846 & 0.167 & \textbf{34.33} & 0.0000 & 0.367 & -0.750 & -73.78 & 0.0000 \\
+mock & gpt-4o-mini & 1 & RP & \textbf{0.480} & \textbf{0.917} & 47.67 & - & 0.933 & 0.067 & \textbf{34.33} & - & 0.453 & -0.850 & -13.34 & - \\
+mock & gpt-4o-mini & 3 & RP & \textbf{0.480} & \textbf{0.917} & 108.11 & - & 0.846 & 0.167 & \textbf{34.33} & - & 0.367 & -0.750 & -73.78 & - \\
+mock & gpt-4o-mini & 5 & RP & \textbf{0.480} & \textbf{0.917} & 168.33 & - & 0.846 & 0.167 & \textbf{34.33} & - & 0.367 & -0.750 & -134.00 & - \\
+mock & gpt-4o-mini & 7 & RP & \textbf{0.480} & \textbf{0.917} & 196.81 & - & 0.846 & 0.167 & \textbf{34.33} & - & 0.367 & -0.750 & -162.48 & - \\
+mock & gpt-4o-mini & 9 & Sum & 0.895 & 0.026 & \textbf{22.22} & - & \textbf{0.846} & \textbf{0.167} & 34.33 & - & -0.049 & 0.141 & 12.11 & - \\
+\bottomrule
+\end{tabular}
+\caption{Comparison between Semantic Runtime Protocol (SRP) and the strongest non-SRP baseline for each backend, model, and cycle setting. The baseline is selected by task success, then semantic drift, then token cost. $\Delta$ denotes SRP minus the selected baseline. Lower drift, token cost, and latency are better, while higher task success is better. Bold indicates the stronger value within each SRP-baseline pair.}
+\label{tab:srp-camera-ready-table}
+\end{table}

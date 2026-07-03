@@ -1,0 +1,18 @@
+{
+  "backend": {
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120,
+    "endpoint": "http://172.25.253.78:8000/v1/chat/completions"
+  },
+  "cycles": 7,
+  "methods": [
+    "summarization",
+    "srp"
+  ],
+  "srp_max_cycle_drift": 0.35,
+  "srp_min_keyword_score": 0.5,
+  "task_count": 3,
+  "results_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c7__summarization-srp\\results.json",
+  "summary_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\first_paper_formal_local\\formal_p1_srp_vs_summarization__local__qwen_qwen3-4b-awq__c7__summarization-srp\\summary.json"
+}

@@ -1,0 +1,21 @@
+{
+  "backend": {
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120,
+    "endpoint": "http://172.25.253.78:8000/v1/chat/completions"
+  },
+  "cycles": 7,
+  "methods": [
+    "raw_prompt",
+    "summarization",
+    "rag",
+    "srp",
+    "rag_srp"
+  ],
+  "srp_max_cycle_drift": 0.35,
+  "srp_min_keyword_score": 0.5,
+  "task_count": 3,
+  "results_file": "srp_experiment\\results\\local_cycles7_tuned7_compare\\results.json",
+  "summary_file": "srp_experiment\\results\\local_cycles7_tuned7_compare\\summary.json"
+}

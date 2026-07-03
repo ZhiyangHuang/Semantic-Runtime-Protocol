@@ -1,0 +1,135 @@
+{
+  "status": "QUALIFIED",
+  "checks": [
+    {
+      "id": "EQ-1",
+      "name": "Runtime Equivalence",
+      "status": "PASS",
+      "details": {
+        "regression_tasks": [
+          {
+            "task_id": "pref_low_latency",
+            "overall_pass": true,
+            "priority": "equivalent",
+            "checks": {
+              "commit_decision_match": true,
+              "contract_satisfaction_within_tolerance": true,
+              "alignment_within_tolerance": true,
+              "drift_within_tolerance": true
+            },
+            "deltas": {
+              "contract_satisfaction": 0.0,
+              "alignment": 0.0,
+              "drift": 0.0
+            }
+          },
+          {
+            "task_id": "long_context_summary",
+            "overall_pass": true,
+            "priority": "equivalent",
+            "checks": {
+              "commit_decision_match": true,
+              "contract_satisfaction_within_tolerance": true,
+              "alignment_within_tolerance": true,
+              "drift_within_tolerance": true
+            },
+            "deltas": {
+              "contract_satisfaction": 0.0,
+              "alignment": 0.0,
+              "drift": 0.0
+            }
+          },
+          {
+            "task_id": "iterative_cycles",
+            "overall_pass": true,
+            "priority": "equivalent",
+            "checks": {
+              "commit_decision_match": true,
+              "contract_satisfaction_within_tolerance": true,
+              "alignment_within_tolerance": true,
+              "drift_within_tolerance": true
+            },
+            "deltas": {
+              "contract_satisfaction": 0.0,
+              "alignment": 0.0,
+              "drift": 0.0
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "EQ-2",
+      "name": "Pipeline Consistency",
+      "status": "PASS",
+      "details": {
+        "run_srp_matches_run_method": true,
+        "summary_representation_matches_record": true,
+        "summary_validation_contract_matches_record": true,
+        "summary_validation_alignment_matches_record": true,
+        "summary_validation_drift_matches_record": true,
+        "summary_validation_passed_matches_record": true
+      }
+    },
+    {
+      "id": "EQ-3",
+      "name": "Determinism",
+      "status": "PASS",
+      "details": {
+        "repeat_runs_match": [
+          true,
+          true
+        ]
+      }
+    },
+    {
+      "id": "EQ-4",
+      "name": "Schema Completeness",
+      "status": "PASS",
+      "details": {
+        "row_count": 3,
+        "missing_fields": []
+      }
+    },
+    {
+      "id": "EQ-5",
+      "name": "Metric Sanity",
+      "status": "PASS",
+      "details": {
+        "checks": {
+          "good_recovery_commits": true,
+          "bad_recovery_rolls_back": true,
+          "leakage_rolls_back": true
+        },
+        "good": {
+          "contract_satisfaction": 0.8045,
+          "drift": 0.0,
+          "passed": true
+        },
+        "bad": {
+          "contract_satisfaction": 0.025,
+          "drift": 0.9688,
+          "passed": false
+        },
+        "leakage": {
+          "contract_satisfaction": 0.0,
+          "drift": 0.9167,
+          "passed": false,
+          "leakage_detected": true
+        }
+      }
+    },
+    {
+      "id": "EQ-6",
+      "name": "Regression Set",
+      "status": "PASS",
+      "details": {
+        "tasks": {
+          "pref_low_latency": true,
+          "long_context_summary": true,
+          "iterative_cycles": true
+        }
+      }
+    }
+  ]
+}

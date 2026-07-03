@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-07-01T20:53:32.317771+00:00",
+  "status": "READY_TO_FREEZE",
+  "submission_dir": "first_paper\\submission",
+  "report_json": "first_paper\\submission\\submission_audit_report.json",
+  "report_md": "first_paper\\submission\\submission_audit_report.md",
+  "zip_path": "first_paper\\submission\\srp_submission_package.zip",
+  "compile_log_path": "first_paper\\submission\\main_submission.compile.log"
+}

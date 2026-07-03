@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{3pt}
+\scriptsize
+\begin{tabular}{llrrrrrrrrrrrrr}
+\toprule
+B & M & C & RP D & RP S & Sum D & Sum S & RAG D & RAG S & SRP D & SRP S & RAG_SRP D & RAG_SRP S & RAG_SRP_ANCHOR D & RAG_SRP_ANCHOR S \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 1 & 0.737 & \textbf{1.000} & 0.735 & 0.917 & \textbf{0.726} & 0.917 & 0.813 & 0.750 & - & - & - & - \\
+local & Qwen/Qwen3-4B-AWQ & 3 & 0.341 & \textbf{0.917} & 0.526 & 0.583 & \textbf{0.122} & \textbf{0.917} & 0.806 & 0.722 & - & - & - & - \\
+local & Qwen/Qwen3-4B-AWQ & 5 & 0.354 & 0.917 & 0.559 & 0.583 & \textbf{0.122} & 0.917 & 0.417 & 0.950 & 0.698 & \textbf{1.000} & 0.561 & \textbf{1.000} \\
+local & Qwen/Qwen3-4B-AWQ & 7 & 0.360 & \textbf{0.929} & 0.572 & 0.583 & \textbf{0.160} & 0.917 & 0.408 & 0.917 & - & - & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 1 & - & - & - & - & - & - & - & - & \textbf{0.846} & \textbf{0.167} & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 3 & \textbf{0.480} & \textbf{0.917} & 0.840 & 0.078 & 0.747 & 0.400 & 0.846 & 0.167 & - & - & - & - \\
+mock & gpt-4o-mini & 1 & \textbf{0.480} & \textbf{0.917} & 0.673 & 0.233 & 0.747 & 0.400 & 0.933 & 0.067 & - & - & - & - \\
+mock & gpt-4o-mini & 3 & \textbf{0.480} & \textbf{0.917} & 0.840 & 0.078 & 0.747 & 0.400 & 0.846 & 0.167 & - & - & - & - \\
+mock & gpt-4o-mini & 5 & \textbf{0.480} & \textbf{0.917} & 0.873 & 0.047 & 0.747 & 0.400 & 0.846 & 0.167 & - & - & - & - \\
+mock & gpt-4o-mini & 7 & \textbf{0.480} & \textbf{0.917} & 0.887 & 0.033 & 0.747 & 0.400 & 0.846 & 0.167 & - & - & - & - \\
+mock & gpt-4o-mini & 9 & - & - & 0.895 & 0.026 & - & - & \textbf{0.846} & \textbf{0.167} & - & - & - & - \\
+\bottomrule
+\end{tabular}
+\caption{Quality comparison. B = backend, M = model, C = cycles, RP = raw prompt, Sum = summarization, RAG = retrieval-augmented generation, SRP = Semantic Runtime Protocol. Bold indicates the best value in each row. Lower drift is better; higher success is better.}
+\label{tab:srp-quality-table}
+\end{table}

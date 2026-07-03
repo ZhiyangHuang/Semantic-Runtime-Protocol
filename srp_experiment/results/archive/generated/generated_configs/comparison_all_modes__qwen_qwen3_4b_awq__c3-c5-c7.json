@@ -1,0 +1,29 @@
+{
+    "description":  "Generated comparison pack run",
+    "shared":  {
+                   "backend":  "local",
+                   "output_root":  "srp_experiment/results/batch_runs/comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7"
+               },
+    "runs":  [
+                 {
+                     "name":  "comparison_all_modes",
+                     "cycles":  [
+                                    3,
+                                    5,
+                                    7
+                                ],
+                     "models":  [
+                                    "Qwen/Qwen3-4B-AWQ"
+                                ],
+                     "methods":  [
+                                     "raw_prompt",
+                                     "summarization",
+                                     "rag",
+                                     "srp",
+                                     "rag_srp",
+                                     "rag_srp_anchor",
+                                     "rag_srp_v2"
+                                 ]
+                 }
+             ]
+}

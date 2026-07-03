@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lllrrrrrrrrrrrrrrrrrrrrrrrr}
+\toprule
+Backend & Model & Cycles & Raw Prompt D & Raw Prompt S & Raw Prompt T & Raw Prompt L & Summarization D & Summarization S & Summarization T & Summarization L & Rag D & Rag S & Rag T & Rag L & Srp D & Srp S & Srp T & Srp L & Rag Srp D & Rag Srp S & Rag Srp T & Rag Srp L & Rag Srp Anchor D & Rag Srp Anchor S & Rag Srp Anchor T & Rag Srp Anchor L \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 1 & 0.737 & \textbf{1.000} & 139.33 & - & 0.735 & 0.917 & \textbf{82.67} & - & \textbf{0.726} & 0.917 & 88.67 & - & 0.813 & 0.750 & 108.00 & - & - & - & - & - & - & - & - & - \\
+local & Qwen/Qwen3-4B-AWQ & 3 & 0.341 & \textbf{0.917} & 91.44 & - & 0.526 & 0.583 & 25.67 & - & \textbf{0.122} & \textbf{0.917} & 33.67 & - & 0.806 & 0.722 & \textbf{24.78} & - & - & - & - & - & - & - & - & - \\
+local & Qwen/Qwen3-4B-AWQ & 5 & 0.354 & 0.917 & 150.27 & - & 0.559 & 0.583 & \textbf{25.27} & - & \textbf{0.122} & 0.917 & 33.67 & - & 0.417 & 0.950 & 27.33 & - & 0.698 & \textbf{1.000} & 28.33 & - & 0.561 & \textbf{1.000} & 27.87 & - \\
+local & Qwen/Qwen3-4B-AWQ & 7 & 0.360 & \textbf{0.929} & 181.10 & - & 0.572 & 0.583 & \textbf{24.81} & - & \textbf{0.160} & 0.917 & 35.24 & - & 0.408 & 0.917 & 29.00 & - & - & - & - & - & - & - & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 1 & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & - & \textbf{0.846} & \textbf{0.167} & \textbf{36.00} & - & - & - & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 3 & \textbf{0.480} & \textbf{0.917} & 108.11 & \textbf{0.0000} & 0.840 & 0.078 & \textbf{22.67} & \textbf{0.0000} & 0.747 & 0.400 & 29.67 & \textbf{0.0000} & 0.846 & 0.167 & 34.33 & \textbf{0.0000} & - & - & - & - & - & - & - & - \\
+mock & gpt-4o-mini & 1 & \textbf{0.480} & \textbf{0.917} & 47.67 & - & 0.673 & 0.233 & \textbf{23.33} & - & 0.747 & 0.400 & 29.00 & - & 0.933 & 0.067 & 34.33 & - & - & - & - & - & - & - & - & - \\
+mock & gpt-4o-mini & 3 & \textbf{0.480} & \textbf{0.917} & 108.11 & - & 0.840 & 0.078 & \textbf{22.67} & - & 0.747 & 0.400 & 29.67 & - & 0.846 & 0.167 & 34.33 & - & - & - & - & - & - & - & - & - \\
+mock & gpt-4o-mini & 5 & \textbf{0.480} & \textbf{0.917} & 168.33 & - & 0.873 & 0.047 & \textbf{22.40} & - & 0.747 & 0.400 & 29.80 & - & 0.846 & 0.167 & 34.33 & - & - & - & - & - & - & - & - & - \\
+mock & gpt-4o-mini & 7 & \textbf{0.480} & \textbf{0.917} & 196.81 & - & 0.887 & 0.033 & \textbf{22.29} & - & 0.747 & 0.400 & 29.86 & - & 0.846 & 0.167 & 34.33 & - & - & - & - & - & - & - & - & - \\
+mock & gpt-4o-mini & 9 & - & - & - & - & 0.895 & 0.026 & \textbf{22.22} & - & - & - & - & - & \textbf{0.846} & \textbf{0.167} & 34.33 & - & - & - & - & - & - & - & - & - \\
+\bottomrule
+\end{tabular}
+\caption{Compact comparison table across backends, models, cycle counts, and methods. Bold indicates the best value in each row for each metric group. D = mean drift, S = mean task success, T = mean tokens, L = mean latency in seconds.}
+\label{tab:srp-paper-table}
+\end{table*}

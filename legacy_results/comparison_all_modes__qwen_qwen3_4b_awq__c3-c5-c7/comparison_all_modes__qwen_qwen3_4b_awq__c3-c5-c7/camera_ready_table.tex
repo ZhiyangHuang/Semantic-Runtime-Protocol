@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{2pt}
+\scriptsize
+\begin{tabular}{llrlrrrrrrrrrrrr}
+\toprule
+B & M & C & Base & Base D & Base S & Base T & Base L & SRP D & SRP S & SRP T & SRP L & $\Delta$D & $\Delta$S & $\Delta$T & $\Delta$L \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 3 & R+S2 & \textbf{0.056} & 0.917 & 19.33 & 1.1370 & 0.110 & 0.917 & 19.33 & \textbf{0.7848} & 0.054 & 0.000 & 0.00 & -0.3522 \\
+local & Qwen/Qwen3-4B-AWQ & 5 & R+SA & 0.405 & \textbf{0.920} & 23.20 & 1.3763 & \textbf{0.105} & 0.917 & \textbf{19.33} & \textbf{0.8137} & -0.300 & -0.003 & -3.87 & -0.5626 \\
+local & Qwen/Qwen3-4B-AWQ & 7 & R+SA & 0.387 & \textbf{0.943} & 23.43 & 1.4080 & \textbf{0.143} & 0.917 & \textbf{19.33} & \textbf{0.8062} & -0.244 & -0.026 & -4.10 & -0.6018 \\
+\bottomrule
+\end{tabular}
+\caption{Comparison between Semantic Runtime Protocol (SRP) and the strongest non-SRP baseline for each backend, model, and cycle setting. The baseline is selected by task success, then semantic drift, then token cost. $\Delta$ denotes SRP minus the selected baseline. Lower drift, token cost, and latency are better, while higher task success is better. Bold indicates the stronger value within each SRP-baseline pair.}
+\label{tab:srp-camera-ready-table}
+\end{table}

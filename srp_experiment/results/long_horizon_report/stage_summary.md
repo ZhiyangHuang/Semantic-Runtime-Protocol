@@ -1,0 +1,8 @@
+# Stage Summary
+
+| method | stage | start_cycle | end_cycle | rows | baseline_cycle | baseline_drift | mean_drift | drift_offset | mean_contract_satisfaction | mean_alignment | mean_validation_drift | mean_tokens | commit_rate |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| rag | 1-10 | 1 | 10 | 7 | 1 | 0.0357 | 0.1504 | 0.1147 | None | None | None | 44.7143 | None |
+| raw_prompt | 1-10 | 1 | 10 | 7 | 1 | 0.069 | 0.0911 | 0.0221 | None | None | None | 179.4286 | None |
+| srp | 1-10 | 1 | 10 | 7 | 1 | 0.037 | 0.037 | 0.0 | 0.81 | 0.9997 | 0.0053 | 20.0 | 1.0 |
+| summarization | 1-10 | 1 | 10 | 7 | 1 | 0.4118 | 0.5588 | 0.147 | None | None | None | 25.7143 | None |

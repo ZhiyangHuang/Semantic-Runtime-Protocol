@@ -1,0 +1,14 @@
+{
+  "summarization": {
+    "mean_drift": 0.8954,
+    "mean_task_success": 0.0259,
+    "mean_query_success": 0.1296,
+    "mean_tokens": 22.22
+  },
+  "srp": {
+    "mean_drift": 0.8464,
+    "mean_task_success": 0.1667,
+    "mean_query_success": 0.1728,
+    "mean_tokens": 34.33
+  }
+}

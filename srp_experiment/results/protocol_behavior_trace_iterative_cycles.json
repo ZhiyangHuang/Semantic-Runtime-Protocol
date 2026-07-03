@@ -1,0 +1,973 @@
+{
+  "task_id": "iterative_cycles",
+  "deterministic_path": {
+    "label": "client_none",
+    "input_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline.",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ],
+      "vocabulary": {
+        "global": [
+          "semantic",
+          "drift",
+          "should",
+          "remain",
+          "bounded",
+          "repeated",
+          "compression-recovery",
+          "cycles",
+          "preserve",
+          "constraints",
+          "structure",
+          "important"
+        ],
+        "local": [
+          "bounded",
+          "drift",
+          "preserve",
+          "constraints",
+          "concepts",
+          "reduce",
+          "tokens"
+        ]
+      },
+      "term_map": {},
+      "loss_notes": [],
+      "policy": {
+        "compression_goal": "preserve task memory under bounded drift",
+        "anti_leakage": "do not introduce query verbs or protocol terms unless they are already in memory",
+        "recovery_goal": "recover the original task memory as directly as possible by aligning to a stable semantic anchor"
+      },
+      "usage": null,
+      "typed_representation": {
+        "objects": [
+          {
+            "type": "fact",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:1",
+            "metadata": {}
+          },
+          {
+            "type": "fact",
+            "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "bounded drift",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:1",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve constraints",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve concepts",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:3",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "reduce tokens",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:4",
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "validation_targets": {
+      "nodes": [
+        {
+          "node_id": "iterative_cycles::contract",
+          "node_type": "contract_root",
+          "role": "root",
+          "variants": [],
+          "metadata": {
+            "task_id": "iterative_cycles"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::1",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "bounded drift",
+              "normalized": "bounded drift"
+            },
+            {
+              "surface": "semantic drift",
+              "normalized": "semantic drift"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "1",
+            "clause_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::2",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "constraints",
+              "normalized": "constraints"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "2",
+            "clause_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::3",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "concepts",
+              "normalized": "concepts"
+            },
+            {
+              "surface": "important concepts",
+              "normalized": "important concepts"
+            },
+            {
+              "surface": "task structure",
+              "normalized": "task structure"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "2",
+            "clause_index": "2"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::4",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "tokens",
+              "normalized": "tokens"
+            },
+            {
+              "surface": "fewer tokens",
+              "normalized": "fewer tokens"
+            },
+            {
+              "surface": "reduce tokens",
+              "normalized": "reduce tokens"
+            },
+            {
+              "surface": "token efficiency",
+              "normalized": "token efficiency"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "3",
+            "clause_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::5",
+          "node_type": "expected_keyword",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "bounded drift",
+              "normalized": "bounded drift"
+            }
+          ],
+          "metadata": {
+            "source": "expected_keywords",
+            "keyword_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::6",
+          "node_type": "expected_keyword",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "concepts",
+              "normalized": "concepts"
+            }
+          ],
+          "metadata": {
+            "source": "expected_keywords",
+            "keyword_index": "3"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::7",
+          "node_type": "expected_keyword",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "tokens",
+              "normalized": "tokens"
+            }
+          ],
+          "metadata": {
+            "source": "expected_keywords",
+            "keyword_index": "4"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::8",
+          "node_type": "constraint",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "preserve constraints",
+              "normalized": "preserve constraints"
+            }
+          ],
+          "metadata": {
+            "source": "constraints",
+            "constraint_index": "2"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::9",
+          "node_type": "constraint",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "preserve concepts",
+              "normalized": "preserve concepts"
+            }
+          ],
+          "metadata": {
+            "source": "constraints",
+            "constraint_index": "3"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::10",
+          "node_type": "constraint",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "reduce tokens",
+              "normalized": "reduce tokens"
+            }
+          ],
+          "metadata": {
+            "source": "constraints",
+            "constraint_index": "4"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::1",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::2",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::3",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::4",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::5",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::6",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::7",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::8",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::9",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::10",
+          "edge_type": "requires"
+        }
+      ]
+    },
+    "compressed_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ],
+      "global_vocab": [
+        "semantic",
+        "drift",
+        "should",
+        "remain",
+        "bounded",
+        "repeated"
+      ],
+      "local_vocab": [
+        "semantic",
+        "drift",
+        "should",
+        "remain",
+        "bounded",
+        "repeated"
+      ],
+      "typed_representation": {
+        "objects": [
+          {
+            "type": "fact",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:1",
+            "metadata": {}
+          },
+          {
+            "type": "fact",
+            "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "bounded drift",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:1",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve constraints",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve concepts",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:3",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "reduce tokens",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:4",
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "recovered_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important.",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ],
+      "typed_representation": {
+        "objects": [
+          {
+            "type": "fact",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:1",
+            "metadata": {}
+          },
+          {
+            "type": "fact",
+            "value": "SRP should preserve user constraints, task structure, and important",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "bounded drift",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:1",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve constraints",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve concepts",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:3",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "reduce tokens",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:4",
+            "metadata": {}
+          },
+          {
+            "type": "anchor",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.8,
+            "evidence_pointer": "anchor:1",
+            "metadata": {}
+          },
+          {
+            "type": "anchor",
+            "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+            "confidence": 0.8,
+            "evidence_pointer": "anchor:2",
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "validation": {
+      "contract_satisfaction": 0.4582,
+      "alignment": 0.9947674418604652,
+      "coverage": 0.9947674418604652,
+      "drift": 0.3704,
+      "drift_risk": "medium",
+      "drift_blocks_commit": false,
+      "passed": false
+    }
+  },
+  "backend_mock_path": {
+    "label": "backend_mock",
+    "input_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline.",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ],
+      "vocabulary": {
+        "global": [
+          "semantic",
+          "drift",
+          "should",
+          "remain",
+          "bounded",
+          "repeated",
+          "compression-recovery",
+          "cycles",
+          "preserve",
+          "constraints",
+          "structure",
+          "important"
+        ],
+        "local": [
+          "bounded",
+          "drift",
+          "preserve",
+          "constraints",
+          "concepts",
+          "reduce",
+          "tokens"
+        ]
+      },
+      "term_map": {},
+      "loss_notes": [],
+      "policy": {
+        "compression_goal": "preserve task memory under bounded drift",
+        "anti_leakage": "do not introduce query verbs or protocol terms unless they are already in memory",
+        "recovery_goal": "recover the original task memory as directly as possible by aligning to a stable semantic anchor"
+      },
+      "usage": null,
+      "typed_representation": {
+        "objects": [
+          {
+            "type": "fact",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:1",
+            "metadata": {}
+          },
+          {
+            "type": "fact",
+            "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "bounded drift",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:1",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve constraints",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve concepts",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:3",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "reduce tokens",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:4",
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "validation_targets": {
+      "nodes": [
+        {
+          "node_id": "iterative_cycles::contract",
+          "node_type": "contract_root",
+          "role": "root",
+          "variants": [],
+          "metadata": {
+            "task_id": "iterative_cycles"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::1",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "bounded drift",
+              "normalized": "bounded drift"
+            },
+            {
+              "surface": "semantic drift",
+              "normalized": "semantic drift"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "1",
+            "clause_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::2",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "constraints",
+              "normalized": "constraints"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "2",
+            "clause_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::3",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "concepts",
+              "normalized": "concepts"
+            },
+            {
+              "surface": "important concepts",
+              "normalized": "important concepts"
+            },
+            {
+              "surface": "task structure",
+              "normalized": "task structure"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "2",
+            "clause_index": "2"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::4",
+          "node_type": "query_expectation",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "tokens",
+              "normalized": "tokens"
+            },
+            {
+              "surface": "fewer tokens",
+              "normalized": "fewer tokens"
+            },
+            {
+              "surface": "reduce tokens",
+              "normalized": "reduce tokens"
+            },
+            {
+              "surface": "token efficiency",
+              "normalized": "token efficiency"
+            }
+          ],
+          "metadata": {
+            "source": "query_expectations",
+            "expectation_index": "3",
+            "clause_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::5",
+          "node_type": "expected_keyword",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "bounded drift",
+              "normalized": "bounded drift"
+            }
+          ],
+          "metadata": {
+            "source": "expected_keywords",
+            "keyword_index": "1"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::6",
+          "node_type": "expected_keyword",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "concepts",
+              "normalized": "concepts"
+            }
+          ],
+          "metadata": {
+            "source": "expected_keywords",
+            "keyword_index": "3"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::7",
+          "node_type": "expected_keyword",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "tokens",
+              "normalized": "tokens"
+            }
+          ],
+          "metadata": {
+            "source": "expected_keywords",
+            "keyword_index": "4"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::8",
+          "node_type": "constraint",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "preserve constraints",
+              "normalized": "preserve constraints"
+            }
+          ],
+          "metadata": {
+            "source": "constraints",
+            "constraint_index": "2"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::9",
+          "node_type": "constraint",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "preserve concepts",
+              "normalized": "preserve concepts"
+            }
+          ],
+          "metadata": {
+            "source": "constraints",
+            "constraint_index": "3"
+          }
+        },
+        {
+          "node_id": "iterative_cycles::contract::10",
+          "node_type": "constraint",
+          "role": "clause",
+          "variants": [
+            {
+              "surface": "reduce tokens",
+              "normalized": "reduce tokens"
+            }
+          ],
+          "metadata": {
+            "source": "constraints",
+            "constraint_index": "4"
+          }
+        }
+      ],
+      "edges": [
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::1",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::2",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::3",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::4",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::5",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::6",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::7",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::8",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::9",
+          "edge_type": "requires"
+        },
+        {
+          "source": "iterative_cycles::contract",
+          "target": "iterative_cycles::contract::10",
+          "edge_type": "requires"
+        }
+      ]
+    },
+    "compressed_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ],
+      "global_vocab": [
+        "semantic",
+        "drift",
+        "should",
+        "remain",
+        "bounded",
+        "repeated"
+      ],
+      "local_vocab": [
+        "semantic",
+        "drift",
+        "should",
+        "remain",
+        "bounded",
+        "repeated"
+      ],
+      "typed_representation": {
+        "objects": [
+          {
+            "type": "fact",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:1",
+            "metadata": {}
+          },
+          {
+            "type": "fact",
+            "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "bounded drift",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:1",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve constraints",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve concepts",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:3",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "reduce tokens",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:4",
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "recovered_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important.",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ],
+      "typed_representation": {
+        "objects": [
+          {
+            "type": "fact",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:1",
+            "metadata": {}
+          },
+          {
+            "type": "fact",
+            "value": "SRP should preserve user constraints, task structure, and important",
+            "confidence": 0.65,
+            "evidence_pointer": "memory:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "bounded drift",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:1",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve constraints",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:2",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "preserve concepts",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:3",
+            "metadata": {}
+          },
+          {
+            "type": "constraint",
+            "value": "reduce tokens",
+            "confidence": 1.0,
+            "evidence_pointer": "constraint:4",
+            "metadata": {}
+          },
+          {
+            "type": "anchor",
+            "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+            "confidence": 0.8,
+            "evidence_pointer": "anchor:1",
+            "metadata": {}
+          },
+          {
+            "type": "anchor",
+            "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+            "confidence": 0.8,
+            "evidence_pointer": "anchor:2",
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    "validation": {
+      "contract_satisfaction": 0.4582,
+      "alignment": 0.9947674418604652,
+      "coverage": 0.9947674418604652,
+      "drift": 0.3704,
+      "drift_risk": "medium",
+      "drift_blocks_commit": false,
+      "passed": false
+    }
+  },
+  "first_divergence": {
+    "stage": null,
+    "diff": null
+  }
+}

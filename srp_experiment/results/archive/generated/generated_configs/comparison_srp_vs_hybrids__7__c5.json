@@ -1,0 +1,24 @@
+{
+    "description":  "Generated comparison pack run",
+    "shared":  {
+                   "backend":  "local",
+                   "output_root":  "srp_experiment/results/batch_runs/comparison_srp_vs_hybrids__7__c5"
+               },
+    "runs":  [
+                 {
+                     "name":  "comparison_srp_vs_hybrids",
+                     "cycles":  [
+                                    5
+                                ],
+                     "models":  [
+                                    "7"
+                                ],
+                     "methods":  [
+                                     "rag",
+                                     "srp",
+                                     "rag_srp_anchor",
+                                     "rag_srp_v2"
+                                 ]
+                 }
+             ]
+}

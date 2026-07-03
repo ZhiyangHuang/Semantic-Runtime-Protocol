@@ -1,0 +1,51 @@
+{
+  "raw_prompt": {
+    "mean_drift": 0.3598,
+    "mean_task_success": 0.9286,
+    "mean_query_success": 1.0,
+    "mean_tokens": 181.1,
+    "mean_latency_seconds": 0.2679
+  },
+  "summarization": {
+    "mean_drift": 0.5745,
+    "mean_task_success": 0.5833,
+    "mean_query_success": 0.873,
+    "mean_tokens": 24.81,
+    "mean_latency_seconds": 0.2679
+  },
+  "rag": {
+    "mean_drift": 0.1601,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 1.0,
+    "mean_tokens": 35.24,
+    "mean_latency_seconds": 0.3491
+  },
+  "srp": {
+    "mean_drift": 0.1429,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 0.9683,
+    "mean_tokens": 19.33,
+    "mean_latency_seconds": 0.8062
+  },
+  "rag_srp": {
+    "mean_drift": 0.5316,
+    "mean_task_success": 0.5667,
+    "mean_query_success": 0.7143,
+    "mean_tokens": 19.38,
+    "mean_latency_seconds": 1.1302
+  },
+  "rag_srp_anchor": {
+    "mean_drift": 0.3869,
+    "mean_task_success": 0.9429,
+    "mean_query_success": 0.8413,
+    "mean_tokens": 23.43,
+    "mean_latency_seconds": 1.408
+  },
+  "rag_srp_v2": {
+    "mean_drift": 0.0492,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 0.9524,
+    "mean_tokens": 19.33,
+    "mean_latency_seconds": 1.1349
+  }
+}

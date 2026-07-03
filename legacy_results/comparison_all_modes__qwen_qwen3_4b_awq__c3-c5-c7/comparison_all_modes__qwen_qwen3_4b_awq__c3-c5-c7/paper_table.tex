@@ -1,0 +1,15 @@
+\begin{table*}[t]
+\centering
+\small
+\begin{tabular}{lllrrrrrrrrrrrrrrrrrrrrrrrrrrrr}
+\toprule
+Backend & Model & Cycles & Raw Prompt D & Raw Prompt S & Raw Prompt T & Raw Prompt L & Summarization D & Summarization S & Summarization T & Summarization L & Rag D & Rag S & Rag T & Rag L & Srp D & Srp S & Srp T & Srp L & Rag Srp D & Rag Srp S & Rag Srp T & Rag Srp L & Rag Srp Anchor D & Rag Srp Anchor S & Rag Srp Anchor T & Rag Srp Anchor L & Rag Srp V2 D & Rag Srp V2 S & Rag Srp V2 T & Rag Srp V2 L \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 3 & 0.341 & \textbf{0.917} & 91.44 & \textbf{0.2607} & 0.532 & 0.583 & 25.67 & 0.2811 & 0.122 & \textbf{0.917} & 33.67 & 0.3327 & 0.110 & \textbf{0.917} & \textbf{19.33} & 0.7848 & 0.544 & 0.567 & 19.44 & 1.1681 & 0.421 & 0.867 & 22.67 & 1.3012 & \textbf{0.056} & \textbf{0.917} & \textbf{19.33} & 1.1370 \\
+local & Qwen/Qwen3-4B-AWQ & 5 & 0.354 & 0.917 & 150.27 & \textbf{0.2626} & 0.556 & 0.583 & 25.27 & 0.2745 & 0.122 & 0.917 & 33.67 & 0.3325 & 0.105 & 0.917 & \textbf{19.33} & 0.8137 & 0.535 & 0.567 & 19.40 & 1.1195 & 0.405 & \textbf{0.920} & 23.20 & 1.3763 & \textbf{0.051} & 0.917 & \textbf{19.33} & 1.1567 \\
+local & Qwen/Qwen3-4B-AWQ & 7 & 0.360 & 0.929 & 181.10 & \textbf{0.2679} & 0.575 & 0.583 & 24.81 & \textbf{0.2679} & 0.160 & 0.917 & 35.24 & 0.3491 & 0.143 & 0.917 & \textbf{19.33} & 0.8062 & 0.532 & 0.567 & 19.38 & 1.1302 & 0.387 & \textbf{0.943} & 23.43 & 1.4080 & \textbf{0.049} & 0.917 & \textbf{19.33} & 1.1349 \\
+\bottomrule
+\end{tabular}
+\caption{Compact comparison table across backends, models, cycle counts, and methods. Bold indicates the best value in each row for each metric group. D = mean drift, S = mean task success, T = mean tokens, L = mean latency in seconds.}
+\label{tab:srp-paper-table}
+\end{table*}

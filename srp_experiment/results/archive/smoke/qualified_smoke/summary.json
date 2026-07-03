@@ -1,0 +1,18 @@
+{
+  "srp": {
+    "mean_drift": 0.1264,
+    "mean_task_success": 0.8958,
+    "mean_query_success": 0.7,
+    "mean_tokens": 28.33,
+    "mean_latency_seconds": 0.0006,
+    "mean_prompt_tokens": null,
+    "mean_completion_tokens": null,
+    "mean_total_tokens": null,
+    "mean_query_prompt_tokens": null,
+    "mean_query_completion_tokens": null,
+    "mean_query_total_tokens": null,
+    "mean_judge_prompt_tokens": null,
+    "mean_judge_completion_tokens": null,
+    "mean_judge_total_tokens": null
+  }
+}

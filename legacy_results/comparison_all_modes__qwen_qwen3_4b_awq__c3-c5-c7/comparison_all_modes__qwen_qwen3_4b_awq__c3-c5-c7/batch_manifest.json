@@ -1,0 +1,59 @@
+[
+  {
+    "name": "comparison_all_modes",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 3,
+    "methods": [
+      "raw_prompt",
+      "summarization",
+      "rag",
+      "srp",
+      "rag_srp",
+      "rag_srp_anchor",
+      "rag_srp_v2"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c3__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "comparison_all_modes",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 5,
+    "methods": [
+      "raw_prompt",
+      "summarization",
+      "rag",
+      "srp",
+      "rag_srp",
+      "rag_srp_anchor",
+      "rag_srp_v2"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c5__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\run_metadata.json\n",
+    "stderr": ""
+  },
+  {
+    "name": "comparison_all_modes",
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "cycles": 7,
+    "methods": [
+      "raw_prompt",
+      "summarization",
+      "rag",
+      "srp",
+      "rag_srp",
+      "rag_srp_anchor",
+      "rag_srp_v2"
+    ],
+    "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2",
+    "returncode": 0,
+    "stdout": "Backend: local\nModel: Qwen/Qwen3-4B-AWQ\nWrote detailed results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\results.json\nWrote summary results to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\summary.json\nWrote run metadata to C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\comparison_all_modes__qwen_qwen3_4b_awq__c3-c5-c7\\comparison_all_modes__local__qwen_qwen3-4b-awq__c7__raw_prompt-summarization-rag-srp-rag_srp-rag_srp_anchor-rag_srp_v2\\run_metadata.json\n",
+    "stderr": ""
+  }
+]

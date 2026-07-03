@@ -1,0 +1,20 @@
+{
+  "backend": {
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120,
+    "endpoint": "http://172.25.253.78:8000/v1/chat/completions"
+  },
+  "cycles": 5,
+  "methods": [
+    "rag",
+    "srp",
+    "rag_srp_anchor",
+    "rag_srp_v2"
+  ],
+  "srp_max_cycle_drift": 0.35,
+  "srp_min_keyword_score": 0.5,
+  "task_count": 3,
+  "results_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\risk_test_srp_vs_hybrids_5_7\\risk_test_srp_vs_hybrids__local__qwen_qwen3-4b-awq__c5__rag-srp-rag_srp_anchor-rag_srp_v2\\results.json",
+  "summary_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\risk_test_srp_vs_hybrids_5_7\\risk_test_srp_vs_hybrids__local__qwen_qwen3-4b-awq__c5__rag-srp-rag_srp_anchor-rag_srp_v2\\summary.json"
+}

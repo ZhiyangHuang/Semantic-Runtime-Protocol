@@ -1,0 +1,79 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: $JobName.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+The style file: acl_natbib.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Database file #1: references.bib
+Warning--to sort, need author or key in recursivelysummarizing2023
+Warning--to sort, need author or key in longmem2023
+Warning--to sort, need author or key in memorysurvey2025
+Warning--to sort, need author or key in cognitivememory2025
+Warning--to sort, need author or key in survey2025semanticcommunications
+Warning--to sort, need author or key in survey2025securesemantic
+Warning--to sort, need author or key in promptsensitivity2023
+Warning--to sort, need author or key in benchmarkingpromptsensitivity2025
+Warning--to sort, need author or key in assessingreproducibility2025
+Warning--to sort, need author or key in reproducibilityml2024
+Warning--to sort, need author or key in towardstrainingreproducible2022
+Warning--to sort, need author or key in reproducibilitygeneralizability2024
+Warning--empty author in towardstrainingreproducible2022
+Warning--empty author in longmem2023
+Warning--empty author in promptsensitivity2023
+Warning--empty author in recursivelysummarizing2023
+Warning--empty author in reproducibilitygeneralizability2024
+Warning--empty author in reproducibilityml2024
+Warning--empty author in assessingreproducibility2025
+Warning--empty author in benchmarkingpromptsensitivity2025
+Warning--empty author in cognitivememory2025
+Warning--empty author in survey2025semanticcommunications
+Warning--empty author in survey2025securesemantic
+Warning--empty author in memorysurvey2025
+You've used 17 entries,
+            3782 wiz_defined-function locations,
+            816 strings with 9129 characters,
+and the built_in function-call counts, 9430 in all, are:
+= -- 777
+> -- 342
+< -- 5
++ -- 152
+- -- 97
+* -- 622
+:= -- 1327
+add.period$ -- 68
+call.type$ -- 17
+change.case$ -- 121
+chr.to.int$ -- 22
+cite$ -- 65
+duplicate$ -- 600
+empty$ -- 816
+format.name$ -- 112
+if$ -- 2152
+int.to.chr$ -- 3
+int.to.str$ -- 1
+missing$ -- 121
+newline$ -- 89
+num.names$ -- 20
+pop$ -- 337
+preamble$ -- 1
+purify$ -- 100
+quote$ -- 0
+skip$ -- 599
+stack$ -- 0
+substring$ -- 225
+swap$ -- 252
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 153
+warning$ -- 24
+while$ -- 15
+width$ -- 0
+write$ -- 195
+(There were 24 warnings)

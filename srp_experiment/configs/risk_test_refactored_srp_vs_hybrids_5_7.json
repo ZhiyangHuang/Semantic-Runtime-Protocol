@@ -1,0 +1,17 @@
+{
+  "description": "Refactored risk-test comparison pack for SRP vs hybrid lineage at cycles 5 and 7 after removing expected_keywords from runtime-state shaping.",
+  "shared": {
+    "backend": "local",
+    "output_root": "srp_experiment/results/batch_runs/risk_test_refactored_srp_vs_hybrids_5_7"
+  },
+  "runs": [
+    {
+      "name": "risk_test_refactored_srp_vs_hybrids",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag", "srp", "rag_srp_anchor", "rag_srp_v2"]
+      ]
+    }
+  ]
+}

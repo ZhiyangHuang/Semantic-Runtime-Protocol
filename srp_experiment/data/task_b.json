@@ -1,0 +1,28 @@
+[
+  {
+    "id": "long_context_summary",
+    "task_type": "long_context_regeneration",
+    "initial_state": {
+      "memory": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system should preserve task-relevant meaning under repeated transformations while reducing communication cost.",
+      "constraints": [
+        "preserve task meaning",
+        "reduce communication cost"
+      ]
+    },
+    "queries": [
+      "What is the central purpose of SRP?",
+      "Which operators are part of the SRP pipeline?"
+    ],
+    "query_expectations": [
+      [["semantic state"], ["preserve", "preserving"], ["communication cost", "reduce communication"]],
+      [["compression"], ["recovery"], ["validation"], ["update"]]
+    ],
+    "expected_keywords": [
+      "semantic state",
+      "compression",
+      "recovery",
+      "validation",
+      "update"
+    ]
+  }
+]

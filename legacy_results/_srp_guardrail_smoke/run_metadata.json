@@ -1,0 +1,15 @@
+{
+  "backend": {
+    "backend": "mock",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120
+  },
+  "cycles": 3,
+  "methods": [
+    "srp"
+  ],
+  "srp_max_cycle_drift": 0.2,
+  "task_count": 3,
+  "results_file": "srp_experiment\\results\\_srp_guardrail_smoke\\results.json",
+  "summary_file": "srp_experiment\\results\\_srp_guardrail_smoke\\summary.json"
+}

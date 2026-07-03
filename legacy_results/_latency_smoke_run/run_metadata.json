@@ -1,0 +1,17 @@
+{
+  "backend": {
+    "backend": "mock",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120
+  },
+  "cycles": 3,
+  "methods": [
+    "raw_prompt",
+    "summarization",
+    "rag",
+    "srp"
+  ],
+  "task_count": 3,
+  "results_file": "srp_experiment\\results\\_latency_smoke_run\\results.json",
+  "summary_file": "srp_experiment\\results\\_latency_smoke_run\\summary.json"
+}

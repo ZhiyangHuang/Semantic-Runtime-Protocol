@@ -1,0 +1,9 @@
+{
+  "srp": {
+    "mean_drift": 0.8464,
+    "mean_task_success": 0.1667,
+    "mean_query_success": 0.1111,
+    "mean_tokens": 34.33,
+    "mean_latency_seconds": 0.0001
+  }
+}

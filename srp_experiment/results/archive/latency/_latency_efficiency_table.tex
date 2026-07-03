@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{4pt}
+\scriptsize
+\begin{tabular}{llrrrrrrrrrrrrr}
+\toprule
+B & M & C & RP T & RP L & Sum T & Sum L & RAG T & RAG L & SRP T & SRP L & RAG_SRP T & RAG_SRP L & RAG_SRP_ANCHOR T & RAG_SRP_ANCHOR L \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 1 & 139.33 & - & \textbf{82.67} & - & 88.67 & - & 108.00 & - & - & - & - & - \\
+local & Qwen/Qwen3-4B-AWQ & 3 & 91.44 & - & 25.67 & - & 33.67 & - & \textbf{24.78} & - & - & - & - & - \\
+local & Qwen/Qwen3-4B-AWQ & 5 & 150.27 & - & \textbf{25.27} & - & 33.67 & - & 27.33 & - & 28.33 & - & 27.87 & - \\
+local & Qwen/Qwen3-4B-AWQ & 7 & 181.10 & - & \textbf{24.81} & - & 35.24 & - & 29.00 & - & - & - & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 1 & - & - & - & - & - & - & - & - & \textbf{36.00} & - & - & - \\
+mock & Qwen/Qwen3-4B-AWQ & 3 & 108.11 & \textbf{0.0000} & \textbf{22.67} & \textbf{0.0000} & 29.67 & \textbf{0.0000} & 34.33 & \textbf{0.0000} & - & - & - & - \\
+mock & gpt-4o-mini & 1 & 47.67 & - & \textbf{23.33} & - & 29.00 & - & 34.33 & - & - & - & - & - \\
+mock & gpt-4o-mini & 3 & 108.11 & - & \textbf{22.67} & - & 29.67 & - & 34.33 & - & - & - & - & - \\
+mock & gpt-4o-mini & 5 & 168.33 & - & \textbf{22.40} & - & 29.80 & - & 34.33 & - & - & - & - & - \\
+mock & gpt-4o-mini & 7 & 196.81 & - & \textbf{22.29} & - & 29.86 & - & 34.33 & - & - & - & - & - \\
+mock & gpt-4o-mini & 9 & - & - & \textbf{22.22} & - & - & - & 34.33 & - & - & - & - & - \\
+\bottomrule
+\end{tabular}
+\caption{Efficiency comparison. B = backend, M = model, C = cycles, RP = raw prompt, Sum = summarization, RAG = retrieval-augmented generation, SRP = Semantic Runtime Protocol. T = mean tokens and L = mean latency in seconds. Bold indicates the lowest value in each row for each efficiency metric.}
+\label{tab:srp-efficiency-table}
+\end{table}

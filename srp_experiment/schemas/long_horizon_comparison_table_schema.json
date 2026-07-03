@@ -1,0 +1,49 @@
+{
+  "schema_name": "srp_long_horizon_comparison_table_v1",
+  "description": "Frozen wide-table schema for LongBench v2 multi-model 100/1000-cycle comparison.",
+  "comparison_table_fields": [
+    "backend",
+    "model",
+    "benchmark",
+    "task_id",
+    "method",
+    "cycles",
+    "repeat_id",
+    "mean_drift",
+    "mean_task_success",
+    "mean_query_success",
+    "mean_tokens",
+    "mean_latency_seconds",
+    "mean_contract_satisfaction",
+    "mean_alignment",
+    "mean_validation_drift",
+    "commit_rate",
+    "validation_pass_rate",
+    "rollback_count"
+  ],
+  "stage_table_fields": [
+    "method",
+    "stage",
+    "start_cycle",
+    "end_cycle",
+    "baseline_cycle",
+    "baseline_drift",
+    "mean_drift",
+    "drift_offset",
+    "mean_contract_satisfaction",
+    "mean_alignment",
+    "mean_validation_drift",
+    "mean_tokens",
+    "commit_rate"
+  ],
+  "consistency_table_fields": [
+    "method",
+    "cycle",
+    "n",
+    "drift_mean",
+    "drift_std",
+    "contract_mean",
+    "contract_std",
+    "commit_rate"
+  ]
+}

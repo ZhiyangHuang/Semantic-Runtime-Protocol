@@ -1,0 +1,18 @@
+{
+  "raw_prompt": {
+    "mean_drift": 0.3135,
+    "mean_task_success": 0.9167,
+    "mean_query_success": 1.0,
+    "mean_tokens": 41,
+    "mean_latency_seconds": 0.2869,
+    "mean_prompt_tokens": 123.33,
+    "mean_completion_tokens": 22.33,
+    "mean_total_tokens": 145.67,
+    "mean_query_prompt_tokens": 118.33,
+    "mean_query_completion_tokens": 22.33,
+    "mean_query_total_tokens": 140.67,
+    "mean_judge_prompt_tokens": 153,
+    "mean_judge_completion_tokens": 66.67,
+    "mean_judge_total_tokens": 219.67
+  }
+}

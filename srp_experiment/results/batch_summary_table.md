@@ -1,0 +1,22 @@
+| Backend | Model | Cycles | Method Bundle | Method | Mean Drift | Mean Task Success | Mean Query Success | Mean Tokens | Mean Latency (s) | Mean Prompt Tokens | Mean Completion Tokens | Mean Total Tokens | Mean Query Prompt Tokens | Mean Query Completion Tokens | Mean Query Total Tokens | Mean Judge Prompt Tokens | Mean Judge Completion Tokens | Mean Judge Total Tokens | Commit Rate | Mean Validation Drift | Rollback Count |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| local | Qwen/Qwen3-4B-AWQ | 3 | raw_prompt,summarization,rag,srp | rag | 0.1219 | 0.8958 | 0.9 | 33.67 | 0.3243 | 98.67 | 36.67 | 135.33 | 101.78 | 45.89 | 147.67 | 136.33 | 66.33 | 202.67 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 3 | raw_prompt,summarization,rag,srp | raw_prompt | 0.3407 | 0.8958 | 0.9111 | 91.44 | 0.2539 | 186.56 | 20.67 | 207.22 | 179.78 | 22.44 | 202.22 | 214.33 | 86.56 | 300.89 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 3 | raw_prompt,summarization,rag,srp | srp | 0.054 | 0.8958 | 0.7667 | 19.33 | 0.7822 | 633.78 | 86.11 | 719.89 | 97.44 | 44.22 | 141.67 | 132 | 70 | 202 | 0.6667 | 0.1789 | 3 |
+| local | Qwen/Qwen3-4B-AWQ | 3 | raw_prompt,summarization,rag,srp | summarization | 0.5265 | 0.6877 | 0.8 | 25.67 | 0.2828 | 67.44 | 30.33 | 97.78 | 95.44 | 52.22 | 147.67 | 130 | 73.44 | 203.44 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 5 | rag,srp | rag | 0.1219 | 0.8958 | 0.9 | 33.67 | 0.3506 | 130.33 | 36.67 | 167 | 101.73 | 45 | 146.73 | 136.33 | 66.27 | 202.6 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 5 | rag,srp | srp | 0.054 | 0.8958 | 0.76 | 19.33 | 0.7961 | 637.07 | 86.2 | 723.27 | 97.4 | 43.87 | 141.27 | 132 | 70 | 202 | 0.6667 | 0.1717 | 5 |
+| local | Qwen/Qwen3-4B-AWQ | 5 | raw_prompt,summarization,rag,srp | rag | 0.1219 | 0.8958 | 0.9 | 33.67 | 0.331 | 130.33 | 36.67 | 167 | 101.73 | 45 | 146.73 | 136.33 | 66.33 | 202.67 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 5 | raw_prompt,summarization,rag,srp | raw_prompt | 0.3541 | 0.8958 | 0.9067 | 150.27 | 0.239 | 260.33 | 20 | 280.33 | 252.87 | 21.67 | 274.53 | 287.47 | 96.07 | 383.53 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 5 | raw_prompt,summarization,rag,srp | srp | 0.054 | 0.8958 | 0.76 | 19.33 | 0.7746 | 637.07 | 86.2 | 723.27 | 97.4 | 42.87 | 140.27 | 132 | 70 | 202 | 0.6667 | 0.1717 | 5 |
+| local | Qwen/Qwen3-4B-AWQ | 5 | raw_prompt,summarization,rag,srp | summarization | 0.5558 | 0.6858 | 0.84 | 25.27 | 0.2697 | 66.6 | 29.8 | 96.4 | 94.87 | 54.4 | 149.27 | 129.47 | 72.4 | 201.87 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 5 | summarization,srp | srp | 0.054 | 0.8958 | 0.76 | 19.33 | 0.7857 | 637.07 | 86.2 | 723.27 | 97.4 | 43.87 | 141.27 | 132 | 70 | 202 | 0.6667 | 0.1717 | 5 |
+| local | Qwen/Qwen3-4B-AWQ | 5 | summarization,srp | summarization | 0.555 | 0.6858 | 0.84 | 25.27 | 0.2774 | 66.6 | 29.73 | 96.33 | 94.8 | 52.33 | 147.13 | 129.4 | 73.33 | 202.73 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 7 | rag,srp | rag | 0.1601 | 0.8958 | 0.9 | 35.24 | 0.3722 | 164.14 | 39.1 | 203.24 | 104.24 | 47.48 | 151.71 | 138.76 | 66.62 | 205.38 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 7 | rag,srp | srp | 0.054 | 0.8958 | 0.7476 | 19.33 | 0.7797 | 638.48 | 86.24 | 724.71 | 97.48 | 46.05 | 143.52 | 132 | 70 | 202 | 0.6667 | 0.1686 | 7 |
+| local | Qwen/Qwen3-4B-AWQ | 7 | raw_prompt,summarization,rag,srp | rag | 0.1601 | 0.8958 | 0.9 | 35.24 | 0.343 | 164.14 | 39.1 | 203.24 | 104.24 | 47.48 | 151.71 | 138.76 | 66.62 | 205.38 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 7 | raw_prompt,summarization,rag,srp | raw_prompt | 0.3598 | 0.8964 | 0.9048 | 181.1 | 0.2424 | 297.33 | 19.71 | 317.05 | 289.67 | 22.57 | 312.24 | 324.19 | 96.81 | 421 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 7 | raw_prompt,summarization,rag,srp | srp | 0.054 | 0.8958 | 0.7429 | 19.33 | 0.775 | 638.48 | 86.24 | 724.71 | 97.48 | 46.33 | 143.81 | 132 | 70 | 202 | 0.6667 | 0.1686 | 7 |
+| local | Qwen/Qwen3-4B-AWQ | 7 | raw_prompt,summarization,rag,srp | summarization | 0.5724 | 0.685 | 0.8153 | 24.81 | 0.2666 | 65.9 | 29.19 | 95.1 | 94.33 | 56.33 | 150.67 | 128.86 | 73.14 | 202 |  |  |  |
+| local | Qwen/Qwen3-4B-AWQ | 7 | summarization,srp | srp | 0.054 | 0.8958 | 0.7476 | 19.33 | 0.7824 | 638.48 | 86.24 | 724.71 | 97.48 | 46.05 | 143.52 | 132 | 70 | 202 | 0.6667 | 0.1686 | 7 |
+| local | Qwen/Qwen3-4B-AWQ | 7 | summarization,srp | summarization | 0.5724 | 0.685 | 0.783 | 24.81 | 0.2863 | 65.9 | 29.19 | 95.1 | 94.33 | 55 | 149.33 | 128.86 | 73.14 | 202 |  |  |  |

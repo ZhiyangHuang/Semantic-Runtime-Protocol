@@ -1,0 +1,28 @@
+{
+  "runs_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\local",
+  "batch_summary": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_summary_table.json",
+  "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\evidence_pipeline",
+  "trace_log": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\evidence_pipeline\\execution_trace_log.json",
+  "trace_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\evidence_pipeline\\execution_trace_table.json",
+  "main_figure": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\paper_figure_pack\\main_3panel_figure.png",
+  "row_count": 0,
+  "trace_count": 0,
+  "artifacts": {
+    "batch_summary_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_summary_table.json",
+    "paper_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\paper_table.md",
+    "quality_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\quality_table.md",
+    "efficiency_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\efficiency_table.md",
+    "guardrail_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\guardrail_table.md",
+    "camera_ready_table": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\camera_ready_table.md",
+    "drift_plot": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\paper_figure_pack\\drift_plot.png",
+    "contract_commit_plot": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\paper_figure_pack\\contract_commit_plot.png",
+    "main_3panel_figure": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\paper_figure_pack\\main_3panel_figure.png"
+  },
+  "layers": {
+    "trace_writer": "results.json and summary.json emitted per run",
+    "results_reducer": "collect_batch_summary.py",
+    "benchmark_aggregator": "batch_summary_table.json + paper tables",
+    "figure_generator": "build_main_figure.py + plot_results.py",
+    "reviewer_ready_logging": "execution_trace_log.json + execution_trace_table.json + manifest"
+  }
+}

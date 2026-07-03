@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\setlength{\tabcolsep}{3pt}
+\scriptsize
+\begin{tabular}{llrrrrrrrrrrrrrrr}
+\toprule
+B & M & C & RP D & RP S & Sum D & Sum S & RAG D & RAG S & SRP D & SRP S & R+S D & R+S S & R+SA D & R+SA S & R+S2 D & R+S2 S \\
+\midrule
+local & Qwen/Qwen3-4B-AWQ & 3 & 0.341 & \textbf{0.917} & 0.532 & 0.583 & 0.122 & \textbf{0.917} & 0.110 & \textbf{0.917} & 0.544 & 0.567 & 0.421 & 0.867 & \textbf{0.056} & \textbf{0.917} \\
+local & Qwen/Qwen3-4B-AWQ & 5 & 0.354 & 0.917 & 0.556 & 0.583 & 0.122 & 0.917 & 0.105 & 0.917 & 0.535 & 0.567 & 0.405 & \textbf{0.920} & \textbf{0.051} & 0.917 \\
+local & Qwen/Qwen3-4B-AWQ & 7 & 0.360 & 0.929 & 0.575 & 0.583 & 0.160 & 0.917 & 0.143 & 0.917 & 0.532 & 0.567 & 0.387 & \textbf{0.943} & \textbf{0.049} & 0.917 \\
+\bottomrule
+\end{tabular}
+\caption{Quality comparison. B = backend, M = model, C = cycles, RP = raw prompt, Sum = summarization, RAG = retrieval-augmented generation, SRP = Semantic Runtime Protocol. Bold indicates the best value in each row. Lower drift is better; higher success is better.}
+\label{tab:srp-quality-table}
+\end{table}

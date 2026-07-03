@@ -1,0 +1,57 @@
+{
+  "description": "Comparison pack for validated local formal workflow, including core methods plus legacy and upgraded retrieval-guided SRP hybrids.",
+  "shared": {
+    "backend": "local",
+    "output_root": "srp_experiment/results/batch_runs/comparison_pack_local"
+  },
+  "runs": [
+    {
+      "name": "cmp_p0_core_four_methods",
+      "cycles": [3, 5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["raw_prompt", "summarization", "rag", "srp"]
+      ]
+    },
+    {
+      "name": "cmp_p1_srp_vs_summarization",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["summarization", "srp"]
+      ]
+    },
+    {
+      "name": "cmp_p1_rag_vs_srp",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag", "srp"]
+      ]
+    },
+    {
+      "name": "cmp_p2_legacy_rag_srp_family",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag", "rag_srp", "rag_srp_anchor"]
+      ]
+    },
+    {
+      "name": "cmp_p3_rag_srp_generation_compare",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag", "srp", "rag_srp_v2"]
+      ]
+    },
+    {
+      "name": "cmp_p4_hybrid_lineage_compare",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag_srp", "rag_srp_anchor", "rag_srp_v2"]
+      ]
+    }
+  ]
+}

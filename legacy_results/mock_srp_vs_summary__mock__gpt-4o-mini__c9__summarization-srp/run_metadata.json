@@ -1,0 +1,15 @@
+{
+  "backend": {
+    "backend": "mock",
+    "model": "gpt-4o-mini",
+    "timeout_seconds": 120
+  },
+  "cycles": 9,
+  "methods": [
+    "summarization",
+    "srp"
+  ],
+  "task_count": 3,
+  "results_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\mock_srp_vs_summary__mock__gpt-4o-mini__c9__summarization-srp\\results.json",
+  "summary_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\mock_srp_vs_summary__mock__gpt-4o-mini__c9__summarization-srp\\summary.json"
+}

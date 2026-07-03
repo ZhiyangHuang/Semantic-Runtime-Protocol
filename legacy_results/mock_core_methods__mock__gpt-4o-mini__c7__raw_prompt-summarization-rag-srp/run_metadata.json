@@ -1,0 +1,17 @@
+{
+  "backend": {
+    "backend": "mock",
+    "model": "gpt-4o-mini",
+    "timeout_seconds": 120
+  },
+  "cycles": 7,
+  "methods": [
+    "raw_prompt",
+    "summarization",
+    "rag",
+    "srp"
+  ],
+  "task_count": 3,
+  "results_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\mock_core_methods__mock__gpt-4o-mini__c7__raw_prompt-summarization-rag-srp\\results.json",
+  "summary_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\batch_runs\\mock_core_methods__mock__gpt-4o-mini__c7__raw_prompt-summarization-rag-srp\\summary.json"
+}

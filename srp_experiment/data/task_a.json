@@ -1,0 +1,27 @@
+[
+  {
+    "id": "pref_low_latency",
+    "task_type": "multi_turn_instruction",
+    "initial_state": {
+      "memory": "The user prefers low-latency systems and minimal architectures.",
+      "constraints": [
+        "prefer low latency",
+        "prefer minimal architecture"
+      ]
+    },
+    "queries": [
+      "Design a system for this user.",
+      "Summarize the user's preferences.",
+      "Recommend one optimization consistent with the preferences."
+    ],
+    "query_expectations": [
+      [["low-latency", "low latency"], ["minimal", "simple", "minimal architecture"]],
+      [["low-latency", "low latency"], ["minimal", "simple", "minimal architecture"]],
+      [["low-latency", "low latency"], ["minimal", "simple", "minimal architecture"], ["optimiz", "streamlin", "overhead"]]
+    ],
+    "expected_keywords": [
+      "low-latency",
+      "minimal"
+    ]
+  }
+]

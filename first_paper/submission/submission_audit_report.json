@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-07-01T20:53:32.317168+00:00",
+  "status": "READY_TO_FREEZE",
+  "zip_path": "first_paper\\submission\\srp_submission_package.zip",
+  "zip_created": true,
+  "checks": [
+    {
+      "name": "compile",
+      "status": "PASS",
+      "details": [
+        "Build succeeded: first_paper\\latex\\main_submission.pdf"
+      ]
+    },
+    {
+      "name": "artifact_presence",
+      "status": "PASS",
+      "details": [
+        "Validated 14 required artifacts."
+      ]
+    },
+    {
+      "name": "reviewer_visible",
+      "status": "PASS",
+      "details": [
+        "Main figure and camera-ready table are referenced in main_submission.tex."
+      ]
+    },
+    {
+      "name": "reproducibility",
+      "status": "PASS",
+      "details": [
+        "Found qualification report: srp_experiment\\results\\paper_figure_core_local\\qualification_report.json",
+        "Qualification status is QUALIFIED.",
+        "Evidence roots exist for core batch, figure pack, and evidence pipeline.",
+        "Trace table and manifest exist."
+      ]
+    },
+    {
+      "name": "zip_ready",
+      "status": "PASS",
+      "details": [
+        "Zip target ready: first_paper\\submission\\srp_submission_package.zip"
+      ]
+    }
+  ]
+}

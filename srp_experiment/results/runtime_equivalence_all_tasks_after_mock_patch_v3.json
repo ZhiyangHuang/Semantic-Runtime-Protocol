@@ -1,0 +1,1193 @@
+[
+  {
+    "task_id": "pref_low_latency",
+    "deterministic_path": {
+      "label": "client_none",
+      "compressed_state": {
+        "memory": "The user prefers low-latency systems and minimal architectures.",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "global_vocab": [
+          "prefers",
+          "low-latency",
+          "systems",
+          "minimal",
+          "architectures"
+        ],
+        "local_vocab": [
+          "prefers",
+          "low-latency",
+          "systems",
+          "minimal",
+          "architectures"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "The user prefers low-latency systems and minimal architectures.",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.7671,
+        "alignment": 1.0,
+        "coverage": 1.0,
+        "drift": 0.0,
+        "drift_risk": "low",
+        "passed": true
+      }
+    },
+    "backend_mock_path": {
+      "label": "backend_mock",
+      "compressed_state": {
+        "memory": "",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "global_vocab": [
+          "prefers",
+          "low-latency",
+          "systems",
+          "minimal",
+          "architectures"
+        ],
+        "local_vocab": [
+          "prefer",
+          "latency",
+          "minimal",
+          "architecture"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "The user prefers low-latency systems and minimal architectures.",
+        "constraints": [
+          "prefer low latency",
+          "prefer minimal architecture"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer low latency",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "prefer minimal architecture",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "The user prefers low-latency systems and minimal architectures",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.7671,
+        "alignment": 1.0,
+        "coverage": 1.0,
+        "drift": 0.0,
+        "drift_risk": "low",
+        "passed": true
+      }
+    },
+    "diff": {
+      "compressed_state": {
+        "local_vocab": {
+          "left": [
+            "prefers",
+            "low-latency",
+            "systems",
+            "minimal",
+            "architectures"
+          ],
+          "right": [
+            "prefer",
+            "latency",
+            "minimal",
+            "architecture"
+          ]
+        },
+        "memory": {
+          "left": "The user prefers low-latency systems and minimal architectures.",
+          "right": ""
+        }
+      },
+      "recovered_state": null,
+      "validation": null
+    }
+  },
+  {
+    "task_id": "long_context_summary",
+    "deterministic_path": {
+      "label": "client_none",
+      "compressed_state": {
+        "memory": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system",
+        "constraints": [
+          "preserve task meaning",
+          "reduce communication cost"
+        ],
+        "global_vocab": [
+          "manages",
+          "semantic",
+          "state",
+          "structured",
+          "runtime",
+          "object"
+        ],
+        "local_vocab": [
+          "manages",
+          "semantic",
+          "state",
+          "structured",
+          "runtime",
+          "object"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "SRP manages semantic state as a structured runtime object",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "It separates compression, recovery, validation, and update",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "The system should preserve task-relevant meaning under repeated transformations while reducing communication cost",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve task meaning",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce communication cost",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system.",
+        "constraints": [
+          "preserve task meaning",
+          "reduce communication cost"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "SRP manages semantic state as a structured runtime object",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "It separates compression, recovery, validation, and update",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "The system",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve task meaning",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce communication cost",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "SRP manages semantic state as a structured runtime object",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "It separates compression, recovery, validation, and update",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "The system should preserve task-relevant meaning under repeated transformations while reducing communication cost",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:3",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.5,
+        "alignment": 0.9929687500000001,
+        "coverage": 0.9929687500000001,
+        "drift": 0.3793,
+        "drift_risk": "medium",
+        "passed": true
+      }
+    },
+    "backend_mock_path": {
+      "label": "backend_mock",
+      "compressed_state": {
+        "memory": "",
+        "constraints": [
+          "preserve task meaning",
+          "reduce communication cost"
+        ],
+        "global_vocab": [
+          "manages",
+          "semantic",
+          "state",
+          "structured",
+          "runtime",
+          "object",
+          "separates",
+          "compression",
+          "recovery",
+          "validation"
+        ],
+        "local_vocab": [
+          "preserve",
+          "meaning",
+          "reduce",
+          "communication"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "SRP manages semantic state as a structured runtime object",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "It separates compression, recovery, validation, and update",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "The system should preserve task-relevant meaning under repeated transformations while reducing communication cost",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve task meaning",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce communication cost",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system should preserve task-relevant meaning",
+        "constraints": [
+          "preserve task meaning",
+          "reduce communication cost"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "SRP manages semantic state as a structured runtime object",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "It separates compression, recovery, validation, and update",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "The system should preserve task-relevant meaning",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve task meaning",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce communication cost",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "SRP manages semantic state as a structured runtime object",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "It separates compression, recovery, validation, and update",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:2",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "The system should preserve task-relevant meaning under repeated transformations while reducing communication cost",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:3",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.6944,
+        "alignment": 0.9929687500000001,
+        "coverage": 0.9929687500000001,
+        "drift": 0.2414,
+        "drift_risk": "low",
+        "passed": true
+      }
+    },
+    "diff": {
+      "compressed_state": {
+        "global_vocab": {
+          "left": [
+            "manages",
+            "semantic",
+            "state",
+            "structured",
+            "runtime",
+            "object"
+          ],
+          "right": [
+            "manages",
+            "semantic",
+            "state",
+            "structured",
+            "runtime",
+            "object",
+            "separates",
+            "compression",
+            "recovery",
+            "validation"
+          ]
+        },
+        "local_vocab": {
+          "left": [
+            "manages",
+            "semantic",
+            "state",
+            "structured",
+            "runtime",
+            "object"
+          ],
+          "right": [
+            "preserve",
+            "meaning",
+            "reduce",
+            "communication"
+          ]
+        },
+        "memory": {
+          "left": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system",
+          "right": ""
+        }
+      },
+      "recovered_state": {
+        "memory": {
+          "left": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system.",
+          "right": "SRP manages semantic state as a structured runtime object. It separates compression, recovery, validation, and update. The system should preserve task-relevant meaning"
+        },
+        "typed_representation": {
+          "objects": {
+            "left": [
+              {
+                "type": "fact",
+                "value": "SRP manages semantic state as a structured runtime object",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:1",
+                "metadata": {}
+              },
+              {
+                "type": "fact",
+                "value": "It separates compression, recovery, validation, and update",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:2",
+                "metadata": {}
+              },
+              {
+                "type": "fact",
+                "value": "The system",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:3",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "preserve task meaning",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:1",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "reduce communication cost",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:2",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "SRP manages semantic state as a structured runtime object",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:1",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "It separates compression, recovery, validation, and update",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:2",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "The system should preserve task-relevant meaning under repeated transformations while reducing communication cost",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:3",
+                "metadata": {}
+              }
+            ],
+            "right": [
+              {
+                "type": "fact",
+                "value": "SRP manages semantic state as a structured runtime object",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:1",
+                "metadata": {}
+              },
+              {
+                "type": "fact",
+                "value": "It separates compression, recovery, validation, and update",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:2",
+                "metadata": {}
+              },
+              {
+                "type": "fact",
+                "value": "The system should preserve task-relevant meaning",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:3",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "preserve task meaning",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:1",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "reduce communication cost",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:2",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "SRP manages semantic state as a structured runtime object",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:1",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "It separates compression, recovery, validation, and update",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:2",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "The system should preserve task-relevant meaning under repeated transformations while reducing communication cost",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:3",
+                "metadata": {}
+              }
+            ]
+          }
+        }
+      },
+      "validation": {
+        "contract_satisfaction": {
+          "left": 0.5,
+          "right": 0.6944
+        },
+        "drift": {
+          "left": 0.3793,
+          "right": 0.2414
+        },
+        "drift_risk": {
+          "left": "medium",
+          "right": "low"
+        }
+      }
+    }
+  },
+  {
+    "task_id": "iterative_cycles",
+    "deterministic_path": {
+      "label": "client_none",
+      "compressed_state": {
+        "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important",
+        "constraints": [
+          "bounded drift",
+          "preserve constraints",
+          "preserve concepts",
+          "reduce tokens"
+        ],
+        "global_vocab": [
+          "semantic",
+          "drift",
+          "should",
+          "remain",
+          "bounded",
+          "repeated"
+        ],
+        "local_vocab": [
+          "semantic",
+          "drift",
+          "should",
+          "remain",
+          "bounded",
+          "repeated"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "bounded drift",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve constraints",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve concepts",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce tokens",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:4",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important.",
+        "constraints": [
+          "bounded drift",
+          "preserve constraints",
+          "preserve concepts",
+          "reduce tokens"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "SRP should preserve user constraints, task structure, and important",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "bounded drift",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve constraints",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve concepts",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce tokens",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:4",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.4582,
+        "alignment": 0.9947674418604652,
+        "coverage": 0.9947674418604652,
+        "drift": 0.3704,
+        "drift_risk": "medium",
+        "passed": false
+      }
+    },
+    "backend_mock_path": {
+      "label": "backend_mock",
+      "compressed_state": {
+        "memory": "",
+        "constraints": [
+          "bounded drift",
+          "preserve constraints",
+          "preserve concepts",
+          "reduce tokens"
+        ],
+        "global_vocab": [
+          "semantic",
+          "drift",
+          "should",
+          "remain",
+          "bounded",
+          "repeated",
+          "compression-recovery",
+          "cycles",
+          "preserve",
+          "constraints"
+        ],
+        "local_vocab": [
+          "bounded",
+          "drift",
+          "preserve",
+          "constraints",
+          "concepts",
+          "reduce"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "bounded drift",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve constraints",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve concepts",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce tokens",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:4",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "recovered_state": {
+        "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important concepts while using fewer",
+        "constraints": [
+          "bounded drift",
+          "preserve constraints",
+          "preserve concepts",
+          "reduce tokens"
+        ],
+        "typed_representation": {
+          "objects": [
+            {
+              "type": "fact",
+              "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:1",
+              "metadata": {}
+            },
+            {
+              "type": "fact",
+              "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer",
+              "confidence": 0.65,
+              "evidence_pointer": "memory:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "bounded drift",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:1",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve constraints",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:2",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "preserve concepts",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:3",
+              "metadata": {}
+            },
+            {
+              "type": "constraint",
+              "value": "reduce tokens",
+              "confidence": 1.0,
+              "evidence_pointer": "constraint:4",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:1",
+              "metadata": {}
+            },
+            {
+              "type": "anchor",
+              "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+              "confidence": 0.8,
+              "evidence_pointer": "anchor:2",
+              "metadata": {}
+            }
+          ]
+        }
+      },
+      "validation": {
+        "contract_satisfaction": 0.6283,
+        "alignment": 0.9947674418604652,
+        "coverage": 0.9947674418604652,
+        "drift": 0.2222,
+        "drift_risk": "low",
+        "passed": true
+      }
+    },
+    "diff": {
+      "compressed_state": {
+        "global_vocab": {
+          "left": [
+            "semantic",
+            "drift",
+            "should",
+            "remain",
+            "bounded",
+            "repeated"
+          ],
+          "right": [
+            "semantic",
+            "drift",
+            "should",
+            "remain",
+            "bounded",
+            "repeated",
+            "compression-recovery",
+            "cycles",
+            "preserve",
+            "constraints"
+          ]
+        },
+        "local_vocab": {
+          "left": [
+            "semantic",
+            "drift",
+            "should",
+            "remain",
+            "bounded",
+            "repeated"
+          ],
+          "right": [
+            "bounded",
+            "drift",
+            "preserve",
+            "constraints",
+            "concepts",
+            "reduce"
+          ]
+        },
+        "memory": {
+          "left": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important",
+          "right": ""
+        }
+      },
+      "recovered_state": {
+        "memory": {
+          "left": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important.",
+          "right": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important concepts while using fewer"
+        },
+        "typed_representation": {
+          "objects": {
+            "left": [
+              {
+                "type": "fact",
+                "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:1",
+                "metadata": {}
+              },
+              {
+                "type": "fact",
+                "value": "SRP should preserve user constraints, task structure, and important",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:2",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "bounded drift",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:1",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "preserve constraints",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:2",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "preserve concepts",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:3",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "reduce tokens",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:4",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:1",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:2",
+                "metadata": {}
+              }
+            ],
+            "right": [
+              {
+                "type": "fact",
+                "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:1",
+                "metadata": {}
+              },
+              {
+                "type": "fact",
+                "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer",
+                "confidence": 0.65,
+                "evidence_pointer": "memory:2",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "bounded drift",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:1",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "preserve constraints",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:2",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "preserve concepts",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:3",
+                "metadata": {}
+              },
+              {
+                "type": "constraint",
+                "value": "reduce tokens",
+                "confidence": 1.0,
+                "evidence_pointer": "constraint:4",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "Semantic drift should remain bounded over repeated compression-recovery cycles",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:1",
+                "metadata": {}
+              },
+              {
+                "type": "anchor",
+                "value": "SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline",
+                "confidence": 0.8,
+                "evidence_pointer": "anchor:2",
+                "metadata": {}
+              }
+            ]
+          }
+        }
+      },
+      "validation": {
+        "contract_satisfaction": {
+          "left": 0.4582,
+          "right": 0.6283
+        },
+        "drift": {
+          "left": 0.3704,
+          "right": 0.2222
+        },
+        "drift_risk": {
+          "left": "medium",
+          "right": "low"
+        },
+        "passed": {
+          "left": false,
+          "right": true
+        }
+      }
+    }
+  }
+]

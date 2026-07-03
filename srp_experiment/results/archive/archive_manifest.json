@@ -1,0 +1,147 @@
+﻿[
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\debug_raw_prompt_group1_c100",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\debug\\debug_raw_prompt_group1_c100"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\qualified_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\qualified_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\qualified_smoke_2",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\qualified_smoke_2"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_calibration_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_calibration_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_calibration_smoke_rerun",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_calibration_smoke_rerun"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_contract_graph_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_contract_graph_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_contract_satisfaction_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_contract_satisfaction_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_layer_alignment_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_layer_alignment_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_layer_drift_risk_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_layer_drift_risk_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_layer_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_layer_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_layer_validation_fields_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_layer_validation_fields_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\protocol_layer_validation_targets_smoke",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\smoke\\protocol_layer_validation_targets_smoke"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\comparison_tables",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\comparison\\comparison_tables"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\generated_configs",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\generated\\generated_configs"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_batch_summary.csv",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_batch_summary.csv"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_batch_summary.json",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_batch_summary.json"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_batch_summary.md",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_batch_summary.md"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_camera_ready_table.md",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_camera_ready_table.md"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_camera_ready_table.tex",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_camera_ready_table.tex"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_efficiency_table.md",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_efficiency_table.md"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_efficiency_table.tex",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_efficiency_table.tex"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_full_summary.csv",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_full_summary.csv"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_full_summary.json",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_full_summary.json"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_full_summary.md",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_full_summary.md"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_paper_table.md",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_paper_table.md"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_paper_table.tex",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_paper_table.tex"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_quality_table.md",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_quality_table.md"
+    },
+    {
+        "type":  "file",
+        "source":  "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\_latency_quality_table.tex",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\latency\\_latency_quality_table.tex"
+    },
+    {
+        "type":  "directory",
+        "source":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\srp_experiment\\results",
+        "destination":  "c:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\archive\\duplicate_namespace\\srp_experiment_results_snapshot"
+    }
+]

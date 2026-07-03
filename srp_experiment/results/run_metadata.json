@@ -1,0 +1,17 @@
+{
+  "backend": {
+    "backend": "mock",
+    "model": "gpt-4o-mini",
+    "timeout_seconds": 60
+  },
+  "cycles": 1,
+  "methods": [
+    "raw_prompt",
+    "summarization",
+    "rag",
+    "srp"
+  ],
+  "task_count": 3,
+  "results_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\results.json",
+  "summary_file": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\srp_experiment\\results\\summary.json"
+}

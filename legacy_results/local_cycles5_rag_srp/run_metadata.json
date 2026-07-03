@@ -1,0 +1,15 @@
+{
+  "backend": {
+    "backend": "local",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "timeout_seconds": 120,
+    "endpoint": "http://172.25.253.78:8000/v1/chat/completions"
+  },
+  "cycles": 5,
+  "methods": [
+    "rag_srp"
+  ],
+  "task_count": 3,
+  "results_file": "srp_experiment\\results\\local_cycles5_rag_srp\\results.json",
+  "summary_file": "srp_experiment\\results\\local_cycles5_rag_srp\\summary.json"
+}

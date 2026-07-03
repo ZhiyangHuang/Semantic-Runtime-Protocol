@@ -1,0 +1,31 @@
+[
+  {
+    "id": "iterative_cycles",
+    "task_type": "iterative_cycles",
+    "initial_state": {
+      "memory": "Semantic drift should remain bounded over repeated compression-recovery cycles. SRP should preserve user constraints, task structure, and important concepts while using fewer tokens than the raw prompt baseline.",
+      "constraints": [
+        "bounded drift",
+        "preserve constraints",
+        "preserve concepts",
+        "reduce tokens"
+      ]
+    },
+    "queries": [
+      "What should remain bounded over repeated cycles?",
+      "What should SRP preserve?",
+      "What efficiency goal should SRP achieve?"
+    ],
+    "query_expectations": [
+      [["bounded drift", "semantic drift"]],
+      [["constraints"], ["concepts", "important concepts", "task structure"]],
+      [["tokens", "fewer tokens", "reduce tokens", "token efficiency"]]
+    ],
+    "expected_keywords": [
+      "bounded drift",
+      "constraints",
+      "concepts",
+      "tokens"
+    ]
+  }
+]

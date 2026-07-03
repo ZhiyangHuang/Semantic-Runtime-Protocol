@@ -1,0 +1,33 @@
+{
+  "description": "First-paper priority local runs focused on the frozen four-method comparison and SRP-side ablations.",
+  "shared": {
+    "backend": "local",
+    "output_root": "srp_experiment/results/batch_runs/first_paper_priority_local"
+  },
+  "runs": [
+    {
+      "name": "p0_core_four_methods",
+      "cycles": [3, 5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["raw_prompt", "summarization", "rag", "srp"]
+      ]
+    },
+    {
+      "name": "p1_srp_vs_summarization",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["summarization", "srp"]
+      ]
+    },
+    {
+      "name": "p1_rag_vs_srp",
+      "cycles": [5, 7],
+      "models": ["Qwen/Qwen3-4B-AWQ"],
+      "methods": [
+        ["rag", "srp"]
+      ]
+    }
+  ]
+}

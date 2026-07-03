@@ -1,0 +1,149 @@
+\begin{thebibliography}{17}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chen et~al.(2022)Chen, Wen, Shi, Lin, Rajbahadur, and
+  Jiang]{towardstrainingreproducible2022}
+Boyuan Chen, Mingzhi Wen, Yong Shi, Dayi Lin, Gopi~Krishnan Rajbahadur, and
+  Zhen~Ming Jiang.
+\newblock Towards training reproducible deep learning models.
+\newblock \emph{arXiv preprint arXiv:2202.02326}, 2022.
+\newblock URL \url{https://arxiv.org/pdf/2202.02326}.
+
+\bibitem[Guo et~al.(2024)Guo, Wang, Zhang, Su, Luan, Tian, and
+  Shen]{guo2024semanticnetworks}
+Shaolong Guo, Yuntao Wang, Ning Zhang, Zhou Su, Tom~H. Luan, Zhiyi Tian, and
+  Xuemin Shen.
+\newblock A survey on semantic communication networks: Architecture, security,
+  and privacy.
+\newblock \emph{arXiv preprint arXiv:2405.01221}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.01221}.
+
+\bibitem[Jiang et~al.(2023)Jiang, Wu, Lin, Yang, and Qiu]{jiang2023llmlingua}
+Huiqiang Jiang, Qianhui Wu, Chin-Yew Lin, Yuqing Yang, and Lili Qiu.
+\newblock Llmlingua: Compressing prompts for accelerated inference of large
+  language models.
+\newblock \emph{arXiv preprint arXiv:2310.05736}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.05736}.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K{\"u}ttler, Lewis, Yih, Rockt{\"a}schel, Riedel, and Kiela]{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"u}ttler, Mike Lewis, Wen-tau Yih, Tim
+  Rockt{\"a}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive nlp tasks.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2020.
+\newblock URL \url{https://arxiv.org/abs/2005.11401}.
+
+\bibitem[Liskavets et~al.(2025)Liskavets, Ushakov, Roy, Klibanov, Etemad, and
+  Luke]{liskavets2025cpc}
+Barys Liskavets, Maxim Ushakov, Shuvendu Roy, Mark Klibanov, Ali Etemad, and
+  Shane Luke.
+\newblock Prompt compression with context-aware sentence encoding for fast and
+  improved llm inference.
+\newblock In \emph{Proceedings of the AAAI Conference on Artificial
+  Intelligence}, 2025.
+\newblock URL
+  \url{https://ojs.aaai.org/index.php/AAAI/article/view/34639/36794}.
+
+\bibitem[Lu et~al.(2023)Lu, Schuff, and Gurevych]{promptsensitivity2023}
+Sheng Lu, Hendrik Schuff, and Iryna Gurevych.
+\newblock How are prompts different in terms of sensitivity?
+\newblock \emph{arXiv preprint arXiv:2311.07230}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2311.07230}.
+
+\bibitem[Meng et~al.(2025)Meng, Gao, Fan, Gao, Wang, Xu, Wang, Lv, Zhang, Sun,
+  Han, Dong, Tao, and Zhang]{survey2025securesemantic}
+Rui Meng, Song Gao, Dayu Fan, Haixiao Gao, Yining Wang, Xiaodong Xu, Bizhu
+  Wang, Suyu Lv, Zhidi Zhang, Mengying Sun, Shujun Han, Chen Dong, Xiaofeng
+  Tao, and Ping Zhang.
+\newblock A survey of secure semantic communications.
+\newblock \emph{arXiv preprint arXiv:2501.00842}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2501.00842}.
+
+\bibitem[Nguyen et~al.(2025)Nguyen, Raha, Aung, Niyato, Han, and
+  Hong]{survey2025semanticcommunications}
+Loc~X. Nguyen, Avi~Deb Raha, Pyae~Sone Aung, Dusit Niyato, Zhu Han, and
+  Choong~Seon Hong.
+\newblock A contemporary survey on semantic communications: Theory of
+  mind-based semantic communication, generative ai-driven semantic
+  communication, and deep joint source-channel coding.
+\newblock \emph{arXiv preprint arXiv:2502.16468}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2502.16468}.
+
+\bibitem[Pan et~al.(2024)Pan, Wu, Jiang, Xia, Luo, Zhang, Lin, Rühle, Yang,
+  Lin, Zhao, Qiu, and Zhang]{jiang2024llmlingua2}
+Zhuoshi Pan, Qianhui Wu, Huiqiang Jiang, Menglin Xia, Xufang Luo, Jue Zhang,
+  Qingwei Lin, Victor Rühle, Yuqing Yang, Chin-Yew Lin, H.~Vicky Zhao, Lili
+  Qiu, and Dongmei Zhang.
+\newblock Llmlingua-2: Data distillation for efficient and faithful prompt
+  compression.
+\newblock \emph{arXiv preprint arXiv:2403.12968}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2403.12968}.
+
+\bibitem[Razavi et~al.(2025)Razavi, Soltangheis, Arabzadeh, Salamat, Zihayat,
+  and Bagheri]{benchmarkingpromptsensitivity2025}
+Amirhossein Razavi, Mina Soltangheis, Negar Arabzadeh, Sara Salamat, Morteza
+  Zihayat, and Ebrahim Bagheri.
+\newblock Benchmarking prompt sensitivity in large language models.
+\newblock \emph{arXiv preprint arXiv:2502.06065}, 2025.
+\newblock URL \url{https://arxiv.org/html/2502.06065v1}.
+
+\bibitem[Semmelrock et~al.(2024)Semmelrock, Ross-Hellauer, Kopeinik, Theiler,
+  Haberl, Thalmann, and Kowald]{reproducibilityml2024}
+Harald Semmelrock, Tony Ross-Hellauer, Simone Kopeinik, Dieter Theiler, Armin
+  Haberl, Stefan Thalmann, and Dominik Kowald.
+\newblock Reproducibility in machine learning-based research.
+\newblock \emph{arXiv preprint arXiv:2406.14325}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.14325}.
+
+\bibitem[Shan et~al.(2025)Shan, Luo, Zhu, Yuan, and Wu]{cognitivememory2025}
+Lianlei Shan, Shixian Luo, Zezhou Zhu, Yu~Yuan, and Yong Wu.
+\newblock Cognitive memory in large language models.
+\newblock \emph{arXiv preprint arXiv:2504.02441}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.02441}.
+
+\bibitem[Staudinger et~al.(2024)Staudinger, Kusa, Piroi, Lipani, and
+  Hanbury]{reproducibilitygeneralizability2024}
+Moritz Staudinger, Wojciech Kusa, Florina Piroi, Aldo Lipani, and Allan
+  Hanbury.
+\newblock A reproducibility and generalizability study of large language
+  model-based boolean query generation for systematic reviews.
+\newblock \emph{arXiv preprint arXiv:2411.14914}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2411.14914}.
+
+\bibitem[Wang and Wang(2025)]{assessingreproducibility2025}
+Julian~Junyan Wang and Victor~Xiaoqi Wang.
+\newblock Assessing consistency and reproducibility in the outputs of large
+  language models in finance and accounting.
+\newblock \emph{arXiv preprint arXiv:2503.16974}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2503.16974}.
+
+\bibitem[Wang et~al.(2023{\natexlab{a}})Wang, Fu, Cao, Wang, Tian, and
+  Ding]{recursivelysummarizing2023}
+Qingyue Wang, Yanhe Fu, Yanan Cao, Shuai Wang, Zhiliang Tian, and Liang Ding.
+\newblock Recursively summarizing enables long-term dialogue memory in large
+  language models.
+\newblock \emph{arXiv preprint arXiv:2308.15022}, 2023{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2308.15022}.
+
+\bibitem[Wang et~al.(2023{\natexlab{b}})Wang, Dong, Cheng, Liu, Yan, Gao, and
+  Wei]{longmem2023}
+Weizhi Wang, Li~Dong, Hao Cheng, Xiaodong Liu, Xifeng Yan, Jianfeng Gao, and
+  Furu Wei.
+\newblock Augmenting language models with long-term memory.
+\newblock \emph{arXiv preprint arXiv:2306.07174}, 2023{\natexlab{b}}.
+\newblock URL \url{https://arxiv.org/abs/2306.07174}.
+
+\bibitem[Wu et~al.(2025)Wu, Liang, Zhang, Wang, Zhang, Guo, Tang, and
+  Liu]{memorysurvey2025}
+Yaxiong Wu, Sheng Liang, Chen Zhang, Yichao Wang, Yongyue Zhang, Huifeng Guo,
+  Ruiming Tang, and Yong Liu.
+\newblock A survey on memory mechanisms in the era of llms.
+\newblock \emph{arXiv preprint arXiv:2504.15965}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.15965}.
+
+\end{thebibliography}
