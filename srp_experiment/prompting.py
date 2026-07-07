@@ -1,0 +1,105 @@
+from __future__ import annotations
+
+import json
+from typing import Dict, Iterable, List
+
+
+def _list_block(values: Iterable[str]) -> str:
+    items = [str(item).strip() for item in values if str(item).strip()]
+    if not items:
+        return "- none"
+    return "\n".join(f"- {item}" for item in items)
+
+
+def build_compression_prompt(
+    memory: str,
+    constraints: Iterable[str],
+    global_vocabulary: Iterable[str],
+    local_vocabulary: Iterable[str],
+    term_map: Dict[str, str],
+    loss_notes: Iterable[str],
+    policy: Dict[str, str],
+) -> str:
+    schema = {
+        "memory_summary": "compressed semantic memory",
+        "constraints": ["preserved constraints"],
+        "anchor_terms": ["stable terms"],
+        "term_map": {"surface": "canonical"},
+        "loss_risks": ["possible information loss"],
+    }
+    return "\n".join(
+        [
+            "Compress semantic state. Return only one compact JSON object, no markdown, no explanation.",
+            "Schema:",
+            json.dumps(schema, ensure_ascii=False),
+            "",
+            "Rules:",
+            "- Start with { and end with }.",
+            "- memory_summary: concrete facts from Memory, not task description.",
+            "- constraints: preserve supplied constraints.",
+            "- anchor_terms: names, dates, places, entities, option-critical terms.",
+            "- loss_risks: possible lost facts.",
+            "",
+            "Policy:",
+            json.dumps(policy, ensure_ascii=False),
+            "",
+            "Constraints:",
+            _list_block(constraints),
+            "",
+            "Global vocabulary:",
+            _list_block(global_vocabulary),
+            "",
+            "Local vocabulary:",
+            _list_block(local_vocabulary),
+            "",
+            "Term map:",
+            json.dumps(term_map, ensure_ascii=False),
+            "",
+            "Loss notes:",
+            _list_block(loss_notes),
+            "",
+            "Memory:",
+            memory,
+        ]
+    )
+
+
+def build_recovery_prompt(
+    memory: str,
+    constraints: Iterable[str],
+    global_vocabulary: Iterable[str],
+    local_vocabulary: Iterable[str],
+    term_map: Dict[str, str],
+    loss_notes: Iterable[str],
+    policy: Dict[str, str],
+    anchor_memory: str = "",
+) -> str:
+    return "\n".join(
+        [
+            "Recover a concise operational semantic state from the compressed memory.",
+            "Do not answer the benchmark question. Preserve facts and constraints only.",
+            "Return plain text semantic memory only. Do not return JSON unless the compressed memory itself is JSON data that must be preserved.",
+            "Do not include explanations, markdown, hidden reasoning, or <think> blocks.",
+            "",
+            "Policy:",
+            json.dumps(policy, ensure_ascii=False),
+            "",
+            "Constraints:",
+            _list_block(constraints),
+            "",
+            "Vocabulary:",
+            _list_block(list(global_vocabulary) + list(local_vocabulary)),
+            "",
+            "Term map:",
+            json.dumps(term_map, ensure_ascii=False),
+            "",
+            "Known loss risks:",
+            _list_block(loss_notes),
+            "",
+            "Anchor memory tail:",
+            anchor_memory,
+            "",
+            "Compressed memory:",
+            memory,
+        ]
+    )

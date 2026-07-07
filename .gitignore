@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+
+srp_experiment/.env
+srp_experiment/tmp/
+srp_experiment/diagnostics/
+srp_experiment/data/longbench_v2/tasks.json
+srp_experiment/data/longbench_v2/tasks_group_1.json
+srp_experiment/data/longbench_v2/tasks_group_2.json
+srp_experiment/data/longbench_v2/tasks_group_3.json

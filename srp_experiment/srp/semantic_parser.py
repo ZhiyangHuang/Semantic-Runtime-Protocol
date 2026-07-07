@@ -1,3 +1,5 @@
+import hashlib
+import re
 from dataclasses import dataclass, field
 from typing import Dict, Iterable, List, Optional
 
@@ -19,6 +21,9 @@ class SemanticObject:
             "metadata": dict(self.metadata),
         }
 
+    def stable_id(self) -> str:
+        return stable_semantic_object_id(self.object_type, self.value)
+
 
 @dataclass
 class TypedSemanticRepresentation:
@@ -33,12 +38,72 @@ class TypedSemanticRepresentation:
         }
 
 
+_ABBREVIATIONS = {
+    "nyc": "new york city",
+    "prof.": "professor",
+    "prof": "professor",
+    "cs": "computer science",
+}
+
+_MONTHS = {
+    "jan": "1",
+    "january": "1",
+    "feb": "2",
+    "february": "2",
+    "mar": "3",
+    "march": "3",
+    "apr": "4",
+    "april": "4",
+    "may": "5",
+    "jun": "6",
+    "june": "6",
+    "jul": "7",
+    "july": "7",
+    "aug": "8",
+    "august": "8",
+    "sep": "9",
+    "sept": "9",
+    "september": "9",
+    "oct": "10",
+    "october": "10",
+    "nov": "11",
+    "november": "11",
+    "dec": "12",
+    "december": "12",
+}
+
+
 def _normalize_text(text: str) -> str:
-    return " ".join(str(text).strip().split())
+    lowered = str(text).strip().lower()
+    lowered = re.sub(r"[\u2018\u2019]", "'", lowered)
+    lowered = re.sub(r"[\u201c\u201d]", '"', lowered)
+    lowered = re.sub(r"[^\w\s/.-]+", " ", lowered)
+    lowered = " ".join(lowered.split())
+    return lowered
+
+
+def canonicalize_semantic_value(value: str) -> str:
+    normalized = _normalize_text(value)
+    if not normalized:
+        return ""
+    if normalized in _ABBREVIATIONS:
+        return _ABBREVIATIONS[normalized]
+    month_year = re.fullmatch(r"([a-z]+)\s+(\d{4})", normalized)
+    if month_year and month_year.group(1) in _MONTHS:
+        return f"{_MONTHS[month_year.group(1)]}/{month_year.group(2)}"
+    normalized = re.sub(r"\b(\d{1,2})/(\d{4})\b", lambda m: f"{int(m.group(1))}/{m.group(2)}", normalized)
+    normalized = re.sub(r"\b(0?\d)/(20\d{2})\b", lambda m: f"{int(m.group(1))}/{m.group(2)}", normalized)
+    return normalized
+
+
+def stable_semantic_object_id(object_type: str, value: str) -> str:
+    canonical = canonicalize_semantic_value(value)
+    digest = hashlib.sha1(f"{object_type}:{canonical}".encode("utf-8")).hexdigest()[:8]
+    return f"{object_type}:{digest}"
 
 
 def _split_sentences(text: str) -> List[str]:
-    normalized = _normalize_text(text)
+    normalized = " ".join(str(text).strip().split())
     if not normalized:
         return []
     sentences = []
