@@ -41,6 +41,15 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def _json_default(value: Any):
+    if hasattr(value, "item"):
+        try:
+            return value.item()
+        except Exception:
+            pass
+    raise TypeError(f"Object of type {value.__class__.__name__} is not JSON serializable")
+
+
 def summarize_records(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     if not records:
         return {"cycles": 0}
@@ -121,7 +130,7 @@ def main() -> int:
                 entry["ok"] = False
                 entry["error"] = str(exc)
                 entry["traceback"] = traceback.format_exc()
-            handle.write(json.dumps(entry, ensure_ascii=False) + "\n")
+            handle.write(json.dumps(entry, ensure_ascii=False, default=_json_default) + "\n")
             handle.flush()
             status = "ok" if entry["ok"] else "failed"
             print(f"[{status}] {entry.get('task_id')} -> {output_path}")

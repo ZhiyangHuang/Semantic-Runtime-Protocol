@@ -1,3 +1,5 @@
+import os
+
 from ..budgeting import available_memory_budget, clip_tail_to_budget, get_budget_config
 from ..prompting import build_recovery_prompt
 from .state import SemanticState
@@ -24,17 +26,35 @@ def _build_recovery_template_summary(prompt: str, anchor_memory: str) -> dict:
     }
 
 
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(os.getenv(name, str(default)))
+    except ValueError:
+        return default
+
+
+def _budget_recovery_inputs(package: dict, anchor_memory: str) -> tuple[str, str]:
+    total_budget = available_memory_budget(constraints=package.get("constraints", []))
+    anchor_cap = min(_env_int("SRP_RECOVERY_ANCHOR_TOKENS", 96), max(24, total_budget // 3))
+    compressed_cap = max(48, total_budget - anchor_cap)
+    return (
+        clip_tail_to_budget(package.get("memory", ""), compressed_cap),
+        clip_tail_to_budget(anchor_memory, anchor_cap),
+    )
+
+
 def recover_state(package: dict, client=None, anchor_memory: str = "") -> SemanticState:
     budget = get_budget_config()
+    compressed_memory, anchor_tail = _budget_recovery_inputs(package, anchor_memory)
     prompt = build_recovery_prompt(
-        package["memory"],
+        compressed_memory,
         package.get("constraints", []),
         package.get("global_vocab", []),
         package.get("local_vocab", []),
         package.get("term_map", {}),
         package.get("loss_notes", []),
         package.get("policy", {}),
-        anchor_memory=clip_tail_to_budget(anchor_memory, available_memory_budget(constraints=package.get("constraints", []))),
+        anchor_memory=anchor_tail,
     )
     if client is None:
         memory = package["memory"]

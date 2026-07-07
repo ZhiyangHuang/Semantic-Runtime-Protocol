@@ -74,21 +74,26 @@ def build_recovery_prompt(
     policy: Dict[str, str],
     anchor_memory: str = "",
 ) -> str:
+    vocabulary = list(dict.fromkeys([str(item).strip() for item in list(global_vocabulary) + list(local_vocabulary) if str(item).strip()]))[:8]
+    compact_policy = {
+        key: str(value).strip()
+        for key, value in policy.items()
+        if str(key).strip() and str(value).strip()
+    }
     return "\n".join(
         [
-            "Recover a concise operational semantic state from the compressed memory.",
-            "Do not answer the benchmark question. Preserve facts and constraints only.",
-            "Return plain text semantic memory only. Do not return JSON unless the compressed memory itself is JSON data that must be preserved.",
-            "Do not include explanations, markdown, hidden reasoning, or <think> blocks.",
+            "Recover concise semantic memory.",
+            "Do not answer the benchmark question.",
+            "Return plain text facts and constraints only.",
             "",
             "Policy:",
-            json.dumps(policy, ensure_ascii=False),
+            json.dumps(compact_policy, ensure_ascii=False),
             "",
             "Constraints:",
             _list_block(constraints),
             "",
             "Vocabulary:",
-            _list_block(list(global_vocabulary) + list(local_vocabulary)),
+            _list_block(vocabulary),
             "",
             "Term map:",
             json.dumps(term_map, ensure_ascii=False),
