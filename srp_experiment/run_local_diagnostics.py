@@ -15,8 +15,8 @@ for path in (str(ROOT), str(REPO_ROOT)):
     if path not in sys.path:
         sys.path.insert(0, path)
 
-from local_llm import build_local_client, iter_tasks, load_env
-from srp.pipeline import run_srp
+from srp_experiment.local_llm import build_local_client, iter_tasks, load_env
+from srp_experiment.srp.pipeline import run_srp
 
 
 DEFAULT_TASKS_PATH = ROOT / "data" / "longbench_v2" / "tasks_group_1.json"
