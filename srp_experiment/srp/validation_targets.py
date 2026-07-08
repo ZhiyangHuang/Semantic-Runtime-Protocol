@@ -168,4 +168,30 @@ def build_validation_targets(task: Dict) -> SemanticContractGraph:
             },
         )
 
+    semantic_dependencies = task.get("semantic_dependencies") or {}
+    if isinstance(semantic_dependencies, dict):
+        for dep_idx, dependency in enumerate(semantic_dependencies.get("required_dependency_objects", []), start=1):
+            if not isinstance(dependency, dict):
+                continue
+            subject = dependency.get("subject") or {}
+            relation = dependency.get("relation") or {}
+            obj = dependency.get("object") or {}
+            subject_value = str(subject.get("canonical") or subject.get("value") or "").strip()
+            relation_value = str(relation.get("canonical") or relation.get("value") or "").strip()
+            object_value = str(obj.get("canonical") or obj.get("value") or "").strip()
+            tuple_surface = " ".join(value for value in [subject_value, relation_value, object_value] if value)
+            add_clause(
+                role="clause",
+                node_type="semantic_dependency_tuple",
+                values=[tuple_surface],
+                metadata={
+                    "source": "semantic_dependencies",
+                    "dependency_index": str(dep_idx),
+                    "dependency_id": str(dependency.get("dependency_id", "")),
+                    "subject_type": str(subject.get("type", "")),
+                    "relation_type": str(relation.get("type", "")),
+                    "object_type": str(obj.get("type", "")),
+                },
+            )
+
     return graph

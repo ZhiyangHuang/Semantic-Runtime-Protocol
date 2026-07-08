@@ -79,6 +79,51 @@ python srp_experiment/export_csv.py --cycles 1 --output-csv srp_experiment/tmp/s
 python -m unittest discover -s srp_experiment/tests -v
 ```
 
+## Experiment Workflow
+
+Use this order when you start a new measurement-first experiment:
+
+1. Read the next-phase roadmap in [SRP_NEXT_PHASE_TASKS.md](SRP_NEXT_PHASE_TASKS.md)
+2. Select the concrete run items from [SRP_EXPERIMENT_CHECKLIST.md](SRP_EXPERIMENT_CHECKLIST.md)
+3. Create a new record from [SRP_EXPERIMENT_LOG_TEMPLATE.md](SRP_EXPERIMENT_LOG_TEMPLATE.md)
+4. Register the record in [SRP_EXPERIMENT_INDEX.md](SRP_EXPERIMENT_INDEX.md)
+5. Run the experiment and fill in [SRP_EXPERIMENT_LOG.md](SRP_EXPERIMENT_LOG.md)
+6. Export CSV outputs with `srp_experiment/export_csv.py`
+
+Recommended sequence:
+
+- route: roadmap -> checklist -> log template -> log -> index -> CSV
+- keep one `experiment_id` per record
+- use the same `task_id` and `context_budget` when comparing ablations
+- prefer explicit metric values over prose when you write the log
+
+Field naming rule:
+
+- use the shared underscore-style names from `SRP_NEXT_PHASE_TASKS.md`
+- keep `experiment_id`, `task_id`, `config_summary`, `result_summary`, and `metric_values` consistent everywhere
+
+### Experiment ID naming example
+
+Use this pattern:
+
+```text
+srp_<phase>_<task>_<ablation>_<run>
+```
+
+Examples:
+
+- `srp_meas_longbench_textrec_r01`
+- `srp_meas_longbench_structrec_r02`
+- `srp_v2_mcq_objaware_r01`
+- `srp_paper_repair_r03`
+
+Suggested meanings:
+
+- `<phase>`: `meas`, `v2`, or `paper`
+- `<task>`: short task family or dataset id
+- `<ablation>`: `textrec`, `structrec`, `objaware`, `repair`, or `encoder`
+- `<run>`: `r01`, `r02`, `r03`, etc.
+
 ## Export Helpers
 
 The easiest way to export SRP runs to CSV is:
@@ -163,6 +208,7 @@ After exporting, inspect these fields first:
 - `failure_summary_flat_*`
 - `lifecycle_summary_flat_*`
 - `object_update_summary_flat_*`
+- `repair_context_flat_*`
 - `policy_flat_*`
 
 ## Output

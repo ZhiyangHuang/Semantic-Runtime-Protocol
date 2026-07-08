@@ -1,0 +1,51 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v1",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_single_task",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v1_c1",
+      "task_type": "multi_hop_dependency",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Project Orion uses Database Atlas. Database Atlas is managed by Team Blue. Team Blue requires administrator approval for changes. Alice manages Project Orion. The backup server is in Prague."
+      },
+      "queries": [
+        "Who can approve changes to Project Orion?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Project Orion uses Database Atlas"
+          ],
+          [
+            "Database Atlas is managed by Team Blue"
+          ],
+          [
+            "Team Blue requires administrator approval for changes"
+          ]
+        ]
+      ],
+      "expected_output": "Administrators can approve changes to Project Orion via Team Blue's approval requirement.",
+      "expected_keywords": [
+        "Project Orion",
+        "Database Atlas",
+        "Team Blue",
+        "administrator approval"
+      ],
+      "metadata": {
+        "purpose": "controlled execution smoke task",
+        "notes": "Multi-hop dependency chain with distractors.",
+        "required_dependency_labels": [
+          "Project Orion uses Database Atlas",
+          "Database Atlas is managed by Team Blue",
+          "Team Blue requires administrator approval for changes"
+        ]
+      }
+    }
+  ]
+}

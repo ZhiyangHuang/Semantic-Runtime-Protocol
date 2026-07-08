@@ -72,6 +72,7 @@ def build_recovery_prompt(
     term_map: Dict[str, str],
     loss_notes: Iterable[str],
     policy: Dict[str, str],
+    semantic_object_inventory: Dict[str, object] | None = None,
     anchor_memory: str = "",
 ) -> str:
     vocabulary = list(dict.fromkeys([str(item).strip() for item in list(global_vocabulary) + list(local_vocabulary) if str(item).strip()]))[:8]
@@ -82,12 +83,34 @@ def build_recovery_prompt(
     }
     return "\n".join(
         [
-            "Recover concise semantic memory.",
+            "Recover concise semantic state.",
             "Do not answer the benchmark question.",
-            "Return plain text facts and constraints only.",
+            "Preserve typed objects, constraints, and evidence links when possible.",
+            "Prefer a structured JSON state package if possible; otherwise return plain text facts only.",
             "",
             "Policy:",
             json.dumps(compact_policy, ensure_ascii=False),
+            "",
+            "Semantic object inventory:",
+            json.dumps(semantic_object_inventory or {}, ensure_ascii=False),
+            "",
+            "Structured state package schema:",
+            json.dumps(
+                {
+                    "schema_version": "structured_state_package.v1",
+                    "fields": [
+                        "memory",
+                        "constraints",
+                        "global_vocabulary",
+                        "local_vocabulary",
+                        "term_map",
+                        "policy",
+                        "semantic_object_inventory",
+                        "typed_representation",
+                    ],
+                },
+                ensure_ascii=False,
+            ),
             "",
             "Constraints:",
             _list_block(constraints),

@@ -1,0 +1,39 @@
+{
+  "schema_version": "controlled_execution_v5.schema",
+  "purpose": "Runtime-aligned dependency representation benchmark for SRP dependency object resolution.",
+  "task_shape": {
+    "task_id": "controlled_v5_chain_1",
+    "category": "semantic_dependency_tuple",
+    "difficulty": {
+      "dependency_depth": 3,
+      "distractor_count": 10,
+      "object_budget": 24
+    },
+    "semantic_dependencies": {
+      "required_dependency_objects": [
+        {
+          "dependency_id": "dep_001",
+          "subject": {
+            "type": "system",
+            "canonical": "Project Orion"
+          },
+          "relation": {
+            "type": "requires",
+            "canonical": "requires"
+          },
+          "object": {
+            "type": "database",
+            "canonical": "Database Atlas"
+          }
+        }
+      ],
+      "dependency_edges": [
+        {
+          "from": "dep_001",
+          "to": "dep_002",
+          "relation": "requires"
+        }
+      ]
+    }
+  }
+}

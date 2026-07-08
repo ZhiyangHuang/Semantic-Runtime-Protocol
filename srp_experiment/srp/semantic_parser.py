@@ -38,6 +38,23 @@ class TypedSemanticRepresentation:
         }
 
 
+def typed_representation_from_dict(data: Dict | None) -> TypedSemanticRepresentation:
+    objects: List[SemanticObject] = []
+    for item in (data or {}).get("objects", []):
+        if not isinstance(item, dict):
+            continue
+        objects.append(
+            SemanticObject(
+                object_type=str(item.get("type", "fact")),
+                value=str(item.get("value", "")),
+                confidence=float(item.get("confidence", 0.0) or 0.0),
+                evidence_pointer=str(item.get("evidence_pointer", "")),
+                metadata={str(k): str(v) for k, v in dict(item.get("metadata", {})).items()},
+            )
+        )
+    return TypedSemanticRepresentation(objects=objects)
+
+
 _ABBREVIATIONS = {
     "nyc": "new york city",
     "prof.": "professor",

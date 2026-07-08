@@ -1,0 +1,17 @@
+{
+  "schema_version": "controlled_execution_v5.index",
+  "benchmark": "SRP Controlled Execution Tasks v5",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_smoke",
+  "selection_offset": 0,
+  "selection_limit": 2,
+  "source": "synthetic",
+  "task_files": [
+    "srp_experiment/tasks/controlled_execution_v5/task_chain_exact_1.json",
+    "srp_experiment/tasks/controlled_execution_v5/task_collision_exact_1.json"
+  ],
+  "notes": [
+    "v5 freezes allocation and audit logic, changing only dependency representation to semantic tuples with subject/relation/object identity."
+  ]
+}

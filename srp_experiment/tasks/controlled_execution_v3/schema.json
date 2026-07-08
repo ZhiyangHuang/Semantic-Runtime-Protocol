@@ -1,0 +1,54 @@
+{
+  "schema_version": "controlled_execution_v3.schema",
+  "purpose": "Runtime-aligned semantic object tasks for SRP dependency evaluation validation.",
+  "task_shape": {
+    "task_id": "controlled_v3_chain_1",
+    "category": "dependency_chain",
+    "difficulty": {
+      "dependency_depth": 4,
+      "distractor_count": 6
+    },
+    "context": [
+      {
+        "object_id": "dep_001",
+        "concept": "project_database_relation",
+        "normalized_value": "Project Orion uses Database Atlas"
+      }
+    ],
+    "query": "Who can approve Project Orion production deployment?",
+    "required_dependency_objects": [
+      {
+        "object_id": "dep_001",
+        "concept": "project_database_relation",
+        "normalized_value": "Project Orion uses Database Atlas"
+      },
+      {
+        "object_id": "dep_002",
+        "concept": "deployment_property",
+        "normalized_value": "immutable deployment rule"
+      },
+      {
+        "object_id": "dep_003",
+        "concept": "approval_requirement",
+        "normalized_value": "administrator approval required"
+      }
+    ],
+    "dependency_edges": [
+      {
+        "source": "Project Orion",
+        "relation": "uses",
+        "target": "Database Atlas"
+      },
+      {
+        "source": "Database Atlas",
+        "relation": "has_property",
+        "target": "immutable deployment rule"
+      },
+      {
+        "source": "immutable deployment rule",
+        "relation": "requires",
+        "target": "administrator approval"
+      }
+    ]
+  }
+}

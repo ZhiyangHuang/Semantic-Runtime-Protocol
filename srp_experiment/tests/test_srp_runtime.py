@@ -7,10 +7,29 @@ from srp_experiment.srp.compress import chunk_memory, compress_state
 from srp_experiment.srp.encoder import build_encoder
 from srp_experiment.srp.export import flatten_record_for_csv, write_records_csv
 from srp_experiment.srp.semantic_parser import canonicalize_semantic_value, stable_semantic_object_id
+from srp_experiment.srp.saliency import rank_memory_chunks
 from srp_experiment.srp.state import SemanticObjectMetadata, SemanticState
 from srp_experiment.srp.recover import recover_state
+from srp_experiment.srp.recover_runtime import budget_recovery_inputs, recover_memory_from_package
+from srp_experiment.srp.state_lifecycle import apply_object_lifecycle as apply_object_lifecycle_rule
+from srp_experiment.srp.state_summaries import (
+    build_object_update_summary_flat,
+    build_recovery_template_summary_flat,
+    build_state_continuity_summary,
+    lifecycle_summary_flat,
+)
 from srp_experiment.srp.validate import validate_state
+from srp_experiment.srp.validation_failure_summary import (
+    assess_drift_risk,
+    build_failure_summary,
+    build_failure_summary_flat,
+    detect_answer_leakage,
+)
 from srp_experiment.srp.validation_targets import build_validation_targets
+from srp_experiment.srp.compress_parse import parse_compressed_payload
+from srp_experiment.srp.object_retention import build_object_retention_breakdown, build_object_retention_breakdown_v2
+from srp_experiment.srp.repair import build_repair_package
+from srp_experiment.srp.state_allocation import build_state_allocation_policy
 
 
 class TestSRPRuntime(unittest.TestCase):
@@ -278,6 +297,579 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertGreaterEqual(validation["coverage_score"], 0.99)
         self.assertIn("constraint", validation["coverage_details"])
 
+    def test_validate_state_uses_structured_recovery_package_for_alignment(self):
+        task = {
+            "id": "structured-package-task",
+            "initial_state": {
+                "constraints": ["Preserve the key constraint."],
+                "memory": "Preserve the key constraint. The answer is B.",
+            },
+            "query_expectations": [[["Preserve the key constraint."]]],
+            "expected_keywords": ["constraint", "answer"],
+        }
+        validation = validate_state(
+            "Preserve the key constraint. The answer is B.",
+            "Recovered placeholder text.",
+            build_validation_targets(task),
+            recovered_state_package={
+                "typed_representation": {
+                    "objects": [
+                        {
+                            "type": "fact",
+                            "value": "Preserve the key constraint",
+                            "confidence": 0.9,
+                            "evidence_pointer": "memory:0",
+                            "metadata": {},
+                        },
+                        {
+                            "type": "fact",
+                            "value": "The answer is B",
+                            "confidence": 0.9,
+                            "evidence_pointer": "memory:1",
+                            "metadata": {},
+                        },
+                        {
+                            "type": "constraint",
+                            "value": "Preserve the key constraint.",
+                            "confidence": 1.0,
+                            "evidence_pointer": "constraint:1",
+                            "metadata": {},
+                        },
+                    ]
+                }
+            },
+        )
+        self.assertGreaterEqual(validation["alignment_score"], 0.5)
+        self.assertEqual(validation["typed_validation"]["recovered"]["objects"][0]["type"], "fact")
+
+    def test_object_retention_breakdown_separates_retained_missing_and_hallucinated(self):
+        source_inventory = {
+            "important_objects": [
+                {
+                    "object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                    "type": "constraint",
+                    "value": "Preserve the key constraint.",
+                    "confidence": 1.0,
+                    "evidence_pointer": "constraint:1",
+                },
+                {
+                    "object_id": stable_semantic_object_id("fact", "The answer is B."),
+                    "type": "fact",
+                    "value": "The answer is B.",
+                    "confidence": 0.9,
+                    "evidence_pointer": "memory:2",
+                },
+            ]
+        }
+        recovered_package = {
+            "typed_representation": {
+                "objects": [
+                    {
+                        "type": "constraint",
+                        "value": "Preserve the key constraint.",
+                        "confidence": 1.0,
+                        "evidence_pointer": "constraint:1",
+                        "metadata": {},
+                    },
+                    {
+                        "type": "query_expectation",
+                        "value": "Preserve the key constraint.",
+                        "confidence": 1.0,
+                        "evidence_pointer": "query:1",
+                        "metadata": {},
+                    },
+                    {
+                        "type": "fact",
+                        "value": "Recovered extra detail.",
+                        "confidence": 0.6,
+                        "evidence_pointer": "memory:3",
+                        "metadata": {},
+                    },
+                ]
+            }
+        }
+        breakdown = build_object_retention_breakdown(source_inventory, recovered_package)
+        self.assertEqual(breakdown.schema_version, "object_retention_breakdown.v1")
+        self.assertEqual(len(breakdown.retained), 1)
+        self.assertEqual(len(breakdown.missing), 1)
+        self.assertEqual(len(breakdown.hallucinated), 2)
+        self.assertEqual(breakdown.retained[0]["type"], "constraint")
+        self.assertEqual(breakdown.missing[0]["type"], "fact")
+        self.assertEqual({item["type"] for item in breakdown.hallucinated}, {"query_expectation", "fact"})
+        self.assertIn("Recovered extra detail.", {item["value"] for item in breakdown.hallucinated})
+
+    def test_object_retention_breakdown_v2_separates_three_views(self):
+        task = {
+            "id": "retention-v2-task",
+            "initial_state": {
+                "constraints": ["Preserve the key constraint."],
+                "memory": "Preserve the key constraint. The answer is B.",
+            },
+            "query_expectations": [[["Preserve the key constraint."]]],
+            "expected_keywords": ["constraint", "answer"],
+        }
+        source_inventory = {
+            "objects": [
+                {
+                    "object_id": stable_semantic_object_id("fact", "Preserve the key constraint."),
+                    "type": "fact",
+                    "value": "Preserve the key constraint.",
+                    "confidence": 0.65,
+                    "evidence_pointer": "memory:1",
+                },
+                {
+                    "object_id": stable_semantic_object_id("fact", "The answer is B."),
+                    "type": "fact",
+                    "value": "The answer is B.",
+                    "confidence": 0.65,
+                    "evidence_pointer": "memory:2",
+                },
+            ],
+            "important_objects": [
+                {
+                    "object_id": stable_semantic_object_id("fact", "Preserve the key constraint."),
+                    "type": "fact",
+                    "value": "Preserve the key constraint.",
+                    "confidence": 0.65,
+                    "evidence_pointer": "memory:1",
+                }
+            ],
+        }
+        recovered_package = {
+            "typed_representation": {
+                "objects": [
+                    {
+                        "type": "fact",
+                        "value": "Preserve the key constraint.",
+                        "confidence": 0.9,
+                        "evidence_pointer": "memory:1",
+                        "metadata": {},
+                    },
+                    {
+                        "type": "constraint",
+                        "value": "Preserve the key constraint.",
+                        "confidence": 1.0,
+                        "evidence_pointer": "constraint:1",
+                        "metadata": {},
+                    },
+                    {
+                        "type": "query_expectation",
+                        "value": "Preserve the key constraint.",
+                        "confidence": 1.0,
+                        "evidence_pointer": "query:1",
+                        "metadata": {},
+                    },
+                    {
+                        "type": "fact",
+                        "value": "Recovered extra detail.",
+                        "confidence": 0.6,
+                        "evidence_pointer": "memory:3",
+                        "metadata": {},
+                    },
+                ]
+            }
+        }
+        breakdown = build_object_retention_breakdown_v2(
+            source_inventory,
+            recovered_package,
+            build_validation_targets(task),
+        )
+        self.assertEqual(breakdown.schema_version, "object_retention_breakdown.v2")
+        self.assertIn("important", breakdown.as_dict())
+        self.assertIn("all_objects", breakdown.as_dict())
+        self.assertIn("task_critical", breakdown.as_dict())
+        self.assertGreaterEqual(breakdown.important["retained_count"], 1)
+        self.assertGreaterEqual(breakdown.all_objects["retained_count"], 1)
+        self.assertGreaterEqual(breakdown.task_critical["retained_count"], 1)
+
+    def test_pipeline_repair_loop_uses_structured_package(self):
+        previous_encoder = os.environ.get("SRP_ENCODER")
+        try:
+            os.environ["SRP_ENCODER"] = "none"
+            task = {
+                "id": "repair-loop-task",
+                "initial_state": {
+                    "constraints": ["Preserve the key constraint."],
+                    "memory": "Preserve the key constraint. The answer is B.",
+                },
+                "query_expectations": [[["Preserve the key constraint."]]],
+                "expected_keywords": ["constraint", "answer"],
+            }
+
+            class FailingThenStructuredClient:
+                def __init__(self):
+                    self.calls = 0
+
+                def generate_with_usage(self, prompt, **kwargs):
+                    self.calls += 1
+                    if "Compress semantic state" in prompt:
+                        return {
+                            "text": '{"memory_summary":"The answer is B.","constraints":["Preserve the key constraint."],"anchor_terms":["answer","constraint"],"loss_risks":[]}',
+                            "usage": {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2},
+                            "raw_text": '{"memory_summary":"The answer is B.","constraints":["Preserve the key constraint."],"anchor_terms":["answer","constraint"],"loss_risks":[]}',
+                            "stripped_thinking": None,
+                        }
+                    if "Recover concise semantic state." in prompt:
+                        return {
+                            "text": "Preserve the key constraint. The answer is B.",
+                            "usage": {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2},
+                            "raw_text": "Preserve the key constraint. The answer is B.",
+                            "stripped_thinking": None,
+                        }
+                    return {
+                        "text": "Preserve the key constraint. The answer is B.",
+                        "usage": {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2},
+                        "raw_text": "Preserve the key constraint. The answer is B.",
+                        "stripped_thinking": None,
+                    }
+
+            records = run_srp(task, cycles=1, client=FailingThenStructuredClient())
+            self.assertEqual(len(records), 1)
+            self.assertIn("recovery_template_summary", records[0])
+            self.assertIn("structured_state_package_present", records[0]["recovery_template_summary"])
+            self.assertIn("recovered_state_package", records[0])
+            self.assertIn("repair_context", records[0])
+            self.assertIn("repair_context_flat", records[0])
+        finally:
+            if previous_encoder is None:
+                os.environ.pop("SRP_ENCODER", None)
+            else:
+                os.environ["SRP_ENCODER"] = previous_encoder
+
+    def test_task_critical_filter_flag_is_visible_in_repair_context(self):
+        previous_filter = os.environ.get("SRP_TASK_CRITICAL_FILTER")
+        try:
+            os.environ["SRP_TASK_CRITICAL_FILTER"] = "true"
+            task = {
+                "id": "task-filter-task",
+                "initial_state": {
+                    "constraints": ["Preserve the key constraint."],
+                    "memory": "Preserve the key constraint. The answer is B.",
+                },
+                "query_expectations": [[["Preserve the key constraint."]]],
+                "expected_keywords": ["constraint", "answer"],
+            }
+
+            class DummyClient:
+                def generate_with_usage(self, *args, **kwargs):
+                    return {
+                        "text": '{"memory_summary":"Preserve the key constraint.","constraints":["Preserve the key constraint."],"anchor_terms":["constraint"],"loss_risks":[]}',
+                        "usage": {"prompt_tokens": 1, "completion_tokens": 1, "total_tokens": 2},
+                        "raw_text": '{"memory_summary":"Preserve the key constraint.","constraints":["Preserve the key constraint."],"anchor_terms":["constraint"],"loss_risks":[]}',
+                        "stripped_thinking": None,
+                    }
+
+            records = run_srp(task, cycles=1, client=DummyClient())
+            self.assertEqual(len(records), 1)
+            self.assertIn("repair_context", records[0])
+            self.assertIn("task_critical_filter_enabled", records[0]["repair_context"])
+        finally:
+            if previous_filter is None:
+                os.environ.pop("SRP_TASK_CRITICAL_FILTER", None)
+            else:
+                os.environ["SRP_TASK_CRITICAL_FILTER"] = previous_filter
+
+    def test_repair_constraint_mode_is_reflected_in_repair_context(self):
+        previous_mode = os.environ.get("SRP_REPAIR_CONSTRAINT_MODE")
+        try:
+            package = {
+                "memory": "Preserve the key constraint. The answer is B.",
+                "constraints": ["Preserve the key constraint."],
+                "semantic_object_inventory": {
+                    "schema_version": "semantic_object_inventory.v1",
+                    "objects": [
+                        {"object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."), "type": "constraint", "value": "Preserve the key constraint."},
+                        {"object_id": stable_semantic_object_id("fact", "The answer is B."), "type": "fact", "value": "The answer is B."},
+                    ],
+                    "important_objects": [
+                        {"object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."), "type": "constraint", "value": "Preserve the key constraint."},
+                        {"object_id": stable_semantic_object_id("fact", "The answer is B."), "type": "fact", "value": "The answer is B."},
+                    ],
+                    "object_count": 2,
+                    "important_object_count": 2,
+                    "object_ids": [
+                        stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                        stable_semantic_object_id("fact", "The answer is B."),
+                    ],
+                    "type_counts": {"constraint": 1, "fact": 1},
+                },
+                "typed_representation": {
+                    "objects": [
+                        {"type": "constraint", "value": "Preserve the key constraint.", "confidence": 1.0, "evidence_pointer": "constraint:1"},
+                        {"type": "fact", "value": "The answer is B.", "confidence": 0.6, "evidence_pointer": "memory:1"},
+                    ]
+                },
+            }
+            validation = {
+                "critical_failures": [
+                    {
+                        "source_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                        "recovered_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                        "source_value": "Preserve the key constraint.",
+                        "recovered_value": "Preserve the key constraint.",
+                        "similarity": 0.2,
+                        "object_type": "constraint",
+                    }
+                ],
+                "object_alignment": {
+                    "constraint": {
+                        "matches": [
+                            {
+                                "source_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                                "recovered_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                                "source_value": "Preserve the key constraint.",
+                                "recovered_value": "Preserve the key constraint.",
+                                "similarity": 0.2,
+                                "object_type": "constraint",
+                            }
+                        ]
+                    }
+                },
+                "leakage_detected": False,
+                "drift_blocks_commit": False,
+            }
+
+            os.environ["SRP_REPAIR_CONSTRAINT_MODE"] = "constrained"
+            constrained = build_repair_package(package, package, validation)
+            self.assertIn("repair_context", constrained)
+            self.assertEqual(constrained["repair_context"]["repair_constraint_mode"], "constrained")
+            self.assertEqual(constrained["repair_context_flat"]["repair_constraint_mode"], "constrained")
+            self.assertEqual(constrained["structured_state_package"]["typed_representation"]["objects"], [
+                {"type": "constraint", "value": "Preserve the key constraint.", "confidence": 1.0, "evidence_pointer": "constraint:1"}
+            ])
+
+            os.environ["SRP_REPAIR_CONSTRAINT_MODE"] = "strict"
+            strict = build_repair_package(package, package, validation)
+            self.assertEqual(strict["repair_context"]["repair_constraint_mode"], "strict")
+            self.assertEqual(strict["repair_context_flat"]["repair_constraint_mode"], "strict")
+            self.assertEqual(strict["structured_state_package"]["typed_representation"]["objects"], [
+                {"type": "constraint", "value": "Preserve the key constraint.", "confidence": 1.0, "evidence_pointer": "constraint:1"}
+            ])
+        finally:
+            if previous_mode is None:
+                os.environ.pop("SRP_REPAIR_CONSTRAINT_MODE", None)
+            else:
+                os.environ["SRP_REPAIR_CONSTRAINT_MODE"] = previous_mode
+
+    def test_repair_objective_mode_is_reflected_in_repair_context(self):
+        previous_objective = os.environ.get("SRP_REPAIR_OBJECTIVE")
+        previous_constraint = os.environ.get("SRP_REPAIR_CONSTRAINT_MODE")
+        try:
+            package = {
+                "memory": "Preserve the key constraint. The answer is B.",
+                "constraints": ["Preserve the key constraint."],
+                "semantic_object_inventory": {
+                    "schema_version": "semantic_object_inventory.v1",
+                    "objects": [
+                        {"object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."), "type": "constraint", "value": "Preserve the key constraint."},
+                        {"object_id": stable_semantic_object_id("fact", "The answer is B."), "type": "fact", "value": "The answer is B."},
+                    ],
+                    "important_objects": [
+                        {"object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."), "type": "constraint", "value": "Preserve the key constraint."},
+                        {"object_id": stable_semantic_object_id("fact", "The answer is B."), "type": "fact", "value": "The answer is B."},
+                    ],
+                    "object_count": 2,
+                    "important_object_count": 2,
+                    "object_ids": [
+                        stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                        stable_semantic_object_id("fact", "The answer is B."),
+                    ],
+                    "type_counts": {"constraint": 1, "fact": 1},
+                },
+                "typed_representation": {
+                    "objects": [
+                        {"type": "constraint", "value": "Preserve the key constraint.", "confidence": 1.0, "evidence_pointer": "constraint:1"},
+                        {"type": "fact", "value": "The answer is B.", "confidence": 0.6, "evidence_pointer": "memory:1"},
+                    ]
+                },
+            }
+            validation = {
+                "critical_failures": [
+                    {
+                        "source_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                        "recovered_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                        "source_value": "Preserve the key constraint.",
+                        "recovered_value": "Preserve the key constraint.",
+                        "similarity": 0.2,
+                        "object_type": "constraint",
+                    }
+                ],
+                "object_alignment": {
+                    "constraint": {
+                        "matches": [
+                            {
+                                "source_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                                "recovered_object_id": stable_semantic_object_id("constraint", "Preserve the key constraint."),
+                                "source_value": "Preserve the key constraint.",
+                                "recovered_value": "Preserve the key constraint.",
+                                "similarity": 0.2,
+                                "object_type": "constraint",
+                            }
+                        ]
+                    }
+                },
+                "leakage_detected": False,
+                "drift_blocks_commit": False,
+            }
+
+            os.environ["SRP_REPAIR_CONSTRAINT_MODE"] = "constrained"
+            os.environ["SRP_REPAIR_OBJECTIVE"] = "patch"
+            patched = build_repair_package(package, package, validation)
+            self.assertEqual(patched["repair_context"]["repair_constraint_mode"], "constrained")
+            self.assertEqual(patched["repair_context"]["repair_objective"], "patch")
+            self.assertEqual(patched["repair_context_flat"]["repair_objective"], "patch")
+            self.assertGreaterEqual(patched["repair_context"]["repair_patch_count"], 1)
+            self.assertGreaterEqual(patched["repair_context"]["repair_applied_count"], 1)
+            self.assertGreaterEqual(patched["repair_context_flat"]["repair_patch_count"], 1)
+
+            os.environ["SRP_REPAIR_OBJECTIVE"] = "minimal_patch"
+            minimal = build_repair_package(package, package, validation)
+            self.assertEqual(minimal["repair_context"]["repair_objective"], "minimal_patch")
+            self.assertEqual(minimal["repair_context_flat"]["repair_objective"], "minimal_patch")
+            self.assertLessEqual(
+                minimal["repair_context"]["repair_patch_count"],
+                len(validation["critical_failures"]),
+            )
+        finally:
+            if previous_objective is None:
+                os.environ.pop("SRP_REPAIR_OBJECTIVE", None)
+            else:
+                os.environ["SRP_REPAIR_OBJECTIVE"] = previous_objective
+            if previous_constraint is None:
+                os.environ.pop("SRP_REPAIR_CONSTRAINT_MODE", None)
+            else:
+                os.environ["SRP_REPAIR_CONSTRAINT_MODE"] = previous_constraint
+
+    def test_state_summary_helpers_build_stable_flattened_shapes(self):
+        flat = lifecycle_summary_flat(
+            {
+                "history_length": 2,
+                "round_id": 3,
+                "global_history": {"coverage_mean": 0.8, "last_passed": True},
+                "per_object": {"object_count": 4, "lifecycle_state_counts": {"retained": 1}},
+            }
+        )
+        self.assertEqual(flat["schema_version"], "lifecycle_summary_flat.v1")
+        self.assertEqual(flat["history_length"], 2)
+        self.assertEqual(flat["global_history_coverage_mean"], 0.8)
+        self.assertEqual(flat["per_object_object_count"], 4)
+
+        template_flat = build_recovery_template_summary_flat(
+            {
+                "schema_version": "recovery_template.v1",
+                "sections": ["system", "compressed_memory"],
+                "prompt_word_count": 42,
+                "anchor_memory_word_count": 7,
+            }
+        )
+        self.assertEqual(template_flat["schema_version"], "recovery_template_summary_flat.v1")
+        self.assertEqual(template_flat["recover_prompt_word_count"], 42)
+        self.assertEqual(template_flat["recover_template_sections"], ["system", "compressed_memory"])
+
+    def test_state_continuity_summary_helper_reflects_overlap_and_history(self):
+        state = SemanticState(
+            memory="Keep the key fact.",
+            constraints=["Keep the key fact."],
+            global_vocabulary=["keep", "fact"],
+            local_vocabulary=["constraint"],
+        )
+        package = {
+            "memory": "Keep the key fact.",
+            "constraints": ["Keep the key fact."],
+            "global_vocab": ["keep", "fact"],
+            "local_vocab": ["constraint"],
+            "runtime_summary": {"history_length": 0},
+            "selected_chunk_ids": [1, 2],
+        }
+        summary = build_state_continuity_summary(state, package, anchor_memory="Keep the key fact.")
+        self.assertEqual(summary["schema_version"], "state_continuity_summary.v1")
+        self.assertEqual(summary["constraint_overlap_rate"], 1.0)
+        self.assertEqual(summary["vocab_overlap_rate"], 1.0)
+        self.assertEqual(summary["memory_delta"], 0)
+
+    def test_object_update_summary_flat_aggregates_counts(self):
+        flat = build_object_update_summary_flat(
+            {
+                "schema_version": "object_update_summary.v1",
+                "round_id": 2,
+                "committed": False,
+                "update_count": 3,
+                "updates": [
+                    {"source_object_id": "a", "action": "pass", "lifecycle_state": "retained", "object_type": "constraint", "similarity": 1.0},
+                    {"source_object_id": "b", "action": "drift", "lifecycle_state": "decayed", "object_type": "fact", "similarity": 0.2},
+                    {"source_object_id": "c", "action": "drift", "lifecycle_state": "archived", "object_type": "anchor", "similarity": 0.0},
+                ],
+            }
+        )
+        self.assertEqual(flat["schema_version"], "object_update_summary_flat.v1")
+        self.assertEqual(flat["update_count_pass"], 1)
+        self.assertEqual(flat["update_count_drift"], 2)
+        self.assertIn("a:pass:1.0", flat["updates_joined"])
+
+    def test_failure_summary_helpers_capture_leakage_and_labels(self):
+        leakage = detect_answer_leakage("Therefore the answer is clearly 42.")
+        self.assertTrue(leakage["detected"])
+        risk = assess_drift_risk(1.0, 0.35, 0.2)
+        self.assertEqual(risk["risk"], "high")
+        summary = build_failure_summary(
+            [{"source_object_id": "constraint:1", "object_type": "constraint"}],
+            leakage,
+            risk,
+        )
+        flat = build_failure_summary_flat(summary)
+        self.assertEqual(summary["schema_version"], "failure_summary.v1")
+        self.assertEqual(flat["schema_version"], "failure_summary_flat.v1")
+        self.assertEqual(flat["critical_failure_type_labels"], ["constraint:1"])
+        self.assertGreaterEqual(flat["leakage_match_count"], 1)
+
+    def test_compress_parse_partial_json_fallback_extracts_memory_summary(self):
+        state = SemanticState(
+            memory="Keep the key fact.",
+            constraints=["Keep the key fact."],
+            global_vocabulary=["keep", "fact"],
+            local_vocabulary=["constraint"],
+        )
+        parsed = parse_compressed_payload(
+            '{"memory_summary":"Keep the key fact.","constraints":["Keep the key fact."],"anchor_terms":["fact"]',
+            state,
+        )
+        self.assertEqual(parsed["parse_status"], "partial_json")
+        self.assertEqual(parsed["memory"], "Keep the key fact.")
+        self.assertEqual(parsed["global_vocab"], ["fact"])
+
+    def test_state_lifecycle_helper_archives_risky_low_importance_objects(self):
+        state = SemanticState(memory="Keep the key fact.", constraints=["Keep the key fact."])
+        state.ensure_runtime_metadata()
+        metadata = next(iter(state.runtime_metadata.values()))
+        metadata.importance = 0.1
+        metadata.verification_passes = 0
+        metadata.verification_failures = 3
+        metadata.drift_count = 3
+        state.round_id = 5
+        result = apply_object_lifecycle_rule(state)
+        self.assertEqual(result["archived"], 1)
+        self.assertEqual(metadata.lifecycle_state, "archived")
+        self.assertEqual(metadata.archived_round, 5)
+
+    def test_recovery_budget_helper_splits_anchor_and_compressed_inputs(self):
+        package = {
+            "memory": " ".join(["compressed"] * 400),
+            "constraints": ["keep this constraint"],
+        }
+        inputs = budget_recovery_inputs(package, " ".join(["anchor"] * 400))
+        self.assertTrue(inputs.compressed_memory)
+        self.assertTrue(inputs.anchor_tail)
+        self.assertLess(len(inputs.anchor_tail.split()), 400)
+        self.assertLess(len(inputs.compressed_memory.split()), 400)
+
+    def test_recover_memory_from_package_offline_appends_terminal_period(self):
+        class DummyBudget:
+            output_tokens = 32
+
+        memory, usage = recover_memory_from_package({"memory": "Recovered memory"}, "prompt", DummyBudget(), client=None)
+        self.assertEqual(memory, "Recovered memory.")
+        self.assertIsNone(usage)
+
     def test_pipeline_offline_records_runtime_fields(self):
         task = {
             "id": "unit-task",
@@ -321,6 +913,13 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertIn("chunk_selection_scores", record)
         self.assertIn("chunk_selection_reasons", record)
         self.assertIn("chunk_selection_factors", record)
+        self.assertIn("semantic_object_inventory", record)
+        self.assertEqual(record["semantic_object_inventory"]["schema_version"], "semantic_object_inventory.v1")
+        self.assertIn("semantic_objects", record)
+        self.assertIn("structured_state_package", record)
+        self.assertIn("recovered_state_package", record)
+        self.assertIn("repair_context", record)
+        self.assertIn("repair_context_flat", record)
         self.assertEqual(record["chunk_selection_factors"][0]["schema_version"], "saliency_factors.v1")
         self.assertIn("scores", record["chunk_selection_factors"][0])
         self.assertIn("signals", record["chunk_selection_factors"][0])
@@ -329,6 +928,10 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertEqual(record["state_continuity_summary"]["schema_version"], "state_continuity_summary.v1")
         self.assertIn("recovery_template_summary", record)
         self.assertEqual(record["recovery_template_summary"]["schema_version"], "recovery_template.v1")
+        self.assertIn("semantic_object_inventory_present", record["recovery_template_summary"])
+        self.assertTrue(record["recovery_template_summary"]["semantic_object_inventory_present"])
+        self.assertIn("structured_state_package_present", record["recovery_template_summary"])
+        self.assertTrue(record["recovery_template_summary"]["structured_state_package_present"])
         self.assertIn("recovery_template_summary_flat", record)
         self.assertEqual(record["recovery_template_summary_flat"]["schema_version"], "recovery_template_summary_flat.v1")
         self.assertIn("object_update_summary", record)
@@ -363,6 +966,12 @@ class TestSRPRuntime(unittest.TestCase):
         package = compress_state(state, client=None)
         self.assertIn("runtime_summary", package)
         self.assertIn("object_count", package["runtime_summary"])
+        self.assertIn("semantic_object_inventory", package)
+        self.assertEqual(package["semantic_object_inventory"]["schema_version"], "semantic_object_inventory.v1")
+        self.assertIn("semantic_objects", package)
+        self.assertTrue(package["semantic_objects"])
+        self.assertIn("object_ids", package["semantic_object_inventory"])
+        self.assertIn("type_counts", package["semantic_object_inventory"])
         self.assertIn("selected_chunk_ids", package)
         self.assertIn("chunk_selection_method", package)
         self.assertIn("chunk_selection_scores", package)
@@ -385,6 +994,18 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertEqual(recovered_dict["state_continuity_summary"]["schema_version"], "state_continuity_summary.v1")
         self.assertIn("recovery_template_summary", recovered_dict)
         self.assertEqual(recovered_dict["recovery_template_summary"]["schema_version"], "recovery_template.v1")
+        self.assertIn("semantic_object_inventory_present", recovered_dict["recovery_template_summary"])
+        self.assertTrue(recovered_dict["recovery_template_summary"]["semantic_object_inventory_present"])
+        self.assertIn("structured_state_package_present", recovered_dict["recovery_template_summary"])
+        self.assertTrue(recovered_dict["recovery_template_summary"]["structured_state_package_present"])
+        self.assertIn("structured_state_package_version", recovered_dict["recovery_template_summary"])
+        self.assertEqual(recovered_dict["recovery_template_summary"]["structured_state_package_version"], "structured_state_package.v1")
+        self.assertIn("semantic_object_count", recovered_dict["recovery_template_summary"])
+        self.assertIn("semantic_object_type_counts", recovered_dict["recovery_template_summary"])
+        self.assertIn("recovered_state_package", recovered_dict)
+        self.assertEqual(recovered_dict["recovered_state_package"]["schema_version"], "structured_state_package.v1")
+        self.assertIn("typed_representation", recovered_dict["recovered_state_package"])
+        self.assertIn("semantic_object_inventory", recovered_dict["recovered_state_package"])
         self.assertIn("recovery_template_summary_flat", recovered_dict)
         self.assertEqual(recovered_dict["recovery_template_summary_flat"]["schema_version"], "recovery_template_summary_flat.v1")
         self.assertIn("recover_template_sections", recovered_dict["recovery_template_summary_flat"])
@@ -415,6 +1036,74 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertIn("per_object_lifecycle_state_counts", recovered_dict["lifecycle_summary"]["flat"])
         self.assertEqual(recovered_dict["lifecycle_summary"]["policy_flat"]["schema_version"], "policy_spec_flat.v1")
 
+    def test_recover_state_uses_reconstruction_policy_and_records_result(self):
+        previous_policy = os.environ.get("SRP_RECONSTRUCTION_POLICY")
+        try:
+            os.environ["SRP_RECONSTRUCTION_POLICY"] = "minimal"
+            state = SemanticState(
+                memory="Question: which option is correct? Answer: B. Extra chatter.",
+                constraints=["Preserve the answer and the question."],
+            )
+            state.ensure_runtime_metadata()
+            package = compress_state(state, client=None)
+            recovered = recover_state(package, client=None)
+            recovered_dict = recovered.as_dict()
+            self.assertIn("reconstruction_result", recovered_dict)
+            self.assertEqual(recovered_dict["reconstruction_result"]["schema_version"], "reconstruction_result.v1")
+            self.assertEqual(recovered_dict["reconstruction_result"]["policy_name"], "minimal")
+            self.assertIn("selected_object_count", recovered_dict["reconstruction_result"])
+            self.assertIn("recovered_state_package", recovered_dict)
+            self.assertIn("structured_state_package", recovered_dict["recovered_state_package"])
+        finally:
+            if previous_policy is None:
+                os.environ.pop("SRP_RECONSTRUCTION_POLICY", None)
+            else:
+                os.environ["SRP_RECONSTRUCTION_POLICY"] = previous_policy
+
+    def test_minimal_state_allocation_policy_partitions_objects(self):
+        previous_policy = os.environ.get("SRP_STATE_ALLOCATION_POLICY")
+        try:
+            os.environ["SRP_STATE_ALLOCATION_POLICY"] = "minimal"
+            state = SemanticState(
+                memory="Question: which option is correct? Answer: B. Extra chatter.",
+                constraints=["Preserve the answer and the question."],
+            )
+            state.ensure_runtime_metadata()
+            package = compress_state(state, client=None)
+            recovered = recover_state(package, client=None)
+            allocation_policy = build_state_allocation_policy()
+            allocation = allocation_policy.allocate(
+                recovered.recovered_state_package,
+                {
+                    "task": {
+                        "id": "allocation-task",
+                        "initial_state": state.as_dict(),
+                        "query_expectations": [[["Answer: B"]]],
+                        "expected_keywords": ["answer"],
+                    },
+                    "validation": {"coverage_score": 0.5},
+                    "validation_targets": build_validation_targets(
+                        {
+                            "id": "allocation-task",
+                            "initial_state": {"constraints": ["Preserve the answer and the question."]},
+                            "query_expectations": [[["Answer: B"]]],
+                            "expected_keywords": ["answer"],
+                        }
+                    ),
+                    "recovered_state_package": recovered.recovered_state_package,
+                },
+            )
+            self.assertEqual(allocation.policy_name, "minimal")
+            self.assertIsNotNone(allocation.metrics.active_object_count)
+            self.assertIsNotNone(allocation.metrics.latent_object_count)
+            self.assertIsNotNone(allocation.metrics.discard_object_count)
+            self.assertGreaterEqual(allocation.metrics.active_object_count, 1)
+        finally:
+            if previous_policy is None:
+                os.environ.pop("SRP_STATE_ALLOCATION_POLICY", None)
+            else:
+                os.environ["SRP_STATE_ALLOCATION_POLICY"] = previous_policy
+
     def test_csv_export_flattens_lifecycle_and_policy(self):
         task = {
             "id": "csv-task",
@@ -429,6 +1118,7 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertIn("lifecycle_summary_per_object_object_count", flat_record)
         self.assertIn("lifecycle_summary_global_history_coverage_mean", flat_record)
         self.assertIn("policy_flat_schema_version", flat_record)
+        self.assertIn("state_allocation_result", records[0])
         output_path = write_records_csv(records, Path("srp_experiment") / "tmp" / "srp_records_test.csv")
         self.assertTrue(output_path.exists())
 
@@ -451,6 +1141,41 @@ class TestSRPRuntime(unittest.TestCase):
         self.assertTrue(chunks)
         self.assertTrue(all(chunk.startswith(f"{index}:") for index, chunk in enumerate(chunks, start=1)))
         self.assertEqual(chunk_memory(memory, max_words=5), chunks)
+
+    def test_object_inventory_boosts_chunk_saliency_for_preserved_content(self):
+        memory = "Question: which option is correct? Evidence: the answer is B. Extra chatter follows."
+        state = SemanticState(
+            memory=memory,
+            constraints=["Preserve the correct answer and evidence."],
+        )
+        inventory = {
+            "important_objects": [
+                {
+                    "object_id": "question:1",
+                    "type": "question",
+                    "value": "which option is correct",
+                    "confidence": 1.0,
+                    "evidence_pointer": "memory:1",
+                },
+                {
+                    "object_id": "answer:2",
+                    "type": "answer",
+                    "value": "the answer is B",
+                    "confidence": 0.9,
+                    "evidence_pointer": "memory:2",
+                },
+            ]
+        }
+        selected, _ = rank_memory_chunks(
+            state.memory,
+            state.constraints,
+            expected_keywords=["answer", "evidence"],
+            semantic_object_inventory=inventory,
+            top_k=2,
+        )
+        self.assertTrue(selected)
+        self.assertTrue(any(item["saliency_factors"]["scores"]["object_support_score"] is not None for item in selected))
+        self.assertTrue(any("objects=" in item["reason"] for item in selected))
 
     def test_chunk_selection_degrades_without_encoder_and_records_method(self):
         task = {

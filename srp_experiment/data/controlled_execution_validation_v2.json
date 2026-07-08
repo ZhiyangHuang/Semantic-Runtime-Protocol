@@ -1,0 +1,51 @@
+{
+  "benchmark": "SRP Controlled Execution Validation",
+  "family": "controlled_execution",
+  "split": "synthetic",
+  "selection_strategy": "handcrafted_single_task",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "srp_controlled_exec::alice_orion_atlas_policy",
+      "task_type": "long_context_mcq",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Alice manages Project Orion. Project Orion depends on Database Atlas. Database Atlas cannot be modified after deployment. Before version 2.0, Alice can approve changes to Atlas. After version 2.0, only administrators can approve changes to Atlas. Bob manages Project Nova. Project Nova depends on Database Atlas-Backup. Atlas-Backup can be modified after deployment. Bob can approve changes to Atlas-Backup at any version. The cafeteria is on the third floor. The backup server is in Prague."
+      },
+      "queries": [
+        "After version 3.0, can Alice modify Database Atlas for Project Orion?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Alice cannot modify Database Atlas",
+            "after version 2.0 only administrators can approve changes to Atlas"
+          ],
+          [
+            "Project Orion depends on Database Atlas"
+          ]
+        ]
+      ],
+      "expected_output": "No. After version 2.0, only administrators can approve changes to Atlas, and Atlas cannot be modified after deployment.",
+      "expected_keywords": [
+        "Alice",
+        "Project Orion",
+        "Database Atlas",
+        "cannot modify",
+        "after version 2.0",
+        "administrators"
+      ],
+      "metadata": {
+        "purpose": "controlled execution validation v2",
+        "notes": "Designed to require entity identity, dependency path, and temporal constraint resolution while preserving distractors.",
+        "required_dependency_labels": [
+          "Project Orion depends on Database Atlas",
+          "Database Atlas cannot be modified after deployment",
+          "After version 2.0, only administrators can approve changes to Atlas"
+        ]
+      }
+    }
+  ]
+}

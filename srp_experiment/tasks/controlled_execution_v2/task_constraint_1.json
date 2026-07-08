@@ -1,0 +1,58 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v2",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_smoke",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v2_constraint_1",
+      "task_type": "competing_constraints",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Rule R1: Only administrators may approve Atlas changes. Rule R2: Alice is a developer. Rule R3: Developers cannot approve production changes. Rule R4: The archive server is in Prague. Rule R5: The cafeteria is on the third floor. Rule R6: Bob can review drafts, but not approve them."
+      },
+      "queries": [
+        "Can Alice approve the Atlas deployment?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Only administrators may approve Atlas changes"
+          ],
+          [
+            "Alice is a developer"
+          ],
+          [
+            "Developers cannot approve production changes"
+          ]
+        ]
+      ],
+      "expected_output": "No. Alice cannot approve the Atlas deployment because only administrators may approve Atlas changes and developers cannot approve production changes.",
+      "expected_keywords": [
+        "Alice",
+        "administrators",
+        "developers",
+        "cannot"
+      ],
+      "metadata": {
+        "purpose": "controlled execution v2 smoke task",
+        "notes": "Competing constraints with role-based and policy-based blockers.",
+        "difficulty": "constraint_competition",
+        "dependency_chain": [
+          "Only administrators may approve Atlas changes.",
+          "Alice is a developer.",
+          "Developers cannot approve production changes."
+        ],
+        "distractor_count": 3,
+        "required_dependency_labels": [
+          "Only administrators may approve Atlas changes.",
+          "Alice is a developer.",
+          "Developers cannot approve production changes."
+        ]
+      }
+    }
+  ]
+}

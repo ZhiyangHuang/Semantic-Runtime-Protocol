@@ -1,0 +1,72 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v5",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_smoke",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v5_collision_exact_1",
+      "task_type": "semantic_dependency_tuple_collision",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Project Orion requires Database Atlas. Project Mercury requires Database Atlas. Project Orion uses Deployment Rule Alpha. Project Mercury uses Deployment Rule Beta. The backup server is in Prague. The weather is mild today."
+      },
+      "queries": [
+        "What dependency is required for Project Orion?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Project Orion"
+          ],
+          [
+            "requires"
+          ],
+          [
+            "Database Atlas"
+          ]
+        ]
+      ],
+      "expected_output": "Project Orion requires Database Atlas.",
+      "expected_keywords": [
+        "Project Orion",
+        "requires",
+        "Database Atlas"
+      ],
+      "metadata": {
+        "purpose": "controlled execution v5 smoke task",
+        "notes": "Collision task using semantic dependency tuples to test identity discrimination.",
+        "difficulty": "semantic_dependency_tuple_collision",
+        "required_dependency_objects": [
+          {
+            "dependency_id": "dep_001",
+            "subject": {
+              "type": "system",
+              "canonical": "Project Orion"
+            },
+            "relation": {
+              "type": "requires",
+              "canonical": "requires"
+            },
+            "object": {
+              "type": "database",
+              "canonical": "Database Atlas"
+            }
+          }
+        ],
+        "dependency_edges": [
+          {
+            "from": "dep_001",
+            "to": "dep_002",
+            "relation": "requires"
+          }
+        ],
+        "distractor_count": 6,
+        "object_budget": 24
+      }
+    }
+  ]
+}

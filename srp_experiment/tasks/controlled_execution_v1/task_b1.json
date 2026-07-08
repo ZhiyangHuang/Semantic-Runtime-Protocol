@@ -1,0 +1,43 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v1",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_single_task",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v1_b1",
+      "task_type": "constraint_dependency",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Database Atlas cannot be modified after deployment. Only administrators can approve changes to Atlas after version 2.0. Bob can approve changes to Atlas before version 2.0. The backup server is in Prague."
+      },
+      "queries": [
+        "Who can approve changes to Atlas after version 2.0?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Only administrators can approve changes to Atlas after version 2.0"
+          ]
+        ]
+      ],
+      "expected_output": "Only administrators can approve changes to Atlas after version 2.0.",
+      "expected_keywords": [
+        "administrators",
+        "version 2.0",
+        "Atlas"
+      ],
+      "metadata": {
+        "purpose": "controlled execution smoke task",
+        "notes": "Constraint dependency with distractors and temporal condition.",
+        "required_dependency_labels": [
+          "Database Atlas cannot be modified after deployment",
+          "Only administrators can approve changes to Atlas after version 2.0"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v1",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_single_task",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v1_a1",
+      "task_type": "single_dependency",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Project Orion depends on Database Atlas. Database Atlas is hosted in Berlin. Alice manages Project Orion. The cafeteria is on the third floor."
+      },
+      "queries": [
+        "What database does Project Orion depend on?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Project Orion depends on Database Atlas"
+          ]
+        ]
+      ],
+      "expected_output": "Project Orion depends on Database Atlas.",
+      "expected_keywords": [
+        "Project Orion",
+        "Database Atlas"
+      ],
+      "metadata": {
+        "purpose": "controlled execution smoke task",
+        "notes": "Single dependency with distractors.",
+        "required_dependency_labels": [
+          "Project Orion depends on Database Atlas"
+        ]
+      }
+    }
+  ]
+}

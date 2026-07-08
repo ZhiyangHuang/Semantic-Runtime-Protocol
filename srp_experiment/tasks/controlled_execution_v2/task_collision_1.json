@@ -1,0 +1,52 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v2",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_smoke",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v2_collision_1",
+      "task_type": "distractor_collision",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Database Atlas is immutable after deployment. Database Mercury is immutable after deployment. Only Atlas requires administrator approval for migration. Mercury can be migrated by any engineer. Atlas is linked to Project Orion. Mercury is linked to Project Nebula. The vending machine is out of service. The parking lot is full."
+      },
+      "queries": [
+        "Which database requires administrator approval for migration?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Only Atlas requires administrator approval for migration"
+          ],
+          [
+            "Database Atlas is immutable after deployment"
+          ]
+        ]
+      ],
+      "expected_output": "Database Atlas requires administrator approval for migration.",
+      "expected_keywords": [
+        "Atlas",
+        "administrator approval",
+        "migration"
+      ],
+      "metadata": {
+        "purpose": "controlled execution v2 smoke task",
+        "notes": "Keyword collision distractors with near-duplicate semantic facts.",
+        "difficulty": "distractor_collision",
+        "dependency_chain": [
+          "Database Atlas is immutable after deployment.",
+          "Only Atlas requires administrator approval for migration."
+        ],
+        "distractor_count": 4,
+        "required_dependency_labels": [
+          "Database Atlas is immutable after deployment.",
+          "Only Atlas requires administrator approval for migration."
+        ]
+      }
+    }
+  ]
+}

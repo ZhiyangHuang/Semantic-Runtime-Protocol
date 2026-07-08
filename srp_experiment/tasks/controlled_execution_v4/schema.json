@@ -1,0 +1,28 @@
+{
+  "schema_version": "controlled_execution_v4.schema",
+  "purpose": "High-pressure controlled execution tasks for SRP dependency discrimination validation.",
+  "task_shape": {
+    "task_id": "controlled_v4_chain_dense_1",
+    "category": "dense_dependency_chain",
+    "difficulty": {
+      "dependency_depth": 5,
+      "distractor_count": 40,
+      "branching_factor": 2,
+      "object_budget": 120
+    },
+    "required_dependency_objects": [
+      {
+        "object_id": "dep_001",
+        "concept": "project_identity",
+        "normalized_value": "Project Orion"
+      }
+    ],
+    "dependency_edges": [
+      {
+        "source": "Project Orion",
+        "relation": "requires",
+        "target": "Database Atlas"
+      }
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "benchmark": "SRP Controlled Execution Validation",
+  "family": "controlled_execution",
+  "split": "synthetic",
+  "selection_strategy": "handcrafted_single_task",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "srp_controlled_exec::alice_project_library_b",
+      "task_type": "long_context_mcq",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Alice owns Project A. Project A depends on Library B. Library B was released in 2021. Alice cannot modify Library B. Alice can approve Project A changes. The deployment deadline is next Friday. The office is in Berlin. The coffee machine is broken."
+      },
+      "queries": [
+        "What constraints apply to Alice regarding Library B?"
+      ],
+      "query_expectations": [
+        [
+          ["Alice cannot modify Library B"],
+          ["Alice can approve Project A changes"]
+        ]
+      ],
+      "expected_output": "Alice cannot modify Library B, but can approve Project A changes.",
+      "expected_keywords": [
+        "Alice",
+        "Library B",
+        "cannot modify",
+        "approve Project A"
+      ],
+      "metadata": {
+        "purpose": "controlled execution validation",
+        "notes": "Designed to compare recovered vs active execution payloads with the same validation contract."
+      }
+    }
+  ]
+}

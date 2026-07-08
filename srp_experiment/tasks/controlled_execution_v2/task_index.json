@@ -1,0 +1,19 @@
+{
+  "schema_version": "controlled_execution_v2.index",
+  "benchmark": "SRP Controlled Execution Tasks v2",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_smoke",
+  "selection_offset": 0,
+  "selection_limit": 4,
+  "source": "synthetic",
+  "task_files": [
+    "srp_experiment/tasks/controlled_execution_v2/task_chain_1.json",
+    "srp_experiment/tasks/controlled_execution_v2/task_constraint_1.json",
+    "srp_experiment/tasks/controlled_execution_v2/task_collision_1.json",
+    "srp_experiment/tasks/controlled_execution_v2/task_graph_1.json"
+  ],
+  "notes": [
+    "Smoke set only; keep recovery, allocation, execution, and dependency probe fixed while increasing dependency closure depth and distractor competition."
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "controlled_execution_v1.index",
+  "task_files": [
+    "srp_experiment/tasks/controlled_execution_v1/task_a1.json",
+    "srp_experiment/tasks/controlled_execution_v1/task_b1.json",
+    "srp_experiment/tasks/controlled_execution_v1/task_c1.json"
+  ],
+  "notes": [
+    "Smoke set only; expand to 10 tasks after dependency audit and execution answer traces are stable."
+  ]
+}

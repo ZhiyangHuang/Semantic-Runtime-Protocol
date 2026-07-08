@@ -1,0 +1,95 @@
+{
+  "benchmark": "SRP Controlled Execution Tasks v4",
+  "family": "controlled_execution",
+  "split": "smoke",
+  "selection_strategy": "handcrafted_smoke",
+  "selection_offset": 0,
+  "selection_limit": 1,
+  "source": "synthetic",
+  "tasks": [
+    {
+      "id": "controlled_v4_branch_graph_1",
+      "task_type": "branch_dependency_graph",
+      "source": "synthetic",
+      "initial_state": {
+        "memory": "Project Orion requires Database Atlas. Database Atlas has rule A. Rule A requires Rule B1 for staging changes. Rule A also requires Rule B2 for production changes. Rule B2 requires Administrator Approval. Rule B1 requires Developer Approval. Project Orion Backup requires Database Mercury. Database Mercury has rule C. Rule C requires Manager Approval. The cafeteria is on the third floor. The weather is mild today. The backup server is in Prague."
+      },
+      "queries": [
+        "What approval is required for Project Orion production changes?"
+      ],
+      "query_expectations": [
+        [
+          [
+            "Project Orion requires Database Atlas"
+          ],
+          [
+            "Database Atlas has rule A"
+          ],
+          [
+            "Rule A requires Rule B2 for production changes"
+          ],
+          [
+            "Rule B2 requires Administrator Approval"
+          ]
+        ]
+      ],
+      "expected_output": "Administrator Approval is required for Project Orion production changes.",
+      "expected_keywords": [
+        "Administrator Approval",
+        "Project Orion",
+        "production changes"
+      ],
+      "metadata": {
+        "purpose": "controlled execution v4 smoke task",
+        "notes": "Branch graph with competing paths and explicit production branch.",
+        "difficulty": "branch_dependency_graph",
+        "required_dependency_objects": [
+          {
+            "object_id": "dep_001",
+            "concept": "project_identity",
+            "normalized_value": "Project Orion"
+          },
+          {
+            "object_id": "dep_002",
+            "concept": "database_identity",
+            "normalized_value": "Database Atlas"
+          },
+          {
+            "object_id": "dep_003",
+            "concept": "rule",
+            "normalized_value": "Rule A"
+          },
+          {
+            "object_id": "dep_004",
+            "concept": "approval_requirement",
+            "normalized_value": "Administrator Approval"
+          }
+        ],
+        "dependency_edges": [
+          {
+            "source": "Project Orion",
+            "relation": "requires",
+            "target": "Database Atlas"
+          },
+          {
+            "source": "Database Atlas",
+            "relation": "has_rule",
+            "target": "Rule A"
+          },
+          {
+            "source": "Rule A",
+            "relation": "requires",
+            "target": "Rule B2"
+          },
+          {
+            "source": "Rule B2",
+            "relation": "requires",
+            "target": "Administrator Approval"
+          }
+        ],
+        "distractor_count": 9,
+        "object_budget": 15
+      }
+    }
+  ]
+}
