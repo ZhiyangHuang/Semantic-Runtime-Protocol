@@ -20,6 +20,35 @@ DEFAULT_POLICY = {
 }
 
 
+def _env_float(name: str, default: float) -> float:
+    try:
+        return float(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        return float(default)
+
+
+def _env_int(name: str, default: int) -> int:
+    try:
+        return int(float(os.getenv(name, str(default))))
+    except (TypeError, ValueError):
+        return int(default)
+
+
+def policy_defaults_from_env() -> Dict[str, object]:
+    return {
+        "compression_goal": os.getenv("SRP_COMPRESSION_GOAL", DEFAULT_POLICY["compression_goal"]),
+        "anti_leakage": os.getenv("SRP_ANTI_LEAKAGE", DEFAULT_POLICY["anti_leakage"]),
+        "recovery_goal": os.getenv("SRP_RECOVERY_GOAL", DEFAULT_POLICY["recovery_goal"]),
+        "lifecycle_retained_importance": _env_float("SRP_LIFECYCLE_RETAINED_IMPORTANCE", float(DEFAULT_POLICY["lifecycle_retained_importance"])),
+        "lifecycle_retained_passes": _env_int("SRP_LIFECYCLE_RETAINED_PASSES", int(DEFAULT_POLICY["lifecycle_retained_passes"])),
+        "lifecycle_archived_importance": _env_float("SRP_LIFECYCLE_ARCHIVED_IMPORTANCE", float(DEFAULT_POLICY["lifecycle_archived_importance"])),
+        "lifecycle_archived_drift_count": _env_int("SRP_LIFECYCLE_ARCHIVED_DRIFT_COUNT", int(DEFAULT_POLICY["lifecycle_archived_drift_count"])),
+        "lifecycle_archived_failure_count": _env_int("SRP_LIFECYCLE_ARCHIVED_FAILURE_COUNT", int(DEFAULT_POLICY["lifecycle_archived_failure_count"])),
+        "lifecycle_decayed_floor": _env_float("SRP_LIFECYCLE_DECAYED_FLOOR", float(DEFAULT_POLICY["lifecycle_decayed_floor"])),
+        "lifecycle_decayed_multiplier": _env_float("SRP_LIFECYCLE_DECAYED_MULTIPLIER", float(DEFAULT_POLICY["lifecycle_decayed_multiplier"])),
+    }
+
+
 def extract_vocab(text: str) -> List[str]:
     words = [word.strip(".,").lower() for word in text.split()]
     unique = []
@@ -94,7 +123,7 @@ def initialize_state(task: Dict, encoder=None) -> SemanticState:
         local_vocabulary=extract_vocab(" ".join(constraint_state)),
         term_map={},
         loss_notes=[],
-        policy=dict(DEFAULT_POLICY),
+        policy=policy_defaults_from_env(),
     )
     state.ensure_runtime_metadata(anchor_memory=anchor_memory)
     state.ensure_state_vector(encoder=encoder)

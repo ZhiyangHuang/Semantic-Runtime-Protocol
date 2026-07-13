@@ -96,6 +96,10 @@ def _online_compression_package(
     return parsed
 
 
+def _object_support_enabled() -> bool:
+    return str(os.getenv("SRP_OBJECT_SUPPORT_ENABLED", "true")).strip().lower() not in {"0", "false", "no", "off"}
+
+
 def compress_state(state: SemanticState, client=None) -> Dict:
     expected_keywords = state.global_vocabulary or state.local_vocabulary
     object_inventory = build_semantic_object_inventory(state)
@@ -104,7 +108,7 @@ def compress_state(state: SemanticState, client=None) -> Dict:
         state.constraints,
         expected_keywords=expected_keywords,
         top_k=int(os.getenv("SRP_RAG_TOP_K", "4")),
-        semantic_object_inventory=object_inventory,
+        semantic_object_inventory=object_inventory if _object_support_enabled() else None,
     )
     selected_chunks, llm_judge_summary = apply_llm_chunk_judge(
         selected_chunks,

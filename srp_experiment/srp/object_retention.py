@@ -40,6 +40,32 @@ class ObjectRetentionBreakdownV2:
         }
 
 
+@dataclass
+class IntegrityRetentionMetrics:
+    schema_version: str
+    integrity_gap: float | None = None
+    semantic_compression_loss: float | None = None
+    object_retention: float | None = None
+    weighted_object_retention: float | None = None
+    lost_important_object_count: int = 0
+    recovered_object_type_counts: Dict[str, int] = field(default_factory=dict)
+    validation_passed: bool | None = None
+    state_committed: bool | None = None
+
+    def as_dict(self) -> Dict[str, object]:
+        return {
+            "schema_version": self.schema_version,
+            "integrity_gap": self.integrity_gap,
+            "semantic_compression_loss": self.semantic_compression_loss,
+            "object_retention": self.object_retention,
+            "weighted_object_retention": self.weighted_object_retention,
+            "lost_important_object_count": self.lost_important_object_count,
+            "recovered_object_type_counts": dict(self.recovered_object_type_counts),
+            "validation_passed": self.validation_passed,
+            "state_committed": self.state_committed,
+        }
+
+
 def _index_objects(objects: List[Dict[str, object]]) -> Dict[str, Dict[str, object]]:
     indexed: Dict[str, Dict[str, object]] = {}
     for item in objects:
@@ -50,6 +76,102 @@ def _index_objects(objects: List[Dict[str, object]]) -> Dict[str, Dict[str, obje
             continue
         indexed[object_id] = dict(item)
     return indexed
+
+
+def _extract_source_objects(source_package: Dict[str, object] | None) -> List[Dict[str, object]]:
+    source_package = source_package or {}
+    source_inventory = source_package.get("semantic_object_inventory") or {}
+    source_typed = source_package.get("typed_representation") or {}
+    objects = (
+        source_inventory.get("objects")
+        or source_package.get("semantic_objects")
+        or source_typed.get("objects")
+        or []
+    )
+    return [item for item in objects if isinstance(item, dict)]
+
+
+def _extract_important_source_objects(source_package: Dict[str, object] | None) -> List[Dict[str, object]]:
+    source_package = source_package or {}
+    source_inventory = source_package.get("semantic_object_inventory") or {}
+    important = list(source_inventory.get("important_objects") or [])
+    if important:
+        return [item for item in important if isinstance(item, dict)]
+    runtime_metadata = source_package.get("runtime_metadata") or {}
+    source_objects = _index_objects(
+        [
+            {
+                "object_id": stable_semantic_object_id(str(item.get("type", "fact")), str(item.get("value", ""))),
+                "type": item.get("type", "fact"),
+                "value": item.get("value", ""),
+                "confidence": item.get("confidence", 0.0),
+                "evidence_pointer": item.get("evidence_pointer", ""),
+            }
+            for item in _extract_source_objects(source_package)
+        ]
+    )
+    important_objects: List[Dict[str, object]] = []
+    for object_id, metadata in runtime_metadata.items():
+        try:
+            importance = float((metadata or {}).get("importance", 0.0) or 0.0)
+        except (TypeError, ValueError):
+            importance = 0.0
+        if importance >= 0.8 and object_id in source_objects:
+            important_objects.append(source_objects[object_id])
+    return important_objects
+
+
+def _extract_recovered_objects(recovered_package: Dict[str, object] | None) -> List[Dict[str, object]]:
+    recovered_package = recovered_package or {}
+    recovered_typed = recovered_package.get("typed_representation") or {}
+    return [
+        {
+            "object_id": stable_semantic_object_id(str(item.get("type", "fact")), str(item.get("value", ""))),
+            "type": item.get("type", "fact"),
+            "value": item.get("value", ""),
+            "confidence": item.get("confidence", 0.0),
+            "evidence_pointer": item.get("evidence_pointer", ""),
+        }
+        for item in list(recovered_typed.get("objects", []))
+        if isinstance(item, dict)
+    ]
+
+
+def _weighted_retention(
+    source_package: Dict[str, object] | None,
+    recovered_package: Dict[str, object] | None,
+) -> float | None:
+    source_package = source_package or {}
+    source_objects = _extract_source_objects(source_package)
+    recovered_map = _index_objects(_extract_recovered_objects(recovered_package))
+    if not source_objects:
+        return None
+    runtime_metadata = source_package.get("runtime_metadata") or {}
+    retained_weight = 0.0
+    total_weight = 0.0
+    for item in source_objects:
+        object_type = str(item.get("type", "fact"))
+        value = str(item.get("value", ""))
+        object_id = str(item.get("object_id") or item.get("id") or "").strip() or stable_semantic_object_id(object_type, value)
+        metadata = runtime_metadata.get(object_id) or {}
+        try:
+            weight = float(metadata.get("importance", 1.0) or 1.0)
+        except (TypeError, ValueError):
+            weight = 1.0
+        total_weight += weight
+        if object_id in recovered_map:
+            retained_weight += weight
+    if total_weight <= 0:
+        return None
+    return retained_weight / total_weight
+
+
+def _recovered_object_type_counts(recovered_package: Dict[str, object] | None) -> Dict[str, int]:
+    counts: Dict[str, int] = {}
+    for item in _extract_recovered_objects(recovered_package):
+        object_type = str(item.get("type", "fact")).strip() or "fact"
+        counts[object_type] = counts.get(object_type, 0) + 1
+    return counts
 
 
 def _counts(retained: List[Dict[str, object]], missing: List[Dict[str, object]], hallucinated: List[Dict[str, object]]) -> Dict[str, object]:
@@ -240,4 +362,72 @@ def build_object_retention_breakdown_v2(
         important=split(important_objects),
         all_objects=split(source_objects),
         task_critical=split(critical_contract_objects),
+    )
+
+
+def build_integrity_retention_metrics(
+    source_package: Dict[str, object] | None,
+    compressed_package: Dict[str, object] | None,
+    recovered_package: Dict[str, object] | None,
+    *,
+    validation: Dict[str, object] | None = None,
+    validation_targets: SemanticContractGraph | None = None,
+    retention_breakdown_v2: ObjectRetentionBreakdownV2 | None = None,
+    committed: bool | None = None,
+) -> IntegrityRetentionMetrics:
+    source_inventory = {
+        "objects": [
+            {
+                "object_id": stable_semantic_object_id(str(item.get("type", "fact")), str(item.get("value", ""))),
+                "type": item.get("type", "fact"),
+                "value": item.get("value", ""),
+                "confidence": item.get("confidence", 0.0),
+                "evidence_pointer": item.get("evidence_pointer", ""),
+            }
+            for item in _extract_source_objects(source_package)
+        ],
+        "important_objects": [
+            {
+                "object_id": stable_semantic_object_id(str(item.get("type", "fact")), str(item.get("value", ""))),
+                "type": item.get("type", "fact"),
+                "value": item.get("value", ""),
+                "confidence": item.get("confidence", 0.0),
+                "evidence_pointer": item.get("evidence_pointer", ""),
+            }
+            for item in _extract_important_source_objects(source_package)
+        ],
+    }
+    if retention_breakdown_v2 is None:
+        retention_breakdown_v2 = build_object_retention_breakdown_v2(
+            source_inventory,
+            recovered_package,
+            validation_targets,
+        )
+
+    compressed_breakdown = build_object_retention_breakdown_v2(
+        source_inventory,
+        compressed_package,
+        validation_targets,
+    )
+    object_retention = retention_breakdown_v2.all_objects.get("recall")
+    weighted_object_retention = _weighted_retention(source_package, recovered_package)
+    integrity_gap = None
+    validation_coverage = None if validation is None else validation.get("coverage_score")
+    if validation_coverage is not None:
+        integrity_gap = 1.0 - float(validation_coverage)
+    semantic_compression_loss = None
+    compressed_recall = compressed_breakdown.all_objects.get("recall")
+    if compressed_recall is not None:
+        semantic_compression_loss = 1.0 - float(compressed_recall)
+
+    return IntegrityRetentionMetrics(
+        schema_version="integrity_retention_metrics.v1",
+        integrity_gap=integrity_gap,
+        semantic_compression_loss=semantic_compression_loss,
+        object_retention=object_retention,
+        weighted_object_retention=weighted_object_retention,
+        lost_important_object_count=int(retention_breakdown_v2.important.get("missing_count") or 0),
+        recovered_object_type_counts=_recovered_object_type_counts(recovered_package),
+        validation_passed=None if validation is None else bool(validation.get("passed")),
+        state_committed=committed,
     )

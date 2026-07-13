@@ -1,3 +1,4 @@
+import os
 import re
 from typing import Dict, Iterable, List, Optional, Sequence, Tuple
 
@@ -99,14 +100,13 @@ def saliency_factors(
     }
 
 
-def rank_memory_chunks(
+def score_memory_chunks(
     memory: str,
     constraints: Sequence[str],
     expected_keywords: Sequence[str] | None = None,
     encoder=None,
-    top_k: int = 4,
     semantic_object_inventory: Optional[Dict[str, object]] = None,
-) -> Tuple[List[Dict[str, object]], str]:
+) -> List[Dict[str, object]]:
     chunks = chunk_memory(memory)
     ranked: List[Dict[str, object]] = []
     encoder = encoder or build_encoder()
@@ -115,6 +115,11 @@ def rank_memory_chunks(
     important_objects = []
     if semantic_object_inventory:
         important_objects = list(semantic_object_inventory.get("important_objects", []))
+    try:
+        object_support_scale = float(os.getenv("SRP_OBJECT_SUPPORT_SCALE", "1.0"))
+    except (TypeError, ValueError):
+        object_support_scale = 1.0
+    object_support_scale = max(0.0, object_support_scale)
     for chunk_id, chunk in enumerate(chunks, start=1):
         rule_score = rule_chunk_saliency(chunk, constraints, expected_keywords)
         embedding_score = None
@@ -148,7 +153,7 @@ def rank_memory_chunks(
             score = max(rule_score, embedding_score * 0.9)
             method = "hybrid" if embedding_score >= 0.2 else "embedding"
         if object_support_count > 0:
-            score = min(1.0, score + min(0.25, object_support_score))
+            score = min(1.0, score + min(0.25, object_support_score * object_support_scale))
         reason_parts = [f"rule={rule_score:.3f}"]
         if embedding_score is not None:
             reason_parts.append(f"embedding={embedding_score:.3f}")
@@ -180,5 +185,23 @@ def rank_memory_chunks(
             }
         )
     ranked.sort(key=lambda item: (-float(item["score"]), int(item["chunk_id"])))
+    return ranked
+
+
+def rank_memory_chunks(
+    memory: str,
+    constraints: Sequence[str],
+    expected_keywords: Sequence[str] | None = None,
+    encoder=None,
+    top_k: int = 4,
+    semantic_object_inventory: Optional[Dict[str, object]] = None,
+) -> Tuple[List[Dict[str, object]], str]:
+    ranked = score_memory_chunks(
+        memory,
+        constraints,
+        expected_keywords=expected_keywords,
+        encoder=encoder,
+        semantic_object_inventory=semantic_object_inventory,
+    )
     selected = ranked[: max(1, min(top_k, len(ranked)))]
     return selected, "\n".join(item["text"] for item in selected)

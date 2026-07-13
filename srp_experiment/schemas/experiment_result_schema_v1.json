@@ -1,0 +1,1054 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "srp_experiment/schemas/experiment_result_schema_v1.json",
+  "title": "SRP Experiment Result Schema v1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "cycle",
+    "runtime",
+    "representation",
+    "semantic_graph",
+    "compression",
+    "reconstruction",
+    "allocation",
+    "repair",
+    "execution",
+    "validation",
+    "lifecycle_attribution",
+    "metrics"
+  ],
+  "$defs": {
+    "number_or_null": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "integer_or_null": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "boolean_or_null": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "string_or_null": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "object_map_int": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "semantic_graph": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "graph",
+        "validation"
+      ],
+      "properties": {
+        "graph": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "validation": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "repair_diagnostics": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "repair_attempted",
+        "coverage_before_repair",
+        "coverage_after_repair",
+        "repair_gain",
+        "critical_failures_before",
+        "critical_failures_after",
+        "validation_passed_before",
+        "validation_passed_after",
+        "total_tokens_before_repair",
+        "total_tokens_after_repair",
+        "token_overhead"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "repair_diagnostics.v1"
+        },
+        "repair_attempted": {
+          "type": "boolean"
+        },
+        "coverage_before_repair": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "coverage_after_repair": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "repair_gain": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "critical_failures_before": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "critical_failures_after": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "validation_passed_before": {
+          "$ref": "#/$defs/boolean_or_null"
+        },
+        "validation_passed_after": {
+          "$ref": "#/$defs/boolean_or_null"
+        },
+        "total_tokens_before_repair": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "total_tokens_after_repair": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "token_overhead": {
+          "$ref": "#/$defs/integer_or_null"
+        }
+      }
+    },
+    "integrity_retention_metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "integrity_gap",
+        "semantic_compression_loss",
+        "object_retention",
+        "weighted_object_retention",
+        "lost_important_object_count",
+        "recovered_object_type_counts",
+        "validation_passed",
+        "state_committed"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "integrity_retention_metrics.v1"
+        },
+        "integrity_gap": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_compression_loss": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "object_retention": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "weighted_object_retention": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "lost_important_object_count": {
+          "type": "integer"
+        },
+        "recovered_object_type_counts": {
+          "$ref": "#/$defs/object_map_int"
+        },
+        "validation_passed": {
+          "$ref": "#/$defs/boolean_or_null"
+        },
+        "state_committed": {
+          "$ref": "#/$defs/boolean_or_null"
+        }
+      }
+    },
+    "lifecycle_stage_summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "stage",
+        "present",
+        "retained",
+        "missing",
+        "hallucinated",
+        "object_count",
+        "raw_object_count"
+      ],
+      "properties": {
+        "stage": {
+          "type": "string"
+        },
+        "present": {
+          "type": "boolean"
+        },
+        "retained": {
+          "$ref": "#/$defs/lifecycle_object_detail_array"
+        },
+        "missing": {
+          "$ref": "#/$defs/lifecycle_object_detail_array"
+        },
+        "hallucinated": {
+          "$ref": "#/$defs/lifecycle_object_detail_array"
+        },
+        "object_count": {
+          "type": "integer"
+        },
+        "raw_object_count": {
+          "type": "integer"
+        },
+        "important_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "task_critical_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "retained_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "missing_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "hallucinated_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "source_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "recall": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "precision": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "compressed_object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "recovered_object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "repaired_object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "allocated_object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "executed_object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        }
+      }
+    },
+    "lifecycle_object_detail": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "object_id",
+        "type",
+        "value",
+        "confidence",
+        "evidence_pointer"
+      ],
+      "properties": {
+        "object_id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "confidence": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "evidence_pointer": {
+          "$ref": "#/$defs/string_or_null"
+        }
+      }
+    },
+    "lifecycle_object_detail_array": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/lifecycle_object_detail"
+      }
+    },
+    "lifecycle_transition_summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "source_stage",
+        "target_stage",
+        "present",
+        "retained",
+        "missing",
+        "hallucinated",
+        "retained_count",
+        "missing_count",
+        "hallucinated_count",
+        "recall",
+        "precision"
+      ],
+      "properties": {
+        "source_stage": {
+          "type": "string"
+        },
+        "target_stage": {
+          "type": "string"
+        },
+        "present": {
+          "type": "boolean"
+        },
+        "retained": {
+          "$ref": "#/$defs/lifecycle_object_detail_array"
+        },
+        "missing": {
+          "$ref": "#/$defs/lifecycle_object_detail_array"
+        },
+        "hallucinated": {
+          "$ref": "#/$defs/lifecycle_object_detail_array"
+        },
+        "source_count": {
+          "type": "integer"
+        },
+        "target_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "retained_count": {
+          "type": "integer"
+        },
+        "missing_count": {
+          "type": "integer"
+        },
+        "hallucinated_count": {
+          "type": "integer"
+        },
+        "recall": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "precision": {
+          "$ref": "#/$defs/number_or_null"
+        }
+      }
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": "experiment_result.v1"
+    },
+    "cycle": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "round",
+        "history_length",
+        "mean_object_importance",
+        "encoder_name",
+        "state_vector_dim",
+        "state_vector_present"
+      ],
+      "properties": {
+        "round": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "history_length": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "mean_object_importance": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "encoder_name": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "state_vector_dim": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "state_vector_present": {
+          "type": "boolean"
+        }
+      }
+    },
+    "representation": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "semantic_graph": {
+      "$ref": "#/$defs/semantic_graph"
+    },
+    "compression": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "parse_status",
+        "parse_error",
+        "stripped_thinking",
+        "chunk_selection_method",
+        "selected_chunk_ids",
+        "chunk_selection",
+        "chunk_selection_scores",
+        "chunk_selection_reasons",
+        "chunk_selection_factors",
+        "source_size",
+        "compressed_size",
+        "compression_ratio"
+      ],
+      "properties": {
+        "parse_status": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "parse_error": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "stripped_thinking": {},
+        "chunk_selection_method": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "selected_chunk_ids": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "chunk_selection": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "chunk_selection_scores": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "chunk_selection_reasons": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "chunk_selection_factors": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "source_size": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "compressed_size": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "compression_ratio": {
+          "$ref": "#/$defs/number_or_null"
+        }
+      }
+    },
+    "reconstruction": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "recovered_text",
+        "recovered_state_package",
+        "structured_state_package_present",
+        "reconstruction_result",
+        "state_continuity_summary",
+        "recovery_template_summary",
+        "recovery_template_summary_flat",
+        "lifecycle_summary",
+        "lifecycle_summary_flat",
+        "object_update_summary",
+        "object_update_summary_flat",
+        "policy_flat"
+      ],
+      "properties": {
+        "recovered_text": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "recovered_state_package": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "structured_state_package_present": {
+          "type": "boolean"
+        },
+        "reconstruction_result": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "state_continuity_summary": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "recovery_template_summary": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "recovery_template_summary_flat": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "lifecycle_summary": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "lifecycle_summary_flat": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "object_update_summary": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "object_update_summary_flat": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "policy_flat": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "allocation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "result",
+        "forensic_trace",
+        "execution_state_source",
+        "execution_state_object_count"
+      ],
+      "properties": {
+        "result": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "forensic_trace": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "execution_state_source": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "execution_state_object_count": {
+          "$ref": "#/$defs/integer_or_null"
+        }
+      }
+    },
+    "repair": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "attempted",
+        "context",
+        "context_flat",
+        "diagnostics"
+      ],
+      "properties": {
+        "attempted": {
+          "type": "boolean"
+        },
+        "context": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "context_flat": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "token_overhead": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "diagnostics": {
+          "$ref": "#/$defs/repair_diagnostics"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "payload",
+        "prompt_tokens",
+        "result",
+        "answer",
+        "answer_evaluation",
+        "mode"
+      ],
+      "properties": {
+        "payload": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "prompt_tokens": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "result": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "answer": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "answer_evaluation": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "mode": {
+          "$ref": "#/$defs/string_or_null"
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "score",
+        "contract_satisfaction",
+        "coverage",
+        "alignment",
+        "dependency_coverage",
+        "dependency_precision",
+        "dependency_f1",
+        "dependency_audit",
+        "critical_failures",
+        "failure_summary",
+        "failure_summary_flat",
+        "leakage_detected",
+        "drift",
+        "drift_risk",
+        "drift_blocks_commit",
+        "max_cycle_drift",
+        "blocking_drift",
+        "min_keyword_score",
+        "min_coverage_score",
+        "passed"
+      ],
+      "properties": {
+        "score": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "contract_satisfaction": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "coverage": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "alignment": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "dependency_coverage": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "dependency_precision": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "dependency_f1": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "dependency_audit": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "critical_failures": {
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "failure_summary": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "failure_summary_flat": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "leakage_detected": {
+          "type": "boolean"
+        },
+        "drift": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "drift_risk": {
+          "$ref": "#/$defs/string_or_null"
+        },
+        "drift_blocks_commit": {
+          "type": "boolean"
+        },
+        "max_cycle_drift": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "blocking_drift": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "min_keyword_score": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "min_coverage_score": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "passed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "lifecycle_attribution": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "source",
+        "compressed",
+        "recovered",
+        "repaired",
+        "allocated",
+        "executed",
+        "transitions",
+        "source_object_count",
+        "compressed_object_count",
+        "recovered_object_count",
+        "repaired_object_count",
+        "allocated_object_count",
+        "executed_object_count",
+        "lifecycle_inflation"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "object_lifecycle.v1"
+        },
+        "source": {
+          "$ref": "#/$defs/lifecycle_stage_summary"
+        },
+        "compressed": {
+          "$ref": "#/$defs/lifecycle_stage_summary"
+        },
+        "recovered": {
+          "$ref": "#/$defs/lifecycle_stage_summary"
+        },
+        "repaired": {
+          "$ref": "#/$defs/lifecycle_stage_summary"
+        },
+        "allocated": {
+          "$ref": "#/$defs/lifecycle_stage_summary"
+        },
+        "executed": {
+          "$ref": "#/$defs/lifecycle_stage_summary"
+        },
+        "source_object_count": {
+          "type": "integer"
+        },
+        "compressed_object_count": {
+          "type": "integer"
+        },
+        "recovered_object_count": {
+          "type": "integer"
+        },
+        "repaired_object_count": {
+          "type": "integer"
+        },
+        "allocated_object_count": {
+          "type": "integer"
+        },
+        "executed_object_count": {
+          "type": "integer"
+        },
+        "lifecycle_inflation": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "transitions": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "source_to_compressed",
+            "compressed_to_recovered",
+            "recovered_to_repaired",
+            "repaired_to_allocated",
+            "recovered_to_allocated",
+            "allocated_to_executed",
+            "repaired_to_executed",
+            "recovered_to_executed",
+            "source_to_recovered",
+            "source_to_repaired",
+            "source_to_allocated",
+            "source_to_executed"
+          ],
+          "properties": {
+            "source_to_compressed": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "compressed_to_recovered": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "recovered_to_repaired": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "repaired_to_allocated": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "recovered_to_allocated": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "allocated_to_executed": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "repaired_to_executed": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "recovered_to_executed": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "source_to_recovered": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "source_to_repaired": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "source_to_allocated": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            },
+            "source_to_executed": {
+              "$ref": "#/$defs/lifecycle_transition_summary"
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "tokens",
+        "prompt_tokens",
+        "completion_tokens",
+        "total_tokens",
+        "latency_seconds",
+        "semantic_similarity",
+        "semantic_drift",
+        "semantic_drift_rate",
+        "semantic_drift_from_initial",
+        "semantic_drift_baseline",
+        "semantic_stability",
+        "graph_node_count",
+        "graph_edge_count",
+        "graph_object_survival_rate",
+        "graph_dependency_recall",
+        "graph_constraint_accuracy",
+        "graph_hallucination_rate",
+        "graph_integrity_score",
+        "graph_dependency_closure_rate",
+        "graph_recovery_precision",
+        "graph_repair_cost",
+        "important_object_recall",
+        "task_critical_object_recall",
+        "task_critical_object_precision",
+        "task_critical_object_f1",
+        "integrity_gap",
+        "semantic_compression_loss",
+        "object_retention",
+        "weighted_object_retention",
+        "lost_important_object_count",
+        "recovered_object_type_counts",
+        "integrity_retention_metrics",
+        "structured_state_package_present",
+        "compressed_size",
+        "compression_ratio",
+        "lifecycle_inflation",
+        "object_inflation_ratio",
+        "object_retention_breakdown",
+        "object_retention_breakdown_v2",
+        "validation_passed",
+        "state_committed",
+        "notes"
+      ],
+      "properties": {
+        "tokens": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "prompt_tokens": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "completion_tokens": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "total_tokens": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "latency_seconds": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_similarity": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_drift": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_drift_rate": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_drift_from_initial": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_drift_baseline": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_stability": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_node_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "graph_edge_count": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "graph_object_survival_rate": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_dependency_recall": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_constraint_accuracy": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_hallucination_rate": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_integrity_score": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_dependency_closure_rate": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_recovery_precision": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "graph_repair_cost": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "important_object_recall": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "task_critical_object_recall": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "task_critical_object_precision": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "task_critical_object_f1": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "integrity_gap": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "semantic_compression_loss": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "object_retention": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "weighted_object_retention": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "lost_important_object_count": {
+          "type": "integer"
+        },
+        "recovered_object_type_counts": {
+          "$ref": "#/$defs/object_map_int"
+        },
+        "integrity_retention_metrics": {
+          "$ref": "#/$defs/integrity_retention_metrics"
+        },
+        "structured_state_package_present": {
+          "type": "boolean"
+        },
+        "compressed_size": {
+          "$ref": "#/$defs/integer_or_null"
+        },
+        "compression_ratio": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "lifecycle_inflation": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "object_inflation_ratio": {
+          "$ref": "#/$defs/number_or_null"
+        },
+        "object_retention_breakdown": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "object_retention_breakdown_v2": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "validation_passed": {
+          "type": "boolean"
+        },
+        "state_committed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "$ref": "#/$defs/string_or_null"
+        }
+      }
+    }
+  }
+}

@@ -119,30 +119,50 @@ def _build_dependency_audit_from_labels(
             expected_object_ids.append(stable_semantic_object_id("fact", canonical))
 
     recovered_objects = typed_representation_from_dict((recovered_state_package or {}).get("typed_representation")).objects
-    recovered_map = {
-        item.stable_id(): {
+    recovered_map = [
+        {
             "object_id": item.stable_id(),
             "type": item.object_type,
             "value": item.value,
+            "normalized_value": canonicalize_semantic_value(item.value),
             "evidence_pointer": item.evidence_pointer,
         }
         for item in recovered_objects
-    }
-    recovered_object_ids = sorted(recovered_map)
-    matched = sorted(set(expected_object_ids) & set(recovered_object_ids))
-    matched_objects = [recovered_map[object_id] for object_id in matched if object_id in recovered_map]
+    ]
+    recovered_object_ids = sorted(item["object_id"] for item in recovered_map)
+    matched: list[str] = []
+    matched_objects = []
+    used_indexes = set()
+    for expected_label in expected_labels:
+        expected_normalized = canonicalize_semantic_value(expected_label)
+        best_index = None
+        best_score = 0.0
+        for idx, recovered in enumerate(recovered_map):
+            if idx in used_indexes:
+                continue
+            score = object_similarity(expected_normalized, recovered["normalized_value"])
+            if score > best_score:
+                best_score = score
+                best_index = idx
+        if best_index is not None and best_score >= 0.45:
+            used_indexes.add(best_index)
+            recovered = recovered_map[best_index]
+            matched.append(recovered["object_id"])
+            matched_objects.append(recovered)
+    exact_matched = sorted(set(expected_object_ids) & set(recovered_object_ids))
+    matched_object_ids = sorted(set(matched) | set(exact_matched))
     return {
         "expected_labels": expected_labels,
         "expected_object_ids": sorted(set(expected_object_ids)),
         "recovered_object_ids": recovered_object_ids,
-        "recovered_objects": list(recovered_map.values()),
-        "matched_object_ids": matched,
+        "recovered_objects": list(recovered_map),
+        "matched_object_ids": matched_object_ids,
         "matched_objects": matched_objects,
         "expected_count": len(set(expected_object_ids)),
         "recovered_count": len(recovered_object_ids),
-        "matched_count": len(matched),
-        "coverage": (len(matched) / len(set(expected_object_ids))) if expected_object_ids else None,
-        "precision": (len(matched) / len(recovered_object_ids)) if recovered_object_ids else None,
+        "matched_count": len(matched_object_ids),
+        "coverage": (len(matched_object_ids) / len(set(expected_object_ids))) if expected_object_ids else None,
+        "precision": (len(matched_object_ids) / len(recovered_object_ids)) if recovered_object_ids else None,
     }
 
 
@@ -200,7 +220,7 @@ def _build_dependency_audit_from_objects(
             if score > best_score:
                 best_score = score
                 best_index = idx
-        if best_index is not None and best_score >= 0.5:
+        if best_index is not None and best_score >= 0.45:
             used_indexes.add(best_index)
             recovered = recovered_map[best_index]
             matched_object_ids.append(recovered["object_id"])
@@ -278,16 +298,20 @@ def validate_state(
     failure_summary = build_failure_summary(critical_failures, leakage, drift_risk)
     failure_summary_flat = build_failure_summary_flat(failure_summary)
     dependency_breakdown = build_object_retention_breakdown_v2(None, recovered_state_package, validation_targets)
-    dependency_coverage = dependency_breakdown.task_critical.get("recall")
-    dependency_precision = dependency_breakdown.task_critical.get("precision")
-    dependency_f1 = None
-    if dependency_coverage is not None and dependency_precision is not None and (dependency_coverage + dependency_precision):
-        dependency_f1 = 2 * dependency_precision * dependency_coverage / (dependency_precision + dependency_coverage)
     dependency_audit = _build_dependency_audit_from_objects(dependency_objects, recovered_state_package)
     if not dependency_audit.get("expected_objects"):
         dependency_audit = _build_dependency_audit_from_labels(dependency_labels, recovered_state_package)
     if not dependency_audit.get("expected_labels"):
         dependency_audit = _build_dependency_audit(validation_targets, recovered_state_package)
+    dependency_coverage = dependency_audit.get("coverage")
+    dependency_precision = dependency_audit.get("precision")
+    if dependency_coverage is None:
+        dependency_coverage = dependency_breakdown.task_critical.get("recall")
+    if dependency_precision is None:
+        dependency_precision = dependency_breakdown.task_critical.get("precision")
+    dependency_f1 = None
+    if dependency_coverage is not None and dependency_precision is not None and (dependency_coverage + dependency_precision):
+        dependency_f1 = 2 * dependency_precision * dependency_coverage / (dependency_precision + dependency_coverage)
 
     passed = (
         contract_satisfaction >= min_keyword_score

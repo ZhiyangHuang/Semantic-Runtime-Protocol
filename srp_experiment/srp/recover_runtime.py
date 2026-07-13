@@ -113,6 +113,10 @@ def attach_recovery_diagnostics(
     state.ensure_typed_representation(anchor_memory=anchor_memory)
     semantic_object_inventory = package.get("semantic_object_inventory") or {}
     state.recovered_state_package = build_structured_state_package(state, package, anchor_memory=anchor_memory)
+    if getattr(state, "graph_recovery_result", None) is not None:
+        state.recovered_state_package["graph_recovery_result"] = state.graph_recovery_result
+    if getattr(state, "semantic_runtime_graph", None) is not None:
+        state.recovered_state_package["semantic_runtime_graph"] = state.semantic_runtime_graph
     reconstruction_result = getattr(state, "reconstruction_result", None)
     if reconstruction_result is not None:
         state.recovered_state_package["reconstruction_result"] = reconstruction_result
