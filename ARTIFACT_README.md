@@ -6,10 +6,12 @@ The goal is to keep the main branch readable for reviewers while preserving a re
 ## What belongs here
 
 - `README.md`: overview and quick start
-- `SRP_*.md`: paper sections, audit notes, evidence summaries, and frozen methodology documents
+- `paper/`: paper-facing sections and results summary
+- `audit/`: frozen evidence, calibration, scorer, and promotion documents
 - `experiments/`: reproducible experiment runners and evaluation code
 - `configs/`: frozen runtime and experiment configuration files
 - `results/` or `experiments/results/`: curated evidence packages, manifests, and summaries
+- `docs/archive/`: historical research documents preserved for provenance
 
 ## What should stay out of the main branch
 
@@ -26,8 +28,8 @@ Before tagging a release, run `python scripts/verify_release.py` to confirm that
 
 ## Recommended paper-facing entry points
 
-- `SRP_PAPER_FINAL_V1.md`
-- `SRP_MAIN_RESULTS_SUMMARY_V1.md`
-- `SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md`
-- `SRP_LONGMEMEVAL_EVIDENCE_PROMOTION_DECISION.md`
-- `SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md`
+- `paper/SRP_PAPER_FINAL_V1.md`
+- `paper/SRP_MAIN_RESULTS_SUMMARY_V1.md`
+- `audit/SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md`
+- `audit/SRP_LONGMEMEVAL_EVIDENCE_PROMOTION_DECISION.md`
+- `audit/SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md`
