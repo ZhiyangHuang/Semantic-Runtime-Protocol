@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-07-14T16:31:23.468540+00:00",
+  "generated_by": "phase_i_observability_v1",
+  "experiment": "phase_i_observability",
+  "version": "v1",
+  "repeat_count": 5,
+  "dense_activation_grid_size": 17,
+  "git_commit": "ae3d949d30e6eaf19a9325943b10773bae7328f6",
+  "runtime_profile": "default_profile"
+}

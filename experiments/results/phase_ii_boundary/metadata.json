@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-07-14T16:42:36.225042+00:00",
+  "generated_by": "phase_ii_boundary_v1",
+  "experiment": "phase_ii_boundary",
+  "version": "v1",
+  "sampling_method": "grid",
+  "seed": 42,
+  "config_path": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\configs\\phase_ii_validation.env",
+  "git_commit": "ae3d949d30e6eaf19a9325943b10773bae7328f6",
+  "candidate_count": 25,
+  "feasible_candidate_count": 10,
+  "coverage": 0.4
+}

@@ -1,0 +1,128 @@
+{
+  "run_count": 10,
+  "baseline_run_id": "sensitivity_baseline",
+  "axis_counts": {
+    "baseline": 1,
+    "archive_relations": 1,
+    "preserve_evidence": 1,
+    "relation_depth": 3,
+    "activation_threshold": 4
+  },
+  "baseline_metrics": {
+    "mean_semantic_coverage": 0.728095,
+    "mean_semantic_drift": 0.098333,
+    "mean_fact_accuracy": 0.916667,
+    "mean_relation_accuracy": 0.865,
+    "mean_recovery_accuracy": 0.687917,
+    "mean_closure_accuracy": 0.7975,
+    "mean_path_preservation": 0.7425,
+    "mean_neighborhood_completeness": 0.76,
+    "mean_hallucinated_relation_rate": 0.02,
+    "mean_evidence_cost": 1.695,
+    "coverage_delta_vs_baseline": 0.0,
+    "drift_delta_vs_baseline": 0.0,
+    "fact_accuracy_delta_vs_baseline": 0.0,
+    "relation_accuracy_delta_vs_baseline": 0.0,
+    "recovery_accuracy_delta_vs_baseline": 0.0,
+    "closure_accuracy_delta_vs_baseline": 0.0,
+    "path_preservation_delta_vs_baseline": 0.0,
+    "neighborhood_completeness_delta_vs_baseline": 0.0,
+    "hallucinated_relation_rate_delta_vs_baseline": 0.0,
+    "evidence_cost_delta_vs_baseline": 0.0
+  },
+  "mean_semantic_coverage": 0.718536,
+  "mean_semantic_drift": 0.138541,
+  "mean_fact_accuracy": 0.8895,
+  "mean_relation_accuracy": 0.81845,
+  "mean_recovery_accuracy": 0.67109,
+  "mean_closure_accuracy": 0.76635,
+  "mean_path_preservation": 0.7236,
+  "mean_neighborhood_completeness": 0.7422,
+  "mean_hallucinated_relation_rate": 0.036,
+  "mean_evidence_cost": 1.698,
+  "mean_coverage_delta_vs_baseline": -0.009559,
+  "mean_drift_delta_vs_baseline": 0.040208,
+  "mean_cost_delta_vs_baseline": 0.003,
+  "pareto_frontier": [
+    {
+      "run_id": "sensitivity_baseline",
+      "axis_name": "baseline",
+      "axis_value": "baseline",
+      "mean_semantic_coverage": 0.728095,
+      "mean_semantic_drift": 0.098333,
+      "mean_evidence_cost": 1.695
+    },
+    {
+      "run_id": "sensitivity_archive_relations_true",
+      "axis_name": "archive_relations",
+      "axis_value": true,
+      "mean_semantic_coverage": 0.758095,
+      "mean_semantic_drift": 0.077083,
+      "mean_evidence_cost": 1.815
+    },
+    {
+      "run_id": "sensitivity_preserve_evidence_true",
+      "axis_name": "preserve_evidence",
+      "axis_value": true,
+      "mean_semantic_coverage": 0.738095,
+      "mean_semantic_drift": 0.083333,
+      "mean_evidence_cost": 1.755
+    },
+    {
+      "run_id": "sensitivity_relation_depth_0",
+      "axis_name": "relation_depth",
+      "axis_value": 0,
+      "mean_semantic_coverage": 0.199643,
+      "mean_semantic_drift": 0.628333,
+      "mean_evidence_cost": 1.025
+    },
+    {
+      "run_id": "sensitivity_relation_depth_2",
+      "axis_name": "relation_depth",
+      "axis_value": 2,
+      "mean_semantic_coverage": 0.839524,
+      "mean_semantic_drift": 0.0,
+      "mean_evidence_cost": 1.855
+    },
+    {
+      "run_id": "sensitivity_relation_depth_3",
+      "axis_name": "relation_depth",
+      "axis_value": 3,
+      "mean_semantic_coverage": 0.849524,
+      "mean_semantic_drift": 0.005,
+      "mean_evidence_cost": 2.015
+    },
+    {
+      "run_id": "sensitivity_activation_threshold_0_1",
+      "axis_name": "activation_threshold",
+      "axis_value": 0.1,
+      "mean_semantic_coverage": 0.792095,
+      "mean_semantic_drift": 0.138333,
+      "mean_evidence_cost": 1.711
+    },
+    {
+      "run_id": "sensitivity_activation_threshold_0_3",
+      "axis_name": "activation_threshold",
+      "axis_value": 0.3,
+      "mean_semantic_coverage": 0.776095,
+      "mean_semantic_drift": 0.128333,
+      "mean_evidence_cost": 1.707
+    },
+    {
+      "run_id": "sensitivity_activation_threshold_0_5",
+      "axis_name": "activation_threshold",
+      "axis_value": 0.5,
+      "mean_semantic_coverage": 0.760095,
+      "mean_semantic_drift": 0.118333,
+      "mean_evidence_cost": 1.703
+    },
+    {
+      "run_id": "sensitivity_activation_threshold_0_7",
+      "axis_name": "activation_threshold",
+      "axis_value": 0.7,
+      "mean_semantic_coverage": 0.744095,
+      "mean_semantic_drift": 0.108333,
+      "mean_evidence_cost": 1.699
+    }
+  ]
+}

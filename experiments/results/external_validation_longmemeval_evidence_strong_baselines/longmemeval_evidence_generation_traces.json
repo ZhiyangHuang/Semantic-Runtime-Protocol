@@ -1,0 +1,3425 @@
+[
+  {
+    "run_id": "longmemeval_full_context_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "full_context",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "full_context",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 2.4638,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_sliding_window_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "sliding_window",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "sliding_window",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is that the new team sits near the window.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.3254,
+    "usage": {
+      "prompt_tokens": 186,
+      "total_tokens": 203,
+      "completion_tokens": 17,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_vector_rag_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "vector_rag",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "vector_rag",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2285,
+    "usage": {
+      "prompt_tokens": 212,
+      "total_tokens": 223,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_mem0_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "mem0",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "mem0",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2172,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_graphiti_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "graphiti",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "graphiti",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2497,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_letta_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "letta",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "letta",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2448,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_memmachine_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "memmachine",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "memmachine",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2194,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_srp_11_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "srp",
+    "seed": 11,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "srp",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.23,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_full_context_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "full_context",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "full_context",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2071,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_sliding_window_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "sliding_window",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "sliding_window",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays after April.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2115,
+    "usage": {
+      "prompt_tokens": 185,
+      "total_tokens": 197,
+      "completion_tokens": 12,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_vector_rag_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "vector_rag",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "vector_rag",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2226,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_mem0_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "mem0",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "mem0",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2104,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_graphiti_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "graphiti",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "graphiti",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2188,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_letta_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "letta",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "letta",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.1988,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_memmachine_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "memmachine",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "memmachine",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2032,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_srp_11_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "srp",
+    "seed": 11,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "srp",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.1903,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_full_context_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "full_context",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "full_context",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.236,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_sliding_window_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "sliding_window",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "sliding_window",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is that the new team sits near the window.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2828,
+    "usage": {
+      "prompt_tokens": 186,
+      "total_tokens": 203,
+      "completion_tokens": 17,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_vector_rag_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "vector_rag",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "vector_rag",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2081,
+    "usage": {
+      "prompt_tokens": 212,
+      "total_tokens": 223,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_mem0_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "mem0",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "mem0",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2187,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_graphiti_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "graphiti",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "graphiti",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2237,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_letta_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "letta",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "letta",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2325,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_memmachine_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "memmachine",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "memmachine",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2305,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_srp_23_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "srp",
+    "seed": 23,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "srp",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2315,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_full_context_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "full_context",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "full_context",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2105,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_sliding_window_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "sliding_window",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "sliding_window",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays after April.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2727,
+    "usage": {
+      "prompt_tokens": 185,
+      "total_tokens": 197,
+      "completion_tokens": 12,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_vector_rag_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "vector_rag",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "vector_rag",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.207,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_mem0_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "mem0",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "mem0",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.191,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_graphiti_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "graphiti",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "graphiti",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2066,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_letta_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "letta",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "letta",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2306,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_memmachine_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "memmachine",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "memmachine",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.1993,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_srp_23_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "srp",
+    "seed": 23,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "srp",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2102,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_full_context_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "full_context",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "full_context",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2519,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_sliding_window_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "sliding_window",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "sliding_window",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is that the new team sits near the window.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.3174,
+    "usage": {
+      "prompt_tokens": 186,
+      "total_tokens": 203,
+      "completion_tokens": 17,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_vector_rag_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "vector_rag",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "vector_rag",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2196,
+    "usage": {
+      "prompt_tokens": 212,
+      "total_tokens": 223,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_mem0_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "mem0",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "mem0",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2218,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_graphiti_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "graphiti",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "graphiti",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.242,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_letta_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "letta",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "letta",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2319,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_memmachine_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "memmachine",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "memmachine",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2237,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_srp_37_preference_revision",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "srp",
+    "seed": 37,
+    "case_id": "preference_revision",
+    "question": "What is the user's current workspace preference?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "preference",
+          "content": "User prefers quiet rooms.",
+          "timestep": 0,
+          "salience": 0.7,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "preference",
+          "content": "User now prefers standing desks.",
+          "timestep": 1,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "fact",
+          "content": "User changed teams last month.",
+          "timestep": 1,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u3",
+          "kind": "fact",
+          "content": "The new team sits near the window.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "updated_to",
+          "confidence": 0.95,
+          "timestep": 1,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u2",
+          "target_id": "u3",
+          "relation_type": "contextualized_by",
+          "confidence": 0.7,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "srp",
+        "query": "What is the user's current workspace preference?"
+      }
+    },
+    "predicted_answer": "The user's current workspace preference is standing desks.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2517,
+    "usage": {
+      "prompt_tokens": 263,
+      "total_tokens": 274,
+      "completion_tokens": 11,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_full_context_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "full_context",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "full_context",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.1993,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_sliding_window_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "sliding_window",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "sliding_window",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays after April.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2186,
+    "usage": {
+      "prompt_tokens": 185,
+      "total_tokens": 197,
+      "completion_tokens": 12,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_vector_rag_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "vector_rag",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "vector_rag",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2044,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_mem0_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "mem0",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "mem0",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2082,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_graphiti_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "graphiti",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "graphiti",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.1969,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_letta_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "letta",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "letta",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2162,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_memmachine_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "memmachine",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "memmachine",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.204,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  },
+  {
+    "run_id": "longmemeval_srp_37_contradiction_resolution",
+    "benchmark_name": "longmemeval",
+    "baseline_name": "srp",
+    "seed": 37,
+    "case_id": "contradiction_resolution",
+    "question": "Is the user still available on Mondays?",
+    "recovered_state": {
+      "units": [
+        {
+          "unit_id": "u0",
+          "kind": "fact",
+          "content": "User was available on Mondays in March.",
+          "timestep": 0,
+          "salience": 0.5,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u1",
+          "kind": "fact",
+          "content": "User is no longer available on Mondays after April.",
+          "timestep": 2,
+          "salience": 1.0,
+          "metadata": {}
+        },
+        {
+          "unit_id": "u2",
+          "kind": "event",
+          "content": "Project meetings moved to Tuesday.",
+          "timestep": 2,
+          "salience": 0.4,
+          "metadata": {}
+        }
+      ],
+      "relations": [
+        {
+          "relation_id": "r0",
+          "source_id": "u0",
+          "target_id": "u1",
+          "relation_type": "replaced_by",
+          "confidence": 0.9,
+          "timestep": 2,
+          "metadata": {}
+        },
+        {
+          "relation_id": "r1",
+          "source_id": "u1",
+          "target_id": "u2",
+          "relation_type": "causes",
+          "confidence": 0.6,
+          "timestep": 2,
+          "metadata": {}
+        }
+      ],
+      "metadata": {
+        "baseline": "srp",
+        "query": "Is the user still available on Mondays?"
+      }
+    },
+    "predicted_answer": "The user is no longer available on Mondays.",
+    "generation_model": "Qwen/Qwen3-4B-AWQ",
+    "generation_endpoint": "http://172.25.253.78:8000",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "generation_latency_seconds": 0.2079,
+    "usage": {
+      "prompt_tokens": 237,
+      "total_tokens": 247,
+      "completion_tokens": 10,
+      "prompt_tokens_details": null
+    }
+  }
+]

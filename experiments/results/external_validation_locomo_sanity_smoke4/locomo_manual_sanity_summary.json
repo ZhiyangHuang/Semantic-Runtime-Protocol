@@ -1,0 +1,14 @@
+{
+  "semantic_coverage": 0.479167,
+  "semantic_drift": 0.524677,
+  "fact_accuracy": 0.5,
+  "relation_accuracy": 0.458333,
+  "recovery_accuracy": 0.605159,
+  "closure_accuracy": 0.458333,
+  "neighborhood_completeness": 0.541667,
+  "hallucinated_relation_rate": 0.540053,
+  "evidence_cost": 331.205,
+  "answer_accuracy": 0.857143,
+  "official_metric_score": 0.857143,
+  "case_count": 12
+}

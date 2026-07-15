@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-07-15T01:32:56.518311+00:00",
+  "generated_by": "external_validation_calibration_aware_v1",
+  "source_output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_locomo_mvp",
+  "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_locomo_calibration_aware",
+  "case_count": 3648,
+  "trace_count": 3648
+}

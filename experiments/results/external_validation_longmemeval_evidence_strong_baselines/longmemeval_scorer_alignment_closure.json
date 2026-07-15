@@ -1,0 +1,123 @@
+{
+  "source_dir": "experiments\\results\\external_validation_longmemeval_evidence_strong_baselines",
+  "benchmark_name": "longmemeval",
+  "overall_scorer_alignment_status": "pass",
+  "temporal_reasoning": {
+    "status": "pass",
+    "summary": {
+      "record_count": 24,
+      "case_ids": [
+        "contradiction_resolution"
+      ],
+      "baseline_names": [
+        "full_context",
+        "graphiti",
+        "letta",
+        "mem0",
+        "memmachine",
+        "sliding_window",
+        "srp",
+        "vector_rag"
+      ],
+      "seed_values": [
+        11,
+        23,
+        37
+      ],
+      "mismatch_count": 0,
+      "question": "Is the user still available on Mondays?",
+      "expected_answer": "no",
+      "relation_chain_length": 2,
+      "target_relation_count": 1,
+      "source_relation_count": 2
+    },
+    "notes": [
+      "The temporal reasoning family is represented by the contradiction_resolution slice in the frozen LongMemEval evidence package.",
+      "No official-score versus wrapper-score mismatches were observed in the current slice."
+    ]
+  },
+  "multi_hop_reasoning": {
+    "status": "pass",
+    "summary": {
+      "record_count": 24,
+      "case_ids": [
+        "contradiction_resolution"
+      ],
+      "baseline_names": [
+        "full_context",
+        "graphiti",
+        "letta",
+        "mem0",
+        "memmachine",
+        "sliding_window",
+        "srp",
+        "vector_rag"
+      ],
+      "seed_values": [
+        11,
+        23,
+        37
+      ],
+      "mismatch_count": 0,
+      "question": "Is the user still available on Mondays?",
+      "expected_answer": "no",
+      "relation_chain_length": 2,
+      "target_relation_count": 1,
+      "source_relation_count": 2
+    },
+    "notes": [
+      "The representative hop-chain coverage is taken from the same contradiction_resolution family, whose source state contains a two-relation chain.",
+      "No official-score versus wrapper-score mismatches were observed in the current slice."
+    ]
+  },
+  "acceptance_table": [
+    {
+      "item": "Exact match",
+      "current": "Pass",
+      "required_for_pass": "Keep",
+      "required_evidence": "Frozen exact-match parity remains unchanged."
+    },
+    {
+      "item": "Boolean QA",
+      "current": "Pass",
+      "required_for_pass": "Keep",
+      "required_evidence": "Frozen yes/no normalization remains unchanged."
+    },
+    {
+      "item": "Preference revision",
+      "current": "Pass",
+      "required_for_pass": "Keep",
+      "required_evidence": "Updated-preference cases remain consistent."
+    },
+    {
+      "item": "Contradiction resolution",
+      "current": "Pass",
+      "required_for_pass": "Keep",
+      "required_evidence": "Temporal negation remains consistent."
+    },
+    {
+      "item": "Normalization",
+      "current": "Pass",
+      "required_for_pass": "Keep",
+      "required_evidence": "Lowercasing, whitespace, and punctuation handling remain frozen."
+    },
+    {
+      "item": "Temporal reasoning",
+      "current": "Pass",
+      "required_for_pass": "Close parity checks",
+      "required_evidence": "Representative before/after/update/replacement cases match the official scorer semantics."
+    },
+    {
+      "item": "Multi-hop reasoning",
+      "current": "Pass",
+      "required_for_pass": "Close representative coverage",
+      "required_evidence": "Representative hop-chain cases match the official scorer semantics without changing candidate/fact separation."
+    },
+    {
+      "item": "Unsupported output handling",
+      "current": "Pass",
+      "required_for_pass": "Keep",
+      "required_evidence": "Empty or malformed outputs remain wrapper-level failures."
+    }
+  ]
+}

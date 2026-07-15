@@ -22,6 +22,8 @@ The goal is to keep the main branch readable for reviewers while preserving a re
 
 If a file can be regenerated exactly from a script, config, or upstream benchmark source, prefer keeping the regeneration path rather than storing the full raw artifact in Git.
 
+Before tagging a release, run `python scripts/verify_release.py` to confirm that the release-facing files are present and oversized artifacts have not slipped back into the branch.
+
 ## Recommended paper-facing entry points
 
 - `SRP_PAPER_FINAL_V1.md`
@@ -29,4 +31,3 @@ If a file can be regenerated exactly from a script, config, or upstream benchmar
 - `SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md`
 - `SRP_LONGMEMEVAL_EVIDENCE_PROMOTION_DECISION.md`
 - `SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md`
-

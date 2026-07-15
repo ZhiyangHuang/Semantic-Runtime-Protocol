@@ -1,0 +1,13 @@
+case_id,category,mode,semantic_coverage,semantic_drift,fact_accuracy,relation_accuracy,recovery_accuracy,closure_accuracy,path_preservation,neighborhood_completeness,hallucinated_relation_rate,evidence_cost,original_node_count,original_edge_count,recovered_node_count,recovered_edge_count,matched_node_count,matched_edge_count,missing_node_count,hallucinated_node_count,hallucinated_edge_count,top_k,relation_depth,closure_validation
+relation_case_1_exact,exact_relation_preservation,vector_only,0.5,0.333333,0.666667,0.5,0.5,0.25,0.0,0.5,0.0,1.0,3,2,2,1,2,1,1,0,0,2,1,True
+relation_case_1_exact,exact_relation_preservation,relation_expansion,0.833333,0.066667,1.0,1.0,0.625,1.0,1.0,1.0,0.333333,1.2,3,2,4,3,3,2,0,1,1,2,1,True
+relation_case_1_exact,exact_relation_preservation,relation_closure,0.833333,0.0,1.0,1.0,0.833333,1.0,1.0,0.75,0.0,1.4,3,2,3,2,3,2,0,0,0,2,1,True
+relation_case_2_fact_preserved_relation_missing,fact_preserved_relation_missing,vector_only,0.5,0.333333,0.666667,0.5,0.5,0.25,0.0,0.5,0.0,1.1,3,2,2,1,2,1,1,0,0,2,1,True
+relation_case_2_fact_preserved_relation_missing,fact_preserved_relation_missing,relation_expansion,0.833333,0.0,1.0,1.0,0.833333,1.0,1.0,0.75,0.0,1.32,3,2,3,2,3,2,0,0,0,2,1,True
+relation_case_2_fact_preserved_relation_missing,fact_preserved_relation_missing,relation_closure,0.833333,0.0,1.0,1.0,0.833333,1.0,1.0,0.75,0.0,1.54,3,2,3,2,3,2,0,0,0,2,1,True
+relation_case_3_multi_hop,multi_hop_relation,vector_only,0.428571,0.4,0.666667,0.333333,0.428571,0.166667,0.0,0.5,0.0,1.3,3,3,2,1,2,1,1,0,0,2,1,True
+relation_case_3_multi_hop,multi_hop_relation,relation_expansion,0.857143,0.05,1.0,1.0,0.666667,1.0,1.0,1.0,0.25,1.56,3,3,4,4,3,3,0,1,1,2,1,True
+relation_case_3_multi_hop,multi_hop_relation,relation_closure,0.857143,0.0,1.0,1.0,0.75,1.0,1.0,1.0,0.0,1.82,3,3,4,3,3,3,0,1,0,2,1,True
+relation_case_4_conflicting_neighbors,conflicting_neighbors,vector_only,0.142857,0.666667,0.333333,0.0,0.125,0.0,0.0,0.4,0.0,1.5,3,2,2,0,1,0,2,1,0,2,1,True
+relation_case_4_conflicting_neighbors,conflicting_neighbors,relation_expansion,0.428571,0.466667,0.666667,0.5,0.272727,0.25,0.0,0.8,0.666667,1.8,3,2,4,3,2,1,1,2,2,2,1,True
+relation_case_4_conflicting_neighbors,conflicting_neighbors,relation_closure,0.428571,0.333333,0.666667,0.5,0.375,0.25,0.0,0.6,0.0,2.1,3,2,3,1,2,1,1,1,0,2,1,True

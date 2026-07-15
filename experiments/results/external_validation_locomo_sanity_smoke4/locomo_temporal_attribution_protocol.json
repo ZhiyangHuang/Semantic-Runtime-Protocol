@@ -1,0 +1,47 @@
+{
+  "name": "Temporal Attribution Protocol V1",
+  "steps": [
+    {
+      "step": 1,
+      "name": "memory_correctness",
+      "input": "gold temporal fact + recovered semantic state",
+      "decision": "inspect whether the recovered semantic state preserves the temporal relation and entity fact",
+      "labels": [
+        "correct",
+        "incorrect",
+        "uncertain"
+      ]
+    },
+    {
+      "step": 2,
+      "name": "generation_correctness",
+      "input": "recovered semantic state + generated answer",
+      "decision": "inspect whether the answer faithfully verbalizes the recovered state",
+      "labels": [
+        "correct",
+        "incorrect",
+        "uncertain"
+      ]
+    },
+    {
+      "step": 3,
+      "name": "scorer_alignment",
+      "input": "generated answer + official scorer",
+      "decision": "inspect whether the official score matches the semantic diagnosis",
+      "labels": [
+        "aligned",
+        "false_negative",
+        "false_positive",
+        "uncertain"
+      ]
+    }
+  ],
+  "interpretation_table": {
+    "correct/correct/aligned": "success",
+    "correct/correct/false_negative": "evaluator limitation",
+    "correct/incorrect/aligned": "generation limitation",
+    "incorrect/correct/aligned": "memory limitation",
+    "uncertain/uncertain/uncertain": "manual review"
+  },
+  "freeze_boundary": "Scorer mismatches are treated as measurement issues, not SRP memory failures."
+}

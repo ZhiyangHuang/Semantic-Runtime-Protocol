@@ -1,0 +1,137 @@
+[
+  {
+    "case_id": "conv-26:qa:0",
+    "question": "When did Caroline go to the LGBTQ support group?",
+    "gold_answer": "7 May 2023",
+    "official_category": 2,
+    "question_labels": [
+      "temporal"
+    ],
+    "selection_bucket": "temporal",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-26:qa:1",
+    "question": "When did Melanie paint a sunrise?",
+    "gold_answer": "2022",
+    "official_category": 2,
+    "question_labels": [
+      "temporal"
+    ],
+    "selection_bucket": "temporal",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-30:qa:18",
+    "question": "Do Jon and Gina start businesses out of what they love?",
+    "gold_answer": "Yes",
+    "official_category": 1,
+    "question_labels": [
+      "boolean"
+    ],
+    "selection_bucket": "boolean",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-30:qa:27",
+    "question": "Did Jon and Gina both participate in dance competitions?",
+    "gold_answer": "Yes",
+    "official_category": 1,
+    "question_labels": [
+      "boolean"
+    ],
+    "selection_bucket": "boolean",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-41:qa:0",
+    "question": "Who did Maria have dinner with on May 3, 2023?",
+    "gold_answer": "her mother",
+    "official_category": 2,
+    "question_labels": [
+      "person"
+    ],
+    "selection_bucket": "person",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-41:qa:9",
+    "question": "Who gave Maria's family money when she was younger and her family was going through tough times?",
+    "gold_answer": "Her aunt",
+    "official_category": 1,
+    "question_labels": [
+      "person"
+    ],
+    "selection_bucket": "person",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-43:qa:1",
+    "question": "What are John's goals for his career that are not related to his basketball skills?",
+    "gold_answer": "get endorsements, build his brand, do charity work",
+    "official_category": 1,
+    "question_labels": [
+      "boolean",
+      "relation",
+      "generic"
+    ],
+    "selection_bucket": "relation",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-43:qa:67",
+    "question": "What would be a good hobby related to his travel dreams for Tim to pick up?",
+    "gold_answer": "Writing a travel blog.",
+    "official_category": 3,
+    "question_labels": [
+      "relation",
+      "generic"
+    ],
+    "selection_bucket": "relation",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-42:qa:32",
+    "question": "Where did Joanna travel to in July 2022?",
+    "gold_answer": "Woodhaven",
+    "official_category": 2,
+    "question_labels": [
+      "location"
+    ],
+    "selection_bucket": "location",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-44:qa:7",
+    "question": "How many years passed between Audrey adopting Pixie and her other three dogs?",
+    "gold_answer": "three years",
+    "official_category": 2,
+    "question_labels": [
+      "quantity"
+    ],
+    "selection_bucket": "quantity",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-47:qa:0",
+    "question": "What are John's suspected health problems?",
+    "gold_answer": "Obesity",
+    "official_category": 3,
+    "question_labels": [
+      "generic"
+    ],
+    "selection_bucket": "generic",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-47:qa:1",
+    "question": "Which recreational activity was James pursuing on March 16, 2022?",
+    "gold_answer": "bowling",
+    "official_category": 2,
+    "question_labels": [
+      "generic"
+    ],
+    "selection_bucket": "generic",
+    "adapter_passed": true
+  }
+]

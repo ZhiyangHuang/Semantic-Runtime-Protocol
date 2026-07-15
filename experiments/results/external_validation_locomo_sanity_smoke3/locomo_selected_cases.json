@@ -1,0 +1,46 @@
+[
+  {
+    "case_id": "conv-26:qa:0",
+    "question": "When did Caroline go to the LGBTQ support group?",
+    "gold_answer": "7 May 2023",
+    "official_category": 2,
+    "question_labels": [
+      "temporal"
+    ],
+    "selection_bucket": "temporal",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-26:qa:1",
+    "question": "When did Melanie paint a sunrise?",
+    "gold_answer": "2022",
+    "official_category": 2,
+    "question_labels": [
+      "temporal"
+    ],
+    "selection_bucket": "temporal",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-30:qa:18",
+    "question": "Do Jon and Gina start businesses out of what they love?",
+    "gold_answer": "Yes",
+    "official_category": 1,
+    "question_labels": [
+      "boolean"
+    ],
+    "selection_bucket": "boolean",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-30:qa:27",
+    "question": "Did Jon and Gina both participate in dance competitions?",
+    "gold_answer": "Yes",
+    "official_category": 1,
+    "question_labels": [
+      "boolean"
+    ],
+    "selection_bucket": "boolean",
+    "adapter_passed": true
+  }
+]

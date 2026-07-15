@@ -9,6 +9,7 @@ temp/
 debug/
 srp_experiment/tmp/
 srp_experiment/data/longbench_v2/tasks.json
+srp_experiment/data/longbench_v2/tasks_group_*.json
 experiments/results/**/raw_*.jsonl
 experiments/results/**/raw_*.json
 experiments/results/**/dump_*.jsonl
