@@ -1,6 +1,6 @@
 .env
 **/__pycache__/
 srp_experiment/tmp/
-srp_experiment/data/longbench_v2/
+srp_experiment/data/longbench_v2/tasks.json
 experiments/results/external_validation_locomo_mvp/external_validation_records.jsonl
 experiments/results/external_validation_locomo_mvp/external_validation_report.json
