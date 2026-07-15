@@ -1,0 +1,440 @@
+{
+  "report_id": "semantic_backend_comparison_10",
+  "status": "compared",
+  "baseline_backend": "vector",
+  "variant_backend": "vector_local_model",
+  "records": [
+    {
+      "case": {
+        "case_id": "case_1",
+        "category": "paraphrase",
+        "source_text": "The archive preserves historical evidence for replay.",
+        "candidate_text": "The archive preserves historical evidence for replay.",
+        "expected_verdict": true,
+        "notes": "Exact paraphrase should be accepted by both backends."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 1.0,
+        "latency_seconds": 0.017433,
+        "reason": "similarity=1.000 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "offline_heuristic",
+        "decision": "accept",
+        "score": 1.0,
+        "latency_seconds": 2.280882,
+        "reason": "heuristic support above evidence threshold; local_model_unavailable",
+        "raw_text": "{\"decision\": \"accept\", \"confidence\": \"high\", \"reason\": \"The candidate is a direct paraphrase of the source text, maintaining the same meaning and structure without any semantic deviation.\"}",
+        "fallback_used": true,
+        "usage": {
+          "prompt_tokens": 133,
+          "total_tokens": 174,
+          "completion_tokens": 41,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": true,
+      "final_decision": "accept",
+      "expected_verdict": true
+    },
+    {
+      "case": {
+        "case_id": "case_2",
+        "category": "paraphrase",
+        "source_text": "Evidence strengthens verification without changing authority.",
+        "candidate_text": "Evidence strengthens verification without changing authority.",
+        "expected_verdict": true,
+        "notes": "Authority-preserving paraphrase should be accepted."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 1.0,
+        "latency_seconds": 8.9e-05,
+        "reason": "similarity=1.000 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "offline_heuristic",
+        "decision": "accept",
+        "score": 1.0,
+        "latency_seconds": 1.145055,
+        "reason": "heuristic support above evidence threshold; local_model_unavailable",
+        "raw_text": "{\"decision\": \"accept\", \"confidence\": \"high\", \"reason\": \"The candidate is a direct paraphrase of the source, maintaining the same meaning and structure without any alterations or additions.\"}",
+        "fallback_used": true,
+        "usage": {
+          "prompt_tokens": 131,
+          "total_tokens": 172,
+          "completion_tokens": 41,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": true,
+      "final_decision": "accept",
+      "expected_verdict": true
+    },
+    {
+      "case": {
+        "case_id": "case_3",
+        "category": "contradiction",
+        "source_text": "The archive preserves historical evidence for replay.",
+        "candidate_text": "The archive destroys historical evidence for replay.",
+        "expected_verdict": false,
+        "notes": "Direct contradiction should be rejected."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.857143,
+        "latency_seconds": 0.000146,
+        "reason": "similarity=0.857 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "reject",
+        "score": 0.95,
+        "latency_seconds": 1.4211,
+        "reason": "The source states that the archive preserves historical evidence for replay, while the candidate claims it destroys historical evidence for replay. These statements are direct contradictions, making the candidate's claim semantically unsupported by the source.",
+        "raw_text": "{\n  \"decision\": \"reject\",\n  \"confidence\": 0.95,\n  \"reason\": \"The source states that the archive preserves historical evidence for replay, while the candidate claims it destroys historical evidence for replay. These statements are direct contradictions, making the candidate's claim semantically unsupported by the source.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 132,
+          "total_tokens": 198,
+          "completion_tokens": 66,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": false,
+      "final_decision": "review",
+      "expected_verdict": false
+    },
+    {
+      "case": {
+        "case_id": "case_4",
+        "category": "contradiction",
+        "source_text": "The system should validate boundaries before optimization.",
+        "candidate_text": "The system should optimize before validating boundaries.",
+        "expected_verdict": false,
+        "notes": "Order inversion contradicts the governed pipeline."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.714286,
+        "latency_seconds": 0.000108,
+        "reason": "similarity=0.714 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "reject",
+        "score": 0.95,
+        "latency_seconds": 1.6209,
+        "reason": "The candidate statement contradicts the source statement by reversing the order of operations. The source emphasizes validating boundaries before optimization, while the candidate suggests optimizing before validation, which is semantically inconsistent.",
+        "raw_text": "{\n  \"decision\": \"reject\",\n  \"confidence\": 0.95,\n  \"reason\": \"The candidate statement contradicts the source statement by reversing the order of operations. The source emphasizes validating boundaries before optimization, while the candidate suggests optimizing before validation, which is semantically inconsistent.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 132,
+          "total_tokens": 194,
+          "completion_tokens": 62,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": false,
+      "final_decision": "review",
+      "expected_verdict": false
+    },
+    {
+      "case": {
+        "case_id": "case_5",
+        "category": "authority_violation",
+        "source_text": "The runtime must not mutate state without governance.",
+        "candidate_text": "The runtime may mutate state without governance.",
+        "expected_verdict": false,
+        "notes": "Authority boundary violation should be rejected."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.801784,
+        "latency_seconds": 0.000111,
+        "reason": "similarity=0.802 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "reject",
+        "score": 0.95,
+        "latency_seconds": 1.4764,
+        "reason": "The candidate statement directly contradicts the source statement by allowing state mutation without governance, which is explicitly prohibited by the source.",
+        "raw_text": "{\n  \"decision\": \"reject\",\n  \"confidence\": 0.95,\n  \"reason\": \"The candidate statement directly contradicts the source statement by allowing state mutation without governance, which is explicitly prohibited by the source.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 136,
+          "total_tokens": 185,
+          "completion_tokens": 49,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": false,
+      "final_decision": "review",
+      "expected_verdict": false
+    },
+    {
+      "case": {
+        "case_id": "case_6",
+        "category": "authority_violation",
+        "source_text": "Optimization recommends a configuration but governance approves execution.",
+        "candidate_text": "Optimization recommends a configuration and runtime immediately applies it.",
+        "expected_verdict": false,
+        "notes": "Recommendation must not collapse into execution."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "reject",
+        "score": 0.471405,
+        "latency_seconds": 0.000106,
+        "reason": "similarity=0.471 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "reject",
+        "score": 0.95,
+        "latency_seconds": 1.4997,
+        "reason": "The candidate statement implies that runtime immediately applies the configuration recommended by optimization, which bypasses the governance approval process. This violates the authority_violation case category as it suggests unauthorized execution without proper approval.",
+        "raw_text": "{\n  \"decision\": \"reject\",\n  \"confidence\": 0.95,\n  \"reason\": \"The candidate statement implies that runtime immediately applies the configuration recommended by optimization, which bypasses the governance approval process. This violates the authority_violation case category as it suggests unauthorized execution without proper approval.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 138,
+          "total_tokens": 203,
+          "completion_tokens": 65,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": true,
+      "final_decision": "reject",
+      "expected_verdict": false
+    },
+    {
+      "case": {
+        "case_id": "case_7",
+        "category": "boundary_case",
+        "source_text": "Boundary validation requires preserved evidence.",
+        "candidate_text": "Boundary validation requires preserved evidence before any transition.",
+        "expected_verdict": true,
+        "notes": "Near-boundary but supportive evidence should be accepted or escalated with evidence."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.848528,
+        "latency_seconds": 0.000104,
+        "reason": "similarity=0.849 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "accept",
+        "score": 0.95,
+        "latency_seconds": 1.753,
+        "reason": "The candidate statement 'Boundary validation requires preserved evidence before any transition' semantically supports the source 'Boundary validation requires preserved evidence' by adding a temporal condition 'before any transition' which is a logical extension of the original statement without contradicting it.",
+        "raw_text": "{\n  \"decision\": \"accept\",\n  \"confidence\": 0.95,\n  \"reason\": \"The candidate statement 'Boundary validation requires preserved evidence before any transition' semantically supports the source 'Boundary validation requires preserved evidence' by adding a temporal condition 'before any transition' which is a logical extension of the original statement without contradicting it.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 132,
+          "total_tokens": 206,
+          "completion_tokens": 74,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": true,
+      "final_decision": "accept",
+      "expected_verdict": true
+    },
+    {
+      "case": {
+        "case_id": "case_8",
+        "category": "boundary_case",
+        "source_text": "The optimizer cannot rewrite runtime history.",
+        "candidate_text": "The optimizer can rewrite runtime history when convenient.",
+        "expected_verdict": false,
+        "notes": "History rewrite language should be rejected."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.721688,
+        "latency_seconds": 0.000103,
+        "reason": "similarity=0.722 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "reject",
+        "score": 0.95,
+        "latency_seconds": 1.6058,
+        "reason": "The source explicitly states that the optimizer cannot rewrite runtime history, directly contradicting the candidate's claim that it can do so when convenient.",
+        "raw_text": "{\n  \"decision\": \"reject\",\n  \"confidence\": 0.95,\n  \"reason\": \"The source explicitly states that the optimizer cannot rewrite runtime history, directly contradicting the candidate's claim that it can do so when convenient.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 133,
+          "total_tokens": 185,
+          "completion_tokens": 52,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": false,
+      "final_decision": "review",
+      "expected_verdict": false
+    },
+    {
+      "case": {
+        "case_id": "case_9",
+        "category": "authority_violation",
+        "source_text": "A recommendation should be reviewed before execution.",
+        "candidate_text": "A recommendation should be executed immediately without review.",
+        "expected_verdict": false,
+        "notes": "Recommendation must stay separate from execution."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.534522,
+        "latency_seconds": 0.000107,
+        "reason": "similarity=0.535 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "reject",
+        "score": 0.95,
+        "latency_seconds": 1.5416,
+        "reason": "The candidate statement directly contradicts the source statement. The source emphasizes the need to review a recommendation before execution, while the candidate suggests executing it without review, which is a clear semantic violation.",
+        "raw_text": "{\n  \"decision\": \"reject\",\n  \"confidence\": 0.95,\n  \"reason\": \"The candidate statement directly contradicts the source statement. The source emphasizes the need to review a recommendation before execution, while the candidate suggests executing it without review, which is a clear semantic violation.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 136,
+          "total_tokens": 199,
+          "completion_tokens": 63,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": false,
+      "final_decision": "review",
+      "expected_verdict": false
+    },
+    {
+      "case": {
+        "case_id": "case_10",
+        "category": "boundary_case",
+        "source_text": "Evidence can strengthen verification when uncertainty remains.",
+        "candidate_text": "Evidence can strengthen verification when uncertainty remains and should trigger review only if needed.",
+        "expected_verdict": true,
+        "notes": "Boundary-adjacent supportive evidence should remain admissible."
+      },
+      "vector_outcome": {
+        "backend_name": "vector",
+        "mode": "vector_only",
+        "decision": "accept",
+        "score": 0.707107,
+        "latency_seconds": 0.000198,
+        "reason": "similarity=0.707 threshold=0.500",
+        "raw_text": "",
+        "fallback_used": false,
+        "usage": {}
+      },
+      "variant_outcome": {
+        "backend_name": "vector_local_model",
+        "mode": "local_model",
+        "decision": "accept",
+        "score": 0.95,
+        "latency_seconds": 1.9096,
+        "reason": "The candidate statement extends the source by adding a condition that 'should trigger review only if needed', which is semantically supported by the source's assertion that 'Evidence can strengthen verification when uncertainty remains'. The additional condition does not contradict the source but provides a more specific application of the source's claim.",
+        "raw_text": "{\n  \"decision\": \"accept\",\n  \"confidence\": 0.95,\n  \"reason\": \"The candidate statement extends the source by adding a condition that 'should trigger review only if needed', which is semantically supported by the source's assertion that 'Evidence can strengthen verification when uncertainty remains'. The additional condition does not contradict the source but provides a more specific application of the source's claim.\"\n}",
+        "fallback_used": false,
+        "usage": {
+          "prompt_tokens": 140,
+          "total_tokens": 224,
+          "completion_tokens": 84,
+          "prompt_tokens_details": null
+        }
+      },
+      "agreement": true,
+      "final_decision": "accept",
+      "expected_verdict": true
+    }
+  ],
+  "summary": {
+    "case_count": 10,
+    "agreement_count": 5,
+    "agreement_rate": 0.5,
+    "disagreement_count": 5,
+    "vector_accuracy": 0.5,
+    "variant_accuracy": 1.0,
+    "final_accuracy": 0.5,
+    "vector_false_acceptance": 5,
+    "vector_false_rejection": 0,
+    "variant_false_acceptance": 0,
+    "variant_false_rejection": 0,
+    "escalated_case_count": 5,
+    "review_count": 5,
+    "review_rate": 0.5,
+    "mean_vector_latency_seconds": 0.001851,
+    "mean_variant_latency_seconds": 1.625404,
+    "vector_repeat_stability_rate": 1.0,
+    "variant_repeat_stability_rate": 1.0,
+    "authority_violation_case_count": 3,
+    "authority_violation_final_accept_count": 0,
+    "authority_violation_final_reject_count": 1,
+    "authority_violation_review_count": 2,
+    "authority_violation_final_accept_rate": 0.0,
+    "boundary_case_count": 3,
+    "boundary_review_count": 1,
+    "paraphrase_case_count": 2,
+    "contradiction_case_count": 2,
+    "variant_local_model_count": 8,
+    "variant_offline_heuristic_count": 2,
+    "variant_fallback_count": 2
+  }
+}

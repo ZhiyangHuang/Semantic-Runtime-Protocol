@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from srp_runtime.constraints.constraint_engine import ConstraintEngine, ConstraintResult
+from srp_runtime.config import RuntimeConfig, load_default_profile
 from srp_runtime.event.runtime_event import EventResult, RuntimeEvent
 from srp_runtime.decision import DecisionContext, DecisionResult
 from srp_runtime.kernel.transition import TransitionResult
@@ -46,6 +47,7 @@ class RuntimeKernel:
         self._trace_builder = trace_builder or TraceBuilder()
         self._services = services or RuntimeServices()
         self._config = config or RuntimeKernelConfig()
+        self._runtime_config: RuntimeConfig = self._config.runtime_config if self._config.runtime_config else load_default_profile()
         self._identity_operator = IdentityUpdateOperator()
         self._activation_operator = ActivationUpdateOperator()
         self._merge_operator = MergeOperator()
@@ -55,6 +57,8 @@ class RuntimeKernel:
         self._forgetting_operator = ForgettingOperator()
         self._gc_operator = GarbageCollectionOperator()
         self._relation_operator = RelationUpdateOperator()
+        for operator in (self._activation_operator, self._approximation_operator, self._forgetting_operator, self._recovery_operator):
+            setattr(operator, "runtime_config", self._runtime_config)
         self._event_stream: list[RuntimeEvent] = []
         self._trace_records: list[TraceRecord] = []
         self._decision_results: list[DecisionResult] = []

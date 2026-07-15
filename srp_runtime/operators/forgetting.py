@@ -27,8 +27,11 @@ class ForgettingOperator(SemanticOperator):
         before_state_ref = state.state_ref()
         target_unit_ids = self._resolve_target_unit_ids(event)
         evidence_refs = _dedupe([str(item) for item in event.payload.get("evidence_refs", [])])
-        preserve_evidence = bool(event.payload.get("preserve_evidence", True))
-        archive_relations = bool(event.payload.get("archive_relations", True))
+        runtime_config = getattr(self, "runtime_config", None)
+        preserve_evidence_default = True if runtime_config is None else bool(getattr(runtime_config, "preserve_evidence", True))
+        archive_relations_default = True if runtime_config is None else bool(getattr(runtime_config, "archive_relations", True))
+        preserve_evidence = bool(event.payload.get("preserve_evidence", preserve_evidence_default))
+        archive_relations = bool(event.payload.get("archive_relations", archive_relations_default))
 
         if not target_unit_ids:
             return TransitionResult(
@@ -43,10 +46,12 @@ class ForgettingOperator(SemanticOperator):
                     "operator": "ForgettingOperator",
                     "operation": "forget",
                     "target_unit_ids": [],
-                    "evidence_refs": evidence_refs,
-                    "preserve_evidence": preserve_evidence,
-                    "archive_relations": archive_relations,
-                },
+                "evidence_refs": evidence_refs,
+                "preserve_evidence": preserve_evidence,
+                "archive_relations": archive_relations,
+                "runtime_preserve_evidence": preserve_evidence_default,
+                "runtime_archive_relations": archive_relations_default,
+            },
                 invariant_checks=["forgetting.targets.present"],
                 success=False,
                 failure_reason="forgetting requires at least one target unit",
@@ -206,6 +211,8 @@ class ForgettingOperator(SemanticOperator):
                 "evidence_refs": evidence_refs,
                 "preserve_evidence": preserve_evidence,
                 "archive_relations": archive_relations,
+                "runtime_preserve_evidence": preserve_evidence_default,
+                "runtime_archive_relations": archive_relations_default,
                 "archived_relation_ids": _dedupe(archived_relation_ids),
             },
             invariant_checks=[

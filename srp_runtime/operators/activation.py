@@ -11,6 +11,8 @@ class ActivationUpdateOperator(SemanticOperator):
     def apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
         before_state_ref = state.state_ref()
         changed_unit_ids: list[str] = []
+        runtime_config = getattr(self, "runtime_config", None)
+        runtime_activation_threshold = 0.2 if runtime_config is None else float(getattr(runtime_config, "activation_threshold", 0.2))
         for unit_id in event.targets:
             unit = state.units.get(unit_id)
             if unit is None:
@@ -23,7 +25,10 @@ class ActivationUpdateOperator(SemanticOperator):
             if "activation" in event.payload:
                 unit.activation = float(event.payload["activation"])
             elif "activation_delta" in event.payload:
-                unit.activation = float(unit.activation + float(event.payload["activation_delta"]))
+                delta = float(event.payload["activation_delta"])
+                unit.activation = float(unit.activation + max(delta, runtime_activation_threshold * 0.1))
+            else:
+                unit.activation = max(float(unit.activation), runtime_activation_threshold)
             if "confidence" in event.payload:
                 unit.confidence = float(event.payload["confidence"])
             if "last_used_round" in event.payload:
@@ -44,6 +49,7 @@ class ActivationUpdateOperator(SemanticOperator):
             mutation_summary={
                 "operator": "ActivationUpdateOperator",
                 "targets": list(event.targets),
+                "runtime_activation_threshold": runtime_activation_threshold,
             },
             invariant_checks=["activation.range", "semantic_time.updated"],
             success=True,

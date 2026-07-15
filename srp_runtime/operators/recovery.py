@@ -30,6 +30,8 @@ class RecoveryOperator(SemanticOperator):
         evidence_refs = list(dict.fromkeys(event.payload.get("evidence_refs", [])))
         recovery_source = str(event.payload.get("recovery_source", "lineage"))
         recovery_mode = str(event.payload.get("recovery_mode", "restore"))
+        runtime_config = getattr(self, "runtime_config", None)
+        minimum_evidence = 2 if runtime_config is None else int(getattr(runtime_config, "recovery_min_evidence", 2))
 
         if target_unit is None:
             return TransitionResult(
@@ -74,6 +76,30 @@ class RecoveryOperator(SemanticOperator):
                 invariant_checks=["recovery.evidence.present"],
                 success=False,
                 failure_reason="recovery requires evidence_refs",
+                timestamp_round=state.timestamp_round,
+            )
+
+        if len(evidence_refs) < minimum_evidence:
+            return TransitionResult(
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
+                operator_name="RecoveryOperator",
+                before_state_ref=before_state_ref,
+                after_state_ref=before_state_ref,
+                changed_unit_ids=[],
+                changed_relation_ids=[],
+                mutation_summary={
+                    "operator": "RecoveryOperator",
+                    "operation": "recovery",
+                    "target_unit_id": target_unit.unit_id,
+                    "recovery_source": recovery_source,
+                    "recovery_mode": recovery_mode,
+                    "evidence_refs": evidence_refs,
+                    "runtime_minimum_evidence": minimum_evidence,
+                },
+                invariant_checks=["recovery.evidence.minimum"],
+                success=False,
+                failure_reason="recovery requires at least the configured minimum evidence",
                 timestamp_round=state.timestamp_round,
             )
 
@@ -166,6 +192,7 @@ class RecoveryOperator(SemanticOperator):
                 "recovery_source": recovery_source,
                 "recovery_mode": recovery_mode,
                 "evidence_refs": evidence_refs,
+                "runtime_minimum_evidence": minimum_evidence,
                 "restored_fields": [
                     field
                     for field, value in {

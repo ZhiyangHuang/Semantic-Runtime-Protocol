@@ -43,9 +43,321 @@ For the current verified boundary snapshot, see [SRP Runtime Kernel Milestone 2 
 
 For the boundary preview of adaptive semantic evolution, see [SRP Runtime Kernel Milestone 3: Adaptive Semantic Evolution Boundary](SRP_RUNTIME_KERNEL_MILESTONE_3_BOUNDARY_PREVIEW.md).
 
+## Experimental Infrastructure
+
+SRP now includes a parameter calibration framework for evaluating runtime behavior before future adaptive evolution.
+For a stack-level overview of how the legacy measurement stack and the calibration / validation stack relate, see [SRP Experiment Stack Overview](SRP_EXPERIMENT_STACK_OVERVIEW.md).
+
+Current validated sensitivity studies:
+
+- `activation_threshold`
+  - semantic mutation behavior
+- `recovery_min_evidence`
+  - evidence-based recovery governance
+- `preserve_evidence`
+  - history and audit retention trade-off
+- `archive_relations`
+  - archive evidence boundary
+
+Current validated interaction study:
+
+- `activation_threshold x recovery_min_evidence`
+  - boundary interaction between semantic mutation and recovery governance
+
+For the baseline empirical summary, see [SRP Sensitivity Baseline Report](SRP_SENSITIVITY_BASELINE_REPORT.md).
+For the interaction model, see [SRP Parameter Interaction Analysis Model](SRP_PARAMETER_INTERACTION_ANALYSIS_MODEL.md).
+For the Phase I calibration closure, see [SRP Parameter Calibration Phase I Report](SRP_PARAMETER_CALIBRATION_PHASE_I_REPORT.md).
+For the Phase I observability report, see [SRP Phase I Observability Report](SRP_PHASE_I_OBSERVABILITY_REPORT.md).
+For the calibration round result model, see [SRP Calibration Round Result Model](SRP_CALIBRATION_ROUND_RESULT_MODEL.md).
+For the calibration roadmap freeze, see [SRP Calibration Roadmap Freeze](SRP_CALIBRATION_ROADMAP_FREEZE.md).
+For the Phase II closure validation model, see [SRP Phase II Closure Validation Model](SRP_PHASE_II_CLOSURE_VALIDATION_MODEL.md).
+For the experiment environment freeze, see [SRP Experiment Environment Freeze](SRP_EXPERIMENT_ENV_FREEZE.md).
+
+### Phase II Closure Validation
+
+Phase II closure validation is a separate validation layer, not calibration.
+For the closure evidence package, see [SRP Phase II Closure Validation Report](SRP_PHASE_II_CLOSURE_VALIDATION_REPORT.md).
+For the Phase II boundary validation report, see [SRP Phase II Boundary Validation Report](SRP_PHASE_II_BOUNDARY_VALIDATION_REPORT.md).
+For the Phase II density baseline report, see [SRP Phase II Density Baseline Report](SRP_PHASE_II_DENSITY_BASELINE_REPORT.md).
+For the Phase II boundary generalization report, see [SRP Phase II Boundary Generalization Report](SRP_PHASE_II_BOUNDARY_GENERALIZATION_REPORT.md).
+For the Phase III-A baseline comparison report, see [SRP Phase III-A Baseline Comparison Report](SRP_PHASE_III_A_BASELINE_COMPARISON_REPORT.md).
+For the Phase V retention and drift baseline report, see [SRP Phase V Retention and Drift Report](SRP_PHASE_V_RETENTION_REPORT.md).
+For the Phase V retention sensitivity plan, see [SRP Phase V Retention Sensitivity Plan V1](SRP_PHASE_V_RETENTION_SENSITIVITY_PLAN_V1.md).
+For the audit evidence appendix, see [SRP Phase II Validation Appendix](SRP_PHASE_II_VALIDATION_APPENDIX.md).
+For the Phase I observability data export, see `experiments/results/phase_i/`.
+For the Phase II boundary candidate export, see `experiments/results/phase_ii_boundary/`.
+For the Phase II boundary figures, see `experiments/results/phase_ii_boundary/figures/`.
+For the Phase II density baseline export, see `experiments/results/phase_ii_density_baseline/`.
+For the Phase V retention and drift export, see `experiments/results/phase_v_retention/`.
+
+Validated checks:
+
+- boundary stability
+- cross-condition validation
+- reproducibility
+- evidence consistency
+
+It verifies frozen Phase II regions under controlled runtime variations and does not search for new parameter regions.
+
+### Stack Framing
+
+Legacy measurement stack:
+
+- `srp_experiment/`
+- historical runtime evaluation
+- compression / recovery / benchmark evidence
+
+Calibration and validation stack:
+
+- `experiments/`
+- parameter boundary discovery
+- closure validation
+- paper-facing Phase II boundary validation report generation
+- future adaptive boundary preparation
+
+Config layer:
+
+- `configs/phase_ii_validation.env`
+- `configs/phase_iii_a.env`
+- `configs/semantic_backend_comparison.env`
+- `configs/phase_v_retention.env`
+- phase-scoped experiment settings
+- legacy `.env` remains the measurement default
+- `experiments/config.py` loads typed phase configs
+
+Phase III-A boundary preview:
+
+- [SRP Constrained Parameter Optimization Boundary](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_BOUNDARY.md)
+- [SRP Constrained Parameter Optimization Protocol](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_PROTOCOL.md)
+- [SRP Constrained Parameter Optimization Round 1 Report](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_ROUND_1_REPORT.md)
+- [SRP Phase III-A Baseline Comparison Report](SRP_PHASE_III_A_BASELINE_COMPARISON_REPORT.md)
+- [SRP Phase III-A Objective Sensitivity Report](SRP_PHASE_III_A_OBJECTIVE_SENSITIVITY_REPORT.md)
+- [SRP Constrained Parameter Optimization Round 1 Analysis](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_ROUND_1_ANALYSIS.md)
+- [SRP Phase II Boundary Generalization Report](SRP_PHASE_II_BOUNDARY_GENERALIZATION_REPORT.md)
+- [SRP Phase V Retention and Drift Evaluation](SRP_PHASE_V_RETENTION_DRIFT_EVALUATION.md)
+- [SRP Phase V Retention and Drift Report](SRP_PHASE_V_RETENTION_REPORT.md)
+- [SRP Phase V Retention Sensitivity Plan V1](SRP_PHASE_V_RETENTION_SENSITIVITY_PLAN_V1.md)
+- constrained optimization over validated feasible regions
+- not reinforcement learning
+- not adaptive execution
+- naive full-grid comparison baseline for governed optimization
+- objective-weight stability analysis for governed optimization
+
+Semantic backend comparison study:
+
+- [SRP Semantic Backend Comparison Protocol](SRP_SEMANTIC_BACKEND_COMPARISON_PROTOCOL.md)
+- [SRP Semantic Backend Comparison Report](SRP_SEMANTIC_BACKEND_COMPARISON_REPORT.md)
+- [SRP Evidence Escalation Analysis](SRP_EVIDENCE_ESCALATION_ANALYSIS.md)
+- [SRP Evidence Escalation Protocol](SRP_EVIDENCE_ESCALATION_PROTOCOL.md)
+- [SRP Evidence Escalation Appendix](SRP_EVIDENCE_ESCALATION_APPENDIX.md)
+- semantic backend comparison result package: `experiments/results/semantic_backend_comparison/`
+- vector-only baseline vs local semantic evidence augmentation
+- evidence-source comparison without authority transfer
+- [SRP Phase V Retention and Drift Evaluation](SRP_PHASE_V_RETENTION_DRIFT_EVALUATION.md)
+- [SRP Phase V Retention and Drift Report](SRP_PHASE_V_RETENTION_REPORT.md)
+- [SRP Phase V Retention Sensitivity Plan V1](SRP_PHASE_V_RETENTION_SENSITIVITY_PLAN_V1.md)
+- [SRP Phase VI Relation-Aware Recovery Design V1](SRP_PHASE_VI_RELATION_AWARE_RECOVERY_DESIGN.md)
+- [SRP Phase VI Relation-Aware Recovery Plan V1](SRP_PHASE_VI_RELATION_AWARE_RECOVERY_PLAN_V1.md)
+- [SRP Phase VI Relation-Aware Recovery Experiment Package](experiments/evaluation/phase_vi_relation_recovery/)
+- [SRP Phase VI Relation-Aware Recovery Report](SRP_PHASE_VI_RELATION_AWARE_RECOVERY_REPORT.md)
+- [SRP Phase VII Parameter Sensitivity and Stability Plan V1](SRP_PHASE_VII_PARAMETER_SENSITIVITY_STABILITY_PLAN_V1.md)
+- [SRP Phase VII Parameter Sensitivity and Stability Report](SRP_PHASE_VII_PARAMETER_STABILITY_REPORT.md)
+- [SRP Phase VII-B Parameter Sensitivity and Governance Tradeoff Plan V1](SRP_PHASE_VII_PARAMETER_SENSITIVITY_PLAN_V1.md)
+- [SRP Phase VII-B Parameter Sensitivity and Governance Tradeoff Report](SRP_PHASE_VII_PARAMETER_SENSITIVITY_REPORT.md)
+- [SRP Phase VIII Cross-Domain Validation Plan V1](SRP_PHASE_VIII_CROSS_DOMAIN_VALIDATION_PLAN_V1.md)
+- [SRP Phase VIII Cross-Domain Validation Report](SRP_PHASE_VIII_CROSS_DOMAIN_VALIDATION_REPORT.md)
+- [SRP Phase VIII-B Representation Invariance Report](SRP_PHASE_VIII_B_REPRESENTATION_INVARIANCE_REPORT.md)
+- [SRP Phase VIII-B Representation Invariance Plan V1](SRP_PHASE_VIII_B_REPRESENTATION_INVARIANCE_PLAN_V1.md)
+- [SRP Phase VIII-C Implementation Independence Report](SRP_PHASE_VIII_C_IMPLEMENTATION_INDEPENDENCE_REPORT.md)
+- [SRP Phase VIII-C Implementation Independence Plan V1](SRP_PHASE_VIII_C_IMPLEMENTATION_INDEPENDENCE_PLAN_V1.md)
+- [SRP External Validation Plan V1](SRP_EXTERNAL_VALIDATION_PLAN_V1.md)
+- [SRP External Validation Implementation Plan V1](SRP_EXTERNAL_VALIDATION_IMPLEMENTATION_PLAN_V1.md)
+- [SRP External Validation Baseline Capability Matrix V1](SRP_EXTERNAL_VALIDATION_BASELINE_CAPABILITY_MATRIX_V1.md)
+- external validation LoCoMo ingestion slice: `experiments/results/external_validation_locomo_mvp/`
+- LoCoMo calibration-aware rerun: `experiments/results/external_validation_locomo_calibration_aware/`
+- LoCoMo manual sanity calibration slice: `experiments/results/external_validation_locomo_sanity/`
+- [LoCoMo Calibration Note](SRP_LOCOMO_CALIBRATION_NOTE.md)
+- [LongMemEval Calibration Note](SRP_LONGMEMEVAL_CALIBRATION_NOTE.md)
+- [SRP LoCoMo Calibration-Aware External Validation Report](SRP_EXTERNAL_VALIDATION_LOCOMO_CALIBRATION_AWARE_REPORT.md)
+- [SRP External Validation Adapter Calibration Note](SRP_EXTERNAL_VALIDATION_ADAPTER_CALIBRATION_NOTE.md)
+- LongMemEval calibration-aware rerun: `experiments/results/external_validation_longmemeval_calibration_aware/`
+- LongMemEval evidence run: `experiments/results/external_validation_longmemeval_evidence/`
+- [SRP LongMemEval External Validation Evidence Report](SRP_EXTERNAL_VALIDATION_LONGMEMEVAL_EVIDENCE_REPORT.md)
+- [SRP LongMemEval Evidence Audit Note](SRP_LONGMEMEVAL_EVIDENCE_AUDIT_NOTE.md)
+- [SRP LongMemEval Scorer Alignment Audit](SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md)
+- [SRP Evidence Audit Specification V1](SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md)
+- LongMemEval evidence contract: `configs/external_validation_longmemeval_evidence.env`
+- LongMemEval evidence run entrypoint: `experiments/evaluation/run_longmemeval_evidence.py`
+- phase V retention and drift result package: `experiments/results/phase_v_retention/`
+- phase VI relation-aware recovery result package: `experiments/results/phase_vi_relation_recovery/`
+- phase VII parameter stability result package: `experiments/results/phase_vii_parameter_stability/`
+- phase VII-B parameter sensitivity result package: `experiments/results/phase_vii_parameter_sensitivity/`
+- phase VIII cross-domain validation result package: `experiments/results/phase_viii_cross_domain/`
+- phase VIII representation invariance result package: `experiments/results/phase_viii_representation_invariance/`
+- phase VIII implementation independence result package: `experiments/results/phase_viii_implementation_independence/`
+- meaning-level semantic coverage and drift measurement after governed transition
+
+Research freeze package:
+
+- [SRP Research Freeze V1](SRP_RESEARCH_FREEZE_V1.md)
+- frozen baseline for Phase I, Phase II, Phase III-A, and evidence studies
+- keeps runtime, calibration, validation, optimization, and evidence layers separated
+
+Paper construction:
+
+- [SRP Paper Structure V1](SRP_PAPER_STRUCTURE_V1.md)
+- [SRP Contribution Map V1](SRP_CONTRIBUTION_MAP_V1.md)
+- [SRP Abstract V1](SRP_ABSTRACT_V1.md)
+- [SRP Introduction V1](SRP_INTRODUCTION_V1.md)
+- [SRP Related Work V1](SRP_RELATED_WORK_V1.md)
+- [SRP System Model V1](SRP_SYSTEM_MODEL_V1.md)
+- [SRP Method Overview V1](SRP_METHOD_OVERVIEW_V1.md)
+- [SRP Experiments Overview V1](SRP_EXPERIMENTS_OVERVIEW_V1.md)
+- [SRP Discussion V1](SRP_DISCUSSION_V1.md)
+- [SRP Experiments V1](SRP_EXPERIMENTS_V1.md)
+- [SRP Main Results Summary V1](SRP_MAIN_RESULTS_SUMMARY_V1.md)
+- [SRP Ablation Plan V1](SRP_ABLATION_PLAN_V1.md)
+- [SRP Parameter Recommendation Policy V1](SRP_PARAMETER_RECOMMENDATION_POLICY_V1.md)
+- [SRP Parameter Recommendation Analysis V1](SRP_PARAMETER_RECOMMENDATION_ANALYSIS_V1.md)
+- [SRP Limitations V1](SRP_LIMITATIONS_V1.md)
+- [SRP Conclusion V1](SRP_CONCLUSION_V1.md)
+- [SRP Paper Draft V1](SRP_PAPER_DRAFT_V1.md)
+- [SRP Paper Draft V2](SRP_PAPER_DRAFT_V2.md)
+- [SRP Paper Draft V3](SRP_PAPER_DRAFT_V3.md)
+- [SRP Paper Final V1](SRP_PAPER_FINAL_V1.md)
+- [SRP Phase V Retention Drift Evaluation](SRP_PHASE_V_RETENTION_DRIFT_EVALUATION.md)
+- [SRP Phase VI Relation-Aware Recovery Design V1](SRP_PHASE_VI_RELATION_AWARE_RECOVERY_DESIGN.md)
+- [SRP Phase VI Relation-Aware Recovery Plan V1](SRP_PHASE_VI_RELATION_AWARE_RECOVERY_PLAN_V1.md)
+- [SRP Main Results Summary V1](SRP_MAIN_RESULTS_SUMMARY_V1.md)
+- [SRP Phase VI Relation-Aware Recovery Report](SRP_PHASE_VI_RELATION_AWARE_RECOVERY_REPORT.md)
+- [SRP Phase VII Parameter Sensitivity and Stability Report](SRP_PHASE_VII_PARAMETER_STABILITY_REPORT.md)
+- [SRP Phase VII-B Parameter Sensitivity and Governance Tradeoff Report](SRP_PHASE_VII_PARAMETER_SENSITIVITY_REPORT.md)
+- [SRP Phase VIII Cross-Domain Validation Plan V1](SRP_PHASE_VIII_CROSS_DOMAIN_VALIDATION_PLAN_V1.md)
+- [SRP Phase VIII Cross-Domain Validation Report](SRP_PHASE_VIII_CROSS_DOMAIN_VALIDATION_REPORT.md)
+- [SRP Phase VIII-B Representation Invariance Report](SRP_PHASE_VIII_B_REPRESENTATION_INVARIANCE_REPORT.md)
+- [SRP Phase VIII-B Representation Invariance Plan V1](SRP_PHASE_VIII_B_REPRESENTATION_INVARIANCE_PLAN_V1.md)
+- [SRP Phase VIII-C Implementation Independence Report](SRP_PHASE_VIII_C_IMPLEMENTATION_INDEPENDENCE_REPORT.md)
+- [SRP Phase VIII-C Implementation Independence Plan V1](SRP_PHASE_VIII_C_IMPLEMENTATION_INDEPENDENCE_PLAN_V1.md)
+- [SRP External Validation Plan V1](SRP_EXTERNAL_VALIDATION_PLAN_V1.md)
+- [SRP External Validation Implementation Plan V1](SRP_EXTERNAL_VALIDATION_IMPLEMENTATION_PLAN_V1.md)
+- [SRP External Validation Baseline Capability Matrix V1](SRP_EXTERNAL_VALIDATION_BASELINE_CAPABILITY_MATRIX_V1.md)
+- external validation LoCoMo ingestion slice: `experiments/results/external_validation_locomo_mvp/`
+- [SRP External Validation Adapter Calibration Note](SRP_EXTERNAL_VALIDATION_ADAPTER_CALIBRATION_NOTE.md)
+- phase VIII representation invariance result package: `experiments/results/phase_viii_representation_invariance/`
+- phase VIII implementation independence result package: `experiments/results/phase_viii_implementation_independence/`
+- [Research Freeze Policy](RESEARCH_FREEZE_POLICY.md)
+- [SRP Paper Completion Checklist](SRP_PAPER_COMPLETION_CHECKLIST.md)
+- writing and positioning guide for the frozen research baseline
+- frozen claims, contribution map, and paper outline
+
+### Parameter Calibration Status
+
+Phase I calibration is frozen.
+Phase II boundary is defined.
+
+Completed:
+
+- Parameter observability validation
+- Boundary-focused sensitivity studies
+- Pairwise interaction observation
+
+Validated parameter axes:
+
+- `activation_threshold`
+- `recovery_min_evidence`
+- `preserve_evidence`
+- `archive_relations`
+- `relation_depth`
+
+Current scope:
+
+- Parameter behavior characterization, sensitivity analysis, and boundary validation
+
+Not started:
+
+- Parameter optimization
+- Adaptive parameter policies
+- Learning-based calibration
+
+### Parameter Calibration Roadmap
+
+Current status:
+
+- Phase I: Parameter observability and boundary validation (Frozen)
+- Phase II: Constrained calibration boundary (Defined)
+
+Phase II does not introduce optimization or adaptive parameter updates.
+It defines future evaluation boundaries while preserving SRP governance constraints.
+
+### Calibration Infrastructure
+
+Phase II constrained calibration is supported by:
+
+- Parameter Calibration Protocol
+- Calibration Round Boundary
+- Calibration Round Result Model
+- Calibration Evidence Records
+
+Calibration outputs represent acceptable parameter regions, not optimized parameter values.
+
 ## Freeze Checklist
 
 For the architectural boundary checklist, see [SRP Runtime Kernel Freeze Checklist](SRP_RUNTIME_KERNEL_FREEZE_CHECKLIST.md).
+
+## Project Status
+
+SRP has completed the construction of a governed semantic evolution runtime. Future extensions must preserve deterministic mutation, evidence-based governance, event-derived history, and bounded learning authority.
+
+### Phase II Closure Validation
+
+Status:
+
+- Active validation layer
+
+Scope:
+
+- Verification of frozen calibration boundaries
+
+Validated dimensions:
+
+- boundary stability
+- cross-condition robustness
+- reproducibility
+- evidence consistency
+
+Non-goals:
+
+- parameter optimization
+- adaptive updates
+- learning-based control
+
+### Stack Framing
+
+Legacy measurement stack:
+
+- `srp_experiment/`
+- historical runtime evaluation
+- compression / recovery / benchmark evidence
+
+Calibration and validation stack:
+
+- `experiments/`
+- parameter boundary discovery
+- closure validation
+- paper-facing Phase II boundary validation report generation
+- future adaptive boundary preparation
+
+Phase III-A boundary preview:
+
+- [SRP Constrained Parameter Optimization Boundary](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_BOUNDARY.md)
+- [SRP Constrained Parameter Optimization Protocol](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_PROTOCOL.md)
+- [SRP Constrained Parameter Optimization Round 1 Report](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_ROUND_1_REPORT.md)
+- [SRP Phase III-A Baseline Comparison Report](SRP_PHASE_III_A_BASELINE_COMPARISON_REPORT.md)
+- [SRP Constrained Parameter Optimization Round 1 Analysis](SRP_CONSTRAINED_PARAMETER_OPTIMIZATION_ROUND_1_ANALYSIS.md)
+- constrained optimization over validated feasible regions
+- not reinforcement learning
+- not adaptive execution
+- naive full-grid comparison baseline for governed optimization
 
 ## State Definition
 

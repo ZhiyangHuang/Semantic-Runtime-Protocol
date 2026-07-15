@@ -1,10 +1,6 @@
-__pycache__/
-*.pyc
-
-srp_experiment/.env
+.env
+**/__pycache__/
 srp_experiment/tmp/
-srp_experiment/diagnostics/
-srp_experiment/data/longbench_v2/tasks.json
-srp_experiment/data/longbench_v2/tasks_group_1.json
-srp_experiment/data/longbench_v2/tasks_group_2.json
-srp_experiment/data/longbench_v2/tasks_group_3.json
+srp_experiment/data/longbench_v2/
+experiments/results/external_validation_locomo_mvp/external_validation_records.jsonl
+experiments/results/external_validation_locomo_mvp/external_validation_report.json

@@ -1,0 +1,911 @@
+{
+  "report_id": "phase_iii_a_baseline_comparison_20260714T165136Z",
+  "status": "compared",
+  "summary": {
+    "baseline_candidate_count": 25,
+    "srp_candidate_count": 10,
+    "baseline_top_objective_value": 0.54,
+    "srp_top_objective_value": 0.54,
+    "baseline_top_candidate": {
+      "activation_threshold": 0.9,
+      "recovery_min_evidence": 1,
+      "label": "a0.9_r1"
+    },
+    "srp_top_candidate": {
+      "activation_threshold": 0.9,
+      "recovery_min_evidence": 1,
+      "label": "a0.9_r1"
+    },
+    "top_match": true,
+    "search_reduction": 0.6,
+    "feasible_region_coverage": 0.4
+  },
+  "baseline_report": {
+    "report_id": "phase_iii_a_round1_optimization_20260714T165136Z",
+    "status": "ranked",
+    "objective_weights": {
+      "semantic_quality_weight": 0.4,
+      "recovery_success_weight": 0.3,
+      "resource_cost_weight": 0.2,
+      "instability_penalty_weight": 0.1
+    },
+    "evaluations": [
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 1,
+          "label": "a0.9_r1"
+        },
+        "objective_value": 0.54,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 1.0,
+          "resource_cost": 0.6,
+          "latency": 0.175,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 1,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.600",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 1,
+          "label": "a0.1_r1"
+        },
+        "objective_value": 0.5,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": -0.2,
+          "latency": 0.135,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 2,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=1, recovery_success=1.0, resource_cost=-0.200",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 1,
+          "label": "a0.7_r1"
+        },
+        "objective_value": 0.5,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 1.0,
+          "resource_cost": 0.4,
+          "latency": 0.165,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 3,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.400",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 2,
+          "label": "a0.9_r2"
+        },
+        "objective_value": 0.49,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 1.0,
+          "resource_cost": 0.85,
+          "latency": 0.205,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 4,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.850",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 1,
+          "label": "a0.3_r1"
+        },
+        "objective_value": 0.46,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": 0.0,
+          "latency": 0.145,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 5,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.000",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 1,
+          "label": "a0.5_r1"
+        },
+        "objective_value": 0.46,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 1.0,
+          "resource_cost": 0.2,
+          "latency": 0.155,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 6,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.200",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 2,
+          "label": "a0.1_r2"
+        },
+        "objective_value": 0.45,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": 0.05,
+          "latency": 0.165,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 7,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.050",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 2,
+          "label": "a0.7_r2"
+        },
+        "objective_value": 0.45,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 1.0,
+          "resource_cost": 0.65,
+          "latency": 0.195,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 8,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.650",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 2,
+          "label": "a0.3_r2"
+        },
+        "objective_value": 0.41,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": 0.25,
+          "latency": 0.175,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 9,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.250",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 2,
+          "label": "a0.5_r2"
+        },
+        "objective_value": 0.41,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 1.0,
+          "resource_cost": 0.45,
+          "latency": 0.185,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 10,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.450",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 3,
+          "label": "a0.9_r3"
+        },
+        "objective_value": 0.14,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 0.0,
+          "resource_cost": 1.1,
+          "latency": 0.235,
+          "memory_overhead": 0.11,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 11,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=3, recovery_success=0.0, resource_cost=1.100",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 3,
+          "label": "a0.1_r3"
+        },
+        "objective_value": 0.1,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 0.0,
+          "resource_cost": 0.3,
+          "latency": 0.195,
+          "memory_overhead": 0.11,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 12,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=3, recovery_success=0.0, resource_cost=0.300",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 3,
+          "label": "a0.7_r3"
+        },
+        "objective_value": 0.1,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 0.0,
+          "resource_cost": 0.9,
+          "latency": 0.225,
+          "memory_overhead": 0.11,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 13,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=3, recovery_success=0.0, resource_cost=0.900",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 4,
+          "label": "a0.9_r4"
+        },
+        "objective_value": 0.09,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 0.0,
+          "resource_cost": 1.35,
+          "latency": 0.265,
+          "memory_overhead": 0.13,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 14,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=4, recovery_success=0.0, resource_cost=1.350",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 3,
+          "label": "a0.3_r3"
+        },
+        "objective_value": 0.06,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 0.0,
+          "resource_cost": 0.5,
+          "latency": 0.205,
+          "memory_overhead": 0.11,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 15,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=3, recovery_success=0.0, resource_cost=0.500",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 3,
+          "label": "a0.5_r3"
+        },
+        "objective_value": 0.06,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 0.0,
+          "resource_cost": 0.7,
+          "latency": 0.215,
+          "memory_overhead": 0.11,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 16,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=3, recovery_success=0.0, resource_cost=0.700",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 4,
+          "label": "a0.1_r4"
+        },
+        "objective_value": 0.05,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 0.0,
+          "resource_cost": 0.55,
+          "latency": 0.225,
+          "memory_overhead": 0.13,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 17,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=4, recovery_success=0.0, resource_cost=0.550",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 4,
+          "label": "a0.7_r4"
+        },
+        "objective_value": 0.05,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 0.0,
+          "resource_cost": 1.15,
+          "latency": 0.255,
+          "memory_overhead": 0.13,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 18,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=4, recovery_success=0.0, resource_cost=1.150",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 5,
+          "label": "a0.9_r5"
+        },
+        "objective_value": 0.04,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 0.0,
+          "resource_cost": 1.6,
+          "latency": 0.295,
+          "memory_overhead": 0.15,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 19,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=5, recovery_success=0.0, resource_cost=1.600",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 4,
+          "label": "a0.3_r4"
+        },
+        "objective_value": 0.01,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 0.0,
+          "resource_cost": 0.75,
+          "latency": 0.235,
+          "memory_overhead": 0.13,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 20,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=4, recovery_success=0.0, resource_cost=0.750",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 4,
+          "label": "a0.5_r4"
+        },
+        "objective_value": 0.01,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 0.0,
+          "resource_cost": 0.95,
+          "latency": 0.245,
+          "memory_overhead": 0.13,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 21,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=4, recovery_success=0.0, resource_cost=0.950",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 5,
+          "label": "a0.1_r5"
+        },
+        "objective_value": 0.0,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 0.0,
+          "resource_cost": 0.8,
+          "latency": 0.255,
+          "memory_overhead": 0.15,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 22,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=5, recovery_success=0.0, resource_cost=0.800",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 5,
+          "label": "a0.7_r5"
+        },
+        "objective_value": 0.0,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 0.0,
+          "resource_cost": 1.4,
+          "latency": 0.285,
+          "memory_overhead": 0.15,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 23,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=5, recovery_success=0.0, resource_cost=1.400",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 5,
+          "label": "a0.3_r5"
+        },
+        "objective_value": -0.04,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 0.0,
+          "resource_cost": 1.0,
+          "latency": 0.265,
+          "memory_overhead": 0.15,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 24,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=5, recovery_success=0.0, resource_cost=1.000",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 5,
+          "label": "a0.5_r5"
+        },
+        "objective_value": -0.04,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 0.0,
+          "resource_cost": 1.2,
+          "latency": 0.275,
+          "memory_overhead": 0.15,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 25,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=5, recovery_success=0.0, resource_cost=1.200",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      }
+    ],
+    "recommended_configuration": {
+      "activation_threshold": 0.9,
+      "recovery_min_evidence": 1,
+      "label": "a0.9_r1"
+    },
+    "summary": {
+      "candidate_count": 25,
+      "passed_constraint_count": 25,
+      "top_objective_value": 0.54,
+      "objective_span": 0.5800000000000001,
+      "recommended_rank": 1
+    }
+  },
+  "srp_report": {
+    "report_id": "phase_iii_a_round1_optimization_20260714T165136Z",
+    "status": "ranked",
+    "objective_weights": {
+      "semantic_quality_weight": 0.4,
+      "recovery_success_weight": 0.3,
+      "resource_cost_weight": 0.2,
+      "instability_penalty_weight": 0.1
+    },
+    "evaluations": [
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 1,
+          "label": "a0.9_r1"
+        },
+        "objective_value": 0.54,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 1.0,
+          "resource_cost": 0.6,
+          "latency": 0.175,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 1,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.600",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 1,
+          "label": "a0.1_r1"
+        },
+        "objective_value": 0.5,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": -0.2,
+          "latency": 0.135,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 2,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=1, recovery_success=1.0, resource_cost=-0.200",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 1,
+          "label": "a0.7_r1"
+        },
+        "objective_value": 0.5,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 1.0,
+          "resource_cost": 0.4,
+          "latency": 0.165,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 3,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.400",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.9,
+          "recovery_min_evidence": 2,
+          "label": "a0.9_r2"
+        },
+        "objective_value": 0.49,
+        "metric_breakdown": {
+          "semantic_quality": 0.9,
+          "recovery_success": 1.0,
+          "resource_cost": 0.85,
+          "latency": 0.205,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 4,
+        "tradeoff_summary": "activation=0.9, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.850",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 1,
+          "label": "a0.3_r1"
+        },
+        "objective_value": 0.46,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": 0.0,
+          "latency": 0.145,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 5,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.000",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 1,
+          "label": "a0.5_r1"
+        },
+        "objective_value": 0.46,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 1.0,
+          "resource_cost": 0.2,
+          "latency": 0.155,
+          "memory_overhead": 0.07,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 6,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=1, recovery_success=1.0, resource_cost=0.200",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.1,
+          "recovery_min_evidence": 2,
+          "label": "a0.1_r2"
+        },
+        "objective_value": 0.45,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": 0.05,
+          "latency": 0.165,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 7,
+        "tradeoff_summary": "activation=0.1, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.050",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.7,
+          "recovery_min_evidence": 2,
+          "label": "a0.7_r2"
+        },
+        "objective_value": 0.45,
+        "metric_breakdown": {
+          "semantic_quality": 0.7,
+          "recovery_success": 1.0,
+          "resource_cost": 0.65,
+          "latency": 0.195,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 8,
+        "tradeoff_summary": "activation=0.7, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.650",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.3,
+          "recovery_min_evidence": 2,
+          "label": "a0.3_r2"
+        },
+        "objective_value": 0.41,
+        "metric_breakdown": {
+          "semantic_quality": 0.4,
+          "recovery_success": 1.0,
+          "resource_cost": 0.25,
+          "latency": 0.175,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 9,
+        "tradeoff_summary": "activation=0.3, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.250",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      },
+      {
+        "candidate": {
+          "activation_threshold": 0.5,
+          "recovery_min_evidence": 2,
+          "label": "a0.5_r2"
+        },
+        "objective_value": 0.41,
+        "metric_breakdown": {
+          "semantic_quality": 0.5,
+          "recovery_success": 1.0,
+          "resource_cost": 0.45,
+          "latency": 0.185,
+          "memory_overhead": 0.09,
+          "instability_penalty": 0.0
+        },
+        "constraint_status": "passed",
+        "rank": 10,
+        "tradeoff_summary": "activation=0.5, recovery_min_evidence=2, recovery_success=1.0, resource_cost=0.450",
+        "notes": [
+          "constrained optimization round 1",
+          "candidate evaluated inside validated feasible region"
+        ]
+      }
+    ],
+    "recommended_configuration": {
+      "activation_threshold": 0.9,
+      "recovery_min_evidence": 1,
+      "label": "a0.9_r1"
+    },
+    "summary": {
+      "candidate_count": 10,
+      "passed_constraint_count": 10,
+      "top_objective_value": 0.54,
+      "objective_span": 0.13000000000000006,
+      "recommended_rank": 1,
+      "feasible_region": {
+        "parameter_ranges": {
+          "activation_threshold": {
+            "values": [
+              0.1,
+              0.3,
+              0.5,
+              0.7,
+              0.9
+            ],
+            "min": 0.1,
+            "max": 0.9
+          },
+          "recovery_min_evidence": {
+            "values": [
+              1,
+              2
+            ],
+            "min": 1,
+            "max": 2
+          }
+        },
+        "candidate_count": 25,
+        "feasible_candidate_count": 10,
+        "coverage": 0.4,
+        "sampling_method": "grid",
+        "generated_by": "phase_ii_boundary_v1",
+        "seed": 42,
+        "metadata": {
+          "source": "phase_ii_boundary_runner"
+        }
+      },
+      "baseline_candidate_count": 25,
+      "feasible_candidate_count": 10,
+      "search_reduction": 0.6
+    }
+  }
+}

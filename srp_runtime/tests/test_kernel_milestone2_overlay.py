@@ -7,6 +7,7 @@ from srp_runtime.commit import CommitManager
 from srp_runtime.decision import DecisionEngine
 from srp_runtime.event.runtime_event import RuntimeEvent
 from srp_runtime.kernel import RuntimeKernel, RuntimeKernelConfig, RuntimeServices
+from srp_runtime.config import RuntimeConfig
 from srp_runtime.semantic.state import SemanticState
 from srp_runtime.semantic.unit import SemanticUnit
 
@@ -121,7 +122,40 @@ class KernelMilestone2OverlayTests(unittest.TestCase):
         self.assertEqual(version_count_before, 2)
         self.assertEqual(checkpoint_count_before, 1)
 
+    def test_runtime_config_propagates_to_operators(self) -> None:
+        state = _build_state()
+        config = RuntimeKernelConfig(
+            runtime_config=RuntimeConfig(
+                activation_threshold=0.75,
+                preserve_evidence=False,
+                archive_relations=False,
+                recovery_min_evidence=1,
+            )
+        )
+        kernel = RuntimeKernel(state=state, config=config)
+
+        self.assertEqual(kernel._activation_operator.runtime_config.activation_threshold, 0.75)
+        self.assertFalse(kernel._forgetting_operator.runtime_config.preserve_evidence)
+        self.assertFalse(kernel._forgetting_operator.runtime_config.archive_relations)
+        self.assertEqual(kernel._recovery_operator.runtime_config.recovery_min_evidence, 1)
+
+        activation_event = RuntimeEvent(
+            event_id="event:config:1",
+            event_type="ActivationUpdate",
+            schema_version="1",
+            causal_parent=None,
+            actor="tester",
+            targets=["u1"],
+            payload={},
+            mutation_mode="update",
+            operator_name="ActivationUpdate",
+        )
+        transition = kernel.apply_event(activation_event)
+
+        self.assertTrue(transition.success)
+        self.assertEqual(transition.mutation_summary["runtime_activation_threshold"], 0.75)
+        self.assertEqual(kernel._state.units["u1"].activation, 0.75)
+
 
 if __name__ == "__main__":
     unittest.main()
-

@@ -1,0 +1,64 @@
+{
+  "status": "observed",
+  "observed_parameter_count": 4,
+  "repeat_count": 5,
+  "transition_count": 130,
+  "replay_success_rate": 1.0,
+  "state_consistency_rate": 1.0,
+  "mean_parameter_drift": 0.5538461538461539,
+  "median_parameter_drift": 0.375,
+  "std_parameter_drift": 0.6672162429024787,
+  "p25_parameter_drift": 0.09999999999999998,
+  "p75_parameter_drift": 0.7,
+  "max_parameter_drift": 3.0,
+  "axes": {
+    "activation_threshold": {
+      "observation_count": 85,
+      "replay_success_rate": 1.0,
+      "state_consistency_rate": 1.0,
+      "mean_parameter_drift": 0.3176470588235294,
+      "median_parameter_drift": 0.3,
+      "std_parameter_drift": 0.22158597884514544,
+      "p25_parameter_drift": 0.1,
+      "p75_parameter_drift": 0.49999999999999994,
+      "max_parameter_drift": 0.7,
+      "mean_runtime_event_count": 1.0
+    },
+    "recovery_min_evidence": {
+      "observation_count": 25,
+      "replay_success_rate": 1.0,
+      "state_consistency_rate": 1.0,
+      "mean_parameter_drift": 1.4,
+      "median_parameter_drift": 1.0,
+      "std_parameter_drift": 1.019803902718557,
+      "p25_parameter_drift": 1.0,
+      "p75_parameter_drift": 2.0,
+      "max_parameter_drift": 3.0,
+      "mean_runtime_event_count": 1.0
+    },
+    "preserve_evidence": {
+      "observation_count": 10,
+      "replay_success_rate": 1.0,
+      "state_consistency_rate": 1.0,
+      "mean_parameter_drift": 0.5,
+      "median_parameter_drift": 0.5,
+      "std_parameter_drift": 0.5,
+      "p25_parameter_drift": 0.0,
+      "p75_parameter_drift": 1.0,
+      "max_parameter_drift": 1.0,
+      "mean_runtime_event_count": 1.0
+    },
+    "archive_relations": {
+      "observation_count": 10,
+      "replay_success_rate": 1.0,
+      "state_consistency_rate": 1.0,
+      "mean_parameter_drift": 0.5,
+      "median_parameter_drift": 0.5,
+      "std_parameter_drift": 0.5,
+      "p25_parameter_drift": 0.0,
+      "p75_parameter_drift": 1.0,
+      "max_parameter_drift": 1.0,
+      "mean_runtime_event_count": 1.0
+    }
+  }
+}

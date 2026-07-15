@@ -1,0 +1,24 @@
+[
+  {
+    "case_id": "conv-26:qa:0",
+    "question": "When did Caroline go to the LGBTQ support group?",
+    "gold_answer": "7 May 2023",
+    "official_category": 2,
+    "question_labels": [
+      "temporal"
+    ],
+    "selection_bucket": "temporal",
+    "adapter_passed": true
+  },
+  {
+    "case_id": "conv-26:qa:1",
+    "question": "When did Melanie paint a sunrise?",
+    "gold_answer": "2022",
+    "official_category": 2,
+    "question_labels": [
+      "temporal"
+    ],
+    "selection_bucket": "temporal",
+    "adapter_passed": true
+  }
+]

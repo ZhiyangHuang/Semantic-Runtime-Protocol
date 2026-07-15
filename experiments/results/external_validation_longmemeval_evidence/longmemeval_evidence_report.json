@@ -1,0 +1,5458 @@
+{
+  "report_id": "longmemeval_external_validation_evidence_24",
+  "status": "evaluated",
+  "metric_schema": {
+    "schema_version": "external_validation_metrics_schema.v1",
+    "coverage_definition": "matched semantic units divided by original semantic units",
+    "drift_definition": "weighted combination of fact drift, relation drift, and hallucinated relation rate",
+    "benchmark_definition": "official benchmark score plus SRP diagnostic metrics",
+    "evidence_cost_definition": "scalar cost attached to the recovery case"
+  },
+  "records": [
+    {
+      "run": {
+        "run_id": "longmemeval_full_context_11_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "full_context",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "preference",
+              "content": "User prefers quiet rooms.",
+              "timestep": 0,
+              "salience": 0.7,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "updated_to",
+              "confidence": 0.95,
+              "timestep": 1,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "full_context",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 6.0,
+        "notes": [
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 6.0,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_sliding_window_11_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "sliding_window",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "sliding_window",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is that the new team sits near the window.",
+        "retrieved_unit_ids": [
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.48,
+        "notes": [
+          "windowed",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.166667,
+        "semantic_drift": 0.866667,
+        "fact_accuracy": 0.333333,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.145833,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 0.5,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.48,
+        "answer_accuracy": 0.104167,
+        "official_metric_score": 0.104167
+      },
+      "failure_categories": [
+        "representation_failure",
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": [
+        "answer mismatch"
+      ]
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_vector_rag_11_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "vector_rag",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "vector_rag",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.66,
+        "notes": [
+          "vector",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.5,
+        "semantic_drift": 0.6,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.666667,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.66,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_srp_11_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "srp",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "preference",
+              "content": "User prefers quiet rooms.",
+              "timestep": 0,
+              "salience": 0.7,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "updated_to",
+              "confidence": 0.95,
+              "timestep": 1,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "srp",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1",
+          "r0"
+        ],
+        "evidence_cost": 0.76,
+        "notes": [
+          "srp_governed",
+          "closure_validated",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.76,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_full_context_11_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "full_context",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "full_context",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 5.0,
+        "notes": [
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 5.0,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_sliding_window_11_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "sliding_window",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "sliding_window",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays after April.",
+        "retrieved_unit_ids": [
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.48,
+        "notes": [
+          "windowed",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.5,
+        "semantic_drift": 0.6,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.666667,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.48,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_vector_rag_11_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "vector_rag",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "vector_rag",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 0.78,
+        "notes": [
+          "vector",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.78,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_srp_11_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "srp",
+        "seed": 11,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "srp",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r1",
+          "r0"
+        ],
+        "evidence_cost": 0.62,
+        "notes": [
+          "srp_governed",
+          "closure_validated",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.62,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_full_context_23_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "full_context",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "preference",
+              "content": "User prefers quiet rooms.",
+              "timestep": 0,
+              "salience": 0.7,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "updated_to",
+              "confidence": 0.95,
+              "timestep": 1,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "full_context",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 6.0,
+        "notes": [
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 6.0,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_sliding_window_23_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "sliding_window",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "sliding_window",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is that the new team sits near the window.",
+        "retrieved_unit_ids": [
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.48,
+        "notes": [
+          "windowed",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.166667,
+        "semantic_drift": 0.866667,
+        "fact_accuracy": 0.333333,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.145833,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 0.5,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.48,
+        "answer_accuracy": 0.104167,
+        "official_metric_score": 0.104167
+      },
+      "failure_categories": [
+        "representation_failure",
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": [
+        "answer mismatch"
+      ]
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_vector_rag_23_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "vector_rag",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "vector_rag",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.66,
+        "notes": [
+          "vector",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.5,
+        "semantic_drift": 0.6,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.666667,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.66,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_srp_23_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "srp",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "preference",
+              "content": "User prefers quiet rooms.",
+              "timestep": 0,
+              "salience": 0.7,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "updated_to",
+              "confidence": 0.95,
+              "timestep": 1,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "srp",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1",
+          "r0"
+        ],
+        "evidence_cost": 0.76,
+        "notes": [
+          "srp_governed",
+          "closure_validated",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.76,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_full_context_23_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "full_context",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "full_context",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 5.0,
+        "notes": [
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 5.0,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_sliding_window_23_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "sliding_window",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "sliding_window",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays after April.",
+        "retrieved_unit_ids": [
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.48,
+        "notes": [
+          "windowed",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.5,
+        "semantic_drift": 0.6,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.666667,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.48,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_vector_rag_23_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "vector_rag",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "vector_rag",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 0.78,
+        "notes": [
+          "vector",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.78,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_srp_23_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "srp",
+        "seed": 23,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "srp",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r1",
+          "r0"
+        ],
+        "evidence_cost": 0.62,
+        "notes": [
+          "srp_governed",
+          "closure_validated",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.62,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_full_context_37_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "full_context",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "preference",
+              "content": "User prefers quiet rooms.",
+              "timestep": 0,
+              "salience": 0.7,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "updated_to",
+              "confidence": 0.95,
+              "timestep": 1,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "full_context",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 6.0,
+        "notes": [
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 6.0,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_sliding_window_37_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "sliding_window",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "sliding_window",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is that the new team sits near the window.",
+        "retrieved_unit_ids": [
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.48,
+        "notes": [
+          "windowed",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.166667,
+        "semantic_drift": 0.866667,
+        "fact_accuracy": 0.333333,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.145833,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 0.5,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.48,
+        "answer_accuracy": 0.104167,
+        "official_metric_score": 0.104167
+      },
+      "failure_categories": [
+        "representation_failure",
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": [
+        "answer mismatch"
+      ]
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_vector_rag_37_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "vector_rag",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "vector_rag",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.66,
+        "notes": [
+          "vector",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.5,
+        "semantic_drift": 0.6,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.666667,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.66,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_srp_37_preference_revision",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "srp",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "preference_revision",
+          "query": "What is the user's current workspace preference?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "preference",
+                "content": "User prefers quiet rooms.",
+                "timestep": 0,
+                "salience": 0.7,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u3",
+                "kind": "fact",
+                "content": "The new team sits near the window.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u2",
+                "target_id": "u3",
+                "relation_type": "contextualized_by",
+                "confidence": 0.7,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "preference",
+                "content": "User now prefers standing desks.",
+                "timestep": 1,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "fact",
+                "content": "User changed teams last month.",
+                "timestep": 1,
+                "salience": 0.5,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "updated_to",
+                "confidence": 0.95,
+                "timestep": 1,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "standing desks",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "preference",
+              "content": "User prefers quiet rooms.",
+              "timestep": 0,
+              "salience": 0.7,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "preference",
+              "content": "User now prefers standing desks.",
+              "timestep": 1,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "fact",
+              "content": "User changed teams last month.",
+              "timestep": 1,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u3",
+              "kind": "fact",
+              "content": "The new team sits near the window.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u2",
+              "target_id": "u3",
+              "relation_type": "contextualized_by",
+              "confidence": 0.7,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "updated_to",
+              "confidence": 0.95,
+              "timestep": 1,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "srp",
+            "query": "What is the user's current workspace preference?"
+          }
+        },
+        "predicted_answer": "The user's current workspace preference is standing desks.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2",
+          "u3"
+        ],
+        "retrieved_relation_ids": [
+          "r1",
+          "r0"
+        ],
+        "evidence_cost": 0.76,
+        "notes": [
+          "srp_governed",
+          "closure_validated",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.76,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_full_context_37_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "full_context",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "full_context",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 5.0,
+        "notes": [
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 5.0,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_sliding_window_37_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "sliding_window",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "sliding_window",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays after April.",
+        "retrieved_unit_ids": [
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r1"
+        ],
+        "evidence_cost": 0.48,
+        "notes": [
+          "windowed",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 0.5,
+        "semantic_drift": 0.6,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 0.0,
+        "recovery_accuracy": 0.666667,
+        "closure_accuracy": 0.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 1.0,
+        "evidence_cost": 0.48,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "relation_failure",
+        "evidence_failure",
+        "domain_mismatch"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_vector_rag_37_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "vector_rag",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "vector_rag",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r0",
+          "r1"
+        ],
+        "evidence_cost": 0.78,
+        "notes": [
+          "vector",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.78,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    },
+    {
+      "run": {
+        "run_id": "longmemeval_srp_37_contradiction_resolution",
+        "benchmark_name": "longmemeval",
+        "baseline_name": "srp",
+        "seed": 37,
+        "case": {
+          "benchmark_name": "longmemeval",
+          "case_id": "contradiction_resolution",
+          "query": "Is the user still available on Mondays?",
+          "source_state": {
+            "units": [
+              {
+                "unit_id": "u0",
+                "kind": "fact",
+                "content": "User was available on Mondays in March.",
+                "timestep": 0,
+                "salience": 0.5,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              },
+              {
+                "relation_id": "r1",
+                "source_id": "u1",
+                "target_id": "u2",
+                "relation_type": "causes",
+                "confidence": 0.6,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "target_state": {
+            "units": [
+              {
+                "unit_id": "u1",
+                "kind": "fact",
+                "content": "User is no longer available on Mondays after April.",
+                "timestep": 2,
+                "salience": 1.0,
+                "metadata": {}
+              },
+              {
+                "unit_id": "u2",
+                "kind": "event",
+                "content": "Project meetings moved to Tuesday.",
+                "timestep": 2,
+                "salience": 0.4,
+                "metadata": {}
+              }
+            ],
+            "relations": [
+              {
+                "relation_id": "r0",
+                "source_id": "u0",
+                "target_id": "u1",
+                "relation_type": "replaced_by",
+                "confidence": 0.9,
+                "timestep": 2,
+                "metadata": {}
+              }
+            ],
+            "metadata": {}
+          },
+          "expected_answer": "no",
+          "official_metric_name": "task_accuracy",
+          "focus_unit_ids": [
+            "u1",
+            "u2"
+          ],
+          "focus_relation_ids": [
+            "r0"
+          ],
+          "metadata": {}
+        }
+      },
+      "response": {
+        "recovered_state": {
+          "units": [
+            {
+              "unit_id": "u0",
+              "kind": "fact",
+              "content": "User was available on Mondays in March.",
+              "timestep": 0,
+              "salience": 0.5,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u1",
+              "kind": "fact",
+              "content": "User is no longer available on Mondays after April.",
+              "timestep": 2,
+              "salience": 1.0,
+              "metadata": {}
+            },
+            {
+              "unit_id": "u2",
+              "kind": "event",
+              "content": "Project meetings moved to Tuesday.",
+              "timestep": 2,
+              "salience": 0.4,
+              "metadata": {}
+            }
+          ],
+          "relations": [
+            {
+              "relation_id": "r1",
+              "source_id": "u1",
+              "target_id": "u2",
+              "relation_type": "causes",
+              "confidence": 0.6,
+              "timestep": 2,
+              "metadata": {}
+            },
+            {
+              "relation_id": "r0",
+              "source_id": "u0",
+              "target_id": "u1",
+              "relation_type": "replaced_by",
+              "confidence": 0.9,
+              "timestep": 2,
+              "metadata": {}
+            }
+          ],
+          "metadata": {
+            "baseline": "srp",
+            "query": "Is the user still available on Mondays?"
+          }
+        },
+        "predicted_answer": "The user is no longer available on Mondays.",
+        "retrieved_unit_ids": [
+          "u0",
+          "u1",
+          "u2"
+        ],
+        "retrieved_relation_ids": [
+          "r1",
+          "r0"
+        ],
+        "evidence_cost": 0.62,
+        "notes": [
+          "srp_governed",
+          "closure_validated",
+          "shared_generation_backend",
+          "generation_model:Qwen/Qwen3-4B-AWQ",
+          "generation_endpoint:http://172.25.253.78:8000"
+        ]
+      },
+      "metrics": {
+        "semantic_coverage": 1.0,
+        "semantic_drift": 0.1,
+        "fact_accuracy": 1.0,
+        "relation_accuracy": 1.0,
+        "recovery_accuracy": 1.0,
+        "closure_accuracy": 1.0,
+        "neighborhood_completeness": 1.0,
+        "hallucinated_relation_rate": 0.5,
+        "evidence_cost": 0.62,
+        "answer_accuracy": 1.0,
+        "official_metric_score": 1.0
+      },
+      "failure_categories": [
+        "evidence_failure"
+      ],
+      "failure_notes": []
+    }
+  ],
+  "summary": {
+    "semantic_coverage": 0.770833,
+    "semantic_drift": 0.320833,
+    "fact_accuracy": 0.916667,
+    "relation_accuracy": 0.625,
+    "recovery_accuracy": 0.809896,
+    "closure_accuracy": 0.625,
+    "neighborhood_completeness": 0.9375,
+    "hallucinated_relation_rate": 0.6875,
+    "evidence_cost": 1.8475,
+    "answer_accuracy": 0.888021,
+    "official_metric_score": 0.888021,
+    "case_count": 24
+  },
+  "statistical_summary": {
+    "overall": {
+      "semantic_coverage": {
+        "mean": 0.770833,
+        "std": 0.311108,
+        "ci95": 0.124469,
+        "count": 24.0
+      },
+      "semantic_drift": {
+        "mean": 0.320833,
+        "std": 0.295305,
+        "ci95": 0.118147,
+        "count": 24.0
+      },
+      "fact_accuracy": {
+        "mean": 0.916667,
+        "std": 0.220479,
+        "ci95": 0.08821,
+        "count": 24.0
+      },
+      "relation_accuracy": {
+        "mean": 0.625,
+        "std": 0.484123,
+        "ci95": 0.19369,
+        "count": 24.0
+      },
+      "recovery_accuracy": {
+        "mean": 0.809896,
+        "std": 0.287816,
+        "ci95": 0.115151,
+        "count": 24.0
+      },
+      "closure_accuracy": {
+        "mean": 0.625,
+        "std": 0.484123,
+        "ci95": 0.19369,
+        "count": 24.0
+      },
+      "neighborhood_completeness": {
+        "mean": 0.9375,
+        "std": 0.165359,
+        "ci95": 0.066158,
+        "count": 24.0
+      },
+      "hallucinated_relation_rate": {
+        "mean": 0.6875,
+        "std": 0.242061,
+        "ci95": 0.096845,
+        "count": 24.0
+      },
+      "evidence_cost": {
+        "mean": 1.8475,
+        "std": 2.126051,
+        "ci95": 0.850598,
+        "count": 24.0
+      },
+      "answer_accuracy": {
+        "mean": 0.888021,
+        "std": 0.296269,
+        "ci95": 0.118532,
+        "count": 24.0
+      },
+      "official_metric_score": {
+        "mean": 0.888021,
+        "std": 0.296269,
+        "ci95": 0.118532,
+        "count": 24.0
+      }
+    },
+    "benchmark": {
+      "longmemeval": {
+        "semantic_coverage": {
+          "mean": 0.770833,
+          "std": 0.311108,
+          "ci95": 0.124469,
+          "count": 24.0
+        },
+        "semantic_drift": {
+          "mean": 0.320833,
+          "std": 0.295305,
+          "ci95": 0.118147,
+          "count": 24.0
+        },
+        "fact_accuracy": {
+          "mean": 0.916667,
+          "std": 0.220479,
+          "ci95": 0.08821,
+          "count": 24.0
+        },
+        "relation_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.19369,
+          "count": 24.0
+        },
+        "recovery_accuracy": {
+          "mean": 0.809896,
+          "std": 0.287816,
+          "ci95": 0.115151,
+          "count": 24.0
+        },
+        "closure_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.19369,
+          "count": 24.0
+        },
+        "neighborhood_completeness": {
+          "mean": 0.9375,
+          "std": 0.165359,
+          "ci95": 0.066158,
+          "count": 24.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.6875,
+          "std": 0.242061,
+          "ci95": 0.096845,
+          "count": 24.0
+        },
+        "evidence_cost": {
+          "mean": 1.8475,
+          "std": 2.126051,
+          "ci95": 0.850598,
+          "count": 24.0
+        },
+        "answer_accuracy": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.118532,
+          "count": 24.0
+        },
+        "official_metric_score": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.118532,
+          "count": 24.0
+        }
+      }
+    },
+    "baseline": {
+      "full_context": {
+        "semantic_coverage": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "semantic_drift": {
+          "mean": 0.1,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "fact_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "relation_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "recovery_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "closure_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "neighborhood_completeness": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.5,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "evidence_cost": {
+          "mean": 5.5,
+          "std": 0.5,
+          "ci95": 0.400083,
+          "count": 6.0
+        },
+        "answer_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "official_metric_score": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        }
+      },
+      "sliding_window": {
+        "semantic_coverage": {
+          "mean": 0.333334,
+          "std": 0.166666,
+          "ci95": 0.133361,
+          "count": 6.0
+        },
+        "semantic_drift": {
+          "mean": 0.733333,
+          "std": 0.133333,
+          "ci95": 0.106689,
+          "count": 6.0
+        },
+        "fact_accuracy": {
+          "mean": 0.666667,
+          "std": 0.333334,
+          "ci95": 0.266722,
+          "count": 6.0
+        },
+        "relation_accuracy": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "recovery_accuracy": {
+          "mean": 0.40625,
+          "std": 0.260417,
+          "ci95": 0.208377,
+          "count": 6.0
+        },
+        "closure_accuracy": {
+          "mean": 0.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "neighborhood_completeness": {
+          "mean": 0.75,
+          "std": 0.25,
+          "ci95": 0.200042,
+          "count": 6.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "evidence_cost": {
+          "mean": 0.48,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "answer_accuracy": {
+          "mean": 0.552083,
+          "std": 0.447916,
+          "ci95": 0.358408,
+          "count": 6.0
+        },
+        "official_metric_score": {
+          "mean": 0.552083,
+          "std": 0.447916,
+          "ci95": 0.358408,
+          "count": 6.0
+        }
+      },
+      "vector_rag": {
+        "semantic_coverage": {
+          "mean": 0.75,
+          "std": 0.25,
+          "ci95": 0.200042,
+          "count": 6.0
+        },
+        "semantic_drift": {
+          "mean": 0.35,
+          "std": 0.25,
+          "ci95": 0.200042,
+          "count": 6.0
+        },
+        "fact_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "relation_accuracy": {
+          "mean": 0.5,
+          "std": 0.5,
+          "ci95": 0.400083,
+          "count": 6.0
+        },
+        "recovery_accuracy": {
+          "mean": 0.833333,
+          "std": 0.166666,
+          "ci95": 0.133361,
+          "count": 6.0
+        },
+        "closure_accuracy": {
+          "mean": 0.5,
+          "std": 0.5,
+          "ci95": 0.400083,
+          "count": 6.0
+        },
+        "neighborhood_completeness": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.75,
+          "std": 0.25,
+          "ci95": 0.200042,
+          "count": 6.0
+        },
+        "evidence_cost": {
+          "mean": 0.72,
+          "std": 0.06,
+          "ci95": 0.04801,
+          "count": 6.0
+        },
+        "answer_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "official_metric_score": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        }
+      },
+      "srp": {
+        "semantic_coverage": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "semantic_drift": {
+          "mean": 0.1,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "fact_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "relation_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "recovery_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "closure_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "neighborhood_completeness": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.5,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "evidence_cost": {
+          "mean": 0.69,
+          "std": 0.07,
+          "ci95": 0.056012,
+          "count": 6.0
+        },
+        "answer_accuracy": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        },
+        "official_metric_score": {
+          "mean": 1.0,
+          "std": 0.0,
+          "ci95": 0.0,
+          "count": 6.0
+        }
+      }
+    },
+    "seed": {
+      "11": {
+        "semantic_coverage": {
+          "mean": 0.770833,
+          "std": 0.311108,
+          "ci95": 0.215587,
+          "count": 8.0
+        },
+        "semantic_drift": {
+          "mean": 0.320833,
+          "std": 0.295305,
+          "ci95": 0.204636,
+          "count": 8.0
+        },
+        "fact_accuracy": {
+          "mean": 0.916667,
+          "std": 0.220479,
+          "ci95": 0.152784,
+          "count": 8.0
+        },
+        "relation_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.33548,
+          "count": 8.0
+        },
+        "recovery_accuracy": {
+          "mean": 0.809896,
+          "std": 0.287816,
+          "ci95": 0.199447,
+          "count": 8.0
+        },
+        "closure_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.33548,
+          "count": 8.0
+        },
+        "neighborhood_completeness": {
+          "mean": 0.9375,
+          "std": 0.165359,
+          "ci95": 0.114588,
+          "count": 8.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.6875,
+          "std": 0.242061,
+          "ci95": 0.16774,
+          "count": 8.0
+        },
+        "evidence_cost": {
+          "mean": 1.8475,
+          "std": 2.126051,
+          "ci95": 1.473278,
+          "count": 8.0
+        },
+        "answer_accuracy": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.205304,
+          "count": 8.0
+        },
+        "official_metric_score": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.205304,
+          "count": 8.0
+        }
+      },
+      "23": {
+        "semantic_coverage": {
+          "mean": 0.770833,
+          "std": 0.311108,
+          "ci95": 0.215587,
+          "count": 8.0
+        },
+        "semantic_drift": {
+          "mean": 0.320833,
+          "std": 0.295305,
+          "ci95": 0.204636,
+          "count": 8.0
+        },
+        "fact_accuracy": {
+          "mean": 0.916667,
+          "std": 0.220479,
+          "ci95": 0.152784,
+          "count": 8.0
+        },
+        "relation_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.33548,
+          "count": 8.0
+        },
+        "recovery_accuracy": {
+          "mean": 0.809896,
+          "std": 0.287816,
+          "ci95": 0.199447,
+          "count": 8.0
+        },
+        "closure_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.33548,
+          "count": 8.0
+        },
+        "neighborhood_completeness": {
+          "mean": 0.9375,
+          "std": 0.165359,
+          "ci95": 0.114588,
+          "count": 8.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.6875,
+          "std": 0.242061,
+          "ci95": 0.16774,
+          "count": 8.0
+        },
+        "evidence_cost": {
+          "mean": 1.8475,
+          "std": 2.126051,
+          "ci95": 1.473278,
+          "count": 8.0
+        },
+        "answer_accuracy": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.205304,
+          "count": 8.0
+        },
+        "official_metric_score": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.205304,
+          "count": 8.0
+        }
+      },
+      "37": {
+        "semantic_coverage": {
+          "mean": 0.770833,
+          "std": 0.311108,
+          "ci95": 0.215587,
+          "count": 8.0
+        },
+        "semantic_drift": {
+          "mean": 0.320833,
+          "std": 0.295305,
+          "ci95": 0.204636,
+          "count": 8.0
+        },
+        "fact_accuracy": {
+          "mean": 0.916667,
+          "std": 0.220479,
+          "ci95": 0.152784,
+          "count": 8.0
+        },
+        "relation_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.33548,
+          "count": 8.0
+        },
+        "recovery_accuracy": {
+          "mean": 0.809896,
+          "std": 0.287816,
+          "ci95": 0.199447,
+          "count": 8.0
+        },
+        "closure_accuracy": {
+          "mean": 0.625,
+          "std": 0.484123,
+          "ci95": 0.33548,
+          "count": 8.0
+        },
+        "neighborhood_completeness": {
+          "mean": 0.9375,
+          "std": 0.165359,
+          "ci95": 0.114588,
+          "count": 8.0
+        },
+        "hallucinated_relation_rate": {
+          "mean": 0.6875,
+          "std": 0.242061,
+          "ci95": 0.16774,
+          "count": 8.0
+        },
+        "evidence_cost": {
+          "mean": 1.8475,
+          "std": 2.126051,
+          "ci95": 1.473278,
+          "count": 8.0
+        },
+        "answer_accuracy": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.205304,
+          "count": 8.0
+        },
+        "official_metric_score": {
+          "mean": 0.888021,
+          "std": 0.296269,
+          "ci95": 0.205304,
+          "count": 8.0
+        }
+      }
+    }
+  },
+  "benchmark_summary": {
+    "longmemeval": {
+      "semantic_coverage": 0.770833,
+      "semantic_drift": 0.320833,
+      "fact_accuracy": 0.916667,
+      "relation_accuracy": 0.625,
+      "recovery_accuracy": 0.809896,
+      "closure_accuracy": 0.625,
+      "neighborhood_completeness": 0.9375,
+      "hallucinated_relation_rate": 0.6875,
+      "evidence_cost": 1.8475,
+      "answer_accuracy": 0.888021,
+      "official_metric_score": 0.888021,
+      "case_count": 24
+    }
+  },
+  "baseline_summary": {
+    "full_context": {
+      "semantic_coverage": 1.0,
+      "semantic_drift": 0.1,
+      "fact_accuracy": 1.0,
+      "relation_accuracy": 1.0,
+      "recovery_accuracy": 1.0,
+      "closure_accuracy": 1.0,
+      "neighborhood_completeness": 1.0,
+      "hallucinated_relation_rate": 0.5,
+      "evidence_cost": 5.5,
+      "answer_accuracy": 1.0,
+      "official_metric_score": 1.0,
+      "case_count": 6
+    },
+    "sliding_window": {
+      "semantic_coverage": 0.333334,
+      "semantic_drift": 0.733333,
+      "fact_accuracy": 0.666666,
+      "relation_accuracy": 0.0,
+      "recovery_accuracy": 0.40625,
+      "closure_accuracy": 0.0,
+      "neighborhood_completeness": 0.75,
+      "hallucinated_relation_rate": 1.0,
+      "evidence_cost": 0.48,
+      "answer_accuracy": 0.552084,
+      "official_metric_score": 0.552084,
+      "case_count": 6
+    },
+    "vector_rag": {
+      "semantic_coverage": 0.75,
+      "semantic_drift": 0.35,
+      "fact_accuracy": 1.0,
+      "relation_accuracy": 0.5,
+      "recovery_accuracy": 0.833334,
+      "closure_accuracy": 0.5,
+      "neighborhood_completeness": 1.0,
+      "hallucinated_relation_rate": 0.75,
+      "evidence_cost": 0.72,
+      "answer_accuracy": 1.0,
+      "official_metric_score": 1.0,
+      "case_count": 6
+    },
+    "srp": {
+      "semantic_coverage": 1.0,
+      "semantic_drift": 0.1,
+      "fact_accuracy": 1.0,
+      "relation_accuracy": 1.0,
+      "recovery_accuracy": 1.0,
+      "closure_accuracy": 1.0,
+      "neighborhood_completeness": 1.0,
+      "hallucinated_relation_rate": 0.5,
+      "evidence_cost": 0.69,
+      "answer_accuracy": 1.0,
+      "official_metric_score": 1.0,
+      "case_count": 6
+    }
+  },
+  "seed_summary": {
+    "11": {
+      "semantic_coverage": 0.770833,
+      "semantic_drift": 0.320833,
+      "fact_accuracy": 0.916667,
+      "relation_accuracy": 0.625,
+      "recovery_accuracy": 0.809896,
+      "closure_accuracy": 0.625,
+      "neighborhood_completeness": 0.9375,
+      "hallucinated_relation_rate": 0.6875,
+      "evidence_cost": 1.8475,
+      "answer_accuracy": 0.888021,
+      "official_metric_score": 0.888021,
+      "case_count": 8
+    },
+    "23": {
+      "semantic_coverage": 0.770833,
+      "semantic_drift": 0.320833,
+      "fact_accuracy": 0.916667,
+      "relation_accuracy": 0.625,
+      "recovery_accuracy": 0.809896,
+      "closure_accuracy": 0.625,
+      "neighborhood_completeness": 0.9375,
+      "hallucinated_relation_rate": 0.6875,
+      "evidence_cost": 1.8475,
+      "answer_accuracy": 0.888021,
+      "official_metric_score": 0.888021,
+      "case_count": 8
+    },
+    "37": {
+      "semantic_coverage": 0.770833,
+      "semantic_drift": 0.320833,
+      "fact_accuracy": 0.916667,
+      "relation_accuracy": 0.625,
+      "recovery_accuracy": 0.809896,
+      "closure_accuracy": 0.625,
+      "neighborhood_completeness": 0.9375,
+      "hallucinated_relation_rate": 0.6875,
+      "evidence_cost": 1.8475,
+      "answer_accuracy": 0.888021,
+      "official_metric_score": 0.888021,
+      "case_count": 8
+    }
+  },
+  "pairwise_summary": {
+    "longmemeval": {
+      "full_context": {
+        "srp_minus_baseline_coverage": 0.0,
+        "srp_minus_baseline_drift": 0.0,
+        "srp_minus_baseline_relation_accuracy": 0.0,
+        "srp_minus_baseline_cost": -4.81
+      },
+      "sliding_window": {
+        "srp_minus_baseline_coverage": 0.666666,
+        "srp_minus_baseline_drift": 0.633333,
+        "srp_minus_baseline_relation_accuracy": 1.0,
+        "srp_minus_baseline_cost": 0.21
+      },
+      "vector_rag": {
+        "srp_minus_baseline_coverage": 0.25,
+        "srp_minus_baseline_drift": 0.25,
+        "srp_minus_baseline_relation_accuracy": 0.5,
+        "srp_minus_baseline_cost": -0.03
+      }
+    }
+  },
+  "failure_summary": {
+    "counts": {
+      "domain_mismatch": 9,
+      "evidence_failure": 24,
+      "relation_failure": 9,
+      "representation_failure": 3
+    },
+    "examples": {
+      "domain_mismatch": [
+        "longmemeval:sliding_window:preference_revision",
+        "longmemeval:vector_rag:preference_revision",
+        "longmemeval:sliding_window:contradiction_resolution"
+      ],
+      "evidence_failure": [
+        "longmemeval:full_context:preference_revision",
+        "longmemeval:sliding_window:preference_revision",
+        "longmemeval:vector_rag:preference_revision"
+      ],
+      "relation_failure": [
+        "longmemeval:sliding_window:preference_revision",
+        "longmemeval:vector_rag:preference_revision",
+        "longmemeval:sliding_window:contradiction_resolution"
+      ],
+      "representation_failure": [
+        "longmemeval:sliding_window:preference_revision",
+        "longmemeval:sliding_window:preference_revision",
+        "longmemeval:sliding_window:preference_revision"
+      ]
+    }
+  }
+}
