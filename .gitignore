@@ -1,0 +1,15 @@
+.env
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+tmp/
+temp/
+debug/
+srp_experiment/tmp/
+srp_experiment/data/longbench_v2/tasks.json
+experiments/results/**/raw_*.jsonl
+experiments/results/**/raw_*.json
+experiments/results/**/dump_*.jsonl
+experiments/results/**/dump_*.json
