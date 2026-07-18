@@ -2,6 +2,10 @@
 
 This directory contains the paper-facing SRP documents.
 
+Primary source hierarchy:
+
+- [Paper Source Hierarchy](../audit/PAPER_SOURCE_HIERARCHY.md)
+
 Recommended reading order:
 
 1. [SRP Main Results Summary V1](SRP_MAIN_RESULTS_SUMMARY_V1.md)
@@ -14,3 +18,9 @@ Recommended reading order:
    - [SRP Discussion V1](SRP_DISCUSSION_V1.md)
    - [SRP Limitations V1](SRP_LIMITATIONS_V1.md)
    - [SRP Conclusion V1](SRP_CONCLUSION_V1.md)
+
+Source role note:
+
+- `SRP_ARXIV_DRAFT_V1.md` is the primary manuscript source
+- `SRP_PAPER_FINAL_V1.md` is the submission snapshot
+- `SRP_RELATED_WORK_V1.md` is a supporting reconstruction document
