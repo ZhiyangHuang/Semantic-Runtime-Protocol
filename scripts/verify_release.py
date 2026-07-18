@@ -10,7 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE_SIZE = 100 * 1024 * 1024
 
-REQUIRED_PATHS = [
+CORE_REQUIRED_PATHS = [
     "README.md",
     "ARTIFACT_README.md",
     "paper/README.md",
@@ -36,6 +36,11 @@ REQUIRED_PATHS = [
     "configs/external_validation_locomo_manual_sanity.env",
     "configs/external_validation_locomo_mvp.env",
     "configs/external_validation_locomo_mvp_calibration_aware.env",
+]
+
+# Legacy evidence files are still required for the release snapshot, but they are
+# checked separately so the runtime boundary stays explicit.
+LEGACY_EVIDENCE_PATHS = [
     "srp_experiment/local_llm.py",
     "srp_experiment/run_local_diagnostics.py",
     "srp_experiment/data/longbench_v2/import_longbench_v2.py",
@@ -45,7 +50,8 @@ REQUIRED_PATHS = [
 
 
 def main() -> int:
-    missing = [rel for rel in REQUIRED_PATHS if not (ROOT / rel).exists()]
+    missing_core = [rel for rel in CORE_REQUIRED_PATHS if not (ROOT / rel).exists()]
+    missing_legacy = [rel for rel in LEGACY_EVIDENCE_PATHS if not (ROOT / rel).exists()]
 
     oversized: list[tuple[str, int]] = []
     for path in ROOT.rglob("*"):
@@ -64,9 +70,14 @@ def main() -> int:
 
     oversized.sort(key=lambda item: item[1], reverse=True)
 
-    if missing:
-        print("Missing required release files:")
-        for rel in missing:
+    if missing_core:
+        print("Missing core runtime files:")
+        for rel in missing_core:
+            print(f"  - {rel}")
+
+    if missing_legacy:
+        print("Missing legacy evidence files:")
+        for rel in missing_legacy:
             print(f"  - {rel}")
 
     if oversized:
@@ -76,7 +87,7 @@ def main() -> int:
         if len(oversized) > 25:
             print(f"  ... and {len(oversized) - 25} more")
 
-    if missing or oversized:
+    if missing_core or missing_legacy or oversized:
         return 1
 
     print("Release verification passed.")

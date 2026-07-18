@@ -7,7 +7,7 @@ This repository is organized as an arXiv-facing artifact branch:
 - `paper/` holds the paper-facing manuscript sections and results summary.
 - `audit/` holds the frozen evidence, calibration, scorer, and promotion documents.
 - `srp_runtime/` holds the core runtime implementation.
-- `srp_experiment/` holds the legacy measurement and runtime evidence stack.
+- `srp_experiment/` holds the legacy measurement and runtime evidence stack; it is retained as a historical evidence layer, not the primary runtime implementation.
 - `experiments/` holds reproducible experiment and evaluation entrypoints.
 - `configs/` holds frozen runtime and experiment configurations.
 - `scripts/` holds release tooling.

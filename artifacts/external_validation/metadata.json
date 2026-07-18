@@ -1,0 +1,56 @@
+{
+  "artifact_id": "external_validation_v1",
+  "artifact_name": "external_validation",
+  "generated_at": "2026-07-17T20:32:43.0857797-04:00",
+  "generated_by": "artifact_promotion_v1",
+  "source": {
+    "experiment": "external_validation",
+    "source_root": "experiments/results/external_validation",
+    "source_files": [
+      "external_validation_report.md",
+      "external_validation_summary.json"
+    ],
+    "source_report_generated_at": "2026-07-14T17:45:49.615438+00:00",
+    "source_metadata_present": false,
+    "source_config_path": "configs/external_validation.env",
+    "git_commit": "23535e8d21331fe5421f00f90eb0209dca937425"
+  },
+  "runtime_contract": {
+    "phase": "external_validation",
+    "benchmark_names": [
+      "locomo",
+      "longmemeval",
+      "tgb2"
+    ],
+    "baseline_names": [
+      "full_context",
+      "sliding_window",
+      "summarization_memory",
+      "vector_rag",
+      "graph_memory",
+      "mem0",
+      "letta",
+      "graphiti",
+      "memmachine",
+      "srp"
+    ],
+    "seeds": [
+      11,
+      23,
+      37
+    ],
+    "data_root": "",
+    "output_dir": "experiments/results/external_validation"
+  },
+  "claim_linkage": [
+    "reproducible evaluation under frozen contracts",
+    "paper-facing external validation support",
+    "claim-evidence traceability for external validation"
+  ],
+  "evidence_status": "release evidence",
+  "provenance_notes": [
+    "The source results directory did not include a metadata.json file.",
+    "This artifact metadata was curated from the frozen report, summary, and configuration file.",
+    "The original experiment outputs remain unchanged under experiments/results/external_validation."
+  ]
+}

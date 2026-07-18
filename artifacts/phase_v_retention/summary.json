@@ -1,0 +1,26 @@
+{
+  "case_count": 4,
+  "mean_semantic_coverage": 0.8375,
+  "mean_semantic_drift": 0.1985,
+  "mean_fact_accuracy": 0.9375,
+  "mean_relation_accuracy": 0.625,
+  "mean_recovery_accuracy": 0.766667,
+  "mean_fact_drift": 0.0625,
+  "mean_relation_drift": 0.375,
+  "mean_confidence_drift": 0.01625,
+  "mean_evidence_cost": 1.375,
+  "total_missing_count": 3,
+  "total_hallucination_count": 2,
+  "coverage_min": 0.75,
+  "coverage_max": 1.0,
+  "drift_min": 0.0,
+  "drift_max": 0.45,
+  "recovery_accuracy_min": 0.6,
+  "recovery_accuracy_max": 1.0,
+  "category_counts": {
+    "exact_preservation": 1,
+    "fact_loss": 1,
+    "relation_drift": 1,
+    "boundary_hallucination": 1
+  }
+}
