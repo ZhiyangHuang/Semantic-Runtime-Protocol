@@ -14,7 +14,7 @@ It is a static review artifact for RC freeze, not a dynamic validator.
 | Gate | Check | Draft Location | Evidence / Reference | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
 | Gate 0 | `verify_release.py` passed | Release tooling | `scripts/verify_release.py` | PASS | Already validated in the current release flow. |
-| Gate 0 | Claim-evidence map updated | `audit/SRP_CLAIM_EVIDENCE_MAP_V1.md` | Claim ledger | PASS | Current release branch has an explicit claim ledger. |
+| Gate 0 | Claim-evidence map updated | `audit/CLAIM_EVIDENCE_MAP.md` | Claim ledger | PASS | Current release branch has an explicit claim ledger. |
 | Gate 0 | Review report regenerated | `audit/SRP_REVIEWABLE_REPORT_V1.md` | Review report | PASS | Review artifact exists for the current snapshot. |
 | Gate 0 | Runtime contract frozen | `paper/SRP_MAIN_RESULTS_SUMMARY_V1.md`, `audit/SRP_REVIEWABLE_REPORT_V1.md` | Frozen evaluation scope | PASS | Current paper language consistently uses the frozen-contract framing. |
 | Gate 0 | Paper references only frozen artifact identifiers | `paper/SRP_ARXIV_DRAFT_V1.md` Appendix A | Artifact identifiers | PASS | Paper-facing artifact names align with the frozen claim ledger and review report. |
@@ -52,7 +52,7 @@ It is a static review artifact for RC freeze, not a dynamic validator.
 | Gate 7 | No legacy phrasing like `memory optimization` in appendix | Appendix A | Appendix text | PASS | No such phrase appears in the current appendix. |
 | Gate 7 | No appendix section reintroduces obsolete framing | Appendix A | Appendix framing | PASS | Appendix stays on evidence provenance. |
 | Gate 7 | Appendix claims not stronger than main paper | Appendix A | Claim ledger language | PASS | Appendix is explicitly subordinate. |
-| Gate 7 | Artifact labels remain consistent with claim ledger | Appendix A, `audit/SRP_CLAIM_EVIDENCE_MAP_V1.md` | Artifact status labels | PASS | Appendix A and the claim ledger use the same `Main` / `Appendix` / `Archive` framing. |
+| Gate 7 | Artifact labels remain consistent with claim ledger | Appendix A, `audit/CLAIM_EVIDENCE_MAP.md` | Artifact status labels | PASS | Appendix A and the claim ledger use the same `Main` / `Appendix` / `Archive` framing. |
 | Gate 8 | Transition safety traceable | 3.7, 4.1 | Negative transition injection | PASS | Current draft has direct experiment support. |
 | Gate 8 | Authority independence traceable | 3.1, 3.7, 4.1 | Evidence-controlled governance | PASS | Directly supported by Proposition 1 and 4.1. |
 | Gate 8 | Recommendation separation traceable | 3.2, 3.5, 4.1 | Governed optimization | PASS | Method and experiment are aligned. |

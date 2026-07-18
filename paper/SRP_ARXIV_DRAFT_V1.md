@@ -653,7 +653,7 @@ The current snapshot also contains supporting artifacts that remain appendix-gra
 
 ### A.3 Claim-to-Evidence Mapping
 
-The detailed claim-to-evidence mapping is maintained in `audit/SRP_CLAIM_EVIDENCE_MAP_V1.md`.
+The detailed claim-to-evidence mapping is maintained in `audit/CLAIM_EVIDENCE_MAP.md`.
 That document should be treated as the claim ledger for the current release branch.
 
 In brief:
