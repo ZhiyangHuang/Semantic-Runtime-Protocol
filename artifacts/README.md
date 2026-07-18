@@ -17,6 +17,6 @@ This directory does not contain:
 
 Artifact governance:
 
+- [artifacts/MANIFEST.md](MANIFEST.md)
 - [audit/ARTIFACT_POLICY.md](../audit/ARTIFACT_POLICY.md)
 - [audit/ARTIFACT_PROMOTION_DECISION.md](../audit/ARTIFACT_PROMOTION_DECISION.md)
-
