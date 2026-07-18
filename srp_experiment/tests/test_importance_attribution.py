@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.importance_attribution import (
+from experiments.analysis.importance_attribution import (
     summarize_importance_attribution,
     write_importance_attribution_outputs,
 )

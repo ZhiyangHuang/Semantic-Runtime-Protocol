@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.graph_recovery_harness import (
+from experiments.srp_runtime_legacy.graph_recovery_harness import (
     build_graph_recovery_suites,
     render_graph_recovery_summary_markdown,
     run_graph_recovery_evaluation,

@@ -14,7 +14,7 @@ Date:
 | --- | --- | --- |
 | Git working tree | PASS | Working tree is clean. |
 | Release verification | PASS | `python scripts/verify_release.py` returned `Release verification passed.` |
-| Paper source hierarchy | PASS | `SRP_ARXIV_DRAFT_V1.md` is primary, `SRP_PAPER_FINAL_V1.md` is submission snapshot, and `SRP_RELATED_WORK_V1.md` is reconstruction provenance only. |
+| Paper source hierarchy | PASS | `fixed.md` is canonical, `SRP_ARXIV_DRAFT_V1.md` is the synchronized manuscript mirror, `SRP_PAPER_FINAL_V1.md` is the submission snapshot, and `SRP_RELATED_WORK_V1.md` is reconstruction provenance only. |
 | Runtime boundary | PASS | `srp_runtime/` remains the active implementation boundary. |
 | Artifact boundary | PASS | `artifacts/` contains approved curated evidence bundles only. |
 | Legacy boundary | PASS | `srp_experiment/` is frozen as a legacy evidence layer. |

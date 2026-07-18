@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.policy_pareto import summarize_policy_pareto, write_policy_pareto_outputs
+from experiments.analysis.policy_pareto import summarize_policy_pareto, write_policy_pareto_outputs
 
 
 class PolicyParetoAnalysisTest(unittest.TestCase):

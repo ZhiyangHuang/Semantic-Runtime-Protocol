@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.policy_boundary_analysis import (
+from experiments.srp_runtime_legacy.policy_boundary_analysis import (
     build_policy_boundary_tasks,
     render_policy_boundary_markdown,
     run_policy_boundary_analysis,

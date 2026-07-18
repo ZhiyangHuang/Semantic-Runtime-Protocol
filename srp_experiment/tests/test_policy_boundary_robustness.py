@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.policy_boundary_robustness import (
+from experiments.srp_runtime_legacy.policy_boundary_robustness import (
     build_policy_boundary_robustness,
     render_policy_boundary_robustness_markdown,
     write_policy_boundary_robustness_outputs,

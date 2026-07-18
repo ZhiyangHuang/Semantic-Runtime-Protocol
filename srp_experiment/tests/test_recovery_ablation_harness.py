@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.recovery_ablation_harness import (
+from experiments.srp_runtime_legacy.recovery_ablation_harness import (
     build_recovery_ablation_suites,
     render_recovery_ablation_summary_markdown,
     run_recovery_ablation,

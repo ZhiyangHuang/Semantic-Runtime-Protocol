@@ -63,21 +63,21 @@ These are archive documents that treat `srp_experiment` as historical evidence, 
 
 | File | Reference type | Notes |
 | --- | --- | --- |
-| `docs/archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | background / historical evidence | Explicitly frames `srp_experiment` as background evidence |
-| `docs/archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Refers to `srp_experiment/tmp/...` outputs |
-| `docs/archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Maps current legacy implementation to runtime concepts |
-| `docs/archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md` | implementation mapping | Same, but for event processing |
-| `docs/archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md` | empirical / historical layer | Explicitly says the legacy stack remains the evidence layer |
-| `docs/archive/SRP_PARAMETER_CATALOG.md` | parameter reference | Refers to legacy helpers and budget config |
-| `docs/archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter reference | Mentions legacy helper functions |
-| `docs/archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | References `srp_experiment/tmp/fixed_harnesses/` outputs |
-| `docs/archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | adapter planning | Uses `srp_experiment` as the source side of a migration boundary |
-| `docs/archive/SRP_RUNTIME_KERNEL_API_MAP.md` | implementation mapping | Maps the legacy implementation to future runtime APIs |
-| `docs/archive/SRP_RUNTIME_PROTOCOL_MAP.md` | implementation mapping | Maps legacy modules to runtime object/data-contract layers |
-| `docs/archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Treats `srp_experiment` as the current baseline being projected away from |
-| `docs/archive/SRP_SEMANTIC_GRAPH_MODEL.md` | projection note | Describes a legacy package as an early projection of the model |
-| `docs/archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md` | report references | Cites legacy schemas and tests |
-| `docs/archive/SRP_THEORY_MAP.md` | historical framing | Calls the legacy stack a maintained background layer |
+| `audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | background / historical evidence | Explicitly frames `srp_experiment` as background evidence |
+| `audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Refers to `srp_experiment/tmp/...` outputs |
+| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Maps current legacy implementation to runtime concepts |
+| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md` | implementation mapping | Same, but for event processing |
+| `audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md` | empirical / historical layer | Explicitly says the legacy stack remains the evidence layer |
+| `audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md` | parameter reference | Refers to legacy helpers and budget config |
+| `audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter reference | Mentions legacy helper functions |
+| `audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | References `srp_experiment/tmp/fixed_harnesses/` outputs |
+| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | adapter planning | Uses `srp_experiment` as the source side of a migration boundary |
+| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_API_MAP.md` | implementation mapping | Maps the legacy implementation to future runtime APIs |
+| `audit/provenance/docs_archive/SRP_RUNTIME_PROTOCOL_MAP.md` | implementation mapping | Maps legacy modules to runtime object/data-contract layers |
+| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Treats `srp_experiment` as the current baseline being projected away from |
+| `audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md` | projection note | Describes a legacy package as an early projection of the model |
+| `audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md` | report references | Cites legacy schemas and tests |
+| `audit/provenance/docs_archive/SRP_THEORY_MAP.md` | historical framing | Calls the legacy stack a maintained background layer |
 
 Interpretation:
 
@@ -110,3 +110,4 @@ If we continue the recovery in order, the next files to inspect are:
 5. `scripts/verify_release.py`
 
 Those are the most likely places where the legacy stack is still functionally necessary.
+

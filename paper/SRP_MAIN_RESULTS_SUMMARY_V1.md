@@ -73,16 +73,11 @@ This means objective changes affect recommendation, not feasibility.
 - Phase VIII cross-domain validation: `experiments/results/phase_viii_cross_domain/`
 - Phase VIII representation invariance: `experiments/results/phase_viii_representation_invariance/`
 - Phase VIII implementation independence: `experiments/results/phase_viii_implementation_independence/`
-- External validation LoCoMo ingestion slice: `experiments/results/external_validation_locomo_mvp/`
-- External validation LoCoMo calibration-aware rerun: `experiments/results/external_validation_locomo_calibration_aware/`
-- LoCoMo calibration note: `SRP_LOCOMO_CALIBRATION_NOTE.md`
-- LongMemEval external evidence: `experiments/results/external_validation_longmemeval_evidence/`
-- LongMemEval strong-baseline evidence: `experiments/results/external_validation_longmemeval_evidence_strong_baselines/`
-- LongMemEval scorer alignment closure: `experiments/results/external_validation_longmemeval_evidence_strong_baselines/longmemeval_scorer_alignment_closure.md`
-- LongMemEval evidence report: `SRP_EXTERNAL_VALIDATION_LONGMEMEVAL_EVIDENCE_REPORT.md`
-- LongMemEval evidence audit note: `SRP_LONGMEMEVAL_EVIDENCE_AUDIT_NOTE.md`
-- LongMemEval scorer alignment audit: `SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md`
-- Evidence audit specification: `SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md`
+- External validation LoCoMo run: `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000`
+- External validation LoCoMo baseline comparison: `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000`
+- Real-validation report: `audit/REAL_VALIDATION_REPORT.md`
+- Scientific report: `audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md`
+- LongMemEval status: pending real-data slice, not part of the current release gate
 
 ## 5. Paper Use
 

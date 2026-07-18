@@ -5,14 +5,16 @@ It is a boundary document, not an implementation change log.
 
 The repository is intended to function as the executable appendix of SRP:
 
-1. `srp_runtime/` defines the protocol implementation.
-2. `experiments/` evaluates SRP properties under frozen runtime contracts.
-3. `artifacts/` stores generated evidence and provenance.
-4. `audit/` records claims, evidence mappings, and release governance.
+1. `fixed.md` defines the canonical manuscript source for the release pass.
+2. `paper/` carries the synchronized manuscript mirror, release snapshot, and supporting reconstruction notes.
+3. `srp_runtime/` defines the protocol implementation.
+4. `experiments/` evaluates SRP properties under frozen runtime contracts.
+5. `artifacts/` stores generated evidence and provenance.
+6. `audit/` records claims, evidence mappings, and release governance.
 
 The core principle is simple:
 
-`runtime != experiment != artifact != audit`
+`manuscript != runtime != evidence != artifact != audit`
 
 Each layer may depend on the layer below it, but not the reverse.
 
@@ -20,6 +22,7 @@ Each layer may depend on the layer below it, but not the reverse.
 
 The repository exists to provide:
 
+- a canonical manuscript source separated from code
 - a reference implementation of SRP governance
 - reproducible evaluation pipelines
 - evidence artifacts with explicit provenance
@@ -31,7 +34,7 @@ Experiments evaluate SRP properties under frozen runtime contracts.
 The repository also does not treat artifacts as raw outputs.
 Artifacts are curated evidence objects with a claim status and provenance record.
 
-## 2. Four-Layer Architecture
+## 2. Core Layers
 
 The intended dependency direction is:
 
@@ -92,11 +95,11 @@ The runtime layer should not contain:
 
 If a module exists to support a paper claim, it does not belong in the runtime layer unless it is part of the protocol itself.
 
-## 4. Evaluation Layer: `experiments/`
+## 4. Validation Layer: `experiments/`
 
 ### 4.1 Responsibility
 
-`experiments/` is the evidence generator.
+`experiments/` is the validation and evidence generator.
 Its purpose is to test SRP properties under frozen contracts and produce reproducible outputs for the paper and audit trail.
 
 ### 4.2 Recommended Substructure
@@ -275,4 +278,3 @@ This repository architecture mirrors the paper structure:
 - Audit documents map claims to evidence
 
 The repository should therefore read as a reproducible evidence-controlled implementation of SRP, not as a generic experiment dump.
-

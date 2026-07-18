@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.object_aware_threshold_harness import (
+from experiments.srp_runtime_legacy.object_aware_threshold_harness import (
     build_threshold_analysis_tasks,
     render_object_aware_threshold_analysis_markdown,
     run_object_aware_threshold_analysis,

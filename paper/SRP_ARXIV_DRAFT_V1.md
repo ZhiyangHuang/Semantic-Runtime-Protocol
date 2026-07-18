@@ -254,11 +254,11 @@ Output: evidence package and promotion decision
 This keeps evaluation reproducible and prevents benchmark scoring from silently changing the method being evaluated.
 Recovery is treated as one possible transition implementation under SRP, rather than the definition of SRP itself.
 
-### Proposition 1: Authority Independence
+### Protocol Invariant 1: Authority Independence
 
 For any semantic transition `tau_t`, increasing evidence availability `E_t` may change verification and approval outcomes, but it does not imply an increase in authority level `A_t`.
 
-Proof sketch: In SRP, authority level is determined by `Gamma_t`, while evidence contributes to the verification result `V`. Since `E_t` and `A_t` are modeled as independent components of the transition tuple, changes in evidence quality cannot directly elevate authority without an explicit governance rule.
+Rationale: In SRP, authority level is determined by `Gamma_t`, while evidence contributes to the verification result `V`. Since `E_t` and `A_t` are modeled as independent components of the transition tuple, changes in evidence quality cannot directly elevate authority without an explicit governance rule.
 
 ### 3.6 Design Properties
 
@@ -648,7 +648,7 @@ The current snapshot contains one trusted main-claim artifact:
 
 The current snapshot also contains supporting artifacts that remain appendix-grade:
 
-- `phase_ii_boundary`
+- `phase_ii_boundary`  (compatibility alias for `admissibility_boundary_validation`)
 - `external_validation_longmemeval_evidence_strong_baselines`
 
 ### A.3 Claim-to-Evidence Mapping
@@ -669,7 +669,7 @@ The recommended regeneration flow is:
 
 - `python experiments/sensitivity/run_phase_i_observability.py`
 - `python -m experiments.sensitivity.phase_i_observability`
-- `python -m experiments.validation.phase_ii_boundary.runner`
+- `python -m experiments.validation.admissibility_boundary_validation.runner`
 - `python -m experiments.validation.phase_ii_density_baseline`
 - `python -m experiments.validation.phase_ii_boundary_generalization`
 - `python -m experiments.optimization.phase_iii_governed_optimization.baseline`
@@ -677,12 +677,12 @@ The recommended regeneration flow is:
 - `python experiments/sensitivity/run_activation_recovery_interaction.py`
 - `python -m experiments.evaluation.semantic_backend_comparison.runner`
 - `python -m experiments.evaluation.phase_v_retention.runner`
-- `python -m experiments.evaluation.phase_vi_relation_recovery.runner`
-- `python -m experiments.evaluation.phase_vii_parameter_stability.runner`
-- `python -m experiments.evaluation.phase_vii_parameter_sensitivity.runner`
-- `python -m experiments.evaluation.phase_viii_cross_domain.runner`
-- `python -m experiments.evaluation.phase_viii_representation_invariance.runner`
-- `python -m experiments.evaluation.phase_viii_implementation_independence.runner`
+- `python -m experiments.evaluation.transition_reconstruction_validation.runner`
+- `python -m experiments.evaluation.configuration_stability_validation.runner`
+- `python -m experiments.evaluation.configuration_sensitivity_validation.runner`
+- `python -m experiments.evaluation.cross_domain_validation.runner`
+- `python -m experiments.evaluation.representation_invariance_validation.runner`
+- `python -m experiments.evaluation.implementation_independence_validation.runner`
 - `python -m experiments.external_validation.manual_sanity`
 - `python -m experiments.external_validation.calibration_report`
 - `python -m experiments.external_validation.longmemeval_adapter_validation`
@@ -698,6 +698,14 @@ The practical reading is:
 - `interaction_boundary_enforcement` is admissible for paper-facing claims
 - earlier phase artifacts remain provenance material, not claim material
 - LongMemEval remains appendix-supported until its snapshot is refreshed and its missing files are reconciled
+
+Legacy entry compatibility:
+
+- `phase_vii_parameter_stability` -> `configuration_stability_validation`
+- `phase_vii_parameter_sensitivity` -> `configuration_sensitivity_validation`
+- `phase_viii_representation_invariance` -> `representation_invariance_validation`
+- `phase_viii_implementation_independence` -> `implementation_independence_validation`
+- `phase_viii_cross_domain` -> `cross_domain_validation`
 
 This appendix does not add a new claim about SRP.
 It documents the evidence-management procedure used to separate trusted outputs from legacy outputs in this release branch.

@@ -1,0 +1,9 @@
+{
+  "experiment": "locomo_baseline_comparison",
+  "version": "v1",
+  "generated_at": "2026-07-18T22:44:33.668040+00:00",
+  "runtime_contract": "srp-real-validation-v1",
+  "commit": "39053895ef73b6adc5b87a7970c2849636de4eab",
+  "dataset": "LoCoMo",
+  "scope": "external_validation"
+}

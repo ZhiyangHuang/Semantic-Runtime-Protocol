@@ -1,8 +1,0 @@
-{
-  "generated_at": "2026-07-15T02:55:39.264188+00:00",
-  "generated_by": "external_validation_longmemeval_evidence_v1",
-  "benchmark_name": "longmemeval",
-  "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_longmemeval_evidence",
-  "case_count": 24,
-  "trace_count": 24
-}

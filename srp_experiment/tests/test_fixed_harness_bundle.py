@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.run_fixed_harnesses import run_fixed_harness_bundle, write_fixed_harness_bundle_outputs
+from experiments.srp_runtime_legacy.run_fixed_harnesses import run_fixed_harness_bundle, write_fixed_harness_bundle_outputs
 
 
 class TestFixedHarnessBundle(unittest.TestCase):

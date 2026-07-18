@@ -1,0 +1,29 @@
+[
+  {
+    "case_id": "conv-26:qa:0",
+    "event": "temporal_refinement",
+    "expected": "accept",
+    "actual": "accept",
+    "failure": false,
+    "failure_type": null,
+    "interpretation": "governance admitted a real-supported transition"
+  },
+  {
+    "case_id": "conv-26:qa:2",
+    "event": "unsupported_mutation",
+    "expected": "reject",
+    "actual": "reject",
+    "failure": false,
+    "failure_type": null,
+    "interpretation": "governance rejected an unsupported or counterfactual transition"
+  },
+  {
+    "case_id": "conv-26:qa:3",
+    "event": "contradiction_update",
+    "expected": "accept",
+    "actual": "accept",
+    "failure": false,
+    "failure_type": null,
+    "interpretation": "governance admitted a real-supported transition"
+  }
+]

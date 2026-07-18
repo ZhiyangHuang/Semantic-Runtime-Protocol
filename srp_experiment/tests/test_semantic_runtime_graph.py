@@ -1,9 +1,9 @@
 import unittest
 
-from srp_experiment.srp.semantic_graph import build_semantic_runtime_graph
-from srp_experiment.srp.semantic_graph_validator import validate_semantic_runtime_graph
-from srp_experiment.srp.semantic_parser import stable_semantic_object_id
-from srp_experiment.srp.validation_targets import build_validation_targets
+from experiments.srp_runtime_legacy.srp.semantic_graph import build_semantic_runtime_graph
+from experiments.srp_runtime_legacy.srp.semantic_graph_validator import validate_semantic_runtime_graph
+from experiments.srp_runtime_legacy.srp.semantic_parser import stable_semantic_object_id
+from experiments.srp_runtime_legacy.srp.validation_targets import build_validation_targets
 
 
 class TestSemanticRuntimeGraph(unittest.TestCase):

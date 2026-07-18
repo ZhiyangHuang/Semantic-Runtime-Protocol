@@ -3,7 +3,7 @@ from __future__ import annotations
 from statistics import mean
 from typing import Any, Iterable
 
-from srp_experiment.srp.semantic_parser import canonicalize_semantic_value
+from experiments.common.semantic_text import canonicalize_semantic_value
 
 from .schema import (
     RetentionCase,

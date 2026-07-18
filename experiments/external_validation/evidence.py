@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from experiments.config import ExternalValidationLongMemEvalEvidenceConfig, load_external_validation_longmemeval_evidence_config
-from srp_experiment.local_llm import LocalOpenAICompatibleClient
+from experiments.common.local_llm import LocalOpenAICompatibleClient
 
 from .benchmarks import build_benchmark_adapter
 from .baselines import build_memory_system

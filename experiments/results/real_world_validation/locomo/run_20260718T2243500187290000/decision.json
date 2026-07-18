@@ -1,0 +1,7 @@
+{
+  "claim_supported": true,
+  "support_level": "appendix",
+  "scope": "evaluated LoCoMo subset",
+  "promotion": "appendix",
+  "reason": "governance preserved authority separation under the evaluated setting"
+}

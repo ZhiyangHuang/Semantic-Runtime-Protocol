@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 import time
 
-from srp_experiment.srp.encoder import HashingSemanticEncoder, cosine_similarity
+from experiments.common.semantic_text import HashingSemanticEncoder, cosine_similarity
 
 from .backend import BackendOutcome, ComparisonCase
 

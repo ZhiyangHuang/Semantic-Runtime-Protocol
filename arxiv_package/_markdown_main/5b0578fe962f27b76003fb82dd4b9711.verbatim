@@ -1,0 +1,3 @@
+S_(t+1) =
+  T(S_t, Delta_t)  if G(S_t, Delta_t, V(S_t, Delta_t, E_t), Gamma_t) = 1
+  S_t              otherwise

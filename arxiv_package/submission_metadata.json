@@ -9,7 +9,8 @@
   "comments": "Submitted as a research paper with accompanying reproducibility artifacts.",
   "license": "arXiv distribution license",
   "source_of_truth": {
-    "primary_manuscript": "paper/SRP_ARXIV_DRAFT_V1.md",
+    "primary_manuscript": "fixed.md",
+    "submission_mirror": "paper/SRP_ARXIV_DRAFT_V1.md",
     "submission_snapshot": "paper/SRP_PAPER_FINAL_V1.md",
     "supporting_reconstruction": "paper/SRP_RELATED_WORK_V1.md"
   }

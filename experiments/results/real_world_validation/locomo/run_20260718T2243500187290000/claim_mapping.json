@@ -1,0 +1,12 @@
+{
+  "claim_id": "authority_independence",
+  "paper_section": "3.5",
+  "observable_behavior": "additional evidence improves verification without increasing authority",
+  "experiment_events": [
+    "contradiction_update",
+    "temporal_refinement",
+    "unsupported_mutation"
+  ],
+  "promotion_level": "appendix_support",
+  "claim_scope": "evaluated setting"
+}

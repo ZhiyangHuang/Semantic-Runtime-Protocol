@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.object_aware_compression_harness import (
+from experiments.srp_runtime_legacy.object_aware_compression_harness import (
     build_object_aware_compression_suites,
     render_object_aware_compression_summary_markdown,
     run_object_aware_compression,

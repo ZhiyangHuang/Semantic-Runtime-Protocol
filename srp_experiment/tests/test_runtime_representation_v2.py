@@ -1,7 +1,7 @@
 import unittest
 
-from srp_experiment.srp.runtime_representation import build_runtime_representation_v2
-from srp_experiment.srp.state import SemanticState
+from experiments.srp_runtime_legacy.srp.runtime_representation import build_runtime_representation_v2
+from experiments.srp_runtime_legacy.srp.state import SemanticState
 
 
 class TestRuntimeRepresentationV2(unittest.TestCase):

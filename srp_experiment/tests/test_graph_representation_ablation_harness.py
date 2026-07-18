@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.graph_representation_ablation_harness import (
+from experiments.srp_runtime_legacy.graph_representation_ablation_harness import (
     build_graph_representation_suites,
     render_graph_representation_ablation_markdown,
     run_graph_representation_ablation,

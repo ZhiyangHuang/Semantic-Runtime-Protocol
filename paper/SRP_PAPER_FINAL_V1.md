@@ -539,12 +539,10 @@ It should also test whether the relation-aware recovery hierarchy survives large
 
 The paper currently includes a public-benchmark calibration slice on LoCoMo.
 That slice validated the adapter, temporal attribution protocol, and failure-attribution boundary, but it is intentionally separated from the main external-validity results.
-The calibration note in `SRP_LOCOMO_CALIBRATION_NOTE.md` and the calibration-aware rerun in `experiments/results/external_validation_locomo_calibration_aware/` document the measurement boundary before any benchmark claim is promoted.
-The next calibration checkpoint is LongMemEval, documented in `SRP_LONGMEMEVAL_CALIBRATION_NOTE.md`, before promoting the calibrated external-validity package to additional community-recognized benchmarks that expose retention, recovery, consistency, and drift signals under comparable memory budgets.
-The LongMemEval evidence contract in `configs/external_validation_longmemeval_evidence.env` freezes the shared local-vLLM runtime contract across baselines and SRP, and the first evidence run is written to `experiments/results/external_validation_longmemeval_evidence/`.
-The audit note in `SRP_LONGMEMEVAL_EVIDENCE_AUDIT_NOTE.md` keeps the promotion boundary explicit, and the evidence report now includes descriptive statistics for the fixed 48-record slice so the result can be audited without overstating inference.
-The evidence audit specification in `SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md` formalizes the runtime reproducibility, scorer correctness, metric correctness, statistical reporting, and promotion gates that must be satisfied before the evidence candidate can be promoted.
-The scorer-alignment audit in `SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md` now accepts the current LongMemEval evidence slice after closing the remaining temporal and multi-hop acceptance items.
+The current 7/18 real-validation report in `audit/REAL_VALIDATION_REPORT.md` and the companion scientific report in `audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md` document the measurement boundary before any benchmark claim is promoted.
+The 7/18 LoCoMo real-validation run in `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000` and the paired baseline comparison in `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000` provide the release-facing evidence slice under the frozen runtime contract.
+Those reports keep the promotion boundary explicit, and the evidence summaries include descriptive statistics for the fixed slice so the result can be audited without overstating inference.
+LongMemEval remains protocol-ready, but its real-data slice is still pending and is not part of the current release gate.
 The broader benchmark suite would help establish external validity beyond the paper's first calibrated public workload slice, and the stronger memory-system baseline comparison under the same frozen runtime contract is now complete with the evidence package ready for paper-facing promotion.
 
 ### 7.7 Failure Analysis
@@ -571,7 +569,7 @@ Phase VIII-A and Phase VIII-B further show that the recovery hierarchy preserves
 Phase VIII-C further shows that the same governance semantics remain stable under tested backend changes, with cost shifting more than hierarchy.
 The LoCoMo ingestion slice further shows that the public-benchmark adapter and evaluator can be run end to end, while the calibration-aware rerun separates official score, semantic diagnostics, and attribution distribution. The benchmark scoring path still requires calibration before the slice can support a paper claim.
 The LongMemEval evidence run now demonstrates that the same shared-generation runtime contract can be preserved across baselines and SRP while producing a separate external-validity evidence bundle with descriptive statistics for the fixed slice.
-The strong-baseline comparison run in `experiments/results/external_validation_longmemeval_evidence_strong_baselines/` extends that candidate to Mem0, Graphiti, Letta, and MemMachine under the same runtime contract.
+The baseline comparison run in `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000` extends that candidate to the current 7/18 LoCoMo comparison set under the same runtime contract.
 The LongMemEval evidence promotion decision now records that the bundle is approved for paper-facing use under the frozen contract, while preserving the slice-level limitations explicitly.
 The evidence audit specification keeps future evidence runs from being promoted without an explicit runtime manifest, metric definition, statistical reporting layer, and scorer audit.
 The LongMemEval failure profile also points to a provenance-aware relation layer as a future governance improvement: rather than pruning recall-heavy candidates too early, SRP can preserve observed, inferred, and uncertain relations with confidence metadata and then correct them through later verification or user feedback.

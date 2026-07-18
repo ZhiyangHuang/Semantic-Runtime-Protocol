@@ -1,13 +1,13 @@
 import os
 import unittest
 
-from srp_experiment.srp.encoder import (
+from experiments.srp_runtime_legacy.srp.encoder import (
     HashingSemanticEncoder,
     build_encoder,
     cosine_similarity,
     update_state_vector,
 )
-from srp_experiment.srp.compress import chunk_memory
+from experiments.srp_runtime_legacy.srp.compress import chunk_memory
 
 
 class TestEncoder(unittest.TestCase):

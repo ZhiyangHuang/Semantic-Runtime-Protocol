@@ -1,0 +1,3822 @@
+{
+  "summary": {
+    "total_hits": 454,
+    "blocking_hits": 22,
+    "by_kind": {
+      "docs_archive": 62,
+      "import": 22,
+      "srp_experiment": 370
+    },
+    "by_category": {
+      "runtime_imports": 0,
+      "tooling_imports": 0,
+      "test_imports": 22,
+      "audit_references": 302,
+      "historical_mentions": 67,
+      "markdown_references": 63
+    },
+    "blocking_by_category": {
+      "test_imports": 22
+    },
+    "deletion_readiness": [
+      {
+        "category": "runtime_imports",
+        "priority": "P0",
+        "count": 0,
+        "blocks_deletion": true,
+        "ready_for_deletion": false
+      },
+      {
+        "category": "tooling_imports",
+        "priority": "P1",
+        "count": 0,
+        "blocks_deletion": true,
+        "ready_for_deletion": false
+      },
+      {
+        "category": "test_imports",
+        "priority": "P2",
+        "count": 22,
+        "blocks_deletion": true,
+        "ready_for_deletion": false
+      },
+      {
+        "category": "audit_references",
+        "priority": "P3",
+        "count": 302,
+        "blocks_deletion": false,
+        "ready_for_deletion": true
+      },
+      {
+        "category": "historical_mentions",
+        "priority": "P3",
+        "count": 67,
+        "blocks_deletion": false,
+        "ready_for_deletion": true
+      },
+      {
+        "category": "markdown_references",
+        "priority": "P3",
+        "count": 63,
+        "blocks_deletion": false,
+        "ready_for_deletion": true
+      }
+    ],
+    "migration_velocity": [
+      {
+        "category": "runtime_imports",
+        "priority": "P0",
+        "baseline": 20,
+        "remaining": 0,
+        "completed": 20,
+        "completion_ratio": 1.0
+      },
+      {
+        "category": "tooling_imports",
+        "priority": "P1",
+        "baseline": 28,
+        "remaining": 0,
+        "completed": 28,
+        "completion_ratio": 1.0
+      },
+      {
+        "category": "test_imports",
+        "priority": "P2",
+        "baseline": 87,
+        "remaining": 22,
+        "completed": 65,
+        "completion_ratio": 0.747126
+      }
+    ],
+    "by_file": {
+      "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md": 56,
+      "srp_experiment/tests/test_srp_runtime_legacy_compat.py": 43,
+      "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md": 37,
+      "audit/PHASE_6_TEST_FREEZE.md": 32,
+      "audit/PHASE_6_5_CLUSTER_B3.md": 14,
+      "audit/DELETE_MIGRATION_CHECKLIST.md": 13,
+      "audit/PHASE_6_5_CLUSTER_B2.md": 12,
+      "audit/release_manifest.json": 12,
+      "scripts/find_dependency_refs.py": 12,
+      "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md": 11,
+      "audit/PHASE_6_DELETION_READINESS.md": 11,
+      "audit/REPOSITORY_CONSOLIDATION_AUDIT.md": 10,
+      "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md": 9,
+      "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md": 8,
+      "audit/PHASE_6_CLUSTER_C.md": 8,
+      "audit/PHASE_6_PROGRESS_REPORT.md": 8,
+      "audit/LEGACY_EXTRACTION_CANDIDATES.md": 6,
+      "audit/PHASE_6_CLUSTER_A.md": 6,
+      "audit/PHASE_6_CLUSTER_D.md": 6,
+      "audit/PHASE_6_CLUSTER_E.md": 6,
+      "audit/PHASE_6_CLUSTER_F2.md": 5,
+      "audit/PHASE_6_CLUSTER_G1.md": 5,
+      "audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md": 5,
+      "scripts/verify_release.py": 5,
+      "audit/PHASE_6_5_CLUSTER_A.md": 4,
+      "audit/PHASE_6_CLUSTER_F.md": 4,
+      "audit/PHASE_6_CLUSTER_I.md": 4,
+      "audit/REPO_ARCHITECTURE_BLUEPRINT.md": 4,
+      "srp_experiment/tests/test_longbench_v2_prototype.py": 4,
+      "audit/EXPERIMENT_TRUTH_AUDIT.md": 3,
+      "audit/PHASE_6_TEST_MIGRATION_POLICY.md": 3,
+      "audit/RELEASE_CANDIDATE_CONSISTENCY_REVIEW.md": 3,
+      "audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md": 3,
+      "audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md": 3,
+      "audit/provenance/srp_experiment/data/longbench_v2/manifest.json": 3,
+      "srp_experiment/data/longbench_v2/manifest.json": 3,
+      "README.md": 2,
+      "audit/ARTIFACT_POLICY.md": 2,
+      "audit/CLAIM_EVIDENCE_MAP.md": 2,
+      "audit/PHASE_6_5_CLUSTER_A1.md": 2,
+      "audit/PHASE_6_CLUSTER_B.md": 2,
+      "audit/PHASE_6_CLUSTER_G2.md": 2,
+      "audit/PHASE_6_CLUSTER_H2A.md": 2,
+      "audit/README.md": 2,
+      "audit/REPRODUCIBILITY_AND_DEPENDENCY_MAP.md": 2,
+      "audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md": 2,
+      "audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md": 2,
+      "audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md": 2,
+      "experiments/srp_runtime_legacy/run_coverage_attribution.py": 2,
+      "experiments/srp_runtime_legacy/run_decision_attribution.py": 2,
+      "srp_experiment/tests/test_srp_runtime.py": 2,
+      "ARTIFACT_README.md": 1,
+      "audit/PAPER_SOURCE_REFERENCE_AUDIT.md": 1,
+      "audit/PHASE_6_5_CLUSTER_B.md": 1,
+      "audit/PHASE_6_CLUSTER_H1.md": 1,
+      "audit/PHASE_6_FINAL_CONSOLIDATION_SUMMARY.md": 1,
+      "audit/PHASE_6_TEST_CLASSIFICATION.md": 1,
+      "audit/RELEASE_CHECKLIST.md": 1,
+      "audit/RELEASE_HARDENING_RESULT.md": 1,
+      "audit/provenance/README.md": 1,
+      "audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md": 1,
+      "audit/provenance/docs_archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md": 1,
+      "audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md": 1,
+      "audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md": 1,
+      "audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_API_MAP.md": 1,
+      "audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md": 1,
+      "audit/provenance/docs_archive/SRP_RUNTIME_PROTOCOL_MAP.md": 1,
+      "audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md": 1,
+      "audit/provenance/docs_archive/SRP_THEORY_MAP.md": 1,
+      "audit/provenance/srp_experiment/README.md": 1,
+      "audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py": 1,
+      "audit/provenance/srp_experiment/migration_manifest.json": 1,
+      "audit/provenance/srp_experiment/schemas/experiment_result_schema_v1.json": 1,
+      "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1.json": 1,
+      "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1_5.json": 1,
+      "experiments/srp_runtime_legacy/export_csv.py": 1,
+      "experiments/srp_runtime_legacy/export_markdown.py": 1,
+      "experiments/srp_runtime_legacy/run_controlled_harness.py": 1,
+      "experiments/srp_runtime_legacy/run_fixed_harnesses.py": 1,
+      "experiments/srp_runtime_legacy/run_graph_recovery_evaluation.py": 1,
+      "experiments/srp_runtime_legacy/run_graph_representation_ablation.py": 1,
+      "experiments/srp_runtime_legacy/run_mechanism_attribution_ablation.py": 1,
+      "experiments/srp_runtime_legacy/run_object_aware_compression.py": 1,
+      "experiments/srp_runtime_legacy/run_object_aware_threshold_analysis.py": 1,
+      "experiments/srp_runtime_legacy/run_object_aware_threshold_sampling.py": 1,
+      "experiments/srp_runtime_legacy/run_policy_boundary_analysis.py": 1,
+      "experiments/srp_runtime_legacy/run_policy_boundary_drift.py": 1,
+      "experiments/srp_runtime_legacy/run_policy_boundary_robustness.py": 1,
+      "experiments/srp_runtime_legacy/run_policy_intervention.py": 1,
+      "experiments/srp_runtime_legacy/run_policy_sensitivity.py": 1,
+      "experiments/srp_runtime_legacy/run_reconstruction_policy_comparison.py": 1,
+      "experiments/srp_runtime_legacy/run_recovery_ablation.py": 1,
+      "srp_experiment/data/longbench_v2/import_longbench_v2.py": 1,
+      "srp_experiment/export_csv.py": 1
+    }
+  },
+  "hits": [
+    {
+      "file": "ARTIFACT_README.md",
+      "line": 14,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/docs_archive/`: historical research documents preserved for provenance"
+    },
+    {
+      "file": "README.md",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` holds the legacy measurement and runtime evidence stack; it is retained as a historical evidence layer, not the primary runtime implementation."
+    },
+    {
+      "file": "README.md",
+      "line": 14,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/docs_archive/` holds historical research documents that are not needed in the main release path."
+    },
+    {
+      "file": "audit/ARTIFACT_POLICY.md",
+      "line": 238,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "`srp_experiment/` is treated as a legacy evidence layer and historical implementation substrate."
+    },
+    {
+      "file": "audit/ARTIFACT_POLICY.md",
+      "line": 243,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` may generate or explain historical evidence"
+    },
+    {
+      "file": "audit/CLAIM_EVIDENCE_MAP.md",
+      "line": 109,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The active SRP runtime does not depend on the evaluation infrastructure, and `srp_experiment/` is a legacy evidence layer rather than the source of truth for runtime semantics."
+    },
+    {
+      "file": "audit/CLAIM_EVIDENCE_MAP.md",
+      "line": 115,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is treated as historical evidence and compatibility support."
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 1,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "# Delete `docs/` and `srp_experiment/` Preparation"
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document prepares the repository for a future removal of `docs/` and `srp_experiment/`."
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/`"
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 16,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` contains `234` tracked files"
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 29,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "### `srp_experiment/`"
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 31,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The `srp_experiment/` tree is the frozen legacy experiment and evidence layer."
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 42,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Test coverage also still references `srp_experiment/` extensively."
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 49,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- no active runtime or evaluation code imports `srp_experiment/`"
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 50,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- no tests import `srp_experiment/` as a live dependency"
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 58,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "3. Replace the active `srp_experiment/` imports with active `srp_runtime/` or shared utility modules."
+    },
+    {
+      "file": "audit/DELETE_DOCS_SRP_EXPERIMENT_PREP.md",
+      "line": 62,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "7. Only then delete the old `docs/` and `srp_experiment/` trees."
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This checklist turns the future removal of `docs/` and `srp_experiment/` into a deletion-readiness plan."
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/`"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 48,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- archive documents under `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 50,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "### `srp_experiment/`"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 58,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- audit documents that describe `srp_experiment/` as frozen legacy evidence"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 66,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| [x] | Generate a full dependency report for `docs/` and `srp_experiment/` references | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 67,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| [x] | Replace `scripts/verify_release.py` hardcoded `audit/provenance/docs_archive/README.md` dependency with audit manifest | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 69,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| [x] | Replace `P0` runtime imports from `srp_experiment` in `experiments/` | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 70,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| [x] | Replace `P1` tooling imports from `srp_experiment` in scripts and generators | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 72,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| [ ] | Move approved live-behavior tests off `srp_experiment` imports where a live replacement exists | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 75,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| [ ] | Replace `srp_experiment` imports in `experiments/external_validation/` | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 82,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| [ ] | Delete `srp_experiment/` only after the tree is dependency-free | Yes |  |"
+    },
+    {
+      "file": "audit/DELETE_MIGRATION_CHECKLIST.md",
+      "line": 93,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "8. Delete the core `srp_experiment/` implementation once preserved compatibility assets are isolated."
+    },
+    {
+      "file": "audit/EXPERIMENT_TRUTH_AUDIT.md",
+      "line": 17,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| Evidence can strengthen verification without increasing authority | `experiments/sensitivity/interaction/runner.py`, `experiments/external_validation/evidence.py` | `interaction_boundary_enforcement`, `SRP_EXTERNAL_VALIDATION_LONGMEMEVAL_EVIDENCE_REPORT.md` | `srp_runtime/`, `experiments/`, legacy `srp_experiment/` helper paths | PASS |"
+    },
+    {
+      "file": "audit/EXPERIMENT_TRUTH_AUDIT.md",
+      "line": 19,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| SRP runtime is independent from evaluation infrastructure | `scripts/verify_release.py`, static dependency scans | `SRP_EXPERIMENT_DEPENDENCY_MAP.md`, `REPO_ARCHITECTURE_BLUEPRINT.md`, `SRP_V1_STATIC_AUDIT_MAPPING.md` | `srp_runtime/`, `experiments/`, `srp_experiment/` (legacy only) | PASS |"
+    },
+    {
+      "file": "audit/EXPERIMENT_TRUTH_AUDIT.md",
+      "line": 29,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is intentionally retained as a frozen legacy evidence layer and appears only in the dependency chain where legacy helper code is still required."
+    },
+    {
+      "file": "audit/LEGACY_EXTRACTION_CANDIDATES.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document records modules in `srp_experiment/` that may become candidates for future extraction or consolidation."
+    },
+    {
+      "file": "audit/LEGACY_EXTRACTION_CANDIDATES.md",
+      "line": 17,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.local_llm` | Evaluation backend and local model client helper | Possible move to a shared evaluation/backend utility layer | Keep frozen for now |"
+    },
+    {
+      "file": "audit/LEGACY_EXTRACTION_CANDIDATES.md",
+      "line": 18,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.srp.encoder` | Shared semantic similarity and encoding utility | Possible extraction into a common helper module | Keep frozen for now |"
+    },
+    {
+      "file": "audit/LEGACY_EXTRACTION_CANDIDATES.md",
+      "line": 19,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.srp.semantic_parser` | Experiment helper for semantic normalization | Possible extraction if parsing utilities are formalized elsewhere | Keep frozen for now |"
+    },
+    {
+      "file": "audit/LEGACY_EXTRACTION_CANDIDATES.md",
+      "line": 20,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.srp.llm_judge` | Evaluation component for evidence judgment | Likely to remain outside the active runtime boundary | Keep frozen for now |"
+    },
+    {
+      "file": "audit/LEGACY_EXTRACTION_CANDIDATES.md",
+      "line": 46,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment"
+    },
+    {
+      "file": "audit/PAPER_SOURCE_REFERENCE_AUDIT.md",
+      "line": 33,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PAPER_DRAFT_V1.md` | References `SRP_RELATED_WORK_V1.md` as supporting context in historical material | PASS | Archive references are historical and do not affect current manuscript hierarchy. |"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_A.md",
+      "line": 5,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "Relocate the archive document tree from `docs/archive/` to `audit/provenance/docs_archive/`."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_A.md",
+      "line": 16,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "audit/provenance/docs_archive/"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_A.md",
+      "line": 26,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- moved the historical archive document tree into `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_A.md",
+      "line": 38,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "`audit/provenance/docs_archive/` is the preserved provenance home."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_A1.md",
+      "line": 5,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "Retire the empty `docs/archive/` shell after the archive contents have been relocated to `audit/provenance/docs_archive/`."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_A1.md",
+      "line": 39,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "Historical archive evidence now lives only under `audit/provenance/docs_archive/`."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B.md",
+      "line": 5,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Freeze the `srp_experiment/` asset inventory before any separation or archival work begins."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 5,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Move provenance-only `srp_experiment/` assets into `audit/provenance/srp_experiment/`."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 9,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/README.md`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/local_llm.py`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_local_diagnostics.py`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/data/longbench_v2/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/schemas/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 14,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tmp/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 19,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "audit/provenance/srp_experiment/"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 26,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/srp_experiment/README.md`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 27,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/srp_experiment/migration_manifest.json`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 36,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The historical `srp_experiment/` documentation, schema snapshots, scratch traces, and legacy evidence helpers now live under `audit/provenance/srp_experiment/`."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B2.md",
+      "line": 37,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The remaining `srp_experiment/` tree is focused on compatibility assets and deletion candidates."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 1,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "# Phase 6.5-B3 `srp_experiment/` Implementation Removal"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This checkpoint freezes the last migrated implementation surface inside `srp_experiment/` and removes only the duplicate implementation files that now have live owners."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 15,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/analysis/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 16,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 17,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/eval/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 24,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/analysis/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 25,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 26,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/eval/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 33,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/srp/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 34,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/data/longbench_v2/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 35,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_csv.py`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 36,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tests/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 47,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Remove the migrated implementation surface from `srp_experiment/` while preserving the compatibility surface."
+    },
+    {
+      "file": "audit/PHASE_6_5_CLUSTER_B3.md",
+      "line": 56,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "python -m compileall experiments srp_experiment"
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 16,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 23,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `docs/archive/` legacy shell retired after relocation to `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 44,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "### `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 83,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "Keep `audit/provenance/docs_archive/` as preserved provenance."
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 102,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Isolate the remaining `srp_experiment/` compatibility and historical assets."
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 110,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Delete the core `srp_experiment/` implementation once the preserved assets are outside the live dependency graph."
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 124,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/docs_archive/` remains preserved and referenced only as provenance"
+    },
+    {
+      "file": "audit/PHASE_6_5_CONTROLLED_DELETION_PLAN.md",
+      "line": 126,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` has no live dependency arrows and its preserved assets are isolated"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 1,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "# Phase 6.5 `srp_experiment/` Inventory Freeze"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This inventory freezes the current `srp_experiment/` surface into three categories so later phases can isolate, archive, or remove assets without re-deriving the boundary."
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 75,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `export_csv.py` | Frozen export compatibility helper still exercised by legacy tests | `srp_experiment/` compatibility surface |"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 85,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `README.md` | Legacy layer description | `audit/provenance/srp_experiment/` |"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 86,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `data/longbench_v2/` | Historical benchmark/provenance inputs | `audit/provenance/srp_experiment/` |"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 87,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `tmp/` | Historical scratch outputs and audit traces | `audit/provenance/srp_experiment/` or removal after provenance capture |"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 88,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `schemas/` | Historical schema snapshots | `audit/provenance/srp_experiment/` |"
+    },
+    {
+      "file": "audit/PHASE_6_5_SRPEXPERIMENT_INVENTORY.md",
+      "line": 115,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/srp_experiment/` for historical documentation, schemas, and legacy experiment outputs"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_A.md",
+      "line": 8,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The cluster focused on the lowest-risk shared helper paths that still pointed at `srp_experiment/` from live entrypoints."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_A.md",
+      "line": 16,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_csv.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_A.md",
+      "line": 17,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_markdown.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_A.md",
+      "line": 18,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/verify_e5_encoder.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_A.md",
+      "line": 19,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_local_diagnostics.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_A.md",
+      "line": 53,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall scripts experiments\\common srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_B.md",
+      "line": 16,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/ablation_metrics.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_B.md",
+      "line": 50,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall scripts experiments\\common srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This batch continues repository consolidation by removing a small set of live runtime dependencies on `srp_experiment/` while keeping the migration reversible and easy to audit."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/variants/common.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/ablation_runner.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 51,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall scripts experiments\\common srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 57,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_csv.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 58,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_markdown.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 59,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/ablation_runner.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_C.md",
+      "line": 60,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/variants/common.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_D.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This batch removes the last export-wrapper runtime dependency arrows from `srp_experiment/` by narrowing the wrappers to pure record-formatting entrypoints."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_D.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_csv.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_D.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/export_markdown.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_D.md",
+      "line": 50,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall scripts experiments\\common srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_D.md",
+      "line": 56,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/ablation_runner.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_D.md",
+      "line": 57,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/variants/common.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_E.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This batch closed the final `P0` runtime-import blocker for `srp_experiment/`."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_E.md",
+      "line": 9,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/ablation_runner.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_E.md",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/variants/common.py`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_E.md",
+      "line": 28,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall experiments\\\\mechanism_ablation srp_experiment\\\\mechanism_ablation`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_E.md",
+      "line": 31,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m unittest srp_experiment.tests.test_mechanism_attribution_ablation`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_E.md",
+      "line": 41,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The live graph no longer points to `srp_experiment/` through runtime imports."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_mechanism_attribution_ablation.py` -> `experiments.mechanism_ablation.ablation_runner`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_coverage_attribution.py` -> `experiments.analysis.coverage_attribution`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_decision_attribution.py` -> `experiments.analysis.decision_attribution`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F.md",
+      "line": 30,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall experiments/common experiments/analysis srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F2.md",
+      "line": 6,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Removed legacy `srp_experiment/tmp` defaults from the wrapped tooling"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F2.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_importance_attribution.py` -> `experiments.analysis.importance_attribution`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F2.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_policy_attribution.py` -> `experiments.analysis.policy_attribution`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F2.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_semantic_failure_taxonomy.py` -> `experiments.analysis.semantic_failure_taxonomy`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_F2.md",
+      "line": 28,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall experiments/common experiments/analysis srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G1.md",
+      "line": 8,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Removed legacy `srp_experiment/tmp` defaults from the wrapped tooling"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G1.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_graph_information_gap_analysis.py` -> `experiments.analysis.graph_information_gap_analysis`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G1.md",
+      "line": 14,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_semantic_extraction_audit.py` -> `experiments.analysis.semantic_extraction_audit`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G1.md",
+      "line": 15,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_policy_pareto_analysis.py` -> `experiments.analysis.policy_pareto`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G1.md",
+      "line": 27,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall experiments/common experiments/analysis srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G2.md",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Redirected the top-level `srp_experiment/*.py` tooling entrypoints to the live compatibility namespace instead of the legacy package."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_G2.md",
+      "line": 22,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m compileall experiments\\\\srp_runtime_legacy srp_experiment` passed"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_H1.md",
+      "line": 5,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This batch migrated a first wave of live-behavior tests from `srp_experiment` imports to live namespaces."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_H2A.md",
+      "line": 5,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This batch migrated the first H2 wave of live-behavior tests from legacy `srp_experiment` imports to the live compatibility namespace."
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_H2A.md",
+      "line": 25,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `python -m unittest srp_experiment.tests.test_encoder srp_experiment.tests.test_graph_recovery_policy srp_experiment.tests.test_runtime_representation_v2 srp_experiment.tests.test_semantic_runtime_graph srp_experiment.tests.test_semantic_runtime_graph_v1_5 srp_experiment.tests.test_srp_runtime` passed"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_I.md",
+      "line": 5,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "Release gate decoupling from `audit/provenance/docs_archive/README.md`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_I.md",
+      "line": 15,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "-> audit/provenance/docs_archive/README.md"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_I.md",
+      "line": 30,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- updated `scripts/verify_release.py` to load the release manifest and check audit-owned provenance instead of requiring `audit/provenance/docs_archive/README.md`"
+    },
+    {
+      "file": "audit/PHASE_6_CLUSTER_I.md",
+      "line": 39,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "`audit/provenance/docs_archive/README.md` is no longer a release gate dependency."
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 24,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "### `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 32,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- live experiment code no longer depends on `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 48,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- archive material still lives under `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 60,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment/` core implementation | legacy, no live runtime/tooling edges | delete candidate | delete only after compatibility assets are isolated |"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 61,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment/tests/legacy` | frozen compatibility asset | preserve | keeps deletion boundary auditable |"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 62,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment/tests/prototype` | historical prototype asset | archive / retire | depends on provenance review |"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 63,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/` | historical archive material | preserved provenance | no longer a release gate dependency |"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 68,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "### `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 101,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- the release gate is manifest-driven and no longer requires `audit/provenance/docs_archive/README.md`"
+    },
+    {
+      "file": "audit/PHASE_6_DELETION_READINESS.md",
+      "line": 102,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- the archive content is preserved under `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/PHASE_6_FINAL_CONSOLIDATION_SUMMARY.md",
+      "line": 59,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment/"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Phase 6.5-B `srp_experiment asset separation`: active"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 32,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` core implementation is a delete candidate, but the legacy test/prototype surface is still preserved for provenance"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 33,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/docs_archive/` is now provenance-only from the release-gate perspective"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 34,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `docs/archive/` has been retired after relocation into `audit/provenance/docs_archive/`"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 35,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/srp_experiment/` now stores historical documentation, schemas, scratch traces, and legacy evidence helpers"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 36,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` has been reduced to the frozen compatibility surface plus test/prototype assets"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 38,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` has a frozen inventory that separates compatibility, provenance, and deletion candidates"
+    },
+    {
+      "file": "audit/PHASE_6_PROGRESS_REPORT.md",
+      "line": 43,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Continue the Phase 6.5-B3 implementation removal for `srp_experiment/` while preserving the frozen compatibility surface"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_CLASSIFICATION.md",
+      "line": 17,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `legacy compatibility`: the test intentionally verifies the frozen `srp_experiment` surface and should remain until deletion is safe."
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 17,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "`srp_experiment/tests/test_srp_runtime_legacy_compat.py`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 21,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.pipeline.run_srp`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 22,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.compress.chunk_memory`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 23,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.compress.compress_state`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 24,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.encoder.build_encoder`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 25,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.export.flatten_record_for_csv`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 26,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.export.write_records_csv`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 27,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.semantic_parser.canonicalize_semantic_value`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 28,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.semantic_parser.stable_semantic_object_id`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 29,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.saliency.rank_memory_chunks`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 30,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.state.SemanticObjectMetadata`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 31,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.state.SemanticState`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 32,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.recover.recover_state`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 33,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.recover_runtime.budget_recovery_inputs`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 34,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.recover_runtime.recover_memory_from_package`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 35,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.state_lifecycle.apply_object_lifecycle`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 36,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.state_summaries.*`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 37,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.validate.validate_state`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 38,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.validation_failure_summary.*`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 39,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.validation_targets.build_validation_targets`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 40,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.compress_parse.parse_compressed_payload`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 41,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.object_retention.build_object_retention_breakdown`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 42,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.object_retention.build_object_retention_breakdown_v2`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 43,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.repair.build_repair_package`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 44,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.state_allocation.build_state_allocation_policy`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 45,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.export_csv._apply_task_identity`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 49,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- keep as a frozen legacy-compatibility asset until deletion of `srp_experiment/`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 53,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "`srp_experiment/tests/test_longbench_v2_prototype.py`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 57,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.data.longbench_v2.import_longbench_v2.build_query`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 58,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.data.longbench_v2.import_longbench_v2.tokenize_keywords`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 59,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.data.longbench_v2.import_longbench_v2.transform_row`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_FREEZE.md",
+      "line": 60,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.data.longbench_v2.split_task_groups`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_MIGRATION_POLICY.md",
+      "line": 7,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The goal is not to make every `srp_experiment` reference disappear immediately."
+    },
+    {
+      "file": "audit/PHASE_6_TEST_MIGRATION_POLICY.md",
+      "line": 49,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- live-behavior tests no longer import `srp_experiment`"
+    },
+    {
+      "file": "audit/PHASE_6_TEST_MIGRATION_POLICY.md",
+      "line": 50,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- any remaining `srp_experiment` references are explicitly tagged legacy-compatibility or archival"
+    },
+    {
+      "file": "audit/README.md",
+      "line": 74,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Prepares a future removal of `docs/` and `srp_experiment/` after dependencies are rehomed."
+    },
+    {
+      "file": "audit/README.md",
+      "line": 172,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "`srp_experiment/` is maintained as a legacy evidence layer."
+    },
+    {
+      "file": "audit/RELEASE_CANDIDATE_CONSISTENCY_REVIEW.md",
+      "line": 76,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "0 srp_experiment"
+    },
+    {
+      "file": "audit/RELEASE_CANDIDATE_CONSISTENCY_REVIEW.md",
+      "line": 90,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment/"
+    },
+    {
+      "file": "audit/RELEASE_CANDIDATE_CONSISTENCY_REVIEW.md",
+      "line": 96,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/README.md` declares the legacy freeze status."
+    },
+    {
+      "file": "audit/RELEASE_CHECKLIST.md",
+      "line": 109,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- [ ] `srp_experiment/` remains frozen as legacy evidence and compatibility support"
+    },
+    {
+      "file": "audit/RELEASE_HARDENING_RESULT.md",
+      "line": 20,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| Legacy boundary | PASS | `srp_experiment/` is frozen as a legacy evidence layer. |"
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 32,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/docs_archive/README.md\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 33,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/README.md\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 34,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/migration_manifest.json\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 35,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/local_llm.py\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 36,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/run_local_diagnostics.py\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 37,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 38,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/data/longbench_v2/split_task_groups.py\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 39,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/data/longbench_v2/manifest.json\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 40,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/schemas/experiment_result_schema_v1.json\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 41,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1.json\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 42,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1_5.json\","
+    },
+    {
+      "file": "audit/release_manifest.json",
+      "line": 43,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/tmp/srp_audit_test.md\""
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 53,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment/` | Legacy | Frozen legacy experiment and evidence layer |"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 54,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/` | Legacy | Historical research materials preserved for provenance |"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 58,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "These dependencies must be removed, isolated, or explicitly frozen before `docs/` and `srp_experiment/` can be safely deleted."
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 80,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "### `srp_experiment/`"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 95,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment` hits: `287`"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 115,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- `audit/provenance/docs_archive/` is legacy provenance, not a release gate dependency"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 116,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is legacy, but its core runtime/tooling edges are gone"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 117,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- the remaining `srp_experiment` references are frozen test/prototype assets, not live runtime dependencies"
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 153,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "6. Delete the core `srp_experiment/` implementation only when the legacy compatibility surface has been isolated or archived."
+    },
+    {
+      "file": "audit/REPOSITORY_CONSOLIDATION_AUDIT.md",
+      "line": 169,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- keep the frozen `srp_experiment` compatibility and prototype assets until the deletion-readiness audit approves retirement or archival"
+    },
+    {
+      "file": "audit/REPO_ARCHITECTURE_BLUEPRINT.md",
+      "line": 225,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "## 8. Role of `srp_experiment/`"
+    },
+    {
+      "file": "audit/REPO_ARCHITECTURE_BLUEPRINT.md",
+      "line": 227,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "`srp_experiment/` is treated as the legacy evidence layer and historical implementation substrate."
+    },
+    {
+      "file": "audit/REPO_ARCHITECTURE_BLUEPRINT.md",
+      "line": 233,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is legacy evidence and compatibility support"
+    },
+    {
+      "file": "audit/REPO_ARCHITECTURE_BLUEPRINT.md",
+      "line": 262,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Document `srp_experiment/` as frozen legacy evidence and compatibility support."
+    },
+    {
+      "file": "audit/REPRODUCIBILITY_AND_DEPENDENCY_MAP.md",
+      "line": 64,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- selected helper paths under `srp_experiment/`, only where explicitly justified and frozen as legacy support"
+    },
+    {
+      "file": "audit/REPRODUCIBILITY_AND_DEPENDENCY_MAP.md",
+      "line": 112,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is preserved as a frozen legacy evidence layer."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 4,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "It classifies every observed `srp_experiment` reference into one of four buckets so we can restore the repository boundary before deciding what to delete."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 9,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Evaluation dependencies: current benchmark and external-validation adapters still import `srp_experiment`."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Historical references: archive documents refer to `srp_experiment` as background evidence or early implementation history."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 19,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `rg -n \"srp_experiment\" srp_runtime`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 23,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- No files under `srp_runtime/` currently import `srp_experiment`."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 33,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/evaluation/semantic_backend_comparison/local_model_backend.py` | `srp_experiment.local_llm`, `srp_experiment.srp.encoder`, `srp_experiment.srp.llm_judge` | Local-model compatibility backend for semantic comparison |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 34,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/evaluation/semantic_backend_comparison/vector_backend.py` | `srp_experiment.srp.encoder` | Vector backend for semantic comparison |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 35,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/evaluation/phase_v_retention/metrics.py` | `srp_experiment.srp.semantic_parser` | Legacy semantic parsing helper for retention metrics |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 36,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/external_validation/baselines.py` | `srp_experiment.srp.encoder` | Baseline scoring and similarity utilities |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 37,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/external_validation/evidence.py` | `srp_experiment.local_llm` | Evidence-package generation and scoring support |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 47,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "These files keep `srp_experiment` alive because the release snapshot still treats it as part of the reproducibility surface."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 51,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `README.md` | `srp_experiment/` description | Repository boundary statement |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 52,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `scripts/verify_release.py` | legacy required paths under `srp_experiment/` | Release hygiene gate |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 56,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- The repository currently still advertises `srp_experiment` as a retained evidence layer."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 62,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "These are archive documents that treat `srp_experiment` as historical evidence, early implementation, or a runtime projection."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 66,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | background / historical evidence | Explicitly frames `srp_experiment` as background evidence |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 66,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | background / historical evidence | Explicitly frames `srp_experiment` as background evidence |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 67,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Refers to `srp_experiment/tmp/...` outputs |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 67,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Refers to `srp_experiment/tmp/...` outputs |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 68,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Maps current legacy implementation to runtime concepts |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 69,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md` | implementation mapping | Same, but for event processing |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 70,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md` | empirical / historical layer | Explicitly says the legacy stack remains the evidence layer |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 71,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md` | parameter reference | Refers to legacy helpers and budget config |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 72,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter reference | Mentions legacy helper functions |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 73,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | References `srp_experiment/tmp/fixed_harnesses/` outputs |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 73,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | References `srp_experiment/tmp/fixed_harnesses/` outputs |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 74,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | adapter planning | Uses `srp_experiment` as the source side of a migration boundary |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 74,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | adapter planning | Uses `srp_experiment` as the source side of a migration boundary |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 75,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_API_MAP.md` | implementation mapping | Maps the legacy implementation to future runtime APIs |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 76,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_PROTOCOL_MAP.md` | implementation mapping | Maps legacy modules to runtime object/data-contract layers |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 77,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Treats `srp_experiment` as the current baseline being projected away from |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 77,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Treats `srp_experiment` as the current baseline being projected away from |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 78,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md` | projection note | Describes a legacy package as an early projection of the model |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 79,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md` | report references | Cites legacy schemas and tests |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 80,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_THEORY_MAP.md` | historical framing | Calls the legacy stack a maintained background layer |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 93,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is still needed for evaluation and reproducibility in a few places."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md",
+      "line": 99,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- we should not delete `srp_experiment` yet"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document records the Phase 3 legacy review of `srp_experiment/`."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/` is a frozen legacy evidence layer."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_runtime/` has no direct dependency on `srp_experiment/`."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 20,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- No files under `srp_runtime/` currently import `srp_experiment`."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 25,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- Do not introduce new runtime imports from `srp_experiment`."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 34,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "These are the current cross-layer references that keep `srp_experiment/` alive in active evaluation code."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 39,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/evaluation/semantic_backend_comparison/local_model_backend.py` | `srp_experiment.local_llm`, `srp_experiment.srp.encoder`, `srp_experiment.srp.llm_judge` | Local-model compatibility backend for semantic comparison | Keep |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 40,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/evaluation/semantic_backend_comparison/vector_backend.py` | `srp_experiment.srp.encoder` | Vector baseline for semantic comparison | Keep |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 41,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/evaluation/phase_v_retention/metrics.py` | `srp_experiment.srp.semantic_parser` | Legacy semantic parsing helper for retention metrics | Keep |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 42,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/external_validation/baselines.py` | `srp_experiment.srp.encoder` | Baseline scoring and similarity utilities | Keep |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 43,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `experiments/external_validation/evidence.py` | `srp_experiment.local_llm` | Evidence-package generation and scoring support | Keep |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 49,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.local_llm`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 50,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.encoder`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 51,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.semantic_parser`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 52,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.srp.llm_judge`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 58,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "These files refer to `srp_experiment/` as background evidence, historical implementation, or a migration source."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 62,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `README.md` | public documentation | Update if needed | The top-level README now describes `srp_experiment/` as a legacy measurement and runtime evidence stack. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 63,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/README.md` | governance index | Keep | Explicitly frames `srp_experiment/` as legacy. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 64,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/REPO_ARCHITECTURE_BLUEPRINT.md` | architecture contract | Keep | Declares `srp_experiment/` as legacy evidence and compatibility support. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 66,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/CLAIM_EVIDENCE_MAP.md` | claim ledger | Keep | Treats `srp_experiment/` as legacy evidence, not source of truth. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 69,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | historical evidence | Keep | Explicitly frames `srp_experiment/` as background evidence. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 69,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | historical evidence | Keep | Explicitly frames `srp_experiment/` as background evidence. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 70,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Keep | Refers to legacy `srp_experiment/tmp/...` outputs. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 70,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Keep | Refers to legacy `srp_experiment/tmp/...` outputs. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 71,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md` | historical planning | Keep | Notes the legacy stack remains the evidence layer. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 72,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | Keep | References legacy fixed-harness outputs. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 73,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | migration planning | Keep | Uses `srp_experiment` as the source side of a migration boundary. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 73,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | migration planning | Keep | Uses `srp_experiment` as the source side of a migration boundary. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 74,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Keep | Treats `srp_experiment` as the current baseline being projected away from. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 74,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Keep | Treats `srp_experiment` as the current baseline being projected away from. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 75,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Keep | Maps `srp_experiment/srp/` to runtime concepts without changing code. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 75,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Keep | Maps `srp_experiment/srp/` to runtime concepts without changing code. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 76,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md` | implementation mapping | Keep | Maps legacy modules to event processing concepts. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 77,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_API_MAP.md` | API mapping | Keep | Legacy-to-future mapping document. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 78,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_RUNTIME_PROTOCOL_MAP.md` | protocol mapping | Keep | Legacy-to-future mapping document. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 79,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md` | model framing | Keep | Refers to the current `srp_experiment.srp.semantic_graph` package as an early projection. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 79,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md` | model framing | Keep | Refers to the current `srp_experiment.srp.semantic_graph` package as an early projection. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 80,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_THEORY_MAP.md` | theory framing | Keep | Describes the legacy measurement stack as a background layer. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 81,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md` | parameter catalog | Keep | References legacy `srp_experiment` paths as supporting detail. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 81,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md` | parameter catalog | Keep | References legacy `srp_experiment` paths as supporting detail. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 82,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter model | Keep | References legacy `srp_experiment` modules as supporting detail. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 82,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter model | Keep | References legacy `srp_experiment` modules as supporting detail. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 83,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "| `audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md` | historical report | Keep | References legacy schema and tests. |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 92,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The release script still treats a subset of `srp_experiment/` files as required legacy evidence."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 105,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "`srp_experiment/` still contains extensive self-references within its own package tree."
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 111,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tests/`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 112,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/analysis/`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 113,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/mechanism_ablation/`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 114,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/data/longbench_v2/`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 115,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/srp/`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 116,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/run_*.py`"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 130,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.local_llm` | shared local-model client helper | Potential extraction into a shared helper or runtime-adjacent utility later |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 131,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.srp.encoder` | shared similarity/encoding helper | Potential extraction if a common utility layer is introduced |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 132,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.srp.semantic_parser` | normalization helper | Potential extraction if shared parsing utilities are formalized |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 133,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "| `srp_experiment.srp.llm_judge` | evidence judgment helper | Potential extraction if evidence tooling is consolidated |"
+    },
+    {
+      "file": "audit/SRP_EXPERIMENT_LEGACY_AUDIT.md",
+      "line": 141,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "2. The remaining `srp_experiment` references are mostly evaluation, documentation, or release-script references."
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 2,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"\"\"Generate a dependency report for legacy docs and srp_experiment references.\"\"\""
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 21,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "re.compile(r\"^\\s*from\\s+srp_experiment(?:\\.[A-Za-z0-9_]+)*\\s+import\\b\"),"
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 22,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "re.compile(r\"^\\s*import\\s+srp_experiment(?:\\b|\\.)\"),"
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 25,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "\"docs_archive\": re.compile(r\"audit/provenance/docs_archive/\"),"
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 26,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment\": re.compile(r\"\\bsrp_experiment\\b\"),"
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 82,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "elif rel.startswith(\"scripts/\") or \"/run_\" in rel or rel.startswith(\"srp_experiment/run_\"):"
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 100,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "category = \"historical_mentions\" if rel.startswith(\"audit/provenance/docs_archive/\") else \"markdown_references\""
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 178,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"This report enumerates references to `docs/` and `srp_experiment/` that matter for repository deletion planning.\","
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 189,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"| `P0` | `runtime_imports` | Live experiment code still depends on `srp_experiment` at runtime. |\","
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 190,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"| `P1` | `tooling_imports` | Scripts, generators, and maintenance tools still depend on `srp_experiment`. |\","
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 191,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"| `P2` | `test_imports` | Tests still depend on `srp_experiment`; important, but usually lower risk than live code. |\","
+    },
+    {
+      "file": "scripts/find_dependency_refs.py",
+      "line": 284,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "\"- `scripts/verify_release.py` must stop depending on `audit/provenance/docs_archive/README.md` before `docs/` can be removed.\","
+    },
+    {
+      "file": "scripts/verify_release.py",
+      "line": 19,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/local_llm.py\","
+    },
+    {
+      "file": "scripts/verify_release.py",
+      "line": 20,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/run_local_diagnostics.py\","
+    },
+    {
+      "file": "scripts/verify_release.py",
+      "line": 21,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py\","
+    },
+    {
+      "file": "scripts/verify_release.py",
+      "line": 22,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/data/longbench_v2/split_task_groups.py\","
+    },
+    {
+      "file": "scripts/verify_release.py",
+      "line": 23,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"audit/provenance/srp_experiment/data/longbench_v2/manifest.json\","
+    },
+    {
+      "file": "srp_experiment/export_csv.py",
+      "line": 23,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "parser.add_argument(\"--output-csv\", type=Path, default=Path(\"srp_experiment\") / \"tmp\" / \"srp_records.csv\")"
+    },
+    {
+      "file": "srp_experiment/tests/test_longbench_v2_prototype.py",
+      "line": 6,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.data.longbench_v2.import_longbench_v2 import build_query, tokenize_keywords, transform_row"
+    },
+    {
+      "file": "srp_experiment/tests/test_longbench_v2_prototype.py",
+      "line": 6,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.data.longbench_v2.import_longbench_v2 import build_query, tokenize_keywords, transform_row"
+    },
+    {
+      "file": "srp_experiment/tests/test_longbench_v2_prototype.py",
+      "line": 7,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.data.longbench_v2 import split_task_groups"
+    },
+    {
+      "file": "srp_experiment/tests/test_longbench_v2_prototype.py",
+      "line": 7,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.data.longbench_v2 import split_task_groups"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime.py",
+      "line": 488,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "output_path = write_records_markdown(records, Path(\"srp_experiment\") / \"tmp\" / \"srp_audit_test.md\")"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime.py",
+      "line": 563,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "schema_path = Path(\"srp_experiment\") / \"schemas\" / \"experiment_result_schema_v1.json\""
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 5,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.pipeline import run_srp"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 5,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.pipeline import run_srp"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 6,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.compress import chunk_memory, compress_state"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 6,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.compress import chunk_memory, compress_state"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 7,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.encoder import build_encoder"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 7,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.encoder import build_encoder"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 8,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.export import flatten_record_for_csv, write_records_csv"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 8,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.export import flatten_record_for_csv, write_records_csv"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 9,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.semantic_parser import canonicalize_semantic_value, stable_semantic_object_id"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 9,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.semantic_parser import canonicalize_semantic_value, stable_semantic_object_id"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 10,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.saliency import rank_memory_chunks"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.saliency import rank_memory_chunks"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 11,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.state import SemanticObjectMetadata, SemanticState"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.state import SemanticObjectMetadata, SemanticState"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 12,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.recover import recover_state"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.recover import recover_state"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 13,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.recover_runtime import budget_recovery_inputs, recover_memory_from_package"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.recover_runtime import budget_recovery_inputs, recover_memory_from_package"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 14,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.state_lifecycle import apply_object_lifecycle as apply_object_lifecycle_rule"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 14,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.state_lifecycle import apply_object_lifecycle as apply_object_lifecycle_rule"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 15,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.state_summaries import ("
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 15,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.state_summaries import ("
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 21,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.validate import validate_state"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 21,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.validate import validate_state"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 22,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.validation_failure_summary import ("
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 22,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.validation_failure_summary import ("
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 28,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.validation_targets import build_validation_targets"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 28,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.validation_targets import build_validation_targets"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 29,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.compress_parse import parse_compressed_payload"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 29,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.compress_parse import parse_compressed_payload"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 30,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.object_retention import build_object_retention_breakdown, build_object_retention_breakdown_v2"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 30,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.object_retention import build_object_retention_breakdown, build_object_retention_breakdown_v2"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 31,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.repair import build_repair_package"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 31,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.repair import build_repair_package"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 32,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.state_allocation import build_state_allocation_policy"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 32,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.state_allocation import build_state_allocation_policy"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 824,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "output_path = write_records_csv(records, Path(\"srp_experiment\") / \"tmp\" / \"srp_records_test.csv\")"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 985,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "jsonl_path = Path(\"srp_experiment\") / \"tmp\" / \"srp_tasks_test.jsonl\""
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 992,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.srp.export import flatten_records_for_csv"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 992,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.srp.export import flatten_records_for_csv"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 1013,
+      "kind": "import",
+      "category": "test_imports",
+      "blocks_deletion": true,
+      "text": "from srp_experiment.export_csv import _apply_task_identity"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 1013,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "from srp_experiment.export_csv import _apply_task_identity"
+    },
+    {
+      "file": "srp_experiment/tests/test_srp_runtime_legacy_compat.py",
+      "line": 1017,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "_apply_task_identity(record, task, Path(\"srp_experiment\") / \"tmp\" / \"task.json\", \"batch1-\")"
+    },
+    {
+      "file": "srp_experiment/data/longbench_v2/import_longbench_v2.py",
+      "line": 243,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "manifest[\"task_file\"] = \"srp_experiment/data/longbench_v2/tasks.json\""
+    },
+    {
+      "file": "srp_experiment/data/longbench_v2/manifest.json",
+      "line": 9,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment/data/longbench_v2/tasks_group_1.json\","
+    },
+    {
+      "file": "srp_experiment/data/longbench_v2/manifest.json",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment/data/longbench_v2/tasks_group_2.json\","
+    },
+    {
+      "file": "srp_experiment/data/longbench_v2/manifest.json",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment/data/longbench_v2/tasks_group_3.json\""
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/export_csv.py",
+      "line": 18,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "parser.add_argument(\"--output-csv\", type=Path, default=Path(\"srp_experiment\") / \"tmp\" / \"srp_records.csv\")"
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/export_markdown.py",
+      "line": 18,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "parser.add_argument(\"--output-markdown\", type=Path, default=Path(\"srp_experiment\") / \"tmp\" / \"srp_audit.md\")"
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_controlled_harness.py",
+      "line": 28,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"controlled_harness\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_coverage_attribution.py",
+      "line": 24,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"graph_representation_ablation\" / \"graph_representation_ablation_records.jsonl\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_coverage_attribution.py",
+      "line": 30,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"coverage_attribution\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_decision_attribution.py",
+      "line": 23,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"fixed_harnesses\" / \"object_aware_compression\" / \"object_aware_compression_records.jsonl\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_decision_attribution.py",
+      "line": 29,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"decision_attribution\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_fixed_harnesses.py",
+      "line": 68,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"fixed_harnesses\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_graph_recovery_evaluation.py",
+      "line": 33,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"graph_recovery_ablation\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_graph_representation_ablation.py",
+      "line": 34,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"graph_representation_ablation\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_mechanism_attribution_ablation.py",
+      "line": 38,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"mechanism_attribution_ablation\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_object_aware_compression.py",
+      "line": 33,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"object_aware_compression\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_object_aware_threshold_analysis.py",
+      "line": 23,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"object_aware_threshold_analysis\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_object_aware_threshold_sampling.py",
+      "line": 30,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"object_aware_threshold_sampling\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_policy_boundary_analysis.py",
+      "line": 45,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"policy_boundary\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_policy_boundary_drift.py",
+      "line": 47,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"policy_boundary_drift\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_policy_boundary_robustness.py",
+      "line": 29,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"policy_boundary_robustness\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_policy_intervention.py",
+      "line": 41,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"policy_intervention\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_policy_sensitivity.py",
+      "line": 35,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"policy_sensitivity\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_reconstruction_policy_comparison.py",
+      "line": 32,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"reconstruction_policy\","
+    },
+    {
+      "file": "experiments/srp_runtime_legacy/run_recovery_ablation.py",
+      "line": 32,
+      "kind": "srp_experiment",
+      "category": "historical_mentions",
+      "blocks_deletion": false,
+      "text": "default=PROJECT_ROOT / \"srp_experiment\" / \"tmp\" / \"recovery_ablation\","
+    },
+    {
+      "file": "audit/provenance/README.md",
+      "line": 11,
+      "kind": "docs_archive",
+      "category": "markdown_references",
+      "blocks_deletion": false,
+      "text": "- avoid using `audit/provenance/docs_archive/` as an executable release requirement"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md",
+      "line": 15,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment/"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md",
+      "line": 141,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "Use `srp_experiment/` as background and historical evidence for runtime feasibility."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md",
+      "line": 7,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tmp/fixed_harnesses/*/*_records.jsonl`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tmp/semantic_failure_taxonomy/semantic_failure_taxonomy.json`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tmp/semantic_failure_taxonomy/semantic_failure_taxonomy.md`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document maps the current `srp_experiment/srp/` implementation to the SRP runtime concepts without changing the code structure."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document maps the current `srp_experiment/srp/` modules to the SRP runtime event processing model."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md",
+      "line": 12,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/srp/` remains the empirical and historical evidence layer."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md",
+      "line": 322,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment/srp/"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md",
+      "line": 92,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `policy_spec()` and `policy_flat()` in [srp_experiment/srp/state_summaries.py](/c:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/srp_experiment/srp/state_summaries.py)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md",
+      "line": 96,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- budget configuration in [srp_experiment/budgeting.py](/c:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/srp_experiment/budgeting.py)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md",
+      "line": 103,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- lifecycle importance and decay values in `policy_spec()` inside [state_summaries.py](srp_experiment/srp/state_summaries.py)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md",
+      "line": 7,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/tmp/fixed_harnesses/`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md",
+      "line": 42,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- [controlled_harness_summary.md](./srp_experiment/tmp/fixed_harnesses/controlled/controlled_harness_summary.md)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md",
+      "line": 62,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- [recovery_ablation_summary.md](./srp_experiment/tmp/fixed_harnesses/recovery/recovery_ablation_summary.md)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md",
+      "line": 87,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- [reconstruction_policy_summary.md](./srp_experiment/tmp/fixed_harnesses/reconstruction/reconstruction_policy_summary.md)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md",
+      "line": 111,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- [object_aware_compression_summary.md](./srp_experiment/tmp/fixed_harnesses/object_aware_compression/object_aware_compression_summary.md)"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md",
+      "line": 27,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_API_MAP.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document maps the current `srp_experiment/srp/` implementation to the future Runtime Kernel API."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md",
+      "line": 230,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_RUNTIME_PROTOCOL_MAP.md",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "This document maps the current `srp_experiment/srp/` modules to the runtime object and data-contract layers."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md",
+      "line": 291,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The current `srp_experiment.srp.semantic_graph` package is an early projection of this model."
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md",
+      "line": 13,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment/schemas/semantic_runtime_graph_schema_v1.json`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md",
+      "line": 45,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.tests.test_semantic_runtime_graph`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md",
+      "line": 46,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "- `srp_experiment.tests.test_srp_runtime`"
+    },
+    {
+      "file": "audit/provenance/docs_archive/SRP_THEORY_MAP.md",
+      "line": 82,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "The legacy measurement stack under `srp_experiment/` remains a maintained background layer for runtime feasibility and benchmark evidence."
+    },
+    {
+      "file": "audit/provenance/srp_experiment/migration_manifest.json",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"source_root\": \"srp_experiment/\","
+    },
+    {
+      "file": "audit/provenance/srp_experiment/README.md",
+      "line": 8,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "srp_experiment/"
+    },
+    {
+      "file": "audit/provenance/srp_experiment/schemas/experiment_result_schema_v1.json",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"$id\": \"srp_experiment/schemas/experiment_result_schema_v1.json\","
+    },
+    {
+      "file": "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1.json",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"$id\": \"srp_experiment/schemas/semantic_runtime_graph_schema_v1.json\","
+    },
+    {
+      "file": "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1_5.json",
+      "line": 3,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"$id\": \"srp_experiment/schemas/semantic_runtime_graph_schema_v1_5.json\","
+    },
+    {
+      "file": "audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py",
+      "line": 243,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "manifest[\"task_file\"] = \"srp_experiment/data/longbench_v2/tasks.json\""
+    },
+    {
+      "file": "audit/provenance/srp_experiment/data/longbench_v2/manifest.json",
+      "line": 9,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment/data/longbench_v2/tasks_group_1.json\","
+    },
+    {
+      "file": "audit/provenance/srp_experiment/data/longbench_v2/manifest.json",
+      "line": 10,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment/data/longbench_v2/tasks_group_2.json\","
+    },
+    {
+      "file": "audit/provenance/srp_experiment/data/longbench_v2/manifest.json",
+      "line": 11,
+      "kind": "srp_experiment",
+      "category": "audit_references",
+      "blocks_deletion": false,
+      "text": "\"srp_experiment/data/longbench_v2/tasks_group_3.json\""
+    }
+  ]
+}

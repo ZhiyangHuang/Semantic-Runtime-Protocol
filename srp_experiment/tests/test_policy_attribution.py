@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.policy_attribution import (
+from experiments.analysis.policy_attribution import (
     summarize_policy_attribution,
     write_policy_attribution_outputs,
 )

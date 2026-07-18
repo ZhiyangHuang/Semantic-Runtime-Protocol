@@ -2,12 +2,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.decision_attribution import (
+from experiments.analysis.decision_attribution import (
     load_decision_attribution_records,
     summarize_decision_attribution,
     write_decision_attribution_outputs,
 )
-from srp_experiment.analysis.decision_trace import build_compression_decision_trace
+from experiments.analysis.decision_trace import build_compression_decision_trace
 
 
 def _record() -> dict:
@@ -93,7 +93,7 @@ class TestDecisionAttribution(unittest.TestCase):
         summary = summarize_decision_attribution([record])
         self.assertEqual(summary["records"], 1)
         self.assertIn("branching_dependency", summary["scenarios"])
-        markdown = __import__("srp_experiment.analysis.decision_attribution", fromlist=["render_decision_attribution_markdown"]).render_decision_attribution_markdown(summary)
+        markdown = __import__("experiments.analysis.decision_attribution", fromlist=["render_decision_attribution_markdown"]).render_decision_attribution_markdown(summary)
         self.assertIn("# Decision Attribution", markdown)
         self.assertIn("Scenario Summary", markdown)
         with tempfile.TemporaryDirectory() as tmpdir:

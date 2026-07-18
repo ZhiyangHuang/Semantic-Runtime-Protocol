@@ -3,54 +3,46 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_FILE_SIZE = 100 * 1024 * 1024
-
-CORE_REQUIRED_PATHS = [
-    "README.md",
-    "ARTIFACT_README.md",
-    "paper/README.md",
-    "paper/SRP_PAPER_FINAL_V1.md",
-    "paper/SRP_MAIN_RESULTS_SUMMARY_V1.md",
-    "audit/README.md",
-    "audit/SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md",
-    "audit/SRP_LONGMEMEVAL_EVIDENCE_PROMOTION_DECISION.md",
-    "audit/SRP_LONGMEMEVAL_EVIDENCE_AUDIT_NOTE.md",
-    "audit/SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md",
-    "experiments/evaluation/run_longmemeval_evidence.py",
-    "experiments/evaluation/run_longmemeval_scorer_alignment_audit.py",
-    "experiments/evaluation/run_longmemeval_adapter_validation.py",
-    "experiments/evaluation/run_locomo_manual_sanity.py",
-    "experiments/external_validation/runtime_contract.py",
-    "experiments/results/external_validation_longmemeval_evidence_strong_baselines/MANIFEST.md",
-    "experiments/results/external_validation_longmemeval_evidence_strong_baselines/longmemeval_evidence_report.md",
-    "experiments/results/external_validation_longmemeval_evidence_strong_baselines/runtime_manifest.json",
-    "docs/archive/README.md",
-    "configs/external_validation_longmemeval_evidence.env",
-    "configs/external_validation_longmemeval_evidence_strong_baselines.env",
-    "configs/external_validation_longmemeval_adapter_validation.env",
-    "configs/external_validation_locomo_manual_sanity.env",
-    "configs/external_validation_locomo_mvp.env",
-    "configs/external_validation_locomo_mvp_calibration_aware.env",
-]
+RELEASE_MANIFEST_PATH = ROOT / "audit" / "release_manifest.json"
+PROVENANCE_README_PATH = ROOT / "audit" / "provenance" / "README.md"
 
 # Legacy evidence files are still required for the release snapshot, but they are
 # checked separately so the runtime boundary stays explicit.
 LEGACY_EVIDENCE_PATHS = [
-    "srp_experiment/local_llm.py",
-    "srp_experiment/run_local_diagnostics.py",
-    "srp_experiment/data/longbench_v2/import_longbench_v2.py",
-    "srp_experiment/data/longbench_v2/split_task_groups.py",
-    "srp_experiment/data/longbench_v2/manifest.json",
+    "audit/provenance/srp_experiment/local_llm.py",
+    "audit/provenance/srp_experiment/run_local_diagnostics.py",
+    "audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py",
+    "audit/provenance/srp_experiment/data/longbench_v2/split_task_groups.py",
+    "audit/provenance/srp_experiment/data/longbench_v2/manifest.json",
 ]
 
 
 def main() -> int:
-    missing_core = [rel for rel in CORE_REQUIRED_PATHS if not (ROOT / rel).exists()]
+    try:
+        release_manifest = json.loads(RELEASE_MANIFEST_PATH.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        print(f"Missing release manifest: {RELEASE_MANIFEST_PATH.relative_to(ROOT).as_posix()}")
+        return 1
+    except json.JSONDecodeError as exc:
+        print(f"Invalid release manifest JSON: {exc}")
+        return 1
+
+    core_required_paths = release_manifest.get("core_required_paths")
+    if not isinstance(core_required_paths, list) or not all(isinstance(item, str) for item in core_required_paths):
+        print("Release manifest must define a string list at key 'core_required_paths'.")
+        return 1
+
+    missing_core = [rel for rel in core_required_paths if not (ROOT / rel).exists()]
+    if not PROVENANCE_README_PATH.exists():
+        missing_core.append(PROVENANCE_README_PATH.relative_to(ROOT).as_posix())
+
     missing_legacy = [rel for rel in LEGACY_EVIDENCE_PATHS if not (ROOT / rel).exists()]
 
     oversized: list[tuple[str, int]] = []

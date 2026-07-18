@@ -2,12 +2,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.coverage_attribution import (
+from experiments.analysis.coverage_attribution import (
     load_coverage_attribution_records,
     summarize_coverage_attribution,
     write_coverage_attribution_outputs,
 )
-from srp_experiment.analysis.semantic_snapshot import build_stage_snapshots
+from experiments.analysis.semantic_snapshot import build_stage_snapshots
 
 
 def _record() -> dict:
@@ -96,7 +96,7 @@ class TestCoverageAttribution(unittest.TestCase):
         self.assertEqual(summary["records_with_snapshots"], 1)
         self.assertIn("stagewise_loss_matrix", summary)
         self.assertIn("root_cause", summary)
-        markdown = __import__("srp_experiment.analysis.coverage_attribution", fromlist=["render_coverage_attribution_markdown"]).render_coverage_attribution_markdown(summary)
+        markdown = __import__("experiments.analysis.coverage_attribution", fromlist=["render_coverage_attribution_markdown"]).render_coverage_attribution_markdown(summary)
         self.assertIn("# Coverage Attribution", markdown)
         self.assertIn("Stagewise Loss Matrix", markdown)
         with tempfile.TemporaryDirectory() as tmpdir:

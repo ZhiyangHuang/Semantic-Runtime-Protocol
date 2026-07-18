@@ -1,9 +1,0 @@
-{
-  "generated_at": "2026-07-15T01:51:36.344731+00:00",
-  "generated_by": "external_validation_calibration_aware_v1",
-  "benchmark_display_name": "LongMemEval",
-  "source_output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_longmemeval_mvp",
-  "output_dir": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_longmemeval_calibration_aware",
-  "case_count": 24,
-  "trace_count": 24
-}

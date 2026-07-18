@@ -1,0 +1,20 @@
+{
+  "transition_metrics": {
+    "accepted_transitions": 3,
+    "rejected_transitions": 0,
+    "invalid_accept_rate": 1.0
+  },
+  "governance_metrics": {
+    "authority_changed_with_evidence": false,
+    "recommendation_execution_separated": false,
+    "replay_consistency": 1.0,
+    "authority_escalation_rate": 0.0,
+    "evidence_improvement": 0.0
+  },
+  "task_metrics": {
+    "memory_accuracy": 0.666667,
+    "relation_accuracy": 0.666667,
+    "fact_accuracy": 0.666667,
+    "coverage": 1.0
+  }
+}

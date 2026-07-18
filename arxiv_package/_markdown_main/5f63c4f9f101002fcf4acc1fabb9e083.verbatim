@@ -1,0 +1,1 @@
+theta* = argmax_{theta in F} U(theta)

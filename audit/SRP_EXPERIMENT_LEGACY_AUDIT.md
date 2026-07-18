@@ -66,21 +66,21 @@ These files refer to `srp_experiment/` as background evidence, historical implem
 | `audit/CLAIM_EVIDENCE_MAP.md` | claim ledger | Keep | Treats `srp_experiment/` as legacy evidence, not source of truth. |
 | `audit/RELEASE_CHECKLIST.md` | release gate | Keep | Checks that legacy evidence remains frozen. |
 | `audit/SRP_EXPERIMENT_DEPENDENCY_MAP.md` | dependency map | Keep | This is the factual precursor for the legacy audit. |
-| `docs/archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | historical evidence | Keep | Explicitly frames `srp_experiment/` as background evidence. |
-| `docs/archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Keep | Refers to legacy `srp_experiment/tmp/...` outputs. |
-| `docs/archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md` | historical planning | Keep | Notes the legacy stack remains the evidence layer. |
-| `docs/archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | Keep | References legacy fixed-harness outputs. |
-| `docs/archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | migration planning | Keep | Uses `srp_experiment` as the source side of a migration boundary. |
-| `docs/archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Keep | Treats `srp_experiment` as the current baseline being projected away from. |
-| `docs/archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Keep | Maps `srp_experiment/srp/` to runtime concepts without changing code. |
-| `docs/archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md` | implementation mapping | Keep | Maps legacy modules to event processing concepts. |
-| `docs/archive/SRP_RUNTIME_API_MAP.md` | API mapping | Keep | Legacy-to-future mapping document. |
-| `docs/archive/SRP_RUNTIME_PROTOCOL_MAP.md` | protocol mapping | Keep | Legacy-to-future mapping document. |
-| `docs/archive/SRP_SEMANTIC_GRAPH_MODEL.md` | model framing | Keep | Refers to the current `srp_experiment.srp.semantic_graph` package as an early projection. |
-| `docs/archive/SRP_THEORY_MAP.md` | theory framing | Keep | Describes the legacy measurement stack as a background layer. |
-| `docs/archive/SRP_PARAMETER_CATALOG.md` | parameter catalog | Keep | References legacy `srp_experiment` paths as supporting detail. |
-| `docs/archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter model | Keep | References legacy `srp_experiment` modules as supporting detail. |
-| `docs/archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md` | historical report | Keep | References legacy schema and tests. |
+| `audit/provenance/docs_archive/SRP_EXPERIMENT_STACK_OVERVIEW.md` | historical evidence | Keep | Explicitly frames `srp_experiment/` as background evidence. |
+| `audit/provenance/docs_archive/SRP_FAILURE_ANALYSIS_REPORT.md` | artifact path reference | Keep | Refers to legacy `srp_experiment/tmp/...` outputs. |
+| `audit/provenance/docs_archive/SRP_MINIMAL_RUNTIME_KERNEL_REFERENCE_PLAN.md` | historical planning | Keep | Notes the legacy stack remains the evidence layer. |
+| `audit/provenance/docs_archive/SRP_ROUND1_FIXED_HARNESS_REPORT.md` | artifact path reference | Keep | References legacy fixed-harness outputs. |
+| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_ADAPTER_PLAN.md` | migration planning | Keep | Uses `srp_experiment` as the source side of a migration boundary. |
+| `audit/provenance/docs_archive/SRP_RUNTIME_KERNEL_TARGET.md` | target-state mapping | Keep | Treats `srp_experiment` as the current baseline being projected away from. |
+| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_ALIGNMENT.md` | implementation mapping | Keep | Maps `srp_experiment/srp/` to runtime concepts without changing code. |
+| `audit/provenance/docs_archive/SRP_IMPLEMENTATION_EVENT_ALIGNMENT.md` | implementation mapping | Keep | Maps legacy modules to event processing concepts. |
+| `audit/provenance/docs_archive/SRP_RUNTIME_API_MAP.md` | API mapping | Keep | Legacy-to-future mapping document. |
+| `audit/provenance/docs_archive/SRP_RUNTIME_PROTOCOL_MAP.md` | protocol mapping | Keep | Legacy-to-future mapping document. |
+| `audit/provenance/docs_archive/SRP_SEMANTIC_GRAPH_MODEL.md` | model framing | Keep | Refers to the current `srp_experiment.srp.semantic_graph` package as an early projection. |
+| `audit/provenance/docs_archive/SRP_THEORY_MAP.md` | theory framing | Keep | Describes the legacy measurement stack as a background layer. |
+| `audit/provenance/docs_archive/SRP_PARAMETER_CATALOG.md` | parameter catalog | Keep | References legacy `srp_experiment` paths as supporting detail. |
+| `audit/provenance/docs_archive/SRP_PARAMETER_SPACE_MODEL.md` | parameter model | Keep | References legacy `srp_experiment` modules as supporting detail. |
+| `audit/provenance/docs_archive/SRP_SEMANTIC_RUNTIME_GRAPH_V1_REPORT.md` | historical report | Keep | References legacy schema and tests. |
 
 ### Interpretation
 
@@ -143,4 +143,5 @@ The legacy audit supports three conclusions:
 
 That means the right next step is not deletion.
 The right next step is to keep the legacy layer frozen and revisit cleanup only after any future runtime extraction or shared-helper consolidation is explicitly planned.
+
 

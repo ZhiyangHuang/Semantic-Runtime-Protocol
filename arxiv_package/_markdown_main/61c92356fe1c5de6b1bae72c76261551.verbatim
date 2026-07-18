@@ -1,0 +1,2 @@
+V(S_t, Delta_t, E_t) -> v
+G(S_t, Delta_t, v, Gamma_t) -> {0,1}

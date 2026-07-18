@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.controlled_harness import (
+from experiments.srp_runtime_legacy.controlled_harness import (
     build_controlled_suites,
     render_controlled_summary_markdown,
     run_controlled_harness,

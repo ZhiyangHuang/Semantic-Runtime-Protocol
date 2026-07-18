@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "encoder": "rule_based_bridge",
+  "threshold": 0.9,
+  "relation_depth": 1,
+  "evidence_policy": "default",
+  "governance_mode": "srp",
+  "baseline_set": [
+    "full_context",
+    "sliding_window",
+    "vector_rag",
+    "srp"
+  ]
+}

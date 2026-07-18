@@ -21,6 +21,12 @@ Recommended reading order:
 
 Source role note:
 
-- `SRP_ARXIV_DRAFT_V1.md` is the primary manuscript source
+- `fixed.md` is the canonical manuscript source for this release pass
+- `SRP_ARXIV_DRAFT_V1.md` is the synchronized manuscript mirror
 - `SRP_PAPER_FINAL_V1.md` is the submission snapshot
 - `SRP_RELATED_WORK_V1.md` is a supporting reconstruction document
+
+Terminology note:
+
+- paper-facing prose should use the governed transition vocabulary in `fixed.md`
+- implementation-facing evidence may use compatibility aliases, but new primary names should prefer `governance` and `transition_reconstruction` terminology

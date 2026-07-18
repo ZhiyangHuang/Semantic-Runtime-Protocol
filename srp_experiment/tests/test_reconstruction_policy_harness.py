@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.reconstruction_policy_harness import (
+from experiments.srp_runtime_legacy.reconstruction_policy_harness import (
     build_reconstruction_policy_suites,
     render_reconstruction_policy_summary_markdown,
     run_reconstruction_policy_comparison,

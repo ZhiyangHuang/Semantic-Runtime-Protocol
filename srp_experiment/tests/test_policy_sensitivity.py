@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.policy_sensitivity import run_policy_sensitivity, summarize_policy_sensitivity, write_policy_sensitivity_outputs
+from experiments.srp_runtime_legacy.policy_sensitivity import run_policy_sensitivity, summarize_policy_sensitivity, write_policy_sensitivity_outputs
 
 
 class PolicySensitivityAnalysisTest(unittest.TestCase):

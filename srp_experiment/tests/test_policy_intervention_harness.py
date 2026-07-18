@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.policy_intervention_harness import (
+from experiments.srp_runtime_legacy.policy_intervention_harness import (
     run_policy_intervention_harness,
     summarize_policy_intervention_records,
     write_policy_intervention_outputs,

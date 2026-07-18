@@ -3,38 +3,38 @@ import os
 import json
 from pathlib import Path
 
-from srp_experiment.srp.pipeline import run_srp
-from srp_experiment.srp.compress import chunk_memory, compress_state
-from srp_experiment.srp.encoder import build_encoder
-from srp_experiment.srp.export import flatten_record_for_csv, write_records_csv
-from srp_experiment.srp.export import render_record_markdown, render_records_markdown, write_records_markdown
-from srp_experiment.srp.semantic_parser import canonicalize_semantic_value, stable_semantic_object_id
-from srp_experiment.srp.saliency import rank_memory_chunks
-from srp_experiment.srp.state import SemanticObjectMetadata, SemanticState
-from srp_experiment.srp.recover import recover_state
-from srp_experiment.srp.recover_runtime import budget_recovery_inputs, recover_memory_from_package
-from srp_experiment.srp.state_lifecycle import apply_object_lifecycle as apply_object_lifecycle_rule
-from srp_experiment.srp.state_summaries import (
+from experiments.srp_runtime_legacy.srp.pipeline import run_srp
+from experiments.srp_runtime_legacy.srp.compress import chunk_memory, compress_state
+from experiments.srp_runtime_legacy.srp.encoder import build_encoder
+from experiments.srp_runtime_legacy.srp.export import flatten_record_for_csv, write_records_csv
+from experiments.srp_runtime_legacy.srp.export import render_record_markdown, render_records_markdown, write_records_markdown
+from experiments.srp_runtime_legacy.srp.semantic_parser import canonicalize_semantic_value, stable_semantic_object_id
+from experiments.srp_runtime_legacy.srp.saliency import rank_memory_chunks
+from experiments.srp_runtime_legacy.srp.state import SemanticObjectMetadata, SemanticState
+from experiments.srp_runtime_legacy.srp.recover import recover_state
+from experiments.srp_runtime_legacy.srp.recover_runtime import budget_recovery_inputs, recover_memory_from_package
+from experiments.srp_runtime_legacy.srp.state_lifecycle import apply_object_lifecycle as apply_object_lifecycle_rule
+from experiments.srp_runtime_legacy.srp.state_summaries import (
     build_object_update_summary_flat,
     build_recovery_template_summary_flat,
     build_state_continuity_summary,
     lifecycle_summary_flat,
 )
-from srp_experiment.srp.validate import validate_state
-from srp_experiment.srp.validation_failure_summary import (
+from experiments.srp_runtime_legacy.srp.validate import validate_state
+from experiments.srp_runtime_legacy.srp.validation_failure_summary import (
     assess_drift_risk,
     build_failure_summary,
     build_failure_summary_flat,
     detect_answer_leakage,
 )
-from srp_experiment.srp.validation_targets import build_validation_targets
-from srp_experiment.srp.compress_parse import parse_compressed_payload
-from srp_experiment.srp.object_lifecycle import build_object_lifecycle_artifact
-from srp_experiment.srp.object_retention import build_object_retention_breakdown, build_object_retention_breakdown_v2
-from srp_experiment.srp.object_retention import build_integrity_retention_metrics
-from srp_experiment.srp.repair_diagnostics import build_repair_diagnostics
-from srp_experiment.srp.repair import build_repair_package
-from srp_experiment.srp.state_allocation import build_state_allocation_policy
+from experiments.srp_runtime_legacy.srp.validation_targets import build_validation_targets
+from experiments.srp_runtime_legacy.srp.compress_parse import parse_compressed_payload
+from experiments.srp_runtime_legacy.srp.object_lifecycle import build_object_lifecycle_artifact
+from experiments.srp_runtime_legacy.srp.object_retention import build_object_retention_breakdown, build_object_retention_breakdown_v2
+from experiments.srp_runtime_legacy.srp.object_retention import build_integrity_retention_metrics
+from experiments.srp_runtime_legacy.srp.repair_diagnostics import build_repair_diagnostics
+from experiments.srp_runtime_legacy.srp.repair import build_repair_package
+from experiments.srp_runtime_legacy.srp.state_allocation import build_state_allocation_policy
 
 
 class TestSRPRuntime(unittest.TestCase):

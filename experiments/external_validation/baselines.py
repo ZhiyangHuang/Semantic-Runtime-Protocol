@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 import re
 from typing import Any, Protocol
 
-from srp_experiment.srp.encoder import HashingSemanticEncoder, cosine_similarity
+from experiments.common.semantic_text import HashingSemanticEncoder, cosine_similarity
 
 from .schema import BenchmarkCase, MemoryResponse, SemanticRelation, SemanticState, SemanticUnit
 

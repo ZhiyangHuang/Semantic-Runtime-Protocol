@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.semantic_failure_taxonomy import (
+from experiments.analysis.semantic_failure_taxonomy import (
     build_semantic_failure_taxonomy,
     render_semantic_failure_taxonomy_markdown,
     write_semantic_failure_taxonomy_outputs,

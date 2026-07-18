@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.graph_information_gap_analysis import (
+from experiments.analysis.graph_information_gap_analysis import (
     build_graph_information_gap_analysis,
     render_graph_information_gap_analysis_markdown,
     write_graph_information_gap_outputs,

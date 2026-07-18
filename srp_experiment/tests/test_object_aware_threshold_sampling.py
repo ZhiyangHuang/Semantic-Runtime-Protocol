@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.object_aware_threshold_sampling import (
+from experiments.srp_runtime_legacy.object_aware_threshold_sampling import (
     render_object_aware_threshold_sampling_markdown,
     run_object_aware_threshold_sampling,
     write_object_aware_threshold_sampling_outputs,

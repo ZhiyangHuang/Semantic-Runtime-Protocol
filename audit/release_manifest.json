@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "purpose": "Release gate manifest for the frozen SRP v1 artifact branch.",
+  "release_date": "2026-07-18",
+  "evidence_status": "active",
+  "primary_dataset": "LoCoMo",
+  "excluded_evidence": [
+    {
+      "name": "LongMemEval",
+      "status": "pending",
+      "reason": "real-data slice not present in the current release gate"
+    }
+  ],
+  "primary_evidence": [
+    {
+      "name": "locomo",
+      "status": "verified",
+      "path": "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000"
+    },
+    {
+      "name": "locomo_baseline_comparison",
+      "status": "verified",
+      "path": "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000"
+    }
+  ],
+  "core_required_paths": [
+    "README.md",
+    "ARTIFACT_README.md",
+    "paper/README.md",
+    "paper/SRP_PAPER_FINAL_V1.md",
+    "paper/SRP_MAIN_RESULTS_SUMMARY_V1.md",
+    "audit/README.md",
+    "audit/REAL_VALIDATION_REPORT.md",
+    "audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md",
+    "audit/provenance/README.md",
+    "experiments/evaluation/run_locomo_manual_sanity.py",
+    "experiments/external_validation/runtime_contract.py",
+    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/report.md",
+    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/metadata.json",
+    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/metrics.json",
+    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/decision.json",
+    "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000/report.md",
+    "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000/metadata.json",
+    "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000/comparison_summary.json",
+    "configs/external_validation_locomo_manual_sanity.env",
+    "configs/external_validation_locomo_mvp.env",
+    "configs/external_validation_locomo_mvp_calibration_aware.env"
+  ],
+  "preserved_provenance_paths": [
+    "audit/provenance/docs_archive/README.md",
+    "audit/provenance/srp_experiment/README.md",
+    "audit/provenance/srp_experiment/migration_manifest.json",
+    "audit/provenance/srp_experiment/local_llm.py",
+    "audit/provenance/srp_experiment/run_local_diagnostics.py",
+    "audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py",
+    "audit/provenance/srp_experiment/data/longbench_v2/split_task_groups.py",
+    "audit/provenance/srp_experiment/data/longbench_v2/manifest.json",
+    "audit/provenance/srp_experiment/schemas/experiment_result_schema_v1.json",
+    "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1.json",
+    "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1_5.json",
+    "audit/provenance/srp_experiment/tmp/srp_audit_test.md"
+  ],
+  "notes": [
+    "Preserved provenance paths are informative only and are not required for release verification.",
+    "The release gate should depend on machine-readable manifest files, not on historical archive presence."
+  ]
+}
+

@@ -1,0 +1,1 @@
+tau_t = (S_t, Delta_t, E_t, Gamma_t, S_(t+1))

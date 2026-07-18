@@ -199,7 +199,7 @@ def write_external_validation_outputs(
     metadata_json = output_path / "metadata.json"
     report_md = output_path / "external_validation_report.md"
     report_json = output_path / "external_validation_report.json"
-    root_report = Path(__file__).resolve().parents[2] / "SRP_EXTERNAL_VALIDATION_REPORT.md"
+    root_report = Path(__file__).resolve().parents[2] / "audit" / "REAL_VALIDATION_REPORT.md"
 
     if records:
         fieldnames = [

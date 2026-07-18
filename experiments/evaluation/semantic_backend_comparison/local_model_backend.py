@@ -6,9 +6,9 @@ import re
 import time
 from typing import Any
 
-from srp_experiment.local_llm import LocalOpenAICompatibleClient
-from srp_experiment.srp.encoder import HashingSemanticEncoder, cosine_similarity
-from srp_experiment.srp.llm_judge import extract_json_object
+from experiments.common.local_llm import LocalOpenAICompatibleClient
+from experiments.common.semantic_text import HashingSemanticEncoder, cosine_similarity
+from experiments.common.json_utils import extract_json_object
 
 from .backend import BackendOutcome, ComparisonCase
 

@@ -1,0 +1,3 @@
+T(S_t, theta, e) =
+  S_(t+1)    if invariant(theta) = true and G(S_t, R(S_t, theta, e)) = approve
+  S_t        otherwise

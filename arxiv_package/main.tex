@@ -4,9 +4,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[margin=1in]{geometry}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage[contentBlocks,pipeTables,tableCaptions,fencedCode]{markdown}
 \usepackage[numbers]{natbib}
+
+\DeclareUnicodeCharacter{2713}{\checkmark}
+\DeclareUnicodeCharacter{2717}{\ensuremath{\times}}
+\DeclareUnicodeCharacter{2209}{\ensuremath{\notin}}
 
 \graphicspath{{figures/}}
 
@@ -19,7 +25,7 @@
 }{%
   \newcommand{\SRPBody}{%
     \section*{Packaging Note}
-    This arXiv package skeleton is intentionally thin. The manuscript body is imported from \texttt{paper/SRP\_ARXIV\_DRAFT\_V1.md} during the packaging conversion step.
+    This arXiv package skeleton is intentionally thin. The manuscript body is imported from the canonical source \texttt{fixed.md} during the packaging conversion step.
 
     \medskip
     The package includes figure assets, a bibliography file, and an appendix shell so the submission bundle has a clear structure without duplicating the manuscript source.
@@ -40,9 +46,8 @@ Semantic systems increasingly maintain evolving semantic runtime states that com
 
 \IfFileExists{body.tex}{}{%
   \nocite{*}%
+  \bibliographystyle{plainnat}%
+  \bibliography{references}%
 }
-
-\bibliographystyle{plainnat}
-\bibliography{references}
 
 \end{document}

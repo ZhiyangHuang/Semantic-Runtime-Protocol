@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.policy_boundary_drift import build_policy_boundary_drift, render_policy_boundary_drift_markdown, write_policy_boundary_drift_outputs
+from experiments.srp_runtime_legacy.policy_boundary_drift import build_policy_boundary_drift, render_policy_boundary_drift_markdown, write_policy_boundary_drift_outputs
 
 
 def _record(benchmark: str, seed: int, cycle: int, budget: int, allocation: float, dependency: float, validation: float) -> dict:

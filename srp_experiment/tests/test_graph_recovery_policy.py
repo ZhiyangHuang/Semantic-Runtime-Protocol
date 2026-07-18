@@ -1,8 +1,8 @@
 import os
 import unittest
 
-from srp_experiment.srp.recover import recover_state
-from srp_experiment.srp.semantic_parser import stable_semantic_object_id
+from experiments.srp_runtime_legacy.srp.recover import recover_state
+from experiments.srp_runtime_legacy.srp.semantic_parser import stable_semantic_object_id
 
 
 class TestGraphRecoveryPolicy(unittest.TestCase):

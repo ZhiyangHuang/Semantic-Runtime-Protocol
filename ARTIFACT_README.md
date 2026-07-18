@@ -11,7 +11,7 @@ The goal is to keep the main branch readable for reviewers while preserving a re
 - `experiments/`: reproducible experiment runners and evaluation code
 - `configs/`: frozen runtime and experiment configuration files
 - `results/` or `experiments/results/`: curated evidence packages, manifests, and summaries
-- `docs/archive/`: historical research documents preserved for provenance
+- `audit/provenance/docs_archive/`: historical research documents preserved for provenance
 
 ## What should stay out of the main branch
 
@@ -30,6 +30,23 @@ Before tagging a release, run `python scripts/verify_release.py` to confirm that
 
 - `paper/SRP_PAPER_FINAL_V1.md`
 - `paper/SRP_MAIN_RESULTS_SUMMARY_V1.md`
-- `audit/SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md`
-- `audit/SRP_LONGMEMEVAL_EVIDENCE_PROMOTION_DECISION.md`
-- `audit/SRP_LONGMEMEVAL_SCORER_ALIGNMENT_AUDIT.md`
+- `audit/REAL_VALIDATION_REPORT.md`
+- `audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md`
+- `audit/RELEASE_SNAPSHOT.md`
+
+## Recommended evidence-generation entry points
+
+- `python -m srp_experiment.run_governance_sensitivity`
+- `python -m srp_experiment.run_transition_reconstruction`
+- `python -m experiments.validation.admissibility_boundary_validation.runner`
+- `python -m experiments.evaluation.transition_reconstruction_validation.runner`
+- `python -m experiments.evaluation.configuration_sensitivity_validation.runner`
+- `python -m experiments.evaluation.configuration_stability_validation.runner`
+- `python -m experiments.evaluation.representation_invariance_validation.runner`
+- `python -m experiments.evaluation.implementation_independence_validation.runner`
+- `python -m experiments.evaluation.cross_domain_validation.runner`
+- `python -m experiments.srp_runtime_legacy.run_governance_sensitivity`
+- `python -m experiments.srp_runtime_legacy.run_transition_reconstruction`
+
+Compatibility aliases are still present for frozen historical scripts, but the primary release-facing names are `governance_sensitivity`, `transition_reconstruction`, `admissibility_boundary_validation`, `transition_reconstruction_validation`, `configuration_sensitivity_validation`, `configuration_stability_validation`, `representation_invariance_validation`, `implementation_independence_validation`, and `cross_domain_validation`.
+

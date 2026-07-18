@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from srp_experiment.analysis.semantic_extraction_audit import (
+from experiments.analysis.semantic_extraction_audit import (
     render_semantic_extraction_audit_markdown,
     summarize_semantic_extraction_audit,
     write_semantic_extraction_audit_outputs,
