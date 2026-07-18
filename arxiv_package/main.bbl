@@ -1,0 +1,89 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Achiam et~al.(2017)Achiam, Held, Tamar, and Abbeel]{achiam2017cpo}
+Joshua Achiam, David Held, Aviv Tamar, and Pieter Abbeel.
+\newblock Constrained policy optimization.
+\newblock \emph{arXiv preprint arXiv:1705.10528}, 2017.
+\newblock URL \url{https://arxiv.org/abs/1705.10528}.
+
+\bibitem[Alchourron et~al.(1985)Alchourron, G{\"a}rdenfors, and
+  Makinson]{agm1985theorychange}
+Carlos~E. Alchourron, Peter G{\"a}rdenfors, and David Makinson.
+\newblock On the logic of theory change: Partial meet contraction and revision
+  functions.
+\newblock \emph{The Journal of Symbolic Logic}, 1985.
+\newblock URL \url{https://www.jstor.org/stable/2274239}.
+
+\bibitem[Chhikara(2025)]{chhikara2025mem0}
+et~al. Chhikara.
+\newblock Mem0: Building production-ready ai agents with scalable long-term
+  memory.
+\newblock \emph{arXiv preprint arXiv:2504.19413}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2504.19413}.
+
+\bibitem[Haerder and Reuter(1983)]{haerder1983recovery}
+Theo Haerder and Andreas Reuter.
+\newblock Principles of transaction-oriented database recovery.
+\newblock \emph{ACM Computing Surveys}, 1983.
+\newblock URL \url{https://dl.acm.org/doi/10.1145/289.291}.
+
+\bibitem[Lewis et~al.(2020)Lewis, Perez, Piktus, Petroni, Karpukhin, Goyal,
+  K{\"a}ttner, Gholipour, Cui, Aghajanyan, et~al.]{lewis2020rag}
+Patrick Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Anton K{\"a}ttner, Nazanin Gholipour, Wen-Tau Cui,
+  Armen Aghajanyan, et~al.
+\newblock Retrieval-augmented generation for knowledge-intensive nlp tasks.
+\newblock \emph{arXiv preprint arXiv:2005.11401}, 2020.
+\newblock URL \url{https://arxiv.org/abs/2005.11401}.
+
+\bibitem[Packer et~al.(2023)]{packer2023memgpt}
+Charles Packer et~al.
+\newblock Memgpt: Towards llms as operating systems.
+\newblock \emph{arXiv preprint arXiv:2310.08560}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2310.08560}.
+
+\bibitem[Rasmussen(2025)]{rasmussen2025zep}
+et~al. Rasmussen.
+\newblock Zep: A temporal knowledge graph architecture for agent memory.
+\newblock \emph{arXiv preprint arXiv:2501.13956}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2501.13956}.
+\newblock Graphiti is the temporal knowledge graph engine used by Zep.
+
+\bibitem[Sanchez(2019)]{sanchez2019runtimeverification}
+et~al. Sanchez.
+\newblock A survey of challenges for runtime verification from advanced
+  application domains (beyond software).
+\newblock \emph{Formal Methods in System Design}, 2019.
+\newblock URL
+  \url{https://link.springer.com/article/10.1007/s10703-019-00337-w}.
+
+\bibitem[Schick et~al.(2023)]{schick2023toolformer}
+Timo Schick et~al.
+\newblock Toolformer: Language models can teach themselves to use tools.
+\newblock \emph{arXiv preprint arXiv:2302.04761}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2302.04761}.
+
+\bibitem[Wachi et~al.(2024)]{wachi2024saferl}
+Tomohiro Wachi et~al.
+\newblock A survey of constraint formulations in safe reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2402.02025}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2402.02025}.
+
+\bibitem[Wang et~al.(2023)]{wang2023voyager}
+Guanzhi Wang et~al.
+\newblock Voyager: An open-ended embodied agent with large language models.
+\newblock \emph{arXiv preprint arXiv:2305.16291}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.16291}.
+
+\bibitem[Yao et~al.(2022)]{yao2022react}
+Shunyu Yao et~al.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock \emph{arXiv preprint arXiv:2210.03629}, 2022.
+\newblock URL \url{https://arxiv.org/abs/2210.03629}.
+
+\end{thebibliography}

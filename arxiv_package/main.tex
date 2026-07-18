@@ -1,0 +1,48 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[numbers]{natbib}
+
+\graphicspath{{figures/}}
+
+\title{Semantic Runtime Protocol: Governing Semantic Runtime State through Validated Boundaries and Evidence-Controlled Optimization}
+\author{SRP Authors}
+\date{}
+
+\IfFileExists{body.tex}{%
+  \newcommand{\SRPBody}{\input{body.tex}}%
+}{%
+  \newcommand{\SRPBody}{%
+    \section*{Packaging Note}
+    This arXiv package skeleton is intentionally thin. The manuscript body is imported from \texttt{paper/SRP\_ARXIV\_DRAFT\_V1.md} during the packaging conversion step.
+
+    \medskip
+    The package includes figure assets, a bibliography file, and an appendix shell so the submission bundle has a clear structure without duplicating the manuscript source.
+  }%
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This package skeleton is derived from the primary manuscript source and preserves the current release boundary without duplicating the manuscript body.
+\end{abstract}
+
+\SRPBody
+
+\input{appendix}
+
+\IfFileExists{body.tex}{}{%
+  \nocite{*}%
+}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
