@@ -2,7 +2,7 @@
 
 This document defines the source-of-truth hierarchy for paper-facing SRP documents.
 
-The goal is to keep the canonical manuscript, synchronized manuscript mirror, submission snapshot, and supporting reconstruction notes from being conflated.
+The goal is to keep the canonical manuscript, synchronized manuscript mirror, submission snapshot, and summary material from being conflated.
 
 ## 1. Canonical Manuscript
 
@@ -28,13 +28,11 @@ Frozen submission candidate derived from the primary manuscript.
 
 This file may mirror the primary manuscript at release time, but it is a snapshot rather than the canonical editing source.
 
-## 4. Supporting Reconstruction Documents
+## 4. Supporting Summary Material
 
-`paper/SRP_RELATED_WORK_V1.md`
+`paper/SRP_MAIN_RESULTS_SUMMARY_V1.md`
 
-Historical reconstruction and rationale document.
-
-This file is retained for traceability and explanation.
+Short paper-facing summary for readers who want the release overview without reading the full manuscript.
 It is not a publication source and should not introduce new claims.
 
 ## 5. Synchronization Rule
@@ -51,4 +49,4 @@ Recommended usage order:
 1. Edit `fixed.md`
 2. Sync `paper/SRP_ARXIV_DRAFT_V1.md` from the canonical source
 3. Sync `paper/SRP_PAPER_FINAL_V1.md` when preparing a submission snapshot
-4. Maintain `paper/SRP_RELATED_WORK_V1.md` as a supporting reconstruction document only
+4. Keep `paper/SRP_MAIN_RESULTS_SUMMARY_V1.md` aligned with the release narrative

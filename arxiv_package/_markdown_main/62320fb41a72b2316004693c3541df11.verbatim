@@ -1,0 +1,11 @@
+{\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.92\linewidth}{@{}p{0.20\linewidth}p{0.52\linewidth}p{0.20\linewidth}@{}}
+\textbf{Evaluation} & \textbf{Main Result} & \textbf{Support} \\
+\hline
+Semantic observability & 130 transition observations, replay success 1.0, state consistency 1.0 & semantic observability \\
+Boundary validation & 10 / 25 feasible candidates, stable extents across densities & evaluated boundaries \\
+Constrained optimization & 60\% search reduction with the same top candidate as the naive full-grid sweep & governed optimization \\
+Evidence-controlled governance & verification improves from 0.50 to 1.00 while authority remains unchanged; invalid transitions are rejected & evidence and governance separation \\
+\end{tabularx}
+}

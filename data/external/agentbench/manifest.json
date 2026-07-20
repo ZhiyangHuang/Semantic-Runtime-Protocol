@@ -1,0 +1,11 @@
+{
+  "dataset": "AgentBench",
+  "dataset_key": "agentbench",
+  "version": "2024",
+  "source_type": "external",
+  "source_url": "https://github.com/THUDM/AgentBench",
+  "adapter": "agentbench_adapter",
+  "purpose": "boundary evidence generation",
+  "payload": "not stored in repository",
+  "checksum": "external-only"
+}

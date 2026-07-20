@@ -1,8 +1,8 @@
 # SRP Release Snapshot
 
-Date: 2026-07-18
+Date: 2026-07-20
 
-Commit: `39053895ef73b6adc5b87a7970c2849636de4eab`
+Commit: `645909269876b4adcad8170381197148ae4a310a`
 
 This snapshot records the frozen release-candidate state for the SRP repository.
 
@@ -20,6 +20,11 @@ It is a release record, not a new policy document.
 
 - `paper/SRP_PAPER_FINAL_V1.md`
 
+## Publication Body
+
+- `paper/latex/body_content.md`
+- `paper/latex/body.tex`
+
 ## Packaging Layer
 
 - `arxiv_package/`
@@ -28,13 +33,14 @@ It is a release record, not a new policy document.
 
 - `python scripts/verify_release.py`: PASS
 - `latexmk -pdf -shell-escape -g -interaction=nonstopmode -halt-on-error main.tex` in `arxiv_package/`: PASS
+- PDF front-matter review: PASS
 
 ## PDF Artifact
 
 - File: `arxiv_package/main.pdf`
-- Size: `376092` bytes
+- Size: `408780` bytes
 - Pages: `16`
-- SHA256: `9805787D27BF3379B091E862B37BE1B68DD14A0A5AD4E234FDA66B68648416DD`
+- SHA256: `C746BDD1E9DB852F7481F5F314E60B1361DDFFA0AEBAEC95803AF615C39095C8`
 
 ## Render Status
 
@@ -42,26 +48,16 @@ The current PDF is a full manuscript render driven by the publication build laye
 
 The package now closes the manuscript-to-PDF chain through `paper/latex/body.tex` and `arxiv_package/body.tex`.
 
-## Terminology Contract
+## Governance Record
 
-- [TERMINOLOGY_CONTRACT.md](TERMINOLOGY_CONTRACT.md)
+- [GOVERNANCE_RECORD.md](GOVERNANCE_RECORD.md)
 
-## Migration Status
-
-- [PHASE_TERMINOLOGY_MIGRATION_STATUS.md](PHASE_TERMINOLOGY_MIGRATION_STATUS.md)
-
-## Evidence Boundary
+## Claim Ledger
 
 - [CLAIM_EVIDENCE_MAP.md](CLAIM_EVIDENCE_MAP.md)
 
-## Compatibility
-
-Legacy aliases remain preserved for frozen historical reproducibility.
-
-The active release vocabulary is governed by the terminology contract, while legacy names remain only as compatibility or provenance markers.
-
 ## Notes
 
-- The release candidate is now in stabilization mode.
-- The full manuscript-body injection into the arXiv package is now present.
-- No release-facing evidence IDs or claim IDs were changed during this snapshot pass.
+- The release candidate is in stabilization mode.
+- The manuscript mirror and submission snapshot are synchronized with the canonical manuscript.
+- The LongMemEval reality check is tracked as external validation support under the frozen v1.1 evidence boundary.

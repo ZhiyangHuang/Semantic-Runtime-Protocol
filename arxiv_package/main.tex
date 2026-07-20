@@ -6,8 +6,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{hyperref}
-\usepackage[contentBlocks,pipeTables,tableCaptions,fencedCode]{markdown}
+\usepackage[contentBlocks,pipeTables,tableCaptions,fencedCode,rawAttribute]{markdown}
 \usepackage[numbers]{natbib}
 
 \DeclareUnicodeCharacter{2713}{\checkmark}
@@ -16,7 +17,7 @@
 
 \graphicspath{{figures/}}
 
-\title{Semantic Runtime Protocol: Governing Semantic Runtime State through Validated Boundaries and Evidence-Controlled Optimization}
+\title{Semantic Runtime Protocol: Evidence-Controlled Governance of Semantic State Transitions}
 \author{SRP Authors}
 \date{}
 
@@ -37,12 +38,13 @@
 \maketitle
 
 \begin{abstract}
-Semantic systems increasingly maintain evolving semantic runtime states that combine representational content, provenance, and transition authority, yet existing approaches often optimize retrieval, storage, or action generation without explicitly governing when a semantic transition is admissible. We present Semantic Runtime Protocol (SRP), a governance framework that treats semantic state evolution as a controlled transition problem. SRP separates observation, validation, optimization, evidence, governance, and execution. It first identifies evaluated feasible regions for semantic transitions under explicit invariants and then performs constrained optimization inside those regions to generate governed recommendations rather than direct mutations. SRP also supports evidence-controlled verification by allowing stronger semantic evidence to refine decisions without increasing execution authority. Across the evaluated semantic workloads and runtime contracts, SRP evaluates whether semantic evolution can be represented with measurable transition variables, bounded by evaluated constraints, reconstructed through governed implementations, and audited through explicit evidence records. These results suggest that, under evaluated runtime contracts, semantic runtime evolution can be represented as a governed transition process in which mutation authority remains explicit and separable from evidence quality and optimization objectives.
+Existing semantic systems increasingly maintain evolving semantic states, yet they often lack an explicit governance layer that determines when a semantic transition is admissible. We present Semantic Runtime Protocol (SRP), a governance framework that treats semantic state evolution as a controlled transition problem. SRP separates observation, validation, optimization, evidence, governance, and execution. It first identifies evaluated feasible regions for semantic transitions under explicit invariants and then performs constrained optimization inside those regions to generate governed recommendations rather than direct mutations. SRP also supports evidence-controlled verification by allowing stronger semantic evidence to refine decisions without increasing execution authority. Across the evaluated semantic workloads and runtime contracts, SRP evaluates whether semantic evolution can be represented with measurable transition variables, bounded by evaluated constraints, reconstructed through governed implementations, and audited through explicit evidence records. These results suggest that, under evaluated runtime contracts, semantic runtime evolution can be represented as a governed transition process in which mutation authority remains explicit and separable from evidence quality and optimization objectives.
 \end{abstract}
 
 \SRPBody
 
-\input{appendix}
+% The manuscript appendix is already included in the main body build.
+% The packaging-only appendix.tex is intentionally excluded from the release candidate PDF.
 
 \IfFileExists{body.tex}{}{%
   \nocite{*}%

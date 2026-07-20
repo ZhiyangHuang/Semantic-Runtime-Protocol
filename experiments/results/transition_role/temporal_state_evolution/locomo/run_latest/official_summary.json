@@ -1,0 +1,8 @@
+{
+  "case_count": 3,
+  "answer_accuracy": 1.0,
+  "official_metric_score": 1.0,
+  "selected_events": 3,
+  "dataset": "LoCoMo",
+  "source": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\data\\locomo\\locomo10.json"
+}

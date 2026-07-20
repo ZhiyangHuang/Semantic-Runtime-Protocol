@@ -1,8 +1,22 @@
-# SRP Release Freeze Note
+# SRP Release Candidate Freeze Note
 
-Release date: `2026-07-18`
+## Version Status
 
-Canonical manuscript:
+Release date: `2026-07-19`
+
+This snapshot represents the frozen release candidate of:
+
+**Semantic Runtime Protocol: Governing Semantic Runtime State through Validated Boundaries and Evidence-Controlled Optimization**
+
+The purpose of this freeze is to preserve a stable paper-facing artifact for arXiv submission and reproducibility review.
+
+## Frozen Scope
+
+The following elements are frozen:
+
+### Manuscript
+
+Canonical manuscript source:
 
 - `fixed.md`
 
@@ -10,34 +24,97 @@ Manuscript mirror:
 
 - `paper/SRP_ARXIV_DRAFT_V1.md`
 
-Submission snapshot:
+The paper positioning is frozen around:
 
-- `paper/SRP_PAPER_FINAL_V1.md`
+- semantic runtime governance as the primary research problem
+- admissibility as the central transition boundary
+- evidence-authority separation as a protocol property
+- optimization as recommendation rather than mutation
+- governance as the authority layer for semantic transition
 
-Active evidence:
+The core abstraction is fixed as:
 
-- `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000`
-- `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000`
+```text
+S_t = (C_t, P_t, A_t)
+```
 
-Excluded evidence:
+where:
 
-- `LongMemEval` - pending real-data slice, not part of the current release gate
+- `C_t`: semantic content
+- `P_t`: provenance and supporting evidence context
+- `A_t`: transition authority state
 
-Verification:
+## Claim Boundary
 
-- `python scripts/verify_release.py`: passed
-- `arxiv_package/main.pdf`: 16 pages
-- `arxiv_package/main.pdf` SHA256: `9805787D27BF3379B091E862B37BE1B68DD14A0A5AD4E234FDA66B68648416DD`
-- terminology contract: satisfied
+The release candidate supports the following primary claims:
 
-Repository boundary:
+1. Semantic state evolution can be represented as a governed transition process under explicit admissibility conditions.
+2. Evidence can improve validation without independently increasing execution authority.
+3. Transition authority can remain separated from optimization objectives and proposal generation.
 
-- Deleted files are concentrated in old experimental result bundles, obsolete audit documents, and superseded validation reports.
-- New files are concentrated in the current release surface, the publication build layer, and the 7/18 LoCoMo evidence bundle.
-- Modification is concentrated in `README.md`, `ARTIFACT_README.md`, `paper/`, `audit/`, `experiments/external_validation/runner.py`, `scripts/verify_release.py`, and the arXiv packaging layer.
-- Historical material remains only in `audit/provenance/` and other compatibility paths.
+The following remain secondary evidence:
 
-Release state:
+- reconstruction application cases
+- configuration sensitivity studies
+- robustness evaluations
+- external validation artifacts
 
-- Frozen for submission.
-- No further structural changes should be made on the release branch unless they are required to repair verification or packaging.
+These artifacts support the governance abstraction but do not define the primary contribution.
+
+## Experimental Freeze
+
+Frozen evaluation principles:
+
+- runtime contracts are fixed
+- optimization outputs remain advisory
+- no autonomous mutation is enabled
+- evidence sources do not control execution
+- evaluation artifacts are traceable through metadata and provenance records
+
+Primary evidence:
+
+- admissibility boundary validation
+- evidence-authority separation validation
+
+Secondary evidence:
+
+- application-case evaluations
+- robustness checks
+- external validation packages
+
+## Artifact Freeze
+
+The release snapshot freezes:
+
+- manuscript source
+- experiment implementations
+- trusted evidence artifacts
+- metadata records
+- reproduction entry points
+- compiled PDF artifact
+
+Current PDF artifact:
+
+- `arxiv_package/main.pdf`
+- Pages: `16`
+- SHA256: `E09AA31F6B11E4C80D1DCF8EEBC5D23E9FD8C7F4C977CF6BF7050399F03A0C8D`
+
+## Non-Goals of This Release
+
+This release does not claim:
+
+- a universal semantic governance law
+- a replacement for memory systems
+- a retrieval improvement method
+- a learned authority mechanism
+- autonomous self-modifying semantic systems
+
+The contribution is a governance abstraction for semantic transition control.
+
+## Release Decision
+
+The current snapshot is considered:
+
+**Release Candidate: Frozen**
+
+Future work should extend the framework without modifying the interpretation of this release.

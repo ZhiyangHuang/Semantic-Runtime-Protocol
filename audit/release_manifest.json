@@ -1,68 +1,76 @@
 {
   "schema_version": 1,
-  "purpose": "Release gate manifest for the frozen SRP v1 artifact branch.",
-  "release_date": "2026-07-18",
-  "evidence_status": "active",
-  "primary_dataset": "LoCoMo",
+  "purpose": "Release gate manifest for the frozen SRP v1.1 artifact branch.",
+  "release_date": "2026-07-19",
+  "evidence_status": "frozen",
+  "primary_dataset": "LongMemEval",
   "excluded_evidence": [
     {
-      "name": "LongMemEval",
-      "status": "pending",
-      "reason": "real-data slice not present in the current release gate"
+      "name": "LoCoMo",
+      "status": "historical",
+      "reason": "legacy evidence retained for provenance, not part of the current v1.1 gate"
     }
   ],
   "primary_evidence": [
     {
-      "name": "locomo",
+      "name": "controlled_validation_summary",
       "status": "verified",
-      "path": "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000"
+      "path": "audit/REAL_VALIDATION_REPORT.md"
     },
     {
-      "name": "locomo_baseline_comparison",
+      "name": "longmemeval_reality_check",
       "status": "verified",
-      "path": "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000"
+      "path": "experiments/results/external_validation_longmemeval_reality_check_smoke_v2"
+    },
+    {
+      "name": "longmemeval_artifact_integrity",
+      "status": "verified",
+      "path": "experiments/results/external_validation_longmemeval_reality_check_smoke_v2/artifact_integrity.json"
     }
   ],
   "core_required_paths": [
     "README.md",
-    "ARTIFACT_README.md",
+    "fixed.md",
     "paper/README.md",
+    "paper/SRP_ARXIV_DRAFT_V1.md",
     "paper/SRP_PAPER_FINAL_V1.md",
-    "paper/SRP_MAIN_RESULTS_SUMMARY_V1.md",
+    "paper/latex/body.tex",
+    "paper/latex/body_content.md",
     "audit/README.md",
+    "audit/RELEASE_FREEZE_NOTE.md",
+    "audit/RELEASE_SNAPSHOT.md",
+    "audit/RELEASE_SNAPSHOT_CHECK.md",
+    "audit/GOVERNANCE_RECORD.md",
+    "audit/CLAIM_EVIDENCE_MAP.md",
+    "audit/PAPER_SOURCE_HIERARCHY.md",
     "audit/REAL_VALIDATION_REPORT.md",
-    "audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md",
-    "audit/provenance/README.md",
-    "experiments/evaluation/run_locomo_manual_sanity.py",
-    "experiments/external_validation/runtime_contract.py",
-    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/report.md",
-    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/metadata.json",
-    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/metrics.json",
-    "experiments/results/real_world_validation/locomo/run_20260718T2243500187290000/decision.json",
-    "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000/report.md",
-    "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000/metadata.json",
-    "experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000/comparison_summary.json",
-    "configs/external_validation_locomo_manual_sanity.env",
-    "configs/external_validation_locomo_mvp.env",
-    "configs/external_validation_locomo_mvp_calibration_aware.env"
+    "audit/V1_1_BOUNDARY_MILESTONE.md",
+    "audit/V1_1_EXTERNAL_REGISTRY_FREEZE.md",
+    "audit/V1_1_REALITY_CHECK_FREEZE.md",
+    "audit/V1_1_RELEASE_NOTE.md",
+    "audit/V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md",
+    "scripts/verify_release.py",
+    "configs/external_validation_longmemeval_reality_check.env",
+    "experiments/external_validation/reality_check.py",
+    "experiments/external_validation/__init__.py",
+    "experiments/transition_role/README.md",
+    "experiments/transition_role/registry.yaml",
+    "experiments/transition_role/validation_matrix.json",
+    "experiments/transition_role/validate_registry.py",
+    "experiments/transition_role/validate_matrix.py",
+    "experiments/transition_role/tests/test_registry.py",
+    "experiments/transition_role/tests/test_matrix.py",
+    "experiments/results/external_validation_longmemeval_reality_check_smoke_v2/runtime_manifest.json",
+    "experiments/results/external_validation_longmemeval_reality_check_smoke_v2/artifact_integrity.json",
+    "experiments/results/external_validation_longmemeval_reality_check_smoke_v2/longmemeval_reality_check_report.md",
+    "experiments/results/external_validation_longmemeval_reality_check_smoke_v2/longmemeval_reality_check_metadata.json",
+    "data/external/README.md",
+    "data/external/registry.json",
+    "arxiv_package/body.tex",
+    "arxiv_package/main.pdf"
   ],
-  "preserved_provenance_paths": [
-    "audit/provenance/docs_archive/README.md",
-    "audit/provenance/srp_experiment/README.md",
-    "audit/provenance/srp_experiment/migration_manifest.json",
-    "audit/provenance/srp_experiment/local_llm.py",
-    "audit/provenance/srp_experiment/run_local_diagnostics.py",
-    "audit/provenance/srp_experiment/data/longbench_v2/import_longbench_v2.py",
-    "audit/provenance/srp_experiment/data/longbench_v2/split_task_groups.py",
-    "audit/provenance/srp_experiment/data/longbench_v2/manifest.json",
-    "audit/provenance/srp_experiment/schemas/experiment_result_schema_v1.json",
-    "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1.json",
-    "audit/provenance/srp_experiment/schemas/semantic_runtime_graph_schema_v1_5.json",
-    "audit/provenance/srp_experiment/tmp/srp_audit_test.md"
-  ],
+  "preserved_provenance_paths": [],
   "notes": [
-    "Preserved provenance paths are informative only and are not required for release verification.",
-    "The release gate should depend on machine-readable manifest files, not on historical archive presence."
+    "The release gate depends on the canonical manuscript, its synchronized mirror, the publication build layer, and the LongMemEval reality-check evidence bundle."
   ]
 }
-

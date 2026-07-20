@@ -17,7 +17,6 @@ It is intentionally separate from the manuscript source and the evidence governa
 - Synchronized manuscript mirror: `paper/SRP_ARXIV_DRAFT_V1.md`
 - Publication build body: `paper/latex/body.tex`
 - Submission snapshot: `paper/SRP_PAPER_FINAL_V1.md`
-- Supporting reconstruction: `paper/SRP_RELATED_WORK_V1.md`
 
 ## Build Chain
 

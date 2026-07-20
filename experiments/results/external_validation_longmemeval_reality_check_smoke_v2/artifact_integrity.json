@@ -1,0 +1,7 @@
+{
+  "runtime_hash": "6ab9f3caf0bdd6de2bd9d039090cc23115e6855f31fce06d4cef910a4f741d10",
+  "dataset_hash": "971e32c82c30e08948530350e6af623c0c71be94849d2abf2913472b642eb57f",
+  "report_hash": "f6cf83dad935ca9c811a8f8c7279f0dd718b12d064c7f1a67d1e3fa31e2c9326",
+  "scorer_version": "external_validation_metrics_schema.v1",
+  "runtime_manifest_version": "external_validation_runtime_contract_v1"
+}

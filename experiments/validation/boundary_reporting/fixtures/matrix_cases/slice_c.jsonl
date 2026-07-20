@@ -1,0 +1,2 @@
+{"case_id":"recon_001","state":{"content":"summary","provenance":"verified","authority":"mutable"},"reconstruction":{"delta":"restore detail"},"evidence":{"strength":0.7},"authority":{"allow_mutation":true},"expected":{"admissible":true}}
+{"case_id":"recon_002","state":{"content":"compressed trace","provenance":"partial","authority":"read_only"},"reconstruction":{"delta":"restore trace"},"evidence":{"strength":0.95},"authority":{"allow_mutation":false},"expected":{"admissible":false}}

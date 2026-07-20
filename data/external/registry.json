@@ -1,0 +1,41 @@
+{
+  "registry_version": "external-registry-v1",
+  "sources": [
+    {
+      "name": "longmemeval",
+      "display_name": "LongMemEval",
+      "role": "evidence_consistency",
+      "transition_role": "evidence_update",
+      "adapter": "longmemeval",
+      "source_type": "external",
+      "status": "planned"
+    },
+    {
+      "name": "locomo",
+      "display_name": "LoCoMo",
+      "role": "transition_admissibility",
+      "transition_role": "temporal_state_evolution",
+      "adapter": "locomo",
+      "source_type": "external",
+      "status": "planned"
+    },
+    {
+      "name": "agentbench",
+      "display_name": "AgentBench",
+      "role": "mutation_authorization",
+      "transition_role": "action_proposal",
+      "adapter": "agentbench",
+      "source_type": "external",
+      "status": "planned"
+    },
+    {
+      "name": "reasoning",
+      "display_name": "Reasoning Sources",
+      "role": "reasoning_induced_transition",
+      "transition_role": "inference_proposal",
+      "adapter": "reasoning",
+      "source_type": "external",
+      "status": "planned"
+    }
+  ]
+}

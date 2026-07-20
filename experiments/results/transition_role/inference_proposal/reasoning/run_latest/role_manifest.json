@@ -1,0 +1,15 @@
+{
+  "transition_role": {
+    "id": "inference_proposal",
+    "purpose": "govern semantic transitions generated from reasoning or inference traces before they become runtime state",
+    "diagnostics": [
+      "semantic_coverage",
+      "semantic_drift",
+      "transition_acceptance",
+      "governance_consistency"
+    ],
+    "workload": "Reasoning Sources",
+    "scope": "bridge readiness slice"
+  },
+  "runtime_contract": "srp-real-validation-v1"
+}

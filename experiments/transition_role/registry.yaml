@@ -1,0 +1,90 @@
+schema_version: 1.0
+registry_version: v1.2-alpha
+purpose: >
+  Define the transition role protocol used by SRP experiments. Each role
+  specifies the governance pressure it models, the invariants it must preserve,
+  and the diagnostics it must emit under frozen runtime contracts.
+
+roles:
+  - id: evidence_update
+    purpose: govern semantic updates driven by external evidence without
+      transferring execution authority.
+    invariants:
+      - authority_separation
+      - replayability
+      - evidence_traceability
+      - recommendation_separation
+    diagnostics:
+      - semantic_coverage
+      - semantic_drift
+      - transition_acceptance
+      - governance_consistency
+    workload_requirements:
+      - workload must expose an evidence-backed semantic update candidate
+      - workload must preserve source provenance
+      - workload must support frozen runtime evaluation
+    compatible_workloads:
+      - LongMemEval
+
+  - id: temporal_state_evolution
+    purpose: govern semantic transitions that depend on time-ordered state
+      changes or conversational history.
+    invariants:
+      - authority_separation
+      - replayability
+      - evidence_traceability
+      - recommendation_separation
+    diagnostics:
+      - semantic_coverage
+      - semantic_drift
+      - transition_acceptance
+      - governance_consistency
+    workload_requirements:
+      - workload must expose temporal state evolution
+      - workload must preserve source provenance
+      - workload must support frozen runtime evaluation
+    compatible_workloads:
+      - LoCoMo
+
+  - id: action_proposal
+    purpose: govern semantic transitions that originate from agent action
+      proposals before mutation is authorized.
+    invariants:
+      - authority_separation
+      - replayability
+      - evidence_traceability
+      - recommendation_separation
+    diagnostics:
+      - semantic_coverage
+      - semantic_drift
+      - transition_acceptance
+      - governance_consistency
+    workload_requirements:
+      - workload must expose an actionable proposal
+      - workload must preserve source provenance
+      - workload must support frozen runtime evaluation
+    compatible_workloads:
+      - AgentBench
+
+  - id: inference_proposal
+    purpose: govern semantic transitions generated from reasoning or inference
+      traces before they become runtime state.
+    invariants:
+      - authority_separation
+      - replayability
+      - evidence_traceability
+      - recommendation_separation
+    diagnostics:
+      - semantic_coverage
+      - semantic_drift
+      - transition_acceptance
+      - governance_consistency
+    workload_requirements:
+      - workload must expose a candidate inference-derived transition
+      - workload must preserve source provenance
+      - workload must support frozen runtime evaluation
+    compatible_workloads: []
+
+notes:
+  - compatible_workloads is descriptive only and does not define the role.
+  - benchmarks are treated as semantic workloads, not protocol authorities.

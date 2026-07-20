@@ -1,0 +1,2 @@
+{"case_id":"transition_001","state_before":{"content":"known fact","provenance":"verified","authority":"mutable"},"candidate_transition":{"delta":"update fact"},"evidence":{"strength":0.9},"authority":{"allow_mutation":true},"expected":{"admissible":true}}
+{"case_id":"transition_002","state_before":{"content":"scope limited","provenance":"partial","authority":"mutable"},"candidate_transition":{"delta":"expand scope"},"evidence":{"strength":0.2},"authority":{"allow_mutation":true},"expected":{"admissible":false}}

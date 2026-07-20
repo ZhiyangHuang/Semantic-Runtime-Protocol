@@ -1,0 +1,7 @@
+{
+  "experiment": "transition_role_role_coverage",
+  "transition_role": "temporal_state_evolution",
+  "workload": "LoCoMo",
+  "scope": "v1.2_role_coverage",
+  "runtime_contract": "srp-real-validation-v1"
+}

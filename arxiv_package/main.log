@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  18 JUL 2026 18:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  20 JUL 2026 16:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -139,6 +139,28 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 \Gin@req@height=\dimen159
 \Gin@req@width=\dimen160
 )
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.s
+ty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2026/02/24 v2.7b Tabular extension package (FMi)
+\col@sep=\dimen161
+\ar@mcellbox=\box53
+\extrarowheight=\dimen162
+\NC@list=\toks22
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box54
+)
+\TX@col@width=\dimen163
+\TX@old@table=\dimen164
+\TX@old@col=\dimen165
+\TX@target=\dimen166
+\TX@delta=\dimen167
+\TX@cols=\count287
+\TX@ftn=\toks23
+)
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperre
 f.sty
 Package: hyperref 2026-06-17 v7.01r Hypertext links for LaTeX
@@ -192,21 +214,21 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 ons.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count287
+\c@section@level=\count288
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbo
 x.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count288
+\etb@tempcnta=\count289
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stri
 ngenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen161
-\Hy@linkcounter=\count289
-\Hy@pagecounter=\count290
+\@linkdim=\dimen168
+\Hy@linkcounter=\count290
+\Hy@pagecounter=\count291
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.
 def
@@ -218,7 +240,7 @@ Now handling font encoding PD1 ...
 c.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count291
+\Hy@SavedSpaceFactor=\count292
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.d
 ef
@@ -233,13 +255,13 @@ Package hyperref Info: Plain pages OFF on input line 4214.
 Package hyperref Info: Backreferencing OFF on input line 4219.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4466.
-\c@Hy@tempcnt=\count292
+\c@Hy@tempcnt=\count293
  (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4805.
-\XeTeXLinkMargin=\dimen162
+\XeTeXLinkMargin=\dimen169
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.
 sty
@@ -250,9 +272,9 @@ intcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count293
-\Field@Width=\dimen163
-\Fld@charsize=\dimen164
+\Fld@menulength=\count294
+\Field@Width=\dimen170
+\Fld@charsize=\dimen171
 Package hyperref Info: Hyper figures OFF on input line 6091.
 Package hyperref Info: Link nesting OFF on input line 6096.
 Package hyperref Info: Hyper index ON on input line 6099.
@@ -260,17 +282,17 @@ Package hyperref Info: backreferencing OFF on input line 6106.
 Package hyperref Info: Link coloring OFF on input line 6111.
 Package hyperref Info: Link coloring with OCG OFF on input line 6116.
 Package hyperref Info: PDF/A mode OFF on input line 6121.
-\Hy@abspage=\count294
-\c@Item=\count295
-\c@Hfootnote=\count296
+\Hy@abspage=\count295
+\c@Item=\count296
+\c@Hfootnote=\count297
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex
 .def
 File: hpdftex.def 2026-06-17 v7.01r Hyperref driver for pdfTeX
-\Fld@listcount=\count297
-\c@bookmark@seq@number=\count298
+\Fld@listcount=\count298
+\c@bookmark@seq@number=\count299
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\r
 erunfilecheck.sty
@@ -283,7 +305,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip51
+\Hy@SectionHShift=\skip53
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/markdown\markdow
 n.sty
@@ -294,13 +316,13 @@ Package: expl3 2026-06-18 L3 programming layer (loader)
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3back
 end-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count299
+\l__color_backend_stack_int=\count300
 ))
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/markdown\markd
 own.tex
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/lt3luabridge\l
 t3luabridge.tex
-\g_luabridge_method_int=\count300
+\g_luabridge_method_int=\count301
 
 Package luabridge Info: Using shell escape as the bridging method
 
@@ -308,7 +330,7 @@ Package luabridge Info: Using shell escape as the bridging method
 \markdownInputFileStream=\read2
 \markdownOutputFileStream=\write3
 )
-\markdownOptionFrozenCacheCounter=\count301
+\markdownOptionFrozenCacheCounter=\count302
 \g_tmpa_iow=\write4
 \openout4 = `main.luabridge.lua'.
 
@@ -336,21 +358,21 @@ Package markdown Info: Loading version latest of plain TeX Markdown theme
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/generic/markdown\markd
 ownthemewitiko_markdown_defaults.tex)
-\g__markdown_heading_nesting_depth_int=\count302
+\g__markdown_heading_nesting_depth_int=\count303
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/paralist\paralis
 t.sty
 Package: paralist 2017/01/22 v2.7 Extended list environments
-\pltopsep=\skip52
-\plpartopsep=\skip53
-\plitemsep=\skip54
-\plparsep=\skip55
-\pl@lab=\toks22
+\pltopsep=\skip54
+\plpartopsep=\skip55
+\plitemsep=\skip56
+\plparsep=\skip57
+\pl@lab=\toks24
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.
 sty
 Package: amsmath 2026/05/19 v2.18d AMS math features
-\@mathmargin=\skip56
+\@mathmargin=\skip58
 
 For additional information on amsmath, use the `?' option.
 
@@ -361,63 +383,63 @@ Package: amstext 2024/11/17 v2.01 AMS text
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.s
 ty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks23
-\ex@=\dimen165
+\@emptytoks=\toks25
+\ex@=\dimen172
 ))
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.s
 ty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen166
+\pmbraise@=\dimen173
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.s
 ty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count303
+\inf@bad=\count304
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count304
-\leftroot@=\count305
+\uproot@=\count305
+\leftroot@=\count306
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count306
-\DOTSCASE@=\count307
+\classnum@=\count307
+\DOTSCASE@=\count308
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box53
-\strutbox@=\box54
+\Mathstrutbox@=\box55
+\strutbox@=\box56
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen167
+\big@size=\dimen174
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count308
+\macc@depth=\count309
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count309
+\c@MaxMatrixCols=\count310
 \dotsspace@=\muskip18
-\c@parentequation=\count310
-\dspbrk@lvl=\count311
-\tag@help=\toks24
-\row@=\count312
-\column@=\count313
-\maxfields@=\count314
-\andhelp@=\toks25
-\eqnshift@=\dimen168
-\alignsep@=\dimen169
-\tagshift@=\dimen170
-\tagwidth@=\dimen171
-\totwidth@=\dimen172
-\lineht@=\dimen173
-\@envbody=\toks26
-\multlinegap=\skip57
-\multlinetaggap=\skip58
-\mathdisplay@stack=\toks27
+\c@parentequation=\count311
+\dspbrk@lvl=\count312
+\tag@help=\toks26
+\row@=\count313
+\column@=\count314
+\maxfields@=\count315
+\andhelp@=\toks27
+\eqnshift@=\dimen175
+\alignsep@=\dimen176
+\tagshift@=\dimen177
+\tagwidth@=\dimen178
+\totwidth@=\dimen179
+\lineht@=\dimen180
+\@envbody=\toks28
+\multlinegap=\skip59
+\multlinetaggap=\skip60
+\mathdisplay@stack=\toks29
 LaTeX Info: Redefining \[ on input line 2965.
 LaTeX Info: Redefining \] on input line 2966.
 )
@@ -428,45 +450,45 @@ Package: csvsimple 2026/07/01 v3.0.0 LaTeX CSV file processing
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/csvsimple\csvsim
 ple-l3.sty
 Package: csvsimple-l3 2026/07/01 v3.0.0 LaTeX3 CSV file processing
-\g__csvsim_col_int=\count315
-\g__csvsim_colmax_int=\count316
-\g_csvsim_columncount_int=\count317
-\g_csvsim_inputline_int=\count318
-\g_csvsim_row_int=\count319
-\l__csvsim_tmpa_int=\count320
-\l__csvsim_tmpb_int=\count321
+\g__csvsim_col_int=\count316
+\g__csvsim_colmax_int=\count317
+\g_csvsim_columncount_int=\count318
+\g_csvsim_inputline_int=\count319
+\g_csvsim_row_int=\count320
+\l__csvsim_tmpa_int=\count321
+\l__csvsim_tmpb_int=\count322
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/fancyvrb\fancyvr
 b.sty
 Package: fancyvrb 2026/04/16 4.6a verbatim text (tvz,hv)
-\FV@CodeLineNo=\count322
+\FV@CodeLineNo=\count323
 \FV@InFile=\read3
-\FV@TabBox=\box55
-\c@FancyVerbLine=\count323
-\FV@StepNumber=\count324
+\FV@TabBox=\box57
+\c@FancyVerbLine=\count324
+\FV@StepNumber=\count325
 \FV@OutFile=\write5
 )
-\markdownLaTeXCitationsCounter=\count325
-\markdownLaTeXRowCounter=\count326
-\markdownLaTeXRowTotal=\count327
-\markdownLaTeXColumnCounter=\count328
-\markdownLaTeXColumnTotal=\count329
-\markdownLaTeXTable=\toks28
-\markdownLaTeXTableAlignment=\toks29
-\markdownLaTeXTableEnd=\toks30
+\markdownLaTeXCitationsCounter=\count326
+\markdownLaTeXRowCounter=\count327
+\markdownLaTeXRowTotal=\count328
+\markdownLaTeXColumnCounter=\count329
+\markdownLaTeXColumnTotal=\count330
+\markdownLaTeXTable=\toks30
+\markdownLaTeXTableAlignment=\toks31
+\markdownLaTeXTableEnd=\toks32
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.st
 y
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip59
-\bibsep=\skip60
+\bibhang=\skip61
+\bibsep=\skip62
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count330
+\c@NAT@ctr=\count331
 )
    defining Unicode char U+2713 (decimal 10003)
    defining Unicode char U+2717 (decimal 10007)
    defining Unicode char U+2209 (decimal 8713)
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 35
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 36
 .
  (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -474,24 +496,24 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -531,17 +553,17 @@ LaTeX Font Info:    ... okay on input line 35.
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp
 -pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count331
-\scratchdimen=\dimen174
-\scratchbox=\box56
-\nofMPsegments=\count332
-\nofMParguments=\count333
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count334
-\MPscratchDim=\dimen175
-\MPnumerator=\count335
-\makeMPintoPDFobject=\count336
-\everyMPtoPDFconversion=\toks32
+\scratchcounter=\count332
+\scratchdimen=\dimen181
+\scratchbox=\box58
+\nofMPsegments=\count333
+\nofMParguments=\count334
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count335
+\MPscratchDim=\dimen182
+\MPnumerator=\count336
+\makeMPintoPDFobject=\count337
+\everyMPtoPDFconversion=\toks34
 )
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\eps
 topdf-base.sty
@@ -562,7 +584,7 @@ G,.JBIG2,.JB2,.eps]
 f-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 35.
+Package hyperref Info: Link coloring OFF on input line 36.
  (main.out) (main.out)
 \@outlinefile=\write6
 \openout6 = `main.out'.
@@ -570,7 +592,7 @@ Package hyperref Info: Link coloring OFF on input line 35.
  (body.tex (../paper/latex/body.tex
 
 Package markdown Info: Including markdown document
-(markdown)             "../paper/SRP_ARXIV_DRAFT_V1.md"
+(markdown)             "../paper/latex/body_content.md"
 
 \openout4 = `main.luabridge.lua'.
 
@@ -582,202 +604,260 @@ Package luabridge Info: Executing a helper Lua script from file
 (luabridge)             main.luabridge.lua
 
  ()
-(_markdown_main/307bb4118798874d250c47a1d87b0f5a.md.tex
-Overfull \hbox (4.12239pt too wide) in paragraph at lines 3--3
-[]\T1/lmr/bx/n/14.4 Semantic Run-time Pro-to-col: Gov-ern-ing Se-man-tic Run-ti
-me State
- []
-
-[1
+(_markdown_main/5b7dc35c9127e4be0e57dd1fc12c2f80.md.tex [1
 
 {C:/Users/ZhiyangHuang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Use
 rs/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-7.
-
-(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
-File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-7.
-
-(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
-File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-27.
-
-(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
-File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-27.
-
-(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
-File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 27.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 27.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 27.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
-
-
+(_markdown_main/4659bf69a4a07a9e336be80ead68d775.verbatim
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
-
-
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (97.55074pt too wide) in paragraph at lines 27--27
+Underfull \hbox (badness 2875) in paragraph at lines 17--17
+[]|\T1/lmr/bx/n/9 Stores se-man-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]|\T1/lmr/bx/n/9 Retrieves in-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]|\T1/lmr/bx/n/9 Generates
+ []
+
+) [2]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 4
+8.
+
+(C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+[3] (_markdown_main/7e9a67b5c2bfe29630770352aae22cc6.verbatim
+Underfull \hbox (badness 10000) in alignment at lines 20--20
 [][] 
  []
 
-[2]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 5
-2.
- (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [3{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-
-mathsy.enc}] [4] [5]
+) [4] [5]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-25.
+23.
 
 (C:\Users\ZhiyangHuang\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-[6{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ma
-thit.enc}{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/l
-m/lm-ts1.enc}] [7]
-Overfull \hbox (359.6068pt too wide) in paragraph at lines 179--179
+[6{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts
+1.enc}] (_markdown_main/eb29a62c389ee03d389db65e12ba9df5.verbatim
+Underfull \hbox (badness 10000) in alignment at lines 20--20
 [][] 
  []
 
-[8]
-Overfull \hbox (345.45905pt too wide) in paragraph at lines 183--183
-[][] 
+) (_markdown_main/0222d0a1280b62559e0380fefab072bf.verbatim) [7]
+(_markdown_main/7ee3b528ce7dde36e412aa60e4edd207.verbatim
+Underfull \hbox (badness 1668) in paragraph at lines 15--15
+[]|\T1/lmr/m/n/9 Constrained op-ti-miza-
  []
 
 
-Overfull \hbox (59.4129pt too wide) in paragraph at lines 184--184
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\T1/lmr/m/n/9 Evidence-controlled
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\T1/lmr/m/n/9 evidence and gov-er-
+ []
+
+
+Overfull \hbox (19.59998pt too wide) in alignment at lines 15--15
+[][][] 
+ []
+
+)
+Overfull \hbox (59.4129pt too wide) in paragraph at lines 182--182
 []\T1/lmr/m/n/10 Semantic ob-serv-abil-ity col-lects re-peated tran-si-tion ob-
 ser-va-tions over the frozen pa-ram-e-ter axes \T1/lmtt/m/n/10 activation_thres
 hold\T1/lmr/m/n/10 ,
  []
 
-
-Overfull \hbox (211.41277pt too wide) in paragraph at lines 190--190
-[][] 
- []
-
-[9]
-Overfull \hbox (35.71878pt too wide) in paragraph at lines 217--217
-[][] 
+(_markdown_main/d68e34a6d72c12ac6a18a1566b6df22c.verbatim
+Underfull \hbox (badness 5681) in paragraph at lines 19--19
+[]|\T1/lmr/m/n/9 Evidence-controlled gov-er-
  []
 
 
-Overfull \hbox (516.88295pt too wide) in paragraph at lines 237--237
-[][] 
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\T1/lmr/m/n/9 0.50 \TS1/lmr/m/n/9 ^^Y\T1/lmr/m/n/9 1.00, un-
  []
 
-[10]
-Overfull \hbox (2.0227pt too wide) in paragraph at lines 245--245
-[][] 
+
+Underfull \hbox (badness 3826) in paragraph at lines 19--19
+[]|\T1/lmr/m/n/9 Negative tran-si-tion in-jec-
  []
 
-[11] [12]
-Overfull \hbox (97.92827pt too wide) in paragraph at lines 304--305
+
+Overfull \hbox (0.81291pt too wide) in alignment at lines 19--19
+[][][] 
+ []
+
+) [8] (_markdown_main/ebd7a633359ebadd6a1a41325273cee9.verbatim)
+(_markdown_main/99923465094ca3e0867085a8a05eae9c.verbatim
+Underfull \hbox (badness 5847) in paragraph at lines 13--13
+[]|\T1/lmr/bx/n/9 Mean Re-la-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]|\T1/lmr/bx/n/9 Mean Clo-
+ []
+
+
+Underfull \hbox (badness 2237) in paragraph at lines 13--13
+\T1/lmr/bx/n/9 ci-nated Rel.
+ []
+
+
+Overfull \hbox (2.51262pt too wide) in paragraph at lines 13--13
+[]|\T1/lmr/m/n/9 relation_expansion| 
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 13--13
+[]|\T1/lmr/m/n/9 Relation ex-pan-sion
+ []
+
+) (_markdown_main/3e17ac395553fe523c80ced6645b9fe8.verbatim
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]|\T1/lmr/bx/n/9 Relation
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]|\T1/lmr/bx/n/9 Closure
+ []
+
+
+Underfull \hbox (badness 1418) in paragraph at lines 14--14
+[]|\T1/lmr/bx/n/9 Hallucinated Re-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]|\T1/lmr/m/n/9 Relation ex-pan-
+ []
+
+) [9] (_markdown_main/c92c38ffc874ee0aac534c4781b83865.verbatim
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/9 Baseline (\T1/lmtt/m/n/9 archive=False\T1/lmr/m/n/9 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+\T1/lmtt/m/n/9 preserve=False\T1/lmr/m/n/9 , \T1/lmtt/m/n/9 depth=1\T1/lmr/m/n/
+9 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/9 More re-la-tion de-tail,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/9 Slight sta-bil-ity gain,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\T1/lmr/m/n/9 Vector-like re-cov-ery,
+ []
+
+) (_markdown_main/115073aa9e35392f2d9f604cde56f874.verbatim) [10]
+(_markdown_main/52be7203b1c3771264d623305b0cf5a7.verbatim
+Underfull \hbox (badness 10000) in paragraph at lines 14--14
+[]|\T1/lmr/bx/n/9 Relation-closure
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 14--14
+[][][][] 
+ []
+
+) (_markdown_main/63c86bfd328ed5b150e83595b58f6e61.verbatim)
+(_markdown_main/579881682c3d3bb2c84639c6f697167d.verbatim) [11]
+(_markdown_main/d4013d1c2f3e968ee119d82469be9266.verbatim) [12]
+Overfull \hbox (24.95572pt too wide) in paragraph at lines 317--318
 []\T1/lmr/m/n/10 Lewis et al., "Retrieval-Augmented Gen-er-a-tion for Knowledge
--Intensive NLP Tasks" (2020): https://arxiv.org/abs/2005.11401 
+-Intensive NLP Tasks" (2020), arXiv:2005.11401 
  []
 
 
-Overfull \hbox (11.87401pt too wide) in paragraph at lines 305--306
-[]\T1/lmr/m/n/10 Packer et al., "MemGPT: To-wards LLMs as Op-er-at-ing Sys-tems
-" (2023): https://arxiv.org/abs/2310.08560 
- []
-
-
-Overfull \hbox (59.77696pt too wide) in paragraph at lines 308--309
-[]\T1/lmr/m/n/10 Yao et al., "Re-Act: Syn-er-giz-ing Rea-son-ing and Act-ing in
- Lan-guage Mod-els" (2022): https://arxiv.org/abs/2210.03629 
- []
-
-
-Overfull \hbox (86.91487pt too wide) in paragraph at lines 309--310
+Overfull \hbox (13.94232pt too wide) in paragraph at lines 322--323
 []\T1/lmr/m/n/10 Schick et al., "Tool-former: Lan-guage Mod-els Can Teach Them-
-selves to Use Tools" (2023): https://arxiv.org/abs/2302.04761 
+selves to Use Tools" (2023), arXiv:2302.04761 
  []
 
 
-Overfull \hbox (95.99756pt too wide) in paragraph at lines 312--313
+Overfull \hbox (23.02501pt too wide) in paragraph at lines 325--326
 []\T1/lmr/m/n/10 Wachi et al., "A Sur-vey of Con-straint For-mu-la-tions in Saf
-e Re-in-force-ment Learn-ing" (2024): https://arxiv.org/abs/2402.02025 
+e Re-in-force-ment Learn-ing" (2024), arXiv:2402.02025 
  []
 
 
-Overfull \hbox (97.27654pt too wide) in paragraph at lines 313--314
+Overfull \hbox (13.38818pt too wide) in paragraph at lines 326--327
 []\T1/lmr/m/n/10 Haerder and Reuter, "Prin-ci-ples of Transaction-Oriented Data
-base Re-cov-ery" (1983): https://dl.acm.org/doi/10.1145/289.291 
+base Re-cov-ery" (1983), DOI:10.1145/289.291 
  []
 
 [13]
-Overfull \hbox (17.24367pt too wide) in paragraph at lines 372--373
+Overfull \hbox (17.24367pt too wide) in paragraph at lines 385--386
 []\T1/lmtt/m/n/10 python -m experiments.optimization.phase_iii_governed_optimiz
 ation.objective_sensitivity 
  []
 
-[14]))) (appendix.tex
-<figures/figure1_srp_pipeline.pdf, id=226, 614.295pt x 368.57701pt>
-File: figures/figure1_srp_pipeline.pdf Graphic file (type pdf)
-<use figures/figure1_srp_pipeline.pdf>
-Package pdftex.def Info: figures/figure1_srp_pipeline.pdf  used on input line 1
-5.
-(pdftex.def)             Requested size: 432.17375pt x 259.30692pt.
-<figures/figure2_srp_positioning.pdf, id=227, 614.295pt x 368.57701pt>
-File: figures/figure2_srp_positioning.pdf Graphic file (type pdf)
-<use figures/figure2_srp_positioning.pdf>
-Package pdftex.def Info: figures/figure2_srp_positioning.pdf  used on input lin
-e 21.
-(pdftex.def)             Requested size: 432.17375pt x 259.30692pt.
-) [15] [16 <./figures/figure1_srp_pipeline.pdf> <./figures/figure2_srp_position
-ing.pdf>] (main.aux)
+[14]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 435.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 435.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 435.
+ [15]))) [16] (main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 6EE65FA186F786BC3187B7694B5CDBF3;8354.
+(rerunfilecheck)             Checksum: CABEFAC1BCA7F7E14E6BAE22B82AB444;7450.
  ) 
 Here is how much of TeX's memory you used:
- 14090 strings out of 467510
- 278621 string characters out of 5405392
- 725374 words of memory out of 5000000
- 43023 multiletter control sequences out of 15000+600000
- 668410 words of font info for 68 fonts, out of 8000000 for 9000
+ 14279 strings out of 467510
+ 283028 string characters out of 5405392
+ 731303 words of memory out of 5000000
+ 43156 multiletter control sequences out of 15000+600000
+ 690425 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 88i,9n,135p,1608b,1030s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 88i,7n,135p,1363b,1023s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
 bx10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/lm/lmbx12.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/lm/lmbx9.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/font
-s/type1/public/lm/lmmi10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmr10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ZhiyangHuang/AppData/Local/P
-rograms/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/ZhiyangHuang/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ZhiyangHuang/AppD
-ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/ZhiyangHua
-ng/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Zhi
-yangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msa
-m10.pfb>
-Output written on main.pdf (16 pages, 376092 bytes).
+s/type1/public/lm/lmr10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmr12.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/ZhiyangHuang/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/ZhiyangHuang/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ZhiyangHuang/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ZhiyangHuang/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Zhiyang
+Huang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Z
+hiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
+Output written on main.pdf (16 pages, 408780 bytes).
 PDF statistics:
- 464 PDF objects out of 1000 (max. 8388607)
- 60 named destinations out of 1000 (max. 500000)
- 307 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 317 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 313 words of extra memory for PDF output out of 10000 (max. 10000000)
 

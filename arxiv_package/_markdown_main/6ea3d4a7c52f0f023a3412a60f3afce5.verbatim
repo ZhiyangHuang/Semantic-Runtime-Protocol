@@ -1,0 +1,18 @@
+{\small
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.94\linewidth}{@{}p{0.23\linewidth}p{0.17\linewidth}p{0.17\linewidth}p{0.12\linewidth}X@{}}
+\textbf{Approach} & \textbf{Stores semantic state} & \textbf{Retrieves information} & \textbf{Generates actions} & \textbf{Governs semantic transitions} \\
+\hline
+Retrieval / RAG & partial & yes & optional & partial \\
+\hline
+Memory systems & yes & yes & optional & partial \\
+\hline
+Agent systems & partial & partial & yes & partial \\
+\hline
+Reinforcement learning & policy state & no & yes & action-level only \\
+\hline
+SRP & yes & yes & optional & yes \\
+\hline
+\end{tabularx}
+}

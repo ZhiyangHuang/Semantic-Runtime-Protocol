@@ -1,0 +1,15 @@
+{\small
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.92\linewidth}{|p{0.22\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.12\linewidth}|}
+\hline
+\textbf{Domain} & \textbf{Vector-only Closure} & \textbf{Relation-closure Closure} & \textbf{Delta} \\
+\hline
+Code memory & 0.000000 & 1.000000 & +1.000000 \\
+\hline
+Knowledge reasoning & 0.000000 & 0.375000 & +0.375000 \\
+\hline
+Agent planning & 0.000000 & 0.625000 & +0.625000 \\
+\hline
+\end{tabularx}
+}

@@ -1,0 +1,27 @@
+{\small
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.92\linewidth}{|p{0.18\linewidth}|p{0.22\linewidth}|X|}
+\hline
+\textbf{Category} & \textbf{Metric} & \textbf{Result} \\
+\hline
+Runtime & Model & `Qwen/Qwen3-4B-AWQ` \\
+\hline
+Runtime & Endpoint & `http://172.25.253.78:8000` \\
+\hline
+Dataset & Cases evaluated & `24` \\
+\hline
+Official scorer & Answer accuracy & `0.888021` \\
+\hline
+Official scorer & Official metric score & `0.888021` \\
+\hline
+SRP diagnostic & Semantic coverage & `0.770833` \\
+\hline
+SRP diagnostic & Semantic drift & `0.320833` \\
+\hline
+Artifact & Runtime integrity & verified \\
+\hline
+Artifact & Dataset integrity & verified \\
+\hline
+\end{tabularx}
+}

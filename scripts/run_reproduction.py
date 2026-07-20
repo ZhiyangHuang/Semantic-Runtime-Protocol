@@ -35,6 +35,16 @@ CORE_STEPS = [
         command=_python_script("experiments/sensitivity/run_phase_i_observability.py"),
     ),
     ReproductionStep(
+        key="admissibility_boundary_validation",
+        description="Admissibility boundary stress test",
+        command=_python_script("experiments/validation/run_admissibility_boundary_validation.py"),
+    ),
+    ReproductionStep(
+        key="evidence_authority_separation",
+        description="Evidence-authority separation test",
+        command=_python_script("experiments/validation/run_evidence_authority_separation.py"),
+    ),
+    ReproductionStep(
         key="boundary_validation",
         description="Phase II boundary validation",
         command=_python_script("experiments/validation/run_phase_ii_boundary_validation.py"),

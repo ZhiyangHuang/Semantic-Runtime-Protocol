@@ -1,0 +1,2 @@
+{"case_id":"authority_001","semantic_state":{"content":"known fact","provenance":"verified","authority":"mutable"},"proposal":{"delta":"update fact"},"evidence":{"strength":0.8},"authority":{"allow_mutation":true},"expected":{"admissible":true}}
+{"case_id":"authority_002","semantic_state":{"content":"protected note","provenance":"verified","authority":"read_only"},"proposal":{"delta":"update note"},"evidence":{"strength":1.0},"authority":{"allow_mutation":false},"expected":{"admissible":false}}

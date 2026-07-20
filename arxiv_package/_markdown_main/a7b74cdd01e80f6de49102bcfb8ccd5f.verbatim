@@ -1,0 +1,12 @@
+{\small
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.94\linewidth}{@{}p{0.16\linewidth}p{0.13\linewidth}p{0.13\linewidth}p{0.11\linewidth}p{0.13\linewidth}X@{}}
+\textbf{Mode} & \textbf{Mean Relation Acc.} & \textbf{Mean Closure Acc.} & \textbf{Mean Drift} & \textbf{Mean Hallucinated Rel. Rate} & \textbf{Meaning} \\
+\hline
+vector\_only & 0.333333 & 0.166667 & 0.433333 & 0.0 & Baseline vector-only recovery \\
+relation\_expansion & 0.875 & 0.8125 & 0.145834 & 0.3125 & Relation expansion adds detail but still hallucinates some relations \\
+relation\_closure & 0.875 & 0.8125 & 0.083333 & 0.0 & Relation closure preserves structure with no hallucinated relations \\
+\hline
+\end{tabularx}
+}

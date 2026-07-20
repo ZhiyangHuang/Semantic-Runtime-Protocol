@@ -1,0 +1,12 @@
+{
+  "dataset": "Reasoning Sources",
+  "dataset_key": "reasoning",
+  "version": "external-v1",
+  "source_type": "external",
+  "source_family": "reasoning",
+  "source_url": "external evaluation source registry entry",
+  "adapter": "reasoning_adapter",
+  "purpose": "boundary evidence generation",
+  "payload": "not stored in repository",
+  "checksum": "external-only"
+}

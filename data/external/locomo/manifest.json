@@ -1,0 +1,11 @@
+{
+  "dataset": "LoCoMo",
+  "dataset_key": "locomo",
+  "version": "2025",
+  "source_type": "external",
+  "source_url": "https://github.com/snap-research/locomo",
+  "adapter": "locomo_adapter",
+  "purpose": "boundary evidence generation",
+  "payload": "not stored in repository",
+  "checksum": "external-only"
+}

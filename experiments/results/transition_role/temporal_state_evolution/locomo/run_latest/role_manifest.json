@@ -1,0 +1,15 @@
+{
+  "transition_role": {
+    "id": "temporal_state_evolution",
+    "purpose": "govern semantic transitions that depend on time-ordered state changes or conversational history",
+    "diagnostics": [
+      "semantic_coverage",
+      "semantic_drift",
+      "transition_acceptance",
+      "governance_consistency"
+    ],
+    "workload": "LoCoMo",
+    "scope": "role coverage slice"
+  },
+  "runtime_contract": "srp-real-validation-v1"
+}

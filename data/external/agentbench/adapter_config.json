@@ -1,0 +1,10 @@
+{
+  "dataset": "AgentBench",
+  "dataset_key": "agentbench",
+  "adapter": "agentbench",
+  "adapter_contract": "BoundaryCase",
+  "transition_role": "action_proposal",
+  "input_role": "mutation_authorization",
+  "output_role": "governance_boundary_case",
+  "benchmark_scoring": false
+}

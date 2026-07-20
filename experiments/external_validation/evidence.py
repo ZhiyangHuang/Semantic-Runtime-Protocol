@@ -442,7 +442,7 @@ def write_longmemeval_evidence_outputs(
     statistical_json = output_path / "longmemeval_evidence_statistical_summary.json"
     report_json = output_path / "longmemeval_evidence_report.json"
     report_md = output_path / "longmemeval_evidence_report.md"
-    root_report = repo_root / "SRP_EXTERNAL_VALIDATION_LONGMEMEVAL_EVIDENCE_REPORT.md"
+    root_report = repo_root / "audit" / "REAL_VALIDATION_REPORT.md"
     runtime_manifest_path = output_path / "runtime_manifest.json"
     traces_json = output_path / "longmemeval_evidence_generation_traces.json"
     metadata_json = output_path / "longmemeval_evidence_metadata.json"

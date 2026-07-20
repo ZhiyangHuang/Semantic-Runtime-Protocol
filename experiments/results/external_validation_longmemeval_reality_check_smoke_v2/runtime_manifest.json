@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-07-19T03:06:33.070122+00:00",
+  "generated_by": "external_validation_runtime_contract_v1",
+  "phase": "external_validation_longmemeval_reality_check",
+  "benchmark_name": "longmemeval",
+  "data_root": "data/longmemeval",
+  "benchmark_sample_limit": 1,
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "baselines": [
+    "full_context",
+    "sliding_window",
+    "vector_rag",
+    "srp"
+  ],
+  "model_environment": {
+    "provider": "local_vllm",
+    "backend": "vllm",
+    "endpoint": "http://172.25.253.78:8000",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "tokenizer": "Qwen/Qwen3-4B-AWQ",
+    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "temperature": 0.0,
+    "max_output_tokens": 96,
+    "same_endpoint_across_baselines": true,
+    "baseline_generation_backend": "shared",
+    "srp_generation_backend": "shared",
+    "notes": [
+      "LongMemEval evidence run uses a shared generation backend across baselines and SRP."
+    ]
+  },
+  "runtime_policy": {
+    "same_endpoint_across_baselines": true,
+    "baseline_generation_backend": "shared",
+    "srp_generation_backend": "shared"
+  },
+  "source_config_path": "configs\\external_validation_longmemeval_reality_check.env",
+  "reality_check": {
+    "seed_policy": "multi_seed",
+    "seed_values": [
+      11,
+      23,
+      37
+    ],
+    "context_window_tokens": 4096,
+    "framework": "vllm",
+    "generated_at": "2026-07-19T03:06:41.177308+00:00",
+    "scorer_version": "external_validation_metrics_schema.v1"
+  }
+}

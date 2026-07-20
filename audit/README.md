@@ -1,28 +1,53 @@
 # Audit
 
-This directory is the reviewer-facing governance layer for the current SRP release candidate.
-It records the live release boundary, the evidence map, and the reproducibility contract.
+Version milestones are additive research boundaries. Later versions extend the protocol research space without modifying frozen claims from previous releases.
 
-## Current Release Files
+## Release Line
 
-- [RELEASE_SNAPSHOT.md](RELEASE_SNAPSHOT.md)
-- [RELEASE_PDF_VISUAL_AUDIT.md](RELEASE_PDF_VISUAL_AUDIT.md)
+### v1.0 - Semantic Runtime Protocol Freeze
+
 - [RELEASE_FREEZE_NOTE.md](RELEASE_FREEZE_NOTE.md)
-- [PAPER_BUILD_PIPELINE.md](PAPER_BUILD_PIPELINE.md)
+
+### v1.1 - Boundary Evidence Freeze
+
+- [V1_1_BOUNDARY_MILESTONE.md](V1_1_BOUNDARY_MILESTONE.md)
+- [V1_1_EXTERNAL_REGISTRY_FREEZE.md](V1_1_EXTERNAL_REGISTRY_FREEZE.md)
+- [V1_1_REALITY_CHECK_FREEZE.md](V1_1_REALITY_CHECK_FREEZE.md)
+- [V1_1_RELEASE_NOTE.md](V1_1_RELEASE_NOTE.md)
+
+### v1.2 - Research Extension Boundary
+
+- [V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md](V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md)
+
+## Claim Governance
+
+- [CLAIM_EVIDENCE_MAP.md](CLAIM_EVIDENCE_MAP.md)
+
+## Artifact Governance
+
+- [PAPER_CLAIM_BOUNDARY_CHECK.md](PAPER_CLAIM_BOUNDARY_CHECK.md)
+- [PAPER_REVIEWER_POSITIONING_CHECK.md](PAPER_REVIEWER_POSITIONING_CHECK.md)
+- [PAPER_SOURCE_HIERARCHY.md](PAPER_SOURCE_HIERARCHY.md)
+- [FRONT_PAGE_REVIEW_CHECK.md](FRONT_PAGE_REVIEW_CHECK.md)
+- [GOVERNANCE_RECORD.md](GOVERNANCE_RECORD.md)
+- [REAL_VALIDATION_REPORT.md](REAL_VALIDATION_REPORT.md)
+- [RELEASE_SNAPSHOT.md](RELEASE_SNAPSHOT.md)
+- [RELEASE_SNAPSHOT_CHECK.md](RELEASE_SNAPSHOT_CHECK.md)
+- [release_manifest.json](release_manifest.json)
+
+## Future Research
+
+- [V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md](V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md)
+
+## Current Entry Files
+
+- [RELEASE_FREEZE_NOTE.md](RELEASE_FREEZE_NOTE.md)
+- [V1_1_RELEASE_NOTE.md](V1_1_RELEASE_NOTE.md)
+- [RELEASE_SNAPSHOT.md](RELEASE_SNAPSHOT.md)
+- [RELEASE_SNAPSHOT_CHECK.md](RELEASE_SNAPSHOT_CHECK.md)
+- [ARXIV_SUBMISSION_READINESS_CHECKLIST.md](ARXIV_SUBMISSION_READINESS_CHECKLIST.md)
+- [release_manifest.json](release_manifest.json)
+- [GOVERNANCE_RECORD.md](GOVERNANCE_RECORD.md)
 - [CLAIM_EVIDENCE_MAP.md](CLAIM_EVIDENCE_MAP.md)
 - [REAL_VALIDATION_REPORT.md](REAL_VALIDATION_REPORT.md)
-- [REAL_VALIDATION_SCIENTIFIC_REPORT.md](REAL_VALIDATION_SCIENTIFIC_REPORT.md)
-- [RELEASE_CLEANUP_PLAN.md](RELEASE_CLEANUP_PLAN.md)
-- [RELEASE_MANIFEST.md](release_manifest.json)
-- [TERMINOLOGY_CONTRACT.md](TERMINOLOGY_CONTRACT.md)
-- [PHASE_TERMINOLOGY_MIGRATION_STATUS.md](PHASE_TERMINOLOGY_MIGRATION_STATUS.md)
-
-## Provenance
-
-- `provenance/` preserves historical working material for traceability.
-- Historical docs are not release-facing evidence unless they are referenced by the current manifest.
-
-## Review Rule
-
-Start with the manifest and the two real-validation reports.
-If a file is not referenced there, it should be treated as historical or supporting material rather than current release evidence.
+- [PAPER_SOURCE_HIERARCHY.md](PAPER_SOURCE_HIERARCHY.md)

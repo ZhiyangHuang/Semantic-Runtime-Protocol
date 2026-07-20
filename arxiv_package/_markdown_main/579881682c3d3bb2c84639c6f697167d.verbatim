@@ -1,0 +1,15 @@
+{\small
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.62\linewidth}{|p{0.38\linewidth}|X|}
+\hline
+\textbf{Metric} & \textbf{Value} \\
+\hline
+Cases evaluated & `36` \\
+\hline
+Hierarchy consistency rate & `1.0` \\
+\hline
+Governance consistency rate & `1.0` \\
+\hline
+\end{tabularx}
+}

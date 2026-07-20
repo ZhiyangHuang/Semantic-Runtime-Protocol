@@ -1,0 +1,10 @@
+{
+  "dataset": "LoCoMo",
+  "dataset_key": "locomo",
+  "adapter": "locomo",
+  "adapter_contract": "BoundaryCase",
+  "transition_role": "temporal_state_evolution",
+  "input_role": "transition_admissibility",
+  "output_role": "governance_boundary_case",
+  "benchmark_scoring": false
+}

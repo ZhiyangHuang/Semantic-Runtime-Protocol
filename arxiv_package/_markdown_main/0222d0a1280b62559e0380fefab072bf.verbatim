@@ -1,0 +1,16 @@
+{\small
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.92\linewidth}{|p{0.20\linewidth}|X|}
+\textbf{Layer} & \textbf{Question} \\
+\hline
+Governance & Can SRP observe semantic transition variables, identify validated boundaries, constrain optimization, and strengthen verification without transferring authority? \\
+\hline
+Implementation & Can governed reconstruction preserve structure, and are recommendations stable under repeated evaluation and parameter shifts? \\
+\hline
+Robustness & Do governance semantics remain stable across workloads, representations, and storage backends? \\
+\hline
+External validation & Can the frozen contract support calibration, evidence promotion, and scorer alignment under an auditable boundary? \\
+\hline
+\end{tabularx}
+}

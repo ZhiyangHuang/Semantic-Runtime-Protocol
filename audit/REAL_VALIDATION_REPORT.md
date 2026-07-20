@@ -8,15 +8,11 @@ Current source bundle:
 - `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000`
 - `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000`
 
-Current companion audits:
+Current companion notes:
 
-- [REAL_VALIDATION_PROTOCOL_LOCOMO.md](REAL_VALIDATION_PROTOCOL_LOCOMO.md)
-- [REAL_VALIDATION_BASELINE_COMPARISON.md](REAL_VALIDATION_BASELINE_COMPARISON.md)
-- [REAL_VALIDATION_SCIENTIFIC_REPORT.md](REAL_VALIDATION_SCIENTIFIC_REPORT.md)
-- [EXPERIMENT_SELECTION_POLICY.md](EXPERIMENT_SELECTION_POLICY.md)
-- [REAL_VALIDATION_REPORT_SCHEMA.md](REAL_VALIDATION_REPORT_SCHEMA.md)
-- [REAL_VALIDATION_ARTIFACT_POLICY.md](REAL_VALIDATION_ARTIFACT_POLICY.md)
-- [REAL_VALIDATION_FAILURE_ANALYSIS.md](REAL_VALIDATION_FAILURE_ANALYSIS.md)
+- the active evidence bundles listed above
+- `audit/CLAIM_EVIDENCE_MAP.md`
+- `audit/RELEASE_SNAPSHOT.md`
 
 ## 1. Validation Scope
 
@@ -56,7 +52,7 @@ Sample selection rule:
 
 - first sample covering categories 1, 2, and 3
 
-The detailed selection policy is recorded in [EXPERIMENT_SELECTION_POLICY.md](EXPERIMENT_SELECTION_POLICY.md).
+The current selection rule is summarized in the active evidence bundles and the claim map.
 
 Transition construction rule:
 
@@ -129,7 +125,7 @@ Interpretation:
 
 ## 4. Failure Analysis
 
-The current failure analysis is recorded in [REAL_VALIDATION_FAILURE_ANALYSIS.md](REAL_VALIDATION_FAILURE_ANALYSIS.md).
+The failure analysis is embedded in the active evidence bundles and summarized below.
 
 Case summary:
 
@@ -154,7 +150,7 @@ Accepted cases:
 
 ## 5. Baseline Comparison
 
-The LoCoMo slice is now compared against a direct-mutation baseline in [REAL_VALIDATION_BASELINE_COMPARISON.md](REAL_VALIDATION_BASELINE_COMPARISON.md).
+The LoCoMo slice is compared against a direct-mutation baseline in the active evidence bundle pair.
 That comparison keeps the same selected sample and events, but removes the governance gate so mechanism differences are visible.
 
 ## 6. Interpretation Boundary
@@ -193,4 +189,4 @@ It is enough to justify the real-validation methodology, but not enough to promo
 LongMemEval should inherit this report structure before any artifact promotion is considered.
 The current LongMemEval real-data slice is still pending, so it remains outside the current release gate.
 
-The distilled scientific conclusion is recorded in [REAL_VALIDATION_SCIENTIFIC_REPORT.md](REAL_VALIDATION_SCIENTIFIC_REPORT.md).
+The distilled scientific conclusion is captured in this report and the claim map.

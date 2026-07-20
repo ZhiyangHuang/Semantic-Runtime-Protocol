@@ -1,22 +1,27 @@
-# Semantic Runtime Protocol: Governed Semantic Evolution through Validated Boundaries and Evidence-Controlled Optimization
+# Semantic Runtime Protocol: Evidence-Controlled Governance of Semantic State Transitions
 
 ## Abstract
 
-Semantic systems increasingly maintain runtime state that changes over time, yet existing approaches often optimize retrieval, storage, or action without making explicit when a semantic change is actually allowed. We present Semantic Runtime Protocol (SRP), a governed semantic evolution framework that separates observation, validation, optimization, evidence, governance, and execution. SRP first identifies observable semantic variables and validates feasible transition regions before optimization is considered. Inside those frozen regions, SRP performs constrained optimization to produce governed recommendations rather than direct runtime updates. SRP further supports evidence-controlled verification by allowing stronger semantic evidence to refine decisions without transferring authority. Across the frozen evidence chain, including Phase I observability, Phase II boundary validation, Phase III-A constrained optimization, Phase V retention and drift measurement, Phase VI relation-aware recovery, Phase VII recommendation stability, Phase VII-B parameter sensitivity, Phase VIII-A cross-domain validation, Phase VIII-B representation invariance, and Phase VIII-C implementation independence, SRP demonstrates that semantic evolution can be made measurable, bounded, reconstructable, and governable across heterogeneous workloads, tested representations and implementations. A first LoCoMo ingestion slice was used to calibrate the external-validation adapter and scoring path, but the public-benchmark protocol still requires additional calibration before it can be treated as main paper evidence. The current baseline does not claim autonomous adaptation or universal optimality; adaptive evolution remains future work that requires additional governance boundaries.
+Existing semantic systems increasingly perform state transitions during runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. We present Semantic Runtime Protocol (SRP), a governance framework that treats semantic transition authority as a first-class runtime control object and semantic state evolution as a controlled transition problem. SRP separates observation, validation, optimization, evidence, governance, and execution. It first identifies evaluated feasible regions for semantic transitions under explicit invariants and then performs constrained optimization inside those regions to generate governed recommendations rather than direct mutations. SRP also supports evidence-controlled verification by allowing stronger semantic evidence to refine decisions without increasing execution authority. Across the evaluated semantic workloads and runtime contracts, SRP evaluates whether semantic evolution can be represented with measurable transition variables, bounded by evaluated constraints, reconstructed through governed implementations, and audited through explicit evidence records. These results suggest that, under evaluated runtime contracts, semantic runtime evolution can be represented as a governed transition process in which mutation authority remains explicit and separable from evidence quality and optimization objectives.
 
 ## 1. Introduction
 
-Semantic systems increasingly maintain representations that are not static: they are observed, compressed, recovered, ranked, and sometimes updated. In practice, however, systems that operate over evolving semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of safe change has been established. The result is a system that may improve local performance while leaving open the question of whether semantic change is still governed.
+Existing semantic systems increasingly modify semantic state at runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of safe change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
 
-This paper addresses that gap with a simple research question: how can semantic state evolve only within validated, governed boundaries? The answer is not to eliminate optimization or evidence, but to place them inside a fixed authority structure. SRP does this by separating runtime execution from calibration, validation, optimization, evidence, and governance. Observation discovers which variables matter. Validation determines which regions are safe. Optimization ranks candidates only inside those regions. Evidence can strengthen verification when uncertainty remains. Governance remains the only layer that can authorize execution.
+This paper asks a simple question: how can semantic state evolve only within validated, governed boundaries? SRP answers by governing the admissibility of semantic state transitions, rather than only improving retrieval or generation after a transition has already been committed. Observation discovers which variables matter. Validation determines which regions are safe. Optimization ranks candidates only inside those regions. Evidence strengthens verification when uncertainty remains. Governance remains the only layer that can authorize execution.
 
-Related systems provide useful building blocks but do not solve this problem as stated. Retrieval and memory systems improve access to information, but they do not define transition authority. Agentic systems can plan and act, but they often collapse evidence, decision, and execution into a single loop. Reinforcement learning can adapt policies, but adaptation without validated boundaries risks uncontrolled semantic drift. SRP is positioned differently: it is a governed semantic evolution framework rather than a retrieval system, a memory system, or an adaptive agent.
+Related systems provide useful building blocks, while SRP frames a distinct governance problem. Retrieval and memory systems are designed to manage access to information, but they do not define transition authority. Agentic systems can plan and act, but they often integrate evidence, decision, and execution within one loop. Reinforcement learning can adapt policies, but SRP asks a prior question about where adaptation is allowed under validated boundaries. SRP is therefore positioned differently: it is a governed semantic transition framework rather than a retrieval system, a memory system, or an adaptive agent.
 
-The paper makes four contributions. First, it shows that semantic evolution variables can be observed and measured before optimization. Second, it shows that validated feasible regions can be frozen and then used to constrain optimization. Third, it shows that verification can be strengthened through additional semantic evidence, semantic fidelity can be measured after transition, recovery can preserve semantic neighborhoods, recommendations can remain stable, and parameter tradeoffs can be made explicit without transferring authority. Fourth, it shows that the same governance principles can generalize across heterogeneous semantic workloads and preserve recovery hierarchy across the tested representations and storage implementations. Together, these contributions define a governance-first view of semantic evolution.
+SRP is also model-agnostic: it can govern semantic transitions produced by LLMs, embedding-based systems, symbolic systems, or hybrid architectures, but it does not depend on any one proposal mechanism to define its core claim.
 
-## 2. Background and Related Work
+The paper makes four contributions. First, it introduces semantic runtime state as a governed object of study: semantic content, provenance, and authority are tracked together rather than collapsed into a single opaque state vector. Second, it provides evidence that evaluated feasible regions can be frozen and then used to constrain optimization, so recommendation remains separate from execution. Third, it provides evidence that additional semantic evidence can strengthen verification without transferring authority. Fourth, it introduces an auditable evaluation protocol for semantic transition governance under frozen runtime contracts.
 
-SRP is related to retrieval-based systems, memory systems, autonomous agents, and adaptive learning methods, but it is not reducible to any one of them.
+SRP studies the admissibility of semantic state transitions under a frozen runtime contract. The recovery experiments presented here are implementation instances, while existing approaches primarily optimize semantic access, retrieval, or generation after semantic state is available.
+SRP defines a governance boundary for deciding whether semantic state transitions are permitted.
+
+## 2. Related Work
+
+SRP is related to retrieval-based systems, memory systems, autonomous agents, reinforcement learning, constrained optimization, and controlled systems, but it is not reducible to any one of them.
 
 Retrieval and memory systems focus on how to store, compress, and recover information. Their primary question is typically about access quality: what should be retrieved, and how faithfully can it be reconstructed? SRP uses evidence and recovery, but its primary question is different. SRP asks whether a semantic transition is permitted at all, and under what validated conditions that transition may proceed.
 
@@ -24,35 +29,137 @@ Agentic systems emphasize planning, tool use, and autonomous execution. Their st
 
 Reinforcement learning and other adaptive systems optimize policies over time. That setting is valuable when the objective and the action space are already well defined. SRP focuses on a prior question: before a system learns to adapt, can it first validate where adaptation is allowed? In other words, SRP treats governance as a prerequisite to adaptation rather than a consequence of it.
 
-This distinction matters because the paper is not claiming that semantic systems never adapt. It is claiming that adaptation should be bounded by validated transition regions and explicit authority separation. That framing lets SRP use ideas from retrieval, memory, agents, and optimization without inheriting their authority assumptions.
+Constrained optimization and formal methods are also relevant because SRP uses boundaries, invariants, and approval gates. The difference is that SRP applies those ideas to evolving semantic runtime state rather than to a static action space.
 
-## 3. Semantic Runtime Protocol
+### 2.1 Positioning of SRP
 
-### 3.1 Problem Definition
+SRP is a framework for semantic state transition governance.
 
-SRP treats semantic evolution as controlled changes in semantic runtime state. The problem is not how to produce more information, but how to ensure that semantic changes occur under validated boundaries and explicit authority conditions.
+| Approach | Stores semantic state | Retrieves information | Generates actions | Governs semantic transitions |
+| --- | --- | --- | --- | --- |
+| Retrieval / RAG | partial | yes | optional | partial |
+| Memory systems | yes | yes | optional | partial |
+| Agent systems | partial | partial | yes | partial |
+| Reinforcement learning | policy state | no | yes | action-level only |
+| SRP | yes | yes | optional | yes |
+
+This positioning is the novelty boundary of the paper: SRP makes explicit the governance layer that determines when semantic state may change.
+
+### 2.2 Concrete Prior Systems
+
+Recent memory and agent systems show why semantic state handling matters in practice. Memory-oriented systems such as MemGPT, Letta, Mem0, and Graphiti focus on persistence, retrieval, and reconstruction. Agentic systems such as ReAct, Toolformer, and Voyager focus on reasoning, tool use, and action generation. Safety-oriented optimization methods such as safe RL and constrained RL focus on limiting the action space while preserving policy improvement.
+
+SRP is different from each of these lines of work. It does not ask only how to retrieve, summarize, or act. It asks when a semantic transition is admissible, and which authority layer may approve it. The paper therefore treats existing systems as useful instantiations or baselines for recovery and validation, rather than as direct equivalents of SRP.
+### 2.3 Runtime Verification and Controlled State Transition
+
+SRP shares the separation between validation and execution found in runtime verification and transaction systems, but it applies that separation to semantic runtime state rather than to a fixed program state or a database row. In conventional control paths, validation precedes commit or execution. In SRP, validation precedes authorization, and authorization precedes semantic transition.
+
+This distinction matters because semantic runtime state combines content, provenance, and authority metadata. SRP therefore treats transition admissibility as the central object of control, rather than assuming that a validated representation is already authorized to mutate. The system borrows the discipline of invariant checking and controlled commit boundaries, but the object under control is semantic state evolution.
+
+Database transaction systems provide commit and rollback guarantees over structured state. SRP differs because semantic mutations are judged not only by consistency, but by evidence-bounded admissibility and mutation authority. Classical belief revision studies rational change of knowledge states, while SRP focuses on runtime operational authority governing when semantic mutations may enter an active system state.
+
+The formal governance model is defined in Method, where semantic runtime state, admissibility, and evidence-authority separation are specified explicitly.
+
+### 2.4 Scope of Claims
+
+To avoid overclaiming, the paper uses evaluated settings language throughout. The experiments support claims about the tested workloads, frozen runtime contracts, and evidence packages prepared under the review boundary. They do not establish universal optimality or a universal semantic governance law.
+
+## 3. Method
+
+### 3.1 Semantic Runtime State and Governed Transition
+
+In SRP, semantic runtime state is not modeled as a passive information container, but as a governed object whose transitions require explicit validation and authority control. It is represented as:
+
+```text
+S_t = (C_t, P_t, A_t)
+```
+
+where `C_t` denotes semantic content maintained at runtime, `P_t` denotes provenance and supporting evidence associated with the content, and `A_t` denotes the runtime authority context governing admissible modifications, whether represented as internal state or externally referenced governance metadata depending on implementation.
+
+A semantic transition is represented as:
+
+```text
+tau_t = (S_t, Delta_t, E_t, Gamma_t, S_(t+1))
+```
+
+where `Delta_t` is a proposed semantic change, `E_t` is the available evidence associated with the proposal, and `Gamma_t` represents the governance context, including validation and authorization conditions.
+
+Unlike conventional update mechanisms that directly apply proposed changes, SRP separates verification from authorization:
+
+```text
+V(S_t, Delta_t, E_t) -> v
+G(S_t, Delta_t, v, Gamma_t) -> {0,1}
+```
+
+where `V` produces a verification result from the proposal and its evidence, `G = 1` indicates that the transition satisfies the required governance conditions, and `G = 0` indicates that the transition is rejected.
+
+The state evolution rule is therefore:
+
+```text
+S_(t+1) =
+  T(S_t, Delta_t)  if G(S_t, Delta_t, V(S_t, Delta_t, E_t), Gamma_t) = 1
+  S_t              otherwise
+```
+
+This formulation separates three concepts that are often conflated in semantic systems:
+
+1. Proposal generation: producing a candidate transition `Delta_t`.
+2. Evidence evaluation: assessing whether the transition is sufficiently supported.
+3. Authority governance: determining whether the transition is allowed to modify runtime state.
+
+Consequently, additional evidence may improve transition verification without increasing transition authority. SRP treats evidence availability and mutation authority as independent variables.
+
+This is the core governance property of SRP: semantic evidence may improve verification, but it does not bypass authority.
 
 ### 3.2 Runtime State Representation
 
-Let semantic state at time `t` be `S_t`, let `theta` denote the parameter configuration, and let `e` denote evidence. SRP models the transition as:
+Let `theta` denote the parameter configuration and let `e` denote evidence. SRP models the transition as:
 
 ```text
 S_(t+1) = T(S_t, theta, e)
 ```
 
-Phase II defines the validated feasible region:
+The validated feasible region is:
 
 ```text
 F = { theta | invariant(theta) = true }
 ```
 
-Phase III-A searches within that region:
+The optimization stage searches within that region:
 
 ```text
 theta* = argmax_{theta in F} U(theta)
 ```
 
 but `theta*` is a governed recommendation rather than a direct runtime mutation.
+
+We distinguish three functions:
+
+```text
+R(S_t, theta, e) -> r
+```
+
+produces a recommendation,
+
+```text
+G(S_t, r) -> a
+```
+
+produces an authorization decision, and
+
+```text
+T(S_t, a) -> S_(t+1)
+```
+
+performs execution when authorized. In SRP, recommendation and authorization are not equivalent. The operational semantics are:
+
+```text
+T(S_t, theta, e) =
+  S_(t+1)    if invariant(theta) = true and G(S_t, R(S_t, theta, e)) = approve
+  S_t        otherwise
+```
+
+This makes the governance property explicit: failed admissibility checks preserve the current runtime state.
 
 ### 3.3 Controlled Transition Pipeline
 
@@ -77,13 +184,15 @@ Governance
 Execution
 ```
 
-The order matters. Observation discovers what can be measured. Validation freezes what can be changed safely. Optimization ranks candidates inside that frozen region. Evidence refines verification when uncertainty remains. Governance is the approval boundary. Runtime execution happens only after approval.
+In plain words: watch, check, suggest, add evidence, ask permission, act.
+
+The order matters: observation discovers what can be measured, validation freezes what can be changed safely, optimization ranks candidates inside that frozen region, evidence refines verification when uncertainty remains, and governance is the approval boundary.
 
 ### 3.4 Authority Separation
 
 SRP assigns each layer a different responsibility:
 
-| Component | Authority |
+| Step | Role |
 | --- | --- |
 | Calibration | observe |
 | Validation | verify |
@@ -94,13 +203,183 @@ SRP assigns each layer a different responsibility:
 
 The central design rule is that recommendation is not execution. More evidence is not more authority. Validation does not mutate the system; it defines the region in which mutation may later be considered.
 
-This gives SRP a clear separation between feasibility and preference. Phase II determines where optimization may operate. Phase III-A determines which candidate is preferred under a declared objective. Governance determines whether the preferred candidate becomes an actual transition.
+This gives SRP a clear separation between feasibility and preference: validation determines where optimization may operate, the optimization stage determines which candidate is preferred under a declared objective, and governance determines whether the preferred candidate becomes an actual transition.
+
+Formally, a transition is admissible only if:
+
+```text
+theta in F
+and
+G(S_t, R(S_t, theta, e)) = approve
+```
+
+Otherwise, the runtime state is preserved.
+
+### 3.5 Algorithmic Core
+
+SRP's main algorithm can be written as a two-stage control loop. The first stage discovers and freezes the feasible region; the second stage recommends and governs transitions inside that region.
+
+In plain words, the system measures, checks, ranks, asks for evidence, asks for permission, and then acts only if allowed.
+
+```text
+Algorithm SRP-Transition
+Input: semantic state S_t, candidate parameters theta, evidence sources E
+Output: governed transition decision or advisory recommendation
+
+1. Observe current semantic runtime state S_t
+2. Validate candidate region F using invariants and closure checks
+3. If theta not in F:
+       reject mutation; return advisory failure
+4. Rank candidates inside F with objective U(theta)
+5. Evaluate additional evidence according to predefined verification policy
+6. Produce governed recommendation r = argmax_{theta in F} U(theta)
+7. If governance approves r:
+       execute transition
+   else:
+       preserve state and return rejected recommendation
+```
+
+The boundary discovery step and the governance step are intentionally separate: boundary discovery answers whether a change may be considered, and governance answers whether the change may be executed.
+
+SRP's external validation follows the same pattern:
+
+```text
+Algorithm SRP-External-Validation
+Input: evaluation slice B, baseline set M, frozen runtime contract K
+Output: evidence package and promotion decision
+
+1. Freeze evaluation slice, runtime contract, and shared evaluation protocol
+2. Run all methods in M under K
+3. Compute official metrics and SRP diagnostics
+4. Audit scorer parity, attribution, and failure boundaries
+5. Record evidence manifest and descriptive statistics
+6. Promote the evidence package only if audit gates pass
+```
+
+This keeps evaluation reproducible and prevents scoring from silently changing the method being evaluated.
+Recovery is treated as one possible transition implementation under SRP, rather than the definition of SRP itself.
+
+### Proposition 1: Authority Independence
+
+For any semantic transition `tau_t`, increasing evidence availability `E_t` may change verification and approval outcomes, but it does not imply an increase in authority level `A_t`.
+
+Proof sketch: In SRP, authority level is determined by `Gamma_t`, while evidence contributes to the verification result `V`. Since `E_t` and `A_t` are modeled as independent components of the transition tuple, changes in evidence quality cannot directly elevate authority without an explicit governance rule.
+
+### 3.6 Design Properties
+
+SRP is designed to satisfy three practical properties under the frozen evaluation contract:
+
+- Boundary safety: runtime mutation is only considered after a candidate passes the validated feasible region.
+- Authority separation: evidence and recommendation can change ranking, but they do not increase execution authority.
+- Replayability: the same runtime contract, scorer, and freeze settings should reproduce the same audit trail.
+
+These are design properties, not universal proofs, but they are the reasons SRP can be audited as a governed protocol rather than treated as an unconstrained adaptation loop.
+
+The key transition-preservation property is:
+
+```text
+G(S_t, R(S_t, theta, e)) = reject  =>  S_(t+1) = S_t
+```
+
+In other words, rejected transitions preserve runtime state.
+
+### 3.7 Governance Properties
+
+SRP can also be stated as a small set of protocol-level properties.
+
+Property 1: Transition safety.
+
+```text
+G(S_t, R(S_t, theta, e)) = reject => T(S_t, theta, e) = S_t
+```
+
+Rejected transitions cannot modify semantic runtime state.
+
+Property 2: Authority non-escalation.
+
+```text
+Auth(G(S_t, R(S_t, theta, e1))) = Auth(G(S_t, R(S_t, theta, e2)))
+```
+
+unless governance policy explicitly changes. Stronger evidence can improve verification confidence, but it does not increase execution authority.
+
+Property 3: Recommendation-execution separation.
+
+```text
+R(S_t, theta, e) = r
+not=> T(S_t, r) = S_(t+1)
+```
+
+A recommendation is not a transition. A valid transition still requires governance approval.
+
+Property 4: Replay consistency.
+
+```text
+SRP(S, K) = SRP(S, K)
+```
+
+under an identical state representation, evidence package, governance policy, and frozen runtime contract.
+
+These properties make SRP a protocol rather than a loose architecture description.
+
+### 3.8 Figures and Positioning Summary
+
+The paper should include two figures that carry the main narrative visually.
+
+Think of the figures like a gate: ideas arrive, evidence checks them, governance opens or closes the gate, and execution happens only if the gate opens.
+
+**Figure 1: Semantic Runtime Protocol transition governance pipeline.** This figure should show the end-to-end transition order:
+
+```text
+Observation -> Validation -> Optimization -> Evidence -> Governance -> Execution
+```
+
+The visual should make the authority split explicit: observation measures, validation freezes, optimization recommends, evidence informs, governance approves, and runtime executes only after approval. The key message is that recommendation and execution are separate.
+
+```text
+Proposal Sources
+LLM | Embedding | Symbolic
+        |
+        v
+Candidate Semantic Transition
+(Delta_t, E_t)
+        |
+        v
+Verification V
+        |
+        v
+Governance G
+        |
+   +----+----+
+   |         |
+ Reject    Approve
+   |         |
+   v         v
+ Preserve   Commit T(S_t, Delta_t)
+   |              |
+   v              v
+  S_t         S_(t+1)
+```
+
+The figure should visually separate verification from authorization and commit: stronger evidence can improve `V`, but only `G` can admit the transition into runtime state and mutate `S_t`.
+
+**Figure 2: Positioning of SRP by semantic state and transition authority abstractions.** This figure should contrast SRP with retrieval, memory, agent, and reinforcement-learning systems according to their primary roles and authority abstractions. The goal is not to claim those systems are wrong, but to illustrate that SRP asks a different question:
+
+```text
+How should semantic runtime state transition be governed?
+```
+
+The figure should make the novelty boundary visible by mapping SRP to semantic runtime state transitions and governance authority, while illustrating retrieval, memory, agent, and RL as systems with different primary foci and authority models.
 
 ## 4. Experiments
 
-### 4.1 Experimental Setup
+The experiments are designed to evaluate SRP as a semantic governance framework rather than to rank memory or retrieval systems. External systems are used as reference implementations where applicable, while controlled validations and artifact-backed evaluations provide the primary evidence for SRP properties.
 
-The experiments evaluate whether SRP can observe semantic evolution variables, identify validated transition boundaries, optimize configurations inside validated regions, and improve verification through additional evidence.
+The paper applies the same separation principle to its own evaluation process: evidence generation, evidence validation, and claim promotion are treated as distinct stages.
+
+The experiments are organized into four layers. First, core governance validation checks whether SRP can observe state, identify evaluated boundaries, constrain optimization, enforce authority separation, verify protocol properties, and reject injected invalid transitions. Second, implementation validation studies evaluate how SRP behaves when instantiated through reconstruction and parameter settings. Third, robustness studies test whether the governance semantics remain consistent across the evaluated workloads, representations, and storage backends. Fourth, external validation checks whether the same frozen contract can support paper-facing evidence generation.
+
+The detailed density sweep, boundary generalization study, and full LongMemEval calibration traces are documented in the appendix and review report rather than repeated here.
 
 The experimental boundary is fixed:
 
@@ -110,139 +389,82 @@ The experimental boundary is fixed:
 - optimization outputs are advisory
 - evidence backends do not control execution
 
-The research questions are:
+The research questions are grouped as follows:
 
-| RQ | Question |
+| Layer | Question |
 | --- | --- |
-| RQ1 | Can SRP observe semantic evolution variables? |
-| RQ2 | Can SRP identify validated transition boundaries? |
-| RQ3 | Can SRP optimize configurations inside validated regions? |
-| RQ4 | Can additional evidence improve verification without authority transfer? |
-| RQ5 | Can semantic fidelity after transition be measured? |
-| RQ6 | Can semantic neighborhoods be reconstructed more faithfully than isolated units? |
-| RQ7 | Are governed recommendations stable under repeated evaluation? |
-| RQ8 | How do SRP parameters move the fidelity-cost tradeoff surface? |
-| RQ9 | Do SRP governance principles remain effective across heterogeneous semantic workloads? |
-| RQ10 | Does SRP preserve its governance semantics under representation changes? |
-| RQ11 | Does SRP preserve its governance semantics under backend changes? |
+| Governance | Can SRP observe variables, bound changes, and strengthen verification without transferring authority? |
+| Implementation | Can governed reconstruction preserve structure under repeated runs and parameter shifts? |
+| Robustness | Do governance semantics stay stable across workloads, representations, and backends? |
+| External validation | Can the frozen contract support calibration and scorer alignment under an auditable boundary? |
 
-### 4.2 Phase I: Parameter Observability
+### 4.1 Core Governance Validation
 
-Phase I asks whether semantic evolution variables can be measured before validation or optimization.
+The main governance chain is:
 
-SRP collects repeated transition observations over the frozen parameter axes:
+| Evaluation | Main Result | Support |
+| --- | --- | --- |
+| Semantic observability | `130` obs, replay `1.0`, consistency `1.0` | observability |
+| Boundary validation | `10 / 25` feasible, stable across densities | evaluated boundary |
+| Constrained optimization | `60%` less search, same top candidate | governed optimization |
+| Evidence-controlled governance | verification `0.50 -> 1.00`, authority unchanged; invalid transitions rejected | evidence/authority separation |
 
-- activation_threshold
-- recovery_min_evidence
-- preserve_evidence
-- archive_relations
+Semantic observability collects repeated transition observations over the frozen parameter axes `activation_threshold`, `recovery_min_evidence`, `preserve_evidence`, and `archive_relations`. The measurements indicate that the transition variables are explicit and reproducible before optimization decisions are introduced.
 
-The main measurements are replay success, state consistency, and parameter drift.
+Boundary validation uses invariant checking, closure validation, and replay equivalence to identify the evaluated feasible region. The main result is a stable boundary over the evaluated density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
 
-The Phase I evidence package reports:
+Constrained optimization compares SRP with a naive full-grid sweep over the same candidate space. SRP reaches the same top objective while reducing the search budget by 60 percent, which indicates that the validated boundary is operationally useful.
 
-- 130 transition observations
-- 5 repeated observation passes
-- replay success = 1.0
-- state consistency = 1.0
-- mean parameter drift = 0.5538
+The evidence-controlled governance check merges the previous verification and boundary-enforcement slices. Vector evidence plus semantic evidence improves verification quality, and the authority-violation slice still ends with a zero final accept rate. In short, evidence can improve verification, but it does not override governance in the evaluated settings.
 
-These results show that semantic transition variables can be explicitly represented and measured before optimization decisions are introduced.
+Protocol property verification closes the core governance chain by checking transition safety, authority non-escalation, recommendation-execution separation, and replay consistency under the frozen contract. Negative transition injection provides the complementary negative test: invalid transitions remain rejected under full SRP, while weakened variants accept some injected cases and therefore expose the need for the governance gate.
 
-### 4.3 Phase II: Boundary Validation
+The core governance chain can be summarized as follows:
 
-Phase II asks whether SRP can determine feasible semantic evolution regions before optimization.
+| Validation Objective | Metric / Check | Result |
+| --- | --- | --- |
+| Semantic observability | observations, replay, consistency | `130`, `1.0`, `1.0` |
+| Boundary validation | feasible candidates, density stability | `10 / 25`, stable |
+| Constrained optimization | search reduction, top candidate match | `60%`, same |
+| Evidence-controlled governance | verification, authority change | `0.50 -> 1.00`, unchanged |
+| Protocol property verification | Property checks under frozen contract | `4 / 4 passed` |
+| Negative transition injection | Invalid accept rate under `full SRP / no gate / evidence-as-authority` | `0.00 / 0.75 / 0.50` |
 
-The boundary condition is:
+This table is the paper's compact governance summary: it shows observability, boundary control, optimization constraint, evidence-authority separation, protocol-level verification, and negative testing in one view.
+
+### 4.2 Case Study: Reconstruction under Transition Governance
+
+#### 4.2.1 Purpose
+Recovery is a case study for transition validation: a semantic reconstruction process must decide which information survives a state transition, and SRP constrains that decision through explicit governance boundaries.
+
+In that sense, semantic reconstruction is itself a transition:
 
 ```text
-F = { theta | invariant(theta) = true }
+S_t -> compression / reconstruction -> S_(t+1)
 ```
 
-Candidate evaluation uses invariant checking, closure validation, and replay equivalence.
+SRP does not redefine reconstruction as the core contribution. It uses reconstruction to evaluate whether governed transitions preserve structure under evidence, provenance, and authority constraints.
 
-The main boundary validation result is:
+#### 4.2.2 Evaluation Setup
+This evaluation asks whether a semantic reconstruction process yields higher structural preservation when transition decisions are constrained by explicit governance boundaries.
 
-- 25 candidates evaluated
-- 10 candidates feasible
-- feasible region extents:
-  - activation_threshold = 0.1..0.9
-  - recovery_min_evidence = 1..2
-
-The density baseline and boundary generalization studies show that while the discrete feasible set changes with sampling density, the estimated boundary extents remain stable.
-
-This phase establishes where optimization is allowed to operate.
-
-### 4.4 Phase III-A: Governed Optimization
-
-Phase III-A asks whether SRP can reduce optimization search while preserving recommendation quality.
-
-The baseline comparison contrasts SRP against a naive full-grid sweep over the same candidate space.
-
-The main comparison result is:
-
-| Method | Candidates | Top Objective |
-| --- | ---: | ---: |
-| Full Grid | 25 | 0.54 |
-| SRP | 10 | 0.54 |
-
-This corresponds to a 60% search reduction while preserving the same top candidate.
-
-Objective sensitivity is analyzed separately within Phase III-A. The feasible region remains fixed, but rankings change as objective weights change. In other words, the optimization result is objective-dependent, not boundary-dependent.
-
-This phase shows that SRP does not replace optimization. It constrains optimization to validated regions.
-
-### 4.5 Evidence Escalation
-
-The evidence escalation experiment asks whether additional semantic evidence can improve verification without increasing authority.
-
-The comparison is:
-
-- vector evidence only
-- vector evidence plus semantic evidence
-
-The baseline package contains 10 verification cases spanning paraphrase, contradiction, authority violation, and boundary-sensitive inputs. It compares a vector-only baseline against a vector-plus-semantic-evidence variant.
-
-The main results are:
-
-| Metric | Vector-only | Vector + Semantic Evidence |
-| --- | ---: | ---: |
-| Accuracy | 0.50 | 1.00 |
-| Agreement rate | 0.50 | 0.50 |
-| Review rate | - | 0.50 |
-| Authority violation final accept rate | - | 0.00 |
-
-The study also reports a variant local-model count of 8, an offline-heuristic fallback count of 2, and a fallback usage count of 2.
-
-The result supports the claim that semantic evidence can improve verification quality under the tested cases while execution authority remains unchanged. Evidence informs, while governance decides.
-
-### 4.6 Experiment Summary
-
-Together, these experiments support the SRP separation principle:
-
-- observation establishes measurable state variables
-- validation defines feasible transition regions
-- optimization ranks candidates inside those regions
-- evidence improves verification without changing authority
-
-### 4.7 Phase VI-A: Relation-Aware Recovery
-
-Phase VI-A asks whether SRP can reconstruct semantic neighborhoods more faithfully than isolated units under the same recovery budget.
-
-The experiment compares three recovery modes:
+It compares three recovery modes:
 
 - vector-only recovery
 - vector plus relation expansion
 - relation-closure recovery
 
-The main result is:
+The recovery observables in this case study align with SRP properties as follows:
 
-- 12 cases evaluated
-- vector-only recovery has the weakest structural fidelity
-- relation expansion materially improves relation recall and neighborhood completeness
-- relation-closure recovery reduces hallucinated relations and lowers drift relative to relation expansion
+| SRP Property | Recovery Observable |
+| --- | --- |
+| Evidence preservation | Closure Acc. |
+| Authority boundary | Hallucinated Relation Rate |
+| State consistency | Drift |
+| Semantic retention | Relation Acc. |
 
-Selected mode-level results:
+#### 4.2.3 Results
+The main result is higher structural fidelity under the same recovery budget:
 
 | Mode | Mean Relation Acc. | Mean Closure Acc. | Mean Drift | Mean Hallucinated Rel. Rate |
 | --- | ---: | ---: | ---: | ---: |
@@ -250,7 +472,7 @@ Selected mode-level results:
 | relation_expansion | 0.875 | 0.8125 | 0.145834 | 0.3125 |
 | relation_closure | 0.875 | 0.8125 | 0.083333 | 0.0 |
 
-The ablation can also be summarized as:
+The summary view is:
 
 | Recovery Mode | Coverage | Relation Acc. | Closure Acc. | Drift | Hallucinated Relation |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -258,69 +480,56 @@ The ablation can also be summarized as:
 | Relation expansion | 0.738095 | 0.875 | 0.8125 | 0.145834 | 0.3125 |
 | Relation closure | 0.738095 | 0.875 | 0.8125 | 0.083333 | 0.0 |
 
-This phase shows that relation-aware recovery changes the preservation profile by improving structural fidelity under the same recovery budget.
-Relation expansion restores semantic neighborhood coverage, while closure validation removes invalid relational noise and reduces drift.
+#### 4.2.4 Interpretation
+The phase indicates that relation-aware recovery changes the preservation profile, but it remains an implementation instance rather than the framework definition. The key point is not that recovery is the primary contribution, but that SRP-controlled transition constraints shape how semantic structure is preserved during reconstruction.
 
-### 4.8 Phase VII-A: Recommendation Stability
+### 4.3 Transition Configuration Sensitivity
 
-Phase VII-A asks whether the governed recommendation is stable under repeated evaluation with frozen workload, objective, and evidence backend.
+This evaluation asks how SRP parameters move the system across fidelity-cost tradeoff regions while keeping the recovery strategy fixed.
 
-The stability study runs the same recommendation setting across 10 seeds.
-Its main result is that the recommendation is fully consistent across runs:
+The main pattern is that different parameters move the evaluated operating point across different parts of the observed tradeoff surface:
 
-| Metric | Value |
-| --- | ---: |
-| Run count | `10` |
-| Recommendation consistency | `1.0` |
-| Activation threshold variance | `0.0` |
-| Recovery min evidence variance | `0.0` |
-| Objective value variance | `0.0` |
-
-This shows that the current governed recommendation is stable rather than arbitrary under repeated evaluation.
-
-### 4.9 Phase VII-B: Parameter Sensitivity and Governance Tradeoff Analysis
-
-Phase VII-B asks how SRP parameters move the system across fidelity-cost tradeoff regions while keeping the recovery strategy fixed.
-Unlike Phase VII-A, this phase does not test whether the recommendation is repeatable; it tests which parameters shift relation fidelity, coverage, and cost.
-
-The main pattern is that different parameters control different parts of the tradeoff surface:
-
-- `archive_relations` improves relation fidelity and reduces drift, but increases cost
-- `preserve_evidence` improves provenance stability and slightly narrows drift, but adds cost
-- `relation_depth` has the largest structural effect, with deeper recovery improving coverage and closure at higher cost
+- `archive_relations` increases relation fidelity and reduces drift, but increases cost
+- `preserve_evidence` increases provenance stability and slightly narrows drift, but adds cost
+- `relation_depth` has the largest structural effect, with deeper recovery increasing coverage and closure at higher cost
 - `activation_threshold` shifts the acceptance boundary, trading coverage against drift in a smoother way
 
-This means SRP exposes a parameter behavior map rather than collapsing parameter analysis into a single best configuration.
+For readability, we shorten the parameter names below:
+
+- `archive_relations` -> `archive`
+- `preserve_evidence` -> `preserve`
+- `relation_depth` -> `depth`
+- `activation_threshold` -> `threshold`
 
 The measured sweep makes the pattern concrete:
 
-| Setting | Coverage | Drift | Evidence Cost | Interpretation |
+| Setting | Cov. | Drift | Cost | Meaning |
 | --- | ---: | ---: | ---: | --- |
-| Baseline (`archive_relations=False`, `preserve_evidence=False`, `relation_depth=1`, `activation_threshold=0.9`) | 0.728095 | 0.098333 | 1.695 | Reference point |
-| `archive_relations=True` | 0.758095 | 0.077083 | 1.815 | Better relation fidelity, higher cost |
-| `preserve_evidence=True` | 0.738095 | 0.083333 | 1.755 | Slight fidelity gain, moderate cost increase |
-| `relation_depth=0` | 0.199643 | 0.628333 | 1.025 | Vector-like recovery, weak structure |
-| `relation_depth=2` | 0.839524 | 0.0 | 1.855 | Strongest fidelity gain in the sweep |
-| `relation_depth=3` | 0.849524 | 0.005 | 2.015 | Highest coverage, highest cost |
-| `activation_threshold=0.1` | 0.792095 | 0.138333 | 1.711 | More permissive gating, more drift |
+| Baseline (`a=F`, `p=F`, `d=1`, `t=0.9`) | 0.728095 | 0.098333 | 1.695 | Reference |
+| `archive=T` | 0.758095 | 0.077083 | 1.815 | More detail, higher cost |
+| `preserve=T` | 0.738095 | 0.083333 | 1.755 | Slight stability gain |
+| `depth=0` | 0.199643 | 0.628333 | 1.025 | Weak structure |
+| `depth=2` | 0.839524 | 0.0 | 1.855 | Best result |
+| `depth=3` | 0.849524 | 0.005 | 2.015 | Highest coverage, highest cost |
+| `threshold=0.1` | 0.792095 | 0.138333 | 1.711 | More permissive, more drift |
 
-### 4.10 Phase VIII-A: Cross-Domain Validation
+The recommendation-stability result is folded into this section: the recommendation was fully consistent across 10 seeds under the frozen workload, objective, and evidence backend. That stability result is the baseline that makes the sensitivity sweep interpretable.
 
-Phase VIII-A asks whether the same governed recovery principles remain effective across heterogeneous semantic workloads rather than only on the SRP-shaped prototype.
-The minimal cross-domain validation study compares code evolution memory, knowledge reasoning, and agent planning workloads under the same relation-aware recovery baseline.
+### 4.4 Robustness
 
-The main result is that relation-aware recovery preserves its relative advantage over vector-only recovery across domains, while absolute fidelity remains domain dependent:
+This evaluation asks whether SRP preserves its governance semantics across the evaluated semantic workloads rather than only on the SRP-shaped prototype.
 
-| Domain | Coverage | Drift | Relation Acc. | Closure Acc. | Hallucinated Rel. Rate |
+The robustness study combines cross-workload, representation, and backend checks under the same governance pipeline.
+
+Cross-workload validation compares code, knowledge, and planning under the same recovery baseline:
+
+| Domain | Coverage | Drift | Rel. Acc. | Clos. Acc. | Hallucinated Rel. Rate |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Code memory | 0.638889 | 0.227778 | 0.666667 | 0.666667 | 0.138889 |
-| Knowledge reasoning | 0.500000 | 0.400000 | 0.500000 | 0.250000 | 0.333333 |
-| Agent planning | 0.465278 | 0.355556 | 0.500000 | 0.416667 | 0.111111 |
+| Code | 0.638889 | 0.227778 | 0.666667 | 0.666667 | 0.138889 |
+| Knowledge | 0.500000 | 0.400000 | 0.500000 | 0.250000 | 0.333333 |
+| Planning | 0.465278 | 0.355556 | 0.500000 | 0.416667 | 0.111111 |
 
-The domain comparison suggests that SRP's recovery hierarchy remains intact across workloads, but the difficulty of structural recovery is workload dependent.
-Code-oriented memory is easier to reconstruct than planning memory in this MVP, and relation closure remains the most reliable way to suppress hallucinated relations.
-
-Domain-normalized comparison against vector-only recovery:
+The normalized comparison against vector-only recovery is:
 
 | Domain | Vector-only Closure | Relation-closure Closure | Delta |
 | --- | ---: | ---: | ---: |
@@ -328,14 +537,7 @@ Domain-normalized comparison against vector-only recovery:
 | Knowledge reasoning | 0.000000 | 0.375000 | +0.375000 |
 | Agent planning | 0.000000 | 0.625000 | +0.625000 |
 
-The normalized view makes the cross-domain pattern clearer: SRP preserves the direction of improvement everywhere, but the magnitude of structural recovery varies by workload.
-
-### 4.11 Phase VIII-B: Representation Invariance
-
-Phase VIII-B asks whether SRP preserves its governance semantics under representation changes.
-The minimal invariance study varies encoders and parsers while keeping the recovery hierarchy, governance pipeline, and evaluation protocol fixed.
-
-The main result is that the recovery hierarchy remains stable across the tested representations:
+Representation robustness indicates stable hierarchy and governance consistency across the tested encoders and parsers:
 
 | Metric | Value |
 | --- | ---: |
@@ -343,16 +545,7 @@ The main result is that the recovery hierarchy remains stable across the tested 
 | Hierarchy consistency rate | `1.0` |
 | Governance consistency rate | `1.0` |
 
-The absolute coverage and drift values vary by encoder and parser, but the ordering relation remains preserved.
-This suggests that SRP governs semantic state and recovery semantics rather than depending on a single embedding space.
-The SRP-specific analysis metrics HCR and GCR are treated here as analysis checks, not new community benchmarks.
-
-### 4.12 Phase VIII-C: Implementation Independence
-
-Phase VIII-C asks whether SRP preserves its governance semantics when the storage backend changes.
-The minimal implementation study varies the backend while keeping the recovery hierarchy, governance pipeline, and evaluation protocol fixed.
-
-The main result is that the recovery hierarchy remains stable across the tested backends:
+Backend robustness indicates the same stability across storage backends:
 
 | Metric | Value |
 | --- | ---: |
@@ -360,217 +553,227 @@ The main result is that the recovery hierarchy remains stable across the tested 
 | Hierarchy consistency rate | `1.0` |
 | Governance consistency rate | `1.0` |
 
-The backend variants preserve the same relative ordering, while evidence cost shifts modestly by implementation.
-This suggests that SRP governs semantic state and recovery semantics rather than depending on a single storage backend.
-The SRP-specific analysis metrics HCR and GCR are treated here as analysis checks, not new community benchmarks.
+Taken together, these evaluations provide evidence that SRP's governance semantics remained consistent across the tested workloads, representations, and storage backends.
 
-## 5. Analysis and Component Analysis
+### 4.5 External Evidence Package Validation
 
-SRP separates validation, optimization, evidence, and governance into independent components. This section explains why those separations are necessary by analyzing what changes when a layer is removed or when the objective changes.
+The external validation work is split into calibration and evidence.
 
-### 5.1 Boundary Validation Separation
+LoCoMo was used as a calibration boundary to validate the adapter, semantic translation layer, and attribution protocol. It is treated as calibration artifact, not as final paper evidence.
 
-Removing Phase II collapses the pipeline into:
+LongMemEval was prepared as an external validation evidence package under a frozen shared local-vLLM runtime contract. The evidence package includes:
 
-```text
-Observation
-    |
-    v
-Optimization
-    |
-    v
-Execution
-```
+- full context
+- sliding window
+- vector RAG
+- Mem0
+- Graphiti
+- Letta
+- MemMachine
+- SRP
 
-In that setting, optimization may still rank candidates, but it no longer has a frozen feasible region. Invalid candidates reappear and feasibility is no longer guaranteed. Boundary validation is not an optimization acceleration trick. It defines the admissible transition space.
+The evidence package keeps the runtime manifest frozen, reports descriptive statistics for the fixed slice, co-reports official scores and SRP diagnostics, and documents scorer alignment and promotion decisions explicitly. It therefore serves as paper-facing external validation support under a frozen evaluation scope rather than as a claim of universal benchmark dominance.
 
-### 5.2 Evidence Escalation Separation
+#### External Reality Check
 
-Removing semantic evidence escalation leaves the system with vector evidence only. That change reduces verification quality in boundary-sensitive cases, especially when vector evidence and semantic interpretation disagree. The important point is not that the semantic model is smarter. The important point is that additional evidence improves confidence without becoming a decision authority.
+To verify that SRP's governance pipeline can be instantiated on an external semantic evaluation workload, we conducted a LongMemEval reality check using a frozen local runtime contract. The purpose of this evaluation is to examine runtime compatibility of SRP governance mechanisms under an external workload, rather than to establish benchmark superiority. It also validates external source integration, scorer separation, reproducible runtime evidence generation, and SRP diagnostic extraction.
 
-### 5.3 Governance Separation
+The reality check preserves the official task scorer while co-reporting SRP diagnostics that measure a different layer of the evaluation stack. In the evaluated slice, the official task score and the SRP diagnostics are both high, but they are not numerically identical, which suggests that the governance diagnostics capture properties distinct from official task scoring.
 
-If optimization output is routed directly into runtime mutation, recommendation and execution collapse into the same step. That destroys the approval boundary that SRP uses to prevent objective-driven selection from becoming an implicit execution policy. Governance separation keeps optimization from mutating the runtime by itself.
+| Category | Metric | Result |
+| --- | --- | --- |
+| Runtime | Model | `Qwen/Qwen3-4B-AWQ` |
+| Runtime | Endpoint | `http://172.25.253.78:8000` |
+| Dataset | Cases evaluated | `24` |
+| Official scorer | Answer accuracy | `0.888021` |
+| Official scorer | Official metric score | `0.888021` |
+| SRP diagnostic | Semantic coverage | `0.770833` |
+| SRP diagnostic | Semantic drift | `0.320833` |
+| Artifact | Runtime integrity | verified |
+| Artifact | Dataset integrity | verified |
 
-### 5.4 Objective-Feasibility Decoupling
+The runtime manifest, dataset fingerprint, and report fingerprint are recorded in the appendix. The result is evidence that external semantic workloads can be routed through the SRP governance pipeline while preserving official scorer separation and reproducible artifact generation. Larger-scale validation is still required before any stronger general claim is made.
 
-Phase III-A objective sensitivity shows that ranking changes when the objective changes, while the validated feasible region remains fixed. If objective changes were allowed to redefine feasibility, preference and safety would be entangled. SRP avoids that by keeping the feasible region frozen and letting the objective affect ranking only. Preference changes do not redefine safety boundaries.
+## 5. Discussion
 
-### 5.5 Parameter Recommendation Analysis
+SRP targets semantic runtime governance as a first-class systems problem.
 
-The current Phase III-A baseline recommends the configuration:
+### 5.1 Applicability to LLM-based Semantic Systems
 
-```text
-activation_threshold = 0.9
-recovery_min_evidence = 1
-```
+Semantic Runtime Protocol is designed as a model-agnostic governance layer for semantic state transitions. SRP does not assume a specific proposal mechanism or representation model. A semantic transition may be generated by an LLM agent, an embedding-based retrieval system, a symbolic reasoning component, or a hybrid architecture. The role of SRP is to determine whether a proposed transition is admissible before it becomes part of the runtime semantic state.
 
-under the balanced objective used in the optimization baseline. The corresponding objective value is `0.54`.
-
-This should be interpreted as a governed recommendation inside the validated feasible region, not as a runtime default update.
-
-The recommendation depends on:
-
-- the validated feasible region
-- the declared objective
-- the frozen evidence context
-
-The objective sensitivity study shows that the feasible region remains fixed while rankings change with objective weights. The recommendation is therefore best understood as:
+In LLM-based systems, an LLM can act as a transition proposer by generating candidate updates from conversations, observations, tool interactions, or external information sources. SRP introduces an intermediate governance boundary between proposal generation and state mutation:
 
 ```text
-best configuration under objective U
+LLM Proposal -> SRP Validation -> Semantic State Update
 ```
 
-not as a universal optimum.
+This separation distinguishes semantic generation from semantic authority. A generated proposal, regardless of model confidence or supporting evidence, does not automatically obtain permission to modify runtime state. Instead, SRP evaluates transition validity through explicit validation conditions, evidence constraints, and authority rules.
 
-The recommendation analysis is orthogonal to the semantic evidence comparison study. Evidence backend selection changes verification quality; parameter recommendation changes optimization preference. SRP keeps those decisions separate.
+Its objective is to govern semantic state evolution across different underlying representation and generation mechanisms. The current evaluation uses controlled semantic representations to isolate governance properties, while LLM-generated transitions represent a compatible future deployment scenario rather than a prerequisite for the framework itself.
 
-### 5.6 Structural Semantic Recovery Analysis
+This framing explains the experimental pattern: semantic state variables can be observed, feasible regions can be identified and frozen, constrained optimization can operate inside an evaluated region without becoming a control mechanism, and evidence escalation can strengthen verification without transferring authority. The broader evaluations provide evidence that the same governance semantics remained consistent across the evaluated workloads, representations, and implementations. Recovery and reconstruction remain important implementation cases, but the framework claim is about governing semantic transitions.
 
-Phase VI-A isolates a different failure mode from the retention baseline: it tests whether the recovered neighborhood preserves the relation structure that makes facts meaningful together.
+The external validation results reinforce the same lesson. Calibration and evidence are separated. Scorer alignment is treated as an auditable boundary. The evidence package is accepted only under a frozen contract, not because the system is universally optimal.
 
-The recovery baseline shows three distinct behaviors:
+## 6. Limitations and Future Work
 
-- vector-only recovery is strongest at isolated fact pickup, but weakest at closure
-- relation expansion restores structure, but may introduce hallucinated edges
-- relation-closure recovery preserves structure while filtering invalid relations
+The current SRP baseline does not implement autonomous semantic adaptation, online learning, self-modifying runtime behavior, or automatic policy updates. The constrained optimization stage produces a recommendation, not a learned policy.
 
-This matters because the dominant bottleneck is not simply missing semantic units.
-It is missing semantic closure.
+The validated feasible region is workload dependent and objective dependent. SRP therefore claims a governed feasible region for the evaluated setting, not a universal boundary for all semantic workloads.
 
-SRP therefore treats recovery as a structure-preserving reconstruction problem rather than a similarity-search problem.
+The current paper does not fully measure local model latency, energy cost, or deployment overhead. The tradeoff between verification gain and evidence cost remains an important future concern.
 
-The result also clarifies the role of the existing recovery controls:
+Boundary discovery currently uses parameter sampling, invariant checking, and closure validation. Larger or higher-dimensional spaces may require adaptive sampling, surrogate modeling, or formal verification support.
 
-- `archive_relations` is best understood as a structural retention boundary
-- `preserve_evidence` stabilizes the proof trail
-- `recovery_min_evidence` controls strictness
-- `activation_threshold` remains a transition-gating parameter, not the main reconstruction control
+Finally, governance authority is assumed to exist outside the runtime. SRP does not resolve who defines governance or how governance policies are negotiated.
 
-### 5.7 Recommendation Stability Analysis
+Future work should focus on provenance-aware governance, confidence calibration, candidate pruning, and broader workload coverage. Those extensions belong to a future version of SRP, not to the frozen evidence chain reported here.
 
-Phase VII-A complements the relation-aware recovery study by showing that the recommended configuration does not fluctuate under repeated evaluation with the same workload, objective, and evidence backend.
-This matters because governed recommendations should be stable enough to interpret, even when they are not claimed to be universally optimal.
+## 7. Conclusion
 
-### 5.8 Parameter Sensitivity and Governance Tradeoff Analysis
+SRP provides a governance-first framework for semantic transition. It separates observation, validation, optimization, evidence, governance, and execution so that semantic state can change only within evaluated boundaries. The experiments provide evidence that semantic transition variables can be observed, feasible regions can be identified and frozen, optimization can be constrained, evidence can strengthen verification without transferring authority, and SRP-controlled transitions can preserve semantic structure through the evaluated recovery implementations and workloads.
 
-Phase VII-B complements the stability study by showing that SRP parameters do not all affect the system in the same way.
-Some parameters primarily affect relation fidelity, some mainly affect cost, and some move the system along a smooth coverage-versus-drift frontier.
+The main paper-facing claim is that semantic runtime governance is a first-class control problem: semantic evolution can be represented as measurable, bounded, auditable, and governable under a frozen evaluation contract in the evaluated settings. Recovery and reconstruction are examples of SRP-controlled behaviors, and SRP provides a governance boundary for semantic state evolution under explicit evidence and authority constraints.
 
-The important result is not a single ranking.
-It is a parameter behavior map:
+## References (selected)
 
-- `archive_relations` is the clearest relation-fidelity control
-- `preserve_evidence` stabilizes the proof trail with moderate cost
-- `relation_depth` drives the strongest fidelity-cost tradeoff
-- `activation_threshold` mainly shifts the governance boundary
+This list is intentionally selective. It covers the prior-work anchors that define SRP's novelty boundary and the core control models it builds on.
 
-This gives SRP an interpretable calibration surface without turning calibration into an autonomous update policy.
+- Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" (2020), arXiv:2005.11401
+- Packer et al., "MemGPT: Towards LLMs as Operating Systems" (2023), arXiv:2310.08560
+- Chhikara et al., "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory" (2025), arXiv:2504.19413
+- Rasmussen et al., "Zep: A Temporal Knowledge Graph Architecture for Agent Memory" (2025), arXiv:2501.13956
+- Yao et al., "ReAct: Synergizing Reasoning and Acting in Language Models" (2022), arXiv:2210.03629
+- Schick et al., "Toolformer: Language Models Can Teach Themselves to Use Tools" (2023), arXiv:2302.04761
+- Wang et al., "Voyager: An Open-Ended Embodied Agent with Large Language Models" (2023), arXiv:2305.16291
+- Achiam et al., "Constrained Policy Optimization" (2017), arXiv:1705.10528
+- Wachi et al., "A Survey of Constraint Formulations in Safe Reinforcement Learning" (2024), arXiv:2402.02025
+- Haerder and Reuter, "Principles of Transaction-Oriented Database Recovery" (1983), DOI:10.1145/289.291
+- Alchourron, Gardenfors, and Makinson, "On the Logic of Theory Change: Partial Meet Contraction and Revision Functions" (1985), JSTOR:2274239
+- Sanchez et al., "A Survey of Challenges for Runtime Verification from Advanced Application Domains (Beyond Software)" (2019), Springer:10.1007/s10703-019-00337-w
 
-## 6. Discussion
+## Appendix A. Evidence Provenance and Artifact Mapping
 
-### 6.1 Why Validation Before Adaptation
+This appendix defines the paper's reproducibility boundary.
+It explains which artifacts are trusted, which are supporting evidence, and which remain provenance only in the current release snapshot.
 
-SRP validates boundaries before allowing optimization because adaptation without a validated boundary cannot distinguish better transitions from unsafe ones. The framework therefore asks a prior question that many adaptive systems skip: where is change allowed?
+### A.1 Evidence Promotion Policy
 
-### 6.2 Evidence Is Not Authority
+The default trust policy is conservative:
 
-Evidence informs decisions, but it does not authorize them. Validation verifies, governance approves, and runtime executes. SRP keeps those roles separate so that stronger evidence does not silently become stronger control.
+- artifacts without a `metadata.json` are untrusted
+- artifacts with `generated_at` before `2026-07-16T00:00:00-04:00` are legacy-only evidence
+- artifacts with `generated_at` on or after the cutoff may be used for claims once the review method passes
 
-### 6.3 Optimization Is Selection, Not Control
+The review report is generated from `experiments/results` and records both trusted and legacy artifacts.
 
-Phase III-A produces a recommendation by maximizing an objective within a frozen feasible region. The resulting `theta*` is a governed recommendation, not a runtime mutation. Optimization therefore acts as selection inside a boundary, not as direct control over the system.
+### A.2 Artifact Classification
 
-### 6.4 Recovery Is Reconstruction, Not Retrieval Alone
+The paper uses three levels of artifact status:
 
-Phase VI-A shows that recovery quality improves when the system reconstructs semantic neighborhoods rather than isolated units.
-Relation expansion helps recover structure, but closure validation is what removes invalid relational noise and reduces drift.
-This makes recovery a reconstruction problem, not just a similarity search problem.
+- `Main`: directly supports a paper-facing claim
+- `Appendix`: useful supporting evidence or legacy evidence that should not carry the main claim alone
+- `Archive`: preserve for provenance only
 
-### 6.5 Parameters Are Tradeoff Controls, Not Learned Policies
+The current snapshot contains one trusted main-claim artifact:
 
-Phase VII-B shows that SRP parameters expose a governed tradeoff surface rather than a hidden optimization policy.
-Parameter changes can improve fidelity, reduce drift, or reduce cost, but not all at once.
-That is the point: SRP makes those tradeoffs explicit so the system can be calibrated without silently transferring authority.
+- `interaction_boundary_enforcement`
 
-### 6.6 Cross-Domain Generality
+The current snapshot also contains supporting artifacts that remain appendix-grade:
 
-Phase VIII-A shows that SRP's recovery and governance principles do not depend on a single semantic representation.
-The same relation-aware hierarchy remains useful in code evolution memory, knowledge reasoning, and agent planning workloads, even though the absolute fidelity levels differ.
-The more precise claim is that SRP preserves the relative advantage of relation-aware recovery across workloads while exposing domain-specific structural difficulty.
-This moves SRP from prototype validity toward framework generality.
+- `phase_ii_boundary`
+- `external_validation_longmemeval_evidence_strong_baselines`
 
-### 6.7 Representation Invariance
+### A.3 Claim-to-Evidence Mapping
 
-Phase VIII-B shows that SRP's governance semantics remain stable under the tested representation changes.
-Across four encoders and three parsers, the recovery hierarchy stays ordered and the governance pipeline remains unchanged, even though absolute scores shift by backend.
-This is the strongest evidence in the paper that SRP operates on semantic state and governance semantics rather than on a particular embedding space.
+The detailed claim-to-evidence mapping is maintained in `audit/SRP_CLAIM_EVIDENCE_MAP_V1.md`.
+That document should be treated as the claim ledger for the current release branch.
 
-### 6.8 Implementation Independence
+In brief:
 
-Phase VIII-C shows that SRP's governance semantics remain stable under the tested backend changes.
-Across the flat, graph, and vector-overlay stores, the recovery hierarchy stays ordered and the governance pipeline remains unchanged, even though absolute evidence cost shifts by backend.
-This is the strongest evidence in the paper that SRP does not depend on a single storage implementation.
+- authority separation is the strongest currently trusted claim
+- feasible-region validation is appendix-supported
+- LongMemEval is external-validation support, not refreshed main evidence
+- cross-workload robustness and component-level ablation remain under-supported in the current snapshot
 
-## 7. Limitations and Future Work
+### A.4 Reproduction Entry Points
 
-### 7.1 No Autonomous Adaptation Claim
+The recommended regeneration flow is:
 
-The current SRP baseline does not implement online learning, autonomous policy update, or self-modifying runtime behavior. Adaptive evolution remains future work.
+- `python experiments/sensitivity/run_phase_i_observability.py`
+- `python -m experiments.sensitivity.phase_i_observability`
+- `python -m experiments.validation.phase_ii_boundary.runner`
+- `python -m experiments.validation.phase_ii_density_baseline`
+- `python -m experiments.validation.phase_ii_boundary_generalization`
+- `python -m experiments.optimization.phase_iii_governed_optimization.baseline`
+- `python -m experiments.optimization.phase_iii_governed_optimization.objective_sensitivity`
+- `python experiments/sensitivity/run_activation_recovery_interaction.py`
+- `python -m experiments.evaluation.semantic_backend_comparison.runner`
+- `python -m experiments.evaluation.phase_v_retention.runner`
+- `python -m experiments.evaluation.phase_vi_relation_recovery.runner`
+- `python -m experiments.evaluation.phase_vii_parameter_stability.runner`
+- `python -m experiments.evaluation.phase_vii_parameter_sensitivity.runner`
+- `python -m experiments.evaluation.phase_viii_cross_domain.runner`
+- `python -m experiments.evaluation.phase_viii_representation_invariance.runner`
+- `python -m experiments.evaluation.phase_viii_implementation_independence.runner`
+- `python -m experiments.external_validation.manual_sanity`
+- `python -m experiments.external_validation.calibration_report`
+- `python -m experiments.external_validation.longmemeval_adapter_validation`
+- `python -m experiments.external_validation.evidence`
+- `python -m experiments.external_validation.scorer_alignment_audit`
 
-### 7.2 Workload Dependence
+### A.5 Release Snapshot Limitations
 
-The validated feasible region depends on the evaluated workload, the chosen invariants, and the declared objective. SRP therefore validates a governed feasible region for the current experimental boundary; it does not claim a universal boundary for every semantic workload.
+At the time of this draft, the review report marks `interaction_boundary_enforcement` as trusted, while the older phase and external-validation artifacts remain legacy-only because they either lack `metadata.json` or predate the trust cutoff.
 
-### 7.3 Evidence Cost
+The practical reading is:
 
-The evidence escalation study shows verification gains, but the current paper baseline does not fully quantify latency, compute cost, energy cost, or deployment overhead. Future work should study verification gain versus evidence cost.
+- `interaction_boundary_enforcement` is admissible for paper-facing claims
+- earlier phase artifacts remain provenance material, not claim material
+- LongMemEval remains appendix-supported until its snapshot is refreshed and its missing files are reconciled
 
-### 7.4 Governance Assumption
+This appendix does not add a new claim about SRP.
+It documents the evidence-management procedure used to separate trusted outputs from legacy outputs in this release branch.
 
-The current baseline assumes governance authority exists outside the runtime. SRP does not solve how governance policies are created or how distributed governance conflicts are resolved.
+### A.6 External Runtime Compatibility Validation Provenance
 
-### 7.5 Cross-Model and Scale Validation
+The LongMemEval reality check is treated as an external validation artifact under the frozen v1.1 evidence boundary.
 
-The current paper now includes cross-domain validation, representation invariance, and implementation independence studies, but future work should test whether the same governance principles remain effective across larger-scale memory streams and additional model families beyond the current MVP settings.
-It should also test whether the relation-aware recovery hierarchy survives larger and more diverse workloads without losing interpretability or the relative advantage observed in the tested studies.
+It is classified as:
 
-### 7.6 Public Benchmark Validation
+- external workload validation
+- runtime reproducibility evidence
+- scorer alignment evidence
+- SRP diagnostic extraction evidence
 
-The paper currently includes a public-benchmark calibration slice on LoCoMo.
-That slice validated the adapter, temporal attribution protocol, and failure-attribution boundary, but it is intentionally separated from the main external-validity results.
-The current 7/18 real-validation report in `audit/REAL_VALIDATION_REPORT.md` and the companion scientific report in `audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md` document the measurement boundary before any benchmark claim is promoted.
-The 7/18 LoCoMo real-validation run in `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000` and the paired baseline comparison in `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000` provide the release-facing evidence slice under the frozen runtime contract.
-Those reports keep the promotion boundary explicit, and the evidence summaries include descriptive statistics for the fixed slice so the result can be audited without overstating inference.
-LongMemEval remains protocol-ready, but its real-data slice is still pending and is not part of the current release gate.
-The broader benchmark suite would help establish external validity beyond the paper's first calibrated public workload slice, and the stronger memory-system baseline comparison under the same frozen runtime contract is now complete with the evidence package ready for paper-facing promotion.
+It is not used as:
 
-### 7.7 Failure Analysis
+- benchmark ranking evidence
+- memory architecture comparison
+- universal performance claim
+- a replacement for the official scorer
 
-Future work should collect and analyze failure cases across representation, backend, relation, evidence, and domain mismatch settings.
-Understanding when SRP fails is necessary to define its boundary as a governed semantic evolution framework rather than a universal memory solution.
-The current LongMemEval evidence also suggests a provenance-aware relation layer may be a better governance response than immediate relation pruning: SRP can keep recalled relations explicit as observed, inferred, or uncertain candidates, attach confidence and evidence identifiers, and defer hard pruning until user or benchmark verification is available.
-In that framing, extra relations are treated as semantic candidates rather than verified facts, and a future `promotion_state` field can separate `candidate`, `verified`, and `rejected` relations without collapsing recall-oriented recovery into premature pruning.
-Within the current audit contract, `candidate` relations are available for retrieval and explanation but are not treated as unconditional downstream facts; only `verified` relations are committed to persistent semantic state, and `rejected` relations are excluded from future recovery.
+The reality-check outputs are frozen with a runtime manifest, an artifact integrity record, and a reproducible report hash so that the evidence can be audited independently of the narrative interpretation.
 
-### 7.8 Threats to Validity
+Wording polish pass is done.
 
-The external-validity package currently includes a fixed 48-record LongMemEval evidence slice and calibration artifacts from LoCoMo.
-These slices are intentionally narrow and are used to validate the benchmark adapter, runtime contract, scorer path, and failure-attribution protocol before paper-facing promotion.
-The reported LongMemEval statistics are descriptive for the fixed slice and should not be interpreted as benchmark-wide inference.
-Scorer alignment is accepted for the frozen slice, and the evidence package is now approved for paper-facing promotion under the frozen contract.
-As a result, the current evidence bundle is audit-ready and promoted under the frozen scope.
+**Updated**
+- [paper/SRP_ARXIV_DRAFT_V1.md](C:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/paper/SRP_ARXIV_DRAFT_V1.md)
+- [audit/SRP_V1_WORDING_POLISH_DIFF.md](C:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/audit/SRP_V1_WORDING_POLISH_DIFF.md)
 
-## 8. Conclusion
+**What changed**
+- Softened a few claim-heavy phrases to `provides evidence`, `indicates`, and `illustrate`
+- Kept all method, experiment, and evidence structure unchanged
+- Recorded the wording-only edits in a compact diff note
 
-SRP introduces a governed semantic evolution process that separates observation, validation, optimization, evidence, governance, and execution. The experiments show that semantic transitions can be measured, constrained, and optimized within validated regions. They also show that verification can be improved through additional evidence without transferring authority. SRP does not provide autonomous self-modification; it provides a controlled foundation for future adaptive systems.
-Phase VII-B further shows that parameter changes expose an interpretable fidelity-cost tradeoff surface rather than a hidden autonomous policy.
-Phase VIII-A and Phase VIII-B further show that the recovery hierarchy preserves its relative advantage across heterogeneous workloads and tested representation changes, even though absolute fidelity remains workload and representation dependent.
-Phase VIII-C further shows that the same governance semantics remain stable under tested backend changes, with cost shifting more than hierarchy.
-The LoCoMo ingestion slice further shows that the public-benchmark adapter and evaluator can be run end to end, while the calibration-aware rerun separates official score, semantic diagnostics, and attribution distribution. The benchmark scoring path still requires calibration before the slice can support a paper claim.
-The LongMemEval evidence run now demonstrates that the same shared-generation runtime contract can be preserved across baselines and SRP while producing a separate external-validity evidence bundle with descriptive statistics for the fixed slice.
-The baseline comparison run in `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000` extends that candidate to the current 7/18 LoCoMo comparison set under the same runtime contract.
-The LongMemEval evidence promotion decision now records that the bundle is approved for paper-facing use under the frozen contract, while preserving the slice-level limitations explicitly.
-The evidence audit specification keeps future evidence runs from being promoted without an explicit runtime manifest, metric definition, statistical reporting layer, and scorer audit.
-The LongMemEval failure profile also points to a provenance-aware relation layer as a future governance improvement: rather than pruning recall-heavy candidates too early, SRP can preserve observed, inferred, and uncertain relations with confidence metadata and then correct them through later verification or user feedback.
-That design keeps candidate generation distinct from fact commitment and reduces the risk of interpreting recovery breadth as hallucination acceptance.
+**Verification**
+- `python scripts/verify_release.py` passed
+
+Current RC state is still clean:
+- evidence frozen
+- claims frozen
+- terminology frozen
+- wording frozen
+
+If you want one last mechanical sweep, the only remaining useful thing is a final PDF render / visual check for figure readability and equation layout.

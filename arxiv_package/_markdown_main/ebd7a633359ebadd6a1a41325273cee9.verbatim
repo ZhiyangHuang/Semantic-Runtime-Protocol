@@ -1,0 +1,17 @@
+{\small
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.72\linewidth}{|p{0.34\linewidth}|X|}
+\hline
+\textbf{SRP Property} & \textbf{Recovery Observable} \\
+\hline
+Evidence preservation & Closure Acc. \\
+\hline
+Authority boundary & Hallucinated Relation Rate \\
+\hline
+State consistency & Drift \\
+\hline
+Semantic retention & Relation Acc. \\
+\hline
+\end{tabularx}
+}

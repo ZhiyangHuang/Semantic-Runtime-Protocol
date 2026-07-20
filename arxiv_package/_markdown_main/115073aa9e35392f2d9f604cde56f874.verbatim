@@ -1,0 +1,15 @@
+{\small
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{0.92\linewidth}{|p{0.15\linewidth}|p{0.12\linewidth}|p{0.10\linewidth}|p{0.12\linewidth}|p{0.12\linewidth}|X|}
+\hline
+\textbf{Domain} & \textbf{Coverage} & \textbf{Drift} & \textbf{Rel. Acc.} & \textbf{Clos. Acc.} & \textbf{Hallucinated Rel. Rate} \\
+\hline
+Code & 0.638889 & 0.227778 & 0.666667 & 0.666667 & 0.138889 \\
+\hline
+Knowledge & 0.500000 & 0.400000 & 0.500000 & 0.250000 & 0.333333 \\
+\hline
+Planning & 0.465278 & 0.355556 & 0.500000 & 0.416667 & 0.111111 \\
+\hline
+\end{tabularx}
+}

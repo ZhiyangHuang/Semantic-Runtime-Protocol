@@ -1,0 +1,7 @@
+{
+  "experiment": "transition_role_role_bridge",
+  "transition_role": "inference_proposal",
+  "workload": "Reasoning Sources",
+  "scope": "v1.2_role_bridge",
+  "runtime_contract": "srp-real-validation-v1"
+}

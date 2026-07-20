@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "report_version": "v1.2-alpha",
+  "protocol_boundary": "transition_role_protocol",
+  "items": [
+    {
+      "transition_role": "evidence_update",
+      "purpose": "govern semantic updates driven by external evidence without transferring execution authority.",
+      "diagnostics": [
+        "semantic_coverage",
+        "semantic_drift",
+        "transition_acceptance",
+        "governance_consistency"
+      ],
+      "coverage_status": "complete",
+      "completed_workloads": 1,
+      "planned_workloads": 0,
+      "workloads": [
+        {
+          "source": "longmemeval",
+          "status": "complete",
+          "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\external_validation_longmemeval_reality_check_smoke_v2\\longmemeval_reality_check_report.md",
+          "artifact_exists": false
+        }
+      ],
+      "notes": [
+        "a workload is marked complete but no latest artifact was found"
+      ]
+    },
+    {
+      "transition_role": "temporal_state_evolution",
+      "purpose": "govern semantic transitions that depend on time-ordered state changes or conversational history.",
+      "diagnostics": [
+        "semantic_coverage",
+        "semantic_drift",
+        "transition_acceptance",
+        "governance_consistency"
+      ],
+      "coverage_status": "complete",
+      "completed_workloads": 1,
+      "planned_workloads": 0,
+      "workloads": [
+        {
+          "source": "locomo",
+          "status": "complete",
+          "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\transition_role\\temporal_state_evolution\\locomo\\run_latest\\report.md",
+          "artifact_exists": true
+        }
+      ],
+      "notes": []
+    },
+    {
+      "transition_role": "action_proposal",
+      "purpose": "govern semantic transitions that originate from agent action proposals before mutation is authorized.",
+      "diagnostics": [
+        "semantic_coverage",
+        "semantic_drift",
+        "transition_acceptance",
+        "governance_consistency"
+      ],
+      "coverage_status": "planned",
+      "completed_workloads": 0,
+      "planned_workloads": 1,
+      "workloads": [
+        {
+          "source": "agentbench",
+          "status": "planned",
+          "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\transition_role\\action_proposal\\agentbench\\run_latest\\report.md",
+          "artifact_exists": false
+        }
+      ],
+      "notes": []
+    },
+    {
+      "transition_role": "inference_proposal",
+      "purpose": "govern semantic transitions generated from reasoning or inference traces before they become runtime state.",
+      "diagnostics": [
+        "semantic_coverage",
+        "semantic_drift",
+        "transition_acceptance",
+        "governance_consistency"
+      ],
+      "coverage_status": "complete",
+      "completed_workloads": 1,
+      "planned_workloads": 0,
+      "workloads": [
+        {
+          "source": "reasoning",
+          "status": "complete",
+          "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\transition_role\\inference_proposal\\reasoning\\run_latest\\report.md",
+          "artifact_exists": true
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "summary": {
+    "role_count": 4,
+    "complete_roles": 3,
+    "partial_roles": 0,
+    "planned_roles": 1,
+    "no_workload_roles": 0,
+    "completed_workloads": 3,
+    "planned_workloads": 1
+  }
+}

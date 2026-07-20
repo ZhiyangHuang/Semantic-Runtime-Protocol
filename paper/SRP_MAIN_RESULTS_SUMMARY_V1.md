@@ -76,7 +76,7 @@ This means objective changes affect recommendation, not feasibility.
 - External validation LoCoMo run: `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000`
 - External validation LoCoMo baseline comparison: `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000`
 - Real-validation report: `audit/REAL_VALIDATION_REPORT.md`
-- Scientific report: `audit/REAL_VALIDATION_SCIENTIFIC_REPORT.md`
+- Real-validation report: `audit/REAL_VALIDATION_REPORT.md`
 - LongMemEval status: pending real-data slice, not part of the current release gate
 
 ## 5. Paper Use

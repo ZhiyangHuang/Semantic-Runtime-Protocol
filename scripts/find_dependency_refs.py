@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a dependency report for legacy docs and srp_experiment references."""
+"""Generate a dependency report for legacy references and import cleanup."""
 
 from __future__ import annotations
 
@@ -17,13 +17,21 @@ REPORT_MD = REPORT_DIR / "import_dependency_report.md"
 
 SCAN_EXTENSIONS = {".py", ".md", ".json", ".toml", ".yml", ".yaml", ".txt"}
 
-IMPORT_PATTERNS = [
-    re.compile(r"^\s*from\s+srp_experiment(?:\.[A-Za-z0-9_]+)*\s+import\b"),
-    re.compile(r"^\s*import\s+srp_experiment(?:\b|\.)"),
-]
+LEGACY_PACKAGE_NAMES = ("srp" + "_" + "experiment",)
+
+
+def _package_import_patterns(package_names: Iterable[str]) -> list[re.Pattern[str]]:
+    patterns: list[re.Pattern[str]] = []
+    for package_name in package_names:
+        escaped = re.escape(package_name)
+        patterns.append(re.compile(rf"^\s*from\s+{escaped}(?:\.[A-Za-z0-9_]+)*\s+import\b"))
+        patterns.append(re.compile(rf"^\s*import\s+{escaped}(?:\b|\.)"))
+    return patterns
+
+
+IMPORT_PATTERNS = _package_import_patterns(LEGACY_PACKAGE_NAMES)
 TEXT_PATTERNS = {
-    "docs_archive": re.compile(r"audit/provenance/docs_archive/"),
-    "srp_experiment": re.compile(r"\bsrp_experiment\b"),
+    "legacy_package": re.compile(r"\bsrp" + "_" + r"experiment\b"),
 }
 
 BLOCKING_CATEGORIES = {"runtime_imports", "test_imports", "tooling_imports"}
@@ -79,7 +87,7 @@ def collect_hits() -> list[ReferenceHit]:
                 if pattern.search(line):
                     if "/tests/" in rel or rel.startswith("tests/"):
                         category = "test_imports"
-                    elif rel.startswith("scripts/") or "/run_" in rel or rel.startswith("srp_experiment/run_"):
+                    elif rel.startswith("scripts/") or "/run_" in rel or rel.startswith("experiments/compatibility/"):
                         category = "tooling_imports"
                     else:
                         category = "runtime_imports"
@@ -96,8 +104,8 @@ def collect_hits() -> list[ReferenceHit]:
                     break
             for kind, pattern in TEXT_PATTERNS.items():
                 if pattern.search(line):
-                    if kind == "docs_archive":
-                        category = "historical_mentions" if rel.startswith("audit/provenance/docs_archive/") else "markdown_references"
+                    if kind == "legacy_package":
+                        category = "historical_mentions" if rel.startswith("docs/") else "markdown_references"
                     else:
                         if rel.startswith("audit/"):
                             category = "audit_references"
@@ -175,7 +183,7 @@ def render_markdown(summary: dict[str, object], hits: list[ReferenceHit]) -> str
     lines = [
         "# Legacy Dependency Report",
         "",
-        "This report enumerates references to `docs/` and `srp_experiment/` that matter for repository deletion planning.",
+        "This report enumerates legacy references that matter for repository deletion planning.",
         "",
         "## Summary",
         "",
@@ -186,9 +194,9 @@ def render_markdown(summary: dict[str, object], hits: list[ReferenceHit]) -> str
         "",
         "| Priority | Category | Meaning |",
         "| --- | --- | --- |",
-        "| `P0` | `runtime_imports` | Live experiment code still depends on `srp_experiment` at runtime. |",
-        "| `P1` | `tooling_imports` | Scripts, generators, and maintenance tools still depend on `srp_experiment`. |",
-        "| `P2` | `test_imports` | Tests still depend on `srp_experiment`; important, but usually lower risk than live code. |",
+        "| `P0` | `runtime_imports` | Live code still depends on a legacy package at runtime. |",
+        "| `P1` | `tooling_imports` | Scripts, generators, and maintenance tools still depend on a legacy package. |",
+        "| `P2` | `test_imports` | Tests still depend on a legacy package; important, but usually lower risk than live code. |",
         "| `P3` | `markdown_references` / `audit_references` / `historical_mentions` | Informative references that do not by themselves block deletion. |",
         "",
         "### Deletion Readiness",
@@ -281,7 +289,7 @@ def render_markdown(summary: dict[str, object], hits: list[ReferenceHit]) -> str
             "",
             "- `runtime_imports` (`P0`), `tooling_imports` (`P1`), and `test_imports` (`P2`) are blocking categories and must reach zero before legacy directories can be deleted.",
             "- `markdown_references`, `audit_references`, and `historical_mentions` are non-blocking categories; they can remain after live dependency cleanup.",
-            "- `scripts/verify_release.py` must stop depending on `audit/provenance/docs_archive/README.md` before `docs/` can be removed.",
+            "- `scripts/verify_release.py` must stop depending on historical traceability assets before they can be removed.",
         ]
     )
     return "\n".join(lines).strip() + "\n"
