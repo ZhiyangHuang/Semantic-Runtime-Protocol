@@ -76,7 +76,7 @@ def _artifact_hint(root: Path, role_id: str, source: str) -> Path:
     if source == "locomo":
         return root / role_id / source / "run_latest" / "report.md"
     if source == "longmemeval":
-        return root.parent.parent / "external_validation_longmemeval_reality_check_smoke_v2" / "longmemeval_reality_check_report.md"
+        return root.parent / "external_validation_longmemeval_reality_check_smoke_v2" / "longmemeval_reality_check_report.md"
     return root / role_id / source / "run_latest" / "report.md"
 
 

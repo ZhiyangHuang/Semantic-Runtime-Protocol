@@ -1,192 +1,83 @@
-# Real Validation Report
+# SRP LongMemEval Reality Check Report
 
-This report is the reviewer-facing entry point for the real-validation branch.
-It summarizes what the current LoCoMo slice validates, what it does not validate, and where the evidence boundary stops.
+This report packages a minimal real-run external validation loop for SRP.
+It preserves the official LongMemEval scorer and co-reports SRP diagnostics under a frozen runtime contract.
 
-Current source bundle:
+## 1. Frozen Scope
 
-- `experiments/results/real_world_validation/locomo/run_20260718T2243500187290000`
-- `experiments/results/real_world_validation/locomo/baseline_comparison/run_20260718T2244336007040000`
+- Benchmark: `longmemeval`
+- Baselines: `full_context, sliding_window, vector_rag, srp`
+- Seeds: `11, 23, 37`
+- Data root: `data/longmemeval`
+- Sample limit: `2`
 
-Current companion notes:
+## 2. Runtime Contract
 
-- the active evidence bundles listed above
-- `audit/CLAIM_EVIDENCE_MAP.md`
-- `audit/RELEASE_SNAPSHOT.md`
+- provider: `local_vllm`
+- backend: `vllm`
+- endpoint: `http://localhost:8000`
+- model: `Qwen/Qwen3-4B-AWQ`
+- tokenizer: `Qwen/Qwen3-4B-AWQ`
+- prompt_template_id: `longmemeval_shared_generation_prompt_v1`
+- temperature: `0.0`
+- max_output_tokens: `96`
+- same_endpoint_across_baselines: `True`
+- seed policy: `multi_seed`
+- seed values: `11, 23, 37`
+- context_window_tokens: `0`
 
-## 1. Validation Scope
+## 3. Official Benchmark Result
 
-The real-validation branch is intended to test the SRP claim that semantic state transitions can be governed, not merely scored.
+- Case count: `1`
+- answer_accuracy: `1.0`
+- official_metric_score: `1.0`
+- semantic_coverage: `0.0`
+- semantic_drift: `0.0`
+- relation_accuracy: `0.0`
+- evidence_cost: `0.0`
 
-Claims tested in the current slice:
+## 4. SRP Diagnostics
 
-- evidence can strengthen verification without increasing authority
-- governed transitions can admit supported changes
-- unsupported or counterfactual transitions can be rejected
-- recommendation and execution remain separable
+- SRP case count: `1`
+- semantic_coverage_mean: `1.0`
+- semantic_drift_mean: `0.0`
+- fact_accuracy_mean: `1.0`
+- relation_accuracy_mean: `1.0`
+- recovery_accuracy_mean: `1.0`
+- closure_accuracy_mean: `1.0`
+- hallucinated_relation_rate_mean: `0.0`
+- evidence_cost_mean: `1.0`
+- answer_accuracy_mean: `1.0`
+- official_metric_score_mean: `1.0`
 
-Dataset in scope:
+## 5. Negative Transition Signals
 
-- LoCoMo `locomo10.json`
-- LongMemEval `cases.jsonl` when available, otherwise the repository fixtures
+- record_count: `0`
+- none: `1`
 
-Non-goals for the current slice:
+## 6. Benchmark Summary
 
-- benchmark superiority
-- universal memory improvement
-- broad cross-dataset generalization
-- artifact promotion for the full real-validation branch
+### longmemeval
+- case_count: `1`
+- answer_accuracy: `1.0`
 
-## 2. Experimental Protocol
+## 7. Failure Summary
 
-The current LoCoMo slice uses the following protocol:
+- none: `1`
 
-1. load the dataset manifest and sample bundle
-2. select a category bridge slice covering contradiction, temporal refinement, and unsupported mutation
-3. extract transition candidates from real samples
-4. attach raw context and source turn ids as provenance
-5. evaluate the transition under a fixed governance rule
-6. record the result as a validation bundle
+## 8. Comparison Snapshot
 
-Sample selection rule:
+- none
 
-- first sample covering categories 1, 2, and 3
+## 9. Artifact Integrity
 
-The current selection rule is summarized in the active evidence bundles and the claim map.
+- runtime_hash: `3e4cd554e2e4e48f45c568f403c5d464d09a3d08921cd7fb70a22efba738ebbf`
+- dataset_hash: `971e32c82c30e08948530350e6af623c0c71be94849d2abf2913472b642eb57f`
+- report_hash: `24451633156ec78e6fe42de0187491989bd4a96a591a9d36dd56f0e1fab35b13`
+- scorer_version: `external_validation_metrics_schema.v1`
+- runtime_manifest_version: `external_validation_runtime_contract_v1`
 
-Transition construction rule:
+## 10. Reality Check Note
 
-- category 1 -> `contradiction_update`
-- category 2 -> `temporal_refinement`
-- category 3 -> `unsupported_mutation`
-
-Decision rule:
-
-- supported real-sample transitions may be accepted
-- counterfactual unsupported mutations must be rejected
-- authority must not change as a side effect of evidence
-
-## 3. LoCoMo Results
-
-### 3.1 Dataset Coverage
-
-| Dataset | Samples in file | Selected samples | Selected events |
-| --- | ---: | ---: | ---: |
-| LoCoMo | 10 | 1 | 3 |
-
-The current slice is intentionally small.
-It is meant to prove that the verification pipeline can consume real semantic events and preserve auditability.
-
-### 3.2 Event Categories
-
-The selected events are:
-
-| Event type | QA index | Expected | Actual |
-| --- | ---: | --- | --- |
-| `temporal_refinement` | 0 | accept | accept |
-| `unsupported_mutation` | 2 | reject | reject |
-| `contradiction_update` | 3 | accept | accept |
-
-The bundle shows one negative case and two positive cases.
-
-LongMemEval status:
-
-- the LongMemEval real-data slice is still pending and is not part of the current 7/18 release gate
-- no fixture fallback is promoted into the current release evidence
-- the current release gate depends on the refreshed LoCoMo slice and its baseline comparison only
-
-### 3.3 Metrics
-
-Current bundle metrics:
-
-| Metric | Value |
-| --- | ---: |
-| accepted_transitions | 2 |
-| rejected_transitions | 1 |
-| invalid_accept_rate | 0.0 |
-| authority_changed_with_evidence | false |
-| recommendation_execution_separated | true |
-| replay_consistency | 1.0 |
-| coverage | 1.0 |
-
-Task-facing metrics:
-
-| Metric | Value |
-| --- | ---: |
-| memory_accuracy | 1.0 |
-| relation_accuracy | 1.0 |
-| fact_accuracy | 1.0 |
-
-Interpretation:
-
-- the invalid accept rate is zero in the current slice
-- evidence did not escalate authority
-- the governance layer preserved the recommendation/execution split
-
-## 4. Failure Analysis
-
-The failure analysis is embedded in the active evidence bundles and summarized below.
-
-Case summary:
-
-| Sample | QA | Event | Expected | Actual | Result |
-| --- | ---: | --- | --- | --- | --- |
-| `conv-26` | 0 | `temporal_refinement` | accept | accept | pass |
-| `conv-26` | 2 | `unsupported_mutation` | reject | reject | pass |
-| `conv-26` | 3 | `contradiction_update` | accept | accept | pass |
-
-Rejected case:
-
-- sample: `conv-26`
-- QA: `2`
-- event type: `unsupported_mutation`
-- decision: reject
-- explanation: the candidate was counterfactual and lacked sufficient support
-
-Accepted cases:
-
-- the temporal refinement case preserves the governed transition behavior on a supported real event
-- the contradiction update case shows that a real dataset event can be admitted without altering authority
-
-## 5. Baseline Comparison
-
-The LoCoMo slice is compared against a direct-mutation baseline in the active evidence bundle pair.
-That comparison keeps the same selected sample and events, but removes the governance gate so mechanism differences are visible.
-
-## 6. Interpretation Boundary
-
-What this validates:
-
-- governed transition behavior on real semantic events
-- evidence-controlled update decisions
-- rejection behavior for unsupported transitions
-- auditable traceability from sample to decision
-- a release-gated LongMemEval path that remains pending real data
-
-What this does not prove:
-
-- universal memory improvement
-- superiority over other memory systems
-- broad dataset coverage
-- final evidence promotion
-
-This boundary matters.
-The current report is intentionally conservative: it treats the LoCoMo result as exploratory real evidence, not as a universal claim.
-
-## 7. Conclusion
-
-The current LoCoMo real-validation slice shows that SRP can:
-
-- extract real semantic events from a dataset
-- build governed transition candidates
-- preserve provenance through the decision trace
-- reject unsupported or counterfactual mutation
-- keep evidence and authority separate
-
-That is the core scientific result of the current slice.
-It is enough to justify the real-validation methodology, but not enough to promote the branch into a curated release artifact.
-
-LongMemEval should inherit this report structure before any artifact promotion is considered.
-The current LongMemEval real-data slice is still pending, so it remains outside the current release gate.
-
-The distilled scientific conclusion is captured in this report and the claim map.
+The benchmark scorer remains official. SRP diagnostics are co-reported and do not replace benchmark scoring.
+This package is a minimal real-run validation loop, not a benchmark leaderboard and not a new protocol definition.

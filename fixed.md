@@ -6,7 +6,7 @@ Existing semantic systems increasingly perform state transitions during runtime,
 
 ## 1. Introduction
 
-Existing semantic systems increasingly perform state transitions during runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of safe change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
+Existing semantic systems increasingly modify semantic state at runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of safe change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
 
 This paper asks a simple question: how can semantic state evolve only within validated, governed boundaries? SRP answers by governing the admissibility of semantic state transitions, rather than only improving retrieval or generation after a transition has already been committed. Observation discovers which variables matter. Validation determines which regions are safe. Optimization ranks candidates only inside those regions. Evidence strengthens verification when uncertainty remains. Governance remains the only layer that can authorize execution.
 
@@ -393,10 +393,10 @@ The research questions are grouped as follows:
 
 | Layer | Question |
 | --- | --- |
-| Governance | Can SRP observe semantic transition variables, identify validated boundaries, constrain optimization, and strengthen verification without transferring authority? |
-| Implementation | Can governed reconstruction preserve structure, and are recommendations stable under repeated evaluation and parameter shifts? |
-| Robustness | Do governance semantics remain stable across workloads, representations, and storage backends? |
-| External validation | Can the frozen contract support calibration, evidence promotion, and scorer alignment under an auditable boundary? |
+| Governance | Can SRP observe variables, bound changes, and strengthen verification without transferring authority? |
+| Implementation | Can governed reconstruction preserve structure under repeated runs and parameter shifts? |
+| Robustness | Do governance semantics stay stable across workloads, representations, and backends? |
+| External validation | Can the frozen contract support calibration and scorer alignment under an auditable boundary? |
 
 ### 4.1 Core Governance Validation
 
@@ -404,10 +404,10 @@ The main governance chain is:
 
 | Evaluation | Main Result | Support |
 | --- | --- | --- |
-| Semantic observability | 130 transition observations, replay success `1.0`, state consistency `1.0` | semantic observability |
-| Boundary validation | 10 / 25 feasible candidates, stable extents across densities | evaluated boundaries |
-| Constrained optimization | 60% search reduction with the same top candidate as the naive full-grid sweep | governed optimization |
-| Evidence-controlled governance | verification improves from `0.50` to `1.00` while authority remains unchanged; invalid transitions are rejected | evidence and governance separation |
+| Semantic observability | `130` obs, replay `1.0`, consistency `1.0` | observability |
+| Boundary validation | `10 / 25` feasible, stable across densities | evaluated boundary |
+| Constrained optimization | `60%` less search, same top candidate | governed optimization |
+| Evidence-controlled governance | verification `0.50 -> 1.00`, authority unchanged; invalid transitions rejected | evidence/authority separation |
 
 Semantic observability collects repeated transition observations over the frozen parameter axes `activation_threshold`, `recovery_min_evidence`, `preserve_evidence`, and `archive_relations`. The measurements indicate that the transition variables are explicit and reproducible before optimization decisions are introduced.
 
@@ -423,10 +423,10 @@ The core governance chain can be summarized as follows:
 
 | Validation Objective | Metric / Check | Result |
 | --- | --- | --- |
-| Semantic observability | Transition observations, replay success, state consistency | `130`, `1.0`, `1.0` |
-| Boundary validation | Feasible candidates, stable extents across densities | `10 / 25`, stable |
-| Constrained optimization | Search reduction with the same top candidate | `60%` reduction |
-| Evidence-controlled governance | Verification confidence, authority change | `0.50 -> 1.00`, unchanged authority |
+| Semantic observability | observations, replay, consistency | `130`, `1.0`, `1.0` |
+| Boundary validation | feasible candidates, density stability | `10 / 25`, stable |
+| Constrained optimization | search reduction, top candidate match | `60%`, same |
+| Evidence-controlled governance | verification, authority change | `0.50 -> 1.00`, unchanged |
 | Protocol property verification | Property checks under frozen contract | `4 / 4 passed` |
 | Negative transition injection | Invalid accept rate under `full SRP / no gate / evidence-as-authority` | `0.00 / 0.75 / 0.50` |
 
@@ -561,7 +561,7 @@ The external validation work is split into calibration and evidence.
 
 LoCoMo was used as a calibration boundary to validate the adapter, semantic translation layer, and attribution protocol. It is treated as calibration artifact, not as final paper evidence.
 
-LongMemEval was prepared as an external validation evidence package under a frozen shared local-vLLM runtime contract. The evidence package includes:
+The release-facing main evidence set is MMLU, LongMemEval, ARC, and HumanEval, with 100 samples each for a total of 400 samples. This release uses a registry-based policy: benchmark payloads are obtained from the original sources and are not redistributed in this repository. LongMemEval is one of those Main Evidence benchmarks under a frozen shared local-vLLM runtime contract. The evidence package includes:
 
 - full context
 - sliding window
@@ -574,7 +574,7 @@ LongMemEval was prepared as an external validation evidence package under a froz
 
 The evidence package keeps the runtime manifest frozen, reports descriptive statistics for the fixed slice, co-reports official scores and SRP diagnostics, and documents scorer alignment and promotion decisions explicitly. It therefore serves as paper-facing external validation support under a frozen evaluation scope rather than as a claim of universal benchmark dominance.
 
-#### External Runtime Compatibility Validation
+#### External Reality Check
 
 To verify that SRP's governance pipeline can be instantiated on an external semantic evaluation workload, we conducted a LongMemEval reality check using a frozen local runtime contract. The purpose of this evaluation is to examine runtime compatibility of SRP governance mechanisms under an external workload, rather than to establish benchmark superiority. It also validates external source integration, scorer separation, reproducible runtime evidence generation, and SRP diagnostic extraction.
 
@@ -676,9 +676,12 @@ The paper uses three levels of artifact status:
 - `Appendix`: useful supporting evidence or legacy evidence that should not carry the main claim alone
 - `Archive`: preserve for provenance only
 
-The current snapshot contains one trusted main-claim artifact:
+The current snapshot contains four Main Evidence benchmarks, while the benchmark payloads themselves remain external to the repository:
 
-- `interaction_boundary_enforcement`
+- `MMLU`
+- `LongMemEval`
+- `ARC`
+- `HumanEval`
 
 The current snapshot also contains supporting artifacts that remain appendix-grade:
 
@@ -687,14 +690,14 @@ The current snapshot also contains supporting artifacts that remain appendix-gra
 
 ### A.3 Claim-to-Evidence Mapping
 
-The detailed claim-to-evidence mapping is maintained in `audit/SRP_CLAIM_EVIDENCE_MAP_V1.md`.
+The detailed claim-to-evidence mapping is maintained in `audit/CLAIM_EVIDENCE_MAP.md`.
 That document should be treated as the claim ledger for the current release branch.
 
 In brief:
 
 - authority separation is the strongest currently trusted claim
 - feasible-region validation is appendix-supported
-- LongMemEval is external-validation support, not refreshed main evidence
+- the four main evidence benchmarks are MMLU, LongMemEval, ARC, and HumanEval, and their payloads are obtained from original sources rather than redistributed in the repository
 - cross-workload robustness and component-level ablation remain under-supported in the current snapshot
 
 ### A.4 Reproduction Entry Points
@@ -731,18 +734,18 @@ The practical reading is:
 
 - `interaction_boundary_enforcement` is admissible for paper-facing claims
 - earlier phase artifacts remain provenance material, not claim material
-- LongMemEval remains appendix-supported until its snapshot is refreshed and its missing files are reconciled
+- the main evidence benchmarks are promoted through the release summary and should be cited from there
 
 This appendix does not add a new claim about SRP.
 It documents the evidence-management procedure used to separate trusted outputs from legacy outputs in this release branch.
 
-### A.6 External Runtime Compatibility Validation Provenance
+### A.6 Main Evidence Provenance
 
-The LongMemEval reality check is treated as an external validation artifact under the frozen v1.1 evidence boundary.
+The release-facing benchmark set is treated as Main Evidence under the frozen release boundary, while benchmark payloads remain external to the repository under the registry-based release policy.
 
 It is classified as:
 
-- external workload validation
+- benchmark evidence
 - runtime reproducibility evidence
 - scorer alignment evidence
 - SRP diagnostic extraction evidence
@@ -754,26 +757,5 @@ It is not used as:
 - universal performance claim
 - a replacement for the official scorer
 
-The reality-check outputs are frozen with a runtime manifest, an artifact integrity record, and a reproducible report hash so that the evidence can be audited independently of the narrative interpretation.
+The release-facing outputs are frozen with a runtime manifest, an artifact integrity record, and a reproducible report hash so that the evidence can be audited independently of the narrative interpretation.
 
-Wording polish pass is done.
-
-**Updated**
-- [paper/SRP_ARXIV_DRAFT_V1.md](C:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/paper/SRP_ARXIV_DRAFT_V1.md)
-- [audit/SRP_V1_WORDING_POLISH_DIFF.md](C:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/audit/SRP_V1_WORDING_POLISH_DIFF.md)
-
-**What changed**
-- Softened a few claim-heavy phrases to `provides evidence`, `indicates`, and `illustrate`
-- Kept all method, experiment, and evidence structure unchanged
-- Recorded the wording-only edits in a compact diff note
-
-**Verification**
-- `python scripts/verify_release.py` passed
-
-Current RC state is still clean:
-- evidence frozen
-- claims frozen
-- terminology frozen
-- wording frozen
-
-If you want one last mechanical sweep, the only remaining useful thing is a final PDF render / visual check for figure readability and equation layout.

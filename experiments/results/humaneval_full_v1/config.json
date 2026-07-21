@@ -1,0 +1,28 @@
+{
+  "benchmark_name": "humaneval",
+  "dataset_version": "humaneval_v1",
+  "model": "Qwen/Qwen3-4B-AWQ",
+  "prompt_format": "humaneval_exec_v1",
+  "sample_limit": 164,
+  "variants": [
+    "baseline",
+    "srp"
+  ],
+  "data_root": "hf:openai/openai_humaneval|test",
+  "seed": 0,
+  "system_prompt": "Write only the final Python code. Do not explain.",
+  "max_output_tokens": 256,
+  "temperature": 0.0,
+  "srp_configuration": {
+    "srp_mode": "context_recovery"
+  },
+  "execution_parameters": {
+    "execution_timeout_seconds": 5.0,
+    "execution_sandbox_policy": "subprocess_isolation_v1",
+    "allow_network": false
+  },
+  "metadata": {
+    "phase": "humaneval_full_v1",
+    "full_run": true
+  }
+}

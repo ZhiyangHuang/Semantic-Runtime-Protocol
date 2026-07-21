@@ -1,0 +1,5906 @@
+[
+  {
+    "task_id": "HumanEval/0",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000245,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "has_close_elements",
+      "task_id": "HumanEval/0",
+      "prompt_digest": "d1e09adbe4cac82706f8b7d30ec516d0eaee57dad2025dbafe10679c2689e697",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/0",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000256,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "has_close_elements",
+      "task_id": "HumanEval/0",
+      "prompt_digest": "d1e09adbe4cac82706f8b7d30ec516d0eaee57dad2025dbafe10679c2689e697",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/1",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000225,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "separate_paren_groups",
+      "task_id": "HumanEval/1",
+      "prompt_digest": "8876afc6b8567c0f358c7f95ff3f040971c250570e53f9dcf1ce8dd066c79a97",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/1",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000253,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "separate_paren_groups",
+      "task_id": "HumanEval/1",
+      "prompt_digest": "8876afc6b8567c0f358c7f95ff3f040971c250570e53f9dcf1ce8dd066c79a97",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/2",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000129,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "truncate_number",
+      "task_id": "HumanEval/2",
+      "prompt_digest": "d8858a9be713f1ea4a6623e8fbcd8cba6853ef234964aa521f965af44a5e8a59",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/2",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000128,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "truncate_number",
+      "task_id": "HumanEval/2",
+      "prompt_digest": "d8858a9be713f1ea4a6623e8fbcd8cba6853ef234964aa521f965af44a5e8a59",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/3",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000195,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "below_zero",
+      "task_id": "HumanEval/3",
+      "prompt_digest": "bacc423d487c21fd03878e4a3bea6d19ab3d987bbd0fc71f2fb6cbef0391eb9e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/3",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000192,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "below_zero",
+      "task_id": "HumanEval/3",
+      "prompt_digest": "bacc423d487c21fd03878e4a3bea6d19ab3d987bbd0fc71f2fb6cbef0391eb9e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/4",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000192,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "mean_absolute_deviation",
+      "task_id": "HumanEval/4",
+      "prompt_digest": "dbb363d0d6762cb359b3f3cfc71556e7c7a4afe06b3d235b84e15a97f75e89b0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/4",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.001959,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "mean_absolute_deviation",
+      "task_id": "HumanEval/4",
+      "prompt_digest": "dbb363d0d6762cb359b3f3cfc71556e7c7a4afe06b3d235b84e15a97f75e89b0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/5",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000186,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "intersperse",
+      "task_id": "HumanEval/5",
+      "prompt_digest": "aba6352bf08d8826ec03fa1cc8b99dedfd07a40325f28bd6b83469a2793343ca",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/5",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000184,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "intersperse",
+      "task_id": "HumanEval/5",
+      "prompt_digest": "aba6352bf08d8826ec03fa1cc8b99dedfd07a40325f28bd6b83469a2793343ca",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/6",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000205,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "parse_nested_parens",
+      "task_id": "HumanEval/6",
+      "prompt_digest": "1438438acb0e90c5fd05ad464f0e88441d12413b12f0e5f41e495ce43dd3cb2c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/6",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00019,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "parse_nested_parens",
+      "task_id": "HumanEval/6",
+      "prompt_digest": "1438438acb0e90c5fd05ad464f0e88441d12413b12f0e5f41e495ce43dd3cb2c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/7",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000203,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "filter_by_substring",
+      "task_id": "HumanEval/7",
+      "prompt_digest": "85e0210bb9ba011a57443cf78b1ededf502f3bcde7f30ff20d8f22fa58daae8d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/7",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000186,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "filter_by_substring",
+      "task_id": "HumanEval/7",
+      "prompt_digest": "85e0210bb9ba011a57443cf78b1ededf502f3bcde7f30ff20d8f22fa58daae8d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/8",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000179,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_product",
+      "task_id": "HumanEval/8",
+      "prompt_digest": "9cf31f0ec0197d513ca473e2902e2545c49c66cb61627a0d38423b61883dc954",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/8",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000224,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_product",
+      "task_id": "HumanEval/8",
+      "prompt_digest": "9cf31f0ec0197d513ca473e2902e2545c49c66cb61627a0d38423b61883dc954",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/9",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000207,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "rolling_max",
+      "task_id": "HumanEval/9",
+      "prompt_digest": "706c5a34dddbfadfb6f6996b8224f7278f9687d562121b60730271d177e03d29",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/9",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000186,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "rolling_max",
+      "task_id": "HumanEval/9",
+      "prompt_digest": "706c5a34dddbfadfb6f6996b8224f7278f9687d562121b60730271d177e03d29",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/10",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000232,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "make_palindrome",
+      "task_id": "HumanEval/10",
+      "prompt_digest": "6172b6d6f9e32f9fdb5e63abc301476f457973978cd5980a1d1c92efef871a2e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/10",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000207,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "make_palindrome",
+      "task_id": "HumanEval/10",
+      "prompt_digest": "6172b6d6f9e32f9fdb5e63abc301476f457973978cd5980a1d1c92efef871a2e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/11",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000176,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "string_xor",
+      "task_id": "HumanEval/11",
+      "prompt_digest": "1a4ffd04853bf74f36d45abb5c08f43dcfcc743bedaa11d168f62724edb08aa7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/11",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000181,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "string_xor",
+      "task_id": "HumanEval/11",
+      "prompt_digest": "1a4ffd04853bf74f36d45abb5c08f43dcfcc743bedaa11d168f62724edb08aa7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/12",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000222,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "longest",
+      "task_id": "HumanEval/12",
+      "prompt_digest": "619c0fe781355c690b5c873fc16ef33d921a43e97f4a521b11121a0140dd8669",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/12",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000184,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "longest",
+      "task_id": "HumanEval/12",
+      "prompt_digest": "619c0fe781355c690b5c873fc16ef33d921a43e97f4a521b11121a0140dd8669",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/13",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000156,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "greatest_common_divisor",
+      "task_id": "HumanEval/13",
+      "prompt_digest": "46fd0d8189b0743bbf51abe906202d248e3c47d6dc1d2104fd254284a0567022",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/13",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000149,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "greatest_common_divisor",
+      "task_id": "HumanEval/13",
+      "prompt_digest": "46fd0d8189b0743bbf51abe906202d248e3c47d6dc1d2104fd254284a0567022",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/14",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000187,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "all_prefixes",
+      "task_id": "HumanEval/14",
+      "prompt_digest": "5ca45cb6776d5bfde4d7ad5b768b5bf197831ccfc1dd4dbc5d03ccb2136dbfc8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/14",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000176,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "all_prefixes",
+      "task_id": "HumanEval/14",
+      "prompt_digest": "5ca45cb6776d5bfde4d7ad5b768b5bf197831ccfc1dd4dbc5d03ccb2136dbfc8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/15",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00016,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "string_sequence",
+      "task_id": "HumanEval/15",
+      "prompt_digest": "91c577ecdabbb23447b76ce4d6be36359f030a413cf4eb4e6ac9da392f3d66d5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/15",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000149,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "string_sequence",
+      "task_id": "HumanEval/15",
+      "prompt_digest": "91c577ecdabbb23447b76ce4d6be36359f030a413cf4eb4e6ac9da392f3d66d5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/16",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000424,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_distinct_characters",
+      "task_id": "HumanEval/16",
+      "prompt_digest": "821df73e32430868a6c55a071cebfa9d939b4286af4258e0249c473083ce7b3c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/16",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000142,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_distinct_characters",
+      "task_id": "HumanEval/16",
+      "prompt_digest": "821df73e32430868a6c55a071cebfa9d939b4286af4258e0249c473083ce7b3c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/17",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000192,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "parse_music",
+      "task_id": "HumanEval/17",
+      "prompt_digest": "b50507ca53cffd197daf7af8981fa204da15c049fd6f160ebddf69608a574f7e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/17",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000201,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "parse_music",
+      "task_id": "HumanEval/17",
+      "prompt_digest": "b50507ca53cffd197daf7af8981fa204da15c049fd6f160ebddf69608a574f7e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/18",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00017,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "how_many_times",
+      "task_id": "HumanEval/18",
+      "prompt_digest": "8c9bd6a81203a3038bb379f23971e45d08940ce2805cf1b0868c56e27bc54666",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/18",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000178,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "how_many_times",
+      "task_id": "HumanEval/18",
+      "prompt_digest": "8c9bd6a81203a3038bb379f23971e45d08940ce2805cf1b0868c56e27bc54666",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/19",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000178,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_numbers",
+      "task_id": "HumanEval/19",
+      "prompt_digest": "72d95c6937306d83dd334574a79c3464b05863af6cbbc97bd7da6d777a03f5a3",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/19",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000158,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_numbers",
+      "task_id": "HumanEval/19",
+      "prompt_digest": "72d95c6937306d83dd334574a79c3464b05863af6cbbc97bd7da6d777a03f5a3",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/20",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000268,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "find_closest_elements",
+      "task_id": "HumanEval/20",
+      "prompt_digest": "a52ebbbd960f4e331979dfeb77c1c1660498074b142f9c6c1f78a679a1f1cc3d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/20",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000298,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "find_closest_elements",
+      "task_id": "HumanEval/20",
+      "prompt_digest": "a52ebbbd960f4e331979dfeb77c1c1660498074b142f9c6c1f78a679a1f1cc3d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/21",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000225,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "rescale_to_unit",
+      "task_id": "HumanEval/21",
+      "prompt_digest": "71877a58483671830bb4a2a59e6c55c0e0f8efd7fafef9f06c8fea8d986426cc",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/21",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000223,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "rescale_to_unit",
+      "task_id": "HumanEval/21",
+      "prompt_digest": "71877a58483671830bb4a2a59e6c55c0e0f8efd7fafef9f06c8fea8d986426cc",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/22",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000179,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "filter_integers",
+      "task_id": "HumanEval/22",
+      "prompt_digest": "45a5283612af3caab31e93add5e1b110b3616e6d61dd9c7d8f71bad625468b9d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/22",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000177,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "filter_integers",
+      "task_id": "HumanEval/22",
+      "prompt_digest": "45a5283612af3caab31e93add5e1b110b3616e6d61dd9c7d8f71bad625468b9d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/23",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000129,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "strlen",
+      "task_id": "HumanEval/23",
+      "prompt_digest": "8c1e86f92e7409af002897485fa972c823c12f8dad399beb2ba1f059445da72f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/23",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000149,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "strlen",
+      "task_id": "HumanEval/23",
+      "prompt_digest": "8c1e86f92e7409af002897485fa972c823c12f8dad399beb2ba1f059445da72f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/24",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000151,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "largest_divisor",
+      "task_id": "HumanEval/24",
+      "prompt_digest": "da231f22ea670985df6789ad061648c52a2e05c3e9c985c30ab8ed0ebed4c53f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/24",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00014,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "largest_divisor",
+      "task_id": "HumanEval/24",
+      "prompt_digest": "da231f22ea670985df6789ad061648c52a2e05c3e9c985c30ab8ed0ebed4c53f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/25",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000224,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "factorize",
+      "task_id": "HumanEval/25",
+      "prompt_digest": "12e9603b0cdbcbb862e3a790a25dbd1478ed55b331ce84c9bf79865337a5d17f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/25",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000235,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "factorize",
+      "task_id": "HumanEval/25",
+      "prompt_digest": "12e9603b0cdbcbb862e3a790a25dbd1478ed55b331ce84c9bf79865337a5d17f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/26",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000185,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "remove_duplicates",
+      "task_id": "HumanEval/26",
+      "prompt_digest": "f7f9fd90a1788fd81271fa82aaa91cb03211792ffa2d3a90f7d8144e3dcc15cf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/26",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000175,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "remove_duplicates",
+      "task_id": "HumanEval/26",
+      "prompt_digest": "f7f9fd90a1788fd81271fa82aaa91cb03211792ffa2d3a90f7d8144e3dcc15cf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/27",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000181,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "flip_case",
+      "task_id": "HumanEval/27",
+      "prompt_digest": "e1d0f0b8037a053719bb9bc9ab9e5bacec8bd498b12edcbc68dc2f2fb33c08d4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/27",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000124,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "flip_case",
+      "task_id": "HumanEval/27",
+      "prompt_digest": "e1d0f0b8037a053719bb9bc9ab9e5bacec8bd498b12edcbc68dc2f2fb33c08d4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/28",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000155,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "concatenate",
+      "task_id": "HumanEval/28",
+      "prompt_digest": "6baba341f678ca62d400bdd7d38315a29f9d411a9a3c96a9ba041d5530df9f1c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/28",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000133,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "concatenate",
+      "task_id": "HumanEval/28",
+      "prompt_digest": "6baba341f678ca62d400bdd7d38315a29f9d411a9a3c96a9ba041d5530df9f1c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/29",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000187,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "filter_by_prefix",
+      "task_id": "HumanEval/29",
+      "prompt_digest": "ab34e8c0fe387453831b48ccdce89fa5b21c20f7b467b52da86882c3404458c6",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/29",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000165,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "filter_by_prefix",
+      "task_id": "HumanEval/29",
+      "prompt_digest": "ab34e8c0fe387453831b48ccdce89fa5b21c20f7b467b52da86882c3404458c6",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/30",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000176,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_positive",
+      "task_id": "HumanEval/30",
+      "prompt_digest": "b1adb9de9ed589389ce42cc7eee27105b9186517a5da2deed19c357876dad85c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/30",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000178,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_positive",
+      "task_id": "HumanEval/30",
+      "prompt_digest": "b1adb9de9ed589389ce42cc7eee27105b9186517a5da2deed19c357876dad85c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/31",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000199,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_prime",
+      "task_id": "HumanEval/31",
+      "prompt_digest": "4ab941e049bb43f9ed9e60fe0c1a393f0f70228a2eaa58bc4ed42be843e643d0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/31",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000202,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_prime",
+      "task_id": "HumanEval/31",
+      "prompt_digest": "4ab941e049bb43f9ed9e60fe0c1a393f0f70228a2eaa58bc4ed42be843e643d0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/32",
+    "variant": "baseline",
+    "passed": false,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000145,
+    "failure_category": "syntax_error",
+    "failure_message": "expected an indented block after 'for' statement on line 20 (line 20)",
+    "return_code": 1,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "find_zero",
+      "task_id": "HumanEval/32",
+      "prompt_digest": "5a9a7c14f27759cd55c58a11febbbbee690a818e021213563e5dd6f106976740",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/32",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000275,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "find_zero",
+      "task_id": "HumanEval/32",
+      "prompt_digest": "5a9a7c14f27759cd55c58a11febbbbee690a818e021213563e5dd6f106976740",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/33",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000337,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_third",
+      "task_id": "HumanEval/33",
+      "prompt_digest": "c1a6947b70fa2346c33a3cb0167da542e4652eb1cd605f6addf5167671dd64e7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/33",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000334,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_third",
+      "task_id": "HumanEval/33",
+      "prompt_digest": "c1a6947b70fa2346c33a3cb0167da542e4652eb1cd605f6addf5167671dd64e7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/34",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000123,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "unique",
+      "task_id": "HumanEval/34",
+      "prompt_digest": "b907767207261fbe730ece7e7d1c7c091a3b74d38a482d1c66f8977ca6fe1c9f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/34",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000151,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "unique",
+      "task_id": "HumanEval/34",
+      "prompt_digest": "b907767207261fbe730ece7e7d1c7c091a3b74d38a482d1c66f8977ca6fe1c9f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/35",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000128,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "max_element",
+      "task_id": "HumanEval/35",
+      "prompt_digest": "0ac70b45c18404e895277abf82b5ca78e699cc73a6b39832869c5514ddbc743a",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/35",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000137,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "max_element",
+      "task_id": "HumanEval/35",
+      "prompt_digest": "0ac70b45c18404e895277abf82b5ca78e699cc73a6b39832869c5514ddbc743a",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/36",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000165,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fizz_buzz",
+      "task_id": "HumanEval/36",
+      "prompt_digest": "3627e4fdec8d973dc6c8a92db570fc0317d3b48bfc3219b8d3e753459ff4a9dd",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/36",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000192,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fizz_buzz",
+      "task_id": "HumanEval/36",
+      "prompt_digest": "3627e4fdec8d973dc6c8a92db570fc0317d3b48bfc3219b8d3e753459ff4a9dd",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/37",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000268,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_even",
+      "task_id": "HumanEval/37",
+      "prompt_digest": "99c24493838d94bad79c8184b0592912a86cb561acbe92cdf910d1e3999d0c6d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/37",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000242,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_even",
+      "task_id": "HumanEval/37",
+      "prompt_digest": "99c24493838d94bad79c8184b0592912a86cb561acbe92cdf910d1e3999d0c6d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/38",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000253,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "decode_cyclic",
+      "task_id": "HumanEval/38",
+      "prompt_digest": "0a145a424c4c587f2119e4f244a6c88ef350f6623d9f6503a2902ef50b7963aa",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/38",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000255,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "decode_cyclic",
+      "task_id": "HumanEval/38",
+      "prompt_digest": "0a145a424c4c587f2119e4f244a6c88ef350f6623d9f6503a2902ef50b7963aa",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/39",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000265,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "prime_fib",
+      "task_id": "HumanEval/39",
+      "prompt_digest": "a8b54095c3b0f0bf75715177853fef4484a2ef1b36eb1203d9a6d663ab3fc652",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/39",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000249,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "prime_fib",
+      "task_id": "HumanEval/39",
+      "prompt_digest": "a8b54095c3b0f0bf75715177853fef4484a2ef1b36eb1203d9a6d663ab3fc652",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/40",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000241,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "triples_sum_to_zero",
+      "task_id": "HumanEval/40",
+      "prompt_digest": "86fd8720d2764e4326713064783bac70d9465477c46ed31e7f0ffe88aaaaff24",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/40",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000295,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "triples_sum_to_zero",
+      "task_id": "HumanEval/40",
+      "prompt_digest": "86fd8720d2764e4326713064783bac70d9465477c46ed31e7f0ffe88aaaaff24",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/41",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000122,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "car_race_collision",
+      "task_id": "HumanEval/41",
+      "prompt_digest": "8d65ca0273d10e2cf2e3fdd53cade963e2d3550c548aecad090e09b8db0a8f18",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/41",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000117,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "car_race_collision",
+      "task_id": "HumanEval/41",
+      "prompt_digest": "8d65ca0273d10e2cf2e3fdd53cade963e2d3550c548aecad090e09b8db0a8f18",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/42",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000152,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "incr_list",
+      "task_id": "HumanEval/42",
+      "prompt_digest": "3bc5755f4f4a06a5a774ce550c293a4a4512071d4714cff8eacb2376460e9be4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/42",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000161,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "incr_list",
+      "task_id": "HumanEval/42",
+      "prompt_digest": "3bc5755f4f4a06a5a774ce550c293a4a4512071d4714cff8eacb2376460e9be4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/43",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000208,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "pairs_sum_to_zero",
+      "task_id": "HumanEval/43",
+      "prompt_digest": "0322c1440b20a8bf9a0e14298133c5a35c49a55d10d20591e0b60efa98d16748",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/43",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000203,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "pairs_sum_to_zero",
+      "task_id": "HumanEval/43",
+      "prompt_digest": "0322c1440b20a8bf9a0e14298133c5a35c49a55d10d20591e0b60efa98d16748",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/44",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000195,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "change_base",
+      "task_id": "HumanEval/44",
+      "prompt_digest": "0f8b5b3db05e85b0630632f477c3f578704e63bccfb02eb99c13fea36fb68d21",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/44",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000199,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "change_base",
+      "task_id": "HumanEval/44",
+      "prompt_digest": "0f8b5b3db05e85b0630632f477c3f578704e63bccfb02eb99c13fea36fb68d21",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/45",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000107,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "triangle_area",
+      "task_id": "HumanEval/45",
+      "prompt_digest": "ee86cfd06b04da87602cf7949701dbbf948d018b1bb5ae810a03cd3e4683ad39",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/45",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00011,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "triangle_area",
+      "task_id": "HumanEval/45",
+      "prompt_digest": "ee86cfd06b04da87602cf7949701dbbf948d018b1bb5ae810a03cd3e4683ad39",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/46",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000186,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fib4",
+      "task_id": "HumanEval/46",
+      "prompt_digest": "6e773d1bfb6ea29c7fc434f9fac016fcfda64fc5ce78a9945ec6d21280634d03",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/46",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000177,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fib4",
+      "task_id": "HumanEval/46",
+      "prompt_digest": "6e773d1bfb6ea29c7fc434f9fac016fcfda64fc5ce78a9945ec6d21280634d03",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/47",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000192,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "median",
+      "task_id": "HumanEval/47",
+      "prompt_digest": "d1b4f1fafac65b6e7d1fdf2f0405782338ba931beb4c2df6e19e3df97498c236",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/47",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000178,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "median",
+      "task_id": "HumanEval/47",
+      "prompt_digest": "d1b4f1fafac65b6e7d1fdf2f0405782338ba931beb4c2df6e19e3df97498c236",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/48",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000159,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_palindrome",
+      "task_id": "HumanEval/48",
+      "prompt_digest": "c7c5f60c6287a112b891ae973c349a6c559c0d1fddd15f9d81960792650874f1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/48",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000138,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_palindrome",
+      "task_id": "HumanEval/48",
+      "prompt_digest": "c7c5f60c6287a112b891ae973c349a6c559c0d1fddd15f9d81960792650874f1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/49",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000136,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "modp",
+      "task_id": "HumanEval/49",
+      "prompt_digest": "a13c73d16be51654f929059850c4d1036de3f637ec1fb8192cf0fe9347c81481",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/49",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000146,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "modp",
+      "task_id": "HumanEval/49",
+      "prompt_digest": "a13c73d16be51654f929059850c4d1036de3f637ec1fb8192cf0fe9347c81481",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/50",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000325,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "decode_shift",
+      "task_id": "HumanEval/50",
+      "prompt_digest": "a6242a2e9625c64d86448391e307952dd1a1a3efe60414055cd730041bfbac2b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/50",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00021,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "decode_shift",
+      "task_id": "HumanEval/50",
+      "prompt_digest": "a6242a2e9625c64d86448391e307952dd1a1a3efe60414055cd730041bfbac2b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/51",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000161,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "remove_vowels",
+      "task_id": "HumanEval/51",
+      "prompt_digest": "78947a4e9d709bb48218dacc270403b7a2bdccb25591743e0d8e32957f011c5e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/51",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000164,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "remove_vowels",
+      "task_id": "HumanEval/51",
+      "prompt_digest": "78947a4e9d709bb48218dacc270403b7a2bdccb25591743e0d8e32957f011c5e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/52",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000203,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "below_threshold",
+      "task_id": "HumanEval/52",
+      "prompt_digest": "0284a70fef9eb23698de8f27dcf6813e6eaa13496917dc3a9810f51c68c3f6d5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/52",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000194,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "below_threshold",
+      "task_id": "HumanEval/52",
+      "prompt_digest": "0284a70fef9eb23698de8f27dcf6813e6eaa13496917dc3a9810f51c68c3f6d5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/53",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000178,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "add",
+      "task_id": "HumanEval/53",
+      "prompt_digest": "ef3b220ec18ec3648b2f0831ec8b935f4164cbb5d772d850b5314eacf6497b54",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/53",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00016,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "add",
+      "task_id": "HumanEval/53",
+      "prompt_digest": "ef3b220ec18ec3648b2f0831ec8b935f4164cbb5d772d850b5314eacf6497b54",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/54",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000146,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "same_chars",
+      "task_id": "HumanEval/54",
+      "prompt_digest": "aa260a2de1b0b60c0c8f4b2867f672061c5234d007c370dd49d48444cab05baf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/54",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000146,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "same_chars",
+      "task_id": "HumanEval/54",
+      "prompt_digest": "aa260a2de1b0b60c0c8f4b2867f672061c5234d007c370dd49d48444cab05baf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/55",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000146,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fib",
+      "task_id": "HumanEval/55",
+      "prompt_digest": "4a6f4a84951557b3b404689d5a9f8579c03aa3980c5cfdcd4251d784438f2d16",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/55",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000162,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fib",
+      "task_id": "HumanEval/55",
+      "prompt_digest": "4a6f4a84951557b3b404689d5a9f8579c03aa3980c5cfdcd4251d784438f2d16",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/56",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000255,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "correct_bracketing",
+      "task_id": "HumanEval/56",
+      "prompt_digest": "2e71baea8f60ae7294b6335bc6bc7979d8a21b32034b377856586a0835f05906",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/56",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000179,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "correct_bracketing",
+      "task_id": "HumanEval/56",
+      "prompt_digest": "2e71baea8f60ae7294b6335bc6bc7979d8a21b32034b377856586a0835f05906",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/57",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000276,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "monotonic",
+      "task_id": "HumanEval/57",
+      "prompt_digest": "cb8eec33f62fe570ad78577a3250c0ccf89bcbc08d722e0bda4d5344a023f924",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/57",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000269,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "monotonic",
+      "task_id": "HumanEval/57",
+      "prompt_digest": "cb8eec33f62fe570ad78577a3250c0ccf89bcbc08d722e0bda4d5344a023f924",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/58",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000175,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "common",
+      "task_id": "HumanEval/58",
+      "prompt_digest": "7159c05f7441ffa19d8a1ed0096bac3ef3c8d19429dfddfea9161131d58aadba",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/58",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000204,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "common",
+      "task_id": "HumanEval/58",
+      "prompt_digest": "7159c05f7441ffa19d8a1ed0096bac3ef3c8d19429dfddfea9161131d58aadba",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/59",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000142,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "largest_prime_factor",
+      "task_id": "HumanEval/59",
+      "prompt_digest": "0990064a717dc05c247b0773af11dfb6b0f9b316a4391525dbe661b74891cb4b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/59",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000135,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "largest_prime_factor",
+      "task_id": "HumanEval/59",
+      "prompt_digest": "0990064a717dc05c247b0773af11dfb6b0f9b316a4391525dbe661b74891cb4b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/60",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000125,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_to_n",
+      "task_id": "HumanEval/60",
+      "prompt_digest": "79056ebf15d6eac34d72e03683692a3725e13df3e93f9a6e0abc02bdb59b42ff",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/60",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000123,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_to_n",
+      "task_id": "HumanEval/60",
+      "prompt_digest": "79056ebf15d6eac34d72e03683692a3725e13df3e93f9a6e0abc02bdb59b42ff",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/61",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000217,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "correct_bracketing",
+      "task_id": "HumanEval/61",
+      "prompt_digest": "ba74b0582f45e35e06bc713e90172371e3057e0b68a49901c7048c6312819bd2",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/61",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000196,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "correct_bracketing",
+      "task_id": "HumanEval/61",
+      "prompt_digest": "ba74b0582f45e35e06bc713e90172371e3057e0b68a49901c7048c6312819bd2",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/62",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000184,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "derivative",
+      "task_id": "HumanEval/62",
+      "prompt_digest": "519c3bae0105dfcbfaf7ce02cfe1fc15152497cf8b1310d47aa119c8e64d5c11",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/62",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000198,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "derivative",
+      "task_id": "HumanEval/62",
+      "prompt_digest": "519c3bae0105dfcbfaf7ce02cfe1fc15152497cf8b1310d47aa119c8e64d5c11",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/63",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000164,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fibfib",
+      "task_id": "HumanEval/63",
+      "prompt_digest": "47e80a5ea1066026722ee07b95fb9a21b0e09dc392a4fa4d3526a02c7ee15971",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/63",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000152,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fibfib",
+      "task_id": "HumanEval/63",
+      "prompt_digest": "47e80a5ea1066026722ee07b95fb9a21b0e09dc392a4fa4d3526a02c7ee15971",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/64",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000175,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "vowels_count",
+      "task_id": "HumanEval/64",
+      "prompt_digest": "b1ff059f78c9b9ca75c725fd3dccd542129ecc61344bb4a44596e13f4623fcf1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/64",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000174,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "vowels_count",
+      "task_id": "HumanEval/64",
+      "prompt_digest": "b1ff059f78c9b9ca75c725fd3dccd542129ecc61344bb4a44596e13f4623fcf1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/65",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000163,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "circular_shift",
+      "task_id": "HumanEval/65",
+      "prompt_digest": "97a5310f6ed33f3e071de2e6f91dba833f0bcab9ca83887792dd9c72d4f063ef",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/65",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000146,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "circular_shift",
+      "task_id": "HumanEval/65",
+      "prompt_digest": "97a5310f6ed33f3e071de2e6f91dba833f0bcab9ca83887792dd9c72d4f063ef",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/66",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00017,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "digitSum",
+      "task_id": "HumanEval/66",
+      "prompt_digest": "bf2b14bfeab2fea94ee1374415e4a82bc0eb01b305de8d5af081f6e346368ce5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/66",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000176,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "digitSum",
+      "task_id": "HumanEval/66",
+      "prompt_digest": "bf2b14bfeab2fea94ee1374415e4a82bc0eb01b305de8d5af081f6e346368ce5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/67",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00014,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fruit_distribution",
+      "task_id": "HumanEval/67",
+      "prompt_digest": "108119f29464ef285271bb51933f37a4f16e29137dadb0552938ccd197019837",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/67",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000161,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fruit_distribution",
+      "task_id": "HumanEval/67",
+      "prompt_digest": "108119f29464ef285271bb51933f37a4f16e29137dadb0552938ccd197019837",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/68",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000242,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "pluck",
+      "task_id": "HumanEval/68",
+      "prompt_digest": "c87f29f22fce056a04347cf59fb730f7c0fe3fcfd29bf59d5420cf5d648a8e88",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/68",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000272,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "pluck",
+      "task_id": "HumanEval/68",
+      "prompt_digest": "c87f29f22fce056a04347cf59fb730f7c0fe3fcfd29bf59d5420cf5d648a8e88",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/69",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000484,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "search",
+      "task_id": "HumanEval/69",
+      "prompt_digest": "d111c9c900e3fe63cdcc977507f34b32f49d9c5d6db817fd4b85f323aacb7160",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/69",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000486,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "search",
+      "task_id": "HumanEval/69",
+      "prompt_digest": "d111c9c900e3fe63cdcc977507f34b32f49d9c5d6db817fd4b85f323aacb7160",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/70",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000255,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "strange_sort_list",
+      "task_id": "HumanEval/70",
+      "prompt_digest": "3d22349507ecef43d8e4bc3b8c8d7867157df49328381982b06fdf13f8c9b587",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/70",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000244,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "strange_sort_list",
+      "task_id": "HumanEval/70",
+      "prompt_digest": "3d22349507ecef43d8e4bc3b8c8d7867157df49328381982b06fdf13f8c9b587",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/71",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000188,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "triangle_area",
+      "task_id": "HumanEval/71",
+      "prompt_digest": "dccba9d6691759c6e0c2e857a40cffb6704ec48167c2199e2053daac9b7b484c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/71",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000209,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "triangle_area",
+      "task_id": "HumanEval/71",
+      "prompt_digest": "dccba9d6691759c6e0c2e857a40cffb6704ec48167c2199e2053daac9b7b484c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/72",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000162,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "will_it_fly",
+      "task_id": "HumanEval/72",
+      "prompt_digest": "e6356a7217c06511fb91e78936c18ab6d8b05a3970b5bbf4ef6f3e97e819dba8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/72",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000138,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "will_it_fly",
+      "task_id": "HumanEval/72",
+      "prompt_digest": "e6356a7217c06511fb91e78936c18ab6d8b05a3970b5bbf4ef6f3e97e819dba8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/73",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000197,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "smallest_change",
+      "task_id": "HumanEval/73",
+      "prompt_digest": "7f532f2484b9af7672fa6d0a099ddeb9953633be986368ffbb0e5f1833003f2c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/73",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000198,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "smallest_change",
+      "task_id": "HumanEval/73",
+      "prompt_digest": "7f532f2484b9af7672fa6d0a099ddeb9953633be986368ffbb0e5f1833003f2c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/74",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000277,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "total_match",
+      "task_id": "HumanEval/74",
+      "prompt_digest": "82987935aacfb83baa2f77f46cccd7a163681646a16725cf73f1b6f177e13999",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/74",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00025,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "total_match",
+      "task_id": "HumanEval/74",
+      "prompt_digest": "82987935aacfb83baa2f77f46cccd7a163681646a16725cf73f1b6f177e13999",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/75",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000226,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_multiply_prime",
+      "task_id": "HumanEval/75",
+      "prompt_digest": "7cf86f190e59ffb546082ac13a12b9a6568828474723e00f2859426f01b02517",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/75",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000303,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_multiply_prime",
+      "task_id": "HumanEval/75",
+      "prompt_digest": "7cf86f190e59ffb546082ac13a12b9a6568828474723e00f2859426f01b02517",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/76",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000171,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_simple_power",
+      "task_id": "HumanEval/76",
+      "prompt_digest": "7188910699ed5b3db78665390a19aa376450b972e2fc6d3f49a13b6dcb2f5e45",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/76",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000162,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_simple_power",
+      "task_id": "HumanEval/76",
+      "prompt_digest": "7188910699ed5b3db78665390a19aa376450b972e2fc6d3f49a13b6dcb2f5e45",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/77",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000186,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "iscube",
+      "task_id": "HumanEval/77",
+      "prompt_digest": "e6f31e8a38810b0fe71271dbd0041d770b95167429690587f27aa75c27798d24",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/77",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000179,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "iscube",
+      "task_id": "HumanEval/77",
+      "prompt_digest": "e6f31e8a38810b0fe71271dbd0041d770b95167429690587f27aa75c27798d24",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/78",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000204,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "hex_key",
+      "task_id": "HumanEval/78",
+      "prompt_digest": "b5cf00dc0903142da48d202ff724887714d4dcb10a2f1d04c357fce6933e4ccf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/78",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000196,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "hex_key",
+      "task_id": "HumanEval/78",
+      "prompt_digest": "b5cf00dc0903142da48d202ff724887714d4dcb10a2f1d04c357fce6933e4ccf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/79",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000124,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "decimal_to_binary",
+      "task_id": "HumanEval/79",
+      "prompt_digest": "5ca30b933e22273c9c449f982a4b5c290e7293d656b24d9b4a2644d4a6e04908",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/79",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000128,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "decimal_to_binary",
+      "task_id": "HumanEval/79",
+      "prompt_digest": "5ca30b933e22273c9c449f982a4b5c290e7293d656b24d9b4a2644d4a6e04908",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/80",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000177,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_happy",
+      "task_id": "HumanEval/80",
+      "prompt_digest": "c362d5f51f5ab70e8cfc55bbec32da02d6b54023a5d1d923b8239f4b79f671b0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/80",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000171,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_happy",
+      "task_id": "HumanEval/80",
+      "prompt_digest": "c362d5f51f5ab70e8cfc55bbec32da02d6b54023a5d1d923b8239f4b79f671b0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/81",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00026,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "numerical_letter_grade",
+      "task_id": "HumanEval/81",
+      "prompt_digest": "50c4749489d54508f2d7f28d87dfc828fc3be29f879472fc72129b72aa6e1ea5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/81",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000276,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "numerical_letter_grade",
+      "task_id": "HumanEval/81",
+      "prompt_digest": "50c4749489d54508f2d7f28d87dfc828fc3be29f879472fc72129b72aa6e1ea5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/82",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000222,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "prime_length",
+      "task_id": "HumanEval/82",
+      "prompt_digest": "00fbd0cd39aff54259d4924453135a867ef657f0c1701662f70b391d0140455f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/82",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000216,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "prime_length",
+      "task_id": "HumanEval/82",
+      "prompt_digest": "00fbd0cd39aff54259d4924453135a867ef657f0c1701662f70b391d0140455f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/83",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000127,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "starts_one_ends",
+      "task_id": "HumanEval/83",
+      "prompt_digest": "95756b802178f59a46858750c8ad466939feb5b7d482afdf98a9b61b8bf88742",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/83",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000123,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "starts_one_ends",
+      "task_id": "HumanEval/83",
+      "prompt_digest": "95756b802178f59a46858750c8ad466939feb5b7d482afdf98a9b61b8bf88742",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/84",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000174,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "solve",
+      "task_id": "HumanEval/84",
+      "prompt_digest": "f9698fd44142e93de812dd060202f61c2e6126f3c43157fe2fd9949072ced550",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/84",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000162,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "solve",
+      "task_id": "HumanEval/84",
+      "prompt_digest": "f9698fd44142e93de812dd060202f61c2e6126f3c43157fe2fd9949072ced550",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/85",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000175,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "add",
+      "task_id": "HumanEval/85",
+      "prompt_digest": "69e95c44cd426fdb817b99e0aa9748aca27db9f2ec27f2f41911273ee86719a5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/85",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000155,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "add",
+      "task_id": "HumanEval/85",
+      "prompt_digest": "69e95c44cd426fdb817b99e0aa9748aca27db9f2ec27f2f41911273ee86719a5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/86",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00016,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "anti_shuffle",
+      "task_id": "HumanEval/86",
+      "prompt_digest": "be48290ae8a1107786a76a41b0178ecca372e1f382f11f7fc2fef52c5c89e837",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/86",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000154,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "anti_shuffle",
+      "task_id": "HumanEval/86",
+      "prompt_digest": "be48290ae8a1107786a76a41b0178ecca372e1f382f11f7fc2fef52c5c89e837",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/87",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000421,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_row",
+      "task_id": "HumanEval/87",
+      "prompt_digest": "1af0f4860febf4c7d6203ee92ee3857bea22dcdfe65e1d280831ff9f4fbf0c38",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/87",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000428,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_row",
+      "task_id": "HumanEval/87",
+      "prompt_digest": "1af0f4860febf4c7d6203ee92ee3857bea22dcdfe65e1d280831ff9f4fbf0c38",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/88",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000243,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_array",
+      "task_id": "HumanEval/88",
+      "prompt_digest": "1e3f4c4b2c536b1941bcccbf337519f2f77e2e75785d2621a8e8d31030b06efb",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/88",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000231,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_array",
+      "task_id": "HumanEval/88",
+      "prompt_digest": "1e3f4c4b2c536b1941bcccbf337519f2f77e2e75785d2621a8e8d31030b06efb",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/89",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000243,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "encrypt",
+      "task_id": "HumanEval/89",
+      "prompt_digest": "d12328a2e715043e4ce3b9d4c6b52720812b896e7d6eaf5646b47e133aa2bee7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/89",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000218,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "encrypt",
+      "task_id": "HumanEval/89",
+      "prompt_digest": "d12328a2e715043e4ce3b9d4c6b52720812b896e7d6eaf5646b47e133aa2bee7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/90",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000168,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "next_smallest",
+      "task_id": "HumanEval/90",
+      "prompt_digest": "dcdab28681ef7a76be99c208e4943339407c49c04a7f2c195a2e8a5b41541f69",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/90",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000163,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "next_smallest",
+      "task_id": "HumanEval/90",
+      "prompt_digest": "dcdab28681ef7a76be99c208e4943339407c49c04a7f2c195a2e8a5b41541f69",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/91",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000159,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_bored",
+      "task_id": "HumanEval/91",
+      "prompt_digest": "f50e88dae721ea4cd4659e7b8a386dc924a12fce6b87ee2aaca1a94581a1a26f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/91",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000139,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_bored",
+      "task_id": "HumanEval/91",
+      "prompt_digest": "f50e88dae721ea4cd4659e7b8a386dc924a12fce6b87ee2aaca1a94581a1a26f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/92",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00021,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "any_int",
+      "task_id": "HumanEval/92",
+      "prompt_digest": "738271a5ff84a17bd86deba95cd244ce96a75b66880b7a25de61405468b68b71",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/92",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000207,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "any_int",
+      "task_id": "HumanEval/92",
+      "prompt_digest": "738271a5ff84a17bd86deba95cd244ce96a75b66880b7a25de61405468b68b71",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/93",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00018,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "encode",
+      "task_id": "HumanEval/93",
+      "prompt_digest": "0bdb5907b55115e2692a03b31ddb3c5fb4975ce331a5b9ae042d5f005b079afc",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/93",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000193,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "encode",
+      "task_id": "HumanEval/93",
+      "prompt_digest": "0bdb5907b55115e2692a03b31ddb3c5fb4975ce331a5b9ae042d5f005b079afc",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/94",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000344,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "skjkasdkd",
+      "task_id": "HumanEval/94",
+      "prompt_digest": "41588532e6b681c5be17a63566cbf2bc20cea1ce828fd9150b09a9907606cdc4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/94",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000362,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "skjkasdkd",
+      "task_id": "HumanEval/94",
+      "prompt_digest": "41588532e6b681c5be17a63566cbf2bc20cea1ce828fd9150b09a9907606cdc4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/95",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000324,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "check_dict_case",
+      "task_id": "HumanEval/95",
+      "prompt_digest": "62770a6a4e22a549498f4e787336239bae4a11525a048b70571507575da2dc5d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/95",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000327,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "check_dict_case",
+      "task_id": "HumanEval/95",
+      "prompt_digest": "62770a6a4e22a549498f4e787336239bae4a11525a048b70571507575da2dc5d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/96",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000269,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_up_to",
+      "task_id": "HumanEval/96",
+      "prompt_digest": "63b6904cc0a9d7b0f95a808d86766a5bc54677baa2dd264328bbc915464594da",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/96",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000271,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_up_to",
+      "task_id": "HumanEval/96",
+      "prompt_digest": "63b6904cc0a9d7b0f95a808d86766a5bc54677baa2dd264328bbc915464594da",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/97",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000184,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "multiply",
+      "task_id": "HumanEval/97",
+      "prompt_digest": "67347fd75dea96217cd9647d1c243efefe7346753ae50231b2a86d5def4f65f1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/97",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000186,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "multiply",
+      "task_id": "HumanEval/97",
+      "prompt_digest": "67347fd75dea96217cd9647d1c243efefe7346753ae50231b2a86d5def4f65f1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/98",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000175,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_upper",
+      "task_id": "HumanEval/98",
+      "prompt_digest": "711f7292f614ecc8c8151e463518ad1d66079e1cf88db8f03054320c328d88e3",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/98",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00017,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_upper",
+      "task_id": "HumanEval/98",
+      "prompt_digest": "711f7292f614ecc8c8151e463518ad1d66079e1cf88db8f03054320c328d88e3",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/99",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000177,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "closest_integer",
+      "task_id": "HumanEval/99",
+      "prompt_digest": "fcf564bf209f1ea3b40ff2a9bc414ae1589bbdefdf03552f8ed2de6976829cc5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/99",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000161,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "closest_integer",
+      "task_id": "HumanEval/99",
+      "prompt_digest": "fcf564bf209f1ea3b40ff2a9bc414ae1589bbdefdf03552f8ed2de6976829cc5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/100",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00018,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "make_a_pile",
+      "task_id": "HumanEval/100",
+      "prompt_digest": "6090b1579183fe58b075670e912f94574cc6ca28fb48f1676dab8f40ed0a3214",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/100",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000181,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "make_a_pile",
+      "task_id": "HumanEval/100",
+      "prompt_digest": "6090b1579183fe58b075670e912f94574cc6ca28fb48f1676dab8f40ed0a3214",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/101",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000182,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "words_string",
+      "task_id": "HumanEval/101",
+      "prompt_digest": "addc7a3a80db50e60264b6f0d43eb09b478861ec59ebbf7dffc989ce9033b521",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/101",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000168,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "words_string",
+      "task_id": "HumanEval/101",
+      "prompt_digest": "addc7a3a80db50e60264b6f0d43eb09b478861ec59ebbf7dffc989ce9033b521",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/102",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000193,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "choose_num",
+      "task_id": "HumanEval/102",
+      "prompt_digest": "ec94bca94719da95fe88e187b62a98b61c640f20a71570c9d438afaa1f587f11",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/102",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000168,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "choose_num",
+      "task_id": "HumanEval/102",
+      "prompt_digest": "ec94bca94719da95fe88e187b62a98b61c640f20a71570c9d438afaa1f587f11",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/103",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000195,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "rounded_avg",
+      "task_id": "HumanEval/103",
+      "prompt_digest": "3db82b61d4b35a5fb4a95160683f14fa45ca0c3da4fa102dbe92373b15fe6466",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/103",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000194,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "rounded_avg",
+      "task_id": "HumanEval/103",
+      "prompt_digest": "3db82b61d4b35a5fb4a95160683f14fa45ca0c3da4fa102dbe92373b15fe6466",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/104",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000225,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "unique_digits",
+      "task_id": "HumanEval/104",
+      "prompt_digest": "d0d592e31e7fba1d56462882981d21ce1513bde4483ef502e4c8f7e31bbc3f45",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/104",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00027,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "unique_digits",
+      "task_id": "HumanEval/104",
+      "prompt_digest": "d0d592e31e7fba1d56462882981d21ce1513bde4483ef502e4c8f7e31bbc3f45",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/105",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000238,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "by_length",
+      "task_id": "HumanEval/105",
+      "prompt_digest": "1bda4ffbd4734e735df14ffae6d30ea4317fd595a807340c01f96b85c9307e9f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/105",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000231,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "by_length",
+      "task_id": "HumanEval/105",
+      "prompt_digest": "1bda4ffbd4734e735df14ffae6d30ea4317fd595a807340c01f96b85c9307e9f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/106",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000179,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "f",
+      "task_id": "HumanEval/106",
+      "prompt_digest": "3a2b29dc45078e74f0096329344581a1f6d67aab94c6821be06def3d9c58fdbf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/106",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000169,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "f",
+      "task_id": "HumanEval/106",
+      "prompt_digest": "3a2b29dc45078e74f0096329344581a1f6d67aab94c6821be06def3d9c58fdbf",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/107",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000194,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "even_odd_palindrome",
+      "task_id": "HumanEval/107",
+      "prompt_digest": "9505f2af2c0696beebab56b0cf19ee031588311a5b3fa6fba9ea4d9d6dca945c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/107",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00019,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "even_odd_palindrome",
+      "task_id": "HumanEval/107",
+      "prompt_digest": "9505f2af2c0696beebab56b0cf19ee031588311a5b3fa6fba9ea4d9d6dca945c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/108",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000255,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_nums",
+      "task_id": "HumanEval/108",
+      "prompt_digest": "362b146fb44fd1b1ba25a7a1bda764f04483d37c59e7867000cf0f5d8e4380e5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/108",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000239,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "count_nums",
+      "task_id": "HumanEval/108",
+      "prompt_digest": "362b146fb44fd1b1ba25a7a1bda764f04483d37c59e7867000cf0f5d8e4380e5",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/109",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000175,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "move_one_ball",
+      "task_id": "HumanEval/109",
+      "prompt_digest": "7a0d10291b39a5c79632c27b7a0b9f864f0ce56002b8ac38b023ae4b524b57ba",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/109",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000204,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "move_one_ball",
+      "task_id": "HumanEval/109",
+      "prompt_digest": "7a0d10291b39a5c79632c27b7a0b9f864f0ce56002b8ac38b023ae4b524b57ba",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/110",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000248,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "exchange",
+      "task_id": "HumanEval/110",
+      "prompt_digest": "d32e612d5f9a6b21590054b1dca0b56b8a36fbf37064675248af87772a5fe720",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/110",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000266,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "exchange",
+      "task_id": "HumanEval/110",
+      "prompt_digest": "d32e612d5f9a6b21590054b1dca0b56b8a36fbf37064675248af87772a5fe720",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/111",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000237,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "histogram",
+      "task_id": "HumanEval/111",
+      "prompt_digest": "056be062300a85b2f8a8acaacdea48b7232de8ff920e518cb1f5ff0b017b5349",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/111",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000339,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "histogram",
+      "task_id": "HumanEval/111",
+      "prompt_digest": "056be062300a85b2f8a8acaacdea48b7232de8ff920e518cb1f5ff0b017b5349",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/112",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000201,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "reverse_delete",
+      "task_id": "HumanEval/112",
+      "prompt_digest": "645b6d75315ee20bdca9c36277b28389df86e8bceda0bdb8a3aab9c63ed6ae18",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/112",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000204,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "reverse_delete",
+      "task_id": "HumanEval/112",
+      "prompt_digest": "645b6d75315ee20bdca9c36277b28389df86e8bceda0bdb8a3aab9c63ed6ae18",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/113",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000267,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "odd_count",
+      "task_id": "HumanEval/113",
+      "prompt_digest": "155e05cd07fea4ea8de19aa415e0c9ae6a760b3d0bfda8f8edf6d3bd36970005",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/113",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000199,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "odd_count",
+      "task_id": "HumanEval/113",
+      "prompt_digest": "155e05cd07fea4ea8de19aa415e0c9ae6a760b3d0bfda8f8edf6d3bd36970005",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/114",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000234,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "minSubArraySum",
+      "task_id": "HumanEval/114",
+      "prompt_digest": "9687b74cd2862b25a4a0d95a056550a925b2c4be2e32fd4e8794dfa092ae6527",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/114",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000226,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "minSubArraySum",
+      "task_id": "HumanEval/114",
+      "prompt_digest": "9687b74cd2862b25a4a0d95a056550a925b2c4be2e32fd4e8794dfa092ae6527",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/115",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000267,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "max_fill",
+      "task_id": "HumanEval/115",
+      "prompt_digest": "35281ea420314616dd8a16b86052459488bd5895fb0aa776fc7967ddf65e1444",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/115",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000212,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "max_fill",
+      "task_id": "HumanEval/115",
+      "prompt_digest": "35281ea420314616dd8a16b86052459488bd5895fb0aa776fc7967ddf65e1444",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/116",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000245,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_array",
+      "task_id": "HumanEval/116",
+      "prompt_digest": "b796bcca86f04dd18f76dbae580033d47c3ea28180671f6ed4ef75ddb808e32b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/116",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000254,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sort_array",
+      "task_id": "HumanEval/116",
+      "prompt_digest": "b796bcca86f04dd18f76dbae580033d47c3ea28180671f6ed4ef75ddb808e32b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/117",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000258,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "select_words",
+      "task_id": "HumanEval/117",
+      "prompt_digest": "0fbccc6f43bed6b09bb1ea339919aa594ed90665303a9e76087fa9a0c7a19c0a",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/117",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000265,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "select_words",
+      "task_id": "HumanEval/117",
+      "prompt_digest": "0fbccc6f43bed6b09bb1ea339919aa594ed90665303a9e76087fa9a0c7a19c0a",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/118",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000193,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_closest_vowel",
+      "task_id": "HumanEval/118",
+      "prompt_digest": "685d03f37366d7ca9ee792c0c29dd4128d77dd1f6e655dc6681ae0a70ff56c98",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/118",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000187,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_closest_vowel",
+      "task_id": "HumanEval/118",
+      "prompt_digest": "685d03f37366d7ca9ee792c0c29dd4128d77dd1f6e655dc6681ae0a70ff56c98",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/119",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000229,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "match_parens",
+      "task_id": "HumanEval/119",
+      "prompt_digest": "100fe8bc3ce5eeae2cf793c9511561efe0b490d0069cd9c881b0f1cf997405b9",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/119",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000233,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "match_parens",
+      "task_id": "HumanEval/119",
+      "prompt_digest": "100fe8bc3ce5eeae2cf793c9511561efe0b490d0069cd9c881b0f1cf997405b9",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/120",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000242,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "maximum",
+      "task_id": "HumanEval/120",
+      "prompt_digest": "ff7074fee9339da0779019e00868ac43fde49a42b4cb884001d042b1455c1181",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/120",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000236,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "maximum",
+      "task_id": "HumanEval/120",
+      "prompt_digest": "ff7074fee9339da0779019e00868ac43fde49a42b4cb884001d042b1455c1181",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/121",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000182,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "solution",
+      "task_id": "HumanEval/121",
+      "prompt_digest": "80746a9b716995a1d047ab417da24e2fb3f05e6ec91e63d1f1ca998fa5b12dca",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/121",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000176,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "solution",
+      "task_id": "HumanEval/121",
+      "prompt_digest": "80746a9b716995a1d047ab417da24e2fb3f05e6ec91e63d1f1ca998fa5b12dca",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/122",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000192,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "add_elements",
+      "task_id": "HumanEval/122",
+      "prompt_digest": "dc068566dd37abc1fa7602575a5ff4b621cc132ecd813c8758ca31991d0f9da2",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/122",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00019,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "add_elements",
+      "task_id": "HumanEval/122",
+      "prompt_digest": "dc068566dd37abc1fa7602575a5ff4b621cc132ecd813c8758ca31991d0f9da2",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/123",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000165,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_odd_collatz",
+      "task_id": "HumanEval/123",
+      "prompt_digest": "094f7cf4a8ceea9476a8ae7233549113b158aebe25d17ccbe2d8a7b124f7c9f6",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/123",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000169,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_odd_collatz",
+      "task_id": "HumanEval/123",
+      "prompt_digest": "094f7cf4a8ceea9476a8ae7233549113b158aebe25d17ccbe2d8a7b124f7c9f6",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/124",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000254,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "valid_date",
+      "task_id": "HumanEval/124",
+      "prompt_digest": "98ddc485a8eac686dffc8043c3bdd39ac579f70c862369f569835a6eb27761ce",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/124",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000244,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "valid_date",
+      "task_id": "HumanEval/124",
+      "prompt_digest": "98ddc485a8eac686dffc8043c3bdd39ac579f70c862369f569835a6eb27761ce",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/125",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000153,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "split_words",
+      "task_id": "HumanEval/125",
+      "prompt_digest": "214a404e189172ad0be5cb7f2997cdecb346bd88a3673880bb98a0056e617719",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/125",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00019,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "split_words",
+      "task_id": "HumanEval/125",
+      "prompt_digest": "214a404e189172ad0be5cb7f2997cdecb346bd88a3673880bb98a0056e617719",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/126",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000237,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_sorted",
+      "task_id": "HumanEval/126",
+      "prompt_digest": "de3db10c660b041cf89afdcfb90ec76dedf8c6bbec100a224b1579a38b8b7fb8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/126",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000234,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_sorted",
+      "task_id": "HumanEval/126",
+      "prompt_digest": "de3db10c660b041cf89afdcfb90ec76dedf8c6bbec100a224b1579a38b8b7fb8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/127",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000239,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "intersection",
+      "task_id": "HumanEval/127",
+      "prompt_digest": "0fef14c3d379fc59178ea8a40a54a8c96dfbac7db240a03eb146814fc74fae03",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/127",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000241,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "intersection",
+      "task_id": "HumanEval/127",
+      "prompt_digest": "0fef14c3d379fc59178ea8a40a54a8c96dfbac7db240a03eb146814fc74fae03",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/128",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000288,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "prod_signs",
+      "task_id": "HumanEval/128",
+      "prompt_digest": "63c97dac918f66a0b4cc0909477db6817680c5ee11f73fc582d56e425db37f37",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/128",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000262,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "prod_signs",
+      "task_id": "HumanEval/128",
+      "prompt_digest": "63c97dac918f66a0b4cc0909477db6817680c5ee11f73fc582d56e425db37f37",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/129",
+    "variant": "baseline",
+    "passed": false,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000266,
+    "failure_category": "syntax_error",
+    "failure_message": "expected ':' (line 34)",
+    "return_code": 1,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "minPath",
+      "task_id": "HumanEval/129",
+      "prompt_digest": "adb801a85ee25a5fd99f138d3ea700cc3ac61342ff2836783065040d266fff93",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/129",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000635,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "minPath",
+      "task_id": "HumanEval/129",
+      "prompt_digest": "adb801a85ee25a5fd99f138d3ea700cc3ac61342ff2836783065040d266fff93",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/130",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000277,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "tri",
+      "task_id": "HumanEval/130",
+      "prompt_digest": "d9f6ecfdf2809b762cd1c90b659f559abaf483c82d961d815c0d250097ad7990",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/130",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000285,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "tri",
+      "task_id": "HumanEval/130",
+      "prompt_digest": "d9f6ecfdf2809b762cd1c90b659f559abaf483c82d961d815c0d250097ad7990",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/131",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000146,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "digits",
+      "task_id": "HumanEval/131",
+      "prompt_digest": "c4fad5cd06440adf24ad7d71a69af5ebd27397d8d681f731a863b2789aafd364",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/131",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000153,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "digits",
+      "task_id": "HumanEval/131",
+      "prompt_digest": "c4fad5cd06440adf24ad7d71a69af5ebd27397d8d681f731a863b2789aafd364",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/132",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00023,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_nested",
+      "task_id": "HumanEval/132",
+      "prompt_digest": "bf1a670fdcb1e2b201d065effb956322f3ac225166258654012f96dd75c96449",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/132",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000184,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_nested",
+      "task_id": "HumanEval/132",
+      "prompt_digest": "bf1a670fdcb1e2b201d065effb956322f3ac225166258654012f96dd75c96449",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/133",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00023,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_squares",
+      "task_id": "HumanEval/133",
+      "prompt_digest": "02477587f08099868a0dd208a24f547e61ccc7cfa180cff0f5f883f84e50915f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/133",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000233,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_squares",
+      "task_id": "HumanEval/133",
+      "prompt_digest": "02477587f08099868a0dd208a24f547e61ccc7cfa180cff0f5f883f84e50915f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/134",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000178,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "check_if_last_char_is_a_letter",
+      "task_id": "HumanEval/134",
+      "prompt_digest": "02dc737062b2f7b154a8360aa9bd0a0651d66bcb7f9b3ff29d6ebf894f4397d0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/134",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000171,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "check_if_last_char_is_a_letter",
+      "task_id": "HumanEval/134",
+      "prompt_digest": "02dc737062b2f7b154a8360aa9bd0a0651d66bcb7f9b3ff29d6ebf894f4397d0",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/135",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000157,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "can_arrange",
+      "task_id": "HumanEval/135",
+      "prompt_digest": "87351164c675626d03265b6e03eb03288d8f84aadeafd2a8beca6b0dd60c3a34",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/135",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000169,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "can_arrange",
+      "task_id": "HumanEval/135",
+      "prompt_digest": "87351164c675626d03265b6e03eb03288d8f84aadeafd2a8beca6b0dd60c3a34",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/136",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000298,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "largest_smallest_integers",
+      "task_id": "HumanEval/136",
+      "prompt_digest": "4413a7907620430d335c357666b2426f3b8d0469d6444bdaa0dddf4df0e12d06",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/136",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000283,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "largest_smallest_integers",
+      "task_id": "HumanEval/136",
+      "prompt_digest": "4413a7907620430d335c357666b2426f3b8d0469d6444bdaa0dddf4df0e12d06",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/137",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000201,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "compare_one",
+      "task_id": "HumanEval/137",
+      "prompt_digest": "40f9d6233c0119a90f17ad11ce4218ec800ff28607511183b23354c98a0c8086",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/137",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000188,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "compare_one",
+      "task_id": "HumanEval/137",
+      "prompt_digest": "40f9d6233c0119a90f17ad11ce4218ec800ff28607511183b23354c98a0c8086",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/138",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000119,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_equal_to_sum_even",
+      "task_id": "HumanEval/138",
+      "prompt_digest": "30ad581871852b666066eabe8ab70a8eef007ae60f4a3d7d2b9e50bf1e129119",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/138",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00012,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "is_equal_to_sum_even",
+      "task_id": "HumanEval/138",
+      "prompt_digest": "30ad581871852b666066eabe8ab70a8eef007ae60f4a3d7d2b9e50bf1e129119",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/139",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000134,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "special_factorial",
+      "task_id": "HumanEval/139",
+      "prompt_digest": "e16f4db106dc4911480d4e1691f2b461574797365fc32ed7103446c59dac8424",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/139",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000127,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "special_factorial",
+      "task_id": "HumanEval/139",
+      "prompt_digest": "e16f4db106dc4911480d4e1691f2b461574797365fc32ed7103446c59dac8424",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/140",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000156,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fix_spaces",
+      "task_id": "HumanEval/140",
+      "prompt_digest": "6ff3bec327704a5b28e1a0f6a2b09073198cb846c6218d6f67370dab1a6e8cc8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/140",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000159,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "fix_spaces",
+      "task_id": "HumanEval/140",
+      "prompt_digest": "6ff3bec327704a5b28e1a0f6a2b09073198cb846c6218d6f67370dab1a6e8cc8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/141",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000308,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "file_name_check",
+      "task_id": "HumanEval/141",
+      "prompt_digest": "c1297dc912393328c1c810bbd9bc1433246ec6443a723b9c8243d3cda28cd21c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/141",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000308,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "file_name_check",
+      "task_id": "HumanEval/141",
+      "prompt_digest": "c1297dc912393328c1c810bbd9bc1433246ec6443a723b9c8243d3cda28cd21c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/142",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000263,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_squares",
+      "task_id": "HumanEval/142",
+      "prompt_digest": "cc21104aefa81df37c883fcb88a8122f2e5fc5ec93c15c8d69f7e9494cdbad7c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/142",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000272,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sum_squares",
+      "task_id": "HumanEval/142",
+      "prompt_digest": "cc21104aefa81df37c883fcb88a8122f2e5fc5ec93c15c8d69f7e9494cdbad7c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/143",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000245,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "words_in_sentence",
+      "task_id": "HumanEval/143",
+      "prompt_digest": "3f64f8e7b47d7088b29f4925a1d062ab783d76c18a5e03690714f2bcfad47404",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/143",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00024,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "words_in_sentence",
+      "task_id": "HumanEval/143",
+      "prompt_digest": "3f64f8e7b47d7088b29f4925a1d062ab783d76c18a5e03690714f2bcfad47404",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/144",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000213,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "simplify",
+      "task_id": "HumanEval/144",
+      "prompt_digest": "2413c5d843ac033171f015421c460bb34983349cdec43e716db75af01f7cba26",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/144",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000246,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "simplify",
+      "task_id": "HumanEval/144",
+      "prompt_digest": "2413c5d843ac033171f015421c460bb34983349cdec43e716db75af01f7cba26",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/145",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000337,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "order_by_points",
+      "task_id": "HumanEval/145",
+      "prompt_digest": "dccd82e7328060ec6a86828da9405b637279f3b4c0f31cda931d3a910feb92aa",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/145",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000399,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "order_by_points",
+      "task_id": "HumanEval/145",
+      "prompt_digest": "dccd82e7328060ec6a86828da9405b637279f3b4c0f31cda931d3a910feb92aa",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/146",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000199,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "specialFilter",
+      "task_id": "HumanEval/146",
+      "prompt_digest": "2a31c595abc0fc44f97419055367799616417f2c8a96e6fc10c61cfc6f860398",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/146",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000204,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "specialFilter",
+      "task_id": "HumanEval/146",
+      "prompt_digest": "2a31c595abc0fc44f97419055367799616417f2c8a96e6fc10c61cfc6f860398",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/147",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000227,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_max_triples",
+      "task_id": "HumanEval/147",
+      "prompt_digest": "7cc31236fc26e9a8c5d8a3df7d26f26cf0dddbac996cc5bbbc9a40dd5817467e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/147",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000207,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "get_max_triples",
+      "task_id": "HumanEval/147",
+      "prompt_digest": "7cc31236fc26e9a8c5d8a3df7d26f26cf0dddbac996cc5bbbc9a40dd5817467e",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/148",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000237,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "bf",
+      "task_id": "HumanEval/148",
+      "prompt_digest": "ef19a68570c0c32cdba839dc48c5f0531f35b755008475b2eaef14638dda3208",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/148",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000276,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "bf",
+      "task_id": "HumanEval/148",
+      "prompt_digest": "ef19a68570c0c32cdba839dc48c5f0531f35b755008475b2eaef14638dda3208",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/149",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000237,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sorted_list_sum",
+      "task_id": "HumanEval/149",
+      "prompt_digest": "0131e9ad3e415eae7564897bb8d87a15c086471cc1c670cff2451e69848a5976",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/149",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000222,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "sorted_list_sum",
+      "task_id": "HumanEval/149",
+      "prompt_digest": "0131e9ad3e415eae7564897bb8d87a15c086471cc1c670cff2451e69848a5976",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/150",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000207,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "x_or_y",
+      "task_id": "HumanEval/150",
+      "prompt_digest": "e5a7b244fcb9c7b4fed526d4f1eee6720ad33313410a3dd3fef2d4ded9ac6aa8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/150",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.00022,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "x_or_y",
+      "task_id": "HumanEval/150",
+      "prompt_digest": "e5a7b244fcb9c7b4fed526d4f1eee6720ad33313410a3dd3fef2d4ded9ac6aa8",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/151",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000234,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "double_the_difference",
+      "task_id": "HumanEval/151",
+      "prompt_digest": "8447680a31b547f631e76c13f187caadd94a537f1955805a2a6c61111f2820a7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/151",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000311,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "double_the_difference",
+      "task_id": "HumanEval/151",
+      "prompt_digest": "8447680a31b547f631e76c13f187caadd94a537f1955805a2a6c61111f2820a7",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/152",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000222,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "compare",
+      "task_id": "HumanEval/152",
+      "prompt_digest": "08c44d20b3a940a56fa1cf1f8a01dbfb8fdc3fbb837b973a444ef2c96917bc6d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/152",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000217,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "compare",
+      "task_id": "HumanEval/152",
+      "prompt_digest": "08c44d20b3a940a56fa1cf1f8a01dbfb8fdc3fbb837b973a444ef2c96917bc6d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/153",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000283,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "Strongest_Extension",
+      "task_id": "HumanEval/153",
+      "prompt_digest": "46d4867faa156bb1e693a10b4b81d874c712b03e281cf8b81b8bd4a2550a3c8d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/153",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000343,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "Strongest_Extension",
+      "task_id": "HumanEval/153",
+      "prompt_digest": "46d4867faa156bb1e693a10b4b81d874c712b03e281cf8b81b8bd4a2550a3c8d",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/154",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000228,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "cycpattern_check",
+      "task_id": "HumanEval/154",
+      "prompt_digest": "d87485d6747925d19e56d06d21dae71f5f44b42d20cb1738edb09eea7fb2509a",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/154",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000165,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "cycpattern_check",
+      "task_id": "HumanEval/154",
+      "prompt_digest": "d87485d6747925d19e56d06d21dae71f5f44b42d20cb1738edb09eea7fb2509a",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/155",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000179,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "even_odd_count",
+      "task_id": "HumanEval/155",
+      "prompt_digest": "14261121b4af744150fc2aac667c2aad69ddfba47feab941863e95fad1c8955c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/155",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000183,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "even_odd_count",
+      "task_id": "HumanEval/155",
+      "prompt_digest": "14261121b4af744150fc2aac667c2aad69ddfba47feab941863e95fad1c8955c",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/156",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000234,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "int_to_mini_roman",
+      "task_id": "HumanEval/156",
+      "prompt_digest": "aea2fb08bcd548633fae40feee38a5f0c114cd5064b17acd956c96a666297cda",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/156",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000246,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "int_to_mini_roman",
+      "task_id": "HumanEval/156",
+      "prompt_digest": "aea2fb08bcd548633fae40feee38a5f0c114cd5064b17acd956c96a666297cda",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/157",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000181,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "right_angle_triangle",
+      "task_id": "HumanEval/157",
+      "prompt_digest": "2571e69406e4c218d883add199e537dd4262e681ef6564431c865bad90513f9b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/157",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000176,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "right_angle_triangle",
+      "task_id": "HumanEval/157",
+      "prompt_digest": "2571e69406e4c218d883add199e537dd4262e681ef6564431c865bad90513f9b",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/158",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000247,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "find_max",
+      "task_id": "HumanEval/158",
+      "prompt_digest": "8669ed964703d80a1776dc3165147ca4d70fe7ad54b9ffc7e39b290e859af97f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/158",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000247,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "find_max",
+      "task_id": "HumanEval/158",
+      "prompt_digest": "8669ed964703d80a1776dc3165147ca4d70fe7ad54b9ffc7e39b290e859af97f",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/159",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000174,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "eat",
+      "task_id": "HumanEval/159",
+      "prompt_digest": "69effb36e1b7e19c87dc73cd55cb36f050a48bc9af05e720cd6f1bb5efdf2aad",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/159",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000164,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "eat",
+      "task_id": "HumanEval/159",
+      "prompt_digest": "69effb36e1b7e19c87dc73cd55cb36f050a48bc9af05e720cd6f1bb5efdf2aad",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/160",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000165,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "do_algebra",
+      "task_id": "HumanEval/160",
+      "prompt_digest": "5b8313d026cc9226baffc64a0816c6e64a2338c5732e676145c9f3dbde9be3b1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/160",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000172,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "do_algebra",
+      "task_id": "HumanEval/160",
+      "prompt_digest": "5b8313d026cc9226baffc64a0816c6e64a2338c5732e676145c9f3dbde9be3b1",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/161",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000162,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "solve",
+      "task_id": "HumanEval/161",
+      "prompt_digest": "7d892f1bfd3fe0a7c9b2768200f4a717cd291a5e311184e5eaf9932774e8a9b4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/161",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000315,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "solve",
+      "task_id": "HumanEval/161",
+      "prompt_digest": "7d892f1bfd3fe0a7c9b2768200f4a717cd291a5e311184e5eaf9932774e8a9b4",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/162",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000126,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "string_to_md5",
+      "task_id": "HumanEval/162",
+      "prompt_digest": "4d5811a166bcb89129e3a16fc40e80828340c54dff86f4fec872c54f98c90f21",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/162",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000122,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "string_to_md5",
+      "task_id": "HumanEval/162",
+      "prompt_digest": "4d5811a166bcb89129e3a16fc40e80828340c54dff86f4fec872c54f98c90f21",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/163",
+    "variant": "baseline",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000191,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "generate_integers",
+      "task_id": "HumanEval/163",
+      "prompt_digest": "2f94ac1a263b9e44d41cb2bc7e768ab5111bd8ef46e378c5baa45be6837c3192",
+      "allow_network": false
+    }
+  },
+  {
+    "task_id": "HumanEval/163",
+    "variant": "srp",
+    "passed": true,
+    "stdout": "",
+    "stderr": "",
+    "execution_time_seconds": 0.000187,
+    "failure_category": null,
+    "failure_message": null,
+    "return_code": 0,
+    "sandbox_policy": "subprocess_isolation_v1",
+    "metadata": {
+      "entry_point": "generate_integers",
+      "task_id": "HumanEval/163",
+      "prompt_digest": "2f94ac1a263b9e44d41cb2bc7e768ab5111bd8ef46e378c5baa45be6837c3192",
+      "allow_network": false
+    }
+  }
+]

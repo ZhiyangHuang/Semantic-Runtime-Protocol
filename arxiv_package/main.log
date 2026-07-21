@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  20 JUL 2026 16:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  20 JUL 2026 19:26
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -604,7 +604,7 @@ Package luabridge Info: Executing a helper Lua script from file
 (luabridge)             main.luabridge.lua
 
  ()
-(_markdown_main/5b7dc35c9127e4be0e57dd1fc12c2f80.md.tex [1
+(_markdown_main/96e00563a75fcd090c1c2991fae52cfd.md.tex [1
 
 {C:/Users/ZhiyangHuang/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Use
 rs/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
@@ -814,19 +814,12 @@ base Re-cov-ery" (1983), DOI:10.1145/289.291
  []
 
 [13]
-Overfull \hbox (17.24367pt too wide) in paragraph at lines 385--386
+Overfull \hbox (17.24367pt too wide) in paragraph at lines 388--389
 []\T1/lmtt/m/n/10 python -m experiments.optimization.phase_iii_governed_optimiz
 ation.objective_sensitivity 
  []
 
-[14]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 435.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 435.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 435.
- [15]))) [16] (main.aux)
+[14]))) [15] (main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
@@ -835,11 +828,11 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: CABEFAC1BCA7F7E14E6BAE22B82AB444;7450.
  ) 
 Here is how much of TeX's memory you used:
- 14279 strings out of 467510
- 283028 string characters out of 5405392
+ 14240 strings out of 467510
+ 282612 string characters out of 5405392
  731303 words of memory out of 5000000
- 43156 multiletter control sequences out of 15000+600000
- 690425 words of font info for 89 fonts, out of 8000000 for 9000
+ 43133 multiletter control sequences out of 15000+600000
+ 669091 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,7n,135p,1363b,1023s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
@@ -849,15 +842,12 @@ c/lm/lmbx12.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type
 s/type1/public/lm/lmr10.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmr12.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/ZhiyangHuang/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/ZhiyangHuang/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ZhiyangHuang/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ZhiyangHuang/A
-ppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/Zhiyang
-Huang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt8.pfb><C:/Users/Z
-hiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
-Output written on main.pdf (16 pages, 408780 bytes).
+ograms/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ZhiyangHuang/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Users/ZhiyangHuang/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt9.pfb>
+Output written on main.pdf (15 pages, 341827 bytes).
 PDF statistics:
- 317 PDF objects out of 1000 (max. 8388607)
- 58 named destinations out of 1000 (max. 500000)
+ 292 PDF objects out of 1000 (max. 8388607)
+ 55 named destinations out of 1000 (max. 500000)
  313 words of extra memory for PDF output out of 10000 (max. 10000000)
 

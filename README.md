@@ -10,7 +10,7 @@ This repository is organized around a small set of decoupled layers:
 - `experiments/` holds reproducible validation and evidence-generation entrypoints.
 - `artifacts/` holds curated evidence bundles.
 - `arxiv_package/` holds submission packaging only.
-- `audit/` holds the reviewer-facing release records, the claim map, and provenance.
+- `audit/` holds the current release records, the claim map, and provenance.
 - `experiments/compatibility/` holds compatibility code only.
 - `configs/` holds frozen runtime and validation configurations.
 - `scripts/` holds release tooling.
@@ -32,12 +32,13 @@ Compatibility aliases remain available only so historical scripts do not break:
 2. Read the release snapshot: [paper/SRP_PAPER_FINAL_V1.md](paper/SRP_PAPER_FINAL_V1.md)
 3. Read the paper-facing summary: [paper/SRP_MAIN_RESULTS_SUMMARY_V1.md](paper/SRP_MAIN_RESULTS_SUMMARY_V1.md)
 4. Read the audit entry point: [audit/README.md](audit/README.md)
-5. Read the governance record: [audit/GOVERNANCE_RECORD.md](audit/GOVERNANCE_RECORD.md)
-6. Read the claim ledger: [audit/CLAIM_EVIDENCE_MAP.md](audit/CLAIM_EVIDENCE_MAP.md)
-7. Read the real-validation report: [audit/REAL_VALIDATION_REPORT.md](audit/REAL_VALIDATION_REPORT.md)
-8. Review the release boundary:
-   - [audit/RELEASE_FREEZE_NOTE.md](audit/RELEASE_FREEZE_NOTE.md)
-   - [audit/RELEASE_SNAPSHOT.md](audit/RELEASE_SNAPSHOT.md)
+5. Read the current release summary: [audit/CURRENT_RELEASE.md](audit/CURRENT_RELEASE.md)
+6. Read the evidence policy: [audit/EVIDENCE_POLICY.md](audit/EVIDENCE_POLICY.md)
+7. Read the claim ledger: [audit/CLAIM_EVIDENCE_MAP.md](audit/CLAIM_EVIDENCE_MAP.md)
+8. Read the real-validation report: [audit/REAL_VALIDATION_REPORT.md](audit/REAL_VALIDATION_REPORT.md)
+9. Review the release checklist and verification:
+   - [audit/RELEASE_CHECKLIST.md](audit/RELEASE_CHECKLIST.md)
+   - [audit/VERIFY_REPORT.md](audit/VERIFY_REPORT.md)
 
 ## Recommended Entry Points
 
@@ -72,3 +73,12 @@ python scripts/verify_release.py
 
 The repo includes frozen configs, reproducible validation entrypoints, and a compact reviewer-facing audit surface. If something can be regenerated exactly from code and configuration, prefer the regeneration path over storing a raw dump in Git.
 
+For benchmark suites, this release uses a registry-based policy: the repository keeps manifests, sample definitions, adapters, and results, while benchmark payloads remain with the original sources.
+
+## Benchmark Release Surface
+
+The release-facing benchmark entry points are now organized under:
+
+- `docs/benchmarks/` for the canonical benchmark reports
+- `docs/release/` for the current release evidence review
+- `docs/archive/benchmark_history/` for planning, smoke, and iteration history

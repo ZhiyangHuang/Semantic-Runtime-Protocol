@@ -22,6 +22,13 @@ The goal is to keep the main branch readable for reviewers while preserving a re
 ## Reproducibility principle
 
 If a file can be regenerated exactly from a script, config, or upstream benchmark source, prefer keeping the regeneration path rather than storing the full raw artifact in Git.
+For benchmark suites, this release uses a registry-based policy: manifests, sample definitions, adapters, and results are kept in Git, while benchmark payloads remain with the original sources.
+
+## Release-facing benchmark layout
+
+- `docs/benchmarks/` contains the canonical benchmark reports
+- `docs/release/` contains the release evidence review
+- `docs/archive/benchmark_history/` preserves planning and iteration history for provenance
 
 Before tagging a release, run `python scripts/verify_release.py` to confirm that the release-facing files are present and oversized artifacts have not slipped back into the branch.
 
@@ -30,11 +37,12 @@ Before tagging a release, run `python scripts/verify_release.py` to confirm that
 - `paper/SRP_PAPER_FINAL_V1.md`
 - `paper/SRP_MAIN_RESULTS_SUMMARY_V1.md`
 - `audit/README.md`
-- `audit/GOVERNANCE_RECORD.md`
+- `audit/CURRENT_RELEASE.md`
+- `audit/EVIDENCE_POLICY.md`
 - `audit/CLAIM_EVIDENCE_MAP.md`
 - `audit/REAL_VALIDATION_REPORT.md`
-- `audit/RELEASE_FREEZE_NOTE.md`
-- `audit/RELEASE_SNAPSHOT.md`
+- `audit/RELEASE_CHECKLIST.md`
+- `audit/VERIFY_REPORT.md`
 
 ## Recommended evidence-generation entry points
 

@@ -1,53 +1,32 @@
 # Audit
 
-Version milestones are additive research boundaries. Later versions extend the protocol research space without modifying frozen claims from previous releases.
+This directory is the active release surface for reviewer-facing records.
+Historical development artifacts are intentionally omitted from the active surface and remain available in Git history.
 
-## Release Line
+## Current Release
 
-### v1.0 - Semantic Runtime Protocol Freeze
+- [CURRENT_RELEASE.md](CURRENT_RELEASE.md)
+- [EVIDENCE_POLICY.md](EVIDENCE_POLICY.md)
+- [DATA_FREEZE_AUDIT.md](DATA_FREEZE_AUDIT.md)
+- [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md)
+- [VERIFY_REPORT.md](VERIFY_REPORT.md)
+- [RELEASE_AUDIT.md](RELEASE_AUDIT.md)
 
-- [RELEASE_FREEZE_NOTE.md](RELEASE_FREEZE_NOTE.md)
+## Canonical Records
 
-### v1.1 - Boundary Evidence Freeze
-
-- [V1_1_BOUNDARY_MILESTONE.md](V1_1_BOUNDARY_MILESTONE.md)
-- [V1_1_EXTERNAL_REGISTRY_FREEZE.md](V1_1_EXTERNAL_REGISTRY_FREEZE.md)
-- [V1_1_REALITY_CHECK_FREEZE.md](V1_1_REALITY_CHECK_FREEZE.md)
-- [V1_1_RELEASE_NOTE.md](V1_1_RELEASE_NOTE.md)
-
-### v1.2 - Research Extension Boundary
-
-- [V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md](V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md)
-
-## Claim Governance
-
-- [CLAIM_EVIDENCE_MAP.md](CLAIM_EVIDENCE_MAP.md)
-
-## Artifact Governance
-
-- [PAPER_CLAIM_BOUNDARY_CHECK.md](PAPER_CLAIM_BOUNDARY_CHECK.md)
-- [PAPER_REVIEWER_POSITIONING_CHECK.md](PAPER_REVIEWER_POSITIONING_CHECK.md)
-- [PAPER_SOURCE_HIERARCHY.md](PAPER_SOURCE_HIERARCHY.md)
-- [FRONT_PAGE_REVIEW_CHECK.md](FRONT_PAGE_REVIEW_CHECK.md)
-- [GOVERNANCE_RECORD.md](GOVERNANCE_RECORD.md)
-- [REAL_VALIDATION_REPORT.md](REAL_VALIDATION_REPORT.md)
-- [RELEASE_SNAPSHOT.md](RELEASE_SNAPSHOT.md)
-- [RELEASE_SNAPSHOT_CHECK.md](RELEASE_SNAPSHOT_CHECK.md)
-- [release_manifest.json](release_manifest.json)
-
-## Future Research
-
-- [V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md](V1_2_CROSS_DOMAIN_GOVERNANCE_PROPOSAL.md)
-
-## Current Entry Files
-
-- [RELEASE_FREEZE_NOTE.md](RELEASE_FREEZE_NOTE.md)
-- [V1_1_RELEASE_NOTE.md](V1_1_RELEASE_NOTE.md)
-- [RELEASE_SNAPSHOT.md](RELEASE_SNAPSHOT.md)
-- [RELEASE_SNAPSHOT_CHECK.md](RELEASE_SNAPSHOT_CHECK.md)
-- [ARXIV_SUBMISSION_READINESS_CHECKLIST.md](ARXIV_SUBMISSION_READINESS_CHECKLIST.md)
-- [release_manifest.json](release_manifest.json)
-- [GOVERNANCE_RECORD.md](GOVERNANCE_RECORD.md)
 - [CLAIM_EVIDENCE_MAP.md](CLAIM_EVIDENCE_MAP.md)
 - [REAL_VALIDATION_REPORT.md](REAL_VALIDATION_REPORT.md)
 - [PAPER_SOURCE_HIERARCHY.md](PAPER_SOURCE_HIERARCHY.md)
+- [release_manifest.json](release_manifest.json)
+
+## Purpose
+
+- `CURRENT_RELEASE.md` is the human-facing entry point
+- `EVIDENCE_POLICY.md` defines the evidence tiers
+- `DATA_FREEZE_AUDIT.md` records the registry-based data policy
+- `RELEASE_CHECKLIST.md` tracks release hygiene
+- `VERIFY_REPORT.md` records the latest verification result
+- `RELEASE_AUDIT.md` records the final release decision
+- `CLAIM_EVIDENCE_MAP.md` remains the claim ledger
+- `REAL_VALIDATION_REPORT.md` remains the operational evidence report
+- `PAPER_SOURCE_HIERARCHY.md` remains the manuscript source hierarchy
