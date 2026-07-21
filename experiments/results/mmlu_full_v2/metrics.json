@@ -1,0 +1,36 @@
+{
+  "prediction_count": 28084,
+  "successful_prediction_count": 28084,
+  "failed_prediction_count": 0,
+  "accuracy": 0.653183,
+  "score_mean": 0.8246332431277595,
+  "latency_mean_seconds": 0.11232431989745051,
+  "latency_total_seconds": 3154.5162,
+  "prompt_tokens_total": 6784495,
+  "completion_tokens_total": 75406,
+  "total_tokens_total": 6859901,
+  "variant_counts": {
+    "baseline": 14042,
+    "srp": 14042
+  },
+  "metric_schema": {
+    "schema_version": "benchmark_metrics_schema.v1",
+    "primary_metric_name": "accuracy",
+    "primary_metric_definition": "correct predictions divided by total evaluated predictions",
+    "latency_definition": "mean and total runtime per prediction",
+    "token_definition": "token usage gathered from generation responses",
+    "failure_definition": "count and rate of prediction failures"
+  },
+  "baseline_accuracy": 0.653183,
+  "srp_accuracy": 0.996083,
+  "accuracy_gap": 0.3429,
+  "sample_count": 14042,
+  "correct_count": 9172,
+  "incorrect_count": 4870,
+  "invalid_output_count": 1,
+  "srp_correct_count": 13987,
+  "srp_incorrect_count": 55,
+  "srp_invalid_output_count": 0,
+  "official_metric_name": "accuracy",
+  "benchmark_name": "mmlu"
+}

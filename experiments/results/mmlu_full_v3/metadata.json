@@ -1,0 +1,47 @@
+{
+  "benchmark_name": "mmlu",
+  "dataset_version": "mmlu_v1",
+  "adapter_name": "mmlu",
+  "generated_at": "2026-07-21T18:39:17.868025+00:00",
+  "runner_version": "benchmark_runner_v1",
+  "sample_count": 14042,
+  "variant_count": 2,
+  "model": "Qwen/Qwen3-4B-AWQ",
+  "prompt_format": "mmlu_mcq_v1",
+  "seed": 0,
+  "srp_configuration": {
+    "srp_mode": "context_recovery"
+  },
+  "execution_parameters": {
+    "subjects": []
+  },
+  "config": {
+    "benchmark_name": "mmlu",
+    "dataset_version": "mmlu_v1",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "prompt_format": "mmlu_mcq_v1",
+    "sample_limit": 0,
+    "variants": [
+      "baseline",
+      "srp"
+    ],
+    "data_root": "hf:cais/mmlu|all|test",
+    "seed": 0,
+    "system_prompt": "Answer with the single best choice label only.",
+    "max_output_tokens": 8,
+    "temperature": 0.0,
+    "srp_configuration": {
+      "srp_mode": "context_recovery"
+    },
+    "execution_parameters": {
+      "subjects": []
+    },
+    "metadata": {}
+  },
+  "artifact_hashes": {
+    "config_json": "6ce9ac7d96eb5d686a1f08468641dc1b78e35a62f7eddc9571336bc7bd6aff29",
+    "raw_predictions_jsonl": "f54ca4eb639be3ab834b2a72aa158ed2fbff3901bb61be7c9592aa3e2aba700e",
+    "metrics_json": "9276e00758408066ba710c0b3937d1983541af996c950ef8b46c893e583e2cac",
+    "report_md": "e002067ebe07f2cc46d071f4e8acdd9ff50214ba35b3cc13bb6d10ebaa7cf0c3"
+  }
+}

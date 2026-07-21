@@ -1,0 +1,57 @@
+{
+  "generated_at": "2026-07-21T21:10:55.543178+00:00",
+  "generated_by": "humaneval_runner_v1",
+  "benchmark_name": "humaneval",
+  "dataset_version": "humaneval_v1",
+  "model": "Qwen/Qwen3-4B-AWQ",
+  "prompt_format": "humaneval_exec_v1",
+  "runner_version": "humaneval_runner_v1",
+  "executor_version": "humaneval_executor_v1",
+  "execution_sandbox_policy": "subprocess_isolation_v1",
+  "allow_network": false,
+  "execution_timeout_seconds": 5.0,
+  "artifact_contract": {
+    "files": [
+      "config.json",
+      "raw_predictions.jsonl",
+      "execution_results.json",
+      "metrics.json",
+      "metadata.json",
+      "report.md"
+    ]
+  },
+  "execution_results_count": 328,
+  "config": {
+    "benchmark_name": "humaneval",
+    "dataset_version": "humaneval_v1",
+    "data_root": "hf:openai/openai_humaneval|test",
+    "sample_limit": 164,
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "prompt_format": "humaneval_exec_v1",
+    "srp_mode": "context_recovery",
+    "system_prompt": "Write only the final Python code. Do not explain.",
+    "max_output_tokens": 256,
+    "temperature": 0.0,
+    "seed": 0,
+    "variants": [
+      "baseline",
+      "srp"
+    ],
+    "execution_timeout_seconds": 5.0,
+    "execution_sandbox_policy": "subprocess_isolation_v1",
+    "allow_network": false,
+    "srp_configuration": {},
+    "execution_parameters": {},
+    "metadata": {
+      "phase": "humaneval_full_v1",
+      "full_run": true
+    }
+  },
+  "artifact_hashes": {
+    "config_json": "c27c07436afd388b7e149e745a4e9bca4425714cf876b2a0c63eee81b452b4ca",
+    "raw_predictions_jsonl": "d0bd5ebe3f70e62c5ea4ccc7a83ae57948906a8cdcae91d3662b808a06b90d9c",
+    "execution_results_json": "52d15ca6d9fd8e8e956d051df8828a610bccfd39439f7690b1825a228bf17bce",
+    "metrics_json": "d2b4f049640a12ef92f9aefacc32a34bca3b50510235cfb381b223dc7594ec43",
+    "report_md": "a45316c4c077ed75a8b61821a9a8c7b4d91d9f42d64df7510c851d69c1f8cb91"
+  }
+}

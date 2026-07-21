@@ -5,6 +5,8 @@ boundary evidence.
 
 It is a registry, not a dataset mirror.
 
+This repository uses a registry-based release policy for benchmark suites: source metadata, adapter mappings, sample definitions, and provenance notes are stored here, while benchmark payloads remain with the original sources.
+
 The repository stores source metadata, adapter mappings, and provenance notes.
 It does not store benchmark payloads.
 

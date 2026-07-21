@@ -1,0 +1,41 @@
+{
+  "benchmark_name": "longmemeval",
+  "dataset_version": "2025",
+  "model": "Qwen/Qwen3-4B-AWQ",
+  "prompt_format": "longmemeval_shared_generation_prompt_v1",
+  "sample_limit": 0,
+  "variants": [
+    "full_context",
+    "sliding_window",
+    "vector_rag",
+    "srp"
+  ],
+  "data_root": "data/longmemeval",
+  "seed": 11,
+  "system_prompt": "You answer memory questions from recovered semantic state. Use only the recovered state. Do not invent facts. Return only the final answer.",
+  "max_output_tokens": 96,
+  "temperature": 0.0,
+  "srp_configuration": {
+    "bridge_version": "bridge_migration_v1",
+    "official_scorer_owner": "external_validation",
+    "runtime_contract_owner": "external_validation",
+    "no_payload_policy": true
+  },
+  "execution_parameters": {
+    "bridge_output_dir": "experiments/results/longmemeval_full_v5",
+    "external_output_dir": "experiments/results/external_validation_longmemeval_evidence",
+    "model_provider": "local_vllm",
+    "model_backend": "vllm",
+    "model_endpoint": "http://172.25.253.78:8000",
+    "model_timeout_seconds": 500,
+    "same_endpoint_across_baselines": true
+  },
+  "metadata": {
+    "bridge_name": "longmemeval",
+    "bridge_version": "bridge_migration_v1",
+    "source_path": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\configs\\external_validation_longmemeval_evidence.env",
+    "external_source_path": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\configs\\external_validation_longmemeval_evidence.env",
+    "official_scorer_owner": "external_validation",
+    "runtime_contract_owner": "external_validation"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "benchmark_name": "arc",
+  "dataset_version": "arc_v1",
+  "adapter_name": "arc",
+  "generated_at": "2026-07-21T01:02:26.948600+00:00",
+  "runner_version": "benchmark_runner_v1",
+  "sample_count": 50,
+  "variant_count": 2,
+  "model": "Qwen/Qwen3-4B-AWQ",
+  "prompt_format": "arc_mcq_v1",
+  "seed": 0,
+  "srp_configuration": {
+    "srp_mode": "context_recovery",
+    "smoke_mode": true
+  },
+  "execution_parameters": {
+    "subsets": [
+      "ARC-Easy"
+    ],
+    "subset_selection": "ARC-Easy",
+    "smoke_run": true
+  },
+  "config": {
+    "benchmark_name": "arc",
+    "dataset_version": "arc_v1",
+    "model": "Qwen/Qwen3-4B-AWQ",
+    "prompt_format": "arc_mcq_v1",
+    "sample_limit": 50,
+    "variants": [
+      "baseline",
+      "srp"
+    ],
+    "data_root": "hf:allenai/ai2_arc|ARC-Easy|test",
+    "seed": 0,
+    "system_prompt": "Answer with the single best choice label only.",
+    "max_output_tokens": 8,
+    "temperature": 0.0,
+    "srp_configuration": {
+      "srp_mode": "context_recovery",
+      "smoke_mode": true
+    },
+    "execution_parameters": {
+      "subsets": [
+        "ARC-Easy"
+      ],
+      "subset_selection": "ARC-Easy",
+      "smoke_run": true
+    },
+    "metadata": {
+      "phase": "arc_smoke"
+    }
+  },
+  "artifact_hashes": {
+    "config_json": "95a4efcbbeccbc50ad2d4b2220658e33f4355a0631bb299cc4934cad866ff614",
+    "raw_predictions_jsonl": "9ba9545db1bbd0f5627af2e56e79e14f0edaf54f56a0e9a8e3537e3bb8246727",
+    "metrics_json": "aa92418e134b8b9c034bf23aa47bdf87c2fc007eaf546da6ab7fbdae0822aef4",
+    "report_md": "c96a83cbe52d998a1a1cf221bdbcd71bc1b4f6957dc93441e20129d97f321346"
+  }
+}

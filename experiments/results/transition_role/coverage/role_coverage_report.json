@@ -19,13 +19,11 @@
         {
           "source": "longmemeval",
           "status": "complete",
-          "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\external_validation_longmemeval_reality_check_smoke_v2\\longmemeval_reality_check_report.md",
-          "artifact_exists": false
+          "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_longmemeval_reality_check_smoke_v2\\longmemeval_reality_check_report.md",
+          "artifact_exists": true
         }
       ],
-      "notes": [
-        "a workload is marked complete but no latest artifact was found"
-      ]
+      "notes": []
     },
     {
       "transition_role": "temporal_state_evolution",

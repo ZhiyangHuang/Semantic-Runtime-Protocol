@@ -24,8 +24,7 @@ It is a protocol coverage artifact, not a benchmark ranking.
 | Role | Status | Completed | Planned | Diagnostics |
 | --- | --- | ---: | ---: | --- |
 | `evidence_update` | `complete` | `1` | `0` | `semantic_coverage, semantic_drift, transition_acceptance, governance_consistency` |
-  - `longmemeval`: `complete` (artifact: `C:\Users\ZhiyangHuang\Semantic-Runtime-Protocol\experiments\external_validation_longmemeval_reality_check_smoke_v2\longmemeval_reality_check_report.md`, exists: `False`)
-  - note: a workload is marked complete but no latest artifact was found
+  - `longmemeval`: `complete` (artifact: `C:\Users\ZhiyangHuang\Semantic-Runtime-Protocol\experiments\results\external_validation_longmemeval_reality_check_smoke_v2\longmemeval_reality_check_report.md`, exists: `True`)
 | `temporal_state_evolution` | `complete` | `1` | `0` | `semantic_coverage, semantic_drift, transition_acceptance, governance_consistency` |
   - `locomo`: `complete` (artifact: `C:\Users\ZhiyangHuang\Semantic-Runtime-Protocol\experiments\results\transition_role\temporal_state_evolution\locomo\run_latest\report.md`, exists: `True`)
 | `action_proposal` | `planned` | `0` | `1` | `semantic_coverage, semantic_drift, transition_acceptance, governance_consistency` |
