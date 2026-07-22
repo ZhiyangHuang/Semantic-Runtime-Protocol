@@ -363,7 +363,7 @@ The paper should include two figures that carry the main narrative visually.
 
 Think of the figures like a gate: ideas arrive, evidence checks them, governance opens or closes the gate, and execution happens only if the gate opens.
 
-**Figure 1: Semantic Runtime Protocol transition governance pipeline.** This figure should show the end-to-end transition order:
+**Figure 1: Semantic Runtime Protocol transition governance pipeline.** This figure illustrates the observation-to-execution order under the frozen transition contract:
 
 ```text
 Observation -> Validation -> Optimization -> Evidence -> Governance -> Execution
@@ -398,7 +398,7 @@ Governance G
 
 The figure should visually separate verification from authorization and commit: stronger evidence can improve `V`, but only `G` can admit the transition into runtime state and mutate `S_t`.
 
-**Figure 2: Positioning of SRP by semantic state and transition authority abstractions.** This figure should contrast SRP with retrieval, memory, agent, and reinforcement-learning systems according to their primary roles and authority abstractions. The goal is not to claim those systems are wrong, but to illustrate that SRP asks a different question:
+**Figure 2: Positioning of SRP relative to retrieval, memory, agent, and reinforcement-learning systems by semantic state and transition authority abstractions.** This figure should contrast SRP with retrieval, memory, agent, and reinforcement-learning systems according to their primary roles and authority abstractions. The goal is not to claim those systems are wrong, but to show that SRP asks a different question:
 
 ```text
 How should semantic runtime state transition be governed?
@@ -452,7 +452,7 @@ The research questions are grouped as follows:
 
 The main governance chain is:
 
-| Evaluation | Main Result | Support |
+| Evaluation | Observed Outcome | Interpretation |
 | --- | --- | --- |
 | Semantic observability | `130` obs, replay `1.0`, consistency `1.0` | observability |
 | Boundary validation | `10 / 25` feasible, stable across densities | evaluated boundary |
@@ -461,7 +461,7 @@ The main governance chain is:
 
 Semantic observability collects repeated transition observations over the frozen parameter axes `activation_threshold`, `recovery_min_evidence`, `preserve_evidence`, and `archive_relations`. The measurements indicate that the transition variables are explicit and reproducible before optimization decisions are introduced.
 
-Boundary validation uses invariant checking, closure validation, and replay equivalence to characterize the evaluated feasible region. The main result is a stable boundary over the evaluated density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
+Boundary validation uses invariant checking, closure validation, and replay equivalence to characterize the evaluated feasible region. The result is a stable boundary across the tested density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
 
 Constrained optimization compares SRP with a naive full-grid sweep over the same candidate space. SRP reaches the same top objective while reducing the search budget by 60 percent, which indicates that the validated boundary is operationally useful.
 
@@ -471,7 +471,7 @@ Protocol property verification closes the core governance chain by checking tran
 
 The core governance chain can be summarized as follows:
 
-| Validation Objective | Metric / Check | Result |
+| Validation Objective | Metric / Check | Observed Outcome |
 | --- | --- | --- |
 | Semantic observability | observations, replay, consistency | `130`, `1.0`, `1.0` |
 | Boundary validation | feasible candidates, density stability | `10 / 25`, stable |
@@ -514,7 +514,7 @@ The recovery observables in this case study align with SRP properties as follows
 | Semantic retention | Relation Acc. |
 
 #### 4.2.3 Results
-The main result is higher structural fidelity under the same recovery budget:
+The recovery evidence indicates higher structural fidelity under the same recovery budget:
 
 | Mode | Mean Relation Acc. | Mean Closure Acc. | Mean Drift | Mean Hallucinated Rel. Rate |
 | --- | ---: | ---: | ---: | ---: |
@@ -522,7 +522,7 @@ The main result is higher structural fidelity under the same recovery budget:
 | relation_expansion | 0.875 | 0.8125 | 0.145834 | 0.3125 |
 | relation_closure | 0.875 | 0.8125 | 0.083333 | 0.0 |
 
-The summary view is:
+The recovery summary is:
 
 | Recovery Mode | Coverage | Relation Acc. | Closure Acc. | Drift | Hallucinated Relation |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -566,8 +566,8 @@ The comparison is intentionally small:
 | Direct Write | Proposal output directly modifies state |
 | LLM + SRP | Proposal output is checked by SRP before mutation |
 
-#### 4.3.3 Main Results
-The main result is that direct write accepts every transition proposal, while SRP rejects unsupported mutations and preserves rollback correctness under the same contract.
+#### 4.3.3 Governance Outcomes
+The direct-write control accepts every transition proposal, while SRP rejects unsupported mutations and preserves rollback correctness under the same contract.
 
 | Method | Invalid Accept Rate | State Corruption | Authority Escalation | Rollback Correctness |
 | --- | ---: | ---: | ---: | ---: |
@@ -629,7 +629,7 @@ For readability, we shorten the parameter names below:
 
 The measured sweep makes the pattern concrete:
 
-| Setting | Cov. | Drift | Cost | Meaning |
+| Setting | Cov. | Drift | Cost | Interpretation |
 | --- | ---: | ---: | ---: | --- |
 | Baseline (`a=F`, `p=F`, `d=1`, `t=0.9`) | 0.728095 | 0.098333 | 1.695 | Reference |
 | `archive=T` | 0.758095 | 0.077083 | 1.815 | More detail, higher cost |
@@ -657,7 +657,7 @@ Cross-workload validation compares code, knowledge, and planning under the same 
 
 The normalized comparison against vector-only recovery is:
 
-| Domain | Vector-only Closure | Relation-closure Closure | Delta |
+| Domain | Vector-only Closure | Relation-closure Closure | Difference |
 | --- | ---: | ---: | ---: |
 | Code memory | 0.000000 | 1.000000 | +1.000000 |
 | Knowledge reasoning | 0.000000 | 0.375000 | +0.375000 |
@@ -702,11 +702,11 @@ The evidence package keeps the runtime manifest frozen, reports descriptive stat
 
 #### External Reality Check
 
-To verify that SRP's governance pipeline can be instantiated on an external semantic evaluation workload, we conducted a LongMemEval reality check using a frozen local runtime contract. The purpose of this evaluation is to examine runtime compatibility of SRP governance mechanisms under an external workload, rather than to establish benchmark superiority. It also validates external source integration, scorer separation, reproducible runtime evidence generation, and SRP diagnostic extraction.
+To verify that SRP's governance pipeline can be instantiated on an external semantic evaluation workload, we conducted a LongMemEval compatibility slice using a frozen local runtime contract. The purpose of this evaluation is to examine runtime compatibility of SRP governance mechanisms under an external workload, rather than to establish benchmark superiority. It also validates external source integration, scorer separation, reproducible runtime evidence generation, and SRP diagnostic extraction.
 
-The reality check preserves the official task scorer while co-reporting SRP diagnostics that measure a different layer of the evaluation stack. In the evaluated slice, the official task score and the SRP diagnostics are both high, but they are not numerically identical, which suggests that the governance diagnostics capture properties distinct from official task scoring.
+The compatibility slice preserves the official task scorer while co-reporting SRP diagnostics that measure a different layer of the evaluation stack. In the evaluated slice, the official task score and the SRP diagnostics are both high, but they are not numerically identical, which suggests that the governance diagnostics capture properties distinct from official task scoring.
 
-| Category | Metric | Result |
+| Category | Metric | Observed Value |
 | --- | --- | --- |
 | Runtime | Model | `Qwen/Qwen3-4B-AWQ` |
 | Runtime | Endpoint | `http://172.25.253.78:8000` |
@@ -738,10 +738,10 @@ This separation distinguishes semantic generation from semantic authority. A gen
 
 Its objective is to govern semantic state evolution across different underlying representation and generation mechanisms. The current evaluation uses controlled semantic representations to isolate governance properties, while LLM-generated transitions represent a compatible future deployment scenario rather than a prerequisite for the framework itself.
 
-This framing explains the experimental pattern: semantic state variables can be observed, feasible regions can be identified and frozen, constrained optimization can operate inside an evaluated region without becoming a control mechanism, and evidence escalation can strengthen verification without transferring authority. The broader evaluations provide evidence that the same governance semantics remained consistent across the evaluated workloads, representations, and implementations. Recovery and reconstruction remain important implementation cases, but the framework claim is about governing semantic transitions.
+This framing explains the experimental pattern across the evidence surface: semantic state variables can be observed, feasible regions can be identified and frozen, constrained optimization can operate inside an evaluated region without becoming a control mechanism, and evidence escalation can strengthen verification without transferring authority. The consolidated evidence surface indicates that the same governance semantics remain interpretable across the evaluated workloads, representations, and implementations, even though capability scores vary by environment. Recovery and reconstruction remain important implementation cases, but the framework claim is about governing semantic transitions.
 The LLM-based semantic transition integration section shows the same boundary in a concrete proposal-to-state pipeline: the proposal source can vary, but mutation authority still remains external to the proposal mechanism.
 
-The external validation results reinforce the same lesson. Calibration and evidence are separated. Scorer alignment is treated as an auditable boundary. The evidence package is accepted only under a frozen contract, not because the system is universally optimal.
+The external validation results reinforce the same boundary. Calibration and evidence are separated. Scorer alignment is treated as an auditable boundary. The evidence package is accepted only under a frozen contract, not because the system is universally optimal. The broader evidence surface is consolidated in `docs/release/SRP_EVIDENCE_SURFACE_V1_1.md`, where mechanism validation, external transition validation, and capability stress evidence are organized as an admission-semantics surface rather than as a benchmark comparison.
 
 ## 6. Limitations and Future Work
 
@@ -759,7 +759,7 @@ Future work should focus on provenance-aware governance, confidence calibration,
 
 ## 7. Conclusion
 
-SRP provides a governance-first semantic runtime framework for semantic transition. It separates observation, validation, optimization, evidence, governance, and execution so that semantic state can change only within evaluated boundaries. The experiments provide evidence that semantic transition variables can be observed, feasible regions can be identified and frozen, optimization can be constrained, evidence can strengthen verification without transferring authority, and SRP-controlled transitions can preserve evaluated semantic structure through the tested recovery implementations and workloads.
+SRP provides a governance-first semantic runtime framework for semantic transition. It separates observation, validation, optimization, evidence, governance, and execution so that semantic state can change only within evaluated boundaries. The evidence surface indicates that semantic transition variables can be observed, feasible regions can be identified and frozen, optimization can be constrained, evidence can strengthen verification without transferring authority, and SRP-controlled transitions can preserve evaluated semantic structure through the tested recovery implementations and workloads.
 
 The main paper-facing claim is that semantic runtime governance is a first-class control problem: semantic evolution can be represented as measurable, bounded, auditable, and governable under a frozen evaluation contract in the evaluated settings. Recovery and reconstruction are examples of SRP-controlled behaviors, and SRP provides a governance boundary for semantic state evolution under explicit evidence and authority constraints. The runtime integration evidence family further supports insertion feasibility as appendix-grade evidence, but it does not establish a complete production runtime system.
 LLM-generated proposals are another controlled input to that same boundary, not a separate authority channel.
@@ -867,7 +867,7 @@ It documents the evidence-management procedure used to separate trusted outputs 
 
 ### A.6 External Runtime Compatibility Validation Provenance
 
-The LongMemEval reality check is treated as an external validation artifact under the frozen v1.1 evidence boundary.
+The LongMemEval compatibility slice is treated as an external validation artifact under the frozen v1.1 evidence boundary.
 
 It is classified as:
 
@@ -878,7 +878,7 @@ It is classified as:
 
 It is not used as:
 
-- benchmark ranking evidence
+- benchmark-ranking interpretation
 - memory architecture comparison
 - universal performance claim
 - a replacement for the official scorer

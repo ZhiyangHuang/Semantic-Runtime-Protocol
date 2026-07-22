@@ -365,7 +365,7 @@ The paper should include two figures that carry the main narrative visually.
 
 Think of the figures like a gate: ideas arrive, evidence checks them, governance opens or closes the gate, and execution happens only if the gate opens.
 
-**Figure 1: Semantic Runtime Protocol transition governance pipeline.** This figure should show the end-to-end transition order:
+**Figure 1: Semantic Runtime Protocol transition governance pipeline.** This figure illustrates the observation-to-execution order under the frozen transition contract:
 
 ``` {=tex}
 {\small
@@ -395,7 +395,7 @@ The visual should make the authority split explicit: observation measures, valid
 
 The figure should visually separate verification from authorization and commit: stronger evidence can improve `V`, but only `G` can admit the transition into runtime state and mutate `S_t`.
 
-**Figure 2: Positioning of SRP by semantic state and transition authority abstractions.** This figure should contrast SRP with retrieval, memory, agent, and reinforcement-learning systems according to their primary roles and authority abstractions. The goal is not to claim those systems are wrong, but to illustrate that SRP asks a different question:
+**Figure 2: Positioning of SRP relative to retrieval, memory, agent, and reinforcement-learning systems by semantic state and transition authority abstractions.** This figure should contrast SRP with retrieval, memory, agent, and reinforcement-learning systems according to their primary roles and authority abstractions. The goal is not to claim those systems are wrong, but to show that SRP asks a different question:
 
 ```text
 How should semantic runtime state transition be governed?
@@ -451,7 +451,7 @@ External validation & Can the frozen contract support calibration, evidence prom
 \renewcommand{\arraystretch}{1.08}
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{0.92\linewidth}{|p{0.20\linewidth}|p{0.52\linewidth}|p{0.20\linewidth}|}
-\textbf{Evaluation} & \textbf{Main Result} & \textbf{Support} \\
+\textbf{Evaluation} & \textbf{Observed Outcome} & \textbf{Interpretation} \\
 \hline
 Semantic observability & 130 transition observations, replay success 1.0, state consistency 1.0 & semantic observability \\
 \hline
@@ -467,7 +467,7 @@ Evidence-controlled governance & verification improves from 0.50 to 1.00 while a
 
 Semantic observability collects repeated transition observations over the frozen parameter axes `activation_threshold`, `recovery_min_evidence`, `preserve_evidence`, and `archive_relations`. The measurements indicate that the transition variables are explicit and reproducible before optimization decisions are introduced.
 
-Boundary validation uses invariant checking, closure validation, and replay equivalence to identify the evaluated feasible region. The main result is a stable boundary over the evaluated density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
+Boundary validation uses invariant checking, closure validation, and replay equivalence to identify the evaluated feasible region. The result is a stable boundary across the tested density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
 
 Constrained optimization compares SRP with a naive full-grid sweep over the same candidate space. SRP reaches the same top objective while reducing the search budget by 60 percent, which indicates that the validated boundary is operationally useful.
 
@@ -482,7 +482,7 @@ Protocol property verification closes the core governance chain by checking tran
 \renewcommand{\arraystretch}{1.08}
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{0.92\linewidth}{|p{0.24\linewidth}|p{0.46\linewidth}|p{0.18\linewidth}|}
-\textbf{Validation Objective} & \textbf{Metric / Check} & \textbf{Result} \\
+\textbf{Validation Objective} & \textbf{Metric / Check} & \textbf{Observed Outcome} \\
 \hline
 Semantic observability & Transition observations, replay success, state consistency & 130, 1.0, 1.0 \\
 \hline
@@ -547,14 +547,14 @@ Semantic retention & Relation Acc. \\
 ```
 
 ### Results
-**The main result is that the SRP-governed recovery implementation yields higher structural fidelity under the same recovery budget:**
+**The recovery evidence indicates higher structural fidelity under the same recovery budget:**
 
 ``` {=tex}
 {\small
 \renewcommand{\arraystretch}{1.08}
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{0.92\linewidth}{|p{0.16\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.11\linewidth}|p{0.13\linewidth}|X|}
-\textbf{Mode} & \textbf{Mean Relation Acc.} & \textbf{Mean Closure Acc.} & \textbf{Mean Drift} & \textbf{Mean Hallucinated Rel. Rate} & \textbf{Meaning} \\
+\textbf{Mode} & \textbf{Mean Relation Acc.} & \textbf{Mean Closure Acc.} & \textbf{Mean Drift} & \textbf{Mean Hallucinated Rel. Rate} & \textbf{Interpretation} \\
 \hline
 vector\_only & 0.333333 & 0.166667 & 0.433333 & 0.0 & Baseline vector-only recovery \\
 \hline
@@ -566,7 +566,7 @@ relation\_closure & 0.875 & 0.8125 & 0.083333 & 0.0 & Relation closure preserves
 }
 ```
 
-**The summary view is:**
+**The recovery summary is:**
 
 ``` {=tex}
 {\small
@@ -614,7 +614,7 @@ For readability, we shorten the parameter names below:
 \renewcommand{\arraystretch}{1.08}
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{0.92\linewidth}{|p{0.34\linewidth}|p{0.10\linewidth}|p{0.10\linewidth}|p{0.10\linewidth}|X|}
-\textbf{Setting} & \textbf{Coverage} & \textbf{Drift} & \textbf{Cost} & \textbf{Meaning} \\
+\textbf{Setting} & \textbf{Coverage} & \textbf{Drift} & \textbf{Cost} & \textbf{Interpretation} \\
 \hline
 Baseline (\texttt{archive=False}, \texttt{preserve=False}, \texttt{depth=1}, \texttt{threshold=0.9}) & 0.728095 & 0.098333 & 1.695 & Reference point \\
 \hline
@@ -670,7 +670,7 @@ Planning & 0.465278 & 0.355556 & 0.500000 & 0.416667 & 0.111111 \\
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{0.92\linewidth}{|p{0.22\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.12\linewidth}|}
 \hline
-\textbf{Domain} & \textbf{Vector-only Closure} & \textbf{Relation-closure Closure} & \textbf{Delta} \\
+\textbf{Domain} & \textbf{Vector-only Closure} & \textbf{Relation-closure Closure} & \textbf{Difference} \\
 \hline
 Code memory & 0.000000 & 1.000000 & +1.000000 \\
 \hline
@@ -745,11 +745,11 @@ The evidence package keeps the runtime manifest frozen, reports descriptive stat
 
 ### External Runtime Compatibility Validation
 
-To verify that SRP's governance pipeline can be instantiated on an external semantic evaluation workload, we conducted a LongMemEval reality check using a frozen local runtime contract. The purpose of this evaluation is to examine runtime compatibility of SRP governance mechanisms under an external workload, rather than to establish benchmark superiority. It also validates external source integration, scorer separation, reproducible runtime evidence generation, and SRP diagnostic extraction.
+To verify that SRP's governance pipeline can be instantiated on an external semantic evaluation workload, we conducted a LongMemEval compatibility slice using a frozen local runtime contract. The purpose of this evaluation is to examine runtime compatibility of SRP governance mechanisms under an external workload, rather than to establish benchmark superiority. It also validates external source integration, scorer separation, reproducible runtime evidence generation, and SRP diagnostic extraction.
 
-The reality check preserves the official task scorer while co-reporting SRP diagnostics that measure a different layer of the evaluation stack. In the evaluated slice, the official task score and the SRP diagnostics are both high, but they are not numerically identical, which suggests that the governance diagnostics capture properties distinct from official task scoring.
+The compatibility slice preserves the official task scorer while co-reporting SRP diagnostics that measure a different layer of the evaluation stack. In the evaluated slice, the official task score and the SRP diagnostics are both high, but they are not numerically identical, which suggests that the governance diagnostics capture properties distinct from official task scoring.
 
-**The runtime evidence table is:**
+**The runtime evidence summary is:**
 
 ``` {=tex}
 {\small
@@ -757,7 +757,7 @@ The reality check preserves the official task scorer while co-reporting SRP diag
 \setlength{\tabcolsep}{3pt}
 \begin{tabularx}{0.92\linewidth}{|p{0.18\linewidth}|p{0.22\linewidth}|X|}
 \hline
-\textbf{Category} & \textbf{Metric} & \textbf{Result} \\
+\textbf{Category} & \textbf{Metric} & \textbf{Observed Value} \\
 \hline
 Runtime & Model & `Qwen/Qwen3-4B-AWQ` \\
 \hline
@@ -803,7 +803,7 @@ Its objective is to govern semantic state evolution across different underlying 
 
 This framing explains the experimental pattern: semantic state variables can be observed, feasible regions can be identified and frozen, constrained optimization can operate inside an evaluated region without becoming a control mechanism, and evidence escalation can improve verification without transferring authority. The broader evaluations provide evidence that the same governance semantics remained consistent across the evaluated workloads, representations, and implementations. Recovery and reconstruction remain important implementation cases, but the framework claim is about governing semantic transitions.
 
-The external validation results reinforce the same lesson. Calibration and evidence are separated. Scorer alignment is treated as an auditable boundary. The evidence package is accepted only under a frozen contract, not because the system is universally optimal.
+The external validation results reinforce the same boundary. Calibration and evidence are separated. Scorer alignment is treated as an auditable boundary. The evidence package is accepted only under a frozen contract, not because the system is universally optimal.
 
 # Limitations and Future Work
 
@@ -928,7 +928,7 @@ It documents the evidence-management procedure used to separate trusted outputs 
 
 ## A.6 External Runtime Compatibility Validation Provenance
 
-The LongMemEval reality check is treated as an external validation artifact under the frozen v1.1 evidence boundary.
+The LongMemEval compatibility slice is treated as an external validation artifact under the frozen v1.1 evidence boundary.
 
 It is classified as:
 
@@ -939,7 +939,7 @@ It is classified as:
 
 It is not used as:
 
-- benchmark ranking evidence
+- benchmark-ranking interpretation
 - memory architecture comparison
 - universal performance claim
 - a replacement for the official scorer

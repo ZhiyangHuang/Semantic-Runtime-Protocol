@@ -52,3 +52,5 @@ This means the release evidence should be interpreted benchmark by benchmark, no
 ## 5. Paper Use
 
 This summary can be used as the paper's compact evidence map for the abstract, conclusion, and results overview.
+
+For the consolidated evidence surface and cross-environment interpretation, see `docs/release/SRP_EVIDENCE_SURFACE_V1_1.md`.

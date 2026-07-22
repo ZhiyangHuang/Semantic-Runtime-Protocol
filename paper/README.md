@@ -24,6 +24,7 @@ Source role note:
 - `SRP_ARXIV_DRAFT_V1.md` is the synchronized manuscript mirror
 - `SRP_PAPER_FINAL_V1.md` is the submission snapshot
 - `SRP_MAIN_RESULTS_SUMMARY_V1.md` is the short release summary
+- `../docs/release/SRP_PAPER_CONSOLIDATION.md` is the paper-facing consolidation map
 
 Terminology note:
 

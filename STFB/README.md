@@ -101,6 +101,8 @@ Specification and problem definition.
 
 Dataset construction and validation.
 
+- [STFB v0.2 Roadmap](../docs/plans/STFB_V0_2_ROADMAP.md)
+
 ### v0.3
 
 Baseline implementation and evaluation.
