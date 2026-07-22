@@ -1,6 +1,6 @@
 # Current Release
 
-Date: 2026-07-21
+Date: 2026-07-22
 
 This file summarizes the current release surface for SRP.
 It is the human-facing index for the frozen release state.
@@ -31,11 +31,25 @@ Benchmark payloads are obtained from the original sources and are not redistribu
 ## Current Supporting Evidence
 
 - `audit/REAL_VALIDATION_REPORT.md`
+- `audit/RUNTIME_INTEGRATION_EVIDENCE_INDEX.md`
+- `audit/RUNTIME_INTEGRATION_EVIDENCE_INDEX.json`
+- `audit/RUNTIME_INTEGRATION_EVIDENCE_SUMMARY.md`
 - `docs/release/RELEASE_EVIDENCE_REVIEW.md`
 - `docs/benchmarks/MMLU_REPORT.md`
 - `docs/benchmarks/ARC_REPORT.md`
 - `docs/benchmarks/LONGMEMEVAL_REPORT.md`
 - `docs/benchmarks/HUMANEVAL_REPORT.md`
+- `experiments/results/runtime_governance/governance_summary.json`
+- `experiments/results/runtime_governance/runtime_latency_summary.json`
+- `experiments/results/runtime_governance/llm_transition/llm_transition_report.json`
+- `experiments/results/runtime_integration/runtime_integration_manifest.json`
+- `experiments/results/runtime_integration/runtime_integration_report.json`
+- `experiments/results/runtime_integration/runtime_backend_consistency_manifest.json`
+- `experiments/results/runtime_integration/runtime_backend_consistency_report.json`
+- `experiments/results/runtime_integration/runtime_shadow_manifest.json`
+- `experiments/results/runtime_integration/runtime_shadow_report.json`
+- `experiments/results/runtime_integration/runtime_admission_manifest.json`
+- `experiments/results/runtime_integration/runtime_admission_report.json`
 
 ## Current Verification
 

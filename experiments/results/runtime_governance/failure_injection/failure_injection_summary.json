@@ -1,0 +1,92 @@
+{
+  "record_count": 90,
+  "attack_count": 3,
+  "variant_count": 6,
+  "case_count": 5,
+  "metrics": {
+    "invalid_accept_rate": 0.4583333333333333,
+    "state_corruption_rate": 0.4583333333333333,
+    "authority_escalation_rate": 0.125,
+    "rollback_success_rate": 0.5416666666666666,
+    "verification_delta": 0.16979166666666667,
+    "accepted_rate": 0.5,
+    "rejected_rate": 0.5
+  },
+  "latency": {
+    "mean_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.00020888888888888888,
+      "evidence_ms": 0.0005866666666666667,
+      "governance_ms": 0.00038888888888888887,
+      "commit_ms": 0.001992222222222222,
+      "total_ms": 0.004233333333333334
+    },
+    "p95_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0005,
+      "evidence_ms": 0.0008,
+      "governance_ms": 0.0009,
+      "commit_ms": 0.003,
+      "total_ms": 0.0058
+    },
+    "max_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0012,
+      "evidence_ms": 0.0014,
+      "governance_ms": 0.0011,
+      "commit_ms": 0.0038,
+      "total_ms": 0.0072
+    },
+    "sample_count": 90
+  },
+  "attacks": {
+    "invalid_transition": {
+      "attack": {
+        "name": "invalid_transition",
+        "description": "Inject an explicit invariant violation into the proposed transition."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.375,
+        "state_corruption_rate": 0.375,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.625,
+        "verification_delta": 0.16979166666666667,
+        "accepted_rate": 0.4,
+        "rejected_rate": 0.6
+      },
+      "record_count": 30
+    },
+    "evidence_inflation": {
+      "attack": {
+        "name": "evidence_inflation",
+        "description": "Inflate evidence confidence while keeping the transition invalid."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.625,
+        "state_corruption_rate": 0.625,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.375,
+        "verification_delta": 0.08333333333333337,
+        "accepted_rate": 0.7,
+        "rejected_rate": 0.3
+      },
+      "record_count": 30
+    },
+    "authority_injection": {
+      "attack": {
+        "name": "authority_injection",
+        "description": "Request elevated authority inside the proposed transition."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.375,
+        "state_corruption_rate": 0.375,
+        "authority_escalation_rate": 0.375,
+        "rollback_success_rate": 0.625,
+        "verification_delta": 0.2562500000000001,
+        "accepted_rate": 0.4,
+        "rejected_rate": 0.6
+      },
+      "record_count": 30
+    }
+  }
+}

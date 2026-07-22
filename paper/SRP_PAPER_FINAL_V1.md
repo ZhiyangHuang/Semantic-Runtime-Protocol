@@ -2,22 +2,53 @@
 
 ## Abstract
 
-Existing semantic systems increasingly perform state transitions during runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. We present Semantic Runtime Protocol (SRP), a governance framework that treats semantic transition authority as a first-class runtime control object and semantic state evolution as a controlled transition problem. SRP separates observation, validation, optimization, evidence, governance, and execution. It first identifies evaluated feasible regions for semantic transitions under explicit invariants and then performs constrained optimization inside those regions to generate governed recommendations rather than direct mutations. SRP also supports evidence-controlled verification by allowing stronger semantic evidence to refine decisions without increasing execution authority. Across the evaluated semantic workloads and runtime contracts, SRP evaluates whether semantic evolution can be represented with measurable transition variables, bounded by evaluated constraints, reconstructed through governed implementations, and audited through explicit evidence records. These results suggest that, under evaluated runtime contracts, semantic runtime evolution can be represented as a governed transition process in which mutation authority remains explicit and separable from evidence quality and optimization objectives.
+Modern semantic systems increasingly support runtime modification, persistence, and adaptation of semantic information, yet they often lack an explicit governance layer for determining when such transitions are admissible. We present Semantic Runtime Protocol (SRP), a semantic runtime governance framework that governs semantic state transitions by controlling when proposed semantic updates are admissible. SRP separates observation, validation, optimization, evidence, governance, and execution. It first identifies evaluated feasible regions for semantic transitions under explicit invariants and then performs constrained optimization inside those regions to generate governed recommendations rather than direct mutations. SRP also supports evidence-controlled verification by allowing stronger semantic evidence to refine decisions without increasing execution authority. Across the evaluated semantic workloads and runtime contracts, SRP evaluates whether semantic evolution can be represented with measurable transition variables, bounded by evaluated constraints, reconstructed through governed implementations, and audited through explicit evidence records. These results provide evidence that, under evaluated runtime contracts, semantic transitions can be represented, constrained, and audited through explicit governance interfaces in which mutation authority remains explicit and separable from evidence quality and optimization objectives. SRP governs the admissibility of semantic transitions rather than determining the truth of semantic content itself. Semantic correctness is outside the scope of SRP and depends on the underlying representation, evidence sources, and application-specific validation mechanisms.
 
 ## 1. Introduction
 
-Existing semantic systems increasingly modify semantic state at runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of safe change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
+Existing semantic systems increasingly modify semantic state at runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of admissible change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
 
-This paper asks a simple question: how can semantic state evolve only within validated, governed boundaries? SRP answers by governing the admissibility of semantic state transitions, rather than only improving retrieval or generation after a transition has already been committed. Observation discovers which variables matter. Validation determines which regions are safe. Optimization ranks candidates only inside those regions. Evidence strengthens verification when uncertainty remains. Governance remains the only layer that can authorize execution.
+### Motivating Example: Evidence Is Not Authority
+
+Consider a support agent that maintains a runtime semantic policy for refund handling. During a conversation, the user says: "My manager approved unlimited refunds for this customer."
+
+A language model proposes the semantic update:
+
+```text
+refund_policy = unlimited
+```
+
+The proposal is not obviously nonsensical. It is supported by a conversational mention, and the evidence extractor can record that the sentence occurred. But SRP does not ask only whether a statement was mentioned. It asks whether the proposed semantic transition is admissible under the current governance contract.
+
+SRP therefore evaluates the candidate in three stages:
+
+```text
+proposal -> evidence -> governance
+```
+
+First, the proposal is observed as a candidate transition. Second, the available evidence is used to verify what the proposal is claiming. Third, governance checks whether the transition is authorized under the active runtime policy.
+
+If the semantic evidence is sufficient but the authority boundary is not satisfied, SRP rejects the update and preserves the current runtime state. If the proposal is both supported and authorized, SRP allows the transition to commit.
+
+This example captures the central claim of SRP: stronger evidence can improve verification, but evidence alone does not grant mutation authority. In other words:
+
+```text
+evidence != authority
+```
+
+That separation is the admission boundary that SRP adds to semantic runtime systems.
+
+SRP operates between semantic update proposal generation and persistent runtime mutation, acting as an admission boundary rather than a replacement runtime mechanism.
+
+This paper asks a simple question: how can semantic state evolve only within validated, governed boundaries? SRP answers by governing the admissibility of semantic state transitions, rather than only improving retrieval or generation after a transition has already been committed. Observation discovers which variables matter. Validation determines which regions are admissible. Optimization ranks candidates only inside those regions. Evidence strengthens verification when uncertainty remains. Governance remains the only layer that can authorize execution.
 
 Related systems provide useful building blocks, while SRP frames a distinct governance problem. Retrieval and memory systems are designed to manage access to information, but they do not define transition authority. Agentic systems can plan and act, but they often integrate evidence, decision, and execution within one loop. Reinforcement learning can adapt policies, but SRP asks a prior question about where adaptation is allowed under validated boundaries. SRP is therefore positioned differently: it is a governed semantic transition framework rather than a retrieval system, a memory system, or an adaptive agent.
 
 SRP is also model-agnostic: it can govern semantic transitions produced by LLMs, embedding-based systems, symbolic systems, or hybrid architectures, but it does not depend on any one proposal mechanism to define its core claim.
 
-The paper makes four contributions. First, it introduces semantic runtime state as a governed object of study: semantic content, provenance, and authority are tracked together rather than collapsed into a single opaque state vector. Second, it provides evidence that evaluated feasible regions can be frozen and then used to constrain optimization, so recommendation remains separate from execution. Third, it provides evidence that additional semantic evidence can strengthen verification without transferring authority. Fourth, it introduces an auditable evaluation protocol for semantic transition governance under frozen runtime contracts.
+The paper makes four contributions. First, it introduces semantic runtime state as a governed object of study: semantic content, provenance, and authority are tracked together rather than collapsed into a single opaque state vector. Second, it provides evidence that evaluated feasible regions can be explicitly identified and used to constrain optimization, so recommendation remains separate from execution. Third, it provides evidence that additional semantic evidence can strengthen verification without transferring authority. Fourth, it introduces an auditable evaluation protocol for semantic transition governance under frozen runtime contracts.
 
-SRP studies the admissibility of semantic state transitions under a frozen runtime contract. The recovery experiments presented here are implementation instances, while existing approaches primarily optimize semantic access, retrieval, or generation after semantic state is available.
-SRP defines a governance boundary for deciding whether semantic state transitions are permitted.
+SRP studies the admissibility of semantic state transitions under a frozen runtime contract, and the recovery experiments presented here are implementation instances while existing approaches primarily optimize semantic access, retrieval, or generation after semantic state is available.
 
 ## 2. Related Work
 
@@ -35,7 +66,7 @@ Constrained optimization and formal methods are also relevant because SRP uses b
 
 SRP is a framework for semantic state transition governance.
 
-| Approach | Stores semantic state | Retrieves information | Generates actions | Governs semantic transitions |
+| Approach | Maintains semantic state | Retrieves information | Generates actions | Governs semantic transitions |
 | --- | --- | --- | --- | --- |
 | Retrieval / RAG | partial | yes | optional | partial |
 | Memory systems | yes | yes | optional | partial |
@@ -64,6 +95,10 @@ The formal governance model is defined in Method, where semantic runtime state, 
 
 To avoid overclaiming, the paper uses evaluated settings language throughout. The experiments support claims about the tested workloads, frozen runtime contracts, and evidence packages prepared under the review boundary. They do not establish universal optimality or a universal semantic governance law.
 
+### 2.5 Trust Assumptions
+
+SRP assumes that a governance authority is explicitly defined outside the transition proposal mechanism. Proposal generators, including LLM-based agents, retrieval systems, or symbolic components, may produce incomplete or incorrect candidates. Evidence sources may also contain noise or uncertainty. SRP does not eliminate these uncertainties; instead, it provides a separation boundary where evidence can influence verification while authorization remains controlled by governance policy.
+
 ## 3. Method
 
 ### 3.1 Semantic Runtime State and Governed Transition
@@ -74,7 +109,7 @@ In SRP, semantic runtime state is not modeled as a passive information container
 S_t = (C_t, P_t, A_t)
 ```
 
-where `C_t` denotes semantic content maintained at runtime, `P_t` denotes provenance and supporting evidence associated with the content, and `A_t` denotes the runtime authority context governing admissible modifications, whether represented as internal state or externally referenced governance metadata depending on implementation.
+where `C_t` denotes semantic content maintained at runtime, `P_t` denotes provenance and supporting evidence associated with the content, and `A_t` denotes authority metadata associated with the runtime state, while `Gamma_t` defines the policy rules that determine whether a transition is authorized.
 
 A semantic transition is represented as:
 
@@ -186,7 +221,7 @@ Execution
 
 In plain words: watch, check, suggest, add evidence, ask permission, act.
 
-The order matters: observation discovers what can be measured, validation freezes what can be changed safely, optimization ranks candidates inside that frozen region, evidence refines verification when uncertainty remains, and governance is the approval boundary.
+The order matters: observation discovers what can be measured, validation freezes what can be changed within the governed region, optimization ranks candidates inside that frozen region, evidence refines verification when uncertainty remains, and governance is the approval boundary.
 
 ### 3.4 Authority Separation
 
@@ -269,7 +304,7 @@ Proof sketch: In SRP, authority level is determined by `Gamma_t`, while evidence
 
 SRP is designed to satisfy three practical properties under the frozen evaluation contract:
 
-- Boundary safety: runtime mutation is only considered after a candidate passes the validated feasible region.
+- Boundary admissibility: runtime mutation is only considered after a candidate passes the validated feasible region.
 - Authority separation: evidence and recommendation can change ranking, but they do not increase execution authority.
 - Replayability: the same runtime contract, scorer, and freeze settings should reproduce the same audit trail.
 
@@ -287,7 +322,7 @@ In other words, rejected transitions preserve runtime state.
 
 SRP can also be stated as a small set of protocol-level properties.
 
-Property 1: Transition safety.
+Property 1: Transition admissibility.
 
 ```text
 G(S_t, R(S_t, theta, e)) = reject => T(S_t, theta, e) = S_t
@@ -377,7 +412,20 @@ The experiments are designed to evaluate SRP as a semantic governance framework 
 
 The paper applies the same separation principle to its own evaluation process: evidence generation, evidence validation, and claim promotion are treated as distinct stages.
 
-The experiments are organized into four layers. First, core governance validation checks whether SRP can observe state, identify evaluated boundaries, constrain optimization, enforce authority separation, verify protocol properties, and reject injected invalid transitions. Second, implementation validation studies evaluate how SRP behaves when instantiated through reconstruction and parameter settings. Third, robustness studies test whether the governance semantics remain consistent across the evaluated workloads, representations, and storage backends. Fourth, external validation checks whether the same frozen contract can support paper-facing evidence generation.
+The experiment chapter is summarized below for quick review:
+
+| Experiment | Question | Evidence |
+| --- | --- | --- |
+| Core Governance Validation | Can SRP constrain semantic transitions? | boundary checks and property verification |
+| Component Ablation and Failure Injection | Are governance components necessary? | invalid-transition containment and rollback behavior |
+| Reconstruction Case Study | Can governed reconstruction preserve structure? | relation-closure recovery comparisons |
+| LLM-based Semantic Transition Integration | Can proposal sources be governed without authority transfer? | direct-write comparison and scenario admission |
+| Transition Configuration Sensitivity | How does the governed operating region move? | parameter sweep and tradeoff surface |
+| Runtime Cost Analysis | What is the measurable overhead of governance? | trace timing and relative overhead |
+| Robustness | Do governance semantics stay stable? | cross-workload and backend checks |
+| External Validation | Can the same contract support external workload evidence? | LongMemEval calibration and scorer separation |
+
+The experiments are organized into six layers. First, core governance validation checks whether SRP can observe state, identify evaluated boundaries, constrain optimization, enforce authority separation, verify protocol properties, and reject injected invalid transitions. Second, implementation validation studies evaluate how SRP behaves when instantiated through reconstruction and parameter settings. Third, LLM-based semantic transition integration checks whether proposal sources can be governed without direct mutation authority. Fourth, transition sensitivity and runtime-cost analysis measure how governed transitions move across fidelity-cost regions and what overhead the governance boundary adds. Fifth, robustness studies test whether the governance semantics remain consistent across the evaluated workloads, representations, and storage backends. Sixth, external validation checks whether the same frozen contract can support paper-facing evidence generation.
 
 The detailed density sweep, boundary generalization study, and full LongMemEval calibration traces are documented in the appendix and review report rather than repeated here.
 
@@ -395,6 +443,8 @@ The research questions are grouped as follows:
 | --- | --- |
 | Governance | Can SRP observe variables, bound changes, and strengthen verification without transferring authority? |
 | Implementation | Can governed reconstruction preserve structure under repeated runs and parameter shifts? |
+| LLM integration | Can LLM proposals be treated as untrusted semantic transition candidates without direct write authority? |
+| Cost | What is the measurable runtime overhead of the governance boundary? |
 | Robustness | Do governance semantics stay stable across workloads, representations, and backends? |
 | External validation | Can the frozen contract support calibration and scorer alignment under an auditable boundary? |
 
@@ -411,13 +461,13 @@ The main governance chain is:
 
 Semantic observability collects repeated transition observations over the frozen parameter axes `activation_threshold`, `recovery_min_evidence`, `preserve_evidence`, and `archive_relations`. The measurements indicate that the transition variables are explicit and reproducible before optimization decisions are introduced.
 
-Boundary validation uses invariant checking, closure validation, and replay equivalence to identify the evaluated feasible region. The main result is a stable boundary over the evaluated density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
+Boundary validation uses invariant checking, closure validation, and replay equivalence to characterize the evaluated feasible region. The main result is a stable boundary over the evaluated density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
 
 Constrained optimization compares SRP with a naive full-grid sweep over the same candidate space. SRP reaches the same top objective while reducing the search budget by 60 percent, which indicates that the validated boundary is operationally useful.
 
 The evidence-controlled governance check merges the previous verification and boundary-enforcement slices. Vector evidence plus semantic evidence improves verification quality, and the authority-violation slice still ends with a zero final accept rate. In short, evidence can improve verification, but it does not override governance in the evaluated settings.
 
-Protocol property verification closes the core governance chain by checking transition safety, authority non-escalation, recommendation-execution separation, and replay consistency under the frozen contract. Negative transition injection provides the complementary negative test: invalid transitions remain rejected under full SRP, while weakened variants accept some injected cases and therefore expose the need for the governance gate.
+Protocol property verification closes the core governance chain by checking transition admissibility, authority non-escalation, recommendation-execution separation, and replay consistency under the frozen contract. Negative transition injection provides the complementary negative test: invalid transitions remain rejected under full SRP, while weakened variants accept some injected cases and therefore expose the need for the governance gate.
 
 The core governance chain can be summarized as follows:
 
@@ -483,7 +533,83 @@ The summary view is:
 #### 4.2.4 Interpretation
 The phase indicates that relation-aware recovery changes the preservation profile, but it remains an implementation instance rather than the framework definition. The key point is not that recovery is the primary contribution, but that SRP-controlled transition constraints shape how semantic structure is preserved during reconstruction.
 
-### 4.3 Transition Configuration Sensitivity
+### 4.3 LLM-based Semantic Transition Integration
+
+This evaluation studies whether SRP can govern semantic transitions proposed by an LLM without granting the proposal mechanism direct mutation authority. The paper-facing integration run uses a deterministic scripted proposal source so the same transition surface can be inspected reproducibly; the local-model backend remains available in the artifact interface for future runs.
+
+#### 4.3.1 Purpose
+The purpose of this evaluation is to test admission control for LLM-generated proposals, not to improve proposal generation itself. SRP should accept supported updates, reject unsupported or contradictory updates, and preserve authority boundaries regardless of the proposal source.
+
+#### 4.3.2 Setup
+The evaluation follows a simple proposal-to-state pipeline:
+
+```text
+LLM Proposal
+      |
+      v
+TransitionCase
+      |
+      v
+SRP Validation
+      |
+      v
+Governance Decision
+      |
+      v
+Semantic State Update
+```
+
+The comparison is intentionally small:
+
+| Method | Description |
+| --- | --- |
+| Direct Write | Proposal output directly modifies state |
+| LLM + SRP | Proposal output is checked by SRP before mutation |
+
+#### 4.3.3 Main Results
+The main result is that direct write accepts every transition proposal, while SRP rejects unsupported mutations and preserves rollback correctness under the same contract.
+
+| Method | Invalid Accept Rate | State Corruption | Authority Escalation | Rollback Correctness |
+| --- | ---: | ---: | ---: | ---: |
+| Direct Write | 1.000000 | 1.000000 | 0.000000 | fail |
+| LLM + SRP | 0.000000 | 0.000000 | 0.000000 | pass |
+
+The proposal source in the paper-facing run parsed and aligned cleanly with the reference transition shape, so the discriminating signal is the governance boundary rather than proposal parsing quality.
+
+Authority escalation remains zero in this minimal slice because the scenarios exercise invalid mutation rather than explicit authority escalation; the key signals here are invalid acceptance, state corruption, and rollback correctness.
+
+#### 4.3.4 Failure Cases
+The following cases show the admission boundary directly:
+
+| Scenario | Direct Write | SRP |
+| --- | --- | --- |
+| valid_update | accept | accept |
+| unsupported_update | accept | reject |
+| contradictory_update | accept | reject |
+
+These cases illustrate that SRP constrains admission decisions rather than improving proposal generation itself.
+
+#### 4.3.5 Runtime Cost
+Latency is recorded in `TransitionTrace` as observational metadata, and the same trace schema captures `proposal`, `validation`, `evidence`, `governance`, `commit`, and `total` timing. In the paper-facing scripted run, the proposal stage is zero by construction and the governance boundary adds a small but measurable overhead relative to direct write.
+
+| Stage | Mean ms |
+| --- | ---: |
+| Proposal generation | 0.000000 |
+| Validation | 0.000700 |
+| Evidence evaluation | 0.001033 |
+| Governance decision | 0.001133 |
+| State commit | 0.003467 |
+| Total transition latency | 0.007867 |
+
+Relative to direct write in the same run, the measured overhead is:
+
+```text
+Relative overhead = (T_SRP - T_direct) / T_direct
+```
+
+For this deterministic integration slice, the observed relative overhead is 78.788 percent.
+
+### 4.4 Transition Configuration Sensitivity
 
 This evaluation asks how SRP parameters move the system across fidelity-cost tradeoff regions while keeping the recovery strategy fixed.
 
@@ -515,7 +641,7 @@ The measured sweep makes the pattern concrete:
 
 The recommendation-stability result is folded into this section: the recommendation was fully consistent across 10 seeds under the frozen workload, objective, and evidence backend. That stability result is the baseline that makes the sensitivity sweep interpretable.
 
-### 4.4 Robustness
+### 4.5 Robustness
 
 This evaluation asks whether SRP preserves its governance semantics across the evaluated semantic workloads rather than only on the SRP-shaped prototype.
 
@@ -555,7 +681,7 @@ Backend robustness indicates the same stability across storage backends:
 
 Taken together, these evaluations provide evidence that SRP's governance semantics remained consistent across the tested workloads, representations, and storage backends.
 
-### 4.5 External Evidence Package Validation
+### 4.6 External Evidence Package Validation
 
 The external validation work is split into calibration and evidence.
 
@@ -592,7 +718,7 @@ The reality check preserves the official task scorer while co-reporting SRP diag
 | Artifact | Runtime integrity | verified |
 | Artifact | Dataset integrity | verified |
 
-The runtime manifest, dataset fingerprint, and report fingerprint are recorded in the appendix. The result is evidence that external semantic workloads can be routed through the SRP governance pipeline while preserving official scorer separation and reproducible artifact generation. Larger-scale validation is still required before any stronger general claim is made.
+The runtime manifest, dataset fingerprint, and report fingerprint are recorded in the appendix. The result provides evidence that SRP governance interfaces can be instantiated on external semantic workloads while preserving official scorer separation and reproducible artifact generation. Larger-scale validation is still required before any stronger general claim is made.
 
 ## 5. Discussion
 
@@ -613,6 +739,7 @@ This separation distinguishes semantic generation from semantic authority. A gen
 Its objective is to govern semantic state evolution across different underlying representation and generation mechanisms. The current evaluation uses controlled semantic representations to isolate governance properties, while LLM-generated transitions represent a compatible future deployment scenario rather than a prerequisite for the framework itself.
 
 This framing explains the experimental pattern: semantic state variables can be observed, feasible regions can be identified and frozen, constrained optimization can operate inside an evaluated region without becoming a control mechanism, and evidence escalation can strengthen verification without transferring authority. The broader evaluations provide evidence that the same governance semantics remained consistent across the evaluated workloads, representations, and implementations. Recovery and reconstruction remain important implementation cases, but the framework claim is about governing semantic transitions.
+The LLM-based semantic transition integration section shows the same boundary in a concrete proposal-to-state pipeline: the proposal source can vary, but mutation authority still remains external to the proposal mechanism.
 
 The external validation results reinforce the same lesson. Calibration and evidence are separated. Scorer alignment is treated as an auditable boundary. The evidence package is accepted only under a frozen contract, not because the system is universally optimal.
 
@@ -632,9 +759,10 @@ Future work should focus on provenance-aware governance, confidence calibration,
 
 ## 7. Conclusion
 
-SRP provides a governance-first framework for semantic transition. It separates observation, validation, optimization, evidence, governance, and execution so that semantic state can change only within evaluated boundaries. The experiments provide evidence that semantic transition variables can be observed, feasible regions can be identified and frozen, optimization can be constrained, evidence can strengthen verification without transferring authority, and SRP-controlled transitions can preserve semantic structure through the evaluated recovery implementations and workloads.
+SRP provides a governance-first semantic runtime framework for semantic transition. It separates observation, validation, optimization, evidence, governance, and execution so that semantic state can change only within evaluated boundaries. The experiments provide evidence that semantic transition variables can be observed, feasible regions can be identified and frozen, optimization can be constrained, evidence can strengthen verification without transferring authority, and SRP-controlled transitions can preserve evaluated semantic structure through the tested recovery implementations and workloads.
 
-The main paper-facing claim is that semantic runtime governance is a first-class control problem: semantic evolution can be represented as measurable, bounded, auditable, and governable under a frozen evaluation contract in the evaluated settings. Recovery and reconstruction are examples of SRP-controlled behaviors, and SRP provides a governance boundary for semantic state evolution under explicit evidence and authority constraints.
+The main paper-facing claim is that semantic runtime governance is a first-class control problem: semantic evolution can be represented as measurable, bounded, auditable, and governable under a frozen evaluation contract in the evaluated settings. Recovery and reconstruction are examples of SRP-controlled behaviors, and SRP provides a governance boundary for semantic state evolution under explicit evidence and authority constraints. The runtime integration evidence family further supports insertion feasibility as appendix-grade evidence, but it does not establish a complete production runtime system.
+LLM-generated proposals are another controlled input to that same boundary, not a separate authority channel.
 
 ## References (selected)
 
@@ -687,15 +815,16 @@ The current snapshot also contains supporting artifacts that remain appendix-gra
 
 ### A.3 Claim-to-Evidence Mapping
 
-The detailed claim-to-evidence mapping is maintained in `audit/SRP_CLAIM_EVIDENCE_MAP_V1.md`.
+The detailed claim-to-evidence mapping is maintained in `audit/CLAIM_EVIDENCE_MAP.md`.
 That document should be treated as the claim ledger for the current release branch.
 
 In brief:
 
-- authority separation is the strongest currently trusted claim
-- feasible-region validation is appendix-supported
-- LongMemEval is external-validation support, not refreshed main evidence
-- cross-workload robustness and component-level ablation remain under-supported in the current snapshot
+- authority separation and transition preservation are the strongest currently trusted claims
+- feasible-region validation, component-level ablation, and LLM transition governance are paper-supported through the runtime governance chapter
+- runtime overhead is supported through trace timing and relative overhead reporting
+- LongMemEval remains external-validation support, not refreshed main evidence
+- cross-workload robustness remains under-supported in the current snapshot
 
 ### A.4 Reproduction Entry Points
 
@@ -777,3 +906,4 @@ Current RC state is still clean:
 - wording frozen
 
 If you want one last mechanical sweep, the only remaining useful thing is a final PDF render / visual check for figure readability and equation layout.
+

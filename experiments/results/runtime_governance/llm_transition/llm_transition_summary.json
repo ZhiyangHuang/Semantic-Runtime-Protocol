@@ -1,0 +1,92 @@
+{
+  "scenario_count": 3,
+  "record_count": 6,
+  "proposal_parse_rate": 1.0,
+  "proposal_alignment_rate": 1.0,
+  "contradiction_rate": 0.3333333333333333,
+  "srp_metrics": {
+    "invalid_accept_rate": 0.0,
+    "state_corruption_rate": 0.0,
+    "authority_escalation_rate": 0.0,
+    "rollback_success_rate": 1.0,
+    "verification_delta": 0.375,
+    "accepted_rate": 0.3333333333333333,
+    "rejected_rate": 0.6666666666666666
+  },
+  "direct_write_metrics": {
+    "invalid_accept_rate": 1.0,
+    "state_corruption_rate": 1.0,
+    "authority_escalation_rate": 0.0,
+    "rollback_success_rate": 0.0,
+    "verification_delta": 0.7,
+    "accepted_rate": 1.0,
+    "rejected_rate": 0.0
+  },
+  "srp_latency": {
+    "mean_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0008,
+      "evidence_ms": 0.001,
+      "governance_ms": 0.0011666666666666668,
+      "commit_ms": 0.0036,
+      "total_ms": 0.007933333333333334
+    },
+    "p95_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0011,
+      "evidence_ms": 0.0012,
+      "governance_ms": 0.0014,
+      "commit_ms": 0.0052,
+      "total_ms": 0.0108
+    },
+    "max_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0011,
+      "evidence_ms": 0.0012,
+      "governance_ms": 0.0014,
+      "commit_ms": 0.0052,
+      "total_ms": 0.0108
+    },
+    "sample_count": 3
+  },
+  "direct_write_latency": {
+    "mean_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0,
+      "evidence_ms": 0.0,
+      "governance_ms": 0.0,
+      "commit_ms": 0.004333333333333333,
+      "total_ms": 0.004333333333333333
+    },
+    "p95_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0,
+      "evidence_ms": 0.0,
+      "governance_ms": 0.0,
+      "commit_ms": 0.005,
+      "total_ms": 0.005
+    },
+    "max_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0,
+      "evidence_ms": 0.0,
+      "governance_ms": 0.0,
+      "commit_ms": 0.005,
+      "total_ms": 0.005
+    },
+    "sample_count": 3
+  },
+  "latency_overhead": {
+    "srp_mean_total_ms": 0.007933333333333334,
+    "direct_mean_total_ms": 0.004333333333333333,
+    "absolute_overhead_ms": 0.0036000000000000008,
+    "relative_overhead": 0.830769230769231,
+    "relative_overhead_percent": 83.07692307692311
+  },
+  "proposal_stats": {
+    "proposal_count": 3,
+    "parsed_count": 3,
+    "alignment_count": 3,
+    "contradiction_count": 1
+  }
+}

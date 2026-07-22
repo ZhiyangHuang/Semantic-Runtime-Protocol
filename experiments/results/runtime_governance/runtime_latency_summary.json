@@ -1,0 +1,27 @@
+{
+  "mean_ms": {
+    "proposal_ms": 0.0,
+    "validation_ms": 0.00027936507936507935,
+    "evidence_ms": 0.000669047619047619,
+    "governance_ms": 0.0006880952380952381,
+    "commit_ms": 0.002338888888888889,
+    "total_ms": 0.005143650793650794
+  },
+  "p95_ms": {
+    "proposal_ms": 0.0,
+    "validation_ms": 0.0007,
+    "evidence_ms": 0.0011,
+    "governance_ms": 0.0013,
+    "commit_ms": 0.005,
+    "total_ms": 0.0098
+  },
+  "max_ms": {
+    "proposal_ms": 0.0,
+    "validation_ms": 0.0025,
+    "evidence_ms": 0.004,
+    "governance_ms": 0.0251,
+    "commit_ms": 0.0071,
+    "total_ms": 0.038
+  },
+  "sample_count": 126
+}

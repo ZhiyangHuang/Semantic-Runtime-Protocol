@@ -1,0 +1,3825 @@
+{
+  "contract": {
+    "case_schema": "transition_case.v1",
+    "result_schema": "governance_result.v1"
+  },
+  "records": [
+    {
+      "variant": "full_srp",
+      "policy": {
+        "name": "full_srp",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_low_authority",
+          "content": "semantic_state::low_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_low_authority",
+          "scenario": "evidence insufficient and authority unavailable",
+          "failure_modes": [
+            "evidence_insufficient",
+            "authority_violation"
+          ],
+          "notes": [
+            "This is the most restrictive boundary case."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_low_authority",
+          "evidence_ok": false,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "full_srp",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0025,
+            "evidence_ms": 0.004,
+            "governance_ms": 0.0039,
+            "commit_ms": 0.0069,
+            "total_ms": 0.0241
+          },
+          "metadata": {
+            "policy_name": "full_srp",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "full_srp",
+      "policy": {
+        "name": "full_srp",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_low_authority",
+          "content": "semantic_state::high_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_low_authority",
+          "scenario": "evidence rich but unauthorized",
+          "failure_modes": [
+            "authority_violation"
+          ],
+          "notes": [
+            "Strong evidence does not override missing authority."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "high_evidence_low_authority",
+          "evidence_ok": true,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.975,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "full_srp",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "high_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.002,
+            "evidence_ms": 0.0022,
+            "governance_ms": 0.0023,
+            "commit_ms": 0.0037,
+            "total_ms": 0.012
+          },
+          "metadata": {
+            "policy_name": "full_srp",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "full_srp",
+      "policy": {
+        "name": "full_srp",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_high_authority",
+          "content": "semantic_state::low_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_high_authority",
+          "scenario": "authorized but evidence insufficient",
+          "failure_modes": [
+            "evidence_insufficient"
+          ],
+          "notes": [
+            "Authority alone does not admit a transition."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_high_authority",
+          "evidence_ok": false,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "full_srp",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0009,
+            "evidence_ms": 0.0011,
+            "governance_ms": 0.0012,
+            "commit_ms": 0.0022,
+            "total_ms": 0.0065
+          },
+          "metadata": {
+            "policy_name": "full_srp",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "full_srp",
+      "policy": {
+        "name": "full_srp",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_high_authority",
+          "content": "semantic_state::high_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_high_authority",
+          "scenario": "fully admissible semantic transition",
+          "failure_modes": [],
+          "notes": [
+            "This is the only admissible case in the 2x2 grid."
+          ]
+        },
+        "expected_decision": true,
+        "metadata": {
+          "source_case_id": "high_evidence_high_authority",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "full_srp",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": true
+        },
+        "trace": {
+          "transition_id": "high_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0005,
+            "evidence_ms": 0.0007,
+            "governance_ms": 0.0012,
+            "commit_ms": 0.0051,
+            "total_ms": 0.0098
+          },
+          "metadata": {
+            "policy_name": "full_srp",
+            "expected_decision": true,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "full_srp",
+      "policy": {
+        "name": "full_srp",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "optimization_override",
+          "content": "semantic_state::optimization_override",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::optimization_override::committed",
+            "version": 1,
+            "transition_marker": "optimization_override"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compression_override",
+          "violates_invariant": true,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "optimization_override",
+          "scenario": "optimization pressure would remove provenance",
+          "failure_modes": [
+            "optimization_induced_invalid_transition"
+          ],
+          "notes": [
+            "Optimization is downstream of admissibility, not its source."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "optimization_override",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": false
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.475,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": false,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "full_srp",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "optimization_override",
+          "validation": {
+            "passed": false,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0008,
+            "governance_ms": 0.0251,
+            "commit_ms": 0.007,
+            "total_ms": 0.038
+          },
+          "metadata": {
+            "policy_name": "full_srp",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_governance",
+      "policy": {
+        "name": "no_governance",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_low_authority",
+          "content": "semantic_state::low_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_low_authority",
+          "scenario": "evidence insufficient and authority unavailable",
+          "failure_modes": [
+            "evidence_insufficient",
+            "authority_violation"
+          ],
+          "notes": [
+            "This is the most restrictive boundary case."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_low_authority",
+          "evidence_ok": false,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 0.575,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": true,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "no_governance",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0016,
+            "evidence_ms": 0.0021,
+            "governance_ms": 0.0004,
+            "commit_ms": 0.0071,
+            "total_ms": 0.013
+          },
+          "metadata": {
+            "policy_name": "no_governance",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_governance",
+      "policy": {
+        "name": "no_governance",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_low_authority",
+          "content": "semantic_state::high_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_low_authority",
+          "scenario": "evidence rich but unauthorized",
+          "failure_modes": [
+            "authority_violation"
+          ],
+          "notes": [
+            "Strong evidence does not override missing authority."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "high_evidence_low_authority",
+          "evidence_ok": true,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "no_governance",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "high_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0007,
+            "evidence_ms": 0.0009,
+            "governance_ms": 0.0004,
+            "commit_ms": 0.0035,
+            "total_ms": 0.0068
+          },
+          "metadata": {
+            "policy_name": "no_governance",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_governance",
+      "policy": {
+        "name": "no_governance",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_high_authority",
+          "content": "semantic_state::low_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_high_authority",
+          "scenario": "authorized but evidence insufficient",
+          "failure_modes": [
+            "evidence_insufficient"
+          ],
+          "notes": [
+            "Authority alone does not admit a transition."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_high_authority",
+          "evidence_ok": false,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 0.575,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_governance",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0004,
+            "evidence_ms": 0.0007,
+            "governance_ms": 0.0002,
+            "commit_ms": 0.0027,
+            "total_ms": 0.005
+          },
+          "metadata": {
+            "policy_name": "no_governance",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_governance",
+      "policy": {
+        "name": "no_governance",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_high_authority",
+          "content": "semantic_state::high_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_high_authority",
+          "scenario": "fully admissible semantic transition",
+          "failure_modes": [],
+          "notes": [
+            "This is the only admissible case in the 2x2 grid."
+          ]
+        },
+        "expected_decision": true,
+        "metadata": {
+          "source_case_id": "high_evidence_high_authority",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_governance",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": true
+        },
+        "trace": {
+          "transition_id": "high_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0006,
+            "governance_ms": 0.0001,
+            "commit_ms": 0.0026,
+            "total_ms": 0.0048
+          },
+          "metadata": {
+            "policy_name": "no_governance",
+            "expected_decision": true,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_governance",
+      "policy": {
+        "name": "no_governance",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "optimization_override",
+          "content": "semantic_state::optimization_override",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::optimization_override::committed",
+            "version": 1,
+            "transition_marker": "optimization_override"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compression_override",
+          "violates_invariant": true,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "optimization_override",
+          "scenario": "optimization pressure would remove provenance",
+          "failure_modes": [
+            "optimization_induced_invalid_transition"
+          ],
+          "notes": [
+            "Optimization is downstream of admissibility, not its source."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "optimization_override",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": false
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 0.475,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": false,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_governance",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "optimization_override",
+          "validation": {
+            "passed": false,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0006,
+            "governance_ms": 0.0002,
+            "commit_ms": 0.0024,
+            "total_ms": 0.0045
+          },
+          "metadata": {
+            "policy_name": "no_governance",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "evidence_as_authority",
+      "policy": {
+        "name": "evidence_as_authority",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": true,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_low_authority",
+          "content": "semantic_state::low_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_low_authority",
+          "scenario": "evidence insufficient and authority unavailable",
+          "failure_modes": [
+            "evidence_insufficient",
+            "authority_violation"
+          ],
+          "notes": [
+            "This is the most restrictive boundary case."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_low_authority",
+          "evidence_ok": false,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "evidence_as_authority",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": true
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0007,
+            "evidence_ms": 0.001,
+            "governance_ms": 0.0015,
+            "commit_ms": 0.0023,
+            "total_ms": 0.007
+          },
+          "metadata": {
+            "policy_name": "evidence_as_authority",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "evidence_as_authority",
+      "policy": {
+        "name": "evidence_as_authority",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": true,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_low_authority",
+          "content": "semantic_state::high_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_low_authority",
+          "scenario": "evidence rich but unauthorized",
+          "failure_modes": [
+            "authority_violation"
+          ],
+          "notes": [
+            "Strong evidence does not override missing authority."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "high_evidence_low_authority",
+          "evidence_ok": true,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "evidence_as_authority",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "high_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": true
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0005,
+            "evidence_ms": 0.0008,
+            "governance_ms": 0.001,
+            "commit_ms": 0.003,
+            "total_ms": 0.0064
+          },
+          "metadata": {
+            "policy_name": "evidence_as_authority",
+            "expected_decision": false,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "evidence_as_authority",
+      "policy": {
+        "name": "evidence_as_authority",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": true,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_high_authority",
+          "content": "semantic_state::low_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_high_authority",
+          "scenario": "authorized but evidence insufficient",
+          "failure_modes": [
+            "evidence_insufficient"
+          ],
+          "notes": [
+            "Authority alone does not admit a transition."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_high_authority",
+          "evidence_ok": false,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "evidence_as_authority",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": true
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0003,
+            "evidence_ms": 0.0007,
+            "governance_ms": 0.0009,
+            "commit_ms": 0.0015,
+            "total_ms": 0.0045
+          },
+          "metadata": {
+            "policy_name": "evidence_as_authority",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "evidence_as_authority",
+      "policy": {
+        "name": "evidence_as_authority",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": true,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_high_authority",
+          "content": "semantic_state::high_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_high_authority",
+          "scenario": "fully admissible semantic transition",
+          "failure_modes": [],
+          "notes": [
+            "This is the only admissible case in the 2x2 grid."
+          ]
+        },
+        "expected_decision": true,
+        "metadata": {
+          "source_case_id": "high_evidence_high_authority",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "evidence_as_authority",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": true
+        },
+        "trace": {
+          "transition_id": "high_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": true
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0005,
+            "governance_ms": 0.0007,
+            "commit_ms": 0.0024,
+            "total_ms": 0.0049
+          },
+          "metadata": {
+            "policy_name": "evidence_as_authority",
+            "expected_decision": true,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "evidence_as_authority",
+      "policy": {
+        "name": "evidence_as_authority",
+        "enable_validation": true,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": true,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "optimization_override",
+          "content": "semantic_state::optimization_override",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::optimization_override::committed",
+            "version": 1,
+            "transition_marker": "optimization_override"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compression_override",
+          "violates_invariant": true,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "optimization_override",
+          "scenario": "optimization pressure would remove provenance",
+          "failure_modes": [
+            "optimization_induced_invalid_transition"
+          ],
+          "notes": [
+            "Optimization is downstream of admissibility, not its source."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "optimization_override",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": false
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.475,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": false,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "evidence_as_authority",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "optimization_override",
+          "validation": {
+            "passed": false,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": true
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0005,
+            "governance_ms": 0.0002,
+            "commit_ms": 0.0012,
+            "total_ms": 0.0032
+          },
+          "metadata": {
+            "policy_name": "evidence_as_authority",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_validation",
+      "policy": {
+        "name": "no_validation",
+        "enable_validation": false,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_low_authority",
+          "content": "semantic_state::low_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_low_authority",
+          "scenario": "evidence insufficient and authority unavailable",
+          "failure_modes": [
+            "evidence_insufficient",
+            "authority_violation"
+          ],
+          "notes": [
+            "This is the most restrictive boundary case."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_low_authority",
+          "evidence_ok": false,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "no_validation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0009,
+            "governance_ms": 0.001,
+            "commit_ms": 0.0021,
+            "total_ms": 0.0054
+          },
+          "metadata": {
+            "policy_name": "no_validation",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_validation",
+      "policy": {
+        "name": "no_validation",
+        "enable_validation": false,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_low_authority",
+          "content": "semantic_state::high_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_low_authority",
+          "scenario": "evidence rich but unauthorized",
+          "failure_modes": [
+            "authority_violation"
+          ],
+          "notes": [
+            "Strong evidence does not override missing authority."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "high_evidence_low_authority",
+          "evidence_ok": true,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.975,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "no_validation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "high_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0007,
+            "governance_ms": 0.0009,
+            "commit_ms": 0.0015,
+            "total_ms": 0.0043
+          },
+          "metadata": {
+            "policy_name": "no_validation",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_validation",
+      "policy": {
+        "name": "no_validation",
+        "enable_validation": false,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_high_authority",
+          "content": "semantic_state::low_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_high_authority",
+          "scenario": "authorized but evidence insufficient",
+          "failure_modes": [
+            "evidence_insufficient"
+          ],
+          "notes": [
+            "Authority alone does not admit a transition."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_high_authority",
+          "evidence_ok": false,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": false,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_validation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": false,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0005,
+            "governance_ms": 0.0007,
+            "commit_ms": 0.0013,
+            "total_ms": 0.0036
+          },
+          "metadata": {
+            "policy_name": "no_validation",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_validation",
+      "policy": {
+        "name": "no_validation",
+        "enable_validation": false,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_high_authority",
+          "content": "semantic_state::high_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_high_authority",
+          "scenario": "fully admissible semantic transition",
+          "failure_modes": [],
+          "notes": [
+            "This is the only admissible case in the 2x2 grid."
+          ]
+        },
+        "expected_decision": true,
+        "metadata": {
+          "source_case_id": "high_evidence_high_authority",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_validation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": true
+        },
+        "trace": {
+          "transition_id": "high_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0006,
+            "governance_ms": 0.0007,
+            "commit_ms": 0.0028,
+            "total_ms": 0.0051
+          },
+          "metadata": {
+            "policy_name": "no_validation",
+            "expected_decision": true,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_validation",
+      "policy": {
+        "name": "no_validation",
+        "enable_validation": false,
+        "enable_evidence": true,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "optimization_override",
+          "content": "semantic_state::optimization_override",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::optimization_override::committed",
+            "version": 1,
+            "transition_marker": "optimization_override"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compression_override",
+          "violates_invariant": true,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "optimization_override",
+          "scenario": "optimization pressure would remove provenance",
+          "failure_modes": [
+            "optimization_induced_invalid_transition"
+          ],
+          "notes": [
+            "Optimization is downstream of admissibility, not its source."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "optimization_override",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": false
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_validation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "optimization_override",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": true
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0005,
+            "governance_ms": 0.0007,
+            "commit_ms": 0.0023,
+            "total_ms": 0.0048
+          },
+          "metadata": {
+            "policy_name": "no_validation",
+            "expected_decision": false,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_evidence",
+      "policy": {
+        "name": "no_evidence",
+        "enable_validation": true,
+        "enable_evidence": false,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_low_authority",
+          "content": "semantic_state::low_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_low_authority",
+          "scenario": "evidence insufficient and authority unavailable",
+          "failure_modes": [
+            "evidence_insufficient",
+            "authority_violation"
+          ],
+          "notes": [
+            "This is the most restrictive boundary case."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_low_authority",
+          "evidence_ok": false,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.575,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "no_evidence",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0006,
+            "evidence_ms": 0.0009,
+            "governance_ms": 0.0014,
+            "commit_ms": 0.0022,
+            "total_ms": 0.0064
+          },
+          "metadata": {
+            "policy_name": "no_evidence",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_evidence",
+      "policy": {
+        "name": "no_evidence",
+        "enable_validation": true,
+        "enable_evidence": false,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_low_authority",
+          "content": "semantic_state::high_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_low_authority",
+          "scenario": "evidence rich but unauthorized",
+          "failure_modes": [
+            "authority_violation"
+          ],
+          "notes": [
+            "Strong evidence does not override missing authority."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "high_evidence_low_authority",
+          "evidence_ok": true,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.975,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "no_evidence",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "high_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0004,
+            "evidence_ms": 0.0007,
+            "governance_ms": 0.0013,
+            "commit_ms": 0.0015,
+            "total_ms": 0.0051
+          },
+          "metadata": {
+            "policy_name": "no_evidence",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_evidence",
+      "policy": {
+        "name": "no_evidence",
+        "enable_validation": true,
+        "enable_evidence": false,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_high_authority",
+          "content": "semantic_state::low_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_high_authority",
+          "scenario": "authorized but evidence insufficient",
+          "failure_modes": [
+            "evidence_insufficient"
+          ],
+          "notes": [
+            "Authority alone does not admit a transition."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_high_authority",
+          "evidence_ok": false,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_evidence",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0003,
+            "evidence_ms": 0.0006,
+            "governance_ms": 0.0007,
+            "commit_ms": 0.0026,
+            "total_ms": 0.0053
+          },
+          "metadata": {
+            "policy_name": "no_evidence",
+            "expected_decision": false,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_evidence",
+      "policy": {
+        "name": "no_evidence",
+        "enable_validation": true,
+        "enable_evidence": false,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_high_authority",
+          "content": "semantic_state::high_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_high_authority",
+          "scenario": "fully admissible semantic transition",
+          "failure_modes": [],
+          "notes": [
+            "This is the only admissible case in the 2x2 grid."
+          ]
+        },
+        "expected_decision": true,
+        "metadata": {
+          "source_case_id": "high_evidence_high_authority",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 1.0,
+        "decision_reason": "transition admitted (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_evidence",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": true
+        },
+        "trace": {
+          "transition_id": "high_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0003,
+            "evidence_ms": 0.0006,
+            "governance_ms": 0.0006,
+            "commit_ms": 0.0035,
+            "total_ms": 0.0061
+          },
+          "metadata": {
+            "policy_name": "no_evidence",
+            "expected_decision": true,
+            "decision_reason": "transition admitted"
+          }
+        }
+      }
+    },
+    {
+      "variant": "no_evidence",
+      "policy": {
+        "name": "no_evidence",
+        "enable_validation": true,
+        "enable_evidence": false,
+        "enable_governance": true,
+        "evidence_controls_authority": false,
+        "require_authority": true,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "optimization_override",
+          "content": "semantic_state::optimization_override",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::optimization_override::committed",
+            "version": 1,
+            "transition_marker": "optimization_override"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compression_override",
+          "violates_invariant": true,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "optimization_override",
+          "scenario": "optimization pressure would remove provenance",
+          "failure_modes": [
+            "optimization_induced_invalid_transition"
+          ],
+          "notes": [
+            "Optimization is downstream of admissibility, not its source."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "optimization_override",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": false
+        }
+      },
+      "result": {
+        "accepted": false,
+        "state_changed": false,
+        "authority_changed": false,
+        "rollback_valid": true,
+        "verification_score": 0.475,
+        "decision_reason": "transition rejected (reject)",
+        "metrics": {
+          "validation_passed": false,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": false,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "no_evidence",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "optimization_override",
+          "validation": {
+            "passed": false,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": true
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "reject",
+            "accepted": false,
+            "authority_passed": false,
+            "governance_enabled": true,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": false,
+            "authority_changed": false,
+            "rollback_valid": true,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0006,
+            "governance_ms": 0.0001,
+            "commit_ms": 0.0013,
+            "total_ms": 0.0033
+          },
+          "metadata": {
+            "policy_name": "no_evidence",
+            "expected_decision": false,
+            "decision_reason": "transition rejected"
+          }
+        }
+      }
+    },
+    {
+      "variant": "direct_mutation",
+      "policy": {
+        "name": "direct_mutation",
+        "enable_validation": false,
+        "enable_evidence": false,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_low_authority",
+          "content": "semantic_state::low_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_low_authority",
+          "scenario": "evidence insufficient and authority unavailable",
+          "failure_modes": [
+            "evidence_insufficient",
+            "authority_violation"
+          ],
+          "notes": [
+            "This is the most restrictive boundary case."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_low_authority",
+          "evidence_ok": false,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "direct_mutation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0002,
+            "evidence_ms": 0.0016,
+            "governance_ms": 0.0004,
+            "commit_ms": 0.0061,
+            "total_ms": 0.011
+          },
+          "metadata": {
+            "policy_name": "direct_mutation",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "direct_mutation",
+      "policy": {
+        "name": "direct_mutation",
+        "enable_validation": false,
+        "enable_evidence": false,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_low_authority",
+          "content": "semantic_state::high_evidence_low_authority",
+          "authority_level": "low",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_low_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_low_authority"
+          },
+          "requested_authority": "admin",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_low_authority",
+          "scenario": "evidence rich but unauthorized",
+          "failure_modes": [
+            "authority_violation"
+          ],
+          "notes": [
+            "Strong evidence does not override missing authority."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "high_evidence_low_authority",
+          "evidence_ok": true,
+          "authority_ok": false,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "low",
+          "state_after_authority": "low"
+        },
+        "metadata": {
+          "policy_name": "direct_mutation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "high_evidence_low_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "low",
+            "state_after_authority": "low"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0011,
+            "governance_ms": 0.0002,
+            "commit_ms": 0.0036,
+            "total_ms": 0.0061
+          },
+          "metadata": {
+            "policy_name": "direct_mutation",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "direct_mutation",
+      "policy": {
+        "name": "direct_mutation",
+        "enable_validation": false,
+        "enable_evidence": false,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "low_evidence_high_authority",
+          "content": "semantic_state::low_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "low"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::low_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "low_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "low"
+        },
+        "evidence": {
+          "level": "low",
+          "confidence": 0.15,
+          "evidence_ok": false
+        },
+        "governance_policy": {
+          "case_id": "low_evidence_high_authority",
+          "scenario": "authorized but evidence insufficient",
+          "failure_modes": [
+            "evidence_insufficient"
+          ],
+          "notes": [
+            "Authority alone does not admit a transition."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "low_evidence_high_authority",
+          "evidence_ok": false,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.15,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "direct_mutation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "low_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.15,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0008,
+            "governance_ms": 0.0001,
+            "commit_ms": 0.0026,
+            "total_ms": 0.0046
+          },
+          "metadata": {
+            "policy_name": "direct_mutation",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "direct_mutation",
+      "policy": {
+        "name": "direct_mutation",
+        "enable_validation": false,
+        "enable_evidence": false,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "high_evidence_high_authority",
+          "content": "semantic_state::high_evidence_high_authority",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::high_evidence_high_authority::committed",
+            "version": 1,
+            "transition_marker": "high_evidence_high_authority"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compatible",
+          "violates_invariant": false,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "high_evidence_high_authority",
+          "scenario": "fully admissible semantic transition",
+          "failure_modes": [],
+          "notes": [
+            "This is the only admissible case in the 2x2 grid."
+          ]
+        },
+        "expected_decision": true,
+        "metadata": {
+          "source_case_id": "high_evidence_high_authority",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": true
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "direct_mutation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": true
+        },
+        "trace": {
+          "transition_id": "high_evidence_high_authority",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0001,
+            "evidence_ms": 0.0007,
+            "governance_ms": 0.0001,
+            "commit_ms": 0.0023,
+            "total_ms": 0.0042
+          },
+          "metadata": {
+            "policy_name": "direct_mutation",
+            "expected_decision": true,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    },
+    {
+      "variant": "direct_mutation",
+      "policy": {
+        "name": "direct_mutation",
+        "enable_validation": false,
+        "enable_evidence": false,
+        "enable_governance": false,
+        "evidence_controls_authority": false,
+        "require_authority": false,
+        "evidence_threshold": 0.5,
+        "invariant": {
+          "name": "default_transition_invariant",
+          "description": "Rejects transitions that explicitly flag an invariant violation."
+        },
+        "metadata": {}
+      },
+      "case": {
+        "state_before": {
+          "case_id": "optimization_override",
+          "content": "semantic_state::optimization_override",
+          "authority_level": "high",
+          "version": 0,
+          "evidence_level": "high"
+        },
+        "delta": {
+          "state_patch": {
+            "content": "semantic_state::optimization_override::committed",
+            "version": 1,
+            "transition_marker": "optimization_override"
+          },
+          "requested_authority": "high",
+          "optimization_pressure": "compression_override",
+          "violates_invariant": true,
+          "requested_evidence": "high"
+        },
+        "evidence": {
+          "level": "high",
+          "confidence": 0.95,
+          "evidence_ok": true
+        },
+        "governance_policy": {
+          "case_id": "optimization_override",
+          "scenario": "optimization pressure would remove provenance",
+          "failure_modes": [
+            "optimization_induced_invalid_transition"
+          ],
+          "notes": [
+            "Optimization is downstream of admissibility, not its source."
+          ]
+        },
+        "expected_decision": false,
+        "metadata": {
+          "source_case_id": "optimization_override",
+          "evidence_ok": true,
+          "authority_ok": true,
+          "optimization_ok": false
+        }
+      },
+      "result": {
+        "accepted": true,
+        "state_changed": true,
+        "authority_changed": false,
+        "rollback_valid": false,
+        "verification_score": 1.0,
+        "decision_reason": "governance bypassed by policy (approve)",
+        "metrics": {
+          "validation_passed": true,
+          "evidence_score": 0.95,
+          "evidence_passed": true,
+          "authority_passed": true,
+          "state_before_authority": "high",
+          "state_after_authority": "high"
+        },
+        "metadata": {
+          "policy_name": "direct_mutation",
+          "invariant_name": "default_transition_invariant",
+          "expected_decision": false
+        },
+        "trace": {
+          "transition_id": "optimization_override",
+          "validation": {
+            "passed": true,
+            "invariant_name": "default_transition_invariant",
+            "validation_enabled": false
+          },
+          "evidence": {
+            "score": 0.95,
+            "passed": true,
+            "evidence_enabled": false
+          },
+          "governance": {
+            "decision": "approve",
+            "accepted": true,
+            "authority_passed": true,
+            "governance_enabled": false,
+            "evidence_controls_authority": false
+          },
+          "execution": {
+            "state_changed": true,
+            "authority_changed": false,
+            "rollback_valid": false,
+            "state_before_authority": "high",
+            "state_after_authority": "high"
+          },
+          "timing": {
+            "proposal_ms": 0.0,
+            "validation_ms": 0.0,
+            "evidence_ms": 0.0005,
+            "governance_ms": 0.0,
+            "commit_ms": 0.0023,
+            "total_ms": 0.0045
+          },
+          "metadata": {
+            "policy_name": "direct_mutation",
+            "expected_decision": false,
+            "decision_reason": "governance bypassed by policy"
+          }
+        }
+      }
+    }
+  ],
+  "summary": {
+    "record_count": 30,
+    "case_count": 5,
+    "variant_count": 6,
+    "metrics": {
+      "invalid_accept_rate": 0.4583333333333333,
+      "state_corruption_rate": 0.4583333333333333,
+      "authority_escalation_rate": 0.0,
+      "rollback_success_rate": 0.5416666666666666,
+      "verification_delta": 0.25,
+      "accepted_rate": 0.5666666666666667,
+      "rejected_rate": 0.43333333333333335
+    },
+    "latency": {
+      "mean_ms": {
+        "proposal_ms": 0.0,
+        "validation_ms": 0.00046666666666666666,
+        "evidence_ms": 0.00095,
+        "governance_ms": 0.0016066666666666666,
+        "commit_ms": 0.0030533333333333332,
+        "total_ms": 0.007676666666666667
+      },
+      "p95_ms": {
+        "proposal_ms": 0.0,
+        "validation_ms": 0.002,
+        "evidence_ms": 0.0022,
+        "governance_ms": 0.0039,
+        "commit_ms": 0.007,
+        "total_ms": 0.0241
+      },
+      "max_ms": {
+        "proposal_ms": 0.0,
+        "validation_ms": 0.0025,
+        "evidence_ms": 0.004,
+        "governance_ms": 0.0251,
+        "commit_ms": 0.0071,
+        "total_ms": 0.038
+      },
+      "sample_count": 30
+    },
+    "variants": {
+      "full_srp": {
+        "variant": {
+          "name": "full_srp",
+          "policy": {
+            "name": "full_srp",
+            "enable_validation": true,
+            "enable_evidence": true,
+            "enable_governance": true,
+            "evidence_controls_authority": false,
+            "require_authority": true,
+            "evidence_threshold": 0.5,
+            "invariant": {
+              "name": "default_transition_invariant",
+              "description": "Rejects transitions that explicitly flag an invariant violation."
+            },
+            "metadata": {}
+          },
+          "description": "Validation, evidence, and governance all enabled."
+        },
+        "metrics": {
+          "invalid_accept_rate": 0.0,
+          "state_corruption_rate": 0.0,
+          "authority_escalation_rate": 0.0,
+          "rollback_success_rate": 1.0,
+          "verification_delta": 0.3500000000000001,
+          "accepted_rate": 0.2,
+          "rejected_rate": 0.8
+        },
+        "record_count": 5
+      },
+      "no_governance": {
+        "variant": {
+          "name": "no_governance",
+          "policy": {
+            "name": "no_governance",
+            "enable_validation": true,
+            "enable_evidence": true,
+            "enable_governance": false,
+            "evidence_controls_authority": false,
+            "require_authority": false,
+            "evidence_threshold": 0.5,
+            "invariant": {
+              "name": "default_transition_invariant",
+              "description": "Rejects transitions that explicitly flag an invariant violation."
+            },
+            "metadata": {}
+          },
+          "description": "Validation and evidence stay active but the authorization gate is bypassed."
+        },
+        "metrics": {
+          "invalid_accept_rate": 1.0,
+          "state_corruption_rate": 1.0,
+          "authority_escalation_rate": 0.0,
+          "rollback_success_rate": 0.0,
+          "verification_delta": 0.34375,
+          "accepted_rate": 1.0,
+          "rejected_rate": 0.0
+        },
+        "record_count": 5
+      },
+      "evidence_as_authority": {
+        "variant": {
+          "name": "evidence_as_authority",
+          "policy": {
+            "name": "evidence_as_authority",
+            "enable_validation": true,
+            "enable_evidence": true,
+            "enable_governance": true,
+            "evidence_controls_authority": true,
+            "require_authority": true,
+            "evidence_threshold": 0.5,
+            "invariant": {
+              "name": "default_transition_invariant",
+              "description": "Rejects transitions that explicitly flag an invariant violation."
+            },
+            "metadata": {}
+          },
+          "description": "Evidence is allowed to substitute for missing authority."
+        },
+        "metrics": {
+          "invalid_accept_rate": 0.25,
+          "state_corruption_rate": 0.25,
+          "authority_escalation_rate": 0.0,
+          "rollback_success_rate": 0.75,
+          "verification_delta": 0.34375,
+          "accepted_rate": 0.4,
+          "rejected_rate": 0.6
+        },
+        "record_count": 5
+      },
+      "no_validation": {
+        "variant": {
+          "name": "no_validation",
+          "policy": {
+            "name": "no_validation",
+            "enable_validation": false,
+            "enable_evidence": true,
+            "enable_governance": true,
+            "evidence_controls_authority": false,
+            "require_authority": true,
+            "evidence_threshold": 0.5,
+            "invariant": {
+              "name": "default_transition_invariant",
+              "description": "Rejects transitions that explicitly flag an invariant violation."
+            },
+            "metadata": {}
+          },
+          "description": "Transition invariants are ignored but evidence and governance remain active."
+        },
+        "metrics": {
+          "invalid_accept_rate": 0.25,
+          "state_corruption_rate": 0.25,
+          "authority_escalation_rate": 0.0,
+          "rollback_success_rate": 0.75,
+          "verification_delta": 0.21875,
+          "accepted_rate": 0.4,
+          "rejected_rate": 0.6
+        },
+        "record_count": 5
+      },
+      "no_evidence": {
+        "variant": {
+          "name": "no_evidence",
+          "policy": {
+            "name": "no_evidence",
+            "enable_validation": true,
+            "enable_evidence": false,
+            "enable_governance": true,
+            "evidence_controls_authority": false,
+            "require_authority": true,
+            "evidence_threshold": 0.5,
+            "invariant": {
+              "name": "default_transition_invariant",
+              "description": "Rejects transitions that explicitly flag an invariant violation."
+            },
+            "metadata": {}
+          },
+          "description": "Evidence checks are disabled, but validation and governance remain active."
+        },
+        "metrics": {
+          "invalid_accept_rate": 0.25,
+          "state_corruption_rate": 0.25,
+          "authority_escalation_rate": 0.0,
+          "rollback_success_rate": 0.75,
+          "verification_delta": 0.24375000000000002,
+          "accepted_rate": 0.4,
+          "rejected_rate": 0.6
+        },
+        "record_count": 5
+      },
+      "direct_mutation": {
+        "variant": {
+          "name": "direct_mutation",
+          "policy": {
+            "name": "direct_mutation",
+            "enable_validation": false,
+            "enable_evidence": false,
+            "enable_governance": false,
+            "evidence_controls_authority": false,
+            "require_authority": false,
+            "evidence_threshold": 0.5,
+            "invariant": {
+              "name": "default_transition_invariant",
+              "description": "Rejects transitions that explicitly flag an invariant violation."
+            },
+            "metadata": {}
+          },
+          "description": "All governance gates are bypassed."
+        },
+        "metrics": {
+          "invalid_accept_rate": 1.0,
+          "state_corruption_rate": 1.0,
+          "authority_escalation_rate": 0.0,
+          "rollback_success_rate": 0.0,
+          "verification_delta": 0.0,
+          "accepted_rate": 1.0,
+          "rejected_rate": 0.0
+        },
+        "record_count": 5
+      }
+    }
+  }
+}

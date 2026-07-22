@@ -1,0 +1,223 @@
+{
+  "record_count": 30,
+  "case_count": 5,
+  "variant_count": 6,
+  "metrics": {
+    "invalid_accept_rate": 0.4583333333333333,
+    "state_corruption_rate": 0.4583333333333333,
+    "authority_escalation_rate": 0.0,
+    "rollback_success_rate": 0.5416666666666666,
+    "verification_delta": 0.25,
+    "accepted_rate": 0.5666666666666667,
+    "rejected_rate": 0.43333333333333335
+  },
+  "latency": {
+    "mean_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.00046666666666666666,
+      "evidence_ms": 0.00095,
+      "governance_ms": 0.0016066666666666666,
+      "commit_ms": 0.0030533333333333332,
+      "total_ms": 0.007676666666666667
+    },
+    "p95_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.002,
+      "evidence_ms": 0.0022,
+      "governance_ms": 0.0039,
+      "commit_ms": 0.007,
+      "total_ms": 0.0241
+    },
+    "max_ms": {
+      "proposal_ms": 0.0,
+      "validation_ms": 0.0025,
+      "evidence_ms": 0.004,
+      "governance_ms": 0.0251,
+      "commit_ms": 0.0071,
+      "total_ms": 0.038
+    },
+    "sample_count": 30
+  },
+  "variants": {
+    "full_srp": {
+      "variant": {
+        "name": "full_srp",
+        "policy": {
+          "name": "full_srp",
+          "enable_validation": true,
+          "enable_evidence": true,
+          "enable_governance": true,
+          "evidence_controls_authority": false,
+          "require_authority": true,
+          "evidence_threshold": 0.5,
+          "invariant": {
+            "name": "default_transition_invariant",
+            "description": "Rejects transitions that explicitly flag an invariant violation."
+          },
+          "metadata": {}
+        },
+        "description": "Validation, evidence, and governance all enabled."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.0,
+        "state_corruption_rate": 0.0,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 1.0,
+        "verification_delta": 0.3500000000000001,
+        "accepted_rate": 0.2,
+        "rejected_rate": 0.8
+      },
+      "record_count": 5
+    },
+    "no_governance": {
+      "variant": {
+        "name": "no_governance",
+        "policy": {
+          "name": "no_governance",
+          "enable_validation": true,
+          "enable_evidence": true,
+          "enable_governance": false,
+          "evidence_controls_authority": false,
+          "require_authority": false,
+          "evidence_threshold": 0.5,
+          "invariant": {
+            "name": "default_transition_invariant",
+            "description": "Rejects transitions that explicitly flag an invariant violation."
+          },
+          "metadata": {}
+        },
+        "description": "Validation and evidence stay active but the authorization gate is bypassed."
+      },
+      "metrics": {
+        "invalid_accept_rate": 1.0,
+        "state_corruption_rate": 1.0,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.0,
+        "verification_delta": 0.34375,
+        "accepted_rate": 1.0,
+        "rejected_rate": 0.0
+      },
+      "record_count": 5
+    },
+    "evidence_as_authority": {
+      "variant": {
+        "name": "evidence_as_authority",
+        "policy": {
+          "name": "evidence_as_authority",
+          "enable_validation": true,
+          "enable_evidence": true,
+          "enable_governance": true,
+          "evidence_controls_authority": true,
+          "require_authority": true,
+          "evidence_threshold": 0.5,
+          "invariant": {
+            "name": "default_transition_invariant",
+            "description": "Rejects transitions that explicitly flag an invariant violation."
+          },
+          "metadata": {}
+        },
+        "description": "Evidence is allowed to substitute for missing authority."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.25,
+        "state_corruption_rate": 0.25,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.75,
+        "verification_delta": 0.34375,
+        "accepted_rate": 0.4,
+        "rejected_rate": 0.6
+      },
+      "record_count": 5
+    },
+    "no_validation": {
+      "variant": {
+        "name": "no_validation",
+        "policy": {
+          "name": "no_validation",
+          "enable_validation": false,
+          "enable_evidence": true,
+          "enable_governance": true,
+          "evidence_controls_authority": false,
+          "require_authority": true,
+          "evidence_threshold": 0.5,
+          "invariant": {
+            "name": "default_transition_invariant",
+            "description": "Rejects transitions that explicitly flag an invariant violation."
+          },
+          "metadata": {}
+        },
+        "description": "Transition invariants are ignored but evidence and governance remain active."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.25,
+        "state_corruption_rate": 0.25,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.75,
+        "verification_delta": 0.21875,
+        "accepted_rate": 0.4,
+        "rejected_rate": 0.6
+      },
+      "record_count": 5
+    },
+    "no_evidence": {
+      "variant": {
+        "name": "no_evidence",
+        "policy": {
+          "name": "no_evidence",
+          "enable_validation": true,
+          "enable_evidence": false,
+          "enable_governance": true,
+          "evidence_controls_authority": false,
+          "require_authority": true,
+          "evidence_threshold": 0.5,
+          "invariant": {
+            "name": "default_transition_invariant",
+            "description": "Rejects transitions that explicitly flag an invariant violation."
+          },
+          "metadata": {}
+        },
+        "description": "Evidence checks are disabled, but validation and governance remain active."
+      },
+      "metrics": {
+        "invalid_accept_rate": 0.25,
+        "state_corruption_rate": 0.25,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.75,
+        "verification_delta": 0.24375000000000002,
+        "accepted_rate": 0.4,
+        "rejected_rate": 0.6
+      },
+      "record_count": 5
+    },
+    "direct_mutation": {
+      "variant": {
+        "name": "direct_mutation",
+        "policy": {
+          "name": "direct_mutation",
+          "enable_validation": false,
+          "enable_evidence": false,
+          "enable_governance": false,
+          "evidence_controls_authority": false,
+          "require_authority": false,
+          "evidence_threshold": 0.5,
+          "invariant": {
+            "name": "default_transition_invariant",
+            "description": "Rejects transitions that explicitly flag an invariant violation."
+          },
+          "metadata": {}
+        },
+        "description": "All governance gates are bypassed."
+      },
+      "metrics": {
+        "invalid_accept_rate": 1.0,
+        "state_corruption_rate": 1.0,
+        "authority_escalation_rate": 0.0,
+        "rollback_success_rate": 0.0,
+        "verification_delta": 0.0,
+        "accepted_rate": 1.0,
+        "rejected_rate": 0.0
+      },
+      "record_count": 5
+    }
+  }
+}

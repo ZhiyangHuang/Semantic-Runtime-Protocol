@@ -1,0 +1,12 @@
+{
+  "snapshot_id": "srp-runtime-v1.1-backend-0001",
+  "parent_snapshot": "srp-runtime-v1.1-replay-0001",
+  "evaluation_type": "backend_consistency",
+  "runtime_contract": "srp-runtime-v1.1",
+  "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json",
+  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1addd9d14b8ee2d847fa0894c2e2fabda",
+  "backends": [
+    "deterministic_memory_adapter",
+    "in_memory_graph_store"
+  ]
+}
