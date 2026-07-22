@@ -117,6 +117,25 @@ Roadmap:
 
 - [STFB_IMPLEMENTATION_ROADMAP_V0_1.md](../docs/plans/STFB_IMPLEMENTATION_ROADMAP_V0_1.md)
 
+## External Validation
+
+STFB provides an external validation track for evaluating semantic transition failures in existing benchmark environments.
+
+The external validation track does not modify the core STFB benchmark definition.
+
+Specification:
+
+- [STFB_EXTERNAL_VALIDATION_TEMPLATE_V0_1.md](../docs/plans/STFB_EXTERNAL_VALIDATION_TEMPLATE_V0_1.md)
+- [STFB_EXTERNAL_VALIDATION_V0_1_SPEC.md](../docs/plans/STFB_EXTERNAL_VALIDATION_V0_1_SPEC.md)
+
+Current status:
+
+- Specification: frozen v0.1
+- Initial environments:
+  - LongMemEval
+  - ARC
+- Implementation: deferred
+
 ## License / Contribution
 
 This repository currently contains only the benchmark specification and project structure.

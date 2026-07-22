@@ -18,6 +18,11 @@ def load_instance(path: str | Path) -> Dict[str, Any]:
 
 def _normalize_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
     expected = dict(instance.get("expected", {}))
+    expected_transition = dict(instance.get("expected_transition", {}))
+    if not expected and expected_transition:
+        expected["commit"] = bool(expected_transition.get("should_commit", False))
+        if "valid_state" in expected_transition:
+            expected["valid_state"] = expected_transition["valid_state"]
     if "valid_state" not in expected:
         if expected.get("commit", False):
             expected["valid_state"] = instance.get("proposal", {})
@@ -26,6 +31,10 @@ def _normalize_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
     normalized = dict(instance)
     normalized["expected"] = expected
     return normalized
+
+
+def _instance_identifier(instance: Dict[str, Any]) -> str | None:
+    return instance.get("id") or instance.get("instance_id")
 
 
 def evaluate_instance(instance: Dict[str, Any]) -> Dict[str, Any]:
@@ -67,7 +76,7 @@ def evaluate_episodes(instances: list[Dict[str, Any]]) -> Dict[str, Any]:
         results = evaluate_instance(instance)
         per_instance.append(
             {
-                "id": instance.get("id"),
+                "id": _instance_identifier(instance),
                 "failure_type": instance.get("failure_type"),
                 "results": results,
             }

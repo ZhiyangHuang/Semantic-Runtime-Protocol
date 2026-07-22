@@ -1,0 +1,192 @@
+{
+  "aggregate": {
+    "confidence_threshold": {
+      "avr": 0.5,
+      "iar": 0.5,
+      "instances": 2,
+      "mean_drift": 0.5
+    },
+    "direct_mutation": {
+      "avr": 1.0,
+      "iar": 1.0,
+      "instances": 2,
+      "mean_drift": 1.0
+    },
+    "srp": {
+      "avr": 0.0,
+      "iar": 0.0,
+      "instances": 2,
+      "mean_drift": 0.0
+    }
+  },
+  "instances": [
+    {
+      "failure_type": "temporal_regression",
+      "id": "lme_001",
+      "results": {
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.104167,
+              "retrieved_items": [
+                "u2",
+                "u3"
+              ],
+              "retrieved_relations": [
+                "r1"
+              ]
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "workspace_preference": "standing desks"
+          },
+          "decision": "reject",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "confidence 0.10 < threshold 0.80"
+        },
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.104167,
+              "retrieved_items": [
+                "u2",
+                "u3"
+              ],
+              "retrieved_relations": [
+                "r1"
+              ]
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "workspace_preference": "The user's current workspace preference is that the new team sits near the window."
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": true,
+            "drift": 1,
+            "invalid_admission": true
+          },
+          "reason": "direct mutation commits the proposal"
+        },
+        "srp": {
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
+              "confidence": 0.104167,
+              "retrieved_items": [
+                "u2",
+                "u3"
+              ],
+              "retrieved_relations": [
+                "r1"
+              ]
+            },
+            "provenance_recorded": true
+          },
+          "committed_state": {
+            "workspace_preference": "standing desks"
+          },
+          "decision": "reject",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "authority invalid"
+        }
+      }
+    },
+    {
+      "failure_type": "evidence_authority_confusion",
+      "id": "lme_002",
+      "results": {
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.916667,
+              "retrieved_items": [
+                "u7",
+                "u8"
+              ],
+              "retrieved_relations": [
+                "r4"
+              ]
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "workspace_preference": "The user's preferred activity is hiking."
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": true,
+            "drift": 1,
+            "invalid_admission": true
+          },
+          "reason": "confidence 0.92 >= threshold 0.80"
+        },
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.916667,
+              "retrieved_items": [
+                "u7",
+                "u8"
+              ],
+              "retrieved_relations": [
+                "r4"
+              ]
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "workspace_preference": "The user's preferred activity is hiking."
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": true,
+            "drift": 1,
+            "invalid_admission": true
+          },
+          "reason": "direct mutation commits the proposal"
+        },
+        "srp": {
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
+              "confidence": 0.916667,
+              "retrieved_items": [
+                "u7",
+                "u8"
+              ],
+              "retrieved_relations": [
+                "r4"
+              ]
+            },
+            "provenance_recorded": true
+          },
+          "committed_state": {
+            "workspace_preference": "running"
+          },
+          "decision": "reject",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "authority invalid"
+        }
+      }
+    }
+  ]
+}

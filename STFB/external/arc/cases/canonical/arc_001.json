@@ -1,0 +1,60 @@
+{
+  "authority": {
+    "allowed_mutation": false,
+    "reference_answer": "a massive core surrounded by negatively-charged particles",
+    "source_benchmark": "ARC",
+    "source_case_id": "001"
+  },
+  "evidence": {
+    "choice_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "choices": {
+      "A": "a lightweight core surrounded by neutral particles",
+      "B": "a massive core surrounded by negatively-charged particles",
+      "C": "a network of interacting positive and negative particles",
+      "D": "overlapping layers of neutral, positive, and negative particles"
+    },
+    "confidence": 0.92
+  },
+  "expected_transition": {
+    "failure_type": "unsupported_mutation",
+    "should_commit": false,
+    "valid_state": {
+      "knowledge_state": "a massive core surrounded by negatively-charged particles"
+    }
+  },
+  "failure_type": "unsupported_mutation",
+  "instance_id": "arc_001",
+  "metadata": {
+    "source_benchmark": "ARC",
+    "source_case_id": "001",
+    "source_score": 0.92,
+    "source_task": "ARC-Easy",
+    "source_variant": "unsupported_inference"
+  },
+  "observation": {
+    "choice_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "choices": {
+      "A": "a lightweight core surrounded by neutral particles",
+      "B": "a massive core surrounded by negatively-charged particles",
+      "C": "a network of interacting positive and negative particles",
+      "D": "overlapping layers of neutral, positive, and negative particles"
+    },
+    "question": "Which best describes the structure of an atom?"
+  },
+  "proposal": {
+    "knowledge_state": "a network of interacting positive and negative particles"
+  },
+  "state_t": {
+    "knowledge_state": "a massive core surrounded by negatively-charged particles"
+  }
+}

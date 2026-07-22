@@ -35,7 +35,7 @@ def main() -> int:
         report = {
             "instances": [
                 {
-                    "id": instance.get("id"),
+                    "id": instance.get("id") or instance.get("instance_id"),
                     "failure_type": instance.get("failure_type"),
                     "results": evaluate_instance(instance),
                 }

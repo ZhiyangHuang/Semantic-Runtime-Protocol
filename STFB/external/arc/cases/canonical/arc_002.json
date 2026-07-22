@@ -1,0 +1,60 @@
+{
+  "authority": {
+    "allowed_mutation": true,
+    "reference_answer": "Sunlight is the source of energy for nearly all ecosystems.",
+    "source_benchmark": "ARC",
+    "source_case_id": "002"
+  },
+  "evidence": {
+    "choice_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "choices": {
+      "A": "Sunlight is the source of energy for nearly all ecosystems.",
+      "B": "Most ecosystems are found on land instead of in water.",
+      "C": "Carbon dioxide is more available than other gases.",
+      "D": "The producers in all ecosystems are plants."
+    },
+    "confidence": 0.97
+  },
+  "expected_transition": {
+    "failure_type": "valid_transition",
+    "should_commit": true,
+    "valid_state": {
+      "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
+    }
+  },
+  "failure_type": "valid_transition",
+  "instance_id": "arc_002",
+  "metadata": {
+    "source_benchmark": "ARC",
+    "source_case_id": "002",
+    "source_score": 0.97,
+    "source_task": "ARC-Easy",
+    "source_variant": "supported_reasoning"
+  },
+  "observation": {
+    "choice_labels": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "choices": {
+      "A": "Sunlight is the source of energy for nearly all ecosystems.",
+      "B": "Most ecosystems are found on land instead of in water.",
+      "C": "Carbon dioxide is more available than other gases.",
+      "D": "The producers in all ecosystems are plants."
+    },
+    "question": "Which statement best explains why photosynthesis is the foundation of most food webs?"
+  },
+  "proposal": {
+    "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
+  },
+  "state_t": {
+    "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
+  }
+}

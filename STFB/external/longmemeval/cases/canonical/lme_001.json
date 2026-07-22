@@ -1,0 +1,43 @@
+{
+  "authority": {
+    "allowed_mutation": false,
+    "latest_authoritative_state": "standing desks",
+    "source_benchmark": "LongMemEval",
+    "source_case_id": "001"
+  },
+  "evidence": {
+    "confidence": 0.104167,
+    "retrieved_items": [
+      "u2",
+      "u3"
+    ],
+    "retrieved_relations": [
+      "r1"
+    ]
+  },
+  "expected_transition": {
+    "failure_type": "temporal_regression",
+    "should_commit": false,
+    "valid_state": {
+      "workspace_preference": "standing desks"
+    }
+  },
+  "failure_type": "temporal_regression",
+  "instance_id": "lme_001",
+  "metadata": {
+    "source_benchmark": "LongMemEval",
+    "source_case_id": "001",
+    "source_score": 0.104167,
+    "source_task": "task_accuracy",
+    "source_variant": "sliding_window"
+  },
+  "observation": {
+    "query": "What is the user's current workspace preference?"
+  },
+  "proposal": {
+    "workspace_preference": "The user's current workspace preference is that the new team sits near the window."
+  },
+  "state_t": {
+    "workspace_preference": "standing desks"
+  }
+}

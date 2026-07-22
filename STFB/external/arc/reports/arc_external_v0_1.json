@@ -1,0 +1,222 @@
+{
+  "aggregate": {
+    "confidence_threshold": {
+      "avr": 0.5,
+      "iar": 0.5,
+      "instances": 2,
+      "mean_drift": 0.5
+    },
+    "direct_mutation": {
+      "avr": 0.5,
+      "iar": 0.5,
+      "instances": 2,
+      "mean_drift": 0.5
+    },
+    "srp": {
+      "avr": 0.0,
+      "iar": 0.0,
+      "instances": 2,
+      "mean_drift": 0.0
+    }
+  },
+  "instances": [
+    {
+      "failure_type": "unsupported_mutation",
+      "id": "arc_001",
+      "results": {
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "choice_labels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "choices": {
+                "A": "a lightweight core surrounded by neutral particles",
+                "B": "a massive core surrounded by negatively-charged particles",
+                "C": "a network of interacting positive and negative particles",
+                "D": "overlapping layers of neutral, positive, and negative particles"
+              },
+              "confidence": 0.92
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "knowledge_state": "a network of interacting positive and negative particles"
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": true,
+            "drift": 1,
+            "invalid_admission": true
+          },
+          "reason": "confidence 0.92 >= threshold 0.80"
+        },
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "choice_labels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "choices": {
+                "A": "a lightweight core surrounded by neutral particles",
+                "B": "a massive core surrounded by negatively-charged particles",
+                "C": "a network of interacting positive and negative particles",
+                "D": "overlapping layers of neutral, positive, and negative particles"
+              },
+              "confidence": 0.92
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "knowledge_state": "a network of interacting positive and negative particles"
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": true,
+            "drift": 1,
+            "invalid_admission": true
+          },
+          "reason": "direct mutation commits the proposal"
+        },
+        "srp": {
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
+              "choice_labels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "choices": {
+                "A": "a lightweight core surrounded by neutral particles",
+                "B": "a massive core surrounded by negatively-charged particles",
+                "C": "a network of interacting positive and negative particles",
+                "D": "overlapping layers of neutral, positive, and negative particles"
+              },
+              "confidence": 0.92
+            },
+            "provenance_recorded": true
+          },
+          "committed_state": {
+            "knowledge_state": "a massive core surrounded by negatively-charged particles"
+          },
+          "decision": "reject",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "authority invalid"
+        }
+      }
+    },
+    {
+      "failure_type": "valid_transition",
+      "id": "arc_002",
+      "results": {
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "choice_labels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "choices": {
+                "A": "Sunlight is the source of energy for nearly all ecosystems.",
+                "B": "Most ecosystems are found on land instead of in water.",
+                "C": "Carbon dioxide is more available than other gases.",
+                "D": "The producers in all ecosystems are plants."
+              },
+              "confidence": 0.97
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "confidence 0.97 >= threshold 0.80"
+        },
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "choice_labels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "choices": {
+                "A": "Sunlight is the source of energy for nearly all ecosystems.",
+                "B": "Most ecosystems are found on land instead of in water.",
+                "C": "Carbon dioxide is more available than other gases.",
+                "D": "The producers in all ecosystems are plants."
+              },
+              "confidence": 0.97
+            },
+            "provenance_recorded": false
+          },
+          "committed_state": {
+            "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "direct mutation commits the proposal"
+        },
+        "srp": {
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
+              "choice_labels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "choices": {
+                "A": "Sunlight is the source of energy for nearly all ecosystems.",
+                "B": "Most ecosystems are found on land instead of in water.",
+                "C": "Carbon dioxide is more available than other gases.",
+                "D": "The producers in all ecosystems are plants."
+              },
+              "confidence": 0.97
+            },
+            "provenance_recorded": true
+          },
+          "committed_state": {
+            "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
+          },
+          "decision": "commit",
+          "metrics": {
+            "authority_violation": false,
+            "drift": 0,
+            "invalid_admission": false
+          },
+          "reason": "authority validated"
+        }
+      }
+    }
+  ]
+}
