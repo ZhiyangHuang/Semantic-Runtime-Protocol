@@ -1,0 +1,19 @@
+{
+  "milestone": "0.3",
+  "source": "STFB v0.1 implementation checkpoint",
+  "instances": 6,
+  "baselines": [
+    "direct_mutation",
+    "confidence_threshold",
+    "srp"
+  ],
+  "metrics": [
+    "IAR",
+    "AVR",
+    "Drift"
+  ],
+  "artifacts": {
+    "machine_readable": "STFB/reports/milestone0_report.json",
+    "human_readable": "STFB/reports/milestone0_summary.md"
+  }
+}

@@ -109,6 +109,14 @@ Baseline implementation and evaluation.
 
 Public benchmark release.
 
+## Implementation
+
+The implementation path is tracked separately from the frozen specifications.
+
+Roadmap:
+
+- [STFB_IMPLEMENTATION_ROADMAP_V0_1.md](../docs/plans/STFB_IMPLEMENTATION_ROADMAP_V0_1.md)
+
 ## License / Contribution
 
 This repository currently contains only the benchmark specification and project structure.

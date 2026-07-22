@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": ["id", "state_t", "proposal", "evidence", "authority", "expected"],
+  "properties": {
+    "id": { "type": "string" },
+    "failure_type": { "type": "string" },
+    "state_t": { "type": "object" },
+    "proposal": { "type": "object" },
+    "evidence": { "type": "object" },
+    "authority": { "type": "object" },
+    "expected": { "type": "object" }
+  }
+}

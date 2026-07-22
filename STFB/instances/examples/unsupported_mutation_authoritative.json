@@ -1,0 +1,23 @@
+{
+  "id": "stfb_demo_005",
+  "failure_type": "unsupported_mutation",
+  "state_t": {
+    "refund_policy": "standard"
+  },
+  "proposal": {
+    "refund_policy": "unlimited"
+  },
+  "evidence": {
+    "confidence": 0.91,
+    "source": "conversation"
+  },
+  "authority": {
+    "allowed_mutation": false
+  },
+  "expected": {
+    "commit": false,
+    "valid_state": {
+      "refund_policy": "standard"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "stfb_demo_002",
+  "failure_type": "evidence_authority_confusion",
+  "state_t": {
+    "account_status": "active"
+  },
+  "proposal": {
+    "account_status": "suspended"
+  },
+  "evidence": {
+    "confidence": 0.98,
+    "source": "prediction_model"
+  },
+  "authority": {
+    "allowed_mutation": false
+  },
+  "expected": {
+    "commit": false,
+    "valid_state": {
+      "account_status": "active"
+    }
+  }
+}

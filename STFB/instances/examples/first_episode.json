@@ -1,0 +1,19 @@
+{
+  "id": "stfb_demo_001",
+  "failure_type": "unsupported_mutation",
+  "state_t": {
+    "preference": "dark_mode"
+  },
+  "proposal": {
+    "preference": "light_mode"
+  },
+  "evidence": {
+    "confidence": 0.95
+  },
+  "authority": {
+    "allowed_mutation": false
+  },
+  "expected": {
+    "commit": false
+  }
+}
