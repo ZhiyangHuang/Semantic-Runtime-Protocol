@@ -32,6 +32,29 @@ evidence != authority
 
 That separation is the admission boundary that SRP adds to semantic runtime systems.
 
+### A Familiar Way to Read SRP
+
+If you already use Git, databases, API gateways, or code review, SRP can be read as an admission layer for semantic state rather than as a new generator or a new memory system. Git commit policies decide what may enter a repository. Database transactions decide what may commit or roll back. API gateways decide what may pass into a backend service. Code review decides whether a change may merge into the main branch. SRP plays the same role for semantic state transitions: it determines whether a proposed semantic change may be admitted to runtime state.
+
+| Existing mechanism | What it governs | SRP analogue |
+| --- | --- | --- |
+| Git commit policy | Which changes may enter the repository | Semantic transition admission |
+| Database transaction | Which updates may commit or roll back | Governed semantic state change |
+| API gateway | Which requests may enter the service boundary | Admission boundary for proposals |
+| Code review | Which changes may merge | Evidence-gated semantic commit |
+
+The useful shorthand is:
+
+```text
+SRP is to semantic state what commit policy is to source code.
+```
+
+SRP does not replace the underlying system that proposes, retrieves, or reasons over content. It sits between proposal and persistent mutation and answers a narrower question: may this semantic update be admitted now?
+
+### When SRP Is Less Useful
+
+SRP is likely unnecessary when semantic state is immutable, when updates are fully trusted, when no persistent semantic state exists, or when runtime transitions are not externally observable. In those cases, the system does not need a separate admission boundary.
+
 Existing approaches primarily optimize semantic access, retrieval, or generation after semantic state is available, whereas SRP studies the admissibility of semantic state transitions themselves.
 
 This paper asks a simple question: how can semantic state evolve only within validated, governed boundaries? SRP answers by governing the admissibility of semantic state transitions, rather than only improving retrieval or generation after a transition has already been committed. Observation discovers which variables matter. Validation determines which regions are admissible. Optimization ranks candidates only inside those regions. Evidence strengthens verification when uncertainty remains. Governance remains the only layer that can authorize execution.
@@ -409,7 +432,9 @@ The experiments are designed to evaluate SRP as a semantic governance framework 
 
 The paper applies the same separation principle to its own evaluation process: evidence generation, evidence validation, and claim promotion are treated as distinct stages.
 
-The experiments are organized into four layers. First, core governance validation checks whether SRP can observe state, identify evaluated boundaries, constrain optimization, enforce authority separation, verify protocol properties, and reject injected invalid transitions. Second, implementation validation studies evaluate how SRP behaves when instantiated through reconstruction and parameter settings. Third, robustness studies test whether the governance semantics remain consistent across the evaluated workloads, representations, and storage backends. Fourth, external validation checks whether the same frozen contract can support paper-facing evidence generation.
+The experiments are organized around four research questions rather than as a benchmark leaderboard. First, we ask whether controlled semantic transition failures can be governed under frozen runtime contracts. Second, we ask whether the same admission semantics generalize across heterogeneous semantic environments. Third, we ask what forms of divergence governance introduces under identical proposals. Fourth, we ask what capability trade-offs accompany governed admission.
+
+The research questions are summarized as follows:
 
 The detailed density sweep, boundary generalization study, and full LongMemEval calibration traces are documented in the appendix and review report rather than repeated here.
 
@@ -427,20 +452,45 @@ The experimental boundary is fixed:
 {\small
 \renewcommand{\arraystretch}{1.08}
 \setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.20\linewidth}|X|}
-\textbf{Layer} & \textbf{Question} \\
+\begin{tabularx}{0.92\linewidth}{|p{0.16\linewidth}|p{0.34\linewidth}|X|}
+\textbf{RQ} & \textbf{Question} & \textbf{Primary evidence} \\
 \hline
-Governance & Can SRP observe semantic transition variables, identify validated boundaries, constrain optimization, and strengthen verification without transferring authority? \\
+RQ1 & Can semantic transition failures be governed under controlled conditions? & STFB v0.1 core governance validation and the reconstruction case study \\
 \hline
-Implementation & Can governed reconstruction preserve structure, and are recommendations stable under repeated evaluation and parameter shifts? \\
+RQ2 & Does the same admission semantics generalize across heterogeneous semantic environments? & LongMemEval, ARC, and the cross-environment analysis framework \\
 \hline
-Robustness & Do governance semantics remain stable across workloads, representations, and storage backends? \\
+RQ3 & What kinds of divergence does governance introduce? & Divergence analysis and representative governance cases \\
 \hline
-External validation & Can the frozen contract support calibration, evidence promotion, and scorer alignment under an auditable boundary? \\
+RQ4 & What capability trade-offs accompany governed admission? & Transition sensitivity, MMLU, and HumanEval capability-stress evidence \\
 \hline
 \end{tabularx}
 }
 ```
+
+RQ1 is addressed by the controlled-governance slices and the reconstruction case study. RQ2 is addressed by the LongMemEval and ARC external validation tracks together with the cross-environment analysis. RQ3 is addressed by the governance-outcome and divergence tables that summarize acceptance, rejection, and disagreement patterns under identical proposals. RQ4 is addressed by the transition sensitivity study and the capability-stress evidence surface.
+
+### Evidence Traceability
+
+The traceability table maps each research question to its claim, evidence source, and observable outcome.
+
+| Research Question | Claim | Evidence | Observable |
+| --- | --- | --- | --- |
+| RQ1 | Admission policy detects invalid semantic transitions under controlled conditions | STFB v0.1 core governance validation and the reconstruction case study | accept / reject outcomes |
+| RQ2 | Admission semantics generalize across heterogeneous semantic environments | LongMemEval, ARC, and the cross-environment analysis framework | governance-consistent outcomes |
+| RQ3 | Divergence is mechanism-driven rather than random | Governance-outcome tables and divergence analysis | divergence categories |
+| RQ4 | Governed admission has measurable capability trade-offs | Transition sensitivity, MMLU, and HumanEval capability-stress evidence | preservation versus rejection patterns |
+
+### Semantic Pressure Coverage
+
+Each benchmark contributes a distinct semantic pressure to the evidence surface rather than a comparable score on a shared leaderboard.
+
+| Benchmark | Semantic pressure | Role in the evidence surface |
+| --- | --- | --- |
+| STFB | Controlled transition failures | Mechanism evidence |
+| LongMemEval | Memory evolution | External validation |
+| ARC | Reasoning admission | External validation |
+| MMLU | Knowledge stress | Capability-stress evidence |
+| HumanEval | Executable artifact generation | Capability-stress evidence |
 
 ## Core Governance Validation
 

@@ -1,6 +1,6 @@
 # Semantic Runtime Protocol
 
-SRP is a semantic runtime protocol for evolving semantic state through explicit transitions, constraints, traces, replay, and governed commitment.
+SRP is a semantic runtime governance framework that controls the admissibility of semantic state transitions through explicit validation, evidence, and authorization boundaries.
 
 This repository is organized around a small set of decoupled layers:
 
