@@ -14,3 +14,12 @@ experiments/results/**/raw_*.jsonl
 experiments/results/**/raw_*.json
 experiments/results/**/dump_*.jsonl
 experiments/results/**/dump_*.json
+arxiv_package/main.txt
+arxiv_package/main.fdb_latexmk
+arxiv_package/main.fls
+arxiv_package/_review_png/
+arxiv_package/_review_png2/
+arxiv_package/_markdown_main/*.md.tex
+arxiv_package/_markdown_main/*.verbatim
+_tblr_*
+_tmp_tblr_*
