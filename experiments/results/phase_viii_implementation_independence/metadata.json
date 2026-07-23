@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-07-23T00:48:47.899060+00:00",
+  "generated_by": "phase_viii_implementation_independence_v1",
+  "experiment": "phase_viii_implementation_independence",
+  "version": "v1",
+  "git_commit": "2b7b9fa916d8d9d2549215872dd68c064f4df36b",
+  "case_count": 36,
+  "backend_names": [
+    "flat_semantic_store",
+    "graph_semantic_store",
+    "vector_overlay_store"
+  ],
+  "recovery_modes": [
+    "vector_only",
+    "relation_expansion",
+    "relation_closure"
+  ],
+  "top_k": 2,
+  "relation_depth": 1,
+  "closure_validation": true
+}

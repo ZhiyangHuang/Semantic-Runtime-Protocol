@@ -50,6 +50,14 @@ Benchmark payloads are obtained from the original sources and are not redistribu
 - `experiments/results/runtime_integration/runtime_shadow_report.json`
 - `experiments/results/runtime_integration/runtime_admission_manifest.json`
 - `experiments/results/runtime_integration/runtime_admission_report.json`
+- `experiments/results/phase_viii_representation_invariance/metadata.json`
+- `experiments/results/phase_viii_representation_invariance/representation_invariance_report.json`
+- `experiments/results/phase_viii_representation_invariance/representation_invariance_summary.json`
+- `experiments/results/phase_viii_representation_invariance/representation_invariance_report.md`
+- `experiments/results/phase_viii_implementation_independence/metadata.json`
+- `experiments/results/phase_viii_implementation_independence/implementation_independence_report.json`
+- `experiments/results/phase_viii_implementation_independence/implementation_independence_summary.json`
+- `experiments/results/phase_viii_implementation_independence/implementation_independence_report.md`
 
 ## Current Verification
 

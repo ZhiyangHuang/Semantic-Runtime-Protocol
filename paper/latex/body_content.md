@@ -1,8 +1,8 @@
-# Introduction
+﻿# Introduction
 
 Existing semantic systems increasingly perform state transitions during runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of governed change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
 
-### Motivating Example: Evidence Is Not Authority
+## Motivating Example: Evidence Is Not Authority
 
 Consider a support agent that maintains a runtime semantic policy for refund handling. During a conversation, the user says: "My manager approved unlimited refunds for this customer."
 
@@ -32,16 +32,19 @@ evidence != authority
 
 That separation is the admission boundary that SRP adds to semantic runtime systems.
 
-### A Familiar Way to Read SRP
+## A Familiar Way to Read SRP
 
 If you already use Git, databases, API gateways, or code review, SRP can be read as an admission layer for semantic state rather than as a new generator or a new memory system. Git commit policies decide what may enter a repository. Database transactions decide what may commit or roll back. API gateways decide what may pass into a backend service. Code review decides whether a change may merge into the main branch. SRP plays the same role for semantic state transitions: it determines whether a proposed semantic change may be admitted to runtime state.
 
-| Existing mechanism | What it governs | SRP analogue |
-| --- | --- | --- |
-| Git commit policy | Which changes may enter the repository | Semantic transition admission |
-| Database transaction | Which updates may commit or roll back | Governed semantic state change |
-| API gateway | Which requests may enter the service boundary | Admission boundary for proposals |
-| Code review | Which changes may merge | Evidence-gated semantic commit |
+``` {=tex}
+\noindent\begin{tblr}{width=\linewidth,colspec={X[l]X[l]X[l]},hlines,vlines,colsep=0pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Existing mechanism} & {What it governs} & {SRP analogue} \\
+{Git commit policy} & {Which changes may enter the repository} & {Semantic transition admission} \\
+{Database transaction} & {Which updates may commit or roll back} & {Governed semantic state change} \\
+{API gateway} & {Which requests may enter the service boundary} & {Admission boundary for proposals} \\
+{Code review} & {Which changes may merge} & {Evidence-gated semantic commit} \\
+\end{tblr}
+```
 
 The useful shorthand is:
 
@@ -51,7 +54,7 @@ SRP is to semantic state what commit policy is to source code.
 
 SRP does not replace the underlying system that proposes, retrieves, or reasons over content. It sits between proposal and persistent mutation and answers a narrower question: may this semantic update be admitted now?
 
-### When SRP Is Less Useful
+## When SRP Is Less Useful
 
 SRP is likely unnecessary when semantic state is immutable, when updates are fully trusted, when no persistent semantic state exists, or when runtime transitions are not externally observable. In those cases, the system does not need a separate admission boundary.
 
@@ -84,26 +87,11 @@ Constrained optimization and formal methods are also relevant because SRP uses b
 
 **SRP is a framework for semantic state transition governance.**
 
-``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.21\linewidth}|p{0.15\linewidth}|p{0.15\linewidth}|p{0.11\linewidth}|X|}
-\textbf{Approach} & \textbf{Stores semantic state} & \textbf{Retrieves information} & \textbf{Generates actions} & \textbf{Governs semantic transitions} \\
-\hline
-Retrieval / RAG & partial & yes & optional & partial \\
-\hline
-Memory systems & yes & yes & optional & partial \\
-\hline
-Agent systems & partial & partial & yes & partial \\
-\hline
-Reinforcement learning & policy state & no & yes & action-level only \\
-\hline
-SRP & yes & yes & optional & yes \\
-\hline
-\end{tabularx}
-}
-```
+- RAG: partial state, yes retrieval, optional actions, partial governance
+- Memory systems: yes state, yes retrieval, optional actions, partial governance
+- Agent systems: partial state, partial retrieval, yes actions, partial governance
+- Reinforcement learning: policy state, no retrieval, yes actions, action-level governance only
+- SRP: yes state, yes retrieval, optional actions, full governance
 
 This positioning is the novelty boundary of the paper: SRP makes explicit the governance layer that determines when semantic state may change.
 
@@ -238,27 +226,15 @@ The order matters: observation discovers what can be measured, validation freeze
 SRP assigns each layer a different responsibility:
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.54\linewidth}{|p{0.22\linewidth}|p{0.28\linewidth}|}
-\hline
-\textbf{Step} & \textbf{Role} \\
-\hline
-Calibration & observe \\
-\hline
-Validation & verify \\
-\hline
-Optimization & recommend \\
-\hline
-Evidence & inform \\
-\hline
-Governance & approve \\
-\hline
-Runtime & execute \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=6.3cm]Q[l,wd=3.7cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Step} & {Role} \\
+{Calibration} & {observe} \\
+{Validation} & {verify} \\
+{Optimization} & {recommend} \\
+{Evidence} & {inform} \\
+{Governance} & {approve} \\
+{Runtime} & {execute} \\
+\end{tblr}
 ```
 
 The central design rule is that recommendation is not execution. More evidence is not more authority. Validation does not mutate the system; it defines the region in which mutation may later be considered.
@@ -388,43 +364,31 @@ The paper should include two figures that carry the main narrative visually.
 
 Think of the figures like a gate: ideas arrive, evidence checks them, governance opens or closes the gate, and execution happens only if the gate opens.
 
-**Figure 1: Semantic Runtime Protocol transition governance pipeline.** This figure illustrates the observation-to-execution order under the frozen transition contract:
+Figure 1 shows the SRP governance pipeline under the frozen transition contract.
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.52\linewidth}{|p{0.24\linewidth}|p{0.24\linewidth}|}
-\hline
-\textbf{Step} & \textbf{Meaning} \\
-\hline
-Observation & watch \\
-\hline
-Validation & check \\
-\hline
-Optimization & suggest \\
-\hline
-Evidence & support \\
-\hline
-Governance & approve or reject \\
-\hline
-Execution & act only if approved \\
-\hline
-\end{tabularx}
-}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\linewidth]{figure1_srp_pipeline.pdf}
+\caption{SRP governance pipeline: evidence improves verification, while governance alone authorizes mutation.}
+\label{fig:srp-governance-pipeline}
+\end{figure}
 ```
 
 The visual should make the authority split explicit: observation measures, validation freezes, optimization recommends, evidence informs, governance approves, and runtime executes only after approval. The key message is that recommendation and execution are separate.
 
 The figure should visually separate verification from authorization and commit: stronger evidence can improve `V`, but only `G` can admit the transition into runtime state and mutate `S_t`.
 
-**Figure 2: Positioning of SRP relative to retrieval, memory, agent, and reinforcement-learning systems by semantic state and transition authority abstractions.** This figure should contrast SRP with retrieval, memory, agent, and reinforcement-learning systems according to their primary roles and authority abstractions. The goal is not to claim those systems are wrong, but to show that SRP asks a different question:
-
-```text
-How should semantic runtime state transition be governed?
+``` {=tex}
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\linewidth]{figure2_srp_positioning.pdf}
+\caption{SRP occupies the semantic runtime governance layer rather than the retrieval, memory, or action layer.}
+\label{fig:srp-positioning}
+\end{figure}
 ```
 
-The figure should make the novelty boundary visible by mapping SRP to semantic runtime state transitions and governance authority, while illustrating retrieval, memory, agent, and RL as systems with different primary foci and authority models.
+Figure 2 positions SRP relative to retrieval, memory, agent, and reinforcement-learning systems by transition authority.
 
 # Experiments
 
@@ -448,111 +412,65 @@ The experimental boundary is fixed:
 
 **The research questions are grouped as follows:**
 
-``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.16\linewidth}|p{0.34\linewidth}|X|}
-\textbf{RQ} & \textbf{Question} & \textbf{Primary evidence} \\
-\hline
-RQ1 & Can semantic transition failures be governed under controlled conditions? & STFB v0.1 core governance validation and the reconstruction case study \\
-\hline
-RQ2 & Does the same admission semantics generalize across heterogeneous semantic environments? & LongMemEval, ARC, and the cross-environment analysis framework \\
-\hline
-RQ3 & What kinds of divergence does governance introduce? & Divergence analysis and representative governance cases \\
-\hline
-RQ4 & What capability trade-offs accompany governed admission? & Transition sensitivity, MMLU, and HumanEval capability-stress evidence \\
-\hline
-\end{tabularx}
-}
-```
+- RQ1: whether semantic transition failures can be governed under controlled conditions
+- RQ2: whether admission semantics generalize across heterogeneous semantic environments
+- RQ3: what kinds of divergence governance introduces
+- RQ4: what capability trade-offs accompany governed admission
 
 RQ1 is addressed by the controlled-governance slices and the reconstruction case study. RQ2 is addressed by the LongMemEval and ARC external validation tracks together with the cross-environment analysis. RQ3 is addressed by the governance-outcome and divergence tables that summarize acceptance, rejection, and disagreement patterns under identical proposals. RQ4 is addressed by the transition sensitivity study and the capability-stress evidence surface.
 
-### Evidence Traceability
+## Evidence Traceability
 
 The traceability table maps each research question to its claim, evidence source, and observable outcome.
 
-| Research Question | Claim | Evidence | Observable |
-| --- | --- | --- | --- |
-| RQ1 | Admission policy detects invalid semantic transitions under controlled conditions | STFB v0.1 core governance validation and the reconstruction case study | accept / reject outcomes |
-| RQ2 | Admission semantics generalize across heterogeneous semantic environments | LongMemEval, ARC, and the cross-environment analysis framework | governance-consistent outcomes |
-| RQ3 | Divergence is mechanism-driven rather than random | Governance-outcome tables and divergence analysis | divergence categories |
-| RQ4 | Governed admission has measurable capability trade-offs | Transition sensitivity, MMLU, and HumanEval capability-stress evidence | preservation versus rejection patterns |
+- RQ1: claim is invalid semantic transitions can be governed under controlled conditions; evidence is the STFB v0.1 validation plus the reconstruction case study; observable outcome is accept / reject behavior
+- RQ2: claim is that admission semantics generalize across heterogeneous semantic environments; evidence is LongMemEval, ARC, and the cross-environment analysis framework; observable outcome is governance-consistent behavior
+- RQ3: claim is that divergence is mechanism-driven rather than random; evidence is the governance-outcome tables and divergence analysis; observable outcome is divergence categories
+- RQ4: claim is that governed admission has measurable capability trade-offs; evidence is transition sensitivity, MMLU, and HumanEval capability-stress evidence; observable outcome is preservation versus rejection patterns
 
-### Semantic Pressure Coverage
+## Semantic Pressure Coverage
 
 Each benchmark contributes a distinct semantic pressure to the evidence surface rather than a comparable score on a shared leaderboard.
 
-| Benchmark | Semantic pressure | Role in the evidence surface |
-| --- | --- | --- |
-| STFB | Controlled transition failures | Mechanism evidence |
-| LongMemEval | Memory evolution | External validation |
-| ARC | Reasoning admission | External validation |
-| MMLU | Knowledge stress | Capability-stress evidence |
-| HumanEval | Executable artifact generation | Capability-stress evidence |
+- STFB: controlled transition failures; mechanism evidence
+- LongMemEval: memory evolution; external validation
+- ARC: reasoning admission; external validation
+- MMLU: knowledge stress; capability-stress evidence
+- HumanEval: executable artifact generation; capability-stress evidence
 
-## Core Governance Validation
+## Governance Property Verification
 
-**The main governance chain is:**
+This section evaluates whether SRP satisfies its central governance properties under the frozen runtime contract. The objective is not to demonstrate universal performance improvement, but to verify that semantic state transitions remain measurable, bounded, authorized, and auditable.
 
-``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.20\linewidth}|p{0.52\linewidth}|p{0.20\linewidth}|}
-\textbf{Evaluation} & \textbf{Observed Outcome} & \textbf{Interpretation} \\
-\hline
-Semantic observability & 130 transition observations, replay success 1.0, state consistency 1.0 & semantic observability \\
-\hline
-Boundary validation & 10 / 25 feasible candidates, stable extents across densities & evaluated boundaries \\
-\hline
-Constrained optimization & 60\% search reduction with the same top candidate as the naive full-grid sweep & governed optimization \\
-\hline
-Evidence-controlled governance & verification improves from 0.50 to 1.00 while authority remains unchanged; invalid transitions are rejected & evidence and governance separation \\
-\hline
-\end{tabularx}
-}
-```
+The evaluation focuses on five protocol properties:
 
-Semantic observability collects repeated transition observations over the frozen parameter axes `activation_threshold`, `recovery_min_evidence`, `preserve_evidence`, and `archive_relations`. The measurements indicate that the transition variables are explicit and reproducible before optimization decisions are introduced.
+1. Authority non-escalation: stronger evidence may improve verification, but it cannot increase execution authority.
+2. Transition safety: rejected transitions must not modify runtime state.
+3. Evidence-controlled verification: additional evidence should improve decision quality without bypassing governance.
+4. Replayability: identical runtime contracts and evidence packages should produce reproducible governance outcomes.
+5. Boundary-constrained optimization: validated feasible regions should reduce unnecessary search while preserving the selected recommendation.
 
-Boundary validation uses invariant checking, closure validation, and replay equivalence to identify the evaluated feasible region. The result is a stable boundary across the tested density conditions. The detailed density sweep and boundary generalization checks are placed in the appendix.
+Together, these properties define the operational meaning of SRP as a semantic runtime governance protocol.
+
+- Authority non-escalation: evidence escalation test; authority unchanged
+- Transition safety: invalid transition injection; acceptance rate 0.00
+- Evidence-controlled verification: evidence refinement; confidence 0.50 -> 1.00
+- Replayability: frozen contract replay; success and state consistency 1.0 / 1.0
+- Boundary-constrained optimization: feasible-region search; reduction 60\%
+
+The observability evaluation verifies that semantic transition variables can be explicitly represented before governance decisions are applied. The result is not a claim that semantic meaning is universally measurable, but that the evaluated transition variables can be recorded and replayed under the frozen runtime contract.
+
+Boundary validation verifies that SRP can construct an evaluated feasible region before optimization. The purpose of this stage is not to discover a universal safe region, but to establish a reproducible admissibility boundary for the evaluated workload.
 
 Constrained optimization compares SRP with a naive full-grid sweep over the same candidate space. SRP reaches the same top objective while reducing the search budget by 60 percent, which indicates that the validated boundary is operationally useful.
 
-The evidence-controlled governance check merges the previous verification and boundary-enforcement slices. Vector evidence plus semantic evidence improves verification quality, and the authority-violation slice still ends with a zero final accept rate. In short, evidence can improve verification, but it does not override governance in the evaluated settings.
+The evidence-control experiment validates the central SRP separation rule: evidence quality and mutation authority are independent variables. Additional evidence improves verification confidence, while the authorization boundary remains unchanged.
 
 Protocol property verification closes the core governance chain by checking transition admissibility, authority non-escalation, recommendation-execution separation, and replay consistency under the frozen contract. Negative transition injection provides the complementary negative test: invalid transitions remain rejected under full SRP, while weakened variants accept some injected cases and therefore expose the need for the governance gate.
 
-**The core governance chain can be summarized as follows:**
+These results provide evidence that SRP governance properties can be operationalized and tested under explicit runtime contracts. The experiments do not establish universal semantic governance guarantees; instead, they show that semantic transition control can be represented through measurable properties, explicit boundaries, and auditable authorization decisions.
 
-``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.24\linewidth}|p{0.46\linewidth}|p{0.18\linewidth}|}
-\textbf{Validation Objective} & \textbf{Metric / Check} & \textbf{Observed Outcome} \\
-\hline
-Semantic observability & Transition observations, replay success, state consistency & 130, 1.0, 1.0 \\
-\hline
-Boundary validation & Feasible candidates, stable extents across densities & 10 / 25, stable \\
-\hline
-Constrained optimization & Search reduction with the same top candidate & 60\% reduction \\
-\hline
-Evidence-controlled governance & Verification confidence, authority change & 0.50 \textrightarrow 1.00, unchanged authority \\
-\hline
-Protocol property verification & Property checks under frozen contract & 4 / 4 passed \\
-\hline
-Negative transition injection & Invalid accept rate under full SRP / no gate / evidence-as-authority & 0.00 / 0.75 / 0.50 \\
-\hline
-\end{tabularx}
-}
-```
-
-This table is the paper's compact governance summary: it shows observability, boundary control, optimization constraint, evidence-authority separation, protocol-level verification, and negative testing in one view.
-
-## Case Study: Reconstruction under Transition Governance
+## Implementation Case Study: Governed Semantic Reconstruction
 
 ### Purpose
 Recovery is a case study for transition validation: a semantic reconstruction process must decide which information survives a state transition, and SRP constrains that decision through explicit governance boundaries.
@@ -577,63 +495,36 @@ It compares three recovery modes:
 **The recovery observables in this case study align with SRP properties as follows:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.72\linewidth}{|p{0.34\linewidth}|X|}
-\hline
-\textbf{SRP Property} & \textbf{Recovery Observable} \\
-\hline
-Evidence preservation & Closure Acc. \\
-\hline
-Authority boundary & Hallucinated Relation Rate \\
-\hline
-State consistency & Drift \\
-\hline
-Semantic retention & Relation Acc. \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=6.3cm]Q[l,wd=3.7cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{SRP\\Property} & {Recovery\\Observable} \\
+{Evidence preservation} & {Closure Acc.} \\
+{Authority boundary} & {Hallucinated Relation Rate} \\
+{State consistency} & {Drift} \\
+{Semantic retention} & {Relation Acc.} \\
+\end{tblr}
 ```
 
 ### Results
 **The recovery evidence indicates higher structural fidelity under the same recovery budget:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.16\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.11\linewidth}|p{0.13\linewidth}|X|}
-\textbf{Mode} & \textbf{Mean Relation Acc.} & \textbf{Mean Closure Acc.} & \textbf{Mean Drift} & \textbf{Mean Hallucinated Rel. Rate} & \textbf{Interpretation} \\
-\hline
-vector\_only & 0.333333 & 0.166667 & 0.433333 & 0.0 & Baseline vector-only recovery \\
-\hline
-relation\_expansion & 0.875 & 0.8125 & 0.145834 & 0.3125 & Relation expansion adds detail but still hallucinates some relations \\
-\hline
-relation\_closure & 0.875 & 0.8125 & 0.083333 & 0.0 & Relation closure preserves structure with no hallucinated relations \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=3.3cm]Q[l,wd=1.8cm]Q[l,wd=1.8cm]Q[l,wd=1.7cm]Q[l,wd=1.8cm]Q[l,wd=3.1cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Mode} & {Mean Relation\\Acc.} & {Mean Closure\\Acc.} & {Mean Drift} & {Halluc.\\Rate} & {Note} \\
+{vector\_only} & {0.333333} & {0.166667} & {0.433333} & {0.0} & {Vector-only baseline} \\
+{relation\_expansion} & {0.875} & {0.8125} & {0.145834} & {0.3125} & {More detail, some hallucination} \\
+{relation\_closure} & {0.875} & {0.8125} & {0.083333} & {0.0} & {No hallucinations} \\
+\end{tblr}
 ```
 
 **The recovery summary is:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.16\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|p{0.11\linewidth}|p{0.13\linewidth}|X|}
-\hline
-\textbf{Recovery Mode} & \textbf{Coverage} & \textbf{Relation Acc.} & \textbf{Closure Acc.} & \textbf{Drift} & \textbf{Hallucinated Relation} \\
-\hline
-Vector-only & 0.392857 & 0.333333 & 0.166667 & 0.433333 & 0.0 \\
-\hline
-Relation expansion & 0.738095 & 0.875 & 0.8125 & 0.145834 & 0.3125 \\
-\hline
-Relation closure & 0.738095 & 0.875 & 0.8125 & 0.083333 & 0.0 \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=3.3cm]Q[l,wd=1.8cm]Q[l,wd=1.8cm]Q[l,wd=1.7cm]Q[l,wd=1.8cm]Q[l,wd=3.1cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Recovery\\Mode} & {Coverage} & {Relation\\Acc.} & {Closure\\Acc.} & {Drift} & {Halluc.\\Rate} \\
+{Vector-only} & {0.392857} & {0.333333} & {0.166667} & {0.433333} & {0.0} \\
+{Relation expansion} & {0.738095} & {0.875} & {0.8125} & {0.145834} & {0.3125} \\
+{Relation closure} & {0.738095} & {0.875} & {0.8125} & {0.083333} & {0.0} \\
+\end{tblr}
 ```
 
 ### Interpretation
@@ -660,31 +551,43 @@ For readability, we shorten the parameter names below:
 **The measured sweep makes the pattern concrete:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.34\linewidth}|p{0.10\linewidth}|p{0.10\linewidth}|p{0.10\linewidth}|X|}
-\textbf{Setting} & \textbf{Coverage} & \textbf{Drift} & \textbf{Cost} & \textbf{Interpretation} \\
-\hline
-Baseline (\texttt{archive=False}, \texttt{preserve=False}, \texttt{depth=1}, \texttt{threshold=0.9}) & 0.728095 & 0.098333 & 1.695 & Reference point \\
-\hline
-\texttt{archive=True} & 0.758095 & 0.077083 & 1.815 & More relation detail, higher cost \\
-\hline
-\texttt{preserve=True} & 0.738095 & 0.083333 & 1.755 & Slight stability gain, moderate cost increase \\
-\hline
-\texttt{depth=0} & 0.199643 & 0.628333 & 1.025 & Vector-like recovery, weak structure \\
-\hline
+\noindent\begin{tblr}{colspec={Q[l,wd=3.3cm]Q[l,wd=1.8cm]Q[l,wd=1.8cm]Q[l,wd=1.7cm]Q[l,wd=2.0cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Setting} & {Coverage} & {Drift} & {Cost} & {Note} \\
+{Base (\texttt{a=F}, \texttt{p=F}, \texttt{d=1}, \texttt{t=0.9})} & {0.728095} & {0.098333} & {1.695} & {Reference} \\
+\texttt{archive=True} & 0.758095 & 0.077083 & 1.815 & More detail, higher cost \\
+\texttt{preserve=True} & 0.738095 & 0.083333 & 1.755 & Slight stability gain \\
+\texttt{depth=0} & 0.199643 & 0.628333 & 1.025 & Weak structure \\
 \texttt{depth=2} & 0.839524 & 0.0 & 1.855 & Best result in the sweep \\
-\hline
-\texttt{depth=3} & 0.849524 & 0.005 & 2.015 & Highest coverage, highest cost \\
-\hline
-\texttt{threshold=0.1} & 0.792095 & 0.138333 & 1.711 & More permissive gating, more drift \\
-\hline
-\end{tabularx}
-}
+\texttt{depth=3} & 0.849524 & 0.005 & 2.015 & Max coverage, max cost \\
+\texttt{threshold=0.1} & 0.792095 & 0.138333 & 1.711 & More permissive, more drift \\
+\end{tblr}
 ```
 
 The recommendation-stability result is folded into this section: the recommendation was fully consistent across 10 seeds under the frozen workload, objective, and evidence backend. That stability result is the baseline that makes the sensitivity sweep interpretable.
+
+## Runtime Cost
+
+Latency is recorded in `TransitionTrace` as observational metadata, and the same trace schema captures `proposal`, `validation`, `evidence`, `governance`, `commit`, and `total` timing. In the paper-facing scripted run, the proposal stage is zero by construction and the governance boundary adds a small but measurable overhead relative to direct write.
+
+``` {=tex}
+\begin{SRPTable}{Q[l,wd=3.3cm]Q[l,wd=1.8cm]}
+Stage & Mean ms \\
+Proposal generation & 1734.433333 \\
+Validation & 0.002433 \\
+Evidence evaluation & 0.034333 \\
+Governance decision & 0.003700 \\
+State commit & 0.005200 \\
+Total transition latency & 1734.482800 \\
+\end{SRPTable}
+```
+
+Relative to direct write in the same run, the measured overhead is:
+
+```text
+Relative overhead = (T_SRP - T_direct) / T_direct
+```
+
+For this local-model integration slice, the observed relative overhead is 0.002 percent.
 
 ## Robustness
 
@@ -695,81 +598,45 @@ The robustness study combines cross-workload, representation, and backend checks
 **Cross-workload validation compares code, knowledge, and planning under the same recovery baseline:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.15\linewidth}|p{0.12\linewidth}|p{0.10\linewidth}|p{0.12\linewidth}|p{0.12\linewidth}|X|}
-\hline
-\textbf{Domain} & \textbf{Coverage} & \textbf{Drift} & \textbf{Rel. Acc.} & \textbf{Clos. Acc.} & \textbf{Hallucinated Rel. Rate} \\
-\hline
-Code & 0.638889 & 0.227778 & 0.666667 & 0.666667 & 0.138889 \\
-\hline
-Knowledge & 0.500000 & 0.400000 & 0.500000 & 0.250000 & 0.333333 \\
-\hline
-Planning & 0.465278 & 0.355556 & 0.500000 & 0.416667 & 0.111111 \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=3.3cm]Q[l,wd=1.8cm]Q[l,wd=1.8cm]Q[l,wd=1.7cm]Q[l,wd=1.8cm]Q[l,wd=3.1cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Domain} & {Coverage} & {Drift} & {Rel.\\Acc.} & {Clos.\\Acc.} & {Hallucinated\\Rel.\\Rate} \\
+{Code} & {0.638889} & {0.227778} & {0.666667} & {0.666667} & {0.138889} \\
+{Knowledge} & {0.500000} & {0.400000} & {0.500000} & {0.250000} & {0.333333} \\
+{Planning} & {0.465278} & {0.355556} & {0.500000} & {0.416667} & {0.111111} \\
+\end{tblr}
 ```
 
 **The normalized comparison against vector-only recovery is:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.22\linewidth}|p{0.20\linewidth}|p{0.20\linewidth}|p{0.12\linewidth}|}
-\hline
-\textbf{Domain} & \textbf{Vector-only Closure} & \textbf{Relation-closure Closure} & \textbf{Difference} \\
-\hline
-Code memory & 0.000000 & 1.000000 & +1.000000 \\
-\hline
-Knowledge reasoning & 0.000000 & 0.375000 & +0.375000 \\
-\hline
-Agent planning & 0.000000 & 0.625000 & +0.625000 \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{width=\linewidth,colspec={X[l]X[l]X[l]X[l]},hlines,vlines,colsep=0pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Domain} & {Vector-only\\Closure} & {Relation-closure} & {Difference} \\
+{Code memory} & {0.000000} & {1.000000} & {+1.000000} \\
+{Knowledge reasoning} & {0.000000} & {0.375000} & {+0.375000} \\
+{Agent planning} & {0.000000} & {0.625000} & {+0.625000} \\
+\end{tblr}
 ```
 
 **Representation robustness indicates stable hierarchy and governance consistency across the tested encoders and parsers:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.62\linewidth}{|p{0.38\linewidth}|X|}
-\hline
-\textbf{Metric} & \textbf{Value} \\
-\hline
-Cases evaluated & `144` \\
-\hline
-Hierarchy consistency rate & `1.0` \\
-\hline
-Governance consistency rate & `1.0` \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=6.3cm]Q[l,wd=3.7cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Metric} & {Value} \\
+{Cases evaluated} & {144} \\
+{Hierarchy consistency rate} & {1.0} \\
+{Governance consistency rate} & {1.0} \\
+\end{tblr}
 ```
 
 **Backend robustness indicates the same stability across storage backends:**
 
 ``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.62\linewidth}{|p{0.38\linewidth}|X|}
-\hline
-\textbf{Metric} & \textbf{Value} \\
-\hline
-Cases evaluated & `36` \\
-\hline
-Hierarchy consistency rate & `1.0` \\
-\hline
-Governance consistency rate & `1.0` \\
-\hline
-\end{tabularx}
-}
+\noindent\begin{tblr}{colspec={Q[l,wd=6.3cm]Q[l,wd=3.7cm]},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}
+{Metric} & {Value} \\
+{Cases evaluated} & {36} \\
+{Hierarchy consistency rate} & {1.0} \\
+{Governance consistency rate} & {1.0} \\
+\end{tblr}
 ```
 
 Taken together, these evaluations provide evidence that SRP's governance semantics remained consistent across the tested workloads, representations, and storage backends.
@@ -801,35 +668,15 @@ The compatibility slice preserves the official task scorer while co-reporting SR
 
 **The runtime evidence summary is:**
 
-``` {=tex}
-{\small
-\renewcommand{\arraystretch}{1.08}
-\setlength{\tabcolsep}{3pt}
-\begin{tabularx}{0.92\linewidth}{|p{0.18\linewidth}|p{0.22\linewidth}|X|}
-\hline
-\textbf{Category} & \textbf{Metric} & \textbf{Observed Value} \\
-\hline
-Runtime & Model & `Qwen/Qwen3-4B-AWQ` \\
-\hline
-Runtime & Endpoint & `http://172.25.253.78:8000` \\
-\hline
-Dataset & Cases evaluated & `24` \\
-\hline
-Official scorer & Answer accuracy & `0.888021` \\
-\hline
-Official scorer & Official metric score & `0.888021` \\
-\hline
-SRP diagnostic & Semantic coverage & `0.770833` \\
-\hline
-SRP diagnostic & Semantic drift & `0.320833` \\
-\hline
-Artifact & Runtime integrity & verified \\
-\hline
-Artifact & Dataset integrity & verified \\
-\hline
-\end{tabularx}
-}
-```
+- Runtime: Model = Qwen/Qwen3-4B-AWQ
+- Runtime: Endpoint = 172.25.253.78:8000
+- Dataset: Cases evaluated = 24
+- Official scorer: Answer accuracy = 0.888021
+- Official scorer: Official score = 0.888021
+- SRP diagnostic: Semantic coverage = 0.770833
+- SRP diagnostic: Semantic drift = 0.320833
+- Artifact: Runtime integrity = verified
+- Artifact: Dataset integrity = verified
 
 The runtime manifest, dataset fingerprint, and report fingerprint are recorded in the appendix. The result is evidence that external semantic workloads can be routed through the SRP governance pipeline while preserving official scorer separation and reproducible artifact generation. Larger-scale validation is still required before any stronger general claim is made.
 
@@ -879,7 +726,11 @@ The main paper-facing claim is that semantic runtime governance is a first-class
 
 This list is intentionally selective. It covers the prior-work anchors that define SRP's novelty boundary and the core control models it builds on.
 
-- Lewis et al., "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" (2020), arXiv:2005.11401
+``` {=tex}
+\sloppy
+```
+
+- Lewis et al., "Retrieval-Augmented Generation" (2020), arXiv:2005.11401
 - Packer et al., "MemGPT: Towards LLMs as Operating Systems" (2023), arXiv:2310.08560
 - Chhikara et al., "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory" (2025), arXiv:2504.19413
 - Rasmussen et al., "Zep: A Temporal Knowledge Graph Architecture for Agent Memory" (2025), arXiv:2501.13956
@@ -888,16 +739,21 @@ This list is intentionally selective. It covers the prior-work anchors that defi
 - Wang et al., "Voyager: An Open-Ended Embodied Agent with Large Language Models" (2023), arXiv:2305.16291
 - Achiam et al., "Constrained Policy Optimization" (2017), arXiv:1705.10528
 - Wachi et al., "A Survey of Constraint Formulations in Safe Reinforcement Learning" (2024), arXiv:2402.02025
-- Haerder and Reuter, "Principles of Transaction-Oriented Database Recovery" (1983), DOI:10.1145/289.291
+- Haerder and Reuter, "Transaction-Oriented Database Recovery" (1983), DOI:10.1145/289.291
 - Alchourron, Gardenfors, and Makinson, "On the Logic of Theory Change: Partial Meet Contraction and Revision Functions" (1985), JSTOR:2274239
-- Sanchez et al., "A Survey of Challenges for Runtime Verification from Advanced Application Domains (Beyond Software)" (2019), Springer:10.1007/s10703-019-00337-w
+- Sanchez et al., "Runtime Verification Challenges" (2019), Springer:10.1007/s10703-019-00337-w
 
-# Appendix A. Evidence Provenance and Artifact Mapping
+``` {=tex}
+\fussy
+\appendix
+```
+
+# Evidence Provenance and Artifact Mapping
 
 This appendix defines the paper's reproducibility boundary.
 It explains which artifacts are trusted, which are supporting evidence, and which remain provenance only in the current release snapshot.
 
-## A.1 Evidence Promotion Policy
+## Evidence Promotion Policy
 
 The default trust policy is conservative:
 
@@ -907,7 +763,7 @@ The default trust policy is conservative:
 
 The review report is generated from `experiments/results` and records both trusted and legacy artifacts.
 
-## A.2 Artifact Classification
+## Artifact Classification
 
 The paper uses three levels of artifact status:
 
@@ -924,7 +780,7 @@ The current snapshot also contains supporting artifacts that remain appendix-gra
 - `phase_ii_boundary`
 - `external_validation_longmemeval_evidence_strong_baselines`
 
-## A.3 Claim-to-Evidence Mapping
+## Claim-to-Evidence Mapping
 
 The detailed claim-to-evidence mapping is maintained in `audit/CLAIM_EVIDENCE_MAP.md`.
 That document should be treated as the claim ledger for the current release branch.
@@ -937,33 +793,29 @@ In brief:
 - LongMemEval is external-validation support, not refreshed main evidence
 - cross-workload robustness remains under-supported in the current snapshot
 
-## A.4 Reproduction Entry Points
+## Reproduction Entry Points
 
 The recommended regeneration flow is:
 
 - `python experiments/sensitivity/run_phase_i_observability.py`
-- `python -m experiments.sensitivity.phase_i_observability`
-- `python -m experiments.validation.phase_ii_boundary.runner`
-- `python -m experiments.validation.phase_ii_density_baseline`
-- `python -m experiments.validation.phase_ii_boundary_generalization`
-- `python -m experiments.optimization.phase_iii_governed_optimization.baseline`
-- `python -m experiments.optimization.phase_iii_governed_optimization.objective_sensitivity`
+- `python experiments/validation/run_phase_ii_boundary_validation.py`
+- `python experiments/validation/run_phase_ii_density_baseline.py`
+- `python experiments/validation/run_phase_ii_boundary_generalization.py`
+- `python experiments/optimization/run_phase_iii_a_round1.py`
+- `python experiments/optimization/run_phase_iii_a_baseline_comparison.py`
+- `python experiments/optimization/run_phase_iii_a_objective_sensitivity.py`
 - `python experiments/sensitivity/run_activation_recovery_interaction.py`
-- `python -m experiments.evaluation.semantic_backend_comparison.runner`
-- `python -m experiments.evaluation.phase_v_retention.runner`
-- `python -m experiments.evaluation.phase_vi_relation_recovery.runner`
-- `python -m experiments.evaluation.phase_vii_parameter_stability.runner`
-- `python -m experiments.evaluation.phase_vii_parameter_sensitivity.runner`
-- `python -m experiments.evaluation.phase_viii_cross_domain.runner`
-- `python -m experiments.evaluation.phase_viii_representation_invariance.runner`
-- `python -m experiments.evaluation.phase_viii_implementation_independence.runner`
-- `python -m experiments.external_validation.manual_sanity`
-- `python -m experiments.external_validation.calibration_report`
-- `python -m experiments.external_validation.longmemeval_adapter_validation`
-- `python -m experiments.external_validation.evidence`
-- `python -m experiments.external_validation.scorer_alignment_audit`
+- `python experiments/evaluation/run_semantic_backend_comparison.py`
+- `python experiments/evaluation/run_phase_v_retention.py`
+- `python experiments/evaluation/run_phase_vi_relation_recovery.py`
+- `python experiments/evaluation/run_phase_vii_parameter_stability.py`
+- `python experiments/evaluation/run_phase_vii_parameter_sensitivity.py`
+- `python experiments/evaluation/run_phase_viii_cross_domain.py`
+- `python experiments/evaluation/run_phase_viii_representation_invariance.py`
+- `python experiments/evaluation/run_phase_viii_implementation_independence.py`
+- `python experiments/evaluation/run_longmemeval_adapter_validation.py`
 
-## A.5 Release Snapshot Limitations
+## Release Snapshot Limitations
 
 At the time of this draft, the review report marks `interaction_boundary_enforcement` as trusted, while the older phase and external-validation artifacts remain legacy-only because they either lack `metadata.json` or predate the trust cutoff.
 
@@ -976,7 +828,7 @@ The practical reading is:
 This appendix does not add a new claim about SRP.
 It documents the evidence-management procedure used to separate trusted outputs from legacy outputs in this release branch.
 
-## A.6 External Runtime Compatibility Validation Provenance
+## External Runtime Compatibility Validation Provenance
 
 The LongMemEval compatibility slice is treated as an external validation artifact under the frozen v1.1 evidence boundary.
 
@@ -996,25 +848,8 @@ It is not used as:
 
 The reality-check outputs are frozen with a runtime manifest, an artifact integrity record, and a reproducible report hash so that the evidence can be audited independently of the narrative interpretation.
 
-Wording polish pass is done.
 
-**Updated**
-- [paper/SRP_ARXIV_DRAFT_V1.md](C:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/paper/SRP_ARXIV_DRAFT_V1.md)
-- [audit/SRP_V1_WORDING_POLISH_DIFF.md](C:/Users/ZhiyangHuang/Semantic-Runtime-Protocol/audit/SRP_V1_WORDING_POLISH_DIFF.md)
 
-**What changed**
-- Softened a few claim-heavy phrases to `provides evidence`, `indicates`, and `illustrate`
-- Kept all method, experiment, and evidence structure unchanged
-- Recorded the wording-only edits in a compact diff note
 
-**Verification**
-- `python scripts/verify_release.py` passed
 
-Current RC state is still clean:
-- evidence frozen
-- claims frozen
-- terminology frozen
-- wording frozen
-
-If you want one last mechanical sweep, the only remaining useful thing is a final PDF render / visual check for figure readability and equation layout.
 

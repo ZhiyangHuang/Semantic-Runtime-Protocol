@@ -1,0 +1,11 @@
+% SRP table convention for tabularray:
+% - Write tables directly as \begin{tblr}{...} ... \end{tblr}
+% - Wrap each cell in braces when the cell contains \\ or special punctuation
+% - Use \noindent before table blocks to suppress paragraph indentation
+% - Keep header cells bold and centered with row{1}={font=\bfseries,halign=c}
+
+\NewDocumentEnvironment{SRPTable}{O{} m}{%
+  \noindent\begin{tblr}{width=\linewidth,#1,colspec={#2},hlines,vlines,colsep=2pt,rowsep=1pt,row{1}={font=\bfseries,halign=c}}%
+}{%
+  \end{tblr}%
+}

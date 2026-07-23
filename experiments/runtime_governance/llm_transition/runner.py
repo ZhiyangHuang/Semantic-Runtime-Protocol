@@ -110,8 +110,12 @@ def run_llm_transition_integration(
     direct_latency = summarize_governance_latencies(direct_records).as_dict()
     proposal_count = proposal_stats["proposal_count"] or 1
 
-    srp_total_ms = float((srp_latency.get("mean_ms") or {}).get("total_ms", 0.0) or 0.0)
-    direct_total_ms = float((direct_latency.get("mean_ms") or {}).get("total_ms", 0.0) or 0.0)
+    srp_mean_ms = srp_latency.get("mean_ms") or {}
+    direct_mean_ms = direct_latency.get("mean_ms") or {}
+    srp_executor_total_ms = float(srp_mean_ms.get("total_ms", 0.0) or 0.0)
+    srp_proposal_total_ms = float(srp_mean_ms.get("proposal_ms", 0.0) or 0.0)
+    srp_total_ms = srp_executor_total_ms + srp_proposal_total_ms
+    direct_total_ms = float(direct_mean_ms.get("total_ms", 0.0) or 0.0)
     absolute_overhead_ms = srp_total_ms - direct_total_ms
     relative_overhead = absolute_overhead_ms / direct_total_ms if direct_total_ms else 0.0
 
@@ -139,6 +143,7 @@ def run_llm_transition_integration(
             "direct_write_latency": direct_latency,
             "latency_overhead": {
                 "srp_mean_total_ms": srp_total_ms,
+                "srp_executor_total_ms": srp_executor_total_ms,
                 "direct_mean_total_ms": direct_total_ms,
                 "absolute_overhead_ms": absolute_overhead_ms,
                 "relative_overhead": relative_overhead,
@@ -238,10 +243,11 @@ def _render_markdown(report: dict[str, Any]) -> str:
             f"| Evidence | {_fmt((srp_latency.get('mean_ms') or {}).get('evidence_ms', 0.0), 6)} |",
             f"| Governance | {_fmt((srp_latency.get('mean_ms') or {}).get('governance_ms', 0.0), 6)} |",
             f"| Commit | {_fmt((srp_latency.get('mean_ms') or {}).get('commit_ms', 0.0), 6)} |",
-            f"| Total | {_fmt((srp_latency.get('mean_ms') or {}).get('total_ms', 0.0), 6)} |",
+            f"| Total | {_fmt(overhead.get('srp_mean_total_ms', (srp_latency.get('mean_ms') or {}).get('total_ms', 0.0)), 6)} |",
             "",
             "## Relative Overhead",
             f"- `srp_mean_total_ms`: {_fmt(overhead.get('srp_mean_total_ms', 0.0), 6)}",
+            f"- `srp_executor_total_ms`: {_fmt(overhead.get('srp_executor_total_ms', 0.0), 6)}",
             f"- `direct_mean_total_ms`: {_fmt(overhead.get('direct_mean_total_ms', 0.0), 6)}",
             f"- `absolute_overhead_ms`: {_fmt(overhead.get('absolute_overhead_ms', 0.0), 6)}",
             f"- `relative_overhead_percent`: {_fmt(overhead.get('relative_overhead_percent', 0.0), 3)}",

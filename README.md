@@ -61,6 +61,15 @@ Historical aliases remain available for compatibility only, and the primary rele
 - `python -m experiments.evaluation.phase_viii_implementation_independence.runner`
 - `python -m experiments.evaluation.phase_viii_cross_domain.runner`
 
+## Auxiliary Reproducibility Entry Points
+
+These support the release evidence bundle and calibration history, but they are not part of the trimmed paper-facing regeneration flow:
+
+- `python experiments/evaluation/run_locomo_manual_sanity.py`
+- `python experiments/external_validation/calibration_report.py`
+- `python experiments/evaluation/run_longmemeval_evidence.py`
+- `python experiments/evaluation/run_longmemeval_scorer_alignment_audit.py`
+
 ## Release Verification
 
 Run the release hygiene check before tagging or pushing a release branch:

@@ -33,19 +33,19 @@
 ## Runtime Cost
 | Stage | Mean ms |
 | --- | ---: |
-| Proposal | 1734.433333 |
-| Validation | 0.002433 |
-| Evidence | 0.034333 |
-| Governance | 0.003700 |
-| Commit | 0.005200 |
-| Total | 1734.482800 |
+| Proposal | 1693.400000 |
+| Validation | 0.006567 |
+| Evidence | 0.006767 |
+| Governance | 0.003900 |
+| Commit | 0.003833 |
+| Total | 1693.423733 |
 
 ## Relative Overhead
-- `srp_mean_total_ms`: 1734.482800
-- `srp_executor_total_ms`: 0.049467
-- `direct_mean_total_ms`: 1734.441233
-- `absolute_overhead_ms`: 0.041567
-- `relative_overhead_percent`: 0.002
+- `srp_mean_total_ms`: 1693.423733
+- `srp_executor_total_ms`: 0.023733
+- `direct_mean_total_ms`: 1693.406067
+- `absolute_overhead_ms`: 0.017667
+- `relative_overhead_percent`: 0.001
 
 ## Interpretation
 LLM proposes, SRP decides, and runtime executes only after governance approves.

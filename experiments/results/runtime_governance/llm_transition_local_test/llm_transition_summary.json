@@ -24,65 +24,65 @@
   },
   "srp_latency": {
     "mean_ms": {
-      "proposal_ms": 1734.4333333333332,
-      "validation_ms": 0.0024333333333333334,
-      "evidence_ms": 0.034333333333333334,
-      "governance_ms": 0.0037,
-      "commit_ms": 0.0052,
-      "total_ms": 0.049466666666666666
+      "proposal_ms": 1693.3999999999999,
+      "validation_ms": 0.006566666666666667,
+      "evidence_ms": 0.0067666666666666665,
+      "governance_ms": 0.0039,
+      "commit_ms": 0.0038333333333333336,
+      "total_ms": 0.023733333333333332
     },
     "p95_ms": {
-      "proposal_ms": 1988.6,
-      "validation_ms": 0.0032,
-      "evidence_ms": 0.0965,
-      "governance_ms": 0.0041,
-      "commit_ms": 0.0072,
-      "total_ms": 0.1128
+      "proposal_ms": 1941.1,
+      "validation_ms": 0.015,
+      "evidence_ms": 0.015,
+      "governance_ms": 0.0048,
+      "commit_ms": 0.0041,
+      "total_ms": 0.0423
     },
     "max_ms": {
-      "proposal_ms": 1988.6,
-      "validation_ms": 0.0032,
-      "evidence_ms": 0.0965,
-      "governance_ms": 0.0041,
-      "commit_ms": 0.0072,
-      "total_ms": 0.1128
+      "proposal_ms": 1941.1,
+      "validation_ms": 0.015,
+      "evidence_ms": 0.015,
+      "governance_ms": 0.0048,
+      "commit_ms": 0.0041,
+      "total_ms": 0.0423
     },
     "sample_count": 3
   },
   "direct_write_latency": {
     "mean_ms": {
-      "proposal_ms": 1734.4333333333332,
+      "proposal_ms": 1693.3999999999999,
       "validation_ms": 0.0,
       "evidence_ms": 0.0,
       "governance_ms": 0.0,
-      "commit_ms": 0.0079,
-      "total_ms": 1734.4412333333332
+      "commit_ms": 0.006066666666666666,
+      "total_ms": 1693.4060666666667
     },
     "p95_ms": {
-      "proposal_ms": 1988.6,
+      "proposal_ms": 1941.1,
       "validation_ms": 0.0,
       "evidence_ms": 0.0,
       "governance_ms": 0.0,
-      "commit_ms": 0.0114,
-      "total_ms": 1988.606
+      "commit_ms": 0.0066,
+      "total_ms": 1941.1062
     },
     "max_ms": {
-      "proposal_ms": 1988.6,
+      "proposal_ms": 1941.1,
       "validation_ms": 0.0,
       "evidence_ms": 0.0,
       "governance_ms": 0.0,
-      "commit_ms": 0.0114,
-      "total_ms": 1988.606
+      "commit_ms": 0.0066,
+      "total_ms": 1941.1062
     },
     "sample_count": 3
   },
   "latency_overhead": {
-    "srp_mean_total_ms": 1734.4827999999998,
-    "srp_executor_total_ms": 0.049466666666666666,
-    "direct_mean_total_ms": 1734.4412333333332,
-    "absolute_overhead_ms": 0.041566666666540186,
-    "relative_overhead": 2.396545115953877e-05,
-    "relative_overhead_percent": 0.002396545115953877
+    "srp_mean_total_ms": 1693.4237333333333,
+    "srp_executor_total_ms": 0.023733333333333332,
+    "direct_mean_total_ms": 1693.4060666666667,
+    "absolute_overhead_ms": 0.01766666666662786,
+    "relative_overhead": 1.0432622756220113e-05,
+    "relative_overhead_percent": 0.0010432622756220114
   },
   "proposal_stats": {
     "proposal_count": 3,

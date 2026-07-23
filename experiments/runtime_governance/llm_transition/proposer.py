@@ -75,14 +75,23 @@ def _extract_json_block(text: str) -> str:
     source = text.strip()
     if not source:
         raise ValueError("empty proposal text")
-    if source.startswith("{") and source.endswith("}"):
+    try:
+        json.loads(source)
         return source
+    except json.JSONDecodeError:
+        pass
     fenced = re.search(r"```json\s*(\{.*?\})\s*```", source, flags=re.IGNORECASE | re.DOTALL)
     if fenced:
         return fenced.group(1)
-    bracketed = re.search(r"(\{.*\})", source, flags=re.DOTALL)
-    if bracketed:
-        return bracketed.group(1)
+    decoder = json.JSONDecoder()
+    for start in (idx for idx, char in enumerate(source) if char == "{"):
+        try:
+            _, end = decoder.raw_decode(source[start:])
+        except json.JSONDecodeError:
+            continue
+        candidate = source[start : start + end]
+        if candidate.strip():
+            return candidate
     raise ValueError("no JSON object found in proposal text")
 
 
