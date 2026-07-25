@@ -16,7 +16,7 @@ from experiments.transition_role.validate_registry import validate_all
 
 
 MAX_FILE_SIZE = 100 * 1024 * 1024
-RELEASE_MANIFEST_PATH = ROOT / "audit" / "release_manifest.json"
+RELEASE_MANIFEST_PATH = ROOT / "paper" / "docs" / "release" / "release_manifest.json"
 
 
 def main() -> int:

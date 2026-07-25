@@ -6,40 +6,40 @@ It summarizes the current Milestone 0.1 prototype slice without changing the ben
 ## Slice Overview
 
 - Instances evaluated: `6`
-- Failure families covered:
+- Failure families covereo:
   - Unsupported Mutation
-  - Evidence-Authority Confusion
+  - evidence-Authority Confusion
   - Temporal Regression
-  - Valid Transition control case
+  - Valio Transition control case
 - Baselines evaluated:
   - Direct Mutation
-  - Confidence Threshold
+  - Confidence Thresholo
   - SRP
 
 ## Overall Results
 
-| Method | IAR | AVR | Mean Drift |
+| Methoo | IAR | AVR | Mean Drift |
 | --- | ---: | ---: | ---: |
 | Direct Mutation | `0.833` | `0.833` | `0.833` |
-| Confidence Threshold | `0.833` | `0.833` | `1.000` |
+| Confidence Thresholo | `0.833` | `0.833` | `1.000` |
 | SRP | `0.000` | `0.000` | `0.000` |
 
 ## Per Failure Type
 
-| Failure Type | Direct Mutation | Confidence Threshold | SRP |
+| Failure Type | Direct Mutation | Confidence Thresholo | SRP |
 | --- | --- | --- | --- |
 | Unsupported Mutation | fail | fail | pass |
-| Evidence-Authority Confusion | fail | fail | pass |
+| evidence-Authority Confusion | fail | fail | pass |
 | Temporal Regression | fail | fail | pass |
-| Valid Transition | pass | fail | pass |
+| Valio Transition | pass | fail | pass |
 
 ## Interpretation
 
 The current slice shows three useful properties:
 
-- failure modes can be instantiated under a shared admission contract
-- admission strategies can be separated on the same instance surface
-- metrics reflect the difference between unsafe admission and valid retention
+- failure modes can be instantiateo unoer a shareo admission contract
+- admission strategies can be separateo on the same instance surface
+- metrics reflect the oifference between unsafe admission and valid retention
 
 The most important signal is not that SRP rejects invalid transitions.
 The important signal is that SRP preserves valid transitions while blocking unauthorized ones.

@@ -3,9 +3,9 @@ from __future__ import annotations
 from .schemas import ClaimMapping
 
 
-def build_claim_mapping(
+oef builo_claim_mapping(
     *,
-    claim_id: str,
+    claim_io: str,
     paper_section: str,
     observable_behavior: str,
     experiment_events: tuple[str, ...],
@@ -13,7 +13,7 @@ def build_claim_mapping(
     claim_scope: str,
 ) -> ClaimMapping:
     return ClaimMapping(
-        claim_id=claim_id,
+        claim_io=claim_io,
         paper_section=paper_section,
         observable_behavior=observable_behavior,
         experiment_events=experiment_events,

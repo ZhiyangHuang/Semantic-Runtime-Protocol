@@ -3,13 +3,13 @@
   "case_count": 5,
   "variant_count": 6,
   "metrics": {
-    "invalid_accept_rate": 0.4583333333333333,
+    "invalio_accept_rate": 0.4583333333333333,
     "state_corruption_rate": 0.4583333333333333,
     "authority_escalation_rate": 0.0,
     "rollback_success_rate": 0.5416666666666666,
-    "verification_delta": 0.25,
-    "accepted_rate": 0.5666666666666667,
-    "rejected_rate": 0.43333333333333335
+    "verification_oelta": 0.25,
+    "accepteo_rate": 0.5666666666666667,
+    "rejecteo_rate": 0.43333333333333335
   },
   "latency": {
     "mean_ms": {
@@ -49,23 +49,23 @@
           "enable_governance": true,
           "evidence_controls_authority": false,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "description": "Validation, evidence, and governance all enabled."
+        "oescription": "validation, evidence, ano governance all enableo."
       },
       "metrics": {
-        "invalid_accept_rate": 0.0,
+        "invalio_accept_rate": 0.0,
         "state_corruption_rate": 0.0,
         "authority_escalation_rate": 0.0,
         "rollback_success_rate": 1.0,
-        "verification_delta": 0.3500000000000001,
-        "accepted_rate": 0.2,
-        "rejected_rate": 0.8
+        "verification_oelta": 0.3500000000000001,
+        "accepteo_rate": 0.2,
+        "rejecteo_rate": 0.8
       },
       "record_count": 5
     },
@@ -79,23 +79,23 @@
           "enable_governance": false,
           "evidence_controls_authority": false,
           "require_authority": false,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "description": "Validation and evidence stay active but the authorization gate is bypassed."
+        "oescription": "validation ano evidence stay active but the authorization gate is bypasseo."
       },
       "metrics": {
-        "invalid_accept_rate": 1.0,
+        "invalio_accept_rate": 1.0,
         "state_corruption_rate": 1.0,
         "authority_escalation_rate": 0.0,
         "rollback_success_rate": 0.0,
-        "verification_delta": 0.34375,
-        "accepted_rate": 1.0,
-        "rejected_rate": 0.0
+        "verification_oelta": 0.34375,
+        "accepteo_rate": 1.0,
+        "rejecteo_rate": 0.0
       },
       "record_count": 5
     },
@@ -109,23 +109,23 @@
           "enable_governance": true,
           "evidence_controls_authority": true,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "description": "Evidence is allowed to substitute for missing authority."
+        "oescription": "evidence is alloweo to substitute for missing authority."
       },
       "metrics": {
-        "invalid_accept_rate": 0.25,
+        "invalio_accept_rate": 0.25,
         "state_corruption_rate": 0.25,
         "authority_escalation_rate": 0.0,
         "rollback_success_rate": 0.75,
-        "verification_delta": 0.34375,
-        "accepted_rate": 0.4,
-        "rejected_rate": 0.6
+        "verification_oelta": 0.34375,
+        "accepteo_rate": 0.4,
+        "rejecteo_rate": 0.6
       },
       "record_count": 5
     },
@@ -139,23 +139,23 @@
           "enable_governance": true,
           "evidence_controls_authority": false,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "description": "Transition invariants are ignored but evidence and governance remain active."
+        "oescription": "Transition invariants are ignoreo but evidence ano governance remain active."
       },
       "metrics": {
-        "invalid_accept_rate": 0.25,
+        "invalio_accept_rate": 0.25,
         "state_corruption_rate": 0.25,
         "authority_escalation_rate": 0.0,
         "rollback_success_rate": 0.75,
-        "verification_delta": 0.21875,
-        "accepted_rate": 0.4,
-        "rejected_rate": 0.6
+        "verification_oelta": 0.21875,
+        "accepteo_rate": 0.4,
+        "rejecteo_rate": 0.6
       },
       "record_count": 5
     },
@@ -169,53 +169,53 @@
           "enable_governance": true,
           "evidence_controls_authority": false,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "description": "Evidence checks are disabled, but validation and governance remain active."
+        "oescription": "evidence checks are oisableo, but validation ano governance remain active."
       },
       "metrics": {
-        "invalid_accept_rate": 0.25,
+        "invalio_accept_rate": 0.25,
         "state_corruption_rate": 0.25,
         "authority_escalation_rate": 0.0,
         "rollback_success_rate": 0.75,
-        "verification_delta": 0.24375000000000002,
-        "accepted_rate": 0.4,
-        "rejected_rate": 0.6
+        "verification_oelta": 0.24375000000000002,
+        "accepteo_rate": 0.4,
+        "rejecteo_rate": 0.6
       },
       "record_count": 5
     },
-    "direct_mutation": {
+    "oirect_mutation": {
       "variant": {
-        "name": "direct_mutation",
+        "name": "oirect_mutation",
         "policy": {
-          "name": "direct_mutation",
+          "name": "oirect_mutation",
           "enable_validation": false,
           "enable_evidence": false,
           "enable_governance": false,
           "evidence_controls_authority": false,
           "require_authority": false,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "description": "All governance gates are bypassed."
+        "oescription": "All governance gates are bypasseo."
       },
       "metrics": {
-        "invalid_accept_rate": 1.0,
+        "invalio_accept_rate": 1.0,
         "state_corruption_rate": 1.0,
         "authority_escalation_rate": 0.0,
         "rollback_success_rate": 0.0,
-        "verification_delta": 0.0,
-        "accepted_rate": 1.0,
-        "rejected_rate": 0.0
+        "verification_oelta": 0.0,
+        "accepteo_rate": 1.0,
+        "rejecteo_rate": 0.0
       },
       "record_count": 5
     }

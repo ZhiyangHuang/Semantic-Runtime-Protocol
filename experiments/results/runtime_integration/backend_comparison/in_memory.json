@@ -1,34 +1,34 @@
 {
-  "backend": "deterministic_memory_adapter",
+  "backeno": "oeterministic_memory_adapter",
   "fixture": {
     "path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json",
-    "hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1addd9d14b8ee2d847fa0894c2e2fabda",
+    "hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1aooo9o14b8ee2o847fa0894c2e2faboa",
     "runtime_contract": "srp-runtime-v1.1",
     "version": "v1.1",
-    "snapshot_id": "srp-runtime-v1.1-replay-0001",
-    "adapter": "deterministic_memory_adapter"
+    "snapshot_io": "srp-runtime-v1.1-replay-0001",
+    "adapter": "oeterministic_memory_adapter"
   },
   "policy": {
-    "minimum_confidence": 0.75,
+    "minimum_confioence": 0.75,
     "require_evidence": true,
     "block_authority_escalation": true,
-    "commit_enabled": false,
-    "mode": "replay",
+    "commit_enableo": false,
+    "mooe": "replay",
     "name": "runtime_integration_policy_v1",
     "metadata": {}
   },
   "records": [
     {
-      "example_id": "pref_update_001",
+      "example_io": "pref_upoate_001",
       "family": "preference",
-      "category": "valid",
-      "expected_decision": true,
-      "backend": "deterministic_memory_adapter",
+      "category": "valio",
+      "expecteo_decision": true,
+      "backeno": "oeterministic_memory_adapter",
       "example": {
-        "example_id": "pref_update_001",
+        "example_io": "pref_upoate_001",
         "family": "preference",
-        "category": "valid",
-        "description": "Supported preference evolution from coffee to tea.",
+        "category": "valio",
+        "oescription": "Supporteo preference evolution from coffee to tea.",
         "conversation": "I prefer tea now.",
         "state_before": {
           "facts": {
@@ -36,8 +36,8 @@
           },
           "authority_level": "user"
         },
-        "candidate_payload": {
-          "transition_id": "pref_update_001",
+        "canoioate_payloao": {
+          "transition_io": "pref_upoate_001",
           "subject": "user_prefers",
           "operation": "UPDATE",
           "previous_value": {
@@ -45,7 +45,7 @@
               "user_prefers": "coffee"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "user_prefers": "tea"
             }
@@ -59,23 +59,23 @@
               "content": "I prefer tea now."
             }
           ],
-          "confidence": 0.94,
+          "confioence": 0.94,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "valid",
+            "transition_kino": "valio",
             "proposal_ms": 0.0
           }
         },
-        "expected_decision": true,
+        "expecteo_decision": true,
         "metadata": {
           "runtime_contract": "srp-runtime-v1.1",
           "version": "v1.1",
-          "adapter": "deterministic_memory_adapter",
+          "adapter": "oeterministic_memory_adapter",
           "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
         }
       },
-      "candidate": {
-        "transition_id": "pref_update_001",
+      "canoioate": {
+        "transition_io": "pref_upoate_001",
         "subject": "user_prefers",
         "operation": "UPDATE",
         "previous_value": {
@@ -83,7 +83,7 @@
             "user_prefers": "coffee"
           }
         },
-        "proposed_value": {
+        "proposeo_value": {
           "facts": {
             "user_prefers": "tea"
           }
@@ -97,44 +97,44 @@
             "content": "I prefer tea now."
           }
         ],
-        "confidence": 0.94,
+        "confioence": 0.94,
         "timestamp": "2026-07-22T00:00:00Z",
         "metadata": {
-          "transition_kind": "valid",
+          "transition_kino": "valio",
           "proposal_ms": 0.0,
-          "example_id": "pref_update_001",
+          "example_io": "pref_upoate_001",
           "family": "preference",
-          "category": "valid",
-          "description": "Supported preference evolution from coffee to tea.",
+          "category": "valio",
+          "oescription": "Supporteo preference evolution from coffee to tea.",
           "conversation": "I prefer tea now."
         }
       },
       "decision": {
-        "id": "pref_update_001",
+        "io": "pref_upoate_001",
         "decision": "APPROVE",
-        "accepted": true,
+        "accepteo": true,
         "validation_score": 1.0,
         "evidence_score": 0.94,
-        "violated_rules": [],
+        "violateo_rules": [],
         "governance_trace": {
-          "transition_id": "pref_update_001",
+          "transition_io": "pref_upoate_001",
           "validation": {
-            "passed": true,
+            "passeo": true,
             "score": 1.0,
-            "mode": "replay"
+            "mooe": "replay"
           },
           "evidence": {
             "score": 0.94,
-            "passed": true
+            "passeo": true
           },
           "governance": {
             "decision": "APPROVE",
-            "accepted": true,
-            "violated_rules": []
+            "accepteo": true,
+            "violateo_rules": []
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
+            "state_changeo": false,
+            "authority_changeo": false,
             "state_before": {},
             "state_after": {}
           },
@@ -147,32 +147,32 @@
             "total_ms": 0.0463
           },
           "metadata": {
-            "mode": "replay",
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             },
-            "candidate_metadata": {
-              "transition_kind": "valid",
+            "canoioate_metadata": {
+              "transition_kino": "valio",
               "proposal_ms": 0.0,
-              "example_id": "pref_update_001",
+              "example_io": "pref_upoate_001",
               "family": "preference",
-              "category": "valid",
-              "description": "Supported preference evolution from coffee to tea.",
+              "category": "valio",
+              "oescription": "Supporteo preference evolution from coffee to tea.",
               "conversation": "I prefer tea now."
             },
             "proposal_view": {
-              "transition_id": "pref_update_001",
+              "transition_io": "pref_upoate_001",
               "subject": "user_prefers",
               "operation": "UPDATE",
               "state_before": {},
-              "candidate": {
-                "transition_id": "pref_update_001",
+              "canoioate": {
+                "transition_io": "pref_upoate_001",
                 "subject": "user_prefers",
                 "operation": "UPDATE",
                 "previous_value": {
@@ -180,7 +180,7 @@
                     "user_prefers": "coffee"
                   }
                 },
-                "proposed_value": {
+                "proposeo_value": {
                   "facts": {
                     "user_prefers": "tea"
                   }
@@ -194,15 +194,15 @@
                     "content": "I prefer tea now."
                   }
                 ],
-                "confidence": 0.94,
+                "confioence": 0.94,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                  "transition_kind": "valid",
+                  "transition_kino": "valio",
                   "proposal_ms": 0.0,
-                  "example_id": "pref_update_001",
+                  "example_io": "pref_upoate_001",
                   "family": "preference",
-                  "category": "valid",
-                  "description": "Supported preference evolution from coffee to tea.",
+                  "category": "valio",
+                  "oescription": "Supporteo preference evolution from coffee to tea.",
                   "conversation": "I prefer tea now."
                 }
               }
@@ -211,42 +211,42 @@
         },
         "latency_ms": 0.0463,
         "metadata": {
-          "state_changed": false,
-          "authority_changed": false,
-          "mode": "replay",
+          "state_changeo": false,
+          "authority_changeo": false,
+          "mooe": "replay",
           "policy": {
-            "minimum_confidence": 0.75,
+            "minimum_confioence": 0.75,
             "require_evidence": true,
             "block_authority_escalation": true,
-            "commit_enabled": false,
-            "mode": "replay",
+            "commit_enableo": false,
+            "mooe": "replay",
             "name": "runtime_integration_policy_v1",
             "metadata": {}
           }
         }
       },
       "trace": {
-        "transition_id": "pref_update_001",
-        "example_id": "pref_update_001",
+        "transition_io": "pref_upoate_001",
+        "example_io": "pref_upoate_001",
         "family": "preference",
-        "category": "valid",
+        "category": "valio",
         "validation": {
-          "passed": true,
+          "passeo": true,
           "score": 1.0,
-          "mode": "replay"
+          "mooe": "replay"
         },
         "evidence": {
           "score": 0.94,
-          "passed": true
+          "passeo": true
         },
         "governance": {
           "decision": "APPROVE",
-          "accepted": true,
-          "violated_rules": []
+          "accepteo": true,
+          "violateo_rules": []
         },
         "execution": {
-          "state_changed": false,
-          "authority_changed": false,
+          "state_changeo": false,
+          "authority_changeo": false,
           "state_before": {},
           "state_after": {}
         },
@@ -260,10 +260,10 @@
         },
         "metadata": {
           "example": {
-            "example_id": "pref_update_001",
+            "example_io": "pref_upoate_001",
             "family": "preference",
-            "category": "valid",
-            "description": "Supported preference evolution from coffee to tea.",
+            "category": "valio",
+            "oescription": "Supporteo preference evolution from coffee to tea.",
             "conversation": "I prefer tea now.",
             "state_before": {
               "facts": {
@@ -271,8 +271,8 @@
               },
               "authority_level": "user"
             },
-            "candidate_payload": {
-              "transition_id": "pref_update_001",
+            "canoioate_payloao": {
+              "transition_io": "pref_upoate_001",
               "subject": "user_prefers",
               "operation": "UPDATE",
               "previous_value": {
@@ -280,7 +280,7 @@
                   "user_prefers": "coffee"
                 }
               },
-              "proposed_value": {
+              "proposeo_value": {
                 "facts": {
                   "user_prefers": "tea"
                 }
@@ -294,23 +294,23 @@
                   "content": "I prefer tea now."
                 }
               ],
-              "confidence": 0.94,
+              "confioence": 0.94,
               "timestamp": "2026-07-22T00:00:00Z",
               "metadata": {
-                "transition_kind": "valid",
+                "transition_kino": "valio",
                 "proposal_ms": 0.0
               }
             },
-            "expected_decision": true,
+            "expecteo_decision": true,
             "metadata": {
               "runtime_contract": "srp-runtime-v1.1",
               "version": "v1.1",
-              "adapter": "deterministic_memory_adapter",
+              "adapter": "oeterministic_memory_adapter",
               "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
             }
           },
-          "candidate": {
-            "transition_id": "pref_update_001",
+          "canoioate": {
+            "transition_io": "pref_upoate_001",
             "subject": "user_prefers",
             "operation": "UPDATE",
             "previous_value": {
@@ -318,7 +318,7 @@
                 "user_prefers": "coffee"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "user_prefers": "tea"
               }
@@ -332,44 +332,44 @@
                 "content": "I prefer tea now."
               }
             ],
-            "confidence": 0.94,
+            "confioence": 0.94,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "valid",
+              "transition_kino": "valio",
               "proposal_ms": 0.0,
-              "example_id": "pref_update_001",
+              "example_io": "pref_upoate_001",
               "family": "preference",
-              "category": "valid",
-              "description": "Supported preference evolution from coffee to tea.",
+              "category": "valio",
+              "oescription": "Supporteo preference evolution from coffee to tea.",
               "conversation": "I prefer tea now."
             }
           },
           "decision": {
-            "id": "pref_update_001",
+            "io": "pref_upoate_001",
             "decision": "APPROVE",
-            "accepted": true,
+            "accepteo": true,
             "validation_score": 1.0,
             "evidence_score": 0.94,
-            "violated_rules": [],
+            "violateo_rules": [],
             "governance_trace": {
-              "transition_id": "pref_update_001",
+              "transition_io": "pref_upoate_001",
               "validation": {
-                "passed": true,
+                "passeo": true,
                 "score": 1.0,
-                "mode": "replay"
+                "mooe": "replay"
               },
               "evidence": {
                 "score": 0.94,
-                "passed": true
+                "passeo": true
               },
               "governance": {
                 "decision": "APPROVE",
-                "accepted": true,
-                "violated_rules": []
+                "accepteo": true,
+                "violateo_rules": []
               },
               "execution": {
-                "state_changed": false,
-                "authority_changed": false,
+                "state_changeo": false,
+                "authority_changeo": false,
                 "state_before": {},
                 "state_after": {}
               },
@@ -382,32 +382,32 @@
                 "total_ms": 0.0463
               },
               "metadata": {
-                "mode": "replay",
+                "mooe": "replay",
                 "policy": {
-                  "minimum_confidence": 0.75,
+                  "minimum_confioence": 0.75,
                   "require_evidence": true,
                   "block_authority_escalation": true,
-                  "commit_enabled": false,
-                  "mode": "replay",
+                  "commit_enableo": false,
+                  "mooe": "replay",
                   "name": "runtime_integration_policy_v1",
                   "metadata": {}
                 },
-                "candidate_metadata": {
-                  "transition_kind": "valid",
+                "canoioate_metadata": {
+                  "transition_kino": "valio",
                   "proposal_ms": 0.0,
-                  "example_id": "pref_update_001",
+                  "example_io": "pref_upoate_001",
                   "family": "preference",
-                  "category": "valid",
-                  "description": "Supported preference evolution from coffee to tea.",
+                  "category": "valio",
+                  "oescription": "Supporteo preference evolution from coffee to tea.",
                   "conversation": "I prefer tea now."
                 },
                 "proposal_view": {
-                  "transition_id": "pref_update_001",
+                  "transition_io": "pref_upoate_001",
                   "subject": "user_prefers",
                   "operation": "UPDATE",
                   "state_before": {},
-                  "candidate": {
-                    "transition_id": "pref_update_001",
+                  "canoioate": {
+                    "transition_io": "pref_upoate_001",
                     "subject": "user_prefers",
                     "operation": "UPDATE",
                     "previous_value": {
@@ -415,7 +415,7 @@
                         "user_prefers": "coffee"
                       }
                     },
-                    "proposed_value": {
+                    "proposeo_value": {
                       "facts": {
                         "user_prefers": "tea"
                       }
@@ -429,15 +429,15 @@
                         "content": "I prefer tea now."
                       }
                     ],
-                    "confidence": 0.94,
+                    "confioence": 0.94,
                     "timestamp": "2026-07-22T00:00:00Z",
                     "metadata": {
-                      "transition_kind": "valid",
+                      "transition_kino": "valio",
                       "proposal_ms": 0.0,
-                      "example_id": "pref_update_001",
+                      "example_io": "pref_upoate_001",
                       "family": "preference",
-                      "category": "valid",
-                      "description": "Supported preference evolution from coffee to tea.",
+                      "category": "valio",
+                      "oescription": "Supporteo preference evolution from coffee to tea.",
                       "conversation": "I prefer tea now."
                     }
                   }
@@ -446,35 +446,35 @@
             },
             "latency_ms": 0.0463,
             "metadata": {
-              "state_changed": false,
-              "authority_changed": false,
-              "mode": "replay",
+              "state_changeo": false,
+              "authority_changeo": false,
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               }
             }
           },
-          "backend": "deterministic_memory_adapter"
+          "backeno": "oeterministic_memory_adapter"
         }
       }
     },
     {
-      "example_id": "pref_update_002",
+      "example_io": "pref_upoate_002",
       "family": "preference",
-      "category": "unsupported",
-      "expected_decision": false,
-      "backend": "deterministic_memory_adapter",
+      "category": "unsupporteo",
+      "expecteo_decision": false,
+      "backeno": "oeterministic_memory_adapter",
       "example": {
-        "example_id": "pref_update_002",
+        "example_io": "pref_upoate_002",
         "family": "preference",
-        "category": "unsupported",
-        "description": "Overreaching preference inference without enough evidence.",
+        "category": "unsupporteo",
+        "oescription": "Overreaching preference inference without enough evidence.",
         "conversation": "I like coffee.",
         "state_before": {
           "facts": {
@@ -482,8 +482,8 @@
           },
           "authority_level": "user"
         },
-        "candidate_payload": {
-          "transition_id": "pref_update_002",
+        "canoioate_payloao": {
+          "transition_io": "pref_upoate_002",
           "subject": "user_prefers",
           "operation": "UPDATE",
           "previous_value": {
@@ -491,7 +491,7 @@
               "user_prefers": "coffee"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "user_prefers": "espresso"
             }
@@ -505,23 +505,23 @@
               "content": "I like coffee."
             }
           ],
-          "confidence": 0.2,
+          "confioence": 0.2,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "unsupported",
+            "transition_kino": "unsupporteo",
             "proposal_ms": 0.0
           }
         },
-        "expected_decision": false,
+        "expecteo_decision": false,
         "metadata": {
           "runtime_contract": "srp-runtime-v1.1",
           "version": "v1.1",
-          "adapter": "deterministic_memory_adapter",
+          "adapter": "oeterministic_memory_adapter",
           "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
         }
       },
-      "candidate": {
-        "transition_id": "pref_update_002",
+      "canoioate": {
+        "transition_io": "pref_upoate_002",
         "subject": "user_prefers",
         "operation": "UPDATE",
         "previous_value": {
@@ -529,7 +529,7 @@
             "user_prefers": "coffee"
           }
         },
-        "proposed_value": {
+        "proposeo_value": {
           "facts": {
             "user_prefers": "espresso"
           }
@@ -543,50 +543,50 @@
             "content": "I like coffee."
           }
         ],
-        "confidence": 0.2,
+        "confioence": 0.2,
         "timestamp": "2026-07-22T00:00:00Z",
         "metadata": {
-          "transition_kind": "unsupported",
+          "transition_kino": "unsupporteo",
           "proposal_ms": 0.0,
-          "example_id": "pref_update_002",
+          "example_io": "pref_upoate_002",
           "family": "preference",
-          "category": "unsupported",
-          "description": "Overreaching preference inference without enough evidence.",
+          "category": "unsupporteo",
+          "oescription": "Overreaching preference inference without enough evidence.",
           "conversation": "I like coffee."
         }
       },
       "decision": {
-        "id": "pref_update_002",
+        "io": "pref_upoate_002",
         "decision": "REJECT",
-        "accepted": false,
+        "accepteo": false,
         "validation_score": 1.0,
         "evidence_score": 0.2,
-        "violated_rules": [
-          "low_confidence",
-          "unsupported"
+        "violateo_rules": [
+          "low_confioence",
+          "unsupporteo"
         ],
         "governance_trace": {
-          "transition_id": "pref_update_002",
+          "transition_io": "pref_upoate_002",
           "validation": {
-            "passed": true,
+            "passeo": true,
             "score": 1.0,
-            "mode": "replay"
+            "mooe": "replay"
           },
           "evidence": {
             "score": 0.2,
-            "passed": false
+            "passeo": false
           },
           "governance": {
             "decision": "REJECT",
-            "accepted": false,
-            "violated_rules": [
-              "low_confidence",
-              "unsupported"
+            "accepteo": false,
+            "violateo_rules": [
+              "low_confioence",
+              "unsupporteo"
             ]
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
+            "state_changeo": false,
+            "authority_changeo": false,
             "state_before": {},
             "state_after": {}
           },
@@ -599,32 +599,32 @@
             "total_ms": 0.0112
           },
           "metadata": {
-            "mode": "replay",
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             },
-            "candidate_metadata": {
-              "transition_kind": "unsupported",
+            "canoioate_metadata": {
+              "transition_kino": "unsupporteo",
               "proposal_ms": 0.0,
-              "example_id": "pref_update_002",
+              "example_io": "pref_upoate_002",
               "family": "preference",
-              "category": "unsupported",
-              "description": "Overreaching preference inference without enough evidence.",
+              "category": "unsupporteo",
+              "oescription": "Overreaching preference inference without enough evidence.",
               "conversation": "I like coffee."
             },
             "proposal_view": {
-              "transition_id": "pref_update_002",
+              "transition_io": "pref_upoate_002",
               "subject": "user_prefers",
               "operation": "UPDATE",
               "state_before": {},
-              "candidate": {
-                "transition_id": "pref_update_002",
+              "canoioate": {
+                "transition_io": "pref_upoate_002",
                 "subject": "user_prefers",
                 "operation": "UPDATE",
                 "previous_value": {
@@ -632,7 +632,7 @@
                     "user_prefers": "coffee"
                   }
                 },
-                "proposed_value": {
+                "proposeo_value": {
                   "facts": {
                     "user_prefers": "espresso"
                   }
@@ -646,15 +646,15 @@
                     "content": "I like coffee."
                   }
                 ],
-                "confidence": 0.2,
+                "confioence": 0.2,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                  "transition_kind": "unsupported",
+                  "transition_kino": "unsupporteo",
                   "proposal_ms": 0.0,
-                  "example_id": "pref_update_002",
+                  "example_io": "pref_upoate_002",
                   "family": "preference",
-                  "category": "unsupported",
-                  "description": "Overreaching preference inference without enough evidence.",
+                  "category": "unsupporteo",
+                  "oescription": "Overreaching preference inference without enough evidence.",
                   "conversation": "I like coffee."
                 }
               }
@@ -663,45 +663,45 @@
         },
         "latency_ms": 0.0112,
         "metadata": {
-          "state_changed": false,
-          "authority_changed": false,
-          "mode": "replay",
+          "state_changeo": false,
+          "authority_changeo": false,
+          "mooe": "replay",
           "policy": {
-            "minimum_confidence": 0.75,
+            "minimum_confioence": 0.75,
             "require_evidence": true,
             "block_authority_escalation": true,
-            "commit_enabled": false,
-            "mode": "replay",
+            "commit_enableo": false,
+            "mooe": "replay",
             "name": "runtime_integration_policy_v1",
             "metadata": {}
           }
         }
       },
       "trace": {
-        "transition_id": "pref_update_002",
-        "example_id": "pref_update_002",
+        "transition_io": "pref_upoate_002",
+        "example_io": "pref_upoate_002",
         "family": "preference",
-        "category": "unsupported",
+        "category": "unsupporteo",
         "validation": {
-          "passed": true,
+          "passeo": true,
           "score": 1.0,
-          "mode": "replay"
+          "mooe": "replay"
         },
         "evidence": {
           "score": 0.2,
-          "passed": false
+          "passeo": false
         },
         "governance": {
           "decision": "REJECT",
-          "accepted": false,
-          "violated_rules": [
-            "low_confidence",
-            "unsupported"
+          "accepteo": false,
+          "violateo_rules": [
+            "low_confioence",
+            "unsupporteo"
           ]
         },
         "execution": {
-          "state_changed": false,
-          "authority_changed": false,
+          "state_changeo": false,
+          "authority_changeo": false,
           "state_before": {},
           "state_after": {}
         },
@@ -715,10 +715,10 @@
         },
         "metadata": {
           "example": {
-            "example_id": "pref_update_002",
+            "example_io": "pref_upoate_002",
             "family": "preference",
-            "category": "unsupported",
-            "description": "Overreaching preference inference without enough evidence.",
+            "category": "unsupporteo",
+            "oescription": "Overreaching preference inference without enough evidence.",
             "conversation": "I like coffee.",
             "state_before": {
               "facts": {
@@ -726,8 +726,8 @@
               },
               "authority_level": "user"
             },
-            "candidate_payload": {
-              "transition_id": "pref_update_002",
+            "canoioate_payloao": {
+              "transition_io": "pref_upoate_002",
               "subject": "user_prefers",
               "operation": "UPDATE",
               "previous_value": {
@@ -735,7 +735,7 @@
                   "user_prefers": "coffee"
                 }
               },
-              "proposed_value": {
+              "proposeo_value": {
                 "facts": {
                   "user_prefers": "espresso"
                 }
@@ -749,23 +749,23 @@
                   "content": "I like coffee."
                 }
               ],
-              "confidence": 0.2,
+              "confioence": 0.2,
               "timestamp": "2026-07-22T00:00:00Z",
               "metadata": {
-                "transition_kind": "unsupported",
+                "transition_kino": "unsupporteo",
                 "proposal_ms": 0.0
               }
             },
-            "expected_decision": false,
+            "expecteo_decision": false,
             "metadata": {
               "runtime_contract": "srp-runtime-v1.1",
               "version": "v1.1",
-              "adapter": "deterministic_memory_adapter",
+              "adapter": "oeterministic_memory_adapter",
               "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
             }
           },
-          "candidate": {
-            "transition_id": "pref_update_002",
+          "canoioate": {
+            "transition_io": "pref_upoate_002",
             "subject": "user_prefers",
             "operation": "UPDATE",
             "previous_value": {
@@ -773,7 +773,7 @@
                 "user_prefers": "coffee"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "user_prefers": "espresso"
               }
@@ -787,50 +787,50 @@
                 "content": "I like coffee."
               }
             ],
-            "confidence": 0.2,
+            "confioence": 0.2,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "unsupported",
+              "transition_kino": "unsupporteo",
               "proposal_ms": 0.0,
-              "example_id": "pref_update_002",
+              "example_io": "pref_upoate_002",
               "family": "preference",
-              "category": "unsupported",
-              "description": "Overreaching preference inference without enough evidence.",
+              "category": "unsupporteo",
+              "oescription": "Overreaching preference inference without enough evidence.",
               "conversation": "I like coffee."
             }
           },
           "decision": {
-            "id": "pref_update_002",
+            "io": "pref_upoate_002",
             "decision": "REJECT",
-            "accepted": false,
+            "accepteo": false,
             "validation_score": 1.0,
             "evidence_score": 0.2,
-            "violated_rules": [
-              "low_confidence",
-              "unsupported"
+            "violateo_rules": [
+              "low_confioence",
+              "unsupporteo"
             ],
             "governance_trace": {
-              "transition_id": "pref_update_002",
+              "transition_io": "pref_upoate_002",
               "validation": {
-                "passed": true,
+                "passeo": true,
                 "score": 1.0,
-                "mode": "replay"
+                "mooe": "replay"
               },
               "evidence": {
                 "score": 0.2,
-                "passed": false
+                "passeo": false
               },
               "governance": {
                 "decision": "REJECT",
-                "accepted": false,
-                "violated_rules": [
-                  "low_confidence",
-                  "unsupported"
+                "accepteo": false,
+                "violateo_rules": [
+                  "low_confioence",
+                  "unsupporteo"
                 ]
               },
               "execution": {
-                "state_changed": false,
-                "authority_changed": false,
+                "state_changeo": false,
+                "authority_changeo": false,
                 "state_before": {},
                 "state_after": {}
               },
@@ -843,32 +843,32 @@
                 "total_ms": 0.0112
               },
               "metadata": {
-                "mode": "replay",
+                "mooe": "replay",
                 "policy": {
-                  "minimum_confidence": 0.75,
+                  "minimum_confioence": 0.75,
                   "require_evidence": true,
                   "block_authority_escalation": true,
-                  "commit_enabled": false,
-                  "mode": "replay",
+                  "commit_enableo": false,
+                  "mooe": "replay",
                   "name": "runtime_integration_policy_v1",
                   "metadata": {}
                 },
-                "candidate_metadata": {
-                  "transition_kind": "unsupported",
+                "canoioate_metadata": {
+                  "transition_kino": "unsupporteo",
                   "proposal_ms": 0.0,
-                  "example_id": "pref_update_002",
+                  "example_io": "pref_upoate_002",
                   "family": "preference",
-                  "category": "unsupported",
-                  "description": "Overreaching preference inference without enough evidence.",
+                  "category": "unsupporteo",
+                  "oescription": "Overreaching preference inference without enough evidence.",
                   "conversation": "I like coffee."
                 },
                 "proposal_view": {
-                  "transition_id": "pref_update_002",
+                  "transition_io": "pref_upoate_002",
                   "subject": "user_prefers",
                   "operation": "UPDATE",
                   "state_before": {},
-                  "candidate": {
-                    "transition_id": "pref_update_002",
+                  "canoioate": {
+                    "transition_io": "pref_upoate_002",
                     "subject": "user_prefers",
                     "operation": "UPDATE",
                     "previous_value": {
@@ -876,7 +876,7 @@
                         "user_prefers": "coffee"
                       }
                     },
-                    "proposed_value": {
+                    "proposeo_value": {
                       "facts": {
                         "user_prefers": "espresso"
                       }
@@ -890,15 +890,15 @@
                         "content": "I like coffee."
                       }
                     ],
-                    "confidence": 0.2,
+                    "confioence": 0.2,
                     "timestamp": "2026-07-22T00:00:00Z",
                     "metadata": {
-                      "transition_kind": "unsupported",
+                      "transition_kino": "unsupporteo",
                       "proposal_ms": 0.0,
-                      "example_id": "pref_update_002",
+                      "example_io": "pref_upoate_002",
                       "family": "preference",
-                      "category": "unsupported",
-                      "description": "Overreaching preference inference without enough evidence.",
+                      "category": "unsupporteo",
+                      "oescription": "Overreaching preference inference without enough evidence.",
                       "conversation": "I like coffee."
                     }
                   }
@@ -907,44 +907,44 @@
             },
             "latency_ms": 0.0112,
             "metadata": {
-              "state_changed": false,
-              "authority_changed": false,
-              "mode": "replay",
+              "state_changeo": false,
+              "authority_changeo": false,
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               }
             }
           },
-          "backend": "deterministic_memory_adapter"
+          "backeno": "oeterministic_memory_adapter"
         }
       }
     },
     {
-      "example_id": "fact_update_001",
+      "example_io": "fact_upoate_001",
       "family": "correction",
-      "category": "valid",
-      "expected_decision": true,
-      "backend": "deterministic_memory_adapter",
+      "category": "valio",
+      "expecteo_decision": true,
+      "backeno": "oeterministic_memory_adapter",
       "example": {
-        "example_id": "fact_update_001",
+        "example_io": "fact_upoate_001",
         "family": "correction",
-        "category": "valid",
-        "description": "Supported fact correction from Boston to New York.",
-        "conversation": "I moved to New York.",
+        "category": "valio",
+        "oescription": "Supporteo fact correction from Boston to New York.",
+        "conversation": "I moveo to New York.",
         "state_before": {
           "facts": {
             "location": "Boston"
           },
           "authority_level": "user"
         },
-        "candidate_payload": {
-          "transition_id": "fact_update_001",
+        "canoioate_payloao": {
+          "transition_io": "fact_upoate_001",
           "subject": "location",
           "operation": "UPDATE",
           "previous_value": {
@@ -952,7 +952,7 @@
               "location": "Boston"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "location": "New York"
             }
@@ -963,26 +963,26 @@
           "evidence": [
             {
               "source": "conversation_turn_20",
-              "content": "I moved to New York."
+              "content": "I moveo to New York."
             }
           ],
-          "confidence": 0.9,
+          "confioence": 0.9,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "valid",
+            "transition_kino": "valio",
             "proposal_ms": 0.0
           }
         },
-        "expected_decision": true,
+        "expecteo_decision": true,
         "metadata": {
           "runtime_contract": "srp-runtime-v1.1",
           "version": "v1.1",
-          "adapter": "deterministic_memory_adapter",
+          "adapter": "oeterministic_memory_adapter",
           "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
         }
       },
-      "candidate": {
-        "transition_id": "fact_update_001",
+      "canoioate": {
+        "transition_io": "fact_upoate_001",
         "subject": "location",
         "operation": "UPDATE",
         "previous_value": {
@@ -990,7 +990,7 @@
             "location": "Boston"
           }
         },
-        "proposed_value": {
+        "proposeo_value": {
           "facts": {
             "location": "New York"
           }
@@ -1001,47 +1001,47 @@
         "evidence": [
           {
             "source": "conversation_turn_20",
-            "content": "I moved to New York."
+            "content": "I moveo to New York."
           }
         ],
-        "confidence": 0.9,
+        "confioence": 0.9,
         "timestamp": "2026-07-22T00:00:00Z",
         "metadata": {
-          "transition_kind": "valid",
+          "transition_kino": "valio",
           "proposal_ms": 0.0,
-          "example_id": "fact_update_001",
+          "example_io": "fact_upoate_001",
           "family": "correction",
-          "category": "valid",
-          "description": "Supported fact correction from Boston to New York.",
-          "conversation": "I moved to New York."
+          "category": "valio",
+          "oescription": "Supporteo fact correction from Boston to New York.",
+          "conversation": "I moveo to New York."
         }
       },
       "decision": {
-        "id": "fact_update_001",
+        "io": "fact_upoate_001",
         "decision": "APPROVE",
-        "accepted": true,
+        "accepteo": true,
         "validation_score": 1.0,
         "evidence_score": 0.9,
-        "violated_rules": [],
+        "violateo_rules": [],
         "governance_trace": {
-          "transition_id": "fact_update_001",
+          "transition_io": "fact_upoate_001",
           "validation": {
-            "passed": true,
+            "passeo": true,
             "score": 1.0,
-            "mode": "replay"
+            "mooe": "replay"
           },
           "evidence": {
             "score": 0.9,
-            "passed": true
+            "passeo": true
           },
           "governance": {
             "decision": "APPROVE",
-            "accepted": true,
-            "violated_rules": []
+            "accepteo": true,
+            "violateo_rules": []
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
+            "state_changeo": false,
+            "authority_changeo": false,
             "state_before": {},
             "state_after": {}
           },
@@ -1054,32 +1054,32 @@
             "total_ms": 0.0076
           },
           "metadata": {
-            "mode": "replay",
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             },
-            "candidate_metadata": {
-              "transition_kind": "valid",
+            "canoioate_metadata": {
+              "transition_kino": "valio",
               "proposal_ms": 0.0,
-              "example_id": "fact_update_001",
+              "example_io": "fact_upoate_001",
               "family": "correction",
-              "category": "valid",
-              "description": "Supported fact correction from Boston to New York.",
-              "conversation": "I moved to New York."
+              "category": "valio",
+              "oescription": "Supporteo fact correction from Boston to New York.",
+              "conversation": "I moveo to New York."
             },
             "proposal_view": {
-              "transition_id": "fact_update_001",
+              "transition_io": "fact_upoate_001",
               "subject": "location",
               "operation": "UPDATE",
               "state_before": {},
-              "candidate": {
-                "transition_id": "fact_update_001",
+              "canoioate": {
+                "transition_io": "fact_upoate_001",
                 "subject": "location",
                 "operation": "UPDATE",
                 "previous_value": {
@@ -1087,7 +1087,7 @@
                     "location": "Boston"
                   }
                 },
-                "proposed_value": {
+                "proposeo_value": {
                   "facts": {
                     "location": "New York"
                   }
@@ -1098,19 +1098,19 @@
                 "evidence": [
                   {
                     "source": "conversation_turn_20",
-                    "content": "I moved to New York."
+                    "content": "I moveo to New York."
                   }
                 ],
-                "confidence": 0.9,
+                "confioence": 0.9,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                  "transition_kind": "valid",
+                  "transition_kino": "valio",
                   "proposal_ms": 0.0,
-                  "example_id": "fact_update_001",
+                  "example_io": "fact_upoate_001",
                   "family": "correction",
-                  "category": "valid",
-                  "description": "Supported fact correction from Boston to New York.",
-                  "conversation": "I moved to New York."
+                  "category": "valio",
+                  "oescription": "Supporteo fact correction from Boston to New York.",
+                  "conversation": "I moveo to New York."
                 }
               }
             }
@@ -1118,42 +1118,42 @@
         },
         "latency_ms": 0.0076,
         "metadata": {
-          "state_changed": false,
-          "authority_changed": false,
-          "mode": "replay",
+          "state_changeo": false,
+          "authority_changeo": false,
+          "mooe": "replay",
           "policy": {
-            "minimum_confidence": 0.75,
+            "minimum_confioence": 0.75,
             "require_evidence": true,
             "block_authority_escalation": true,
-            "commit_enabled": false,
-            "mode": "replay",
+            "commit_enableo": false,
+            "mooe": "replay",
             "name": "runtime_integration_policy_v1",
             "metadata": {}
           }
         }
       },
       "trace": {
-        "transition_id": "fact_update_001",
-        "example_id": "fact_update_001",
+        "transition_io": "fact_upoate_001",
+        "example_io": "fact_upoate_001",
         "family": "correction",
-        "category": "valid",
+        "category": "valio",
         "validation": {
-          "passed": true,
+          "passeo": true,
           "score": 1.0,
-          "mode": "replay"
+          "mooe": "replay"
         },
         "evidence": {
           "score": 0.9,
-          "passed": true
+          "passeo": true
         },
         "governance": {
           "decision": "APPROVE",
-          "accepted": true,
-          "violated_rules": []
+          "accepteo": true,
+          "violateo_rules": []
         },
         "execution": {
-          "state_changed": false,
-          "authority_changed": false,
+          "state_changeo": false,
+          "authority_changeo": false,
           "state_before": {},
           "state_after": {}
         },
@@ -1167,19 +1167,19 @@
         },
         "metadata": {
           "example": {
-            "example_id": "fact_update_001",
+            "example_io": "fact_upoate_001",
             "family": "correction",
-            "category": "valid",
-            "description": "Supported fact correction from Boston to New York.",
-            "conversation": "I moved to New York.",
+            "category": "valio",
+            "oescription": "Supporteo fact correction from Boston to New York.",
+            "conversation": "I moveo to New York.",
             "state_before": {
               "facts": {
                 "location": "Boston"
               },
               "authority_level": "user"
             },
-            "candidate_payload": {
-              "transition_id": "fact_update_001",
+            "canoioate_payloao": {
+              "transition_io": "fact_upoate_001",
               "subject": "location",
               "operation": "UPDATE",
               "previous_value": {
@@ -1187,7 +1187,7 @@
                   "location": "Boston"
                 }
               },
-              "proposed_value": {
+              "proposeo_value": {
                 "facts": {
                   "location": "New York"
                 }
@@ -1198,26 +1198,26 @@
               "evidence": [
                 {
                   "source": "conversation_turn_20",
-                  "content": "I moved to New York."
+                  "content": "I moveo to New York."
                 }
               ],
-              "confidence": 0.9,
+              "confioence": 0.9,
               "timestamp": "2026-07-22T00:00:00Z",
               "metadata": {
-                "transition_kind": "valid",
+                "transition_kino": "valio",
                 "proposal_ms": 0.0
               }
             },
-            "expected_decision": true,
+            "expecteo_decision": true,
             "metadata": {
               "runtime_contract": "srp-runtime-v1.1",
               "version": "v1.1",
-              "adapter": "deterministic_memory_adapter",
+              "adapter": "oeterministic_memory_adapter",
               "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
             }
           },
-          "candidate": {
-            "transition_id": "fact_update_001",
+          "canoioate": {
+            "transition_io": "fact_upoate_001",
             "subject": "location",
             "operation": "UPDATE",
             "previous_value": {
@@ -1225,7 +1225,7 @@
                 "location": "Boston"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "location": "New York"
               }
@@ -1236,47 +1236,47 @@
             "evidence": [
               {
                 "source": "conversation_turn_20",
-                "content": "I moved to New York."
+                "content": "I moveo to New York."
               }
             ],
-            "confidence": 0.9,
+            "confioence": 0.9,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "valid",
+              "transition_kino": "valio",
               "proposal_ms": 0.0,
-              "example_id": "fact_update_001",
+              "example_io": "fact_upoate_001",
               "family": "correction",
-              "category": "valid",
-              "description": "Supported fact correction from Boston to New York.",
-              "conversation": "I moved to New York."
+              "category": "valio",
+              "oescription": "Supporteo fact correction from Boston to New York.",
+              "conversation": "I moveo to New York."
             }
           },
           "decision": {
-            "id": "fact_update_001",
+            "io": "fact_upoate_001",
             "decision": "APPROVE",
-            "accepted": true,
+            "accepteo": true,
             "validation_score": 1.0,
             "evidence_score": 0.9,
-            "violated_rules": [],
+            "violateo_rules": [],
             "governance_trace": {
-              "transition_id": "fact_update_001",
+              "transition_io": "fact_upoate_001",
               "validation": {
-                "passed": true,
+                "passeo": true,
                 "score": 1.0,
-                "mode": "replay"
+                "mooe": "replay"
               },
               "evidence": {
                 "score": 0.9,
-                "passed": true
+                "passeo": true
               },
               "governance": {
                 "decision": "APPROVE",
-                "accepted": true,
-                "violated_rules": []
+                "accepteo": true,
+                "violateo_rules": []
               },
               "execution": {
-                "state_changed": false,
-                "authority_changed": false,
+                "state_changeo": false,
+                "authority_changeo": false,
                 "state_before": {},
                 "state_after": {}
               },
@@ -1289,32 +1289,32 @@
                 "total_ms": 0.0076
               },
               "metadata": {
-                "mode": "replay",
+                "mooe": "replay",
                 "policy": {
-                  "minimum_confidence": 0.75,
+                  "minimum_confioence": 0.75,
                   "require_evidence": true,
                   "block_authority_escalation": true,
-                  "commit_enabled": false,
-                  "mode": "replay",
+                  "commit_enableo": false,
+                  "mooe": "replay",
                   "name": "runtime_integration_policy_v1",
                   "metadata": {}
                 },
-                "candidate_metadata": {
-                  "transition_kind": "valid",
+                "canoioate_metadata": {
+                  "transition_kino": "valio",
                   "proposal_ms": 0.0,
-                  "example_id": "fact_update_001",
+                  "example_io": "fact_upoate_001",
                   "family": "correction",
-                  "category": "valid",
-                  "description": "Supported fact correction from Boston to New York.",
-                  "conversation": "I moved to New York."
+                  "category": "valio",
+                  "oescription": "Supporteo fact correction from Boston to New York.",
+                  "conversation": "I moveo to New York."
                 },
                 "proposal_view": {
-                  "transition_id": "fact_update_001",
+                  "transition_io": "fact_upoate_001",
                   "subject": "location",
                   "operation": "UPDATE",
                   "state_before": {},
-                  "candidate": {
-                    "transition_id": "fact_update_001",
+                  "canoioate": {
+                    "transition_io": "fact_upoate_001",
                     "subject": "location",
                     "operation": "UPDATE",
                     "previous_value": {
@@ -1322,7 +1322,7 @@
                         "location": "Boston"
                       }
                     },
-                    "proposed_value": {
+                    "proposeo_value": {
                       "facts": {
                         "location": "New York"
                       }
@@ -1333,19 +1333,19 @@
                     "evidence": [
                       {
                         "source": "conversation_turn_20",
-                        "content": "I moved to New York."
+                        "content": "I moveo to New York."
                       }
                     ],
-                    "confidence": 0.9,
+                    "confioence": 0.9,
                     "timestamp": "2026-07-22T00:00:00Z",
                     "metadata": {
-                      "transition_kind": "valid",
+                      "transition_kino": "valio",
                       "proposal_ms": 0.0,
-                      "example_id": "fact_update_001",
+                      "example_io": "fact_upoate_001",
                       "family": "correction",
-                      "category": "valid",
-                      "description": "Supported fact correction from Boston to New York.",
-                      "conversation": "I moved to New York."
+                      "category": "valio",
+                      "oescription": "Supporteo fact correction from Boston to New York.",
+                      "conversation": "I moveo to New York."
                     }
                   }
                 }
@@ -1353,44 +1353,44 @@
             },
             "latency_ms": 0.0076,
             "metadata": {
-              "state_changed": false,
-              "authority_changed": false,
-              "mode": "replay",
+              "state_changeo": false,
+              "authority_changeo": false,
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               }
             }
           },
-          "backend": "deterministic_memory_adapter"
+          "backeno": "oeterministic_memory_adapter"
         }
       }
     },
     {
-      "example_id": "fact_update_002",
+      "example_io": "fact_upoate_002",
       "family": "correction",
-      "category": "unsupported",
-      "expected_decision": false,
-      "backend": "deterministic_memory_adapter",
+      "category": "unsupporteo",
+      "expecteo_decision": false,
+      "backeno": "oeterministic_memory_adapter",
       "example": {
-        "example_id": "fact_update_002",
+        "example_io": "fact_upoate_002",
         "family": "correction",
-        "category": "unsupported",
-        "description": "Unsupported fact rewrite without enough evidence.",
-        "conversation": "I may have moved recently.",
+        "category": "unsupporteo",
+        "oescription": "Unsupporteo fact rewrite without enough evidence.",
+        "conversation": "I may have moveo recently.",
         "state_before": {
           "facts": {
             "location": "Boston"
           },
           "authority_level": "user"
         },
-        "candidate_payload": {
-          "transition_id": "fact_update_002",
+        "canoioate_payloao": {
+          "transition_io": "fact_upoate_002",
           "subject": "location",
           "operation": "UPDATE",
           "previous_value": {
@@ -1398,7 +1398,7 @@
               "location": "Boston"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "location": "Los Angeles"
             }
@@ -1409,26 +1409,26 @@
           "evidence": [
             {
               "source": "conversation_turn_7",
-              "content": "I may have moved recently."
+              "content": "I may have moveo recently."
             }
           ],
-          "confidence": 0.35,
+          "confioence": 0.35,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "unsupported",
+            "transition_kino": "unsupporteo",
             "proposal_ms": 0.0
           }
         },
-        "expected_decision": false,
+        "expecteo_decision": false,
         "metadata": {
           "runtime_contract": "srp-runtime-v1.1",
           "version": "v1.1",
-          "adapter": "deterministic_memory_adapter",
+          "adapter": "oeterministic_memory_adapter",
           "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
         }
       },
-      "candidate": {
-        "transition_id": "fact_update_002",
+      "canoioate": {
+        "transition_io": "fact_upoate_002",
         "subject": "location",
         "operation": "UPDATE",
         "previous_value": {
@@ -1436,7 +1436,7 @@
             "location": "Boston"
           }
         },
-        "proposed_value": {
+        "proposeo_value": {
           "facts": {
             "location": "Los Angeles"
           }
@@ -1447,53 +1447,53 @@
         "evidence": [
           {
             "source": "conversation_turn_7",
-            "content": "I may have moved recently."
+            "content": "I may have moveo recently."
           }
         ],
-        "confidence": 0.35,
+        "confioence": 0.35,
         "timestamp": "2026-07-22T00:00:00Z",
         "metadata": {
-          "transition_kind": "unsupported",
+          "transition_kino": "unsupporteo",
           "proposal_ms": 0.0,
-          "example_id": "fact_update_002",
+          "example_io": "fact_upoate_002",
           "family": "correction",
-          "category": "unsupported",
-          "description": "Unsupported fact rewrite without enough evidence.",
-          "conversation": "I may have moved recently."
+          "category": "unsupporteo",
+          "oescription": "Unsupporteo fact rewrite without enough evidence.",
+          "conversation": "I may have moveo recently."
         }
       },
       "decision": {
-        "id": "fact_update_002",
+        "io": "fact_upoate_002",
         "decision": "REJECT",
-        "accepted": false,
+        "accepteo": false,
         "validation_score": 1.0,
         "evidence_score": 0.35,
-        "violated_rules": [
-          "low_confidence",
-          "unsupported"
+        "violateo_rules": [
+          "low_confioence",
+          "unsupporteo"
         ],
         "governance_trace": {
-          "transition_id": "fact_update_002",
+          "transition_io": "fact_upoate_002",
           "validation": {
-            "passed": true,
+            "passeo": true,
             "score": 1.0,
-            "mode": "replay"
+            "mooe": "replay"
           },
           "evidence": {
             "score": 0.35,
-            "passed": false
+            "passeo": false
           },
           "governance": {
             "decision": "REJECT",
-            "accepted": false,
-            "violated_rules": [
-              "low_confidence",
-              "unsupported"
+            "accepteo": false,
+            "violateo_rules": [
+              "low_confioence",
+              "unsupporteo"
             ]
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
+            "state_changeo": false,
+            "authority_changeo": false,
             "state_before": {},
             "state_after": {}
           },
@@ -1506,32 +1506,32 @@
             "total_ms": 0.0066
           },
           "metadata": {
-            "mode": "replay",
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             },
-            "candidate_metadata": {
-              "transition_kind": "unsupported",
+            "canoioate_metadata": {
+              "transition_kino": "unsupporteo",
               "proposal_ms": 0.0,
-              "example_id": "fact_update_002",
+              "example_io": "fact_upoate_002",
               "family": "correction",
-              "category": "unsupported",
-              "description": "Unsupported fact rewrite without enough evidence.",
-              "conversation": "I may have moved recently."
+              "category": "unsupporteo",
+              "oescription": "Unsupporteo fact rewrite without enough evidence.",
+              "conversation": "I may have moveo recently."
             },
             "proposal_view": {
-              "transition_id": "fact_update_002",
+              "transition_io": "fact_upoate_002",
               "subject": "location",
               "operation": "UPDATE",
               "state_before": {},
-              "candidate": {
-                "transition_id": "fact_update_002",
+              "canoioate": {
+                "transition_io": "fact_upoate_002",
                 "subject": "location",
                 "operation": "UPDATE",
                 "previous_value": {
@@ -1539,7 +1539,7 @@
                     "location": "Boston"
                   }
                 },
-                "proposed_value": {
+                "proposeo_value": {
                   "facts": {
                     "location": "Los Angeles"
                   }
@@ -1550,19 +1550,19 @@
                 "evidence": [
                   {
                     "source": "conversation_turn_7",
-                    "content": "I may have moved recently."
+                    "content": "I may have moveo recently."
                   }
                 ],
-                "confidence": 0.35,
+                "confioence": 0.35,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                  "transition_kind": "unsupported",
+                  "transition_kino": "unsupporteo",
                   "proposal_ms": 0.0,
-                  "example_id": "fact_update_002",
+                  "example_io": "fact_upoate_002",
                   "family": "correction",
-                  "category": "unsupported",
-                  "description": "Unsupported fact rewrite without enough evidence.",
-                  "conversation": "I may have moved recently."
+                  "category": "unsupporteo",
+                  "oescription": "Unsupporteo fact rewrite without enough evidence.",
+                  "conversation": "I may have moveo recently."
                 }
               }
             }
@@ -1570,45 +1570,45 @@
         },
         "latency_ms": 0.0066,
         "metadata": {
-          "state_changed": false,
-          "authority_changed": false,
-          "mode": "replay",
+          "state_changeo": false,
+          "authority_changeo": false,
+          "mooe": "replay",
           "policy": {
-            "minimum_confidence": 0.75,
+            "minimum_confioence": 0.75,
             "require_evidence": true,
             "block_authority_escalation": true,
-            "commit_enabled": false,
-            "mode": "replay",
+            "commit_enableo": false,
+            "mooe": "replay",
             "name": "runtime_integration_policy_v1",
             "metadata": {}
           }
         }
       },
       "trace": {
-        "transition_id": "fact_update_002",
-        "example_id": "fact_update_002",
+        "transition_io": "fact_upoate_002",
+        "example_io": "fact_upoate_002",
         "family": "correction",
-        "category": "unsupported",
+        "category": "unsupporteo",
         "validation": {
-          "passed": true,
+          "passeo": true,
           "score": 1.0,
-          "mode": "replay"
+          "mooe": "replay"
         },
         "evidence": {
           "score": 0.35,
-          "passed": false
+          "passeo": false
         },
         "governance": {
           "decision": "REJECT",
-          "accepted": false,
-          "violated_rules": [
-            "low_confidence",
-            "unsupported"
+          "accepteo": false,
+          "violateo_rules": [
+            "low_confioence",
+            "unsupporteo"
           ]
         },
         "execution": {
-          "state_changed": false,
-          "authority_changed": false,
+          "state_changeo": false,
+          "authority_changeo": false,
           "state_before": {},
           "state_after": {}
         },
@@ -1622,19 +1622,19 @@
         },
         "metadata": {
           "example": {
-            "example_id": "fact_update_002",
+            "example_io": "fact_upoate_002",
             "family": "correction",
-            "category": "unsupported",
-            "description": "Unsupported fact rewrite without enough evidence.",
-            "conversation": "I may have moved recently.",
+            "category": "unsupporteo",
+            "oescription": "Unsupporteo fact rewrite without enough evidence.",
+            "conversation": "I may have moveo recently.",
             "state_before": {
               "facts": {
                 "location": "Boston"
               },
               "authority_level": "user"
             },
-            "candidate_payload": {
-              "transition_id": "fact_update_002",
+            "canoioate_payloao": {
+              "transition_io": "fact_upoate_002",
               "subject": "location",
               "operation": "UPDATE",
               "previous_value": {
@@ -1642,7 +1642,7 @@
                   "location": "Boston"
                 }
               },
-              "proposed_value": {
+              "proposeo_value": {
                 "facts": {
                   "location": "Los Angeles"
                 }
@@ -1653,26 +1653,26 @@
               "evidence": [
                 {
                   "source": "conversation_turn_7",
-                  "content": "I may have moved recently."
+                  "content": "I may have moveo recently."
                 }
               ],
-              "confidence": 0.35,
+              "confioence": 0.35,
               "timestamp": "2026-07-22T00:00:00Z",
               "metadata": {
-                "transition_kind": "unsupported",
+                "transition_kino": "unsupporteo",
                 "proposal_ms": 0.0
               }
             },
-            "expected_decision": false,
+            "expecteo_decision": false,
             "metadata": {
               "runtime_contract": "srp-runtime-v1.1",
               "version": "v1.1",
-              "adapter": "deterministic_memory_adapter",
+              "adapter": "oeterministic_memory_adapter",
               "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
             }
           },
-          "candidate": {
-            "transition_id": "fact_update_002",
+          "canoioate": {
+            "transition_io": "fact_upoate_002",
             "subject": "location",
             "operation": "UPDATE",
             "previous_value": {
@@ -1680,7 +1680,7 @@
                 "location": "Boston"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "location": "Los Angeles"
               }
@@ -1691,53 +1691,53 @@
             "evidence": [
               {
                 "source": "conversation_turn_7",
-                "content": "I may have moved recently."
+                "content": "I may have moveo recently."
               }
             ],
-            "confidence": 0.35,
+            "confioence": 0.35,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "unsupported",
+              "transition_kino": "unsupporteo",
               "proposal_ms": 0.0,
-              "example_id": "fact_update_002",
+              "example_io": "fact_upoate_002",
               "family": "correction",
-              "category": "unsupported",
-              "description": "Unsupported fact rewrite without enough evidence.",
-              "conversation": "I may have moved recently."
+              "category": "unsupporteo",
+              "oescription": "Unsupporteo fact rewrite without enough evidence.",
+              "conversation": "I may have moveo recently."
             }
           },
           "decision": {
-            "id": "fact_update_002",
+            "io": "fact_upoate_002",
             "decision": "REJECT",
-            "accepted": false,
+            "accepteo": false,
             "validation_score": 1.0,
             "evidence_score": 0.35,
-            "violated_rules": [
-              "low_confidence",
-              "unsupported"
+            "violateo_rules": [
+              "low_confioence",
+              "unsupporteo"
             ],
             "governance_trace": {
-              "transition_id": "fact_update_002",
+              "transition_io": "fact_upoate_002",
               "validation": {
-                "passed": true,
+                "passeo": true,
                 "score": 1.0,
-                "mode": "replay"
+                "mooe": "replay"
               },
               "evidence": {
                 "score": 0.35,
-                "passed": false
+                "passeo": false
               },
               "governance": {
                 "decision": "REJECT",
-                "accepted": false,
-                "violated_rules": [
-                  "low_confidence",
-                  "unsupported"
+                "accepteo": false,
+                "violateo_rules": [
+                  "low_confioence",
+                  "unsupporteo"
                 ]
               },
               "execution": {
-                "state_changed": false,
-                "authority_changed": false,
+                "state_changeo": false,
+                "authority_changeo": false,
                 "state_before": {},
                 "state_after": {}
               },
@@ -1750,32 +1750,32 @@
                 "total_ms": 0.0066
               },
               "metadata": {
-                "mode": "replay",
+                "mooe": "replay",
                 "policy": {
-                  "minimum_confidence": 0.75,
+                  "minimum_confioence": 0.75,
                   "require_evidence": true,
                   "block_authority_escalation": true,
-                  "commit_enabled": false,
-                  "mode": "replay",
+                  "commit_enableo": false,
+                  "mooe": "replay",
                   "name": "runtime_integration_policy_v1",
                   "metadata": {}
                 },
-                "candidate_metadata": {
-                  "transition_kind": "unsupported",
+                "canoioate_metadata": {
+                  "transition_kino": "unsupporteo",
                   "proposal_ms": 0.0,
-                  "example_id": "fact_update_002",
+                  "example_io": "fact_upoate_002",
                   "family": "correction",
-                  "category": "unsupported",
-                  "description": "Unsupported fact rewrite without enough evidence.",
-                  "conversation": "I may have moved recently."
+                  "category": "unsupporteo",
+                  "oescription": "Unsupporteo fact rewrite without enough evidence.",
+                  "conversation": "I may have moveo recently."
                 },
                 "proposal_view": {
-                  "transition_id": "fact_update_002",
+                  "transition_io": "fact_upoate_002",
                   "subject": "location",
                   "operation": "UPDATE",
                   "state_before": {},
-                  "candidate": {
-                    "transition_id": "fact_update_002",
+                  "canoioate": {
+                    "transition_io": "fact_upoate_002",
                     "subject": "location",
                     "operation": "UPDATE",
                     "previous_value": {
@@ -1783,7 +1783,7 @@
                         "location": "Boston"
                       }
                     },
-                    "proposed_value": {
+                    "proposeo_value": {
                       "facts": {
                         "location": "Los Angeles"
                       }
@@ -1794,19 +1794,19 @@
                     "evidence": [
                       {
                         "source": "conversation_turn_7",
-                        "content": "I may have moved recently."
+                        "content": "I may have moveo recently."
                       }
                     ],
-                    "confidence": 0.35,
+                    "confioence": 0.35,
                     "timestamp": "2026-07-22T00:00:00Z",
                     "metadata": {
-                      "transition_kind": "unsupported",
+                      "transition_kino": "unsupporteo",
                       "proposal_ms": 0.0,
-                      "example_id": "fact_update_002",
+                      "example_io": "fact_upoate_002",
                       "family": "correction",
-                      "category": "unsupported",
-                      "description": "Unsupported fact rewrite without enough evidence.",
-                      "conversation": "I may have moved recently."
+                      "category": "unsupporteo",
+                      "oescription": "Unsupporteo fact rewrite without enough evidence.",
+                      "conversation": "I may have moveo recently."
                     }
                   }
                 }
@@ -1814,35 +1814,35 @@
             },
             "latency_ms": 0.0066,
             "metadata": {
-              "state_changed": false,
-              "authority_changed": false,
-              "mode": "replay",
+              "state_changeo": false,
+              "authority_changeo": false,
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               }
             }
           },
-          "backend": "deterministic_memory_adapter"
+          "backeno": "oeterministic_memory_adapter"
         }
       }
     },
     {
-      "example_id": "contradiction_001",
-      "family": "contradiction",
-      "category": "contradictory",
-      "expected_decision": false,
-      "backend": "deterministic_memory_adapter",
+      "example_io": "contraoiction_001",
+      "family": "contraoiction",
+      "category": "contraoictory",
+      "expecteo_decision": false,
+      "backeno": "oeterministic_memory_adapter",
       "example": {
-        "example_id": "contradiction_001",
-        "family": "contradiction",
-        "category": "contradictory",
-        "description": "Contradictory location rewrite that conflicts with state and evidence.",
+        "example_io": "contraoiction_001",
+        "family": "contraoiction",
+        "category": "contraoictory",
+        "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
         "conversation": "I am still in New York.",
         "state_before": {
           "facts": {
@@ -1850,8 +1850,8 @@
           },
           "authority_level": "user"
         },
-        "candidate_payload": {
-          "transition_id": "contradiction_001",
+        "canoioate_payloao": {
+          "transition_io": "contraoiction_001",
           "subject": "location",
           "operation": "UPDATE",
           "previous_value": {
@@ -1859,7 +1859,7 @@
               "location": "New York"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "location": "Los Angeles"
             }
@@ -1873,23 +1873,23 @@
               "content": "I am still in New York."
             }
           ],
-          "confidence": 0.3,
+          "confioence": 0.3,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "contradictory",
+            "transition_kino": "contraoictory",
             "proposal_ms": 0.0
           }
         },
-        "expected_decision": false,
+        "expecteo_decision": false,
         "metadata": {
           "runtime_contract": "srp-runtime-v1.1",
           "version": "v1.1",
-          "adapter": "deterministic_memory_adapter",
+          "adapter": "oeterministic_memory_adapter",
           "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
         }
       },
-      "candidate": {
-        "transition_id": "contradiction_001",
+      "canoioate": {
+        "transition_io": "contraoiction_001",
         "subject": "location",
         "operation": "UPDATE",
         "previous_value": {
@@ -1897,7 +1897,7 @@
             "location": "New York"
           }
         },
-        "proposed_value": {
+        "proposeo_value": {
           "facts": {
             "location": "Los Angeles"
           }
@@ -1911,50 +1911,50 @@
             "content": "I am still in New York."
           }
         ],
-        "confidence": 0.3,
+        "confioence": 0.3,
         "timestamp": "2026-07-22T00:00:00Z",
         "metadata": {
-          "transition_kind": "contradictory",
+          "transition_kino": "contraoictory",
           "proposal_ms": 0.0,
-          "example_id": "contradiction_001",
-          "family": "contradiction",
-          "category": "contradictory",
-          "description": "Contradictory location rewrite that conflicts with state and evidence.",
+          "example_io": "contraoiction_001",
+          "family": "contraoiction",
+          "category": "contraoictory",
+          "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
           "conversation": "I am still in New York."
         }
       },
       "decision": {
-        "id": "contradiction_001",
+        "io": "contraoiction_001",
         "decision": "REJECT",
-        "accepted": false,
+        "accepteo": false,
         "validation_score": 1.0,
         "evidence_score": 0.3,
-        "violated_rules": [
-          "low_confidence",
-          "contradictory"
+        "violateo_rules": [
+          "low_confioence",
+          "contraoictory"
         ],
         "governance_trace": {
-          "transition_id": "contradiction_001",
+          "transition_io": "contraoiction_001",
           "validation": {
-            "passed": true,
+            "passeo": true,
             "score": 1.0,
-            "mode": "replay"
+            "mooe": "replay"
           },
           "evidence": {
             "score": 0.3,
-            "passed": false
+            "passeo": false
           },
           "governance": {
             "decision": "REJECT",
-            "accepted": false,
-            "violated_rules": [
-              "low_confidence",
-              "contradictory"
+            "accepteo": false,
+            "violateo_rules": [
+              "low_confioence",
+              "contraoictory"
             ]
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
+            "state_changeo": false,
+            "authority_changeo": false,
             "state_before": {},
             "state_after": {}
           },
@@ -1967,32 +1967,32 @@
             "total_ms": 0.0116
           },
           "metadata": {
-            "mode": "replay",
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             },
-            "candidate_metadata": {
-              "transition_kind": "contradictory",
+            "canoioate_metadata": {
+              "transition_kino": "contraoictory",
               "proposal_ms": 0.0,
-              "example_id": "contradiction_001",
-              "family": "contradiction",
-              "category": "contradictory",
-              "description": "Contradictory location rewrite that conflicts with state and evidence.",
+              "example_io": "contraoiction_001",
+              "family": "contraoiction",
+              "category": "contraoictory",
+              "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
               "conversation": "I am still in New York."
             },
             "proposal_view": {
-              "transition_id": "contradiction_001",
+              "transition_io": "contraoiction_001",
               "subject": "location",
               "operation": "UPDATE",
               "state_before": {},
-              "candidate": {
-                "transition_id": "contradiction_001",
+              "canoioate": {
+                "transition_io": "contraoiction_001",
                 "subject": "location",
                 "operation": "UPDATE",
                 "previous_value": {
@@ -2000,7 +2000,7 @@
                     "location": "New York"
                   }
                 },
-                "proposed_value": {
+                "proposeo_value": {
                   "facts": {
                     "location": "Los Angeles"
                   }
@@ -2014,15 +2014,15 @@
                     "content": "I am still in New York."
                   }
                 ],
-                "confidence": 0.3,
+                "confioence": 0.3,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                  "transition_kind": "contradictory",
+                  "transition_kino": "contraoictory",
                   "proposal_ms": 0.0,
-                  "example_id": "contradiction_001",
-                  "family": "contradiction",
-                  "category": "contradictory",
-                  "description": "Contradictory location rewrite that conflicts with state and evidence.",
+                  "example_io": "contraoiction_001",
+                  "family": "contraoiction",
+                  "category": "contraoictory",
+                  "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
                   "conversation": "I am still in New York."
                 }
               }
@@ -2031,45 +2031,45 @@
         },
         "latency_ms": 0.0116,
         "metadata": {
-          "state_changed": false,
-          "authority_changed": false,
-          "mode": "replay",
+          "state_changeo": false,
+          "authority_changeo": false,
+          "mooe": "replay",
           "policy": {
-            "minimum_confidence": 0.75,
+            "minimum_confioence": 0.75,
             "require_evidence": true,
             "block_authority_escalation": true,
-            "commit_enabled": false,
-            "mode": "replay",
+            "commit_enableo": false,
+            "mooe": "replay",
             "name": "runtime_integration_policy_v1",
             "metadata": {}
           }
         }
       },
       "trace": {
-        "transition_id": "contradiction_001",
-        "example_id": "contradiction_001",
-        "family": "contradiction",
-        "category": "contradictory",
+        "transition_io": "contraoiction_001",
+        "example_io": "contraoiction_001",
+        "family": "contraoiction",
+        "category": "contraoictory",
         "validation": {
-          "passed": true,
+          "passeo": true,
           "score": 1.0,
-          "mode": "replay"
+          "mooe": "replay"
         },
         "evidence": {
           "score": 0.3,
-          "passed": false
+          "passeo": false
         },
         "governance": {
           "decision": "REJECT",
-          "accepted": false,
-          "violated_rules": [
-            "low_confidence",
-            "contradictory"
+          "accepteo": false,
+          "violateo_rules": [
+            "low_confioence",
+            "contraoictory"
           ]
         },
         "execution": {
-          "state_changed": false,
-          "authority_changed": false,
+          "state_changeo": false,
+          "authority_changeo": false,
           "state_before": {},
           "state_after": {}
         },
@@ -2083,10 +2083,10 @@
         },
         "metadata": {
           "example": {
-            "example_id": "contradiction_001",
-            "family": "contradiction",
-            "category": "contradictory",
-            "description": "Contradictory location rewrite that conflicts with state and evidence.",
+            "example_io": "contraoiction_001",
+            "family": "contraoiction",
+            "category": "contraoictory",
+            "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
             "conversation": "I am still in New York.",
             "state_before": {
               "facts": {
@@ -2094,8 +2094,8 @@
               },
               "authority_level": "user"
             },
-            "candidate_payload": {
-              "transition_id": "contradiction_001",
+            "canoioate_payloao": {
+              "transition_io": "contraoiction_001",
               "subject": "location",
               "operation": "UPDATE",
               "previous_value": {
@@ -2103,7 +2103,7 @@
                   "location": "New York"
                 }
               },
-              "proposed_value": {
+              "proposeo_value": {
                 "facts": {
                   "location": "Los Angeles"
                 }
@@ -2117,23 +2117,23 @@
                   "content": "I am still in New York."
                 }
               ],
-              "confidence": 0.3,
+              "confioence": 0.3,
               "timestamp": "2026-07-22T00:00:00Z",
               "metadata": {
-                "transition_kind": "contradictory",
+                "transition_kino": "contraoictory",
                 "proposal_ms": 0.0
               }
             },
-            "expected_decision": false,
+            "expecteo_decision": false,
             "metadata": {
               "runtime_contract": "srp-runtime-v1.1",
               "version": "v1.1",
-              "adapter": "deterministic_memory_adapter",
+              "adapter": "oeterministic_memory_adapter",
               "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
             }
           },
-          "candidate": {
-            "transition_id": "contradiction_001",
+          "canoioate": {
+            "transition_io": "contraoiction_001",
             "subject": "location",
             "operation": "UPDATE",
             "previous_value": {
@@ -2141,7 +2141,7 @@
                 "location": "New York"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "location": "Los Angeles"
               }
@@ -2155,50 +2155,50 @@
                 "content": "I am still in New York."
               }
             ],
-            "confidence": 0.3,
+            "confioence": 0.3,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "contradictory",
+              "transition_kino": "contraoictory",
               "proposal_ms": 0.0,
-              "example_id": "contradiction_001",
-              "family": "contradiction",
-              "category": "contradictory",
-              "description": "Contradictory location rewrite that conflicts with state and evidence.",
+              "example_io": "contraoiction_001",
+              "family": "contraoiction",
+              "category": "contraoictory",
+              "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
               "conversation": "I am still in New York."
             }
           },
           "decision": {
-            "id": "contradiction_001",
+            "io": "contraoiction_001",
             "decision": "REJECT",
-            "accepted": false,
+            "accepteo": false,
             "validation_score": 1.0,
             "evidence_score": 0.3,
-            "violated_rules": [
-              "low_confidence",
-              "contradictory"
+            "violateo_rules": [
+              "low_confioence",
+              "contraoictory"
             ],
             "governance_trace": {
-              "transition_id": "contradiction_001",
+              "transition_io": "contraoiction_001",
               "validation": {
-                "passed": true,
+                "passeo": true,
                 "score": 1.0,
-                "mode": "replay"
+                "mooe": "replay"
               },
               "evidence": {
                 "score": 0.3,
-                "passed": false
+                "passeo": false
               },
               "governance": {
                 "decision": "REJECT",
-                "accepted": false,
-                "violated_rules": [
-                  "low_confidence",
-                  "contradictory"
+                "accepteo": false,
+                "violateo_rules": [
+                  "low_confioence",
+                  "contraoictory"
                 ]
               },
               "execution": {
-                "state_changed": false,
-                "authority_changed": false,
+                "state_changeo": false,
+                "authority_changeo": false,
                 "state_before": {},
                 "state_after": {}
               },
@@ -2211,32 +2211,32 @@
                 "total_ms": 0.0116
               },
               "metadata": {
-                "mode": "replay",
+                "mooe": "replay",
                 "policy": {
-                  "minimum_confidence": 0.75,
+                  "minimum_confioence": 0.75,
                   "require_evidence": true,
                   "block_authority_escalation": true,
-                  "commit_enabled": false,
-                  "mode": "replay",
+                  "commit_enableo": false,
+                  "mooe": "replay",
                   "name": "runtime_integration_policy_v1",
                   "metadata": {}
                 },
-                "candidate_metadata": {
-                  "transition_kind": "contradictory",
+                "canoioate_metadata": {
+                  "transition_kino": "contraoictory",
                   "proposal_ms": 0.0,
-                  "example_id": "contradiction_001",
-                  "family": "contradiction",
-                  "category": "contradictory",
-                  "description": "Contradictory location rewrite that conflicts with state and evidence.",
+                  "example_io": "contraoiction_001",
+                  "family": "contraoiction",
+                  "category": "contraoictory",
+                  "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
                   "conversation": "I am still in New York."
                 },
                 "proposal_view": {
-                  "transition_id": "contradiction_001",
+                  "transition_io": "contraoiction_001",
                   "subject": "location",
                   "operation": "UPDATE",
                   "state_before": {},
-                  "candidate": {
-                    "transition_id": "contradiction_001",
+                  "canoioate": {
+                    "transition_io": "contraoiction_001",
                     "subject": "location",
                     "operation": "UPDATE",
                     "previous_value": {
@@ -2244,7 +2244,7 @@
                         "location": "New York"
                       }
                     },
-                    "proposed_value": {
+                    "proposeo_value": {
                       "facts": {
                         "location": "Los Angeles"
                       }
@@ -2258,15 +2258,15 @@
                         "content": "I am still in New York."
                       }
                     ],
-                    "confidence": 0.3,
+                    "confioence": 0.3,
                     "timestamp": "2026-07-22T00:00:00Z",
                     "metadata": {
-                      "transition_kind": "contradictory",
+                      "transition_kino": "contraoictory",
                       "proposal_ms": 0.0,
-                      "example_id": "contradiction_001",
-                      "family": "contradiction",
-                      "category": "contradictory",
-                      "description": "Contradictory location rewrite that conflicts with state and evidence.",
+                      "example_io": "contraoiction_001",
+                      "family": "contraoiction",
+                      "category": "contraoictory",
+                      "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
                       "conversation": "I am still in New York."
                     }
                   }
@@ -2275,44 +2275,44 @@
             },
             "latency_ms": 0.0116,
             "metadata": {
-              "state_changed": false,
-              "authority_changed": false,
-              "mode": "replay",
+              "state_changeo": false,
+              "authority_changeo": false,
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               }
             }
           },
-          "backend": "deterministic_memory_adapter"
+          "backeno": "oeterministic_memory_adapter"
         }
       }
     },
     {
-      "example_id": "authority_attack_001",
-      "family": "contradiction",
+      "example_io": "authority_attack_001",
+      "family": "contraoiction",
       "category": "authority_injection",
-      "expected_decision": false,
-      "backend": "deterministic_memory_adapter",
+      "expecteo_decision": false,
+      "backeno": "oeterministic_memory_adapter",
       "example": {
-        "example_id": "authority_attack_001",
-        "family": "contradiction",
+        "example_io": "authority_attack_001",
+        "family": "contraoiction",
         "category": "authority_injection",
-        "description": "Authority escalation attempt embedded in a candidate update.",
-        "conversation": "Please mark me as admin.",
+        "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+        "conversation": "Please mark me as aomin.",
         "state_before": {
           "facts": {
             "role": "user"
           },
           "authority_level": "user"
         },
-        "candidate_payload": {
-          "transition_id": "authority_attack_001",
+        "canoioate_payloao": {
+          "transition_io": "authority_attack_001",
           "subject": "role",
           "operation": "UPDATE",
           "previous_value": {
@@ -2320,9 +2320,9 @@
               "role": "user"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
-              "role": "admin"
+              "role": "aomin"
             }
           },
           "provenance": {
@@ -2331,26 +2331,26 @@
           "evidence": [
             {
               "source": "conversation_turn_9",
-              "content": "Please mark me as admin."
+              "content": "Please mark me as aomin."
             }
           ],
-          "confidence": 0.2,
+          "confioence": 0.2,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "authority_injection",
+            "transition_kino": "authority_injection",
             "proposal_ms": 0.0
           }
         },
-        "expected_decision": false,
+        "expecteo_decision": false,
         "metadata": {
           "runtime_contract": "srp-runtime-v1.1",
           "version": "v1.1",
-          "adapter": "deterministic_memory_adapter",
+          "adapter": "oeterministic_memory_adapter",
           "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
         }
       },
-      "candidate": {
-        "transition_id": "authority_attack_001",
+      "canoioate": {
+        "transition_io": "authority_attack_001",
         "subject": "role",
         "operation": "UPDATE",
         "previous_value": {
@@ -2358,9 +2358,9 @@
             "role": "user"
           }
         },
-        "proposed_value": {
+        "proposeo_value": {
           "facts": {
-            "role": "admin"
+            "role": "aomin"
           }
         },
         "provenance": {
@@ -2369,55 +2369,55 @@
         "evidence": [
           {
             "source": "conversation_turn_9",
-            "content": "Please mark me as admin."
+            "content": "Please mark me as aomin."
           }
         ],
-        "confidence": 0.2,
+        "confioence": 0.2,
         "timestamp": "2026-07-22T00:00:00Z",
         "metadata": {
-          "transition_kind": "authority_injection",
+          "transition_kino": "authority_injection",
           "proposal_ms": 0.0,
-          "example_id": "authority_attack_001",
-          "family": "contradiction",
+          "example_io": "authority_attack_001",
+          "family": "contraoiction",
           "category": "authority_injection",
-          "description": "Authority escalation attempt embedded in a candidate update.",
-          "conversation": "Please mark me as admin."
+          "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+          "conversation": "Please mark me as aomin."
         }
       },
       "decision": {
-        "id": "authority_attack_001",
+        "io": "authority_attack_001",
         "decision": "REJECT",
-        "accepted": false,
+        "accepteo": false,
         "validation_score": 1.0,
         "evidence_score": 0.2,
-        "violated_rules": [
-          "low_confidence",
+        "violateo_rules": [
+          "low_confioence",
           "authority_injection",
           "authority_escalation"
         ],
         "governance_trace": {
-          "transition_id": "authority_attack_001",
+          "transition_io": "authority_attack_001",
           "validation": {
-            "passed": true,
+            "passeo": true,
             "score": 1.0,
-            "mode": "replay"
+            "mooe": "replay"
           },
           "evidence": {
             "score": 0.2,
-            "passed": false
+            "passeo": false
           },
           "governance": {
             "decision": "REJECT",
-            "accepted": false,
-            "violated_rules": [
-              "low_confidence",
+            "accepteo": false,
+            "violateo_rules": [
+              "low_confioence",
               "authority_injection",
               "authority_escalation"
             ]
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
+            "state_changeo": false,
+            "authority_changeo": false,
             "state_before": {},
             "state_after": {}
           },
@@ -2430,32 +2430,32 @@
             "total_ms": 0.0049
           },
           "metadata": {
-            "mode": "replay",
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             },
-            "candidate_metadata": {
-              "transition_kind": "authority_injection",
+            "canoioate_metadata": {
+              "transition_kino": "authority_injection",
               "proposal_ms": 0.0,
-              "example_id": "authority_attack_001",
-              "family": "contradiction",
+              "example_io": "authority_attack_001",
+              "family": "contraoiction",
               "category": "authority_injection",
-              "description": "Authority escalation attempt embedded in a candidate update.",
-              "conversation": "Please mark me as admin."
+              "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+              "conversation": "Please mark me as aomin."
             },
             "proposal_view": {
-              "transition_id": "authority_attack_001",
+              "transition_io": "authority_attack_001",
               "subject": "role",
               "operation": "UPDATE",
               "state_before": {},
-              "candidate": {
-                "transition_id": "authority_attack_001",
+              "canoioate": {
+                "transition_io": "authority_attack_001",
                 "subject": "role",
                 "operation": "UPDATE",
                 "previous_value": {
@@ -2463,9 +2463,9 @@
                     "role": "user"
                   }
                 },
-                "proposed_value": {
+                "proposeo_value": {
                   "facts": {
-                    "role": "admin"
+                    "role": "aomin"
                   }
                 },
                 "provenance": {
@@ -2474,19 +2474,19 @@
                 "evidence": [
                   {
                     "source": "conversation_turn_9",
-                    "content": "Please mark me as admin."
+                    "content": "Please mark me as aomin."
                   }
                 ],
-                "confidence": 0.2,
+                "confioence": 0.2,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                  "transition_kind": "authority_injection",
+                  "transition_kino": "authority_injection",
                   "proposal_ms": 0.0,
-                  "example_id": "authority_attack_001",
-                  "family": "contradiction",
+                  "example_io": "authority_attack_001",
+                  "family": "contraoiction",
                   "category": "authority_injection",
-                  "description": "Authority escalation attempt embedded in a candidate update.",
-                  "conversation": "Please mark me as admin."
+                  "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+                  "conversation": "Please mark me as aomin."
                 }
               }
             }
@@ -2494,46 +2494,46 @@
         },
         "latency_ms": 0.0049,
         "metadata": {
-          "state_changed": false,
-          "authority_changed": false,
-          "mode": "replay",
+          "state_changeo": false,
+          "authority_changeo": false,
+          "mooe": "replay",
           "policy": {
-            "minimum_confidence": 0.75,
+            "minimum_confioence": 0.75,
             "require_evidence": true,
             "block_authority_escalation": true,
-            "commit_enabled": false,
-            "mode": "replay",
+            "commit_enableo": false,
+            "mooe": "replay",
             "name": "runtime_integration_policy_v1",
             "metadata": {}
           }
         }
       },
       "trace": {
-        "transition_id": "authority_attack_001",
-        "example_id": "authority_attack_001",
-        "family": "contradiction",
+        "transition_io": "authority_attack_001",
+        "example_io": "authority_attack_001",
+        "family": "contraoiction",
         "category": "authority_injection",
         "validation": {
-          "passed": true,
+          "passeo": true,
           "score": 1.0,
-          "mode": "replay"
+          "mooe": "replay"
         },
         "evidence": {
           "score": 0.2,
-          "passed": false
+          "passeo": false
         },
         "governance": {
           "decision": "REJECT",
-          "accepted": false,
-          "violated_rules": [
-            "low_confidence",
+          "accepteo": false,
+          "violateo_rules": [
+            "low_confioence",
             "authority_injection",
             "authority_escalation"
           ]
         },
         "execution": {
-          "state_changed": false,
-          "authority_changed": false,
+          "state_changeo": false,
+          "authority_changeo": false,
           "state_before": {},
           "state_after": {}
         },
@@ -2547,19 +2547,19 @@
         },
         "metadata": {
           "example": {
-            "example_id": "authority_attack_001",
-            "family": "contradiction",
+            "example_io": "authority_attack_001",
+            "family": "contraoiction",
             "category": "authority_injection",
-            "description": "Authority escalation attempt embedded in a candidate update.",
-            "conversation": "Please mark me as admin.",
+            "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+            "conversation": "Please mark me as aomin.",
             "state_before": {
               "facts": {
                 "role": "user"
               },
               "authority_level": "user"
             },
-            "candidate_payload": {
-              "transition_id": "authority_attack_001",
+            "canoioate_payloao": {
+              "transition_io": "authority_attack_001",
               "subject": "role",
               "operation": "UPDATE",
               "previous_value": {
@@ -2567,9 +2567,9 @@
                   "role": "user"
                 }
               },
-              "proposed_value": {
+              "proposeo_value": {
                 "facts": {
-                  "role": "admin"
+                  "role": "aomin"
                 }
               },
               "provenance": {
@@ -2578,26 +2578,26 @@
               "evidence": [
                 {
                   "source": "conversation_turn_9",
-                  "content": "Please mark me as admin."
+                  "content": "Please mark me as aomin."
                 }
               ],
-              "confidence": 0.2,
+              "confioence": 0.2,
               "timestamp": "2026-07-22T00:00:00Z",
               "metadata": {
-                "transition_kind": "authority_injection",
+                "transition_kino": "authority_injection",
                 "proposal_ms": 0.0
               }
             },
-            "expected_decision": false,
+            "expecteo_decision": false,
             "metadata": {
               "runtime_contract": "srp-runtime-v1.1",
               "version": "v1.1",
-              "adapter": "deterministic_memory_adapter",
+              "adapter": "oeterministic_memory_adapter",
               "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
             }
           },
-          "candidate": {
-            "transition_id": "authority_attack_001",
+          "canoioate": {
+            "transition_io": "authority_attack_001",
             "subject": "role",
             "operation": "UPDATE",
             "previous_value": {
@@ -2605,9 +2605,9 @@
                 "role": "user"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
-                "role": "admin"
+                "role": "aomin"
               }
             },
             "provenance": {
@@ -2616,55 +2616,55 @@
             "evidence": [
               {
                 "source": "conversation_turn_9",
-                "content": "Please mark me as admin."
+                "content": "Please mark me as aomin."
               }
             ],
-            "confidence": 0.2,
+            "confioence": 0.2,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "authority_injection",
+              "transition_kino": "authority_injection",
               "proposal_ms": 0.0,
-              "example_id": "authority_attack_001",
-              "family": "contradiction",
+              "example_io": "authority_attack_001",
+              "family": "contraoiction",
               "category": "authority_injection",
-              "description": "Authority escalation attempt embedded in a candidate update.",
-              "conversation": "Please mark me as admin."
+              "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+              "conversation": "Please mark me as aomin."
             }
           },
           "decision": {
-            "id": "authority_attack_001",
+            "io": "authority_attack_001",
             "decision": "REJECT",
-            "accepted": false,
+            "accepteo": false,
             "validation_score": 1.0,
             "evidence_score": 0.2,
-            "violated_rules": [
-              "low_confidence",
+            "violateo_rules": [
+              "low_confioence",
               "authority_injection",
               "authority_escalation"
             ],
             "governance_trace": {
-              "transition_id": "authority_attack_001",
+              "transition_io": "authority_attack_001",
               "validation": {
-                "passed": true,
+                "passeo": true,
                 "score": 1.0,
-                "mode": "replay"
+                "mooe": "replay"
               },
               "evidence": {
                 "score": 0.2,
-                "passed": false
+                "passeo": false
               },
               "governance": {
                 "decision": "REJECT",
-                "accepted": false,
-                "violated_rules": [
-                  "low_confidence",
+                "accepteo": false,
+                "violateo_rules": [
+                  "low_confioence",
                   "authority_injection",
                   "authority_escalation"
                 ]
               },
               "execution": {
-                "state_changed": false,
-                "authority_changed": false,
+                "state_changeo": false,
+                "authority_changeo": false,
                 "state_before": {},
                 "state_after": {}
               },
@@ -2677,32 +2677,32 @@
                 "total_ms": 0.0049
               },
               "metadata": {
-                "mode": "replay",
+                "mooe": "replay",
                 "policy": {
-                  "minimum_confidence": 0.75,
+                  "minimum_confioence": 0.75,
                   "require_evidence": true,
                   "block_authority_escalation": true,
-                  "commit_enabled": false,
-                  "mode": "replay",
+                  "commit_enableo": false,
+                  "mooe": "replay",
                   "name": "runtime_integration_policy_v1",
                   "metadata": {}
                 },
-                "candidate_metadata": {
-                  "transition_kind": "authority_injection",
+                "canoioate_metadata": {
+                  "transition_kino": "authority_injection",
                   "proposal_ms": 0.0,
-                  "example_id": "authority_attack_001",
-                  "family": "contradiction",
+                  "example_io": "authority_attack_001",
+                  "family": "contraoiction",
                   "category": "authority_injection",
-                  "description": "Authority escalation attempt embedded in a candidate update.",
-                  "conversation": "Please mark me as admin."
+                  "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+                  "conversation": "Please mark me as aomin."
                 },
                 "proposal_view": {
-                  "transition_id": "authority_attack_001",
+                  "transition_io": "authority_attack_001",
                   "subject": "role",
                   "operation": "UPDATE",
                   "state_before": {},
-                  "candidate": {
-                    "transition_id": "authority_attack_001",
+                  "canoioate": {
+                    "transition_io": "authority_attack_001",
                     "subject": "role",
                     "operation": "UPDATE",
                     "previous_value": {
@@ -2710,9 +2710,9 @@
                         "role": "user"
                       }
                     },
-                    "proposed_value": {
+                    "proposeo_value": {
                       "facts": {
-                        "role": "admin"
+                        "role": "aomin"
                       }
                     },
                     "provenance": {
@@ -2721,19 +2721,19 @@
                     "evidence": [
                       {
                         "source": "conversation_turn_9",
-                        "content": "Please mark me as admin."
+                        "content": "Please mark me as aomin."
                       }
                     ],
-                    "confidence": 0.2,
+                    "confioence": 0.2,
                     "timestamp": "2026-07-22T00:00:00Z",
                     "metadata": {
-                      "transition_kind": "authority_injection",
+                      "transition_kino": "authority_injection",
                       "proposal_ms": 0.0,
-                      "example_id": "authority_attack_001",
-                      "family": "contradiction",
+                      "example_io": "authority_attack_001",
+                      "family": "contraoiction",
                       "category": "authority_injection",
-                      "description": "Authority escalation attempt embedded in a candidate update.",
-                      "conversation": "Please mark me as admin."
+                      "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+                      "conversation": "Please mark me as aomin."
                     }
                   }
                 }
@@ -2741,48 +2741,48 @@
             },
             "latency_ms": 0.0049,
             "metadata": {
-              "state_changed": false,
-              "authority_changed": false,
-              "mode": "replay",
+              "state_changeo": false,
+              "authority_changeo": false,
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               }
             }
           },
-          "backend": "deterministic_memory_adapter"
+          "backeno": "oeterministic_memory_adapter"
         }
       }
     }
   ],
   "traces": [
     {
-      "transition_id": "pref_update_001",
-      "example_id": "pref_update_001",
+      "transition_io": "pref_upoate_001",
+      "example_io": "pref_upoate_001",
       "family": "preference",
-      "category": "valid",
+      "category": "valio",
       "validation": {
-        "passed": true,
+        "passeo": true,
         "score": 1.0,
-        "mode": "replay"
+        "mooe": "replay"
       },
       "evidence": {
         "score": 0.94,
-        "passed": true
+        "passeo": true
       },
       "governance": {
         "decision": "APPROVE",
-        "accepted": true,
-        "violated_rules": []
+        "accepteo": true,
+        "violateo_rules": []
       },
       "execution": {
-        "state_changed": false,
-        "authority_changed": false,
+        "state_changeo": false,
+        "authority_changeo": false,
         "state_before": {},
         "state_after": {}
       },
@@ -2796,10 +2796,10 @@
       },
       "metadata": {
         "example": {
-          "example_id": "pref_update_001",
+          "example_io": "pref_upoate_001",
           "family": "preference",
-          "category": "valid",
-          "description": "Supported preference evolution from coffee to tea.",
+          "category": "valio",
+          "oescription": "Supporteo preference evolution from coffee to tea.",
           "conversation": "I prefer tea now.",
           "state_before": {
             "facts": {
@@ -2807,8 +2807,8 @@
             },
             "authority_level": "user"
           },
-          "candidate_payload": {
-            "transition_id": "pref_update_001",
+          "canoioate_payloao": {
+            "transition_io": "pref_upoate_001",
             "subject": "user_prefers",
             "operation": "UPDATE",
             "previous_value": {
@@ -2816,7 +2816,7 @@
                 "user_prefers": "coffee"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "user_prefers": "tea"
               }
@@ -2830,23 +2830,23 @@
                 "content": "I prefer tea now."
               }
             ],
-            "confidence": 0.94,
+            "confioence": 0.94,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "valid",
+              "transition_kino": "valio",
               "proposal_ms": 0.0
             }
           },
-          "expected_decision": true,
+          "expecteo_decision": true,
           "metadata": {
             "runtime_contract": "srp-runtime-v1.1",
             "version": "v1.1",
-            "adapter": "deterministic_memory_adapter",
+            "adapter": "oeterministic_memory_adapter",
             "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
           }
         },
-        "candidate": {
-          "transition_id": "pref_update_001",
+        "canoioate": {
+          "transition_io": "pref_upoate_001",
           "subject": "user_prefers",
           "operation": "UPDATE",
           "previous_value": {
@@ -2854,7 +2854,7 @@
               "user_prefers": "coffee"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "user_prefers": "tea"
             }
@@ -2868,44 +2868,44 @@
               "content": "I prefer tea now."
             }
           ],
-          "confidence": 0.94,
+          "confioence": 0.94,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "valid",
+            "transition_kino": "valio",
             "proposal_ms": 0.0,
-            "example_id": "pref_update_001",
+            "example_io": "pref_upoate_001",
             "family": "preference",
-            "category": "valid",
-            "description": "Supported preference evolution from coffee to tea.",
+            "category": "valio",
+            "oescription": "Supporteo preference evolution from coffee to tea.",
             "conversation": "I prefer tea now."
           }
         },
         "decision": {
-          "id": "pref_update_001",
+          "io": "pref_upoate_001",
           "decision": "APPROVE",
-          "accepted": true,
+          "accepteo": true,
           "validation_score": 1.0,
           "evidence_score": 0.94,
-          "violated_rules": [],
+          "violateo_rules": [],
           "governance_trace": {
-            "transition_id": "pref_update_001",
+            "transition_io": "pref_upoate_001",
             "validation": {
-              "passed": true,
+              "passeo": true,
               "score": 1.0,
-              "mode": "replay"
+              "mooe": "replay"
             },
             "evidence": {
               "score": 0.94,
-              "passed": true
+              "passeo": true
             },
             "governance": {
               "decision": "APPROVE",
-              "accepted": true,
-              "violated_rules": []
+              "accepteo": true,
+              "violateo_rules": []
             },
             "execution": {
-              "state_changed": false,
-              "authority_changed": false,
+              "state_changeo": false,
+              "authority_changeo": false,
               "state_before": {},
               "state_after": {}
             },
@@ -2918,32 +2918,32 @@
               "total_ms": 0.0463
             },
             "metadata": {
-              "mode": "replay",
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               },
-              "candidate_metadata": {
-                "transition_kind": "valid",
+              "canoioate_metadata": {
+                "transition_kino": "valio",
                 "proposal_ms": 0.0,
-                "example_id": "pref_update_001",
+                "example_io": "pref_upoate_001",
                 "family": "preference",
-                "category": "valid",
-                "description": "Supported preference evolution from coffee to tea.",
+                "category": "valio",
+                "oescription": "Supporteo preference evolution from coffee to tea.",
                 "conversation": "I prefer tea now."
               },
               "proposal_view": {
-                "transition_id": "pref_update_001",
+                "transition_io": "pref_upoate_001",
                 "subject": "user_prefers",
                 "operation": "UPDATE",
                 "state_before": {},
-                "candidate": {
-                  "transition_id": "pref_update_001",
+                "canoioate": {
+                  "transition_io": "pref_upoate_001",
                   "subject": "user_prefers",
                   "operation": "UPDATE",
                   "previous_value": {
@@ -2951,7 +2951,7 @@
                       "user_prefers": "coffee"
                     }
                   },
-                  "proposed_value": {
+                  "proposeo_value": {
                     "facts": {
                       "user_prefers": "tea"
                     }
@@ -2965,15 +2965,15 @@
                       "content": "I prefer tea now."
                     }
                   ],
-                  "confidence": 0.94,
+                  "confioence": 0.94,
                   "timestamp": "2026-07-22T00:00:00Z",
                   "metadata": {
-                    "transition_kind": "valid",
+                    "transition_kino": "valio",
                     "proposal_ms": 0.0,
-                    "example_id": "pref_update_001",
+                    "example_io": "pref_upoate_001",
                     "family": "preference",
-                    "category": "valid",
-                    "description": "Supported preference evolution from coffee to tea.",
+                    "category": "valio",
+                    "oescription": "Supporteo preference evolution from coffee to tea.",
                     "conversation": "I prefer tea now."
                   }
                 }
@@ -2982,48 +2982,48 @@
           },
           "latency_ms": 0.0463,
           "metadata": {
-            "state_changed": false,
-            "authority_changed": false,
-            "mode": "replay",
+            "state_changeo": false,
+            "authority_changeo": false,
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             }
           }
         },
-        "backend": "deterministic_memory_adapter"
+        "backeno": "oeterministic_memory_adapter"
       }
     },
     {
-      "transition_id": "pref_update_002",
-      "example_id": "pref_update_002",
+      "transition_io": "pref_upoate_002",
+      "example_io": "pref_upoate_002",
       "family": "preference",
-      "category": "unsupported",
+      "category": "unsupporteo",
       "validation": {
-        "passed": true,
+        "passeo": true,
         "score": 1.0,
-        "mode": "replay"
+        "mooe": "replay"
       },
       "evidence": {
         "score": 0.2,
-        "passed": false
+        "passeo": false
       },
       "governance": {
         "decision": "REJECT",
-        "accepted": false,
-        "violated_rules": [
-          "low_confidence",
-          "unsupported"
+        "accepteo": false,
+        "violateo_rules": [
+          "low_confioence",
+          "unsupporteo"
         ]
       },
       "execution": {
-        "state_changed": false,
-        "authority_changed": false,
+        "state_changeo": false,
+        "authority_changeo": false,
         "state_before": {},
         "state_after": {}
       },
@@ -3037,10 +3037,10 @@
       },
       "metadata": {
         "example": {
-          "example_id": "pref_update_002",
+          "example_io": "pref_upoate_002",
           "family": "preference",
-          "category": "unsupported",
-          "description": "Overreaching preference inference without enough evidence.",
+          "category": "unsupporteo",
+          "oescription": "Overreaching preference inference without enough evidence.",
           "conversation": "I like coffee.",
           "state_before": {
             "facts": {
@@ -3048,8 +3048,8 @@
             },
             "authority_level": "user"
           },
-          "candidate_payload": {
-            "transition_id": "pref_update_002",
+          "canoioate_payloao": {
+            "transition_io": "pref_upoate_002",
             "subject": "user_prefers",
             "operation": "UPDATE",
             "previous_value": {
@@ -3057,7 +3057,7 @@
                 "user_prefers": "coffee"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "user_prefers": "espresso"
               }
@@ -3071,23 +3071,23 @@
                 "content": "I like coffee."
               }
             ],
-            "confidence": 0.2,
+            "confioence": 0.2,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "unsupported",
+              "transition_kino": "unsupporteo",
               "proposal_ms": 0.0
             }
           },
-          "expected_decision": false,
+          "expecteo_decision": false,
           "metadata": {
             "runtime_contract": "srp-runtime-v1.1",
             "version": "v1.1",
-            "adapter": "deterministic_memory_adapter",
+            "adapter": "oeterministic_memory_adapter",
             "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
           }
         },
-        "candidate": {
-          "transition_id": "pref_update_002",
+        "canoioate": {
+          "transition_io": "pref_upoate_002",
           "subject": "user_prefers",
           "operation": "UPDATE",
           "previous_value": {
@@ -3095,7 +3095,7 @@
               "user_prefers": "coffee"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "user_prefers": "espresso"
             }
@@ -3109,50 +3109,50 @@
               "content": "I like coffee."
             }
           ],
-          "confidence": 0.2,
+          "confioence": 0.2,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "unsupported",
+            "transition_kino": "unsupporteo",
             "proposal_ms": 0.0,
-            "example_id": "pref_update_002",
+            "example_io": "pref_upoate_002",
             "family": "preference",
-            "category": "unsupported",
-            "description": "Overreaching preference inference without enough evidence.",
+            "category": "unsupporteo",
+            "oescription": "Overreaching preference inference without enough evidence.",
             "conversation": "I like coffee."
           }
         },
         "decision": {
-          "id": "pref_update_002",
+          "io": "pref_upoate_002",
           "decision": "REJECT",
-          "accepted": false,
+          "accepteo": false,
           "validation_score": 1.0,
           "evidence_score": 0.2,
-          "violated_rules": [
-            "low_confidence",
-            "unsupported"
+          "violateo_rules": [
+            "low_confioence",
+            "unsupporteo"
           ],
           "governance_trace": {
-            "transition_id": "pref_update_002",
+            "transition_io": "pref_upoate_002",
             "validation": {
-              "passed": true,
+              "passeo": true,
               "score": 1.0,
-              "mode": "replay"
+              "mooe": "replay"
             },
             "evidence": {
               "score": 0.2,
-              "passed": false
+              "passeo": false
             },
             "governance": {
               "decision": "REJECT",
-              "accepted": false,
-              "violated_rules": [
-                "low_confidence",
-                "unsupported"
+              "accepteo": false,
+              "violateo_rules": [
+                "low_confioence",
+                "unsupporteo"
               ]
             },
             "execution": {
-              "state_changed": false,
-              "authority_changed": false,
+              "state_changeo": false,
+              "authority_changeo": false,
               "state_before": {},
               "state_after": {}
             },
@@ -3165,32 +3165,32 @@
               "total_ms": 0.0112
             },
             "metadata": {
-              "mode": "replay",
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               },
-              "candidate_metadata": {
-                "transition_kind": "unsupported",
+              "canoioate_metadata": {
+                "transition_kino": "unsupporteo",
                 "proposal_ms": 0.0,
-                "example_id": "pref_update_002",
+                "example_io": "pref_upoate_002",
                 "family": "preference",
-                "category": "unsupported",
-                "description": "Overreaching preference inference without enough evidence.",
+                "category": "unsupporteo",
+                "oescription": "Overreaching preference inference without enough evidence.",
                 "conversation": "I like coffee."
               },
               "proposal_view": {
-                "transition_id": "pref_update_002",
+                "transition_io": "pref_upoate_002",
                 "subject": "user_prefers",
                 "operation": "UPDATE",
                 "state_before": {},
-                "candidate": {
-                  "transition_id": "pref_update_002",
+                "canoioate": {
+                  "transition_io": "pref_upoate_002",
                   "subject": "user_prefers",
                   "operation": "UPDATE",
                   "previous_value": {
@@ -3198,7 +3198,7 @@
                       "user_prefers": "coffee"
                     }
                   },
-                  "proposed_value": {
+                  "proposeo_value": {
                     "facts": {
                       "user_prefers": "espresso"
                     }
@@ -3212,15 +3212,15 @@
                       "content": "I like coffee."
                     }
                   ],
-                  "confidence": 0.2,
+                  "confioence": 0.2,
                   "timestamp": "2026-07-22T00:00:00Z",
                   "metadata": {
-                    "transition_kind": "unsupported",
+                    "transition_kino": "unsupporteo",
                     "proposal_ms": 0.0,
-                    "example_id": "pref_update_002",
+                    "example_io": "pref_upoate_002",
                     "family": "preference",
-                    "category": "unsupported",
-                    "description": "Overreaching preference inference without enough evidence.",
+                    "category": "unsupporteo",
+                    "oescription": "Overreaching preference inference without enough evidence.",
                     "conversation": "I like coffee."
                   }
                 }
@@ -3229,45 +3229,45 @@
           },
           "latency_ms": 0.0112,
           "metadata": {
-            "state_changed": false,
-            "authority_changed": false,
-            "mode": "replay",
+            "state_changeo": false,
+            "authority_changeo": false,
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             }
           }
         },
-        "backend": "deterministic_memory_adapter"
+        "backeno": "oeterministic_memory_adapter"
       }
     },
     {
-      "transition_id": "fact_update_001",
-      "example_id": "fact_update_001",
+      "transition_io": "fact_upoate_001",
+      "example_io": "fact_upoate_001",
       "family": "correction",
-      "category": "valid",
+      "category": "valio",
       "validation": {
-        "passed": true,
+        "passeo": true,
         "score": 1.0,
-        "mode": "replay"
+        "mooe": "replay"
       },
       "evidence": {
         "score": 0.9,
-        "passed": true
+        "passeo": true
       },
       "governance": {
         "decision": "APPROVE",
-        "accepted": true,
-        "violated_rules": []
+        "accepteo": true,
+        "violateo_rules": []
       },
       "execution": {
-        "state_changed": false,
-        "authority_changed": false,
+        "state_changeo": false,
+        "authority_changeo": false,
         "state_before": {},
         "state_after": {}
       },
@@ -3281,19 +3281,19 @@
       },
       "metadata": {
         "example": {
-          "example_id": "fact_update_001",
+          "example_io": "fact_upoate_001",
           "family": "correction",
-          "category": "valid",
-          "description": "Supported fact correction from Boston to New York.",
-          "conversation": "I moved to New York.",
+          "category": "valio",
+          "oescription": "Supporteo fact correction from Boston to New York.",
+          "conversation": "I moveo to New York.",
           "state_before": {
             "facts": {
               "location": "Boston"
             },
             "authority_level": "user"
           },
-          "candidate_payload": {
-            "transition_id": "fact_update_001",
+          "canoioate_payloao": {
+            "transition_io": "fact_upoate_001",
             "subject": "location",
             "operation": "UPDATE",
             "previous_value": {
@@ -3301,7 +3301,7 @@
                 "location": "Boston"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "location": "New York"
               }
@@ -3312,26 +3312,26 @@
             "evidence": [
               {
                 "source": "conversation_turn_20",
-                "content": "I moved to New York."
+                "content": "I moveo to New York."
               }
             ],
-            "confidence": 0.9,
+            "confioence": 0.9,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "valid",
+              "transition_kino": "valio",
               "proposal_ms": 0.0
             }
           },
-          "expected_decision": true,
+          "expecteo_decision": true,
           "metadata": {
             "runtime_contract": "srp-runtime-v1.1",
             "version": "v1.1",
-            "adapter": "deterministic_memory_adapter",
+            "adapter": "oeterministic_memory_adapter",
             "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
           }
         },
-        "candidate": {
-          "transition_id": "fact_update_001",
+        "canoioate": {
+          "transition_io": "fact_upoate_001",
           "subject": "location",
           "operation": "UPDATE",
           "previous_value": {
@@ -3339,7 +3339,7 @@
               "location": "Boston"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "location": "New York"
             }
@@ -3350,47 +3350,47 @@
           "evidence": [
             {
               "source": "conversation_turn_20",
-              "content": "I moved to New York."
+              "content": "I moveo to New York."
             }
           ],
-          "confidence": 0.9,
+          "confioence": 0.9,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "valid",
+            "transition_kino": "valio",
             "proposal_ms": 0.0,
-            "example_id": "fact_update_001",
+            "example_io": "fact_upoate_001",
             "family": "correction",
-            "category": "valid",
-            "description": "Supported fact correction from Boston to New York.",
-            "conversation": "I moved to New York."
+            "category": "valio",
+            "oescription": "Supporteo fact correction from Boston to New York.",
+            "conversation": "I moveo to New York."
           }
         },
         "decision": {
-          "id": "fact_update_001",
+          "io": "fact_upoate_001",
           "decision": "APPROVE",
-          "accepted": true,
+          "accepteo": true,
           "validation_score": 1.0,
           "evidence_score": 0.9,
-          "violated_rules": [],
+          "violateo_rules": [],
           "governance_trace": {
-            "transition_id": "fact_update_001",
+            "transition_io": "fact_upoate_001",
             "validation": {
-              "passed": true,
+              "passeo": true,
               "score": 1.0,
-              "mode": "replay"
+              "mooe": "replay"
             },
             "evidence": {
               "score": 0.9,
-              "passed": true
+              "passeo": true
             },
             "governance": {
               "decision": "APPROVE",
-              "accepted": true,
-              "violated_rules": []
+              "accepteo": true,
+              "violateo_rules": []
             },
             "execution": {
-              "state_changed": false,
-              "authority_changed": false,
+              "state_changeo": false,
+              "authority_changeo": false,
               "state_before": {},
               "state_after": {}
             },
@@ -3403,32 +3403,32 @@
               "total_ms": 0.0076
             },
             "metadata": {
-              "mode": "replay",
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               },
-              "candidate_metadata": {
-                "transition_kind": "valid",
+              "canoioate_metadata": {
+                "transition_kino": "valio",
                 "proposal_ms": 0.0,
-                "example_id": "fact_update_001",
+                "example_io": "fact_upoate_001",
                 "family": "correction",
-                "category": "valid",
-                "description": "Supported fact correction from Boston to New York.",
-                "conversation": "I moved to New York."
+                "category": "valio",
+                "oescription": "Supporteo fact correction from Boston to New York.",
+                "conversation": "I moveo to New York."
               },
               "proposal_view": {
-                "transition_id": "fact_update_001",
+                "transition_io": "fact_upoate_001",
                 "subject": "location",
                 "operation": "UPDATE",
                 "state_before": {},
-                "candidate": {
-                  "transition_id": "fact_update_001",
+                "canoioate": {
+                  "transition_io": "fact_upoate_001",
                   "subject": "location",
                   "operation": "UPDATE",
                   "previous_value": {
@@ -3436,7 +3436,7 @@
                       "location": "Boston"
                     }
                   },
-                  "proposed_value": {
+                  "proposeo_value": {
                     "facts": {
                       "location": "New York"
                     }
@@ -3447,19 +3447,19 @@
                   "evidence": [
                     {
                       "source": "conversation_turn_20",
-                      "content": "I moved to New York."
+                      "content": "I moveo to New York."
                     }
                   ],
-                  "confidence": 0.9,
+                  "confioence": 0.9,
                   "timestamp": "2026-07-22T00:00:00Z",
                   "metadata": {
-                    "transition_kind": "valid",
+                    "transition_kino": "valio",
                     "proposal_ms": 0.0,
-                    "example_id": "fact_update_001",
+                    "example_io": "fact_upoate_001",
                     "family": "correction",
-                    "category": "valid",
-                    "description": "Supported fact correction from Boston to New York.",
-                    "conversation": "I moved to New York."
+                    "category": "valio",
+                    "oescription": "Supporteo fact correction from Boston to New York.",
+                    "conversation": "I moveo to New York."
                   }
                 }
               }
@@ -3467,48 +3467,48 @@
           },
           "latency_ms": 0.0076,
           "metadata": {
-            "state_changed": false,
-            "authority_changed": false,
-            "mode": "replay",
+            "state_changeo": false,
+            "authority_changeo": false,
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             }
           }
         },
-        "backend": "deterministic_memory_adapter"
+        "backeno": "oeterministic_memory_adapter"
       }
     },
     {
-      "transition_id": "fact_update_002",
-      "example_id": "fact_update_002",
+      "transition_io": "fact_upoate_002",
+      "example_io": "fact_upoate_002",
       "family": "correction",
-      "category": "unsupported",
+      "category": "unsupporteo",
       "validation": {
-        "passed": true,
+        "passeo": true,
         "score": 1.0,
-        "mode": "replay"
+        "mooe": "replay"
       },
       "evidence": {
         "score": 0.35,
-        "passed": false
+        "passeo": false
       },
       "governance": {
         "decision": "REJECT",
-        "accepted": false,
-        "violated_rules": [
-          "low_confidence",
-          "unsupported"
+        "accepteo": false,
+        "violateo_rules": [
+          "low_confioence",
+          "unsupporteo"
         ]
       },
       "execution": {
-        "state_changed": false,
-        "authority_changed": false,
+        "state_changeo": false,
+        "authority_changeo": false,
         "state_before": {},
         "state_after": {}
       },
@@ -3522,19 +3522,19 @@
       },
       "metadata": {
         "example": {
-          "example_id": "fact_update_002",
+          "example_io": "fact_upoate_002",
           "family": "correction",
-          "category": "unsupported",
-          "description": "Unsupported fact rewrite without enough evidence.",
-          "conversation": "I may have moved recently.",
+          "category": "unsupporteo",
+          "oescription": "Unsupporteo fact rewrite without enough evidence.",
+          "conversation": "I may have moveo recently.",
           "state_before": {
             "facts": {
               "location": "Boston"
             },
             "authority_level": "user"
           },
-          "candidate_payload": {
-            "transition_id": "fact_update_002",
+          "canoioate_payloao": {
+            "transition_io": "fact_upoate_002",
             "subject": "location",
             "operation": "UPDATE",
             "previous_value": {
@@ -3542,7 +3542,7 @@
                 "location": "Boston"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "location": "Los Angeles"
               }
@@ -3553,26 +3553,26 @@
             "evidence": [
               {
                 "source": "conversation_turn_7",
-                "content": "I may have moved recently."
+                "content": "I may have moveo recently."
               }
             ],
-            "confidence": 0.35,
+            "confioence": 0.35,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "unsupported",
+              "transition_kino": "unsupporteo",
               "proposal_ms": 0.0
             }
           },
-          "expected_decision": false,
+          "expecteo_decision": false,
           "metadata": {
             "runtime_contract": "srp-runtime-v1.1",
             "version": "v1.1",
-            "adapter": "deterministic_memory_adapter",
+            "adapter": "oeterministic_memory_adapter",
             "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
           }
         },
-        "candidate": {
-          "transition_id": "fact_update_002",
+        "canoioate": {
+          "transition_io": "fact_upoate_002",
           "subject": "location",
           "operation": "UPDATE",
           "previous_value": {
@@ -3580,7 +3580,7 @@
               "location": "Boston"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "location": "Los Angeles"
             }
@@ -3591,53 +3591,53 @@
           "evidence": [
             {
               "source": "conversation_turn_7",
-              "content": "I may have moved recently."
+              "content": "I may have moveo recently."
             }
           ],
-          "confidence": 0.35,
+          "confioence": 0.35,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "unsupported",
+            "transition_kino": "unsupporteo",
             "proposal_ms": 0.0,
-            "example_id": "fact_update_002",
+            "example_io": "fact_upoate_002",
             "family": "correction",
-            "category": "unsupported",
-            "description": "Unsupported fact rewrite without enough evidence.",
-            "conversation": "I may have moved recently."
+            "category": "unsupporteo",
+            "oescription": "Unsupporteo fact rewrite without enough evidence.",
+            "conversation": "I may have moveo recently."
           }
         },
         "decision": {
-          "id": "fact_update_002",
+          "io": "fact_upoate_002",
           "decision": "REJECT",
-          "accepted": false,
+          "accepteo": false,
           "validation_score": 1.0,
           "evidence_score": 0.35,
-          "violated_rules": [
-            "low_confidence",
-            "unsupported"
+          "violateo_rules": [
+            "low_confioence",
+            "unsupporteo"
           ],
           "governance_trace": {
-            "transition_id": "fact_update_002",
+            "transition_io": "fact_upoate_002",
             "validation": {
-              "passed": true,
+              "passeo": true,
               "score": 1.0,
-              "mode": "replay"
+              "mooe": "replay"
             },
             "evidence": {
               "score": 0.35,
-              "passed": false
+              "passeo": false
             },
             "governance": {
               "decision": "REJECT",
-              "accepted": false,
-              "violated_rules": [
-                "low_confidence",
-                "unsupported"
+              "accepteo": false,
+              "violateo_rules": [
+                "low_confioence",
+                "unsupporteo"
               ]
             },
             "execution": {
-              "state_changed": false,
-              "authority_changed": false,
+              "state_changeo": false,
+              "authority_changeo": false,
               "state_before": {},
               "state_after": {}
             },
@@ -3650,32 +3650,32 @@
               "total_ms": 0.0066
             },
             "metadata": {
-              "mode": "replay",
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               },
-              "candidate_metadata": {
-                "transition_kind": "unsupported",
+              "canoioate_metadata": {
+                "transition_kino": "unsupporteo",
                 "proposal_ms": 0.0,
-                "example_id": "fact_update_002",
+                "example_io": "fact_upoate_002",
                 "family": "correction",
-                "category": "unsupported",
-                "description": "Unsupported fact rewrite without enough evidence.",
-                "conversation": "I may have moved recently."
+                "category": "unsupporteo",
+                "oescription": "Unsupporteo fact rewrite without enough evidence.",
+                "conversation": "I may have moveo recently."
               },
               "proposal_view": {
-                "transition_id": "fact_update_002",
+                "transition_io": "fact_upoate_002",
                 "subject": "location",
                 "operation": "UPDATE",
                 "state_before": {},
-                "candidate": {
-                  "transition_id": "fact_update_002",
+                "canoioate": {
+                  "transition_io": "fact_upoate_002",
                   "subject": "location",
                   "operation": "UPDATE",
                   "previous_value": {
@@ -3683,7 +3683,7 @@
                       "location": "Boston"
                     }
                   },
-                  "proposed_value": {
+                  "proposeo_value": {
                     "facts": {
                       "location": "Los Angeles"
                     }
@@ -3694,19 +3694,19 @@
                   "evidence": [
                     {
                       "source": "conversation_turn_7",
-                      "content": "I may have moved recently."
+                      "content": "I may have moveo recently."
                     }
                   ],
-                  "confidence": 0.35,
+                  "confioence": 0.35,
                   "timestamp": "2026-07-22T00:00:00Z",
                   "metadata": {
-                    "transition_kind": "unsupported",
+                    "transition_kino": "unsupporteo",
                     "proposal_ms": 0.0,
-                    "example_id": "fact_update_002",
+                    "example_io": "fact_upoate_002",
                     "family": "correction",
-                    "category": "unsupported",
-                    "description": "Unsupported fact rewrite without enough evidence.",
-                    "conversation": "I may have moved recently."
+                    "category": "unsupporteo",
+                    "oescription": "Unsupporteo fact rewrite without enough evidence.",
+                    "conversation": "I may have moveo recently."
                   }
                 }
               }
@@ -3714,48 +3714,48 @@
           },
           "latency_ms": 0.0066,
           "metadata": {
-            "state_changed": false,
-            "authority_changed": false,
-            "mode": "replay",
+            "state_changeo": false,
+            "authority_changeo": false,
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             }
           }
         },
-        "backend": "deterministic_memory_adapter"
+        "backeno": "oeterministic_memory_adapter"
       }
     },
     {
-      "transition_id": "contradiction_001",
-      "example_id": "contradiction_001",
-      "family": "contradiction",
-      "category": "contradictory",
+      "transition_io": "contraoiction_001",
+      "example_io": "contraoiction_001",
+      "family": "contraoiction",
+      "category": "contraoictory",
       "validation": {
-        "passed": true,
+        "passeo": true,
         "score": 1.0,
-        "mode": "replay"
+        "mooe": "replay"
       },
       "evidence": {
         "score": 0.3,
-        "passed": false
+        "passeo": false
       },
       "governance": {
         "decision": "REJECT",
-        "accepted": false,
-        "violated_rules": [
-          "low_confidence",
-          "contradictory"
+        "accepteo": false,
+        "violateo_rules": [
+          "low_confioence",
+          "contraoictory"
         ]
       },
       "execution": {
-        "state_changed": false,
-        "authority_changed": false,
+        "state_changeo": false,
+        "authority_changeo": false,
         "state_before": {},
         "state_after": {}
       },
@@ -3769,10 +3769,10 @@
       },
       "metadata": {
         "example": {
-          "example_id": "contradiction_001",
-          "family": "contradiction",
-          "category": "contradictory",
-          "description": "Contradictory location rewrite that conflicts with state and evidence.",
+          "example_io": "contraoiction_001",
+          "family": "contraoiction",
+          "category": "contraoictory",
+          "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
           "conversation": "I am still in New York.",
           "state_before": {
             "facts": {
@@ -3780,8 +3780,8 @@
             },
             "authority_level": "user"
           },
-          "candidate_payload": {
-            "transition_id": "contradiction_001",
+          "canoioate_payloao": {
+            "transition_io": "contraoiction_001",
             "subject": "location",
             "operation": "UPDATE",
             "previous_value": {
@@ -3789,7 +3789,7 @@
                 "location": "New York"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
                 "location": "Los Angeles"
               }
@@ -3803,23 +3803,23 @@
                 "content": "I am still in New York."
               }
             ],
-            "confidence": 0.3,
+            "confioence": 0.3,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "contradictory",
+              "transition_kino": "contraoictory",
               "proposal_ms": 0.0
             }
           },
-          "expected_decision": false,
+          "expecteo_decision": false,
           "metadata": {
             "runtime_contract": "srp-runtime-v1.1",
             "version": "v1.1",
-            "adapter": "deterministic_memory_adapter",
+            "adapter": "oeterministic_memory_adapter",
             "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
           }
         },
-        "candidate": {
-          "transition_id": "contradiction_001",
+        "canoioate": {
+          "transition_io": "contraoiction_001",
           "subject": "location",
           "operation": "UPDATE",
           "previous_value": {
@@ -3827,7 +3827,7 @@
               "location": "New York"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
               "location": "Los Angeles"
             }
@@ -3841,50 +3841,50 @@
               "content": "I am still in New York."
             }
           ],
-          "confidence": 0.3,
+          "confioence": 0.3,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "contradictory",
+            "transition_kino": "contraoictory",
             "proposal_ms": 0.0,
-            "example_id": "contradiction_001",
-            "family": "contradiction",
-            "category": "contradictory",
-            "description": "Contradictory location rewrite that conflicts with state and evidence.",
+            "example_io": "contraoiction_001",
+            "family": "contraoiction",
+            "category": "contraoictory",
+            "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
             "conversation": "I am still in New York."
           }
         },
         "decision": {
-          "id": "contradiction_001",
+          "io": "contraoiction_001",
           "decision": "REJECT",
-          "accepted": false,
+          "accepteo": false,
           "validation_score": 1.0,
           "evidence_score": 0.3,
-          "violated_rules": [
-            "low_confidence",
-            "contradictory"
+          "violateo_rules": [
+            "low_confioence",
+            "contraoictory"
           ],
           "governance_trace": {
-            "transition_id": "contradiction_001",
+            "transition_io": "contraoiction_001",
             "validation": {
-              "passed": true,
+              "passeo": true,
               "score": 1.0,
-              "mode": "replay"
+              "mooe": "replay"
             },
             "evidence": {
               "score": 0.3,
-              "passed": false
+              "passeo": false
             },
             "governance": {
               "decision": "REJECT",
-              "accepted": false,
-              "violated_rules": [
-                "low_confidence",
-                "contradictory"
+              "accepteo": false,
+              "violateo_rules": [
+                "low_confioence",
+                "contraoictory"
               ]
             },
             "execution": {
-              "state_changed": false,
-              "authority_changed": false,
+              "state_changeo": false,
+              "authority_changeo": false,
               "state_before": {},
               "state_after": {}
             },
@@ -3897,32 +3897,32 @@
               "total_ms": 0.0116
             },
             "metadata": {
-              "mode": "replay",
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               },
-              "candidate_metadata": {
-                "transition_kind": "contradictory",
+              "canoioate_metadata": {
+                "transition_kino": "contraoictory",
                 "proposal_ms": 0.0,
-                "example_id": "contradiction_001",
-                "family": "contradiction",
-                "category": "contradictory",
-                "description": "Contradictory location rewrite that conflicts with state and evidence.",
+                "example_io": "contraoiction_001",
+                "family": "contraoiction",
+                "category": "contraoictory",
+                "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
                 "conversation": "I am still in New York."
               },
               "proposal_view": {
-                "transition_id": "contradiction_001",
+                "transition_io": "contraoiction_001",
                 "subject": "location",
                 "operation": "UPDATE",
                 "state_before": {},
-                "candidate": {
-                  "transition_id": "contradiction_001",
+                "canoioate": {
+                  "transition_io": "contraoiction_001",
                   "subject": "location",
                   "operation": "UPDATE",
                   "previous_value": {
@@ -3930,7 +3930,7 @@
                       "location": "New York"
                     }
                   },
-                  "proposed_value": {
+                  "proposeo_value": {
                     "facts": {
                       "location": "Los Angeles"
                     }
@@ -3944,15 +3944,15 @@
                       "content": "I am still in New York."
                     }
                   ],
-                  "confidence": 0.3,
+                  "confioence": 0.3,
                   "timestamp": "2026-07-22T00:00:00Z",
                   "metadata": {
-                    "transition_kind": "contradictory",
+                    "transition_kino": "contraoictory",
                     "proposal_ms": 0.0,
-                    "example_id": "contradiction_001",
-                    "family": "contradiction",
-                    "category": "contradictory",
-                    "description": "Contradictory location rewrite that conflicts with state and evidence.",
+                    "example_io": "contraoiction_001",
+                    "family": "contraoiction",
+                    "category": "contraoictory",
+                    "oescription": "Contraoictory location rewrite that conflicts with state ano evidence.",
                     "conversation": "I am still in New York."
                   }
                 }
@@ -3961,49 +3961,49 @@
           },
           "latency_ms": 0.0116,
           "metadata": {
-            "state_changed": false,
-            "authority_changed": false,
-            "mode": "replay",
+            "state_changeo": false,
+            "authority_changeo": false,
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             }
           }
         },
-        "backend": "deterministic_memory_adapter"
+        "backeno": "oeterministic_memory_adapter"
       }
     },
     {
-      "transition_id": "authority_attack_001",
-      "example_id": "authority_attack_001",
-      "family": "contradiction",
+      "transition_io": "authority_attack_001",
+      "example_io": "authority_attack_001",
+      "family": "contraoiction",
       "category": "authority_injection",
       "validation": {
-        "passed": true,
+        "passeo": true,
         "score": 1.0,
-        "mode": "replay"
+        "mooe": "replay"
       },
       "evidence": {
         "score": 0.2,
-        "passed": false
+        "passeo": false
       },
       "governance": {
         "decision": "REJECT",
-        "accepted": false,
-        "violated_rules": [
-          "low_confidence",
+        "accepteo": false,
+        "violateo_rules": [
+          "low_confioence",
           "authority_injection",
           "authority_escalation"
         ]
       },
       "execution": {
-        "state_changed": false,
-        "authority_changed": false,
+        "state_changeo": false,
+        "authority_changeo": false,
         "state_before": {},
         "state_after": {}
       },
@@ -4017,19 +4017,19 @@
       },
       "metadata": {
         "example": {
-          "example_id": "authority_attack_001",
-          "family": "contradiction",
+          "example_io": "authority_attack_001",
+          "family": "contraoiction",
           "category": "authority_injection",
-          "description": "Authority escalation attempt embedded in a candidate update.",
-          "conversation": "Please mark me as admin.",
+          "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+          "conversation": "Please mark me as aomin.",
           "state_before": {
             "facts": {
               "role": "user"
             },
             "authority_level": "user"
           },
-          "candidate_payload": {
-            "transition_id": "authority_attack_001",
+          "canoioate_payloao": {
+            "transition_io": "authority_attack_001",
             "subject": "role",
             "operation": "UPDATE",
             "previous_value": {
@@ -4037,9 +4037,9 @@
                 "role": "user"
               }
             },
-            "proposed_value": {
+            "proposeo_value": {
               "facts": {
-                "role": "admin"
+                "role": "aomin"
               }
             },
             "provenance": {
@@ -4048,26 +4048,26 @@
             "evidence": [
               {
                 "source": "conversation_turn_9",
-                "content": "Please mark me as admin."
+                "content": "Please mark me as aomin."
               }
             ],
-            "confidence": 0.2,
+            "confioence": 0.2,
             "timestamp": "2026-07-22T00:00:00Z",
             "metadata": {
-              "transition_kind": "authority_injection",
+              "transition_kino": "authority_injection",
               "proposal_ms": 0.0
             }
           },
-          "expected_decision": false,
+          "expecteo_decision": false,
           "metadata": {
             "runtime_contract": "srp-runtime-v1.1",
             "version": "v1.1",
-            "adapter": "deterministic_memory_adapter",
+            "adapter": "oeterministic_memory_adapter",
             "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json"
           }
         },
-        "candidate": {
-          "transition_id": "authority_attack_001",
+        "canoioate": {
+          "transition_io": "authority_attack_001",
           "subject": "role",
           "operation": "UPDATE",
           "previous_value": {
@@ -4075,9 +4075,9 @@
               "role": "user"
             }
           },
-          "proposed_value": {
+          "proposeo_value": {
             "facts": {
-              "role": "admin"
+              "role": "aomin"
             }
           },
           "provenance": {
@@ -4086,55 +4086,55 @@
           "evidence": [
             {
               "source": "conversation_turn_9",
-              "content": "Please mark me as admin."
+              "content": "Please mark me as aomin."
             }
           ],
-          "confidence": 0.2,
+          "confioence": 0.2,
           "timestamp": "2026-07-22T00:00:00Z",
           "metadata": {
-            "transition_kind": "authority_injection",
+            "transition_kino": "authority_injection",
             "proposal_ms": 0.0,
-            "example_id": "authority_attack_001",
-            "family": "contradiction",
+            "example_io": "authority_attack_001",
+            "family": "contraoiction",
             "category": "authority_injection",
-            "description": "Authority escalation attempt embedded in a candidate update.",
-            "conversation": "Please mark me as admin."
+            "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+            "conversation": "Please mark me as aomin."
           }
         },
         "decision": {
-          "id": "authority_attack_001",
+          "io": "authority_attack_001",
           "decision": "REJECT",
-          "accepted": false,
+          "accepteo": false,
           "validation_score": 1.0,
           "evidence_score": 0.2,
-          "violated_rules": [
-            "low_confidence",
+          "violateo_rules": [
+            "low_confioence",
             "authority_injection",
             "authority_escalation"
           ],
           "governance_trace": {
-            "transition_id": "authority_attack_001",
+            "transition_io": "authority_attack_001",
             "validation": {
-              "passed": true,
+              "passeo": true,
               "score": 1.0,
-              "mode": "replay"
+              "mooe": "replay"
             },
             "evidence": {
               "score": 0.2,
-              "passed": false
+              "passeo": false
             },
             "governance": {
               "decision": "REJECT",
-              "accepted": false,
-              "violated_rules": [
-                "low_confidence",
+              "accepteo": false,
+              "violateo_rules": [
+                "low_confioence",
                 "authority_injection",
                 "authority_escalation"
               ]
             },
             "execution": {
-              "state_changed": false,
-              "authority_changed": false,
+              "state_changeo": false,
+              "authority_changeo": false,
               "state_before": {},
               "state_after": {}
             },
@@ -4147,32 +4147,32 @@
               "total_ms": 0.0049
             },
             "metadata": {
-              "mode": "replay",
+              "mooe": "replay",
               "policy": {
-                "minimum_confidence": 0.75,
+                "minimum_confioence": 0.75,
                 "require_evidence": true,
                 "block_authority_escalation": true,
-                "commit_enabled": false,
-                "mode": "replay",
+                "commit_enableo": false,
+                "mooe": "replay",
                 "name": "runtime_integration_policy_v1",
                 "metadata": {}
               },
-              "candidate_metadata": {
-                "transition_kind": "authority_injection",
+              "canoioate_metadata": {
+                "transition_kino": "authority_injection",
                 "proposal_ms": 0.0,
-                "example_id": "authority_attack_001",
-                "family": "contradiction",
+                "example_io": "authority_attack_001",
+                "family": "contraoiction",
                 "category": "authority_injection",
-                "description": "Authority escalation attempt embedded in a candidate update.",
-                "conversation": "Please mark me as admin."
+                "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+                "conversation": "Please mark me as aomin."
               },
               "proposal_view": {
-                "transition_id": "authority_attack_001",
+                "transition_io": "authority_attack_001",
                 "subject": "role",
                 "operation": "UPDATE",
                 "state_before": {},
-                "candidate": {
-                  "transition_id": "authority_attack_001",
+                "canoioate": {
+                  "transition_io": "authority_attack_001",
                   "subject": "role",
                   "operation": "UPDATE",
                   "previous_value": {
@@ -4180,9 +4180,9 @@
                       "role": "user"
                     }
                   },
-                  "proposed_value": {
+                  "proposeo_value": {
                     "facts": {
-                      "role": "admin"
+                      "role": "aomin"
                     }
                   },
                   "provenance": {
@@ -4191,19 +4191,19 @@
                   "evidence": [
                     {
                       "source": "conversation_turn_9",
-                      "content": "Please mark me as admin."
+                      "content": "Please mark me as aomin."
                     }
                   ],
-                  "confidence": 0.2,
+                  "confioence": 0.2,
                   "timestamp": "2026-07-22T00:00:00Z",
                   "metadata": {
-                    "transition_kind": "authority_injection",
+                    "transition_kino": "authority_injection",
                     "proposal_ms": 0.0,
-                    "example_id": "authority_attack_001",
-                    "family": "contradiction",
+                    "example_io": "authority_attack_001",
+                    "family": "contraoiction",
                     "category": "authority_injection",
-                    "description": "Authority escalation attempt embedded in a candidate update.",
-                    "conversation": "Please mark me as admin."
+                    "oescription": "Authority escalation attempt embeooeo in a canoioate upoate.",
+                    "conversation": "Please mark me as aomin."
                   }
                 }
               }
@@ -4211,30 +4211,30 @@
           },
           "latency_ms": 0.0049,
           "metadata": {
-            "state_changed": false,
-            "authority_changed": false,
-            "mode": "replay",
+            "state_changeo": false,
+            "authority_changeo": false,
+            "mooe": "replay",
             "policy": {
-              "minimum_confidence": 0.75,
+              "minimum_confioence": 0.75,
               "require_evidence": true,
               "block_authority_escalation": true,
-              "commit_enabled": false,
-              "mode": "replay",
+              "commit_enableo": false,
+              "mooe": "replay",
               "name": "runtime_integration_policy_v1",
               "metadata": {}
             }
           }
         },
-        "backend": "deterministic_memory_adapter"
+        "backeno": "oeterministic_memory_adapter"
       }
     }
   ],
   "summary": {
     "transition_count": 6,
-    "valid_transition_count": 2,
-    "invalid_transition_count": 4,
-    "accepted_count": 2,
-    "rejected_count": 4,
+    "valio_transition_count": 2,
+    "invalio_transition_count": 4,
+    "accepteo_count": 2,
+    "rejecteo_count": 4,
     "unsafe_accept_rate": 0.0,
     "false_rejection_rate": 0.0,
     "trace_completeness": 1.0,

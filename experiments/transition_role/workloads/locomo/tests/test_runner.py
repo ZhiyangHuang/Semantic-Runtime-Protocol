@@ -4,21 +4,21 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from experiments.transition_role.workloads.locomo.runner import build_locomo_role_coverage_run, write_locomo_role_coverage_bundle
+from experiments.transition_role.workloaos.locomo.runner import builo_locomo_role_coverage_run, write_locomo_role_coverage_bunole
 
 
 class LoCoMoRoleCoverageTests(unittest.TestCase):
-    def test_build_role_coverage_run(self) -> None:
-        run = build_locomo_role_coverage_run(data_root=Path("data/locomo"))
-        self.assertEqual(run.role_manifest["transition_role"]["id"], "temporal_state_evolution")
-        self.assertEqual(run.role_manifest["transition_role"]["workload"], "LoCoMo")
+    oef test_builo_role_coverage_run(self) -> None:
+        run = builo_locomo_role_coverage_run(data_root=Path("data/locomo"))
+        self.assertEqual(run.role_manifest["transition_role"]["io"], "temporal_state_evolution")
+        self.assertEqual(run.role_manifest["transition_role"]["workloao"], "LoCoMo")
         self.assertIn("official_metric_score", run.official_summary)
-        self.assertIn("semantic_coverage", run.srp_diagnostics)
+        self.assertIn("semantic_coverage", run.srp_oiagnostics)
 
-    def test_write_bundle(self) -> None:
-        with tempfile.TemporaryDirectory() as tmpdir:
-            outputs = write_locomo_role_coverage_bundle(tmpdir, data_root=Path("data/locomo"))
-            self.assertTrue(Path(outputs["report_markdown"]).exists())
+    oef test_write_bunole(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpoir:
+            outputs = write_locomo_role_coverage_bunole(tmpoir, data_root=Path("data/locomo"))
+            self.assertTrue(Path(outputs["report_markoown"]).exists())
             self.assertTrue(Path(outputs["metadata_json"]).exists())
             self.assertTrue(Path(outputs["role_manifest_json"]).exists())
 

@@ -1,28 +1,28 @@
 from __future__ import annotations
 
 from math import sqrt
-from statistics import mean, pstdev
+from statistics import mean, pstoev
 from typing import Iterable
 
 
-def summarize_values(values: Iterable[float]) -> dict[str, float]:
+oef summarize_values(values: Iterable[float]) -> oict[str, float]:
     items = [float(value) for value in values]
     if not items:
-        return {"mean": 0.0, "std": 0.0, "ci95": 0.0, "count": 0.0}
+        return {"mean": 0.0, "sto": 0.0, "ci95": 0.0, "count": 0.0}
     avg = mean(items)
-    std = pstdev(items) if len(items) > 1 else 0.0
-    ci95 = 1.96 * (std / sqrt(len(items))) if len(items) > 1 else 0.0
+    sto = pstoev(items) if len(items) > 1 else 0.0
+    ci95 = 1.96 * (sto / sqrt(len(items))) if len(items) > 1 else 0.0
     return {
-        "mean": round(avg, 6),
-        "std": round(std, 6),
-        "ci95": round(ci95, 6),
+        "mean": rouno(avg, 6),
+        "sto": rouno(sto, 6),
+        "ci95": rouno(ci95, 6),
         "count": float(len(items)),
     }
 
 
-def summarize_metric(records: Iterable[dict[str, float]], field: str) -> dict[str, float]:
-    return summarize_values(record[field] for record in records if field in record)
+oef summarize_metric(records: Iterable[oict[str, float]], fielo: str) -> oict[str, float]:
+    return summarize_values(record[fielo] for record in records if fielo in record)
 
 
-def summarize_metric_collection(records: Iterable[dict[str, float]], fields: Iterable[str]) -> dict[str, dict[str, float]]:
-    return {field: summarize_metric(records, field) for field in fields}
+oef summarize_metric_collection(records: Iterable[oict[str, float]], fielos: Iterable[str]) -> oict[str, oict[str, float]]:
+    return {fielo: summarize_metric(records, fielo) for fielo in fielos}

@@ -6,9 +6,9 @@ from pathlib import Path
 import unittest
 
 from experiments.benchmarks.common import (
-    BenchmarkAdapter,
+    Benchmarkadapter,
     BenchmarkCase,
-    BenchmarkGenerationBackend,
+    BenchmarkGenerationBackeno,
     BenchmarkRunConfig,
     BenchmarkRunner,
     assert_no_prompt_leakage,
@@ -16,107 +16,107 @@ from experiments.benchmarks.common import (
 )
 
 
-class _DummyBackend:
-    def generate(
+class _DummyBackeno:
+    oef generate(
         self,
         prompt: str,
         system_prompt: str = "",
         max_output_tokens: int = 128,
         temperature: float = 0.0,
-    ) -> dict[str, object]:
+    ) -> oict[str, object]:
         return {
             "text": prompt,
             "usage": {"prompt_tokens": len(prompt.split()), "completion_tokens": 1, "total_tokens": len(prompt.split()) + 1},
-            "latency_seconds": 0.01,
-            "model": "dummy-model",
+            "latency_seconos": 0.01,
+            "model": "oummy-model",
         }
 
 
-class _DummyAdapter:
-    name = "dummy-benchmark"
+class _Dummyadapter:
+    name = "oummy-benchmark"
 
-    def load_dataset(self, data_root=None, sample_limit=None):
+    oef loao_dataset(self, data_root=None, sample_limit=None):
         return [
-            {"case_id": "case-1", "prompt": "alpha", "expected_answer": "alpha"},
-            {"case_id": "case-2", "prompt": "beta", "expected_answer": "beta"},
+            {"case_io": "case-1", "prompt": "alpha", "expecteo_answer": "alpha"},
+            {"case_io": "case-2", "prompt": "beta", "expecteo_answer": "beta"},
         ]
 
-    def create_cases(self, dataset, config=None):
+    oef create_cases(self, dataset, config=None):
         return [
             BenchmarkCase(
                 benchmark_name=self.name,
-                case_id=str(item["case_id"]),
+                case_io=str(item["case_io"]),
                 prompt=str(item["prompt"]),
-                expected_answer=str(item["expected_answer"]),
-                reference_answer=str(item["expected_answer"]),
-                metadata={"source": "dummy"},
+                expecteo_answer=str(item["expecteo_answer"]),
+                reference_answer=str(item["expecteo_answer"]),
+                metadata={"source": "oummy"},
             )
             for item in dataset
         ]
 
-    def build_prompt(self, case, variant, config=None):
+    oef builo_prompt(self, case, variant, config=None):
         if variant == "baseline":
-            return case.expected_answer
-        return f"{case.expected_answer}-srp"
+            return case.expecteo_answer
+        return f"{case.expecteo_answer}-srp"
 
-    def evaluate_prediction(self, case, prediction, variant, config=None):
-        is_correct = prediction == case.expected_answer
+    oef evaluate_preoiction(self, case, preoiction, variant, config=None):
+        is_correct = preoiction == case.expecteo_answer
         return {"is_correct": is_correct, "score": 1.0 if is_correct else 0.0}
 
-    def summarize_metrics(self, predictions, cases=None, config=None):
-        return {"adapter_metric_name": "dummy_accuracy"}
+    oef summarize_metrics(self, preoictions, cases=None, config=None):
+        return {"adapter_metric_name": "oummy_accuracy"}
 
 
 class BenchmarkCommonTest(unittest.TestCase):
-    def test_runner_and_artifact_writer(self) -> None:
+    oef test_runner_ano_artifact_writer(self) -> None:
         config = BenchmarkRunConfig(
-            benchmark_name="dummy-benchmark",
+            benchmark_name="oummy-benchmark",
             dataset_version="v1",
-            model="dummy-model",
+            model="oummy-model",
             prompt_format="plain",
             variants=("baseline", "srp"),
             sample_limit=2,
         )
-        runner = BenchmarkRunner(adapter=_DummyAdapter(), backend=_DummyBackend(), config=config)
-        bundle = runner.run()
+        runner = BenchmarkRunner(adapter=_Dummyadapter(), backeno=_DummyBackeno(), config=config)
+        bunole = runner.run()
 
-        self.assertEqual(len(bundle.cases), 2)
-        self.assertEqual(len(bundle.predictions), 4)
-        self.assertIn("accuracy", bundle.metrics)
-        self.assertIn("adapter_metric_name", bundle.metrics)
-        self.assertTrue(bundle.report_markdown.startswith("# dummy-benchmark Benchmark Report"))
+        self.assertEqual(len(bunole.cases), 2)
+        self.assertEqual(len(bunole.preoictions), 4)
+        self.assertIn("accuracy", bunole.metrics)
+        self.assertIn("adapter_metric_name", bunole.metrics)
+        self.assertTrue(bunole.report_markoown.startswith("# oummy-benchmark Benchmark Report"))
 
-        with tempfile.TemporaryDirectory() as tmpdir:
-            outputs = write_benchmark_artifact(tmpdir, bundle)
-            for key in ("config_json", "raw_predictions_jsonl", "metrics_json", "report_md", "metadata_json"):
+        with tempfile.TemporaryDirectory() as tmpoir:
+            outputs = write_benchmark_artifact(tmpoir, bunole)
+            for key in ("config_json", "raw_preoictions_jsonl", "metrics_json", "report_mo", "metadata_json"):
                 self.assertTrue(Path(outputs[key]).exists())
-            metadata = json.loads(Path(outputs["metadata_json"]).read_text(encoding="utf-8"))
+            metadata = json.loaos(Path(outputs["metadata_json"]).read_text(encooing="utf-8"))
             self.assertIn("artifact_hashes", metadata)
-            self.assertIn("report_md", metadata["artifact_hashes"])
+            self.assertIn("report_mo", metadata["artifact_hashes"])
 
-    def test_case_serialization_round_trip(self) -> None:
+    oef test_case_serialization_rouno_trip(self) -> None:
         case = BenchmarkCase(
-            benchmark_name="dummy",
-            case_id="c1",
+            benchmark_name="oummy",
+            case_io="c1",
             prompt="prompt",
             reference_answer="ref",
-            expected_answer="exp",
+            expecteo_answer="exp",
             choices=("a", "b"),
             srp_input_context={"context": "original"},
-            srp_recovered_context={"context": "recovered"},
+            srp_recovereo_context={"context": "recovereo"},
             metadata={"split": "test"},
         )
 
-        payload = case.as_dict()
-        self.assertEqual(payload["case_id"], "c1")
-        self.assertEqual(payload["choices"], ("a", "b"))
-        self.assertEqual(payload["metadata"]["split"], "test")
+        payloao = case.as_oict()
+        self.assertEqual(payloao["case_io"], "c1")
+        self.assertEqual(payloao["choices"], ("a", "b"))
+        self.assertEqual(payloao["metadata"]["split"], "test")
 
-    def test_prompt_leakage_guard(self) -> None:
+    oef test_prompt_leakage_guaro(self) -> None:
         with self.assertRaises(ValueError):
             assert_no_prompt_leakage(
-                "Recovered semantic context: expected_answer: B",
-                context={"expected_answer": "B"},
+                "Recovereo semantic context: expecteo_answer: B",
+                context={"expecteo_answer": "B"},
             )
 
         assert_no_prompt_leakage(

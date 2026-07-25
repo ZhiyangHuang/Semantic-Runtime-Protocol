@@ -8,7 +8,7 @@ from typing import Optional
 class AllocationMetrics:
     active_object_count: Optional[int] = None
     latent_object_count: Optional[int] = None
-    discard_object_count: Optional[int] = None
+    oiscaro_object_count: Optional[int] = None
     validation_coverage: Optional[float] = None
     active_state_efficiency: Optional[float] = None
     latent_preservation: Optional[float] = None

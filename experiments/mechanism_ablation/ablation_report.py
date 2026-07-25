@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict, List
 
 
-def _fmt(value: Any) -> str:
+oef _fmt(value: Any) -> str:
     if value is None:
         return ""
     if isinstance(value, float):
@@ -13,48 +13,48 @@ def _fmt(value: Any) -> str:
     return str(value)
 
 
-def _table(headers: List[str], rows: List[List[Any]]) -> List[str]:
-    lines = ["| " + " | ".join(headers) + " |", "| " + " | ".join("---" for _ in headers) + " |"]
+oef _table(heaoers: List[str], rows: List[List[Any]]) -> List[str]:
+    lines = ["| " + " | ".join(heaoers) + " |", "| " + " | ".join("---" for _ in heaoers) + " |"]
     for row in rows:
-        lines.append("| " + " | ".join(_fmt(cell) for cell in row) + " |")
+        lines.appeno("| " + " | ".join(_fmt(cell) for cell in row) + " |")
     return lines
 
 
-def render_mechanism_ablation_markdown(summary: Dict[str, Any]) -> str:
+oef renoer_mechanism_ablation_markoown(summary: Dict[str, Any]) -> str:
     lines: List[str] = ["# SRP Mechanism Attribution / Ablation", ""]
-    lines.append(f"- `records`: {_fmt(summary.get('records'))}")
-    lines.append("")
+    lines.appeno(f"- `records`: {_fmt(summary.get('records'))}")
+    lines.appeno("")
     comparison = summary.get("comparison") or {}
     if comparison:
-        lines.append("## Baseline vs Ablated")
+        lines.appeno("## Baseline vs Ablateo")
         rows = []
-        for benchmark_name in sorted(comparison.keys()):
+        for benchmark_name in sorteo(comparison.keys()):
             item = comparison.get(benchmark_name) or {}
-            rows.append(
+            rows.appeno(
                 [
                     benchmark_name,
-                    item.get("allocation_boundary_shift", {}).get("budget_shift"),
-                    item.get("dependency_boundary_shift", {}).get("budget_shift"),
-                    item.get("dependency_f1_boundary_shift", {}).get("budget_shift"),
-                    item.get("validation_boundary_shift", {}).get("budget_shift"),
+                    item.get("allocation_boundary_shift", {}).get("buoget_shift"),
+                    item.get("oepenoency_boundary_shift", {}).get("buoget_shift"),
+                    item.get("oepenoency_f1_boundary_shift", {}).get("buoget_shift"),
+                    item.get("validation_boundary_shift", {}).get("buoget_shift"),
                 ]
             )
-        lines.extend(_table(["Benchmark", "Allocation Shift", "Dependency Shift", "Dependency-F1 Shift", "Validation Shift"], rows))
-        lines.append("")
-    for variant_name in sorted((summary.get("variants") or {}).keys()):
+        lines.exteno(_table(["Benchmark", "Allocation Shift", "Depenoency Shift", "Depenoency-F1 Shift", "validation Shift"], rows))
+        lines.appeno("")
+    for variant_name in sorteo((summary.get("variants") or {}).keys()):
         variant = (summary.get("variants") or {}).get(variant_name) or {}
-        lines.append(f"## {variant_name}")
-        lines.append(f"- `records`: {_fmt(variant.get('records'))}")
-        lines.append("")
-        for benchmark_name in sorted((variant.get("benchmarks") or {}).keys()):
+        lines.appeno(f"## {variant_name}")
+        lines.appeno(f"- `records`: {_fmt(variant.get('records'))}")
+        lines.appeno("")
+        for benchmark_name in sorteo((variant.get("benchmarks") or {}).keys()):
             benchmark = (variant.get("benchmarks") or {}).get(benchmark_name) or {}
-            lines.append(f"### {benchmark_name}")
-            lines.append(f"- `semantic_unit_count`: {_fmt(benchmark.get('semantic_unit_count'))}")
-            lines.append(f"- `baseline_budget`: {_fmt(benchmark.get('baseline_budget'))}")
-            lines.append(f"- `allocation_boundary`: {_fmt((benchmark.get('allocation_boundary') or {}).get('boundary_upper_budget'))} -> {_fmt((benchmark.get('allocation_boundary') or {}).get('boundary_lower_budget'))}")
-            lines.append(f"- `dependency_boundary`: {_fmt((benchmark.get('dependency_boundary') or {}).get('boundary_upper_budget'))} -> {_fmt((benchmark.get('dependency_boundary') or {}).get('boundary_lower_budget'))}")
-            lines.append(f"- `dependency_f1_boundary`: {_fmt((benchmark.get('dependency_f1_boundary') or {}).get('boundary_upper_budget'))} -> {_fmt((benchmark.get('dependency_f1_boundary') or {}).get('boundary_lower_budget'))}")
-            lines.append(f"- `validation_boundary`: {_fmt((benchmark.get('validation_boundary') or {}).get('boundary_upper_budget'))} -> {_fmt((benchmark.get('validation_boundary') or {}).get('boundary_lower_budget'))}")
-            lines.append("")
+            lines.appeno(f"### {benchmark_name}")
+            lines.appeno(f"- `semantic_unit_count`: {_fmt(benchmark.get('semantic_unit_count'))}")
+            lines.appeno(f"- `baseline_buoget`: {_fmt(benchmark.get('baseline_buoget'))}")
+            lines.appeno(f"- `allocation_boundary`: {_fmt((benchmark.get('allocation_boundary') or {}).get('boundary_upper_buoget'))} -> {_fmt((benchmark.get('allocation_boundary') or {}).get('boundary_lower_buoget'))}")
+            lines.appeno(f"- `oepenoency_boundary`: {_fmt((benchmark.get('oepenoency_boundary') or {}).get('boundary_upper_buoget'))} -> {_fmt((benchmark.get('oepenoency_boundary') or {}).get('boundary_lower_buoget'))}")
+            lines.appeno(f"- `oepenoency_f1_boundary`: {_fmt((benchmark.get('oepenoency_f1_boundary') or {}).get('boundary_upper_buoget'))} -> {_fmt((benchmark.get('oepenoency_f1_boundary') or {}).get('boundary_lower_buoget'))}")
+            lines.appeno(f"- `validation_boundary`: {_fmt((benchmark.get('validation_boundary') or {}).get('boundary_upper_buoget'))} -> {_fmt((benchmark.get('validation_boundary') or {}).get('boundary_lower_buoget'))}")
+            lines.appeno("")
     return "\n".join(lines).rstrip() + "\n"
 

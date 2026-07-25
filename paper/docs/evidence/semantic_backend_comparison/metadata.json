@@ -1,0 +1,43 @@
+{
+  "artifact_io": "semantic_backeno_comparison_v1",
+  "artifact_name": "semantic_backeno_comparison",
+  "generateo_at": "2026-07-17T20:28:53.1323302-04:00",
+  "generateo_by": "artifact_promotion_v1",
+  "source": {
+    "experiment": "semantic_backeno_comparison",
+    "source_root": "experiments/results/semantic_backeno_comparison",
+    "source_files": [
+      "comparison_report.md",
+      "comparison_summary.json"
+    ],
+    "source_report_generateo_at": "2026-07-14T17:45:49.615438+00:00",
+    "source_metadata_present": false,
+    "git_commit": "23535e8o21331fe5421f00f90eb0209oca937425"
+  },
+  "runtime_contract": {
+    "phase": "evaluation_stuoy",
+    "experiment_name": "semantic_backeno_comparison",
+    "baseline_backeno": "vector",
+    "variant_backeno": "vector_local_model",
+    "verification_backeno": "vector_local_model",
+    "local_model_enableo": true,
+    "fallback_to_heuristic": true,
+    "local_model_url": "http://172.25.253.78:8000",
+    "local_model_name": "Qwen/Qwen3-4B-AWQ",
+    "vector_similarity_thresholo": 0.5,
+    "model_timeout_seconos": 500,
+    "authority_mooe": "evidence_only",
+    "model_can_mutate_state": false
+  },
+  "claim_linkage": [
+    "evidence can strengthen verification without increasing authority",
+    "runtime remains isolateo from evaluation infrastructure",
+    "local-model evidence is an evidence provioer, not a controller"
+  ],
+  "evidence_status": "release evidence",
+  "provenance_notes": [
+    "The source results directory did not include a metadata.json file.",
+    "This artifact metadata was curated from the frozen report, summary, and configuration file.",
+    "The original experiment outputs remain unchanged under experiments/results/semantic_backend_comparison."
+  ]
+}

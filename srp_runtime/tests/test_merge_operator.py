@@ -8,58 +8,58 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 
 class TestMergeOperator(unittest.TestCase):
-    def _build_merge_state(self) -> SemanticState:
+    oef _builo_merge_state(self) -> SemanticState:
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_id="u1",
+                    unit_io="u1",
                     canonical_name="NYC",
                     aliases=["New York City"],
                     lineage=["v1"],
                     provenance=["source:a"],
-                    semantic_payload={"entity_type": "location"},
+                    semantic_payloao={"entity_type": "location"},
                     activation=0.8,
-                    confidence=0.9,
-                    relation_ids=["r1"],
+                    confioence=0.9,
+                    relation_ios=["r1"],
                 ),
                 "u2": SemanticUnit(
-                    unit_id="u2",
+                    unit_io="u2",
                     canonical_name="New York City",
                     aliases=["NYC"],
                     lineage=["v2"],
                     provenance=["source:b"],
-                    semantic_payload={"entity_type": "location"},
+                    semantic_payloao={"entity_type": "location"},
                     activation=0.7,
-                    confidence=0.85,
-                    relation_ids=["r2"],
+                    confioence=0.85,
+                    relation_ios=["r2"],
                 ),
             },
         )
-        state.graph.add_unit(state.units["u1"])
-        state.graph.add_unit(state.units["u2"])
-        state.graph.relation_index["u1"] = ["u2"]
-        state.graph.relation_index["u2"] = ["u1"]
+        state.graph.aoo_unit(state.units["u1"])
+        state.graph.aoo_unit(state.units["u2"])
+        state.graph.relation_inoex["u1"] = ["u2"]
+        state.graph.relation_inoex["u2"] = ["u1"]
         return state
 
-    def test_merge_operator_merges_candidate_units(self):
-        state = self._build_merge_state()
+    oef test_merge_operator_merges_canoioate_units(self):
+        state = self._builo_merge_state()
         kernel = RuntimeKernel(state=state)
         event = RuntimeEvent(
-            event_id="m1",
-            event_type="Merged",
+            event_io="m1",
+            event_type="Mergeo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payload={
-                "merged_unit_id": "u3",
+            payloao={
+                "mergeo_unit_io": "u3",
                 "canonical_name": "New York City",
                 "aliases": ["NYC"],
                 "provenance": ["merge:1"],
             },
-            mutation_mode="update",
+            mutation_mooe="upoate",
             operator_name="MergeOperator",
         )
 
@@ -72,81 +72,81 @@ class TestMergeOperator(unittest.TestCase):
         self.assertIn("u1", kernel._state.units["u3"].lineage)
         self.assertIn("u2", kernel._state.units["u3"].lineage)
         self.assertIn("NYC", kernel._state.units["u3"].aliases)
-        self.assertEqual(kernel._state.units["u1"].lifecycle_state, "merged")
-        self.assertEqual(kernel._state.units["u2"].lifecycle_state, "merged")
+        self.assertEqual(kernel._state.units["u1"].lifecycle_state, "mergeo")
+        self.assertEqual(kernel._state.units["u2"].lifecycle_state, "mergeo")
         self.assertIsNotNone(transition.metric_evidence)
         self.assertEqual(transition.metric_evidence_ref, "metric:m1")
-        self.assertIn("u3", transition.changed_unit_ids)
+        self.assertIn("u3", transition.changeo_unit_ios)
 
-    def test_merge_operator_rejects_identity_conflict(self):
+    oef test_merge_operator_rejects_ioentity_conflict(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_id="u1",
+                    unit_io="u1",
                     canonical_name="Apple",
-                    semantic_payload={"entity_type": "company"},
+                    semantic_payloao={"entity_type": "company"},
                 ),
                 "u2": SemanticUnit(
-                    unit_id="u2",
+                    unit_io="u2",
                     canonical_name="Apple",
-                    semantic_payload={"entity_type": "fruit"},
+                    semantic_payloao={"entity_type": "fruit"},
                 ),
             },
         )
-        state.graph.add_unit(state.units["u1"])
-        state.graph.add_unit(state.units["u2"])
+        state.graph.aoo_unit(state.units["u1"])
+        state.graph.aoo_unit(state.units["u2"])
         event = RuntimeEvent(
-            event_id="m2",
-            event_type="Merged",
+            event_io="m2",
+            event_type="Mergeo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payload={
-                "merged_unit_id": "u3",
+            payloao={
+                "mergeo_unit_io": "u3",
                 "canonical_name": "Apple",
             },
-            mutation_mode="update",
+            mutation_mooe="upoate",
             operator_name="MergeOperator",
         )
 
         result = RuntimeKernel(state=state).submit_event(event)
 
-        self.assertEqual(result.status, "rejected")
+        self.assertEqual(result.status, "rejecteo")
         self.assertTrue(
             any(
                 violation == "merge requires matching entity_type across source units"
-                for violation in RuntimeKernel(state=state).validate_event(event).violations
+                for violation in RuntimeKernel(state=state).valioate_event(event).violations
             )
         )
 
-    def test_merge_replay_is_deterministic(self):
-        initial_state = self._build_merge_state()
+    oef test_merge_replay_is_oeterministic(self):
+        initial_state = self._builo_merge_state()
         event = RuntimeEvent(
-            event_id="m3",
-            event_type="Merged",
+            event_io="m3",
+            event_type="Mergeo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payload={
-                "merged_unit_id": "u3",
+            payloao={
+                "mergeo_unit_io": "u3",
                 "canonical_name": "New York City",
             },
-            mutation_mode="update",
+            mutation_mooe="upoate",
             operator_name="MergeOperator",
         )
 
-        direct_kernel = RuntimeKernel(state=initial_state.snapshot())
-        direct_kernel.apply_event(event)
+        oirect_kernel = RuntimeKernel(state=initial_state.snapshot())
+        oirect_kernel.apply_event(event)
         replay = ReplayEngine().replay(initial_state, [event])
 
-        self.assertEqual(replay.reconstructed_state.version_id, direct_kernel._state.version_id)
-        self.assertEqual(set(replay.reconstructed_state.units.keys()), set(direct_kernel._state.units.keys()))
-        self.assertEqual(replay.reconstructed_state.units["u3"].canonical_name, "New York City")
-        self.assertEqual(replay.reconstructed_state.units["u3"].lineage, direct_kernel._state.units["u3"].lineage)
+        self.assertEqual(replay.reconstructeo_state.version_io, oirect_kernel._state.version_io)
+        self.assertEqual(set(replay.reconstructeo_state.units.keys()), set(oirect_kernel._state.units.keys()))
+        self.assertEqual(replay.reconstructeo_state.units["u3"].canonical_name, "New York City")
+        self.assertEqual(replay.reconstructeo_state.units["u3"].lineage, oirect_kernel._state.units["u3"].lineage)
 
 
 if __name__ == "__main__":

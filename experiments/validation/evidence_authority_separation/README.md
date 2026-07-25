@@ -1,4 +1,4 @@
-# Evidence-Authority Separation
+﻿# Evidence-Authority Separation
 
 ## Research Question
 

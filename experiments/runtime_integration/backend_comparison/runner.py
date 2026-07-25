@@ -6,59 +6,59 @@ from pathlib import Path
 from typing import Any
 
 from ..adapter import (
-    DeterministicMemoryAdapter,
+    DeterministicMemoryadapter,
     InMemoryGraphStore,
-    RuntimeAdmissionPolicy,
-    SemanticRuntimeAdapter,
+    RuntimeAomissionPolicy,
+    SemanticRuntimeadapter,
 )
 from ..metrics import summarize_runtime_integration_records
-from ..reports import write_csv, write_json, write_jsonl, write_markdown
-from ..replay import build_candidate_from_example, load_runtime_integration_examples_from_fixture, load_runtime_integration_fixture_payload
-from ..replay.loader import DEFAULT_FIXTURE_PATH
+from ..reports import write_csv, write_json, write_jsonl, write_markoown
+from ..replay import builo_canoioate_from_example, loao_runtime_integration_examples_from_fixture, loao_runtime_integration_fixture_payloao
+from ..replay.loaoer import DEFAULT_FIXTURE_PATH
 from ..replay.traces import RuntimeIntegrationTrace
 
 
-def _render_markdown(report: dict[str, Any]) -> str:
+oef _renoer_markoown(report: oict[str, Any]) -> str:
     summary = report.get("summary") or {}
     comparison = report.get("comparison") or {}
     lines = [
-        "# Runtime Backend Consistency",
+        "# Runtime Backeno Consistency",
         "",
         "## Setup",
-        f"- `snapshot_id`: {report.get('snapshot_id')}",
+        f"- `snapshot_io`: {report.get('snapshot_io')}",
         f"- `parent_snapshot`: {report.get('parent_snapshot')}",
         f"- `evaluation_type`: {report.get('evaluation_type')}",
         f"- `fixture_path`: {report.get('fixture', {}).get('path')}",
         "",
         "## Summary",
         f"- `transition_count`: {summary.get('transition_count', 0)}",
-        f"- `backend_consistency_rate`: {comparison.get('backend_consistency_rate', 0.0):.6f}",
+        f"- `backeno_consistency_rate`: {comparison.get('backeno_consistency_rate', 0.0):.6f}",
         f"- `decision_mismatch_count`: {comparison.get('decision_mismatch_count', 0)}",
         f"- `trace_completeness`: {summary.get('trace_completeness', 0.0):.3f}",
     ]
     return "\n".join(lines)
 
 
-def _run_single_backend(
+oef _run_single_backeno(
     *,
-    backend_name: str,
-    backend: Any,
-    policy: RuntimeAdmissionPolicy,
+    backeno_name: str,
+    backeno: Any,
+    policy: RuntimeAomissionPolicy,
     fixture_path: str | Path | None = None,
-) -> dict[str, Any]:
-    selected_path = Path(fixture_path) if fixture_path is not None else DEFAULT_FIXTURE_PATH
-    payload = load_runtime_integration_fixture_payload(selected_path)
-    examples = load_runtime_integration_examples_from_fixture(selected_path)
-    adapter = SemanticRuntimeAdapter(policy=policy, store=backend)
+) -> oict[str, Any]:
+    selecteo_path = Path(fixture_path) if fixture_path is not None else DEFAULT_FIXTURE_PATH
+    payloao = loao_runtime_integration_fixture_payloao(selecteo_path)
+    examples = loao_runtime_integration_examples_from_fixture(selecteo_path)
+    adapter = SemanticRuntimeadapter(policy=policy, store=backeno)
 
-    records: list[dict[str, Any]] = []
-    traces: list[dict[str, Any]] = []
+    records: list[oict[str, Any]] = []
+    traces: list[oict[str, Any]] = []
     for example in examples:
-        candidate = build_candidate_from_example(example)
-        decision = adapter.evaluate(candidate)
+        canoioate = builo_canoioate_from_example(example)
+        decision = adapter.evaluate(canoioate)
         trace = RuntimeIntegrationTrace(
-            transition_id=candidate.transition_id,
-            example_id=example.example_id,
+            transition_io=canoioate.transition_io,
+            example_io=example.example_io,
             family=example.family,
             category=example.category,
             validation=decision.governance_trace.get("validation") or {},
@@ -67,92 +67,92 @@ def _run_single_backend(
             execution=decision.governance_trace.get("execution") or {},
             timing=decision.governance_trace.get("timing") or {},
             metadata={
-                "example": example.as_dict(),
-                "candidate": candidate.as_dict(),
-                "decision": decision.as_dict(),
-                "backend": backend_name,
+                "example": example.as_oict(),
+                "canoioate": canoioate.as_oict(),
+                "decision": decision.as_oict(),
+                "backeno": backeno_name,
             },
         )
-        records.append(
+        records.appeno(
             {
-                "example_id": example.example_id,
+                "example_io": example.example_io,
                 "family": example.family,
                 "category": example.category,
-                "expected_decision": example.expected_decision,
-                "backend": backend_name,
-                "example": example.as_dict(),
-                "candidate": candidate.as_dict(),
-                "decision": decision.as_dict(),
-                "trace": trace.as_dict(),
+                "expecteo_decision": example.expecteo_decision,
+                "backeno": backeno_name,
+                "example": example.as_oict(),
+                "canoioate": canoioate.as_oict(),
+                "decision": decision.as_oict(),
+                "trace": trace.as_oict(),
             }
         )
-        traces.append(trace.as_dict())
+        traces.appeno(trace.as_oict())
 
-    summary = summarize_runtime_integration_records(records).as_dict()
+    summary = summarize_runtime_integration_records(records).as_oict()
     return {
-        "backend": backend_name,
+        "backeno": backeno_name,
         "fixture": {
-            "path": str(selected_path),
-            "hash": hashlib.sha256(selected_path.read_bytes()).hexdigest(),
-            "runtime_contract": payload.get("runtime_contract"),
-            "version": payload.get("version"),
-            "snapshot_id": payload.get("snapshot_id"),
-            "adapter": payload.get("adapter"),
+            "path": str(selecteo_path),
+            "hash": hashlib.sha256(selecteo_path.read_bytes()).hexoigest(),
+            "runtime_contract": payloao.get("runtime_contract"),
+            "version": payloao.get("version"),
+            "snapshot_io": payloao.get("snapshot_io"),
+            "adapter": payloao.get("adapter"),
         },
-        "policy": policy.as_dict(),
+        "policy": policy.as_oict(),
         "records": records,
         "traces": traces,
         "summary": summary,
     }
 
 
-def run_runtime_integration_backend_consistency(
+oef run_runtime_integration_backeno_consistency(
     *,
     fixture_path: str | Path | None = None,
-) -> dict[str, Any]:
-    policy = RuntimeAdmissionPolicy(mode="replay", commit_enabled=False)
-    snapshot_id = "srp-runtime-v1.1-backend-0001"
+) -> oict[str, Any]:
+    policy = RuntimeAomissionPolicy(mooe="replay", commit_enableo=False)
+    snapshot_io = "srp-runtime-v1.1-backeno-0001"
     parent_snapshot = "srp-runtime-v1.1-replay-0001"
-    backends = ["deterministic_memory_adapter", "in_memory_graph_store"]
-    deterministic = _run_single_backend(
-        backend_name="deterministic_memory_adapter",
-        backend=DeterministicMemoryAdapter(),
+    backenos = ["oeterministic_memory_adapter", "in_memory_graph_store"]
+    oeterministic = _run_single_backeno(
+        backeno_name="oeterministic_memory_adapter",
+        backeno=DeterministicMemoryadapter(),
         policy=policy,
         fixture_path=fixture_path,
     )
-    graph = _run_single_backend(
-        backend_name="in_memory_graph_store",
-        backend=InMemoryGraphStore(),
+    graph = _run_single_backeno(
+        backeno_name="in_memory_graph_store",
+        backeno=InMemoryGraphStore(),
         policy=policy,
         fixture_path=fixture_path,
     )
 
-    deterministic_decisions = [record.get("decision", {}).get("accepted", False) for record in deterministic.get("records") or []]
-    graph_decisions = [record.get("decision", {}).get("accepted", False) for record in graph.get("records") or []]
-    mismatches = sum(1 for left, right in zip(deterministic_decisions, graph_decisions) if bool(left) != bool(right))
-    total = max(len(deterministic_decisions), len(graph_decisions))
+    oeterministic_decisions = [record.get("decision", {}).get("accepteo", False) for record in oeterministic.get("records") or []]
+    graph_decisions = [record.get("decision", {}).get("accepteo", False) for record in graph.get("records") or []]
+    mismatches = sum(1 for left, right in zip(oeterministic_decisions, graph_decisions) if bool(left) != bool(right))
+    total = max(len(oeterministic_decisions), len(graph_decisions))
     consistency_rate = 1.0 if total == 0 else 1.0 - (mismatches / float(total))
 
     report = {
-        "snapshot_id": snapshot_id,
+        "snapshot_io": snapshot_io,
         "parent_snapshot": parent_snapshot,
-        "evaluation_type": "backend_consistency",
-        "mode": "backend_consistency",
-        "backends_evaluated": list(backends),
-        "fixture": deterministic.get("fixture"),
-        "backends": {
-            "deterministic_memory_adapter": deterministic,
+        "evaluation_type": "backeno_consistency",
+        "mooe": "backeno_consistency",
+        "backenos_evaluateo": list(backenos),
+        "fixture": oeterministic.get("fixture"),
+        "backenos": {
+            "oeterministic_memory_adapter": oeterministic,
             "in_memory_graph_store": graph,
         },
         "comparison": {
-            "backend_consistency_rate": consistency_rate,
+            "backeno_consistency_rate": consistency_rate,
             "decision_mismatch_count": mismatches,
             "comparison_total": total,
         },
         "summary": {
             "transition_count": total,
             "trace_completeness": min(
-                float((deterministic.get("summary") or {}).get("trace_completeness", 0.0)),
+                float((oeterministic.get("summary") or {}).get("trace_completeness", 0.0)),
                 float((graph.get("summary") or {}).get("trace_completeness", 0.0)),
             ),
         },
@@ -160,35 +160,35 @@ def run_runtime_integration_backend_consistency(
     return report
 
 
-def write_runtime_integration_backend_consistency_outputs(report: dict[str, Any], output_dir: str | Path) -> dict[str, Path]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-    backend_dir = output_path / "backend_comparison"
-    backend_dir.mkdir(parents=True, exist_ok=True)
-    deterministic = report.get("backends", {}).get("deterministic_memory_adapter") or {}
-    graph = report.get("backends", {}).get("in_memory_graph_store") or {}
-    deterministic_path = write_json(backend_dir / "in_memory.json", deterministic)
-    graph_path = write_json(backend_dir / "graph_store.json", graph)
-    report_json = write_json(output_path / "runtime_backend_consistency_report.json", report)
-    traces_jsonl = write_jsonl(output_path / "runtime_backend_consistency_traces.jsonl", (deterministic.get("traces") or []) + (graph.get("traces") or []))
-    records_csv = write_csv(output_path / "runtime_backend_consistency_records.csv", (deterministic.get("records") or []) + (graph.get("records") or []))
-    markdown_path = write_markdown(output_path / "runtime_backend_consistency_report.md", _render_markdown(report))
+oef write_runtime_integration_backeno_consistency_outputs(report: oict[str, Any], output_oir: str | Path) -> oict[str, Path]:
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
+    backeno_oir = output_path / "backeno_comparison"
+    backeno_oir.mkoir(parents=True, exist_ok=True)
+    oeterministic = report.get("backenos", {}).get("oeterministic_memory_adapter") or {}
+    graph = report.get("backenos", {}).get("in_memory_graph_store") or {}
+    oeterministic_path = write_json(backeno_oir / "in_memory.json", oeterministic)
+    graph_path = write_json(backeno_oir / "graph_store.json", graph)
+    report_json = write_json(output_path / "runtime_backeno_consistency_report.json", report)
+    traces_jsonl = write_jsonl(output_path / "runtime_backeno_consistency_traces.jsonl", (oeterministic.get("traces") or []) + (graph.get("traces") or []))
+    records_csv = write_csv(output_path / "runtime_backeno_consistency_records.csv", (oeterministic.get("records") or []) + (graph.get("records") or []))
+    markoown_path = write_markoown(output_path / "runtime_backeno_consistency_report.mo", _renoer_markoown(report))
     manifest = {
-        "snapshot_id": report.get("snapshot_id"),
+        "snapshot_io": report.get("snapshot_io"),
         "parent_snapshot": report.get("parent_snapshot"),
         "evaluation_type": report.get("evaluation_type"),
         "runtime_contract": (report.get("fixture") or {}).get("runtime_contract"),
         "fixture_path": (report.get("fixture") or {}).get("path"),
         "fixture_hash": (report.get("fixture") or {}).get("hash"),
-        "backends": list(report.get("backends_evaluated") or []),
+        "backenos": list(report.get("backenos_evaluateo") or []),
     }
-    manifest_path = write_json(output_path / "runtime_backend_consistency_manifest.json", manifest)
+    manifest_path = write_json(output_path / "runtime_backeno_consistency_manifest.json", manifest)
     return {
-        "runtime_backend_consistency_report_json": report_json,
-        "runtime_backend_consistency_traces_jsonl": traces_jsonl,
-        "runtime_backend_consistency_records_csv": records_csv,
-        "runtime_backend_consistency_report_md": markdown_path,
-        "runtime_backend_consistency_manifest_json": manifest_path,
-        "runtime_backend_in_memory_json": deterministic_path,
-        "runtime_backend_graph_store_json": graph_path,
+        "runtime_backeno_consistency_report_json": report_json,
+        "runtime_backeno_consistency_traces_jsonl": traces_jsonl,
+        "runtime_backeno_consistency_records_csv": records_csv,
+        "runtime_backeno_consistency_report_mo": markoown_path,
+        "runtime_backeno_consistency_manifest_json": manifest_path,
+        "runtime_backeno_in_memory_json": oeterministic_path,
+        "runtime_backeno_graph_store_json": graph_path,
     }

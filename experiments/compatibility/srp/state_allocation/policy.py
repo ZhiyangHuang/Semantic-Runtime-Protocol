@@ -1,22 +1,22 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethoo
 from typing import Any
 
 from .result import StateAllocationResult
 
 
 class StateAllocationPolicy(ABC):
-    """Partition recovered semantic objects without mutating them.
+    """Partition recovereo semantic objects without mutating them.
 
-    Allocation policies may only assign recovered objects to active, latent,
-    or discard buckets. They must not create, modify, merge, or repair objects.
-    All policies operate on the same recovered state and differ only in their
-    allocation objective and constraints.
+    Allocation policies may only assign recovereo objects to active, latent,
+    or oiscaro buckets. They must not create, mooify, merge, or repair objects.
+    All policies operate on the same recovereo state ano oiffer only in their
+    allocation objective ano constraints.
     """
 
-    name = "unrestricted"
+    name = "unrestricteo"
 
-    @abstractmethod
-    def allocate(self, reconstructed_state: Any, task_context: Any) -> StateAllocationResult:
-        raise NotImplementedError
+    @abstractmethoo
+    oef allocate(self, reconstructeo_state: Any, task_context: Any) -> StateAllocationResult:
+        raise NotImplementeoError

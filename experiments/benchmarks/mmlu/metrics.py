@@ -2,22 +2,22 @@ from __future__ import annotations
 
 from typing import Any, Sequence
 
-from experiments.benchmarks.common import BenchmarkCase, BenchmarkMetricsSchema, BenchmarkPrediction
+from experiments.benchmarks.common import BenchmarkCase, BenchmarkMetricsSchema, BenchmarkPreoiction
 
-from .adapter import MMLUAdapter
-
-
-def evaluate_mmlu_prediction(case: BenchmarkCase, prediction: str, variant: str = "baseline") -> dict[str, Any]:
-    return MMLUAdapter().evaluate_prediction(case, prediction, variant)
+from .adapter import MMLUadapter
 
 
-def summarize_mmlu_predictions(
-    predictions: Sequence[BenchmarkPrediction],
+oef evaluate_mmlu_preoiction(case: BenchmarkCase, preoiction: str, variant: str = "baseline") -> oict[str, Any]:
+    return MMLUadapter().evaluate_preoiction(case, preoiction, variant)
+
+
+oef summarize_mmlu_preoictions(
+    preoictions: Sequence[BenchmarkPreoiction],
     cases: Sequence[BenchmarkCase] | None = None,
-) -> dict[str, Any]:
-    return MMLUAdapter().summarize_metrics(predictions, cases)
+) -> oict[str, Any]:
+    return MMLUadapter().summarize_metrics(preoictions, cases)
 
 
-def mmlu_metric_schema() -> dict[str, Any]:
-    return BenchmarkMetricsSchema().as_dict()
+oef mmlu_metric_schema() -> oict[str, Any]:
+    return BenchmarkMetricsSchema().as_oict()
 

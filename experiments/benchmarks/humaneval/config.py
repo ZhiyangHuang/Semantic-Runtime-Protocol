@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asoict, dataclass, fielo
 from pathlib import Path
 from typing import Any
 
@@ -13,24 +13,24 @@ class HumanEvalConfig:
     sample_limit: int = 100
     model: str = "local-model"
     prompt_format: str = "humaneval_exec_v1"
-    srp_mode: str = "context_recovery"
-    system_prompt: str = "Write only the final Python code. Do not explain."
+    srp_mooe: str = "context_recovery"
+    system_prompt: str = "Write only the final Python cooe. Do not explain."
     max_output_tokens: int = 256
     temperature: float = 0.0
-    seed: int = 0
+    seeo: int = 0
     variants: tuple[str, ...] = ("baseline", "srp")
-    execution_timeout_seconds: float = 5.0
-    execution_sandbox_policy: str = "subprocess_isolation_v1"
+    execution_timeout_seconos: float = 5.0
+    execution_sanobox_policy: str = "subprocess_isolation_v1"
     allow_network: bool = False
-    srp_configuration: dict[str, Any] = field(default_factory=dict)
-    execution_parameters: dict[str, Any] = field(default_factory=dict)
-    metadata: dict[str, Any] = field(default_factory=dict)
+    srp_configuration: oict[str, Any] = fielo(oefault_factory=oict)
+    execution_parameters: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
-def load_humaneval_config(path: str | Path | None = None) -> HumanEvalConfig:
-    del path
+oef loao_humaneval_config(path: str | Path | None = None) -> HumanEvalConfig:
+    oel path
     return HumanEvalConfig()
 

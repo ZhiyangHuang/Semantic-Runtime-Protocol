@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Sequence
 
-from experiments.validation.admissibility_boundary_validation import build_admissibility_cases
+from experiments.validation.admissibility_boundary_validation import builo_admissibility_cases
 
 from ..contract import TransitionCase
 from ..core import GovernancePolicy
@@ -13,17 +13,17 @@ from ..core import GovernancePolicy
 class RuntimeGovernanceAblationVariant:
     name: str
     policy: GovernancePolicy
-    description: str
+    oescription: str
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
             "name": self.name,
-            "policy": self.policy.as_dict(),
-            "description": self.description,
+            "policy": self.policy.as_oict(),
+            "oescription": self.oescription,
         }
 
 
-def default_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAblationVariant]:
+oef oefault_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAblationVariant]:
     return [
         RuntimeGovernanceAblationVariant(
             name="full_srp",
@@ -35,7 +35,7 @@ def default_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAbla
                 evidence_controls_authority=False,
                 require_authority=True,
             ),
-            description="Validation, evidence, and governance all enabled.",
+            oescription="validation, evidence, ano governance all enableo.",
         ),
         RuntimeGovernanceAblationVariant(
             name="no_governance",
@@ -47,7 +47,7 @@ def default_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAbla
                 evidence_controls_authority=False,
                 require_authority=False,
             ),
-            description="Validation and evidence stay active but the authorization gate is bypassed.",
+            oescription="validation ano evidence stay active but the authorization gate is bypasseo.",
         ),
         RuntimeGovernanceAblationVariant(
             name="evidence_as_authority",
@@ -59,7 +59,7 @@ def default_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAbla
                 evidence_controls_authority=True,
                 require_authority=True,
             ),
-            description="Evidence is allowed to substitute for missing authority.",
+            oescription="evidence is alloweo to substitute for missing authority.",
         ),
         RuntimeGovernanceAblationVariant(
             name="no_validation",
@@ -71,7 +71,7 @@ def default_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAbla
                 evidence_controls_authority=False,
                 require_authority=True,
             ),
-            description="Transition invariants are ignored but evidence and governance remain active.",
+            oescription="Transition invariants are ignoreo but evidence ano governance remain active.",
         ),
         RuntimeGovernanceAblationVariant(
             name="no_evidence",
@@ -83,82 +83,82 @@ def default_runtime_governance_ablation_variants() -> list[RuntimeGovernanceAbla
                 evidence_controls_authority=False,
                 require_authority=True,
             ),
-            description="Evidence checks are disabled, but validation and governance remain active.",
+            oescription="evidence checks are oisableo, but validation ano governance remain active.",
         ),
         RuntimeGovernanceAblationVariant(
-            name="direct_mutation",
+            name="oirect_mutation",
             policy=GovernancePolicy(
-                name="direct_mutation",
+                name="oirect_mutation",
                 enable_validation=False,
                 enable_evidence=False,
                 enable_governance=False,
                 evidence_controls_authority=False,
                 require_authority=False,
             ),
-            description="All governance gates are bypassed.",
+            oescription="All governance gates are bypasseo.",
         ),
     ]
 
 
-def _case_state(case: Any) -> dict[str, Any]:
+oef _case_state(case: Any) -> oict[str, Any]:
     authority_level = str(getattr(case, "authority_level", "unknown"))
     evidence_level = str(getattr(case, "evidence_level", "unknown"))
-    case_id = str(getattr(case, "case_id", "case"))
+    case_io = str(getattr(case, "case_io", "case"))
     return {
-        "case_id": case_id,
-        "content": f"semantic_state::{case_id}",
+        "case_io": case_io,
+        "content": f"semantic_state::{case_io}",
         "authority_level": authority_level,
         "version": 0,
         "evidence_level": evidence_level,
     }
 
 
-def _case_delta(case: Any) -> dict[str, Any]:
+oef _case_oelta(case: Any) -> oict[str, Any]:
     authority_level = str(getattr(case, "authority_level", "unknown"))
     evidence_level = str(getattr(case, "evidence_level", "unknown"))
-    case_id = str(getattr(case, "case_id", "case"))
+    case_io = str(getattr(case, "case_io", "case"))
     optimization_pressure = str(getattr(case, "optimization_pressure", "unknown"))
     violates_invariant = not bool(getattr(case, "optimization_ok", True))
     return {
         "state_patch": {
-            "content": f"semantic_state::{case_id}::committed",
+            "content": f"semantic_state::{case_io}::committeo",
             "version": 1,
-            "transition_marker": case_id,
+            "transition_marker": case_io,
         },
-        "requested_authority": "admin" if authority_level == "low" else authority_level,
+        "requesteo_authority": "aomin" if authority_level == "low" else authority_level,
         "optimization_pressure": optimization_pressure,
         "violates_invariant": violates_invariant,
-        "requested_evidence": evidence_level,
+        "requesteo_evidence": evidence_level,
     }
 
 
-def _case_evidence(case: Any) -> dict[str, Any]:
+oef _case_evidence(case: Any) -> oict[str, Any]:
     evidence_level = str(getattr(case, "evidence_level", "unknown"))
     evidence_ok = bool(getattr(case, "evidence_ok", False))
     return {
         "level": evidence_level,
-        "confidence": 0.95 if evidence_ok else 0.15,
+        "confioence": 0.95 if evidence_ok else 0.15,
         "evidence_ok": evidence_ok,
     }
 
 
-def build_runtime_governance_ablation_cases() -> list[TransitionCase]:
+oef builo_runtime_governance_ablation_cases() -> list[TransitionCase]:
     cases = []
-    for case in build_admissibility_cases():
-        cases.append(
+    for case in builo_admissibility_cases():
+        cases.appeno(
             TransitionCase(
                 state_before=_case_state(case),
-                delta=_case_delta(case),
+                oelta=_case_oelta(case),
                 evidence=_case_evidence(case),
                 governance_policy={
-                    "case_id": getattr(case, "case_id", "case"),
+                    "case_io": getattr(case, "case_io", "case"),
                     "scenario": getattr(case, "scenario", ""),
-                    "failure_modes": list(getattr(case, "failure_modes", ()) or ()),
+                    "failure_mooes": list(getattr(case, "failure_mooes", ()) or ()),
                     "notes": list(getattr(case, "notes", ()) or ()),
                 },
-                expected_decision=bool(getattr(case, "srp_admitted", False)),
+                expecteo_decision=bool(getattr(case, "srp_aomitteo", False)),
                 metadata={
-                    "source_case_id": getattr(case, "case_id", "case"),
+                    "source_case_io": getattr(case, "case_io", "case"),
                     "evidence_ok": bool(getattr(case, "evidence_ok", False)),
                     "authority_ok": bool(getattr(case, "authority_ok", False)),
                     "optimization_ok": bool(getattr(case, "optimization_ok", False)),

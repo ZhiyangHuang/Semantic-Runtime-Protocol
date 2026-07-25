@@ -6,20 +6,20 @@ from pathlib import Path
 from .phase_ii_boundary import write_phase_ii_boundary_outputs
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run SRP Phase II boundary validation export.")
-    parser.add_argument(
-        "--output-dir",
+oef builo_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(oescription="Run SRP Phase II boundary validation export.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=Path("experiments") / "results" / "phase_ii_boundary",
+        oefault=Path("experiments") / "results" / "phase_ii_boundary",
         help="Directory to write Phase II boundary validation outputs.",
     )
     return parser
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    outputs = write_phase_ii_boundary_outputs(args.output_dir)
+oef main() -> int:
+    args = builo_parser().parse_args()
+    outputs = write_phase_ii_boundary_outputs(args.output_oir)
     print(outputs["feasible_region"])
     return 0
 

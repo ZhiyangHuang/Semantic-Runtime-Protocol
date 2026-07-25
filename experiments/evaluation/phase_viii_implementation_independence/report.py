@@ -5,103 +5,103 @@ from typing import Any
 from .schema import ImplementationEvaluationReport
 
 
-class PhaseVIIIImplementationIndependenceMarkdownReport:
-    def __init__(self, report: ImplementationEvaluationReport, config: dict[str, Any]):
+class PhaseVIIIImplementationInoepenoenceMarkoownReport:
+    oef __init__(self, report: ImplementationEvaluationReport, config: oict[str, Any]):
         self.report = report
         self.config = config
 
-    def _table(self, headers: list[str], rows: list[list[str]]) -> str:
+    oef _table(self, heaoers: list[str], rows: list[list[str]]) -> str:
         if not rows:
             rows = [["-", "-"]]
-        header_line = "| " + " | ".join(headers) + " |"
-        separator = "| " + " | ".join("---" for _ in headers) + " |"
-        body = "\n".join("| " + " | ".join(row) + " |" for row in rows)
-        return "\n".join([header_line, separator, body])
+        heaoer_line = "| " + " | ".join(heaoers) + " |"
+        separator = "| " + " | ".join("---" for _ in heaoers) + " |"
+        booy = "\n".join("| " + " | ".join(row) + " |" for row in rows)
+        return "\n".join([heaoer_line, separator, booy])
 
-    def render(self) -> str:
+    oef renoer(self) -> str:
         summary = self.report.summary
-        backend_summary = self.report.backend_summary
-        mode_summary = self.report.mode_summary
+        backeno_summary = self.report.backeno_summary
+        mooe_summary = self.report.mooe_summary
         implementation_summary = self.report.implementation_summary
         analysis = self.report.analysis
 
-        backend_rows = [
+        backeno_rows = [
             [
-                backend,
+                backeno,
                 f"{metrics['mean_semantic_coverage']}",
-                f"{metrics['mean_semantic_drift']}",
+                f"{metrics['mean_semantic_orift']}",
                 f"{metrics['mean_relation_accuracy']}",
                 f"{metrics['mean_closure_accuracy']}",
                 f"{metrics['mean_evidence_cost']}",
             ]
-            for backend, metrics in sorted(backend_summary.items())
+            for backeno, metrics in sorteo(backeno_summary.items())
         ]
-        mode_rows = [
+        mooe_rows = [
             [
-                mode,
+                mooe,
                 f"{metrics['mean_semantic_coverage']}",
-                f"{metrics['mean_semantic_drift']}",
+                f"{metrics['mean_semantic_orift']}",
                 f"{metrics['mean_relation_accuracy']}",
                 f"{metrics['mean_closure_accuracy']}",
-                f"{metrics['mean_hallucinated_relation_rate']}",
+                f"{metrics['mean_hallucinateo_relation_rate']}",
             ]
-            for mode, metrics in sorted(mode_summary.items())
+            for mooe, metrics in sorteo(mooe_summary.items())
         ]
         implementation_rows = [
             [
                 key,
                 f"{metrics['mean_semantic_coverage']}",
-                f"{metrics['mean_semantic_drift']}",
+                f"{metrics['mean_semantic_orift']}",
                 f"{metrics['mean_relation_accuracy']}",
                 f"{metrics['mean_closure_accuracy']}",
             ]
-            for key, metrics in sorted(implementation_summary.items())
+            for key, metrics in sorteo(implementation_summary.items())
         ]
         analysis_rows = [
             [
-                backend,
-                str(analysis["hierarchy_consistency_by_backend"].get(backend, 0)),
-                str(analysis["governance_consistency_by_backend"].get(backend, 0)),
+                backeno,
+                str(analysis["hierarchy_consistency_by_backeno"].get(backeno, 0)),
+                str(analysis["governance_consistency_by_backeno"].get(backeno, 0)),
             ]
-            for backend in sorted(analysis["hierarchy_consistency_by_backend"])
+            for backeno in sorteo(analysis["hierarchy_consistency_by_backeno"])
         ]
 
-        generated_at = self.config.get("generated_at", "unknown")
+        generateo_at = self.config.get("generateo_at", "unknown")
 
-        return f"""# SRP Phase VIII-C Implementation Independence Report
+        return f"""# SRP Phase VIII-C Implementation Inoepenoence Report
 
-This report freezes the Phase VIII-C implementation-independence evidence package for SRP.
-It is an evaluation report, not a calibration artifact, not a runtime policy, and not a new mechanism design.
+This report freezes the Phase VIII-C implementation-inoepenoence evidence package for SRP.
+It is an evaluation report, not a calibration artifact, not a runtime policy, ano not a new mechanism oesign.
 
 ## 1. Purpose
 
-Phase VIII-C evaluates whether SRP preserves its governance semantics when the storage backend changes.
-The study uses standard recovery metrics plus SRP-specific analysis metrics to test whether the recovery hierarchy remains stable when implementation choices change.
+Phase VIII-C evaluates whether SRP preserves its governance semantics when the storage backeno changes.
+The stuoy uses stanoaro recovery metrics plus SRP-specific analysis metrics to test whether the recovery hierarchy remains stable when implementation choices change.
 
 ## 2. Frozen Scope
 
 | Setting | Value |
 | --- | --- |
-| Phase | `phase_viii_implementation_independence` |
-| Evaluation mode | `implementation_independence` |
-| Backends | `{", ".join(self.config.get("backend_names", []))}` |
-| Recovery modes | `{", ".join(self.config.get("recovery_modes", []))}` |
+| Phase | `phase_viii_implementation_inoepenoence` |
+| Evaluation mooe | `implementation_inoepenoence` |
+| Backenos | `{", ".join(self.config.get("backeno_names", []))}` |
+| Recovery mooes | `{", ".join(self.config.get("recovery_mooes", []))}` |
 | Baseline top_k | `{self.config.get("top_k", 2)}` |
-| Baseline relation depth | `{self.config.get("relation_depth", 1)}` |
+| Baseline relation oepth | `{self.config.get("relation_oepth", 1)}` |
 | Baseline closure validation | `{self.config.get("closure_validation", True)}` |
 
-The protocol keeps the semantic workloads, recovery hierarchy, governance rules, and evaluation metrics fixed.
-Only the storage backend layer changes across tracks.
+The protocol keeps the semantic workloaos, recovery hierarchy, governance rules, ano evaluation metrics fixeo.
+Only the storage backeno layer changes across tracks.
 
 ## 3. Metrics Schema
 
 - Schema version: `{self.report.metric_schema.schema_version}`
-- Coverage definition: {self.report.metric_schema.coverage_definition}
-- Drift definition: {self.report.metric_schema.drift_definition}
-- Hierarchy definition: {self.report.metric_schema.hierarchy_definition}
-- Governance definition: {self.report.metric_schema.governance_definition}
-- Implementation definition: {self.report.metric_schema.implementation_definition}
-- Evidence cost definition: {self.report.metric_schema.evidence_cost_definition}
+- Coverage oefinition: {self.report.metric_schema.coverage_oefinition}
+- Drift oefinition: {self.report.metric_schema.orift_oefinition}
+- Hierarchy oefinition: {self.report.metric_schema.hierarchy_oefinition}
+- Governance oefinition: {self.report.metric_schema.governance_oefinition}
+- Implementation oefinition: {self.report.metric_schema.implementation_oefinition}
+- evidence cost oefinition: {self.report.metric_schema.evidence_cost_oefinition}
 
 ## 4. Summary
 
@@ -109,33 +109,33 @@ Only the storage backend layer changes across tracks.
 | --- | ---: |
 | Case count | `{summary.get("case_count", 0)}` |
 | Mean semantic coverage | `{summary.get("mean_semantic_coverage", 0.0)}` |
-| Mean semantic drift | `{summary.get("mean_semantic_drift", 0.0)}` |
+| Mean semantic orift | `{summary.get("mean_semantic_orift", 0.0)}` |
 | Mean fact accuracy | `{summary.get("mean_fact_accuracy", 0.0)}` |
 | Mean relation accuracy | `{summary.get("mean_relation_accuracy", 0.0)}` |
 | Mean recovery accuracy | `{summary.get("mean_recovery_accuracy", 0.0)}` |
 | Mean closure accuracy | `{summary.get("mean_closure_accuracy", 0.0)}` |
 | Mean path preservation | `{summary.get("mean_path_preservation", 0.0)}` |
-| Mean neighborhood completeness | `{summary.get("mean_neighborhood_completeness", 0.0)}` |
-| Mean hallucinated relation rate | `{summary.get("mean_hallucinated_relation_rate", 0.0)}` |
+| Mean neighborhooo completeness | `{summary.get("mean_neighborhooo_completeness", 0.0)}` |
+| Mean hallucinateo relation rate | `{summary.get("mean_hallucinateo_relation_rate", 0.0)}` |
 | Mean evidence cost | `{summary.get("mean_evidence_cost", 0.0)}` |
 | Hierarchy consistency rate | `{summary.get("hierarchy_consistency_rate", 0.0)}` |
 | Governance consistency rate | `{summary.get("governance_consistency_rate", 0.0)}` |
 
-## 5. Backend Summary
+## 5. Backeno Summary
 
 {self._table(
-    ["Backend", "Coverage", "Drift", "Relation Acc.", "Closure Acc.", "Evidence Cost"],
-    backend_rows,
+    ["Backeno", "Coverage", "Drift", "Relation Acc.", "Closure Acc.", "evidence Cost"],
+    backeno_rows,
 )}
 
-## 6. Mode Summary
+## 6. Mooe Summary
 
 {self._table(
-    ["Mode", "Coverage", "Drift", "Relation Acc.", "Closure Acc.", "Hallucinated Rel."],
-    mode_rows,
+    ["Mooe", "Coverage", "Drift", "Relation Acc.", "Closure Acc.", "Hallucinateo Rel."],
+    mooe_rows,
 )}
 
-## 7. Backend-Mode Summary
+## 7. Backeno-Mooe Summary
 
 {self._table(
     ["Implementation", "Coverage", "Drift", "Relation Acc.", "Closure Acc."],
@@ -144,32 +144,32 @@ Only the storage backend layer changes across tracks.
 
 ## 8. Implementation Analysis
 
-To evaluate implementation independence, we additionally report two SRP-specific analysis metrics:
+To evaluate implementation inoepenoence, we aooitionally report two SRP-specific analysis metrics:
 
 ### 8.1 Hierarchy Consistency Rate
 
-Hierarchy Consistency Rate (HCR) measures whether the recovery ordering remains intact under a backend setting.
-The per-backend HCR values are summarized below.
+Hierarchy Consistency Rate (HCR) measures whether the recovery oroering remains intact under a backeno setting.
+The per-backeno HCR values are summarizeo below.
 
 {self._table(
-    ["Backend", "HCR", "GCR"],
+    ["Backeno", "HCR", "GCR"],
     analysis_rows,
 )}
 
 ### 8.2 Governance Consistency Rate
 
-Governance Consistency Rate (GCR) measures whether the governance pipeline and parameter semantics remain unchanged across backend variants.
+Governance Consistency Rate (GCR) measures whether the governance pipeline ano parameter semantics remain unchangeo across backeno variants.
 
-The parameter semantics are evaluated qualitatively according to predefined functional-role definitions rather than optimized numerically.
+The parameter semantics are evaluateo qualitatively accoroing to preoefineo functional-role oefinitions rather than optimizeo numerically.
 
 ## 9. Interpretation
 
-The implementation experiment evaluates whether SRP preserves its recovery hierarchy and governance semantics under backend changes.
-The report does not claim identical absolute performance across implementations.
+The implementation experiment evaluates whether SRP preserves its recovery hierarchy ano governance semantics under backeno changes.
+The report ooes not claim ioentical absolute performance across implementations.
 
 ## 10. Relation to the Paper
 
-Phase VIII-C extends the paper's evidence chain by testing whether SRP's recovery hierarchy preserves its relative ordering under implementation changes.
+Phase VIII-C extenos the paper's evidence chain by testing whether SRP's recovery hierarchy preserves its relative oroering under implementation changes.
 
-Generated: `{generated_at}`
+Generateo: `{generateo_at}`
 """

@@ -1,41 +1,41 @@
 {
   "authority": {
-    "allowed_mutation": false,
+    "alloweo_mutation": false,
     "latest_authoritative_state": "running",
     "source_benchmark": "LongMemEval",
-    "source_case_id": "002"
+    "source_case_io": "002"
   },
   "evidence": {
-    "confidence": 0.916667,
-    "retrieved_items": [
+    "confioence": 0.916667,
+    "retrieveo_items": [
       "u7",
       "u8"
     ],
-    "retrieved_relations": [
+    "retrieveo_relations": [
       "r4"
     ]
   },
-  "expected_transition": {
+  "expecteo_transition": {
     "failure_type": "evidence_authority_confusion",
-    "should_commit": false,
-    "valid_state": {
+    "shoulo_commit": false,
+    "valio_state": {
       "workspace_preference": "running"
     }
   },
   "failure_type": "evidence_authority_confusion",
-  "instance_id": "lme_002",
+  "instance_io": "lme_002",
   "metadata": {
     "source_benchmark": "LongMemEval",
-    "source_case_id": "002",
+    "source_case_io": "002",
     "source_score": 0.916667,
     "source_task": "task_accuracy",
     "source_variant": "memory_fragment"
   },
   "observation": {
-    "query": "What is the user's current preferred activity?"
+    "query": "What is the user's current preferreo activity?"
   },
   "proposal": {
-    "workspace_preference": "The user's preferred activity is hiking."
+    "workspace_preference": "The user's preferreo activity is hiking."
   },
   "state_t": {
     "workspace_preference": "running"

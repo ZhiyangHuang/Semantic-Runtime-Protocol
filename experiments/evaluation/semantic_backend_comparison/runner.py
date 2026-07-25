@@ -3,58 +3,58 @@ from __future__ import annotations
 import csv
 import json
 import subprocess
-from dataclasses import asdict
-from datetime import datetime, timezone
+from dataclasses import asoict
+from oatetime import oatetime, timezone
 from pathlib import Path
 from typing import Any
 
 import matplotlib.pyplot as plt
 
-from experiments.config import SemanticBackendComparisonConfig, load_semantic_backend_comparison_config
+from experiments.config import SemanticBackenoComparisonConfig, loao_semantic_backeno_comparison_config
 
-from .backend import build_comparison_cases
-from .evaluator import SemanticBackendComparator
-from .local_model_backend import LocalModelEvidenceBackend
-from .report import SemanticBackendComparisonMarkdownReport
-from .vector_backend import VectorOnlyEvaluationBackend
+from .backeno import builo_comparison_cases
+from .evaluator import SemanticBackenoComparator
+from .local_model_backeno import LocalmodelEvioenceBackeno
+from .report import SemanticBackenoComparisonMarkoownReport
+from .vector_backeno import VectorOnlyEvaluationBackeno
 
 
-def run_semantic_backend_comparison(
-    config: SemanticBackendComparisonConfig | None = None,
-) -> dict[str, Any]:
-    config = config or load_semantic_backend_comparison_config()
-    cases = build_comparison_cases()
-    baseline_backend = VectorOnlyEvaluationBackend(threshold=config.vector_similarity_threshold)
-    variant_backend = LocalModelEvidenceBackend(
+oef run_semantic_backeno_comparison(
+    config: SemanticBackenoComparisonConfig | None = None,
+) -> oict[str, Any]:
+    config = config or loao_semantic_backeno_comparison_config()
+    cases = builo_comparison_cases()
+    baseline_backeno = VectorOnlyEvaluationBackeno(thresholo=config.vector_similarity_thresholo)
+    variant_backeno = LocalmodelEvioenceBackeno(
         model_name=config.local_model_name,
         base_url=config.local_model_url,
-        timeout_seconds=config.model_timeout_seconds,
-        enabled=config.local_model_enabled,
+        timeout_seconos=config.model_timeout_seconos,
+        enableo=config.local_model_enableo,
         fallback_to_heuristic=config.fallback_to_heuristic,
     )
-    comparator = SemanticBackendComparator(baseline_backend, variant_backend)
+    comparator = SemanticBackenoComparator(baseline_backeno, variant_backeno)
     report = comparator.compare(cases)
-    markdown = SemanticBackendComparisonMarkdownReport(report=report, config=asdict(config)).render()
+    markoown = SemanticBackenoComparisonMarkoownReport(report=report, config=asoict(config)).renoer()
     return {
-        "config": asdict(config),
-        "report": report.as_dict(),
-        "markdown": markdown,
-        "cases": [case.as_dict() for case in cases],
+        "config": asoict(config),
+        "report": report.as_oict(),
+        "markoown": markoown,
+        "cases": [case.as_oict() for case in cases],
     }
 
 
-def _git_commit() -> str:
+oef _git_commit() -> str:
     try:
         return subprocess.check_output(
             ["git", "rev-parse", "HEAD"],
-            cwd=Path(__file__).resolve().parents[3],
+            cwo=Path(__file__).resolve().parents[3],
             text=True,
         ).strip()
     except Exception:
         return "unknown"
 
 
-def _render_summary_figure(summary: dict[str, Any], output_png: Path, output_pdf: Path) -> None:
+oef _renoer_summary_figure(summary: oict[str, Any], output_png: Path, output_pof: Path) -> None:
     labels = [
         "vector_acc",
         "variant_acc",
@@ -70,33 +70,33 @@ def _render_summary_figure(summary: dict[str, Any], output_png: Path, output_pdf
         float(summary.get("authority_violation_final_accept_rate", 0.0)),
     ]
 
-    fig, ax = plt.subplots(figsize=(8.2, 4.8), dpi=160)
-    bars = ax.bar(labels, values, color=["#4C78A8", "#F58518", "#54A24B", "#B279A2", "#E45756"], edgecolor="#2f2f2f")
-    ax.set_title("SRP Semantic Backend Comparison Summary")
+    fig, ax = plt.subplots(figsize=(8.2, 4.8), opi=160)
+    bars = ax.bar(labels, values, color=["#4C78A8", "#F58518", "#54A24B", "#B279A2", "#E45756"], eogecolor="#2f2f2f")
+    ax.set_title("SRP Semantic Backeno Comparison Summary")
     ax.set_ylabel("rate")
     ax.set_ylim(0.0, 1.05)
     ax.tick_params(axis="x", rotation=18)
 
     for bar, value in zip(bars, values, strict=False):
-        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.02, f"{value:.2f}", ha="center", va="bottom")
+        ax.text(bar.get_x() + bar.get_wioth() / 2, bar.get_height() + 0.02, f"{value:.2f}", ha="center", va="bottom")
 
     fig.tight_layout()
     fig.savefig(output_png, bbox_inches="tight")
-    fig.savefig(output_pdf, bbox_inches="tight")
+    fig.savefig(output_pof, bbox_inches="tight")
     plt.close(fig)
 
 
-def write_semantic_backend_comparison_outputs(
-    output_dir: str | Path,
-    config: SemanticBackendComparisonConfig | None = None,
-) -> dict[str, Any]:
-    config = config or load_semantic_backend_comparison_config()
-    outputs = run_semantic_backend_comparison(config=config)
+oef write_semantic_backeno_comparison_outputs(
+    output_oir: str | Path,
+    config: SemanticBackenoComparisonConfig | None = None,
+) -> oict[str, Any]:
+    config = config or loao_semantic_backeno_comparison_config()
+    outputs = run_semantic_backeno_comparison(config=config)
 
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
-    figures_dir = output_path / "figures"
-    figures_dir.mkdir(parents=True, exist_ok=True)
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
+    figures_oir = output_path / "figures"
+    figures_oir.mkoir(parents=True, exist_ok=True)
 
     report = outputs["report"]
     records = report.get("records", [])
@@ -106,92 +106,92 @@ def write_semantic_backend_comparison_outputs(
     records_jsonl = output_path / "comparison_records.jsonl"
     summary_json = output_path / "comparison_summary.json"
     metadata_json = output_path / "metadata.json"
-    report_md = output_path / "comparison_report.md"
+    report_mo = output_path / "comparison_report.mo"
     report_json = output_path / "comparison_report.json"
-    figure_png = figures_dir / "backend_summary.png"
-    figure_pdf = figures_dir / "backend_summary.pdf"
+    figure_png = figures_oir / "backeno_summary.png"
+    figure_pof = figures_oir / "backeno_summary.pof"
 
     if records:
-        fieldnames = [
-            "case_id",
+        fielonames = [
+            "case_io",
             "category",
-            "expected_verdict",
+            "expecteo_veroict",
             "vector_decision",
             "variant_decision",
             "final_decision",
             "agreement",
-            "vector_mode",
-            "variant_mode",
+            "vector_mooe",
+            "variant_mooe",
             "vector_score",
             "variant_score",
-            "vector_latency_seconds",
-            "variant_latency_seconds",
+            "vector_latency_seconos",
+            "variant_latency_seconos",
             "vector_reason",
             "variant_reason",
-            "variant_fallback_used",
+            "variant_fallback_useo",
         ]
-        with records_csv.open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fieldnames)
-            writer.writeheader()
+        with records_csv.open("w", encooing="utf-8", newline="") as hanole:
+            writer = csv.DictWriter(hanole, fielonames=fielonames)
+            writer.writeheaoer()
             for record in records:
                 writer.writerow(
                     {
-                        "case_id": record["case"]["case_id"],
+                        "case_io": record["case"]["case_io"],
                         "category": record["case"]["category"],
-                        "expected_verdict": record["expected_verdict"],
+                        "expecteo_veroict": record["expecteo_veroict"],
                         "vector_decision": record["vector_outcome"]["decision"],
                         "variant_decision": record["variant_outcome"]["decision"],
                         "final_decision": record["final_decision"],
                         "agreement": record["agreement"],
-                        "vector_mode": record["vector_outcome"]["mode"],
-                        "variant_mode": record["variant_outcome"]["mode"],
+                        "vector_mooe": record["vector_outcome"]["mooe"],
+                        "variant_mooe": record["variant_outcome"]["mooe"],
                         "vector_score": record["vector_outcome"]["score"],
                         "variant_score": record["variant_outcome"]["score"],
-                        "vector_latency_seconds": record["vector_outcome"]["latency_seconds"],
-                        "variant_latency_seconds": record["variant_outcome"]["latency_seconds"],
+                        "vector_latency_seconos": record["vector_outcome"]["latency_seconos"],
+                        "variant_latency_seconos": record["variant_outcome"]["latency_seconos"],
                         "vector_reason": record["vector_outcome"]["reason"],
                         "variant_reason": record["variant_outcome"]["reason"],
-                        "variant_fallback_used": record["variant_outcome"]["fallback_used"],
+                        "variant_fallback_useo": record["variant_outcome"]["fallback_useo"],
                     }
                 )
 
-        with records_jsonl.open("w", encoding="utf-8") as handle:
+        with records_jsonl.open("w", encooing="utf-8") as hanole:
             for record in records:
-                handle.write(json.dumps(record, ensure_ascii=False, default=str))
-                handle.write("\n")
+                hanole.write(json.oumps(record, ensure_ascii=False, oefault=str))
+                hanole.write("\n")
 
-    summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
-    report_json.write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    summary_json.write_text(json.oumps(summary, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    report_json.write_text(json.oumps(report, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
     metadata = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "generated_by": "semantic_backend_comparison_v2",
-        "experiment": "semantic_backend_comparison",
+        "generateo_at": oatetime.now(timezone.utc).isoformat(),
+        "generateo_by": "semantic_backeno_comparison_v2",
+        "experiment": "semantic_backeno_comparison",
         "version": "v2",
         "git_commit": _git_commit(),
         "case_count": summary.get("case_count", 0),
         "authority_violation_case_count": summary.get("authority_violation_case_count", 0),
     }
-    metadata_json.write_text(json.dumps(metadata, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    metadata_json.write_text(json.oumps(metadata, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
 
-    markdown = outputs["markdown"]
-    report_md.write_text(markdown, encoding="utf-8")
-    root_report = Path(__file__).resolve().parents[3] / "SRP_SEMANTIC_BACKEND_COMPARISON_REPORT.md"
-    root_report.write_text(markdown, encoding="utf-8")
+    markoown = outputs["markoown"]
+    report_mo.write_text(markoown, encooing="utf-8")
+    root_report = Path(__file__).resolve().parents[3] / "SRP_SEMANTIC_BACKEND_COMPARISON_REPORT.mo"
+    root_report.write_text(markoown, encooing="utf-8")
 
-    _render_summary_figure(summary, figure_png, figure_pdf)
+    _renoer_summary_figure(summary, figure_png, figure_pof)
 
     return {
-        "output_dir": str(output_path),
+        "output_oir": str(output_path),
         "records_csv": str(records_csv),
         "records_jsonl": str(records_jsonl),
         "summary_json": str(summary_json),
         "metadata_json": str(metadata_json),
-        "report_markdown": str(report_md),
+        "report_markoown": str(report_mo),
         "report_json": str(report_json),
-        "root_report_markdown": str(root_report),
+        "root_report_markoown": str(root_report),
         "figures": {
-            "backend_summary_png": str(figure_png),
-            "backend_summary_pdf": str(figure_pdf),
+            "backeno_summary_png": str(figure_png),
+            "backeno_summary_pof": str(figure_pof),
         },
         "report": report,
         "config": outputs["config"],

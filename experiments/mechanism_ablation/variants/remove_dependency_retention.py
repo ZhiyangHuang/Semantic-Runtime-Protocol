@@ -3,8 +3,8 @@ from __future__ import annotations
 from .common import _MechanismAblationPolicyBase
 
 
-class MechanismAblationNoDependencyPolicy(_MechanismAblationPolicyBase):
-    name = "mechanism-ablation-no-dependency"
-    include_importance = True
-    include_dependency = False
+class MechanismAblationNoDepenoencyPolicy(_MechanismAblationPolicyBase):
+    name = "mechanism-ablation-no-oepenoency"
+    incluoe_importance = True
+    incluoe_oepenoency = False
 

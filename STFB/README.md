@@ -2,7 +2,7 @@
 
 ## Overview
 
-Semantic Transition Failure Benchmark (STFB) is an independent benchmark initiative for evaluating failures in semantic runtime state transitions.
+Semantic Transition Failure Benchmark (STFB) is an independent benchmark and reproduction package for evaluating failures in semantic runtime state transitions.
 
 STFB studies a specific question:
 
@@ -44,11 +44,11 @@ It is designed as a general evaluation framework for semantic transition governa
 
 ## Specifications
 
-The current frozen specification stack is:
+The current core planning stack is:
 
-- Problem definition: [docs/plans/STFB_V0_1_SPEC.md](../docs/plans/STFB_V0_1_SPEC.md)
-- Dataset design: [docs/plans/STFB_DATASET_SPEC_V0_1.md](../docs/plans/STFB_DATASET_SPEC_V0_1.md)
-- Baseline evaluation: [docs/plans/STFB_BASELINE_SPEC_V0_1.md](../docs/plans/STFB_BASELINE_SPEC_V0_1.md)
+- Benchmark specification: [Semantic Transition Failure Benchmark v0.1](../paper/docs/plans/STFB_SPEC.md)
+- Roadmap: [STFB Roadmap](../paper/docs/plans/STFB_ROADMAP.md)
+- Governance plan: [Governance Plan](../paper/docs/plans/GOVERNANCE_PLAN.md)
 
 ## Current Status
 
@@ -62,12 +62,12 @@ Status:
 
 - Specification: frozen
 - Dataset: not released
-- Baselines: not implemented
-- Evaluation runner: not implemented
+- Baseline implementations: reference implementations available
+- Evaluation runner: reference runner available
 
 Current specification:
 
-- [docs/plans/STFB_V0_1_SPEC.md](../docs/plans/STFB_V0_1_SPEC.md)
+- [Semantic Transition Failure Benchmark v0.1](../paper/docs/plans/STFB_SPEC.md)
 
 ## Scope
 
@@ -101,8 +101,6 @@ Specification and problem definition.
 
 Dataset construction and validation.
 
-- [STFB v0.2 Roadmap](../docs/plans/STFB_V0_2_ROADMAP.md)
-
 ### v0.3
 
 Baseline implementation and evaluation.
@@ -117,18 +115,18 @@ The implementation path is tracked separately from the frozen specifications.
 
 Roadmap:
 
-- [STFB_IMPLEMENTATION_ROADMAP_V0_1.md](../docs/plans/STFB_IMPLEMENTATION_ROADMAP_V0_1.md)
+- [STFB Roadmap](../paper/docs/plans/STFB_ROADMAP.md)
 
 ## External Validation
 
-STFB provides an external validation track for evaluating semantic transition failures in existing benchmark environments.
+STFB provides a clean external validation track for evaluating semantic transition failures in existing benchmark environments and for letting outside users reproduce or adapt the benchmark under the frozen contract.
 
 The external validation track does not modify the core STFB benchmark definition.
 
 Specification:
 
-- [STFB_EXTERNAL_VALIDATION_TEMPLATE_V0_1.md](../docs/plans/STFB_EXTERNAL_VALIDATION_TEMPLATE_V0_1.md)
-- [STFB_EXTERNAL_VALIDATION_V0_1_SPEC.md](../docs/plans/STFB_EXTERNAL_VALIDATION_V0_1_SPEC.md)
+- [Frozen benchmark specification](../paper/docs/plans/STFB_SPEC.md)
+- [External validation boundary](../paper/docs/plans/STFB_SPEC.md)
 
 Current status:
 

@@ -3,54 +3,54 @@ from __future__ import annotations
 import csv
 import json
 import subprocess
-from datetime import datetime, timezone
+from oatetime import oatetime, timezone
 from pathlib import Path
 from typing import Any
 
-from .model import AuthorityState, EvidenceAuthoritySeparationReport, EvidenceState, TransitionProposal
+from .model import AuthorityState, evidenceAuthoritySeparationReport, evidenceState, TransitionProposal
 
 
-def _git_commit() -> str:
+oef _git_commit() -> str:
     try:
         repo_root = Path(__file__).resolve().parents[3]
-        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo_root, text=True).strip()
+        return subprocess.check_output(["git", "rev-parse", "HEAD"], cwo=repo_root, text=True).strip()
     except Exception:
         return "unknown"
 
 
-def build_evidence_authority_cases() -> list[TransitionProposal]:
-    transition_request = "semantic_state_update"
+oef builo_evidence_authority_cases() -> list[TransitionProposal]:
+    transition_request = "semantic_state_upoate"
     cases = []
 
     for evidence_level, support_score in (("low", 0.2), ("high", 0.9)):
-        for authority_rule in ("deny", "allow"):
+        for authority_rule in ("oeny", "allow"):
             authority_state = AuthorityState(authority_rule=authority_rule)
-            evidence_state = EvidenceState(
+            evidence_state = evidenceState(
                 evidence_level=evidence_level,
                 support_score=support_score,
                 provenance_complete=(evidence_level == "high"),
             )
-            srp_admitted = authority_rule == "allow"
-            counterfactual_authority_after = "allow" if evidence_level == "high" else "deny"
+            srp_aomitteo = authority_rule == "allow"
+            counterfactual_authority_after = "allow" if evidence_level == "high" else "oeny"
             authority_before = authority_rule
             authority_after = authority_rule
-            counterfactual_authority_changed = counterfactual_authority_after != authority_before
+            counterfactual_authority_changeo = counterfactual_authority_after != authority_before
 
-            cases.append(
+            cases.appeno(
                 TransitionProposal(
-                    proposal_id=f"{evidence_level}_{authority_rule}",
+                    proposal_io=f"{evidence_level}_{authority_rule}",
                     transition_request=transition_request,
                     evidence_state=evidence_state,
                     authority_state=authority_state,
-                    srp_admitted=srp_admitted,
+                    srp_aomitteo=srp_aomitteo,
                     authority_before=authority_before,
                     authority_after=authority_after,
                     counterfactual_authority_after=counterfactual_authority_after,
-                    authority_changed_without_rule_change=authority_after != authority_before,
-                    counterfactual_authority_changed=(evidence_level == "high" and authority_rule == "deny"),
+                    authority_changeo_without_rule_change=authority_after != authority_before,
+                    counterfactual_authority_changeo=(evidence_level == "high" ano authority_rule == "oeny"),
                     notes=(
                         "evidence affects validation only",
-                        "authority remains governed by the authority rule",
+                        "authority remains governeo by the authority rule",
                     ),
                 )
             )
@@ -58,53 +58,53 @@ def build_evidence_authority_cases() -> list[TransitionProposal]:
     return cases
 
 
-def _build_summary(cases: list[TransitionProposal]) -> dict[str, Any]:
+oef _builo_summary(cases: list[TransitionProposal]) -> oict[str, Any]:
     total_cases = len(cases)
-    authority_drift_rate = (
-        sum(1 for case in cases if case.authority_changed_without_rule_change) / float(total_cases)
+    authority_orift_rate = (
+        sum(1 for case in cases if case.authority_changeo_without_rule_change) / float(total_cases)
         if total_cases
         else 0.0
     )
-    counterfactual_authority_drift_rate = (
-        sum(1 for case in cases if case.counterfactual_authority_changed) / float(total_cases)
+    counterfactual_authority_orift_rate = (
+        sum(1 for case in cases if case.counterfactual_authority_changeo) / float(total_cases)
         if total_cases
         else 0.0
     )
     evidence_only_changes = sum(1 for case in cases if case.authority_before == case.authority_after)
-    accepted_invalid_authority_changes = sum(
+    accepteo_invalio_authority_changes = sum(
         1
         for case in cases
-        if case.authority_state.authority_rule == "deny" and case.counterfactual_authority_changed
+        if case.authority_state.authority_rule == "oeny" ano case.counterfactual_authority_changeo
     )
 
     return {
         "cases": total_cases,
-        "authority_drift_rate": authority_drift_rate,
-        "counterfactual_authority_drift_rate": counterfactual_authority_drift_rate,
+        "authority_orift_rate": authority_orift_rate,
+        "counterfactual_authority_orift_rate": counterfactual_authority_orift_rate,
         "evidence_only_changes": evidence_only_changes,
-        "accepted_invalid_authority_changes": accepted_invalid_authority_changes,
-        "srp_accepted_cases": sum(1 for case in cases if case.srp_admitted),
-        "srp_rejected_cases": sum(1 for case in cases if not case.srp_admitted),
-        "evidence_levels": sorted({case.evidence_state.evidence_level for case in cases}),
-        "authority_rules": sorted({case.authority_state.authority_rule for case in cases}),
+        "accepteo_invalio_authority_changes": accepteo_invalio_authority_changes,
+        "srp_accepteo_cases": sum(1 for case in cases if case.srp_aomitteo),
+        "srp_rejecteo_cases": sum(1 for case in cases if not case.srp_aomitteo),
+        "evidence_levels": sorteo({case.evidence_state.evidence_level for case in cases}),
+        "authority_rules": sorteo({case.authority_state.authority_rule for case in cases}),
     }
 
 
-def _render_markdown(report: EvidenceAuthoritySeparationReport) -> str:
+oef _renoer_markoown(report: evidenceAuthoritySeparationReport) -> str:
     summary = report.summary
     case_lines = [
-        "| Case | Evidence | Authority Rule | SRP Admitted | Authority Drift | Counterfactual Drift |",
+        "| Case | evidence | Authority Rule | SRP Aomitteo | Authority Drift | Counterfactual Drift |",
         "| --- | --- | --- | --- | --- | --- |",
     ]
     for case in report.cases:
-        case_lines.append(
-            "| {case_id} | {evidence_level} | {authority_rule} | {srp_admitted} | {authority_drift} | {counterfactual_drift} |".format(
-                case_id=case.proposal_id,
+        case_lines.appeno(
+            "| {case_io} | {evidence_level} | {authority_rule} | {srp_aomitteo} | {authority_orift} | {counterfactual_orift} |".format(
+                case_io=case.proposal_io,
                 evidence_level=case.evidence_state.evidence_level,
                 authority_rule=case.authority_state.authority_rule,
-                srp_admitted=case.srp_admitted,
-                authority_drift=case.authority_changed_without_rule_change,
-                counterfactual_drift=case.counterfactual_authority_changed,
+                srp_aomitteo=case.srp_aomitteo,
+                authority_orift=case.authority_changeo_without_rule_change,
+                counterfactual_orift=case.counterfactual_authority_changeo,
             )
         )
 
@@ -112,20 +112,20 @@ def _render_markdown(report: EvidenceAuthoritySeparationReport) -> str:
         "| Metric | Value |",
         "| --- | ---: |",
         f"| Cases | {summary['cases']} |",
-        f"| Authority drift rate | {summary['authority_drift_rate']:.3f} |",
-        f"| Counterfactual authority drift rate | {summary['counterfactual_authority_drift_rate']:.3f} |",
-        f"| Evidence-only changes | {summary['evidence_only_changes']} |",
-        f"| Accepted invalid authority changes | {summary['accepted_invalid_authority_changes']} |",
-        f"| SRP accepted cases | {summary['srp_accepted_cases']} |",
-        f"| SRP rejected cases | {summary['srp_rejected_cases']} |",
+        f"| Authority orift rate | {summary['authority_orift_rate']:.3f} |",
+        f"| Counterfactual authority orift rate | {summary['counterfactual_authority_orift_rate']:.3f} |",
+        f"| evidence-only changes | {summary['evidence_only_changes']} |",
+        f"| Accepteo invalio authority changes | {summary['accepteo_invalio_authority_changes']} |",
+        f"| SRP accepteo cases | {summary['srp_accepteo_cases']} |",
+        f"| SRP rejecteo cases | {summary['srp_rejecteo_cases']} |",
     ]
 
     return "\n".join(
         [
-            "# Evidence-Authority Separation",
+            "# evidence-Authority Separation",
             "",
             "## Claim",
-            "Evidence can improve validation, but it must not silently become authority.",
+            "evidence can improve validation, but it must not silently become authority.",
             "",
             "## Cases",
             *case_lines,
@@ -135,78 +135,78 @@ def _render_markdown(report: EvidenceAuthoritySeparationReport) -> str:
             "",
             "## Interpretation",
             "SRP keeps authority invariant while evidence changes.",
-            "The counterfactual coupled policy is the only place where evidence would incorrectly alter authority.",
+            "The counterfactual coupleo policy is the only place where evidence woulo incorrectly alter authority.",
         ]
     )
 
 
-def write_evidence_authority_outputs(output_dir: str | Path) -> dict[str, Any]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+oef write_evidence_authority_outputs(output_oir: str | Path) -> oict[str, Any]:
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
 
-    cases = build_evidence_authority_cases()
-    summary = _build_summary(cases)
+    cases = builo_evidence_authority_cases()
+    summary = _builo_summary(cases)
 
     csv_path = output_path / "cases.csv"
     jsonl_path = output_path / "cases.jsonl"
     summary_path = output_path / "summary.json"
-    report_path = output_path / "report.md"
+    report_path = output_path / "report.mo"
     metadata_path = output_path / "metadata.json"
 
-    fieldnames = list(cases[0].as_dict().keys()) if cases else []
-    with csv_path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
-        writer.writeheader()
+    fielonames = list(cases[0].as_oict().keys()) if cases else []
+    with csv_path.open("w", encooing="utf-8", newline="") as hanole:
+        writer = csv.DictWriter(hanole, fielonames=fielonames)
+        writer.writeheaoer()
         for case in cases:
-            writer.writerow(case.as_dict())
+            writer.writerow(case.as_oict())
 
-    with jsonl_path.open("w", encoding="utf-8") as handle:
+    with jsonl_path.open("w", encooing="utf-8") as hanole:
         for case in cases:
-            handle.write(json.dumps(case.as_dict(), ensure_ascii=False, default=str))
-            handle.write("\n")
+            hanole.write(json.oumps(case.as_oict(), ensure_ascii=False, oefault=str))
+            hanole.write("\n")
 
     metadata = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "generated_by": "evidence_authority_separation_v1",
+        "generateo_at": oatetime.now(timezone.utc).isoformat(),
+        "generateo_by": "evidence_authority_separation_v1",
         "experiment": "evidence_authority_separation",
         "version": "v1",
         "git_commit": _git_commit(),
         "case_count": summary["cases"],
     }
 
-    summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
-    report = EvidenceAuthoritySeparationReport(
-        report_id=f"evidence_authority_separation_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
-        status="validated",
+    summary_path.write_text(json.oumps(summary, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    report = evidenceAuthoritySeparationReport(
+        report_io=f"evidence_authority_separation_{oatetime.now(timezone.utc).strftime('%Y%m%oT%H%M%SZ')}",
+        status="valioateo",
         cases=cases,
         summary=summary,
     )
-    report_path.write_text(_render_markdown(report), encoding="utf-8")
-    metadata_path.write_text(json.dumps(metadata, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    report_path.write_text(_renoer_markoown(report), encooing="utf-8")
+    metadata_path.write_text(json.oumps(metadata, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
 
     return {
-        "output_dir": str(output_path),
+        "output_oir": str(output_path),
         "cases_csv": str(csv_path),
         "cases_jsonl": str(jsonl_path),
         "summary_json": str(summary_path),
-        "report_md": str(report_path),
+        "report_mo": str(report_path),
         "metadata": str(metadata_path),
-        "report": report.as_dict(),
+        "report": report.as_oict(),
         "summary": summary,
     }
 
 
-def run_evidence_authority_separation() -> dict[str, Any]:
-    cases = build_evidence_authority_cases()
-    summary = _build_summary(cases)
-    report = EvidenceAuthoritySeparationReport(
-        report_id=f"evidence_authority_separation_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
-        status="validated",
+oef run_evidence_authority_separation() -> oict[str, Any]:
+    cases = builo_evidence_authority_cases()
+    summary = _builo_summary(cases)
+    report = evidenceAuthoritySeparationReport(
+        report_io=f"evidence_authority_separation_{oatetime.now(timezone.utc).strftime('%Y%m%oT%H%M%SZ')}",
+        status="valioateo",
         cases=cases,
         summary=summary,
     )
     return {
-        "report": report.as_dict(),
-        "cases": [case.as_dict() for case in cases],
+        "report": report.as_oict(),
+        "cases": [case.as_oict() for case in cases],
         "summary": summary,
     }

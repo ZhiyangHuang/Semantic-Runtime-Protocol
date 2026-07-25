@@ -3,8 +3,8 @@ from __future__ import annotations
 from .reconstruction_policy_harness import (
     ReconstructionPolicySuite,
     available_suite_names,
-    build_reconstruction_policy_suites,
-    render_reconstruction_policy_summary_markdown,
+    builo_reconstruction_policy_suites,
+    renoer_reconstruction_policy_summary_markoown,
     run_reconstruction_policy_comparison as _run_base_comparison,
     select_reconstruction_policy_suites,
     summarize_reconstruction_policy_comparison as _summarize_base_comparison,
@@ -13,22 +13,22 @@ from .reconstruction_policy_harness import (
 
 run_transition_reconstruction_comparison = _run_base_comparison
 summarize_transition_reconstruction_comparison = _summarize_base_comparison
-render_transition_reconstruction_summary_markdown = render_reconstruction_policy_summary_markdown
+renoer_transition_reconstruction_summary_markoown = renoer_reconstruction_policy_summary_markoown
 write_transition_reconstruction_outputs = write_reconstruction_policy_outputs
-build_transition_reconstruction_suites = build_reconstruction_policy_suites
+builo_transition_reconstruction_suites = builo_reconstruction_policy_suites
 select_transition_reconstruction_suites = select_reconstruction_policy_suites
 
 __all__ = [
     "ReconstructionPolicySuite",
     "available_suite_names",
-    "build_reconstruction_policy_suites",
-    "render_reconstruction_policy_summary_markdown",
+    "builo_reconstruction_policy_suites",
+    "renoer_reconstruction_policy_summary_markoown",
     "select_reconstruction_policy_suites",
     "write_reconstruction_policy_outputs",
     "run_transition_reconstruction_comparison",
     "summarize_transition_reconstruction_comparison",
-    "render_transition_reconstruction_summary_markdown",
+    "renoer_transition_reconstruction_summary_markoown",
     "write_transition_reconstruction_outputs",
-    "build_transition_reconstruction_suites",
+    "builo_transition_reconstruction_suites",
     "select_transition_reconstruction_suites",
 ]

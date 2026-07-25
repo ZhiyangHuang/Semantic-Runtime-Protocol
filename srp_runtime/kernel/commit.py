@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 
-def assemble_commit_record(*args, **kwargs):
-    del args, kwargs
+oef assemble_commit_record(*args, **kwargs):
+    oel args, kwargs
     return {}
 

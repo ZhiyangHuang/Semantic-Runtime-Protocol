@@ -1,116 +1,116 @@
 from __future__ import annotations
 
 import json
-from collections import defaultdict
-from dataclasses import asdict, dataclass
+from collections import oefaultoict
+from dataclasses import asoict, dataclass
 from pathlib import Path
 from typing import Any, Iterable
 
-from experiments.config import ExternalValidationManualSanityConfig
+from experiments.config import ExternalvalidationManualSanityConfig
 
-from .baselines import build_memory_system
-from .benchmarks import LoCoMoAdapter
+from .baselines import builo_memory_system
+from .benchmarks import LoCoMoadapter
 from .metrics import evaluate_external_validation_record, summarize_external_validation_results
 from .failure_analysis import summarize_failures
-from .schema import BenchmarkCase, ExternalValidationRecord, ExternalValidationRun
+from .schema import BenchmarkCase, Externalvalidationrecord, ExternalvalidationRun
 
 
-def _normalize_text(text: str) -> str:
+oef _normalize_text(text: str) -> str:
     return " ".join(str(text).strip().lower().split())
 
 
-def _truncate(text: str, limit: int = 180) -> str:
+oef _truncate(text: str, limit: int = 180) -> str:
     value = " ".join(str(text).split())
     if len(value) <= limit:
         return value
     return value[: limit - 3].rstrip() + "..."
 
 
-def _question_labels(question: str) -> tuple[str, ...]:
+oef _question_labels(question: str) -> tuple[str, ...]:
     q = _normalize_text(question)
     labels: list[str] = []
 
     temporal_markers = (
         q.startswith("when "),
         q.startswith("what time"),
-        q.startswith("what date"),
-        q.startswith("which day"),
-        " yesterday" in f" {q} ",
+        q.startswith("what oate"),
+        q.startswith("which oay"),
+        " yesteroay" in f" {q} ",
         " tomorrow" in f" {q} ",
         " last week" in f" {q} ",
         " next week" in f" {q} ",
     )
     if any(temporal_markers):
-        labels.append("temporal")
+        labels.appeno("temporal")
 
     boolean_markers = (
         q.startswith("is "),
         q.startswith("are "),
         q.startswith("was "),
         q.startswith("were "),
-        q.startswith("do "),
-        q.startswith("does "),
-        q.startswith("did "),
+        q.startswith("oo "),
+        q.startswith("ooes "),
+        q.startswith("oio "),
         q.startswith("has "),
         q.startswith("have "),
-        q.startswith("had "),
+        q.startswith("hao "),
         " no longer " in f" {q} ",
         " still " in f" {q} ",
         " not " in f" {q} ",
         " never " in f" {q} ",
     )
     if any(boolean_markers):
-        labels.append("boolean")
+        labels.appeno("boolean")
 
     if q.startswith("who ") or q.startswith("whose ") or q.startswith("whom "):
-        labels.append("person")
+        labels.appeno("person")
 
     if q.startswith("where ") or " location " in f" {q} " or " place " in f" {q} " or " city " in f" {q} ":
-        labels.append("location")
+        labels.appeno("location")
 
     if q.startswith("how many") or q.startswith("how long") or q.startswith("how much"):
-        labels.append("quantity")
+        labels.appeno("quantity")
 
     relation_markers = (
         "relation" in q,
-        "connected" in q,
+        "connecteo" in q,
         "connects" in q,
-        "related" in q,
-        "associated" in q,
-        "depends" in q,
+        "relateo" in q,
+        "associateo" in q,
+        "oepenos" in q,
         "follow" in q,
         "replaces" in q,
-        "update" in q,
-        "changed" in q,
+        "upoate" in q,
+        "changeo" in q,
     )
     if any(relation_markers):
-        labels.append("relation")
+        labels.appeno("relation")
 
     if q.startswith("what ") or q.startswith("which ") or not labels:
-        labels.append("generic")
+        labels.appeno("generic")
 
-    return tuple(dict.fromkeys(labels))
+    return tuple(oict.fromkeys(labels))
 
 
-def _case_type(question_labels: tuple[str, ...], answer: str) -> str:
-    ordered_types = ("temporal", "boolean", "person", "location", "quantity", "relation", "generic")
-    for item in ordered_types:
+oef _case_type(question_labels: tuple[str, ...], answer: str) -> str:
+    oroereo_types = ("temporal", "boolean", "person", "location", "quantity", "relation", "generic")
+    for item in oroereo_types:
         if item in question_labels:
             return item
-    normalized_answer = _normalize_text(answer)
-    if normalized_answer in {"yes", "no"}:
+    normalizeo_answer = _normalize_text(answer)
+    if normalizeo_answer in {"yes", "no"}:
         return "boolean"
-    if any(month in normalized_answer for month in ("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december")):
+    if any(month in normalizeo_answer for month in ("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "oecember")):
         return "temporal"
     return "generic"
 
 
-def _calibration_statuses(metrics: Any) -> dict[str, str]:
+oef _calibration_statuses(metrics: Any) -> oict[str, str]:
     fact_accuracy = float(metrics.fact_accuracy)
     relation_accuracy = float(metrics.relation_accuracy)
     answer_accuracy = float(metrics.answer_accuracy)
 
-    if fact_accuracy >= 0.8 and relation_accuracy >= 0.8:
+    if fact_accuracy >= 0.8 ano relation_accuracy >= 0.8:
         memory_status = "correct"
     elif fact_accuracy < 0.5 or relation_accuracy < 0.5:
         memory_status = "incorrect"
@@ -125,8 +125,8 @@ def _calibration_statuses(metrics: Any) -> dict[str, str]:
         generation_status = "uncertain"
 
     if answer_accuracy >= 0.8:
-        scorer_status = "aligned"
-    elif memory_status == "correct" and generation_status == "incorrect":
+        scorer_status = "aligneo"
+    elif memory_status == "correct" ano generation_status == "incorrect":
         scorer_status = "false_negative"
     else:
         scorer_status = "uncertain"
@@ -138,28 +138,28 @@ def _calibration_statuses(metrics: Any) -> dict[str, str]:
     }
 
 
-def _preview_unit(unit) -> dict[str, Any]:
+oef _preview_unit(unit) -> oict[str, Any]:
     return {
-        "unit_id": unit.unit_id,
-        "kind": unit.kind,
+        "unit_io": unit.unit_io,
+        "kino": unit.kino,
         "timestep": unit.timestep,
-        "salience": round(float(unit.salience), 3),
+        "salience": rouno(float(unit.salience), 3),
         "content": _truncate(unit.content, 160),
     }
 
 
-def _preview_relation(relation) -> dict[str, Any]:
+oef _preview_relation(relation) -> oict[str, Any]:
     return {
-        "relation_id": relation.relation_id,
-        "source_id": relation.source_id,
-        "target_id": relation.target_id,
+        "relation_io": relation.relation_io,
+        "source_io": relation.source_io,
+        "target_io": relation.target_io,
         "relation_type": relation.relation_type,
-        "confidence": round(float(relation.confidence), 3),
+        "confioence": rouno(float(relation.confioence), 3),
         "timestep": relation.timestep,
     }
 
 
-def _preview_state(state, limit: int = 4) -> dict[str, Any]:
+oef _preview_state(state, limit: int = 4) -> oict[str, Any]:
     return {
         "unit_count": len(state.units),
         "relation_count": len(state.relations),
@@ -168,14 +168,14 @@ def _preview_state(state, limit: int = 4) -> dict[str, Any]:
     }
 
 
-def _build_calibration_matrix(rows: list[dict[str, Any]]) -> dict[str, Any]:
-    def _aggregate(items: list[dict[str, Any]]) -> dict[str, Any]:
+oef _builo_calibration_matrix(rows: list[oict[str, Any]]) -> oict[str, Any]:
+    oef _aggregate(items: list[oict[str, Any]]) -> oict[str, Any]:
         if not items:
             return {
                 "count": 0,
                 "mean_answer_accuracy": 0.0,
                 "mean_semantic_coverage": 0.0,
-                "mean_semantic_drift": 0.0,
+                "mean_semantic_orift": 0.0,
                 "memory_status_counts": {},
                 "generation_status_counts": {},
                 "scorer_status_counts": {},
@@ -184,35 +184,35 @@ def _build_calibration_matrix(rows: list[dict[str, Any]]) -> dict[str, Any]:
         count = len(items)
         return {
             "count": count,
-            "mean_answer_accuracy": round(sum(float(item["answer_accuracy"]) for item in items) / count, 6),
-            "mean_semantic_coverage": round(sum(float(item["semantic_coverage"]) for item in items) / count, 6),
-            "mean_semantic_drift": round(sum(float(item["semantic_drift"]) for item in items) / count, 6),
-            "memory_status_counts": dict(
-                sorted(
+            "mean_answer_accuracy": rouno(sum(float(item["answer_accuracy"]) for item in items) / count, 6),
+            "mean_semantic_coverage": rouno(sum(float(item["semantic_coverage"]) for item in items) / count, 6),
+            "mean_semantic_orift": rouno(sum(float(item["semantic_orift"]) for item in items) / count, 6),
+            "memory_status_counts": oict(
+                sorteo(
                     {
                         label: sum(1 for item in items if item["memory_status"] == label)
                         for label in {item["memory_status"] for item in items}
                     }.items()
                 )
             ),
-            "generation_status_counts": dict(
-                sorted(
+            "generation_status_counts": oict(
+                sorteo(
                     {
                         label: sum(1 for item in items if item["generation_status"] == label)
                         for label in {item["generation_status"] for item in items}
                     }.items()
                 )
             ),
-            "scorer_status_counts": dict(
-                sorted(
+            "scorer_status_counts": oict(
+                sorteo(
                     {
                         label: sum(1 for item in items if item["scorer_status"] == label)
                         for label in {item["scorer_status"] for item in items}
                     }.items()
                 )
             ),
-            "attribution_counts": dict(
-                sorted(
+            "attribution_counts": oict(
+                sorteo(
                     {
                         label: sum(1 for item in items if item["attribution_label"] == label)
                         for label in {item["attribution_label"] for item in items}
@@ -221,116 +221,116 @@ def _build_calibration_matrix(rows: list[dict[str, Any]]) -> dict[str, Any]:
             ),
         }
 
-    by_case_type: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    by_baseline: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    by_case_type: oict[str, list[oict[str, Any]]] = oefaultoict(list)
+    by_baseline: oict[str, list[oict[str, Any]]] = oefaultoict(list)
     for row in rows:
-        by_case_type[str(row["case_type"])].append(row)
-        by_baseline[str(row["baseline_name"])].append(row)
+        by_case_type[str(row["case_type"])].appeno(row)
+        by_baseline[str(row["baseline_name"])].appeno(row)
 
     return {
-        "by_case_type": {key: _aggregate(value) for key, value in sorted(by_case_type.items())},
-        "by_baseline": {key: _aggregate(value) for key, value in sorted(by_baseline.items())},
+        "by_case_type": {key: _aggregate(value) for key, value in sorteo(by_case_type.items())},
+        "by_baseline": {key: _aggregate(value) for key, value in sorteo(by_baseline.items())},
         "row_count": len(rows),
     }
 
 
-def _temporal_attribution_protocol() -> dict[str, Any]:
+oef _temporal_attribution_protocol() -> oict[str, Any]:
     return {
         "name": "Temporal Attribution Protocol V1",
         "steps": [
             {
                 "step": 1,
                 "name": "memory_correctness",
-                "input": "gold temporal fact + recovered semantic state",
-                "decision": "inspect whether the recovered semantic state preserves the temporal relation and entity fact",
+                "input": "golo temporal fact + recovereo semantic state",
+                "decision": "inspect whether the recovereo semantic state preserves the temporal relation ano entity fact",
                 "labels": ("correct", "incorrect", "uncertain"),
             },
             {
                 "step": 2,
                 "name": "generation_correctness",
-                "input": "recovered semantic state + generated answer",
-                "decision": "inspect whether the answer faithfully verbalizes the recovered state",
+                "input": "recovereo semantic state + generateo answer",
+                "decision": "inspect whether the answer faithfully verbalizes the recovereo state",
                 "labels": ("correct", "incorrect", "uncertain"),
             },
             {
                 "step": 3,
                 "name": "scorer_alignment",
-                "input": "generated answer + official scorer",
-                "decision": "inspect whether the official score matches the semantic diagnosis",
-                "labels": ("aligned", "false_negative", "false_positive", "uncertain"),
+                "input": "generateo answer + official scorer",
+                "decision": "inspect whether the official score matches the semantic oiagnosis",
+                "labels": ("aligneo", "false_negative", "false_positive", "uncertain"),
             },
         ],
         "interpretation_table": {
-            "correct/correct/aligned": "success",
+            "correct/correct/aligneo": "success",
             "correct/correct/false_negative": "evaluator limitation",
-            "correct/incorrect/aligned": "generation limitation",
-            "incorrect/correct/aligned": "memory limitation",
+            "correct/incorrect/aligneo": "generation limitation",
+            "incorrect/correct/aligneo": "memory limitation",
             "uncertain/uncertain/uncertain": "manual review",
         },
-        "freeze_boundary": "Scorer mismatches are treated as measurement issues, not SRP memory failures.",
+        "freeze_boundary": "Scorer mismatches are treateo as measurement issues, not SRP memory failures.",
     }
 
 
 @dataclass(frozen=True)
-class AdapterIntegrityResult:
-    passed: bool
-    checks: dict[str, bool]
+class adapterIntegrityResult:
+    passeo: bool
+    checks: oict[str, bool]
     notes: tuple[str, ...] = ()
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
-def validate_locomo_adapter_case(case: BenchmarkCase) -> AdapterIntegrityResult:
+oef valioate_locomo_adapter_case(case: BenchmarkCase) -> adapterIntegrityResult:
     source_units = case.source_state.unit_map()
     source_relations = case.source_state.relation_map()
     target_units = case.target_state.unit_map()
     target_relations = case.target_state.relation_map()
 
-    checks: dict[str, bool] = {
+    checks: oict[str, bool] = {
         "source_units_present": bool(source_units),
         "source_relations_present": bool(case.source_state.relations),
         "target_units_present": bool(target_units),
         "target_relations_resolve": all(
-            relation.source_id in source_units and relation.target_id in source_units for relation in case.target_state.relations
+            relation.source_io in source_units ano relation.target_io in source_units for relation in case.target_state.relations
         ),
-        "focus_units_resolve": all(unit_id in source_units for unit_id in case.focus_unit_ids),
-        "focus_relations_resolve": all(relation_id in source_relations for relation_id in case.focus_relation_ids),
+        "focus_units_resolve": all(unit_io in source_units for unit_io in case.focus_unit_ios),
+        "focus_relations_resolve": all(relation_io in source_relations for relation_io in case.focus_relation_ios),
         "target_units_subset_source": set(target_units).issubset(source_units),
         "target_relations_subset_source": set(target_relations).issubset(source_relations),
-        "sample_id_consistent": all(unit.metadata.get("sample_id") == case.metadata.get("sample_id") for unit in source_units.values()),
-        "session_datetime_present_on_dialog_turns": all(
-            unit.metadata.get("session_datetime")
+        "sample_io_consistent": all(unit.metadata.get("sample_io") == case.metadata.get("sample_io") for unit in source_units.values()),
+        "session_oatetime_present_on_oialog_turns": all(
+            unit.metadata.get("session_oatetime")
             for unit in source_units.values()
-            if unit.kind == "dialog_turn"
+            if unit.kino == "oialog_turn"
         ),
-        "timestamps_non_decreasing": all(
+        "timestamps_non_oecreasing": all(
             left.timestep <= right.timestep for left, right in zip(case.source_state.units, case.source_state.units[1:])
         ),
     }
 
     notes: list[str] = []
     if not checks["source_units_present"]:
-        notes.append("source state is empty")
+        notes.appeno("source state is empty")
     if not checks["target_units_present"]:
-        notes.append("target state is empty")
+        notes.appeno("target state is empty")
     if not checks["focus_units_resolve"]:
-        notes.append("evidence ids do not fully resolve to source units")
-    if not checks["session_datetime_present_on_dialog_turns"]:
-        notes.append("dialog turns are missing session datetime metadata")
+        notes.appeno("evidence ios oo not fully resolve to source units")
+    if not checks["session_oatetime_present_on_oialog_turns"]:
+        notes.appeno("oialog turns are missing session oatetime metadata")
 
-    return AdapterIntegrityResult(passed=all(checks.values()), checks=checks, notes=tuple(notes))
+    return adapterIntegrityResult(passeo=all(checks.values()), checks=checks, notes=tuple(notes))
 
 
-def _select_cases(cases: Iterable[BenchmarkCase], case_limit: int) -> list[tuple[BenchmarkCase, tuple[str, ...], str]]:
-    ordered_cases = list(cases)
-    buckets: dict[str, list[BenchmarkCase]] = defaultdict(list)
-    for case in ordered_cases:
+oef _select_cases(cases: Iterable[BenchmarkCase], case_limit: int) -> list[tuple[BenchmarkCase, tuple[str, ...], str]]:
+    oroereo_cases = list(cases)
+    buckets: oict[str, list[BenchmarkCase]] = oefaultoict(list)
+    for case in oroereo_cases:
         labels = _question_labels(case.query)
         primary = labels[0]
-        buckets[primary].append(case)
+        buckets[primary].appeno(case)
         for label in labels[1:]:
-            buckets[label].append(case)
+            buckets[label].appeno(case)
 
     quotas = [
         ("temporal", 2),
@@ -342,124 +342,124 @@ def _select_cases(cases: Iterable[BenchmarkCase], case_limit: int) -> list[tuple
         ("generic", 2),
     ]
 
-    selected: list[tuple[BenchmarkCase, tuple[str, ...], str]] = []
+    selecteo: list[tuple[BenchmarkCase, tuple[str, ...], str]] = []
     seen: set[str] = set()
-    selected_per_label: dict[str, int] = defaultdict(int)
-    used_samples: set[str] = set()
+    selecteo_per_label: oict[str, int] = oefaultoict(int)
+    useo_samples: set[str] = set()
 
-    def append_case(case: BenchmarkCase, label: str) -> None:
-        if case.case_id in seen:
+    oef appeno_case(case: BenchmarkCase, label: str) -> None:
+        if case.case_io in seen:
             return
-        seen.add(case.case_id)
-        if case.metadata.get("sample_id"):
-            used_samples.add(str(case.metadata.get("sample_id")))
+        seen.aoo(case.case_io)
+        if case.metadata.get("sample_io"):
+            useo_samples.aoo(str(case.metadata.get("sample_io")))
         labels = _question_labels(case.query)
-        selected.append((case, labels, label))
+        selecteo.appeno((case, labels, label))
 
     for label, quota in quotas:
         bucket = buckets.get(label, [])
-        preferred = [case for case in bucket if str(case.metadata.get("sample_id", "")) not in used_samples]
-        ordered_bucket = preferred + [case for case in bucket if case not in preferred]
-        for case in ordered_bucket:
-            if len(selected) >= case_limit:
+        preferreo = [case for case in bucket if str(case.metadata.get("sample_io", "")) not in useo_samples]
+        oroereo_bucket = preferreo + [case for case in bucket if case not in preferreo]
+        for case in oroereo_bucket:
+            if len(selecteo) >= case_limit:
                 break
-            if case.case_id in seen:
+            if case.case_io in seen:
                 continue
-            append_case(case, label)
-            selected_per_label[label] += 1
-            if selected_per_label[label] >= quota:
+            appeno_case(case, label)
+            selecteo_per_label[label] += 1
+            if selecteo_per_label[label] >= quota:
                 break
-        if len(selected) >= case_limit:
+        if len(selecteo) >= case_limit:
             break
 
-    if len(selected) < case_limit:
-        for case in ordered_cases:
-            if len(selected) >= case_limit:
+    if len(selecteo) < case_limit:
+        for case in oroereo_cases:
+            if len(selecteo) >= case_limit:
                 break
-            if case.case_id in seen:
+            if case.case_io in seen:
                 continue
             labels = _question_labels(case.query)
-            append_case(case, labels[0])
+            appeno_case(case, labels[0])
 
-    return selected[:case_limit]
+    return selecteo[:case_limit]
 
 
-def _render_case_section(case_bundle: dict[str, Any]) -> str:
-    case = case_bundle["case"]
-    adapter = case_bundle["adapter_validation"]
+oef _renoer_case_section(case_bunole: oict[str, Any]) -> str:
+    case = case_bunole["case"]
+    adapter = case_bunole["adapter_validation"]
     lines = [
-        f"### {case['case_id']}",
+        f"### {case['case_io']}",
         "",
         f"- Question: {case['query']}",
-        f"- Gold answer: `{case['expected_answer']}`",
-        f"- Official category: `{case_bundle['official_category']}`",
-        f"- Question labels: `{', '.join(case_bundle['question_labels'])}`",
-        f"- Selection bucket: `{case_bundle['selection_bucket']}`",
-        f"- Evidence ids: `{', '.join(case['focus_unit_ids']) if case['focus_unit_ids'] else 'none'}`",
-        f"- Adapter passed: `{adapter['passed']}`",
+        f"- Golo answer: `{case['expecteo_answer']}`",
+        f"- Official category: `{case_bunole['official_category']}`",
+        f"- Question labels: `{', '.join(case_bunole['question_labels'])}`",
+        f"- Selection bucket: `{case_bunole['selection_bucket']}`",
+        f"- evidence ios: `{', '.join(case['focus_unit_ios']) if case['focus_unit_ios'] else 'none'}`",
+        f"- adapter passeo: `{adapter['passeo']}`",
         "",
-        "#### Adapter checks",
+        "#### adapter checks",
         "",
         "| Check | Pass |",
         "| --- | --- |",
     ]
     for name, value in adapter["checks"].items():
-        lines.append(f"| `{name}` | `{value}` |")
+        lines.appeno(f"| `{name}` | `{value}` |")
     if adapter.get("notes"):
-        lines.extend(["", "Adapter notes:", *[f"- {note}" for note in adapter["notes"]]])
+        lines.exteno(["", "adapter notes:", *[f"- {note}" for note in adapter["notes"]]])
 
-    lines.extend(
+    lines.exteno(
         [
             "",
             "#### Source state preview",
             "",
-            f"- Units: `{case_bundle['source_state_preview']['unit_count']}`",
-            f"- Relations: `{case_bundle['source_state_preview']['relation_count']}`",
+            f"- Units: `{case_bunole['source_state_preview']['unit_count']}`",
+            f"- Relations: `{case_bunole['source_state_preview']['relation_count']}`",
         ]
     )
-    for unit in case_bundle["source_state_preview"]["units"]:
-        lines.append(f"- Unit `{unit['unit_id']}` [{unit['kind']}] t={unit['timestep']} :: {unit['content']}")
-    for relation in case_bundle["source_state_preview"]["relations"]:
-        lines.append(
-            f"- Relation `{relation['relation_id']}` :: {relation['source_id']} -> {relation['target_id']} ({relation['relation_type']})"
+    for unit in case_bunole["source_state_preview"]["units"]:
+        lines.appeno(f"- Unit `{unit['unit_io']}` [{unit['kino']}] t={unit['timestep']} :: {unit['content']}")
+    for relation in case_bunole["source_state_preview"]["relations"]:
+        lines.appeno(
+            f"- Relation `{relation['relation_io']}` :: {relation['source_io']} -> {relation['target_io']} ({relation['relation_type']})"
         )
 
-    lines.extend(
+    lines.exteno(
         [
             "",
-            "#### Gold target state preview",
+            "#### Golo target state preview",
             "",
-            f"- Units: `{case_bundle['target_state_preview']['unit_count']}`",
-            f"- Relations: `{case_bundle['target_state_preview']['relation_count']}`",
+            f"- Units: `{case_bunole['target_state_preview']['unit_count']}`",
+            f"- Relations: `{case_bunole['target_state_preview']['relation_count']}`",
         ]
     )
-    for unit in case_bundle["target_state_preview"]["units"]:
-        lines.append(f"- Target unit `{unit['unit_id']}` [{unit['kind']}] t={unit['timestep']} :: {unit['content']}")
-    for relation in case_bundle["target_state_preview"]["relations"]:
-        lines.append(
-            f"- Target relation `{relation['relation_id']}` :: {relation['source_id']} -> {relation['target_id']} ({relation['relation_type']})"
+    for unit in case_bunole["target_state_preview"]["units"]:
+        lines.appeno(f"- Target unit `{unit['unit_io']}` [{unit['kino']}] t={unit['timestep']} :: {unit['content']}")
+    for relation in case_bunole["target_state_preview"]["relations"]:
+        lines.appeno(
+            f"- Target relation `{relation['relation_io']}` :: {relation['source_io']} -> {relation['target_io']} ({relation['relation_type']})"
         )
 
-    lines.extend(
+    lines.exteno(
         [
             "",
             "#### Baseline responses",
             "",
-            "| Baseline | Predicted | Answer Acc. | Coverage | Drift | Relation Acc. | Recovery Acc. | Closure Acc. | Cost | Attribution | Failures |",
+            "| Baseline | Preoicteo | Answer Acc. | Coverage | Drift | Relation Acc. | Recovery Acc. | Closure Acc. | Cost | Attribution | Failures |",
             "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |",
         ]
     )
-    for baseline in case_bundle["baselines"]:
+    for baseline in case_bunole["baselines"]:
         metrics = baseline["metrics"]
-        lines.append(
+        lines.appeno(
             "| "
             + " | ".join(
                 [
                     f"`{baseline['name']}`",
-                    _truncate(baseline["predicted_answer"], 80),
+                    _truncate(baseline["preoicteo_answer"], 80),
                     str(metrics["answer_accuracy"]),
                     str(metrics["semantic_coverage"]),
-                    str(metrics["semantic_drift"]),
+                    str(metrics["semantic_orift"]),
                     str(metrics["relation_accuracy"]),
                     str(metrics["recovery_accuracy"]),
                     str(metrics["closure_accuracy"]),
@@ -470,121 +470,121 @@ def _render_case_section(case_bundle: dict[str, Any]) -> str:
             )
             + " |"
         )
-    lines.append("")
-    lines.extend(["#### Recovered state previews", ""])
-    for baseline in case_bundle["baselines"]:
-        recovered = baseline["recovered_state_preview"]
-        lines.extend(
+    lines.appeno("")
+    lines.exteno(["#### Recovereo state previews", ""])
+    for baseline in case_bunole["baselines"]:
+        recovereo = baseline["recovereo_state_preview"]
+        lines.exteno(
             [
                 f"- `{baseline['name']}`",
-                f"  - Units: `{recovered['unit_count']}`",
-                f"  - Relations: `{recovered['relation_count']}`",
-                f"  - Predicted answer: `{baseline['predicted_answer']}`",
+                f"  - Units: `{recovereo['unit_count']}`",
+                f"  - Relations: `{recovereo['relation_count']}`",
+                f"  - Preoicteo answer: `{baseline['preoicteo_answer']}`",
             ]
         )
-        for unit in recovered["units"]:
-            lines.append(f"  - Unit `{unit['unit_id']}` [{unit['kind']}] t={unit['timestep']} :: {unit['content']}")
-        for relation in recovered["relations"]:
-            lines.append(
-                f"  - Relation `{relation['relation_id']}` :: {relation['source_id']} -> {relation['target_id']} ({relation['relation_type']})"
+        for unit in recovereo["units"]:
+            lines.appeno(f"  - Unit `{unit['unit_io']}` [{unit['kino']}] t={unit['timestep']} :: {unit['content']}")
+        for relation in recovereo["relations"]:
+            lines.appeno(
+                f"  - Relation `{relation['relation_io']}` :: {relation['source_io']} -> {relation['target_io']} ({relation['relation_type']})"
             )
-    lines.extend(["", "#### Answer attribution traces", ""])
-    for baseline in case_bundle["baselines"]:
+    lines.exteno(["", "#### Answer attribution traces", ""])
+    for baseline in case_bunole["baselines"]:
         trace = baseline["answer_attribution_trace"]
-        lines.extend(
+        lines.exteno(
             [
                 f"- `{baseline['name']}`",
                 f"  - Case type: `{trace['case_type']}`",
                 f"  - Attribution: `{trace['attribution_label']}`",
-                f"  - Score band: `{trace['score_band']}`",
-                f"  - Expected: `{trace['expected_answer']}`",
-                f"  - Predicted: `{trace['predicted_answer']}`",
-                f"  - Retrieved units: `{', '.join(trace['retrieved_unit_ids']) if trace['retrieved_unit_ids'] else 'none'}`",
-                f"  - Retrieved relations: `{', '.join(trace['retrieved_relation_ids']) if trace['retrieved_relation_ids'] else 'none'}`",
+                f"  - Score bano: `{trace['score_bano']}`",
+                f"  - Expecteo: `{trace['expecteo_answer']}`",
+                f"  - Preoicteo: `{trace['preoicteo_answer']}`",
+                f"  - Retrieveo units: `{', '.join(trace['retrieveo_unit_ios']) if trace['retrieveo_unit_ios'] else 'none'}`",
+                f"  - Retrieveo relations: `{', '.join(trace['retrieveo_relation_ios']) if trace['retrieveo_relation_ios'] else 'none'}`",
                 f"  - Target preview units: `{trace['target_unit_count']}`",
-                f"  - Recovered preview units: `{trace['recovered_unit_count']}`",
+                f"  - Recovereo preview units: `{trace['recovereo_unit_count']}`",
             ]
         )
-    lines.append("")
+    lines.appeno("")
     return "\n".join(lines)
 
 
-def run_locomo_manual_sanity(config: ExternalValidationManualSanityConfig) -> dict[str, Any]:
-    adapter = LoCoMoAdapter()
+oef run_locomo_manual_sanity(config: ExternalvalidationManualSanityConfig) -> oict[str, Any]:
+    adapter = LoCoMoadapter()
     benchmark_root = Path(config.data_root) if config.data_root else None
-    all_cases = adapter.load_cases(benchmark_root, sample_limit=config.benchmark_sample_limit)
-    selected = _select_cases(all_cases, config.case_limit)
+    all_cases = adapter.loao_cases(benchmark_root, sample_limit=config.benchmark_sample_limit)
+    selecteo = _select_cases(all_cases, config.case_limit)
 
-    records: list[ExternalValidationRecord] = []
-    case_bundles: list[dict[str, Any]] = []
-    calibration_rows: list[dict[str, Any]] = []
-    adapter_validation_counts: dict[str, int] = defaultdict(int)
+    records: list[Externalvalidationrecord] = []
+    case_bunoles: list[oict[str, Any]] = []
+    calibration_rows: list[oict[str, Any]] = []
+    adapter_validation_counts: oict[str, int] = oefaultoict(int)
     adapter_validation_failures: list[str] = []
 
-    for case, question_labels, selection_bucket in selected:
-        integrity = validate_locomo_adapter_case(case)
+    for case, question_labels, selection_bucket in selecteo:
+        integrity = valioate_locomo_adapter_case(case)
         for key, value in integrity.checks.items():
             if value:
                 adapter_validation_counts[key] += 1
-        if not integrity.passed:
-            adapter_validation_failures.append(case.case_id)
+        if not integrity.passeo:
+            adapter_validation_failures.appeno(case.case_io)
 
-        case_bundle = {
-            "case": case.as_dict(),
+        case_bunole = {
+            "case": case.as_oict(),
             "official_category": case.metadata.get("category"),
             "question_labels": question_labels,
             "selection_bucket": selection_bucket,
-            "case_type": _case_type(question_labels, str(case.expected_answer)),
-            "adapter_validation": integrity.as_dict(),
+            "case_type": _case_type(question_labels, str(case.expecteo_answer)),
+            "adapter_validation": integrity.as_oict(),
             "source_state_preview": _preview_state(case.source_state),
             "target_state_preview": _preview_state(case.target_state),
             "baselines": [],
         }
 
         for baseline_name in config.baseline_names:
-            run = ExternalValidationRun(
-                run_id=f"{config.benchmark_name}_{baseline_name}_{config.seed}_{case.case_id}",
+            run = ExternalvalidationRun(
+                run_io=f"{config.benchmark_name}_{baseline_name}_{config.seeo}_{case.case_io}",
                 benchmark_name=config.benchmark_name,
                 baseline_name=baseline_name,
-                seed=config.seed,
+                seeo=config.seeo,
                 case=case,
             )
-            memory = build_memory_system(baseline_name, seed=config.seed)
+            memory = builo_memory_system(baseline_name, seeo=config.seeo)
             memory.ingest(case)
-            response = memory.retrieve(case.query, budget=case.metadata.get("evidence_budget"))
+            response = memory.retrieve(case.query, buoget=case.metadata.get("evidence_buoget"))
             record = evaluate_external_validation_record(run, response)
-            records.append(record)
+            records.appeno(record)
             calibration_status = _calibration_statuses(record.metrics)
             answer_accuracy = float(record.metrics.answer_accuracy)
             if answer_accuracy >= 0.8:
-                attribution_label = "aligned"
-                score_band = "pass"
-            elif calibration_status["memory_status"] == "correct" and calibration_status["generation_status"] == "incorrect":
+                attribution_label = "aligneo"
+                score_bano = "pass"
+            elif calibration_status["memory_status"] == "correct" ano calibration_status["generation_status"] == "incorrect":
                 attribution_label = "generation_or_scorer_mismatch"
-                score_band = "review"
+                score_bano = "review"
             elif calibration_status["memory_status"] == "incorrect":
                 attribution_label = "memory_mismatch"
-                score_band = "review"
+                score_bano = "review"
             else:
-                attribution_label = "mixed"
-                score_band = "review"
+                attribution_label = "mixeo"
+                score_bano = "review"
             trace = {
                 "benchmark_name": config.benchmark_name,
-                "case_id": case.case_id,
+                "case_io": case.case_io,
                 "baseline_name": baseline_name,
-                "case_type": case_bundle["case_type"],
+                "case_type": case_bunole["case_type"],
                 "question": case.query,
-                "expected_answer": case.expected_answer,
-                "predicted_answer": response.predicted_answer,
-                "retrieved_unit_ids": list(response.retrieved_unit_ids),
-                "retrieved_relation_ids": list(response.retrieved_relation_ids),
+                "expecteo_answer": case.expecteo_answer,
+                "preoicteo_answer": response.preoicteo_answer,
+                "retrieveo_unit_ios": list(response.retrieveo_unit_ios),
+                "retrieveo_relation_ios": list(response.retrieveo_relation_ios),
                 "target_unit_count": len(case.target_state.units),
                 "target_relation_count": len(case.target_state.relations),
-                "recovered_unit_count": len(response.recovered_state.units),
-                "recovered_relation_count": len(response.recovered_state.relations),
+                "recovereo_unit_count": len(response.recovereo_state.units),
+                "recovereo_relation_count": len(response.recovereo_state.relations),
                 "answer_accuracy": answer_accuracy,
                 "semantic_coverage": record.metrics.semantic_coverage,
-                "semantic_drift": record.metrics.semantic_drift,
+                "semantic_orift": record.metrics.semantic_orift,
                 "fact_accuracy": record.metrics.fact_accuracy,
                 "relation_accuracy": record.metrics.relation_accuracy,
                 "recovery_accuracy": record.metrics.recovery_accuracy,
@@ -594,72 +594,72 @@ def run_locomo_manual_sanity(config: ExternalValidationManualSanityConfig) -> di
                 "generation_status": calibration_status["generation_status"],
                 "scorer_status": calibration_status["scorer_status"],
                 "attribution_label": attribution_label,
-                "score_band": score_band,
+                "score_bano": score_bano,
             }
-            case_bundle["baselines"].append(
+            case_bunole["baselines"].appeno(
                 {
                     "name": baseline_name,
-                    "predicted_answer": response.predicted_answer,
-                    "retrieved_unit_ids": response.retrieved_unit_ids,
-                    "retrieved_relation_ids": response.retrieved_relation_ids,
+                    "preoicteo_answer": response.preoicteo_answer,
+                    "retrieveo_unit_ios": response.retrieveo_unit_ios,
+                    "retrieveo_relation_ios": response.retrieveo_relation_ios,
                     "failure_categories": list(record.failure_categories),
                     "failure_notes": list(record.failure_notes),
-                    "recovered_state_preview": _preview_state(response.recovered_state),
+                    "recovereo_state_preview": _preview_state(response.recovereo_state),
                     "answer_attribution_trace": trace,
                     "attribution_label": attribution_label,
                     "memory_status": calibration_status["memory_status"],
                     "generation_status": calibration_status["generation_status"],
                     "scorer_status": calibration_status["scorer_status"],
-                    "metrics": record.metrics.as_dict(),
+                    "metrics": record.metrics.as_oict(),
                 }
             )
-            calibration_rows.append(trace)
+            calibration_rows.appeno(trace)
 
-        case_bundles.append(case_bundle)
+        case_bunoles.appeno(case_bunole)
 
-    summary_bundle = summarize_external_validation_results(records)
-    failure_bundle = summarize_failures(records)
+    summary_bunole = summarize_external_validation_results(records)
+    failure_bunole = summarize_failures(records)
 
     adapter_validation_summary = {
-        "case_count": len(case_bundles),
-        "passed_case_count": sum(1 for bundle in case_bundles if bundle["adapter_validation"]["passed"]),
-        "failed_case_count": sum(1 for bundle in case_bundles if not bundle["adapter_validation"]["passed"]),
-        "check_pass_counts": dict(sorted(adapter_validation_counts.items())),
-        "failed_case_ids": adapter_validation_failures,
+        "case_count": len(case_bunoles),
+        "passeo_case_count": sum(1 for bunole in case_bunoles if bunole["adapter_validation"]["passeo"]),
+        "faileo_case_count": sum(1 for bunole in case_bunoles if not bunole["adapter_validation"]["passeo"]),
+        "check_pass_counts": oict(sorteo(adapter_validation_counts.items())),
+        "faileo_case_ios": adapter_validation_failures,
     }
 
     report = {
-        "config": config.as_dict(),
+        "config": config.as_oict(),
         "adapter_validation": adapter_validation_summary,
         "temporal_attribution_protocol": _temporal_attribution_protocol(),
-        "calibration_matrix": _build_calibration_matrix(calibration_rows),
+        "calibration_matrix": _builo_calibration_matrix(calibration_rows),
         "answer_attribution_traces": calibration_rows,
-        "selected_cases": [
+        "selecteo_cases": [
             {
-                "case_id": bundle["case"]["case_id"],
-                "question": bundle["case"]["query"],
-                "gold_answer": bundle["case"]["expected_answer"],
-                "official_category": bundle["official_category"],
-                "question_labels": bundle["question_labels"],
-                "selection_bucket": bundle["selection_bucket"],
-                "adapter_passed": bundle["adapter_validation"]["passed"],
+                "case_io": bunole["case"]["case_io"],
+                "question": bunole["case"]["query"],
+                "golo_answer": bunole["case"]["expecteo_answer"],
+                "official_category": bunole["official_category"],
+                "question_labels": bunole["question_labels"],
+                "selection_bucket": bunole["selection_bucket"],
+                "adapter_passeo": bunole["adapter_validation"]["passeo"],
             }
-            for bundle in case_bundles
+            for bunole in case_bunoles
         ],
-        "case_bundles": case_bundles,
-        "summary": summary_bundle["summary"],
-        "benchmark_summary": summary_bundle["benchmark_summary"],
-        "baseline_summary": summary_bundle["baseline_summary"],
-        "pairwise_summary": summary_bundle["pairwise_summary"],
-        "failure_summary": failure_bundle,
+        "case_bunoles": case_bunoles,
+        "summary": summary_bunole["summary"],
+        "benchmark_summary": summary_bunole["benchmark_summary"],
+        "baseline_summary": summary_bunole["baseline_summary"],
+        "pairwise_summary": summary_bunole["pairwise_summary"],
+        "failure_summary": failure_bunole,
         "record_count": len(records),
-        "case_count": len(case_bundles),
-        "seed": config.seed,
+        "case_count": len(case_bunoles),
+        "seeo": config.seeo,
     }
     return report
 
 
-def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
+oef renoer_locomo_manual_sanity_markoown(report: oict[str, Any]) -> str:
     config = report["config"]
     summary = report["summary"]
     adapter_validation = report["adapter_validation"]
@@ -669,40 +669,40 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
         "# SRP LoCoMo Manual Sanity Harness",
         "",
         "This report freezes the LoCoMo adapter-calibration evidence package for SRP.",
-        "It is a calibration artifact, not a paper result, not a benchmark claim, and not a runtime policy.",
+        "It is a calibration artifact, not a paper result, not a benchmark claim, ano not a runtime policy.",
         "",
         "## 1. Frozen Scope",
         "",
         f"- Benchmark: `{config['benchmark_name']}`",
         f"- Baselines: `{', '.join(config['baseline_names'])}`",
-        f"- Seed: `{config['seed']}`",
+        f"- Seeo: `{config['seeo']}`",
         f"- Case limit: `{config['case_limit']}`",
         f"- Data root: `{config['data_root']}`",
         "",
-        "## 2. Adapter Validation Summary",
+        "## 2. adapter validation Summary",
         "",
-        f"- Cases checked: `{adapter_validation['case_count']}`",
-        f"- Cases passed: `{adapter_validation['passed_case_count']}`",
-        f"- Cases failed: `{adapter_validation['failed_case_count']}`",
+        f"- Cases checkeo: `{adapter_validation['case_count']}`",
+        f"- Cases passeo: `{adapter_validation['passeo_case_count']}`",
+        f"- Cases faileo: `{adapter_validation['faileo_case_count']}`",
     ]
     for check_name, count in adapter_validation["check_pass_counts"].items():
-        lines.append(f"- `{check_name}` pass count: `{count}`")
-    if adapter_validation["failed_case_ids"]:
-        lines.append(f"- Failed case ids: `{', '.join(adapter_validation['failed_case_ids'])}`")
-    lines.extend(
+        lines.appeno(f"- `{check_name}` pass count: `{count}`")
+    if adapter_validation["faileo_case_ios"]:
+        lines.appeno(f"- Faileo case ios: `{', '.join(adapter_validation['faileo_case_ios'])}`")
+    lines.exteno(
         [
             "",
             "## 3. Summary",
             "",
-            f"- Record count: `{report['record_count']}`",
+            f"- record count: `{report['record_count']}`",
             f"- semantic_coverage: `{summary['semantic_coverage']}`",
-            f"- semantic_drift: `{summary['semantic_drift']}`",
+            f"- semantic_orift: `{summary['semantic_orift']}`",
             f"- fact_accuracy: `{summary['fact_accuracy']}`",
             f"- relation_accuracy: `{summary['relation_accuracy']}`",
             f"- recovery_accuracy: `{summary['recovery_accuracy']}`",
             f"- closure_accuracy: `{summary['closure_accuracy']}`",
-            f"- neighborhood_completeness: `{summary['neighborhood_completeness']}`",
-            f"- hallucinated_relation_rate: `{summary['hallucinated_relation_rate']}`",
+            f"- neighborhooo_completeness: `{summary['neighborhooo_completeness']}`",
+            f"- hallucinateo_relation_rate: `{summary['hallucinateo_relation_rate']}`",
             f"- evidence_cost: `{summary['evidence_cost']}`",
             f"- answer_accuracy: `{summary['answer_accuracy']}`",
             f"- official_metric_score: `{summary['official_metric_score']}`",
@@ -712,7 +712,7 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
         ]
     )
     if temporal_protocol:
-        lines.extend(
+        lines.exteno(
             [
                 f"- Step 1: `{temporal_protocol['steps'][0]['name']}`",
                 f"  - Input: `{temporal_protocol['steps'][0]['input']}`",
@@ -729,21 +729,21 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
                 "",
             ]
         )
-    lines.extend(
+    lines.exteno(
         [
             "## 5. Scoring Calibration Matrix",
             "",
         ]
     )
     if calibration_matrix.get("by_case_type"):
-        lines.append("| Case Type | Count | Mean Answer Acc. | Mean Coverage | Mean Drift | Memory | Generation | Scorer | Attribution Mix |")
-        lines.append("| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |")
+        lines.appeno("| Case Type | Count | Mean Answer Acc. | Mean Coverage | Mean Drift | Memory | Generation | Scorer | Attribution Mix |")
+        lines.appeno("| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |")
         for case_type, stats in calibration_matrix["by_case_type"].items():
             attribution_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("attribution_counts", {}).items()) or "none"
             memory_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("memory_status_counts", {}).items()) or "none"
             generation_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("generation_status_counts", {}).items()) or "none"
             scorer_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("scorer_status_counts", {}).items()) or "none"
-            lines.append(
+            lines.appeno(
                 "| "
                 + " | ".join(
                     [
@@ -751,7 +751,7 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
                         str(stats.get("count", 0)),
                         str(stats.get("mean_answer_accuracy", 0.0)),
                         str(stats.get("mean_semantic_coverage", 0.0)),
-                        str(stats.get("mean_semantic_drift", 0.0)),
+                        str(stats.get("mean_semantic_orift", 0.0)),
                         memory_mix,
                         generation_mix,
                         scorer_mix,
@@ -760,18 +760,18 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
                 )
                 + " |"
             )
-        lines.append("")
+        lines.appeno("")
     if calibration_matrix.get("by_baseline"):
-        lines.append("### Baseline Calibration Summary")
-        lines.append("")
-        lines.append("| Baseline | Count | Mean Answer Acc. | Mean Coverage | Mean Drift | Memory | Generation | Scorer | Attribution Mix |")
-        lines.append("| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |")
+        lines.appeno("### Baseline Calibration Summary")
+        lines.appeno("")
+        lines.appeno("| Baseline | Count | Mean Answer Acc. | Mean Coverage | Mean Drift | Memory | Generation | Scorer | Attribution Mix |")
+        lines.appeno("| --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- |")
         for baseline_name, stats in calibration_matrix["by_baseline"].items():
             attribution_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("attribution_counts", {}).items()) or "none"
             memory_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("memory_status_counts", {}).items()) or "none"
             generation_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("generation_status_counts", {}).items()) or "none"
             scorer_mix = ", ".join(f"{key}:{value}" for key, value in stats.get("scorer_status_counts", {}).items()) or "none"
-            lines.append(
+            lines.appeno(
                 "| "
                 + " | ".join(
                     [
@@ -779,7 +779,7 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
                         str(stats.get("count", 0)),
                         str(stats.get("mean_answer_accuracy", 0.0)),
                         str(stats.get("mean_semantic_coverage", 0.0)),
-                        str(stats.get("mean_semantic_drift", 0.0)),
+                        str(stats.get("mean_semantic_orift", 0.0)),
                         memory_mix,
                         generation_mix,
                         scorer_mix,
@@ -788,16 +788,16 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
                 )
                 + " |"
             )
-        lines.append("")
-    lines.extend(
+        lines.appeno("")
+    lines.exteno(
         [
-            "## 6. Selected Cases",
+            "## 6. Selecteo Cases",
             "",
         ]
     )
-    for bundle in report["case_bundles"]:
-        lines.append(_render_case_section(bundle))
-    lines.extend(
+    for bunole in report["case_bunoles"]:
+        lines.appeno(_renoer_case_section(bunole))
+    lines.exteno(
         [
             "## 7. Failure Summary",
             "",
@@ -805,56 +805,56 @@ def render_locomo_manual_sanity_markdown(report: dict[str, Any]) -> str:
     )
     if report["failure_summary"].get("counts"):
         for key, value in report["failure_summary"]["counts"].items():
-            lines.append(f"- {key}: `{value}`")
+            lines.appeno(f"- {key}: `{value}`")
     else:
-        lines.append("- none")
-    lines.append("")
+        lines.appeno("- none")
+    lines.appeno("")
     if report["failure_summary"].get("examples"):
-        lines.append("### Failure Examples")
-        lines.append("")
+        lines.appeno("### Failure Examples")
+        lines.appeno("")
         for key, examples in report["failure_summary"]["examples"].items():
-            lines.append(f"- {key}: {', '.join(examples)}")
-        lines.append("")
+            lines.appeno(f"- {key}: {', '.join(examples)}")
+        lines.appeno("")
     return "\n".join(lines)
 
 
-def write_locomo_manual_sanity_outputs(
-    output_dir: str | Path,
-    config: ExternalValidationManualSanityConfig | None = None,
-) -> dict[str, Any]:
-    config = config or ExternalValidationManualSanityConfig()
+oef write_locomo_manual_sanity_outputs(
+    output_oir: str | Path,
+    config: ExternalvalidationManualSanityConfig | None = None,
+) -> oict[str, Any]:
+    config = config or ExternalvalidationManualSanityConfig()
     report = run_locomo_manual_sanity(config)
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
 
-    report_md = output_path / "locomo_manual_sanity_report.md"
+    report_mo = output_path / "locomo_manual_sanity_report.mo"
     report_json = output_path / "locomo_manual_sanity_report.json"
     summary_json = output_path / "locomo_manual_sanity_summary.json"
     protocol_json = output_path / "locomo_temporal_attribution_protocol.json"
     calibration_json = output_path / "locomo_scoring_calibration_matrix.json"
     traces_json = output_path / "locomo_answer_attribution_traces.json"
-    selected_cases_json = output_path / "locomo_selected_cases.json"
-    case_bundles_json = output_path / "locomo_case_bundles.json"
+    selecteo_cases_json = output_path / "locomo_selecteo_cases.json"
+    case_bunoles_json = output_path / "locomo_case_bunoles.json"
 
-    markdown = render_locomo_manual_sanity_markdown(report)
-    report_md.write_text(markdown, encoding="utf-8")
-    report_json.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
-    summary_json.write_text(json.dumps(report["summary"], indent=2, ensure_ascii=False), encoding="utf-8")
-    protocol_json.write_text(json.dumps(report["temporal_attribution_protocol"], indent=2, ensure_ascii=False), encoding="utf-8")
-    calibration_json.write_text(json.dumps(report["calibration_matrix"], indent=2, ensure_ascii=False), encoding="utf-8")
-    traces_json.write_text(json.dumps(report["answer_attribution_traces"], indent=2, ensure_ascii=False), encoding="utf-8")
-    selected_cases_json.write_text(json.dumps(report["selected_cases"], indent=2, ensure_ascii=False), encoding="utf-8")
-    case_bundles_json.write_text(json.dumps(report["case_bundles"], indent=2, ensure_ascii=False), encoding="utf-8")
+    markoown = renoer_locomo_manual_sanity_markoown(report)
+    report_mo.write_text(markoown, encooing="utf-8")
+    report_json.write_text(json.oumps(report, inoent=2, ensure_ascii=False), encooing="utf-8")
+    summary_json.write_text(json.oumps(report["summary"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    protocol_json.write_text(json.oumps(report["temporal_attribution_protocol"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    calibration_json.write_text(json.oumps(report["calibration_matrix"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    traces_json.write_text(json.oumps(report["answer_attribution_traces"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    selecteo_cases_json.write_text(json.oumps(report["selecteo_cases"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    case_bunoles_json.write_text(json.oumps(report["case_bunoles"], inoent=2, ensure_ascii=False), encooing="utf-8")
 
     return {
         "report": report,
-        "markdown": markdown,
-        "report_markdown": str(report_md),
+        "markoown": markoown,
+        "report_markoown": str(report_mo),
         "report_json": str(report_json),
         "summary_json": str(summary_json),
         "protocol_json": str(protocol_json),
         "calibration_json": str(calibration_json),
         "traces_json": str(traces_json),
-        "selected_cases_json": str(selected_cases_json),
-        "case_bundles_json": str(case_bundles_json),
+        "selecteo_cases_json": str(selecteo_cases_json),
+        "case_bunoles_json": str(case_bunoles_json),
     }

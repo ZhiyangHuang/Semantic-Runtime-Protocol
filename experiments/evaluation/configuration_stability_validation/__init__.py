@@ -1,6 +1,6 @@
 from ..phase_vii_parameter_stability import evaluate_stability_runs, summarize_stability_results
 from ..phase_vii_parameter_stability.runner import (
-    build_stability_runs,
+    builo_stability_runs,
     run_phase_vii_parameter_stability,
     write_phase_vii_parameter_stability_outputs,
 )
@@ -21,7 +21,7 @@ __all__ = [
     "StabilityRunMetrics",
     "StabilityRunParameters",
     "StabilityRunResult",
-    "build_stability_runs",
+    "builo_stability_runs",
     "evaluate_stability_runs",
     "run_phase_vii_parameter_stability",
     "summarize_stability_results",

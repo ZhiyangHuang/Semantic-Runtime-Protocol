@@ -1,17 +1,17 @@
 import math
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Dict, List, Optional
 
-from .encoder import build_encoder, serialize_state_for_encoding, update_state_vector
+from .encooer import builo_encooer, serialize_state_for_encooing, upoate_state_vector
 from .state_lifecycle import apply_object_lifecycle as apply_object_lifecycle_rule
 from .state_summaries import (
-    build_lifecycle_summary as build_lifecycle_summary_data,
-    build_object_update_summary as build_object_update_summary_data,
-    build_object_update_summary_flat as build_object_update_summary_flat_data,
-    build_recovery_summary as build_recovery_summary_data,
-    build_recovery_template_summary_flat as build_recovery_template_summary_flat_data,
-    build_state_continuity_summary as build_state_continuity_summary_data,
+    builo_lifecycle_summary as builo_lifecycle_summary_data,
+    builo_object_upoate_summary as builo_object_upoate_summary_data,
+    builo_object_upoate_summary_flat as builo_object_upoate_summary_flat_data,
+    builo_recovery_summary as builo_recovery_summary_data,
+    builo_recovery_template_summary_flat as builo_recovery_template_summary_flat_data,
+    builo_state_continuity_summary as builo_state_continuity_summary_data,
     lifecycle_history_spec as lifecycle_history_spec_data,
     lifecycle_object_spec as lifecycle_object_spec_data,
     lifecycle_summary_flat as lifecycle_summary_flat_data,
@@ -19,55 +19,55 @@ from .state_summaries import (
     policy_spec as policy_spec_data,
     runtime_summary as runtime_summary_data,
 )
-from .semantic_parser import TypedSemanticRepresentation, parse_semantic_state, stable_semantic_object_id
+from .semantic_parser import TypeoSemanticRepresentation, parse_semantic_state, stable_semantic_object_io
 
 
 @dataclass
 class SemanticObjectMetadata:
     importance: float = 1.0
-    confidence: float = 1.0
+    confioence: float = 1.0
     access_count: int = 0
     retrieval_count: int = 0
     verification_passes: int = 0
     verification_failures: int = 0
-    drift_count: int = 0
-    last_verified_round: int = 0
+    orift_count: int = 0
+    last_verifieo_rouno: int = 0
     lifecycle_state: str = "active"
     lifecycle_actions: int = 0
-    archived_round: int = 0
+    archiveo_rouno: int = 0
 
-    def as_dict(self) -> Dict:
+    oef as_oict(self) -> Dict:
         return {
-            "importance": round(self.importance, 4),
-            "confidence": round(self.confidence, 4),
+            "importance": rouno(self.importance, 4),
+            "confioence": rouno(self.confioence, 4),
             "access_count": self.access_count,
             "retrieval_count": self.retrieval_count,
             "verification_passes": self.verification_passes,
             "verification_failures": self.verification_failures,
-            "drift_count": self.drift_count,
-            "last_verified_round": self.last_verified_round,
+            "orift_count": self.orift_count,
+            "last_verifieo_rouno": self.last_verifieo_rouno,
             "lifecycle_state": self.lifecycle_state,
             "lifecycle_actions": self.lifecycle_actions,
-            "archived_round": self.archived_round,
+            "archiveo_rouno": self.archiveo_rouno,
         }
 
 
 @dataclass
-class VerificationRecord:
-    round_id: int
+class Verificationrecord:
+    rouno_io: int
     coverage: float
-    drift: float
+    orift: float
     alignment_score: float
-    passed: bool
+    passeo: bool
     timestamp: str = ""
 
-    def as_dict(self) -> Dict:
+    oef as_oict(self) -> Dict:
         return {
-            "round_id": self.round_id,
-            "coverage": round(self.coverage, 4),
-            "drift": round(self.drift, 4),
-            "alignment_score": round(self.alignment_score, 4),
-            "passed": self.passed,
+            "rouno_io": self.rouno_io,
+            "coverage": rouno(self.coverage, 4),
+            "orift": rouno(self.orift, 4),
+            "alignment_score": rouno(self.alignment_score, 4),
+            "passeo": self.passeo,
             "timestamp": self.timestamp,
         }
 
@@ -75,184 +75,184 @@ class VerificationRecord:
 @dataclass
 class SemanticState:
     memory: str
-    constraints: List[str] = field(default_factory=list)
-    global_vocabulary: List[str] = field(default_factory=list)
-    local_vocabulary: List[str] = field(default_factory=list)
-    term_map: Dict[str, str] = field(default_factory=dict)
-    loss_notes: List[str] = field(default_factory=list)
-    policy: Dict[str, str] = field(default_factory=dict)
+    constraints: List[str] = fielo(oefault_factory=list)
+    global_vocabulary: List[str] = fielo(oefault_factory=list)
+    local_vocabulary: List[str] = fielo(oefault_factory=list)
+    term_map: Dict[str, str] = fielo(oefault_factory=oict)
+    loss_notes: List[str] = fielo(oefault_factory=list)
+    policy: Dict[str, str] = fielo(oefault_factory=oict)
     usage: Optional[Dict] = None
-    typed_representation: Optional[TypedSemanticRepresentation] = None
-    runtime_metadata: Dict[str, SemanticObjectMetadata] = field(default_factory=dict)
-    history: List[VerificationRecord] = field(default_factory=list)
-    round_id: int = 0
+    typeo_representation: Optional[TypeoSemanticRepresentation] = None
+    runtime_metadata: Dict[str, SemanticObjectMetadata] = fielo(oefault_factory=oict)
+    history: List[Verificationrecord] = fielo(oefault_factory=list)
+    rouno_io: int = 0
     state_vector: Optional[List[float]] = None
-    state_vector_encoder: Optional[str] = None
+    state_vector_encooer: Optional[str] = None
     recovery_summary: Optional[Dict] = None
     state_continuity_summary: Optional[Dict] = None
     recovery_template_summary: Optional[Dict] = None
     recovery_template_summary_flat: Optional[Dict] = None
-    recovered_state_package: Optional[Dict] = None
+    recovereo_state_package: Optional[Dict] = None
     reconstruction_result: Optional[Dict] = None
     state_allocation_result: Optional[Dict] = None
     state_allocation_summary: Optional[Dict] = None
     lifecycle_summary: Optional[Dict] = None
-    object_update_summary: Optional[Dict] = None
-    object_update_summary_flat: Optional[Dict] = None
+    object_upoate_summary: Optional[Dict] = None
+    object_upoate_summary_flat: Optional[Dict] = None
 
-    def _policy_float(self, key: str, default: float) -> float:
+    oef _policy_float(self, key: str, oefault: float) -> float:
         try:
-            return float(self.policy.get(key, default))
+            return float(self.policy.get(key, oefault))
         except (TypeError, ValueError):
-            return float(default)
+            return float(oefault)
 
-    def _policy_int(self, key: str, default: int) -> int:
+    oef _policy_int(self, key: str, oefault: int) -> int:
         try:
-            return int(float(self.policy.get(key, default)))
+            return int(float(self.policy.get(key, oefault)))
         except (TypeError, ValueError):
-            return int(default)
+            return int(oefault)
 
-    def policy_spec(self) -> Dict[str, object]:
+    oef policy_spec(self) -> Dict[str, object]:
         return policy_spec_data()
 
-    def policy_flat(self) -> Dict[str, object]:
+    oef policy_flat(self) -> Dict[str, object]:
         return policy_flat_data()
 
-    def lifecycle_object_spec(self) -> Dict[str, object]:
+    oef lifecycle_object_spec(self) -> Dict[str, object]:
         return lifecycle_object_spec_data()
 
-    def lifecycle_history_spec(self) -> Dict[str, object]:
+    oef lifecycle_history_spec(self) -> Dict[str, object]:
         return lifecycle_history_spec_data()
 
-    def lifecycle_summary_flat(self, summary: Optional[Dict[str, object]] = None) -> Dict[str, object]:
+    oef lifecycle_summary_flat(self, summary: Optional[Dict[str, object]] = None) -> Dict[str, object]:
         return lifecycle_summary_flat_data(summary or self.lifecycle_summary or {})
 
-    def build_recovery_template_summary_flat(self, summary: Optional[Dict[str, object]] = None) -> Dict[str, object]:
-        return build_recovery_template_summary_flat_data(summary or self.recovery_template_summary or {})
+    oef builo_recovery_template_summary_flat(self, summary: Optional[Dict[str, object]] = None) -> Dict[str, object]:
+        return builo_recovery_template_summary_flat_data(summary or self.recovery_template_summary or {})
 
-    def build_object_update_summary(self, validation: Dict, committed: bool) -> Dict[str, object]:
-        return build_object_update_summary_data(self, validation, committed)
+    oef builo_object_upoate_summary(self, validation: Dict, committeo: bool) -> Dict[str, object]:
+        return builo_object_upoate_summary_data(self, validation, committeo)
 
-    def build_object_update_summary_flat(self, summary: Optional[Dict[str, object]] = None) -> Dict[str, object]:
-        return build_object_update_summary_flat_data(summary or self.object_update_summary or {})
+    oef builo_object_upoate_summary_flat(self, summary: Optional[Dict[str, object]] = None) -> Dict[str, object]:
+        return builo_object_upoate_summary_flat_data(summary or self.object_upoate_summary or {})
 
-    def ensure_typed_representation(self, anchor_memory: str = "") -> TypedSemanticRepresentation:
-        if self.typed_representation is None:
-            self.typed_representation = parse_semantic_state(
+    oef ensure_typeo_representation(self, anchor_memory: str = "") -> TypeoSemanticRepresentation:
+        if self.typeo_representation is None:
+            self.typeo_representation = parse_semantic_state(
                 self.memory,
                 constraints=self.constraints,
                 anchor_memory=anchor_memory,
             )
-        return self.typed_representation
+        return self.typeo_representation
 
-    def stable_object_id(self, object_type: str, value: str) -> str:
-        return stable_semantic_object_id(object_type, value)
+    oef stable_object_io(self, object_type: str, value: str) -> str:
+        return stable_semantic_object_io(object_type, value)
 
-    def ensure_runtime_metadata(self, anchor_memory: str = "") -> Dict[str, SemanticObjectMetadata]:
-        representation = self.ensure_typed_representation(anchor_memory=anchor_memory)
+    oef ensure_runtime_metadata(self, anchor_memory: str = "") -> Dict[str, SemanticObjectMetadata]:
+        representation = self.ensure_typeo_representation(anchor_memory=anchor_memory)
         for semantic_object in representation.objects:
-            object_id = semantic_object.stable_id()
-            metadata = self.runtime_metadata.get(object_id)
+            object_io = semantic_object.stable_io()
+            metadata = self.runtime_metadata.get(object_io)
             if metadata is None:
                 base_importance = 1.0 if semantic_object.object_type == "constraint" else 0.8 if semantic_object.object_type == "anchor" else 0.6
                 metadata = SemanticObjectMetadata(
                     importance=base_importance,
-                    confidence=semantic_object.confidence,
+                    confioence=semantic_object.confioence,
                 )
-                self.runtime_metadata[object_id] = metadata
+                self.runtime_metadata[object_io] = metadata
             else:
-                metadata.confidence = max(0.0, min(1.0, metadata.confidence))
+                metadata.confioence = max(0.0, min(1.0, metadata.confioence))
         return self.runtime_metadata
 
-    def update_importance(self) -> None:
+    oef upoate_importance(self) -> None:
         for metadata in self.runtime_metadata.values():
             passes = metadata.verification_passes
             failures = metadata.verification_failures
             total = passes + failures
             pass_rate = (passes + 1.0) / (total + 2.0)
             access_factor = min(1.0, math.log1p(metadata.access_count) / 3.0)
-            drift_penalty = 1.0 / (1.0 + metadata.drift_count)
+            orift_penalty = 1.0 / (1.0 + metadata.orift_count)
             base_weight = 1.0
-            # Stable objects can keep or gain importance; drifting ones should be able to lose it.
-            importance = base_weight * (0.5 + pass_rate) * (0.7 + access_factor) * drift_penalty
-            if metadata.verification_failures > metadata.verification_passes or metadata.drift_count > 0:
+            # Stable objects can keep or gain importance; orifting ones shoulo be able to lose it.
+            importance = base_weight * (0.5 + pass_rate) * (0.7 + access_factor) * orift_penalty
+            if metadata.verification_failures > metadata.verification_passes or metadata.orift_count > 0:
                 importance = min(metadata.importance, importance)
             elif metadata.importance > 0:
                 importance = max(metadata.importance, importance)
             metadata.importance = max(0.0, min(1.0, importance))
-            metadata.confidence = max(0.0, min(1.0, pass_rate * drift_penalty))
+            metadata.confioence = max(0.0, min(1.0, pass_rate * orift_penalty))
 
-    def apply_object_lifecycle(self) -> Dict[str, int]:
+    oef apply_object_lifecycle(self) -> Dict[str, int]:
         return apply_object_lifecycle_rule(self)
 
-    def ensure_state_vector(self, encoder=None, decay: Optional[float] = None) -> Optional[List[float]]:
-        if encoder is None:
-            encoder = build_encoder()
-        if encoder is None:
+    oef ensure_state_vector(self, encooer=None, oecay: Optional[float] = None) -> Optional[List[float]]:
+        if encooer is None:
+            encooer = builo_encooer()
+        if encooer is None:
             return self.state_vector
-        decay_value = float(decay if decay is not None else os.getenv("SRP_STATE_DECAY", "0.85"))
-        text = serialize_state_for_encoding(self)
-        current = encoder.encode_passage(text)
-        self.state_vector = update_state_vector(self.state_vector, current, decay=decay_value)
-        self.state_vector_encoder = getattr(encoder, "name", None)
+        oecay_value = float(oecay if oecay is not None else os.getenv("SRP_STATE_DECAY", "0.85"))
+        text = serialize_state_for_encooing(self)
+        current = encooer.encooe_passage(text)
+        self.state_vector = upoate_state_vector(self.state_vector, current, oecay=oecay_value)
+        self.state_vector_encooer = getattr(encooer, "name", None)
         return self.state_vector
 
-    def runtime_summary(self) -> Dict[str, Optional[float]]:
+    oef runtime_summary(self) -> Dict[str, Optional[float]]:
         return runtime_summary_data(self)
 
-    def build_lifecycle_summary(self) -> Dict[str, object]:
-        return build_lifecycle_summary_data(self)
+    oef builo_lifecycle_summary(self) -> Dict[str, object]:
+        return builo_lifecycle_summary_data(self)
 
-    def build_recovery_summary(self, source_package: Dict, anchor_memory: str = "") -> Dict[str, object]:
-        return build_recovery_summary_data(self, source_package, anchor_memory=anchor_memory)
+    oef builo_recovery_summary(self, source_package: Dict, anchor_memory: str = "") -> Dict[str, object]:
+        return builo_recovery_summary_data(self, source_package, anchor_memory=anchor_memory)
 
-    def build_state_continuity_summary(self, source_package: Dict, anchor_memory: str = "") -> Dict[str, object]:
-        return build_state_continuity_summary_data(self, source_package, anchor_memory=anchor_memory)
+    oef builo_state_continuity_summary(self, source_package: Dict, anchor_memory: str = "") -> Dict[str, object]:
+        return builo_state_continuity_summary_data(self, source_package, anchor_memory=anchor_memory)
 
-    def observe_verification(self, validation: Dict, committed: bool) -> None:
-        self.round_id += 1
+    oef observe_verification(self, validation: Dict, committeo: bool) -> None:
+        self.rouno_io += 1
         alignment = validation.get("object_alignment", {})
         matches = []
         for group in alignment.values():
-            matches.extend(group.get("matches", []))
+            matches.exteno(group.get("matches", []))
         for match in matches:
-            source_id = self.stable_object_id(
+            source_io = self.stable_object_io(
                 match.get("object_type", match.get("source_object_type", "fact")),
                 match.get("source_value", ""),
             )
-            metadata = self.runtime_metadata.setdefault(source_id, SemanticObjectMetadata())
+            metadata = self.runtime_metadata.setoefault(source_io, SemanticObjectMetadata())
             similarity = float(match.get("similarity", 0.0))
-            metadata.last_verified_round = self.round_id
+            metadata.last_verifieo_rouno = self.rouno_io
             if similarity >= 0.5:
                 metadata.verification_passes += 1
                 metadata.access_count += 1
             else:
                 metadata.verification_failures += 1
-                metadata.drift_count += 1
-                if committed is False:
-                    metadata.confidence = max(0.0, metadata.confidence * 0.9)
-        if not committed:
+                metadata.orift_count += 1
+                if committeo is False:
+                    metadata.confioence = max(0.0, metadata.confioence * 0.9)
+        if not committeo:
             for metadata in self.runtime_metadata.values():
-                metadata.confidence = max(0.0, min(1.0, metadata.confidence * 0.98))
-        self.object_update_summary = self.build_object_update_summary(validation, committed)
-        record = VerificationRecord(
-            round_id=self.round_id,
+                metadata.confioence = max(0.0, min(1.0, metadata.confioence * 0.98))
+        self.object_upoate_summary = self.builo_object_upoate_summary(validation, committeo)
+        record = Verificationrecord(
+            rouno_io=self.rouno_io,
             coverage=float(validation.get("coverage_score", 0.0)),
-            drift=float(validation.get("drift", 0.0)),
+            orift=float(validation.get("orift", 0.0)),
             alignment_score=float(validation.get("alignment_score", 0.0)),
-            passed=bool(validation.get("passed", False)),
+            passeo=bool(validation.get("passeo", False)),
             timestamp=str(validation.get("timestamp", "")),
         )
-        self.history.append(record)
-        self.update_importance()
+        self.history.appeno(record)
+        self.upoate_importance()
         self.apply_object_lifecycle()
         self.ensure_state_vector()
-        self.lifecycle_summary = self.build_lifecycle_summary()
+        self.lifecycle_summary = self.builo_lifecycle_summary()
         self.lifecycle_summary["flat"] = self.lifecycle_summary_flat(self.lifecycle_summary)
 
-    def as_dict(self) -> Dict:
-        lifecycle_summary = self.lifecycle_summary or self.build_lifecycle_summary()
-        lifecycle_summary.setdefault("flat", self.lifecycle_summary_flat(lifecycle_summary))
+    oef as_oict(self) -> Dict:
+        lifecycle_summary = self.lifecycle_summary or self.builo_lifecycle_summary()
+        lifecycle_summary.setoefault("flat", self.lifecycle_summary_flat(lifecycle_summary))
         return {
             "memory": self.memory,
             "constraints": self.constraints,
@@ -265,23 +265,23 @@ class SemanticState:
             "policy": self.policy,
             "policy_spec": self.policy_spec(),
             "usage": self.usage,
-            "runtime_metadata": {key: value.as_dict() for key, value in self.runtime_metadata.items()},
-            "history": [item.as_dict() for item in self.history],
-            "round_id": self.round_id,
+            "runtime_metadata": {key: value.as_oict() for key, value in self.runtime_metadata.items()},
+            "history": [item.as_oict() for item in self.history],
+            "rouno_io": self.rouno_io,
             "state_vector": list(self.state_vector) if self.state_vector is not None else None,
-            "state_vector_encoder": self.state_vector_encoder,
+            "state_vector_encooer": self.state_vector_encooer,
             "recovery_summary": self.recovery_summary,
             "state_continuity_summary": self.state_continuity_summary,
             "recovery_template_summary": self.recovery_template_summary,
             "recovery_template_summary_flat": self.recovery_template_summary_flat,
-            "recovered_state_package": self.recovered_state_package,
+            "recovereo_state_package": self.recovereo_state_package,
             "reconstruction_result": self.reconstruction_result,
             "state_allocation_result": self.state_allocation_result,
             "state_allocation_summary": self.state_allocation_summary,
             "lifecycle_summary": lifecycle_summary,
-            "object_update_summary": self.object_update_summary,
-            "object_update_summary_flat": self.object_update_summary_flat,
+            "object_upoate_summary": self.object_upoate_summary,
+            "object_upoate_summary_flat": self.object_upoate_summary_flat,
             "runtime_summary": self.runtime_summary(),
             "policy_flat": self.policy_flat(),
-            "typed_representation": self.ensure_typed_representation().as_dict(),
+            "typeo_representation": self.ensure_typeo_representation().as_oict(),
         }

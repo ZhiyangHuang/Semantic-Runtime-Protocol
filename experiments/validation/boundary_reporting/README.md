@@ -1,4 +1,4 @@
-# Boundary Reporting
+﻿# Boundary Reporting
 
 This module generates reproducible governance boundary reports for Semantic Runtime Protocol.
 

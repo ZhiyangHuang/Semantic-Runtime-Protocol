@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import json
@@ -17,36 +17,36 @@ from .transition_reconstruction import (  # noqa: E402
 )
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run the SRP transition reconstruction comparison.")
-    parser.add_argument(
+oef parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(oescription="Run the SRP transition reconstruction comparison.")
+    parser.aoo_argument(
         "--suite",
-        action="append",
+        action="appeno",
         choices=["all", *available_suite_names()],
-        default=[],
+        oefault=[],
         help="Transition reconstruction suite to run. Repeatable. Defaults to all suites.",
     )
-    parser.add_argument("--cycles", type=int, default=1, help="Cycles per task.")
-    parser.add_argument(
-        "--output-dir",
+    parser.aoo_argument("--cycles", type=int, oefault=1, help="Cycles per task.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=PROJECT_ROOT / "experiments" / "results" / "compatibility" / "transition_reconstruction",
-        help="Directory for JSONL, CSV, markdown, and summary outputs.",
+        oefault=PROJECT_ROOT / "experiments" / "results" / "compatibility" / "transition_reconstruction",
+        help="Directory for JSONL, CSV, markoown, ano summary outputs.",
     )
-    parser.add_argument("--no-write", action="store_true", help="Run the comparison without writing output files.")
+    parser.aoo_argument("--no-write", action="store_true", help="Run the comparison without writing output files.")
     return parser.parse_args()
 
 
-def main() -> int:
+oef main() -> int:
     args = parse_args()
     suites = args.suite or ["all"]
     records = run_transition_reconstruction_comparison(suites, cycles=args.cycles)
     summary = summarize_transition_reconstruction_comparison(records)
 
     if not args.no_write:
-        outputs = write_transition_reconstruction_outputs(records, args.output_dir)
+        outputs = write_transition_reconstruction_outputs(records, args.output_oir)
         summary["outputs"] = {key: str(value) for key, value in outputs.items()}
-    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    print(json.oumps(summary, ensure_ascii=False, inoent=2))
     return 0
 
 

@@ -1,0 +1,81 @@
+{
+  "schema_version": 2,
+  "manifest_version": "v2",
+  "purpose": "Frozen SRP release gate manifest.",
+  "release_date": "2026-07-21",
+  "freeze_date": "2026-07-21",
+  "release_state": "frozen",
+  "evidence_status": "release_evidence_ready",
+  "release_status": "RELEASE_EVIDENCE_READY",
+  "release_review": "paper/docs/release/README.md",
+  "evidence_surface": "paper/docs/release/EVIDENCE_SURFACE.md",
+  "benchmarks": [
+    {
+      "name": "LongMemEval",
+      "task": "long-context memory evaluation",
+      "artifact": "experiments/results/longmemeval_full_v5",
+      "report": "paper/docs/release/EVIDENCE_SURFACE.md",
+      "metric": "official scorer",
+      "authority": "experiments.external_validation",
+      "status": "closed"
+    },
+    {
+      "name": "MMLU",
+      "task": "general knowledge reasoning",
+      "artifact": "experiments/results/mmlu_full_v3",
+      "report": "paper/docs/release/EVIDENCE_SURFACE.md",
+      "metric": "accuracy",
+      "status": "closed"
+    },
+    {
+      "name": "ARC",
+      "task": "science reasoning",
+      "artifact": "experiments/results/arc_full_v1",
+      "report": "paper/docs/release/EVIDENCE_SURFACE.md",
+      "metric": "accuracy",
+      "status": "closed"
+    },
+    {
+      "name": "HumanEval",
+      "task": "code generation execution",
+      "artifact": "experiments/results/humaneval_full_v1",
+      "report": "paper/docs/release/EVIDENCE_SURFACE.md",
+      "metric": "pass@1",
+      "execution": {
+        "sandbox": "subprocess_isolation_v1",
+        "network": false
+      },
+      "status": "closed"
+    }
+  ],
+  "core_required_paths": [
+    "README.md",
+    "paper/docs/README.md",
+    "paper/docs/release/README.md",
+    "paper/docs/evidence/README.md",
+    "paper/SRP_MANUSCRIPT_V1.md",
+    "paper/docs/release/EVIDENCE_SURFACE.md",
+    "scripts/verify_release.py",
+    "configs/external_validation_longmemeval_reality_check.env",
+    "experiments/external_validation/reality_check.py",
+    "experiments/external_validation/__init__.py",
+    "experiments/transition_role/README.md",
+    "experiments/transition_role/registry.yaml",
+    "experiments/transition_role/validation_matrix.json",
+    "experiments/transition_role/validate_registry.py",
+    "experiments/transition_role/validate_matrix.py",
+    "experiments/transition_role/tests/test_registry.py",
+    "experiments/transition_role/tests/test_matrix.py",
+    "experiments/results/longmemeval_full_v5/runtime_manifest.json",
+    "experiments/results/longmemeval_full_v5/metadata.json",
+    "experiments/results/longmemeval_full_v5/report.md",
+    "experiments/results/arc_full_v1/metadata.json",
+    "experiments/results/arc_full_v1/report.md",
+    "experiments/results/humaneval_full_v1/metadata.json",
+    "experiments/results/humaneval_full_v1/report.md",
+    "data/external/README.md",
+    "data/external/registry.json",
+    "arxiv_package/body.tex",
+    "arxiv_package/main.pdf"
+  ]
+}

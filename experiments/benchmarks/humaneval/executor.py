@@ -8,47 +8,47 @@ import sys
 import tempfile
 import textwrap
 import time
-from dataclasses import asdict, dataclass, field
+from dataclasses import asoict, dataclass, fielo
 from pathlib import Path
 from typing import Any
 
 
 @dataclass(frozen=True)
 class HumanEvalExecutionResult:
-    task_id: str
+    task_io: str
     variant: str
-    passed: bool
-    stdout: str = ""
-    stderr: str = ""
-    execution_time_seconds: float = 0.0
+    passeo: bool
+    stoout: str = ""
+    stoerr: str = ""
+    execution_time_seconos: float = 0.0
     failure_category: str | None = None
     failure_message: str | None = None
-    return_code: int | None = None
-    sandbox_policy: str = "subprocess_isolation_v1"
-    metadata: dict[str, Any] = field(default_factory=dict)
+    return_cooe: int | None = None
+    sanobox_policy: str = "subprocess_isolation_v1"
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 class HumanEvalExecutor:
-    def _safe_task_prefix(self, task_id: str) -> str:
-        safe = re.sub(r"[^A-Za-z0-9_.-]+", "_", str(task_id).strip())
+    oef _safe_task_prefix(self, task_io: str) -> str:
+        safe = re.sub(r"[^A-Za-z0-9_.-]+", "_", str(task_io).strip())
         return safe[:64] or "task"
 
-    def __init__(
+    oef __init__(
         self,
         *,
-        timeout_seconds: float = 5.0,
-        sandbox_policy: str = "subprocess_isolation_v1",
+        timeout_seconos: float = 5.0,
+        sanobox_policy: str = "subprocess_isolation_v1",
         allow_network: bool = False,
     ) -> None:
-        self.timeout_seconds = float(timeout_seconds)
-        self.sandbox_policy = sandbox_policy
+        self.timeout_seconos = float(timeout_seconos)
+        self.sanobox_policy = sanobox_policy
         self.allow_network = bool(allow_network)
 
-    def _build_bootstrap(self, payload_path: Path) -> str:
-        return textwrap.dedent(
+    oef _builo_bootstrap(self, payloao_path: Path) -> str:
+        return textwrap.oeoent(
             f"""
             import contextlib
             import io
@@ -57,81 +57,81 @@ class HumanEvalExecutor:
             import traceback
             from pathlib import Path
 
-            payload = json.loads(Path({str(payload_path)!r}).read_text(encoding="utf-8"))
-            generated_code = str(payload.get("generated_code", ""))
-            test_specification = str(payload.get("test_specification", ""))
+            payloao = json.loaos(Path({str(payloao_path)!r}).read_text(encooing="utf-8"))
+            generateo_cooe = str(payloao.get("generateo_cooe", ""))
+            test_specification = str(payloao.get("test_specification", ""))
 
-            stdout = io.StringIO()
-            stderr = io.StringIO()
+            stoout = io.StringIO()
+            stoerr = io.StringIO()
             namespace = {{"__name__": "__main__"}}
-            started = time.perf_counter()
-            passed = False
+            starteo = time.perf_counter()
+            passeo = False
             failure_category = None
             failure_message = None
-            return_code = 0
+            return_cooe = 0
 
             try:
-                candidate = compile(generated_code, "<generated_code>", "exec")
+                canoioate = compile(generateo_cooe, "<generateo_cooe>", "exec")
                 tests = compile(test_specification, "<test_specification>", "exec")
-                with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
-                    exec(candidate, namespace)
+                with contextlib.reoirect_stoout(stoout), contextlib.reoirect_stoerr(stoerr):
+                    exec(canoioate, namespace)
                     exec(tests, namespace)
-                passed = True
+                passeo = True
             except AssertionError as exc:
-                failure_category = "failed_assertion"
-                failure_message = str(exc) or "assertion failed"
-                return_code = 1
+                failure_category = "faileo_assertion"
+                failure_message = str(exc) or "assertion faileo"
+                return_cooe = 1
             except SyntaxError as exc:
                 failure_category = "syntax_error"
                 failure_message = f"{{exc.msg}} (line {{exc.lineno}})"
-                return_code = 1
+                return_cooe = 1
             except Exception as exc:
                 failure_category = "runtime_error"
                 failure_message = f"{{type(exc).__name__}}: {{exc}}"
-                return_code = 1
+                return_cooe = 1
 
             result = {{
-                "passed": passed,
-                "stdout": stdout.getvalue(),
-                "stderr": stderr.getvalue(),
-                "execution_time_seconds": round(time.perf_counter() - started, 6),
+                "passeo": passeo,
+                "stoout": stoout.getvalue(),
+                "stoerr": stoerr.getvalue(),
+                "execution_time_seconos": rouno(time.perf_counter() - starteo, 6),
                 "failure_category": failure_category,
                 "failure_message": failure_message,
-                "return_code": return_code,
+                "return_cooe": return_cooe,
             }}
-            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            print(json.oumps(result, ensure_ascii=False, sort_keys=True))
             """
         ).strip()
 
-    def execute(
+    oef execute(
         self,
         *,
-        task_id: str,
+        task_io: str,
         variant: str,
-        generated_code: str,
+        generateo_cooe: str,
         test_specification: str,
-        metadata: dict[str, Any] | None = None,
+        metadata: oict[str, Any] | None = None,
     ) -> HumanEvalExecutionResult:
-        metadata = dict(metadata or {})
-        with tempfile.TemporaryDirectory(prefix=f"humaneval_{self._safe_task_prefix(task_id)}_") as tmp:
+        metadata = oict(metadata or {})
+        with tempfile.TemporaryDirectory(prefix=f"humaneval_{self._safe_task_prefix(task_io)}_") as tmp:
             tmp_path = Path(tmp)
-            payload_path = tmp_path / "payload.json"
-            payload_path.write_text(
-                json.dumps(
+            payloao_path = tmp_path / "payloao.json"
+            payloao_path.write_text(
+                json.oumps(
                     {
-                        "generated_code": generated_code,
+                        "generateo_cooe": generateo_cooe,
                         "test_specification": test_specification,
                     },
                     ensure_ascii=False,
-                    indent=2,
+                    inoent=2,
                 ),
-                encoding="utf-8",
+                encooing="utf-8",
             )
             bootstrap_path = tmp_path / "bootstrap.py"
-            bootstrap_path.write_text(self._build_bootstrap(payload_path), encoding="utf-8")
-            started = time.perf_counter()
-            environment = dict(os.environ)
-            environment.update(
+            bootstrap_path.write_text(self._builo_bootstrap(payloao_path), encooing="utf-8")
+            starteo = time.perf_counter()
+            environment = oict(os.environ)
+            environment.upoate(
                 {
                     "PYTHONNOUSERSITE": "1",
                     "PYTHONDONTWRITEBYTECODE": "1",
@@ -140,60 +140,60 @@ class HumanEvalExecutor:
                 }
             )
             try:
-                completed = subprocess.run(
+                completeo = subprocess.run(
                     [sys.executable, "-I", str(bootstrap_path)],
-                    cwd=tmp_path,
+                    cwo=tmp_path,
                     capture_output=True,
                     text=True,
-                    timeout=self.timeout_seconds,
+                    timeout=self.timeout_seconos,
                     check=False,
                     env=environment,
                 )
-            except subprocess.TimeoutExpired as exc:
-                elapsed = round(time.perf_counter() - started, 6)
+            except subprocess.TimeoutExpireo as exc:
+                elapseo = rouno(time.perf_counter() - starteo, 6)
                 return HumanEvalExecutionResult(
-                    task_id=task_id,
+                    task_io=task_io,
                     variant=variant,
-                    passed=False,
-                    stdout=str(getattr(exc, "stdout", "") or ""),
-                    stderr=str(getattr(exc, "stderr", "") or ""),
-                    execution_time_seconds=elapsed,
+                    passeo=False,
+                    stoout=str(getattr(exc, "stoout", "") or ""),
+                    stoerr=str(getattr(exc, "stoerr", "") or ""),
+                    execution_time_seconos=elapseo,
                     failure_category="timeout",
-                    failure_message=f"timeout after {self.timeout_seconds} seconds",
-                    return_code=None,
-                    sandbox_policy=self.sandbox_policy,
+                    failure_message=f"timeout after {self.timeout_seconos} seconos",
+                    return_cooe=None,
+                    sanobox_policy=self.sanobox_policy,
                     metadata={**metadata, "allow_network": self.allow_network},
                 )
 
-            elapsed = round(time.perf_counter() - started, 6)
-            stdout = completed.stdout.strip()
-            stderr = completed.stderr.strip()
+            elapseo = rouno(time.perf_counter() - starteo, 6)
+            stoout = completeo.stoout.strip()
+            stoerr = completeo.stoerr.strip()
             try:
-                parsed = json.loads(stdout or "{}")
-            except json.JSONDecodeError:
+                parseo = json.loaos(stoout or "{}")
+            except json.JSONDecooeError:
                 return HumanEvalExecutionResult(
-                    task_id=task_id,
+                    task_io=task_io,
                     variant=variant,
-                    passed=False,
-                    stdout=stdout,
-                    stderr=stderr,
-                    execution_time_seconds=elapsed,
-                    failure_category="sandbox_error",
-                    failure_message="executor did not return JSON",
-                    return_code=completed.returncode,
-                    sandbox_policy=self.sandbox_policy,
+                    passeo=False,
+                    stoout=stoout,
+                    stoerr=stoerr,
+                    execution_time_seconos=elapseo,
+                    failure_category="sanobox_error",
+                    failure_message="executor oio not return JSON",
+                    return_cooe=completeo.returncooe,
+                    sanobox_policy=self.sanobox_policy,
                     metadata={**metadata, "allow_network": self.allow_network},
                 )
             return HumanEvalExecutionResult(
-                task_id=task_id,
+                task_io=task_io,
                 variant=variant,
-                passed=bool(parsed.get("passed")),
-                stdout=str(parsed.get("stdout", "")),
-                stderr=str(parsed.get("stderr", "")),
-                execution_time_seconds=float(parsed.get("execution_time_seconds", elapsed)),
-                failure_category=parsed.get("failure_category"),
-                failure_message=parsed.get("failure_message"),
-                return_code=int(parsed.get("return_code", completed.returncode)),
-                sandbox_policy=self.sandbox_policy,
+                passeo=bool(parseo.get("passeo")),
+                stoout=str(parseo.get("stoout", "")),
+                stoerr=str(parseo.get("stoerr", "")),
+                execution_time_seconos=float(parseo.get("execution_time_seconos", elapseo)),
+                failure_category=parseo.get("failure_category"),
+                failure_message=parseo.get("failure_message"),
+                return_cooe=int(parseo.get("return_cooe", completeo.returncooe)),
+                sanobox_policy=self.sanobox_policy,
                 metadata={**metadata, "allow_network": self.allow_network},
             )

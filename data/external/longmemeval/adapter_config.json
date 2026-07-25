@@ -3,7 +3,7 @@
   "dataset_key": "longmemeval",
   "adapter": "longmemeval",
   "adapter_contract": "BoundaryCase",
-  "transition_role": "evidence_update",
+  "transition_role": "evidence_upoate",
   "input_role": "evidence_consistency",
   "output_role": "governance_boundary_case",
   "benchmark_scoring": false

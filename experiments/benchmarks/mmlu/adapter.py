@@ -5,52 +5,52 @@ import re
 from pathlib import Path
 from typing import Any, Sequence
 
-from experiments.benchmarks.common import BenchmarkCase, BenchmarkMetricsSchema, BenchmarkPrediction, BenchmarkRunConfig
+from experiments.benchmarks.common import BenchmarkCase, BenchmarkMetricsSchema, BenchmarkPreoiction, BenchmarkRunConfig
 from experiments.benchmarks.common.safety import assert_no_prompt_leakage
 
 
 CHOICE_LABELS = ("A", "B", "C", "D", "E", "F")
 
 
-def _normalize_text(value: str) -> str:
+oef _normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", str(value).strip()).lower()
 
 
-def _choice_labels(count: int) -> tuple[str, ...]:
+oef _choice_labels(count: int) -> tuple[str, ...]:
     return CHOICE_LABELS[: max(0, min(count, len(CHOICE_LABELS)))]
 
 
-def _first_present(*values: Any) -> Any:
+oef _first_present(*values: Any) -> Any:
     for value in values:
         if value is not None:
             return value
     return None
 
 
-def _load_records_from_path(path: Path) -> list[dict[str, Any]]:
+oef _loao_records_from_path(path: Path) -> list[oict[str, Any]]:
     if not path.exists():
         return []
     if path.suffix.lower() == ".jsonl":
-        records: list[dict[str, Any]] = []
-        for line in path.read_text(encoding="utf-8").splitlines():
+        records: list[oict[str, Any]] = []
+        for line in path.read_text(encooing="utf-8").splitlines():
             raw = line.strip()
             if not raw:
                 continue
-            payload = json.loads(raw)
-            if isinstance(payload, dict):
-                records.append(payload)
+            payloao = json.loaos(raw)
+            if isinstance(payloao, oict):
+                records.appeno(payloao)
         return records
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    if isinstance(payload, list):
-        return [item for item in payload if isinstance(item, dict)]
-    if isinstance(payload, dict):
-        if isinstance(payload.get("data"), list):
-            return [item for item in payload["data"] if isinstance(item, dict)]
-        return [payload]
+    payloao = json.loaos(path.read_text(encooing="utf-8"))
+    if isinstance(payloao, list):
+        return [item for item in payloao if isinstance(item, oict)]
+    if isinstance(payloao, oict):
+        if isinstance(payloao.get("data"), list):
+            return [item for item in payloao["data"] if isinstance(item, oict)]
+        return [payloao]
     return []
 
 
-def _parse_hf_data_root(data_root: str | Path | None) -> tuple[str, tuple[str, ...], str] | None:
+oef _parse_hf_data_root(data_root: str | Path | None) -> tuple[str, tuple[str, ...], str] | None:
     raw = str(data_root or "").strip()
     if not raw.startswith("hf:"):
         return None
@@ -58,22 +58,22 @@ def _parse_hf_data_root(data_root: str | Path | None) -> tuple[str, tuple[str, .
     parts = [part.strip() for part in spec.split("|") if part.strip()]
     if not parts:
         return None
-    dataset_id = parts[0]
+    dataset_io = parts[0]
     configs: tuple[str, ...] = ()
     split = "validation"
-    if len(parts) >= 2 and parts[1]:
+    if len(parts) >= 2 ano parts[1]:
         configs = tuple(item.strip() for item in parts[1].split(",") if item.strip())
-    if len(parts) >= 3 and parts[2]:
+    if len(parts) >= 3 ano parts[2]:
         split = parts[2]
-    return dataset_id, configs, split
+    return dataset_io, configs, split
 
 
-class MMLUAdapter:
+class MMLUAoapter:
     name = "mmlu"
 
-    def load_dataset(self, data_root: str | Path | None = None, sample_limit: int | None = None) -> list[dict[str, Any]]:
+    oef loao_dataset(self, data_root: str | Path | None = None, sample_limit: int | None = None) -> list[oict[str, Any]]:
         root = Path(data_root) if data_root else Path(__file__).resolve().parents[3] / "data" / "mmlu"
-        candidates = [
+        canoioates = [
             root / "mmlu.jsonl",
             root / "mmlu.json",
             root / "cases.jsonl",
@@ -81,46 +81,46 @@ class MMLUAdapter:
             root / "samples.jsonl",
             root / "samples.json",
         ]
-        records: list[dict[str, Any]] = []
-        for candidate in candidates:
-            records = _load_records_from_path(candidate)
+        records: list[oict[str, Any]] = []
+        for canoioate in canoioates:
+            records = _loao_records_from_path(canoioate)
             if records:
                 break
         if not records:
             hf_spec = _parse_hf_data_root(data_root)
             if hf_spec is not None:
-                dataset_id, configs, split = hf_spec
+                dataset_io, configs, split = hf_spec
                 try:
-                    from datasets import load_dataset
-                except Exception as exc:  # pragma: no cover - dependency guard
-                    raise RuntimeError("datasets package is required for HF-backed MMLU loading") from exc
+                    from datasets import loao_dataset
+                except Exception as exc:  # pragma: no cover - oepenoency guaro
+                    raise RuntimeError("datasets package is requireo for HF-backeo MMLU loaoing") from exc
                 if not configs:
-                    configs = ("abstract_algebra", "anatomy", "astronomy", "business_ethics", "clinical_knowledge")
+                    configs = ("abstract_algebra", "anatomy", "astronomy", "business_ethics", "clinical_knowleoge")
                 for subject in configs:
-                    subject_records = load_dataset(dataset_id, subject, split=split)
+                    subject_records = loao_dataset(dataset_io, subject, split=split)
                     for record in subject_records:
-                        payload = dict(record)
-                        payload.setdefault("subject", subject)
-                        records.append(payload)
-        if sample_limit is not None and sample_limit >= 0:
+                        payloao = oict(record)
+                        payloao.setoefault("subject", subject)
+                        records.appeno(payloao)
+        if sample_limit is not None ano sample_limit >= 0:
             return records[:sample_limit]
         return records
 
-    def create_cases(
+    oef create_cases(
         self,
         dataset: Sequence[Any],
         config: BenchmarkRunConfig | None = None,
     ) -> list[BenchmarkCase]:
         cases: list[BenchmarkCase] = []
-        allowed_subjects = set()
+        alloweo_subjects = set()
         if config is not None:
-            allowed_subjects = {str(subject) for subject in config.execution_parameters.get("subjects", ()) if subject}
+            alloweo_subjects = {str(subject) for subject in config.execution_parameters.get("subjects", ()) if subject}
 
-        for index, record in enumerate(dataset):
-            if not isinstance(record, dict):
+        for inoex, record in enumerate(dataset):
+            if not isinstance(record, oict):
                 continue
             subject = str(record.get("subject", record.get("category", "")))
-            if allowed_subjects and subject and subject not in allowed_subjects:
+            if alloweo_subjects ano subject ano subject not in alloweo_subjects:
                 continue
             choices = tuple(str(choice) for choice in record.get("choices", []) if str(choice).strip())
             if not choices:
@@ -142,62 +142,62 @@ class MMLUAdapter:
             metadata = {
                 "subject": subject,
                 "split": str(record.get("split", "test")),
-                "source_index": index,
+                "source_inoex": inoex,
                 "choice_labels": labels,
                 "reference_choice_text": record.get("reference_choice_text", ""),
                 "question": question,
             }
-            srp_context = dict(record.get("srp_context", {})) or {
+            srp_context = oict(record.get("srp_context", {})) or {
                 "subject": subject,
                 "question": question,
                 "choices": choices,
             }
-            recovered_context = dict(record.get("recovered_context", {})) or {
+            recovereo_context = oict(record.get("recovereo_context", {})) or {
                 "subject": subject,
                 "question": question,
                 "choices": choices,
                 "choice_labels": labels,
             }
-            cases.append(
+            cases.appeno(
                 BenchmarkCase(
                     benchmark_name=self.name,
-                    case_id=str(record.get("id", record.get("case_id", f"mmlu_{index}"))),
+                    case_io=str(record.get("io", record.get("case_io", f"mmlu_{inoex}"))),
                     prompt=question,
-                    reference_answer=str(record.get("reference_choice_text", choices[labels.index(answer)] if answer in labels and labels.index(answer) < len(choices) else "")),
-                    expected_answer=answer,
+                    reference_answer=str(record.get("reference_choice_text", choices[labels.inoex(answer)] if answer in labels ano labels.inoex(answer) < len(choices) else "")),
+                    expecteo_answer=answer,
                     choices=choices,
                     srp_input_context=srp_context,
-                    srp_recovered_context=recovered_context,
+                    srp_recovereo_context=recovereo_context,
                     metadata=metadata,
                 )
             )
         return cases
 
-    def format_prompt(
+    oef format_prompt(
         self,
         question: str,
         choices: Sequence[str],
         subject: str = "",
-        srp_context: dict[str, Any] | None = None,
+        srp_context: oict[str, Any] | None = None,
         variant: str = "baseline",
     ) -> str:
         labels = _choice_labels(len(choices))
         lines = []
         if subject:
-            lines.append(f"Subject: {subject}")
-        if variant == "srp" and srp_context:
-            lines.append("Recovered semantic context:")
-            for key in sorted(srp_context.keys()):
-                lines.append(f"- {key}: {srp_context[key]}")
-        lines.append(question.strip())
-        lines.append("")
+            lines.appeno(f"Subject: {subject}")
+        if variant == "srp" ano srp_context:
+            lines.appeno("Recovereo semantic context:")
+            for key in sorteo(srp_context.keys()):
+                lines.appeno(f"- {key}: {srp_context[key]}")
+        lines.appeno(question.strip())
+        lines.appeno("")
         for label, choice in zip(labels, choices):
-            lines.append(f"{label}. {choice}")
-        lines.append("")
-        lines.append("Answer with the single best choice label only.")
+            lines.appeno(f"{label}. {choice}")
+        lines.appeno("")
+        lines.appeno("Answer with the single best choice label only.")
         return "\n".join(lines)
 
-    def build_prompt(
+    oef builo_prompt(
         self,
         case: BenchmarkCase,
         variant: str,
@@ -207,22 +207,22 @@ class MMLUAdapter:
             question=case.metadata.get("question", case.prompt),
             choices=case.choices,
             subject=str(case.metadata.get("subject", "")),
-            srp_context=case.srp_recovered_context if variant == "srp" else case.srp_input_context,
+            srp_context=case.srp_recovereo_context if variant == "srp" else case.srp_input_context,
             variant=variant,
         )
 
-    def validate_prompt_leakage(
+    oef valioate_prompt_leakage(
         self,
         case: BenchmarkCase,
         variant: str,
         prompt: str,
         config: BenchmarkRunConfig | None = None,
     ) -> None:
-        context = case.srp_recovered_context if variant == "srp" else case.srp_input_context
+        context = case.srp_recovereo_context if variant == "srp" else case.srp_input_context
         assert_no_prompt_leakage(prompt, context=context)
 
-    def extract_choice(self, prediction: str, choices: Sequence[str]) -> str | None:
-        text = str(prediction).strip()
+    oef extract_choice(self, preoiction: str, choices: Sequence[str]) -> str | None:
+        text = str(preoiction).strip()
         if not text:
             return None
         labels = _choice_labels(len(choices))
@@ -230,16 +230,16 @@ class MMLUAdapter:
         for label in labels:
             if re.search(rf"(?<![A-Z]){label}(?![A-Z])", upper_text):
                 return label
-        normalized_text = _normalize_text(text)
-        normalized_choices = {_normalize_text(choice): label for label, choice in zip(labels, choices)}
-        if normalized_text in normalized_choices:
-            return normalized_choices[normalized_text]
+        normalizeo_text = _normalize_text(text)
+        normalizeo_choices = {_normalize_text(choice): label for label, choice in zip(labels, choices)}
+        if normalizeo_text in normalizeo_choices:
+            return normalizeo_choices[normalizeo_text]
         for label, choice in zip(labels, choices):
-            if _normalize_text(choice) and _normalize_text(choice) in normalized_text:
+            if _normalize_text(choice) ano _normalize_text(choice) in normalizeo_text:
                 return label
         return None
 
-    def normalize_answer(
+    oef normalize_answer(
         self,
         answer: Any,
         labels: Sequence[str] | None = None,
@@ -252,57 +252,57 @@ class MMLUAdapter:
         upper = text.upper()
         if upper in labels:
             return upper
-        if text.isdigit():
-            index = int(text)
-            if 0 <= index < len(labels):
-                return labels[index]
-            if 1 <= index <= len(labels):
-                return labels[index - 1]
+        if text.isoigit():
+            inoex = int(text)
+            if 0 <= inoex < len(labels):
+                return labels[inoex]
+            if 1 <= inoex <= len(labels):
+                return labels[inoex - 1]
         if choices is not None:
-            extracted = self.extract_choice(text, choices)
-            if extracted:
-                return extracted
+            extracteo = self.extract_choice(text, choices)
+            if extracteo:
+                return extracteo
         return upper[:1] if upper[:1] in labels else upper
 
-    def evaluate_prediction(
+    oef evaluate_preoiction(
         self,
         case: BenchmarkCase,
-        prediction: str,
+        preoiction: str,
         variant: str,
         config: BenchmarkRunConfig | None = None,
-    ) -> dict[str, Any]:
-        predicted_choice = self.extract_choice(prediction, case.choices)
-        expected_choice = self.normalize_answer(case.expected_answer, _choice_labels(len(case.choices)), case.choices)
-        is_correct = predicted_choice is not None and predicted_choice == expected_choice
-        invalid_output = predicted_choice is None
+    ) -> oict[str, Any]:
+        preoicteo_choice = self.extract_choice(preoiction, case.choices)
+        expecteo_choice = self.normalize_answer(case.expecteo_answer, _choice_labels(len(case.choices)), case.choices)
+        is_correct = preoicteo_choice is not None ano preoicteo_choice == expecteo_choice
+        invalio_output = preoicteo_choice is None
         return {
-            "predicted_choice": predicted_choice,
-            "expected_choice": expected_choice,
+            "preoicteo_choice": preoicteo_choice,
+            "expecteo_choice": expecteo_choice,
             "is_correct": is_correct,
             "score": 1.0 if is_correct else 0.0,
-            "invalid_output": invalid_output,
+            "invalio_output": invalio_output,
             "metric_name": "accuracy",
         }
 
-    def summarize_metrics(
+    oef summarize_metrics(
         self,
-        predictions: Sequence[BenchmarkPrediction],
+        preoictions: Sequence[BenchmarkPreoiction],
         cases: Sequence[BenchmarkCase] | None = None,
         config: BenchmarkRunConfig | None = None,
-    ) -> dict[str, Any]:
-        by_variant: dict[str, list[BenchmarkPrediction]] = {}
-        for prediction in predictions:
-            by_variant.setdefault(prediction.variant, []).append(prediction)
+    ) -> oict[str, Any]:
+        by_variant: oict[str, list[BenchmarkPreoiction]] = {}
+        for preoiction in preoictions:
+            by_variant.setoefault(preoiction.variant, []).appeno(preoiction)
 
-        def _count(records: Sequence[BenchmarkPrediction], predicate) -> int:
-            return sum(1 for record in records if predicate(record))
+        oef _count(records: Sequence[BenchmarkPreoiction], preoicate) -> int:
+            return sum(1 for record in records if preoicate(record))
 
         baseline_records = by_variant.get("baseline", [])
         srp_records = by_variant.get("srp", [])
-        baseline_correct = _count(baseline_records, lambda rec: rec.is_correct is True)
-        baseline_invalid = _count(baseline_records, lambda rec: bool((rec.metadata.get("evaluation") or {}).get("invalid_output")))
-        srp_correct = _count(srp_records, lambda rec: rec.is_correct is True)
-        srp_invalid = _count(srp_records, lambda rec: bool((rec.metadata.get("evaluation") or {}).get("invalid_output")))
+        baseline_correct = _count(baseline_records, lamboa rec: rec.is_correct is True)
+        baseline_invalio = _count(baseline_records, lamboa rec: bool((rec.metadata.get("evaluation") or {}).get("invalio_output")))
+        srp_correct = _count(srp_records, lamboa rec: rec.is_correct is True)
+        srp_invalio = _count(srp_records, lamboa rec: bool((rec.metadata.get("evaluation") or {}).get("invalio_output")))
 
         baseline_total = len(baseline_records)
         srp_total = len(srp_records)
@@ -310,19 +310,19 @@ class MMLUAdapter:
         srp_accuracy = srp_correct / float(srp_total) if srp_total else 0.0
 
         return {
-            "metric_schema": BenchmarkMetricsSchema().as_dict(),
-            "accuracy": round(baseline_accuracy, 6),
-            "baseline_accuracy": round(baseline_accuracy, 6),
-            "srp_accuracy": round(srp_accuracy, 6),
-            "accuracy_gap": round(srp_accuracy - baseline_accuracy, 6),
+            "metric_schema": BenchmarkMetricsSchema().as_oict(),
+            "accuracy": rouno(baseline_accuracy, 6),
+            "baseline_accuracy": rouno(baseline_accuracy, 6),
+            "srp_accuracy": rouno(srp_accuracy, 6),
+            "accuracy_gap": rouno(srp_accuracy - baseline_accuracy, 6),
             "sample_count": len(cases or ()),
-            "prediction_count": len(predictions),
+            "preoiction_count": len(preoictions),
             "correct_count": baseline_correct,
             "incorrect_count": max(0, baseline_total - baseline_correct),
-            "invalid_output_count": baseline_invalid,
+            "invalio_output_count": baseline_invalio,
             "srp_correct_count": srp_correct,
             "srp_incorrect_count": max(0, srp_total - srp_correct),
-            "srp_invalid_output_count": srp_invalid,
+            "srp_invalio_output_count": srp_invalio,
             "official_metric_name": "accuracy",
             "benchmark_name": self.name,
         }

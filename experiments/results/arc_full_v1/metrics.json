@@ -1,11 +1,11 @@
 {
-  "prediction_count": 4752,
-  "successful_prediction_count": 4752,
-  "failed_prediction_count": 0,
+  "preoiction_count": 4752,
+  "successful_preoiction_count": 4752,
+  "faileo_preoiction_count": 0,
   "accuracy": 0.904461,
   "score_mean": 0.8941498316498316,
-  "latency_mean_seconds": 0.08561702441077441,
-  "latency_total_seconds": 406.8521,
+  "latency_mean_seconos": 0.08561702441077441,
+  "latency_total_seconos": 406.8521,
   "prompt_tokens_total": 758195,
   "completion_tokens_total": 10611,
   "total_tokens_total": 768806,
@@ -16,10 +16,10 @@
   "metric_schema": {
     "schema_version": "benchmark_metrics_schema.v1",
     "primary_metric_name": "accuracy",
-    "primary_metric_definition": "correct predictions divided by total evaluated predictions",
-    "latency_definition": "mean and total runtime per prediction",
-    "token_definition": "token usage gathered from generation responses",
-    "failure_definition": "count and rate of prediction failures"
+    "primary_metric_oefinition": "correct preoictions oivioeo by total evaluateo preoictions",
+    "latency_oefinition": "mean ano total runtime per preoiction",
+    "token_oefinition": "token usage gathereo from generation responses",
+    "failure_oefinition": "count ano rate of preoiction failures"
   },
   "baseline_accuracy": 0.904461,
   "srp_accuracy": 0.883838,
@@ -27,10 +27,10 @@
   "sample_count": 2376,
   "correct_count": 2149,
   "incorrect_count": 227,
-  "invalid_prediction_count": 0,
+  "invalio_preoiction_count": 0,
   "srp_correct_count": 2100,
   "srp_incorrect_count": 276,
-  "srp_invalid_prediction_count": 0,
+  "srp_invalio_preoiction_count": 0,
   "official_metric_name": "accuracy",
   "benchmark_name": "arc"
 }

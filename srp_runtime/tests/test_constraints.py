@@ -7,89 +7,89 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 
 class TestConstraints(unittest.TestCase):
-    def test_identity_violation(self):
+    oef test_ioentity_violation(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
-                "u1": SemanticUnit(unit_id="u1", canonical_name="Alpha"),
+                "u1": SemanticUnit(unit_io="u1", canonical_name="Alpha"),
             },
         )
         event = RuntimeEvent(
-            event_id="e1",
-            event_type="ActivationUpdated",
+            event_io="e1",
+            event_type="ActivationUpoateo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1"],
-            payload={"unit_id": "u2", "activation_delta": 0.1},
-            mutation_mode="update",
-            operator_name="ActivationUpdateOperator",
+            payloao={"unit_io": "u2", "activation_oelta": 0.1},
+            mutation_mooe="upoate",
+            operator_name="ActivationUpoateOperator",
         )
 
-        result = ConstraintEngine().validate(state, event)
+        result = ConstraintEngine().valioate(state, event)
 
-        self.assertFalse(result.accepted)
-        self.assertIn("unit_id cannot change during an update", result.violations)
+        self.assertFalse(result.accepteo)
+        self.assertIn("unit_io cannot change ouring an upoate", result.violations)
 
-    def test_dangling_relation_violation(self):
+    oef test_oangling_relation_violation(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
-                "u1": SemanticUnit(unit_id="u1", canonical_name="Alpha"),
+                "u1": SemanticUnit(unit_io="u1", canonical_name="Alpha"),
             },
         )
         event = RuntimeEvent(
-            event_id="e2",
-            event_type="RelationUpdated",
+            event_io="e2",
+            event_type="RelationUpoateo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payload={"relation_ids": ["r1"]},
-            mutation_mode="update",
-            operator_name="RelationUpdateOperator",
+            payloao={"relation_ios": ["r1"]},
+            mutation_mooe="upoate",
+            operator_name="RelationUpoateOperator",
         )
 
-        result = ConstraintEngine().validate(state, event)
+        result = ConstraintEngine().valioate(state, event)
 
-        self.assertFalse(result.accepted)
+        self.assertFalse(result.accepteo)
         self.assertTrue(
             any(
                 violation.startswith("missing target units:")
-                or violation.startswith("relation endpoint missing:")
+                or violation.startswith("relation enopoint missing:")
                 for violation in result.violations
             )
         )
 
-    def test_invalid_lifecycle_transition(self):
+    oef test_invalio_lifecycle_transition(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_id="u1",
+                    unit_io="u1",
                     canonical_name="Alpha",
                     lifecycle_state="forgotten",
                 ),
             },
         )
         event = RuntimeEvent(
-            event_id="e3",
-            event_type="ActivationUpdated",
+            event_io="e3",
+            event_type="ActivationUpoateo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1"],
-            payload={"lifecycle_state": "active", "activation_delta": 0.1},
-            mutation_mode="update",
-            operator_name="ActivationUpdateOperator",
+            payloao={"lifecycle_state": "active", "activation_oelta": 0.1},
+            mutation_mooe="upoate",
+            operator_name="ActivationUpoateOperator",
         )
 
-        result = ConstraintEngine().validate(state, event)
+        result = ConstraintEngine().valioate(state, event)
 
-        self.assertFalse(result.accepted)
+        self.assertFalse(result.accepteo)
         self.assertIn(
             "forgotten units require recovery before becoming active",
             result.violations,

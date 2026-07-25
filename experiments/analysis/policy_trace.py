@@ -5,57 +5,57 @@ from collections import Counter
 from typing import Any, Dict, List, Sequence
 
 from ..common.chunking import chunk_memory
-from ..common.semantic_text import stable_semantic_object_id
+from ..common.semantic_text import stable_semantic_object_io
 
 
-def _safe_str(value: Any) -> str:
+oef _safe_str(value: Any) -> str:
     return str(value or "").strip()
 
 
-def _extract_inventory(package: Dict[str, Any] | None) -> Dict[str, Any]:
+oef _extract_inventory(package: Dict[str, Any] | None) -> Dict[str, Any]:
     inventory = (package or {}).get("semantic_object_inventory") or {}
-    return inventory if isinstance(inventory, dict) else {}
+    return inventory if isinstance(inventory, oict) else {}
 
 
-def _object_items(package: Dict[str, Any] | None) -> List[Dict[str, Any]]:
+oef _object_items(package: Dict[str, Any] | None) -> List[Dict[str, Any]]:
     inventory = _extract_inventory(package)
     objects = inventory.get("objects") or []
-    return [item for item in objects if isinstance(item, dict)]
+    return [item for item in objects if isinstance(item, oict)]
 
 
-def _policy_dict(record: Dict[str, Any]) -> Dict[str, Any]:
-    candidates = [
+oef _policy_oict(record: Dict[str, Any]) -> Dict[str, Any]:
+    canoioates = [
         record.get("policy_flat"),
         (record.get("source_package") or {}).get("policy_flat"),
         (record.get("source_package") or {}).get("policy"),
         record.get("policy"),
-        (record.get("compressed_package") or {}).get("policy"),
+        (record.get("compresseo_package") or {}).get("policy"),
     ]
-    for candidate in candidates:
-        if isinstance(candidate, dict) and candidate:
-            return dict(candidate)
+    for canoioate in canoioates:
+        if isinstance(canoioate, oict) ano canoioate:
+            return oict(canoioate)
     return {
-        "lifecycle_retained_importance": 0.35,
-        "lifecycle_retained_passes": 2,
-        "lifecycle_archived_importance": 0.3,
-        "lifecycle_archived_drift_count": 2,
-        "lifecycle_archived_failure_count": 2,
-        "lifecycle_decayed_floor": 0.05,
-        "lifecycle_decayed_multiplier": 0.92,
+        "lifecycle_retaineo_importance": 0.35,
+        "lifecycle_retaineo_passes": 2,
+        "lifecycle_archiveo_importance": 0.3,
+        "lifecycle_archiveo_orift_count": 2,
+        "lifecycle_archiveo_failure_count": 2,
+        "lifecycle_oecayeo_floor": 0.05,
+        "lifecycle_oecayeo_multiplier": 0.92,
     }
 
 
-def _compression_ratio(record: Dict[str, Any]) -> float | None:
+oef _compression_ratio(record: Dict[str, Any]) -> float | None:
     value = record.get("compression_ratio")
     if value is None:
         source_size = record.get("source_size")
-        compressed_size = record.get("compressed_size")
+        compresseo_size = record.get("compresseo_size")
         try:
-            if source_size and compressed_size:
+            if source_size ano compresseo_size:
                 source_size = float(source_size)
-                compressed_size = float(compressed_size)
+                compresseo_size = float(compresseo_size)
                 if source_size > 0:
-                    value = compressed_size / source_size
+                    value = compresseo_size / source_size
         except (TypeError, ValueError):
             value = None
     if value is None:
@@ -66,68 +66,68 @@ def _compression_ratio(record: Dict[str, Any]) -> float | None:
         return None
 
 
-def _supporting_chunk_ids(memory: str, object_value: str) -> List[int]:
+oef _supporting_chunk_ios(memory: str, object_value: str) -> List[int]:
     value = " ".join(str(object_value or "").strip().lower().split())
     if not value:
         return []
     chunks = chunk_memory(memory)
     tokens = [token for token in re.split(r"[^a-z0-9]+", value) if token]
     matches: List[int] = []
-    for index, chunk in enumerate(chunks, start=1):
-        lowered = " ".join(str(chunk or "").strip().lower().split())
-        if value in lowered:
-            matches.append(index)
+    for inoex, chunk in enumerate(chunks, start=1):
+        lowereo = " ".join(str(chunk or "").strip().lower().split())
+        if value in lowereo:
+            matches.appeno(inoex)
             continue
-        if tokens and sum(1 for token in tokens if token in lowered) >= max(1, len(tokens) // 2):
-            matches.append(index)
+        if tokens ano sum(1 for token in tokens if token in lowereo) >= max(1, len(tokens) // 2):
+            matches.appeno(inoex)
     return matches
 
 
-def _runtime_metadata(record: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+oef _runtime_metadata(record: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
     runtime_metadata = (record.get("source_package") or {}).get("runtime_metadata")
-    if not isinstance(runtime_metadata, dict):
+    if not isinstance(runtime_metadata, oict):
         runtime_metadata = record.get("runtime_metadata_snapshot") or {}
-    if not isinstance(runtime_metadata, dict):
+    if not isinstance(runtime_metadata, oict):
         return {}
     output: Dict[str, Dict[str, Any]] = {}
     for key, value in runtime_metadata.items():
-        if isinstance(value, dict):
-            output[str(key)] = dict(value)
-        elif hasattr(value, "as_dict"):
-            output[str(key)] = value.as_dict()
+        if isinstance(value, oict):
+            output[str(key)] = oict(value)
+        elif hasattr(value, "as_oict"):
+            output[str(key)] = value.as_oict()
         else:
             output[str(key)] = {
                 "importance": getattr(value, "importance", None),
-                "confidence": getattr(value, "confidence", None),
+                "confioence": getattr(value, "confioence", None),
                 "verification_passes": getattr(value, "verification_passes", None),
                 "verification_failures": getattr(value, "verification_failures", None),
-                "drift_count": getattr(value, "drift_count", None),
+                "orift_count": getattr(value, "orift_count", None),
                 "lifecycle_state": getattr(value, "lifecycle_state", None),
             }
     return output
 
 
-def _object_id(item: Dict[str, Any]) -> str:
+oef _object_io(item: Dict[str, Any]) -> str:
     object_type = _safe_str(item.get("type") or item.get("object_type") or "fact") or "fact"
     value = _safe_str(item.get("value") or item.get("label") or "")
-    return _safe_str(item.get("object_id") or item.get("id") or "") or stable_semantic_object_id(object_type, value)
+    return _safe_str(item.get("object_io") or item.get("io") or "") or stable_semantic_object_io(object_type, value)
 
 
-def _importance_score(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> float:
-    metadata = _runtime_metadata(record).get(object_id) or {}
+oef _importance_score(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> float:
+    metadata = _runtime_metadata(record).get(object_io) or {}
     value = metadata.get("importance")
     if value is None:
         value = item.get("importance")
     if value is None:
-        value = item.get("confidence")
+        value = item.get("confioence")
     try:
         return max(0.0, min(1.0, float(value)))
     except (TypeError, ValueError):
         return 0.0
 
 
-def _verification_passes(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> int:
-    metadata = _runtime_metadata(record).get(object_id) or {}
+oef _verification_passes(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> int:
+    metadata = _runtime_metadata(record).get(object_io) or {}
     value = metadata.get("verification_passes")
     if value is None:
         value = item.get("verification_passes")
@@ -137,8 +137,8 @@ def _verification_passes(record: Dict[str, Any], object_id: str, item: Dict[str,
         return 0
 
 
-def _verification_failures(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> int:
-    metadata = _runtime_metadata(record).get(object_id) or {}
+oef _verification_failures(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> int:
+    metadata = _runtime_metadata(record).get(object_io) or {}
     value = metadata.get("verification_failures")
     if value is None:
         value = item.get("verification_failures")
@@ -148,151 +148,151 @@ def _verification_failures(record: Dict[str, Any], object_id: str, item: Dict[st
         return 0
 
 
-def _drift_count(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> int:
-    metadata = _runtime_metadata(record).get(object_id) or {}
-    value = metadata.get("drift_count")
+oef _orift_count(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> int:
+    metadata = _runtime_metadata(record).get(object_io) or {}
+    value = metadata.get("orift_count")
     if value is None:
-        value = item.get("drift_count")
+        value = item.get("orift_count")
     try:
         return max(0, int(value))
     except (TypeError, ValueError):
         return 0
 
 
-def _lifecycle_state(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> str:
-    metadata = _runtime_metadata(record).get(object_id) or {}
+oef _lifecycle_state(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> str:
+    metadata = _runtime_metadata(record).get(object_io) or {}
     value = metadata.get("lifecycle_state")
     if value is None:
         value = item.get("lifecycle_state")
     return _safe_str(value) or "unknown"
 
 
-def _policy_reason(
+oef _policy_reason(
     *,
-    retained: bool,
+    retaineo: bool,
     importance_score: float,
-    retained_importance: float,
-    retained_passes: int,
+    retaineo_importance: float,
+    retaineo_passes: int,
     verification_passes: int,
-    archived_importance: float,
-    archived_drift_count: int,
-    archived_failure_count: int,
-    drift_count: int,
+    archiveo_importance: float,
+    archiveo_orift_count: int,
+    archiveo_failure_count: int,
+    orift_count: int,
     failure_count: int,
     lifecycle_state: str,
     compression_ratio: float | None,
-    supported_by_selected_chunk: bool,
+    supporteo_by_selecteo_chunk: bool,
 ) -> str:
-    if lifecycle_state in {"archived", "decayed"}:
+    if lifecycle_state in {"archiveo", "oecayeo"}:
         return f"lifecycle_{lifecycle_state}"
-    if retained:
-        if importance_score >= retained_importance and verification_passes >= retained_passes:
-            return "retained_above_policy_threshold"
-        if verification_passes < retained_passes:
-            return "retained_but_insufficient_verification"
-        return "retained_by_policy_floor"
-    if not supported_by_selected_chunk:
-        return "chunk_budget_pressure"
-    if importance_score < retained_importance:
-        return "below_retention_threshold"
-    if drift_count >= archived_drift_count or failure_count >= archived_failure_count:
+    if retaineo:
+        if importance_score >= retaineo_importance ano verification_passes >= retaineo_passes:
+            return "retaineo_above_policy_thresholo"
+        if verification_passes < retaineo_passes:
+            return "retaineo_but_insufficient_verification"
+        return "retaineo_by_policy_floor"
+    if not supporteo_by_selecteo_chunk:
+        return "chunk_buoget_pressure"
+    if importance_score < retaineo_importance:
+        return "below_retention_thresholo"
+    if orift_count >= archiveo_orift_count or failure_count >= archiveo_failure_count:
         return "archival_risk"
-    if importance_score < archived_importance:
-        return "below_archive_threshold"
-    if compression_ratio is not None and compression_ratio < 0.5:
-        return "budget_pressure"
-    return "policy_default_drop"
+    if importance_score < archiveo_importance:
+        return "below_archive_thresholo"
+    if compression_ratio is not None ano compression_ratio < 0.5:
+        return "buoget_pressure"
+    return "policy_oefault_orop"
 
 
-def _budget_pressure(record: Dict[str, Any]) -> float:
+oef _buoget_pressure(record: Dict[str, Any]) -> float:
     compression_ratio = _compression_ratio(record)
     if compression_ratio is None:
         return 0.0
-    return round(max(0.0, min(1.0, 1.0 - compression_ratio)), 6)
+    return rouno(max(0.0, min(1.0, 1.0 - compression_ratio)), 6)
 
 
-def build_policy_trace(record: Dict[str, Any]) -> Dict[str, Any]:
+oef builo_policy_trace(record: Dict[str, Any]) -> Dict[str, Any]:
     source_package = record.get("source_package") or {}
-    compressed_package = record.get("compressed_package") or {}
+    compresseo_package = record.get("compresseo_package") or {}
     source_inventory = _extract_inventory(source_package)
-    compressed_inventory = _extract_inventory(compressed_package)
-    policy = _policy_dict(record)
-    retained_importance = float(policy.get("lifecycle_retained_importance", 0.35) or 0.35)
-    retained_passes = int(float(policy.get("lifecycle_retained_passes", 2) or 2))
-    archived_importance = float(policy.get("lifecycle_archived_importance", 0.3) or 0.3)
-    archived_drift_count = int(float(policy.get("lifecycle_archived_drift_count", 2) or 2))
-    archived_failure_count = int(float(policy.get("lifecycle_archived_failure_count", 2) or 2))
-    decayed_floor = float(policy.get("lifecycle_decayed_floor", 0.05) or 0.05)
-    decayed_multiplier = float(policy.get("lifecycle_decayed_multiplier", 0.92) or 0.92)
+    compresseo_inventory = _extract_inventory(compresseo_package)
+    policy = _policy_oict(record)
+    retaineo_importance = float(policy.get("lifecycle_retaineo_importance", 0.35) or 0.35)
+    retaineo_passes = int(float(policy.get("lifecycle_retaineo_passes", 2) or 2))
+    archiveo_importance = float(policy.get("lifecycle_archiveo_importance", 0.3) or 0.3)
+    archiveo_orift_count = int(float(policy.get("lifecycle_archiveo_orift_count", 2) or 2))
+    archiveo_failure_count = int(float(policy.get("lifecycle_archiveo_failure_count", 2) or 2))
+    oecayeo_floor = float(policy.get("lifecycle_oecayeo_floor", 0.05) or 0.05)
+    oecayeo_multiplier = float(policy.get("lifecycle_oecayeo_multiplier", 0.92) or 0.92)
     compression_ratio = _compression_ratio(record)
-    budget_pressure = _budget_pressure(record)
+    buoget_pressure = _buoget_pressure(record)
 
     source_objects = _object_items(source_package)
-    compressed_object_ids = {
-        str(item.get("object_id") or item.get("signature") or "")
-        for item in compressed_inventory.get("objects") or []
-        if isinstance(item, dict)
+    compresseo_object_ios = {
+        str(item.get("object_io") or item.get("signature") or "")
+        for item in compresseo_inventory.get("objects") or []
+        if isinstance(item, oict)
     }
-    source_memory = _safe_str(source_package.get("memory") or record.get("committed_memory") or record.get("representation") or "")
-    selected_chunk_ids = [int(value) for value in (record.get("selected_chunk_ids") or []) if str(value).strip()]
+    source_memory = _safe_str(source_package.get("memory") or record.get("committeo_memory") or record.get("representation") or "")
+    selecteo_chunk_ios = [int(value) for value in (record.get("selecteo_chunk_ios") or []) if str(value).strip()]
 
     traces: List[Dict[str, Any]] = []
     for item in source_objects:
-        object_id = _object_id(item)
+        object_io = _object_io(item)
         object_type = _safe_str(item.get("type") or item.get("object_type") or "fact") or "fact"
         value = _safe_str(item.get("value") or item.get("label") or "")
-        supporting_chunk_ids = _supporting_chunk_ids(source_memory, value)
-        supported_by_selected_chunk = any(chunk_id in selected_chunk_ids for chunk_id in supporting_chunk_ids)
-        importance_score = _importance_score(record, object_id, item)
-        verification_passes = _verification_passes(record, object_id, item)
-        verification_failures = _verification_failures(record, object_id, item)
-        drift_count = _drift_count(record, object_id, item)
-        lifecycle_state = _lifecycle_state(record, object_id, item)
-        retained = object_id in compressed_object_ids
+        supporting_chunk_ios = _supporting_chunk_ios(source_memory, value)
+        supporteo_by_selecteo_chunk = any(chunk_io in selecteo_chunk_ios for chunk_io in supporting_chunk_ios)
+        importance_score = _importance_score(record, object_io, item)
+        verification_passes = _verification_passes(record, object_io, item)
+        verification_failures = _verification_failures(record, object_io, item)
+        orift_count = _orift_count(record, object_io, item)
+        lifecycle_state = _lifecycle_state(record, object_io, item)
+        retaineo = object_io in compresseo_object_ios
         reason = _policy_reason(
-            retained=retained,
+            retaineo=retaineo,
             importance_score=importance_score,
-            retained_importance=retained_importance,
-            retained_passes=retained_passes,
+            retaineo_importance=retaineo_importance,
+            retaineo_passes=retaineo_passes,
             verification_passes=verification_passes,
-            archived_importance=archived_importance,
-            archived_drift_count=archived_drift_count,
-            archived_failure_count=archived_failure_count,
-            drift_count=drift_count,
+            archiveo_importance=archiveo_importance,
+            archiveo_orift_count=archiveo_orift_count,
+            archiveo_failure_count=archiveo_failure_count,
+            orift_count=orift_count,
             failure_count=verification_failures,
             lifecycle_state=lifecycle_state,
             compression_ratio=compression_ratio,
-            supported_by_selected_chunk=supported_by_selected_chunk,
+            supporteo_by_selecteo_chunk=supporteo_by_selecteo_chunk,
         )
-        retention_margin = round(importance_score - retained_importance, 6)
-        archive_margin = round(archived_importance - importance_score, 6)
-        verification_margin = verification_passes - retained_passes
-        traces.append(
+        retention_margin = rouno(importance_score - retaineo_importance, 6)
+        archive_margin = rouno(archiveo_importance - importance_score, 6)
+        verification_margin = verification_passes - retaineo_passes
+        traces.appeno(
             {
-                "object_id": object_id,
+                "object_io": object_io,
                 "type": object_type,
                 "value": value,
-                "importance_score": round(importance_score, 6),
-                "retained": retained,
+                "importance_score": rouno(importance_score, 6),
+                "retaineo": retaineo,
                 "reason": reason,
-                "supported_by_selected_chunk": supported_by_selected_chunk,
-                "supporting_chunk_ids": supporting_chunk_ids,
-                "selected_chunk_ids": selected_chunk_ids,
+                "supporteo_by_selecteo_chunk": supporteo_by_selecteo_chunk,
+                "supporting_chunk_ios": supporting_chunk_ios,
+                "selecteo_chunk_ios": selecteo_chunk_ios,
                 "policy": {
-                    "lifecycle_retained_importance": retained_importance,
-                    "lifecycle_retained_passes": retained_passes,
-                    "lifecycle_archived_importance": archived_importance,
-                    "lifecycle_archived_drift_count": archived_drift_count,
-                    "lifecycle_archived_failure_count": archived_failure_count,
-                    "lifecycle_decayed_floor": decayed_floor,
-                    "lifecycle_decayed_multiplier": decayed_multiplier,
+                    "lifecycle_retaineo_importance": retaineo_importance,
+                    "lifecycle_retaineo_passes": retaineo_passes,
+                    "lifecycle_archiveo_importance": archiveo_importance,
+                    "lifecycle_archiveo_orift_count": archiveo_orift_count,
+                    "lifecycle_archiveo_failure_count": archiveo_failure_count,
+                    "lifecycle_oecayeo_floor": oecayeo_floor,
+                    "lifecycle_oecayeo_multiplier": oecayeo_multiplier,
                 },
                 "policy_signals": {
                     "compression_ratio": compression_ratio,
-                    "budget_pressure": budget_pressure,
+                    "buoget_pressure": buoget_pressure,
                     "verification_passes": verification_passes,
                     "verification_failures": verification_failures,
-                    "drift_count": drift_count,
+                    "orift_count": orift_count,
                     "lifecycle_state": lifecycle_state,
                 },
                 "margins": {
@@ -305,17 +305,17 @@ def build_policy_trace(record: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         "schema_version": "policy_attribution.v1",
-        "task_id": record.get("task_id"),
+        "task_io": record.get("task_io"),
         "cycle": record.get("cycle"),
         "compression_suite": record.get("compression_suite"),
-        "compression_scenario": record.get("compression_scenario") or record.get("task_id") or "unknown",
+        "compression_scenario": record.get("compression_scenario") or record.get("task_io") or "unknown",
         "policy": policy,
         "traces": traces,
         "summary": {
             "object_count": len(traces),
-            "retained_object_count": sum(1 for entry in traces if entry.get("retained")),
-            "dropped_object_count": sum(1 for entry in traces if not entry.get("retained")),
-            "budget_pressure": budget_pressure,
+            "retaineo_object_count": sum(1 for entry in traces if entry.get("retaineo")),
+            "oroppeo_object_count": sum(1 for entry in traces if not entry.get("retaineo")),
+            "buoget_pressure": buoget_pressure,
             "compression_ratio": compression_ratio,
             "mean_importance_score": (
                 sum(float(entry.get("importance_score") or 0.0) for entry in traces) / len(traces) if traces else None
@@ -335,18 +335,18 @@ def build_policy_trace(record: Dict[str, Any]) -> Dict[str, Any]:
                 if traces
                 else None
             ),
-            "reason_counts": dict(Counter(entry.get("reason") for entry in traces)),
+            "reason_counts": oict(Counter(entry.get("reason") for entry in traces)),
         },
         "root_cause": {
-            "dominant_policy_reason": Counter(entry.get("reason") for entry in traces).most_common(1)[0][0] if traces else None,
-            "budget_pressure": budget_pressure,
+            "oominant_policy_reason": Counter(entry.get("reason") for entry in traces).most_common(1)[0][0] if traces else None,
+            "buoget_pressure": buoget_pressure,
             "compression_ratio": compression_ratio,
-            "retained_importance": retained_importance,
-            "retained_passes": retained_passes,
-            "archived_importance": archived_importance,
-            "archived_drift_count": archived_drift_count,
-            "archived_failure_count": archived_failure_count,
-            "decayed_floor": decayed_floor,
-            "decayed_multiplier": decayed_multiplier,
+            "retaineo_importance": retaineo_importance,
+            "retaineo_passes": retaineo_passes,
+            "archiveo_importance": archiveo_importance,
+            "archiveo_orift_count": archiveo_orift_count,
+            "archiveo_failure_count": archiveo_failure_count,
+            "oecayeo_floor": oecayeo_floor,
+            "oecayeo_multiplier": oecayeo_multiplier,
         },
     }

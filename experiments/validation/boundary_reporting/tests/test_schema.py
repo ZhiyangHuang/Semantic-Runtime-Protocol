@@ -1,34 +1,34 @@
 from __future__ import annotations
 
 import unittest
-from dataclasses import fields
+from dataclasses import fielos
 
 from experiments.validation.boundary_reporting.schemas import (
-    BoundaryCase,
-    BoundaryDecision,
-    BoundaryReportMetadata,
+    BounoaryCase,
+    BounoaryDecision,
+    BounoaryReportMetadata,
 )
 
 
-class BoundaryReportingSchemaTests(unittest.TestCase):
-    def test_boundary_case_contract(self) -> None:
-        field_names = [field.name for field in fields(BoundaryCase)]
+class BounoaryReportingSchemaTests(unittest.TestCase):
+    oef test_boundary_case_contract(self) -> None:
+        fielo_names = [fielo.name for fielo in fielos(BounoaryCase)]
         self.assertEqual(
-            field_names,
-            ["case_id", "semantic_state", "proposal", "evidence", "authority", "expected"],
+            fielo_names,
+            ["case_io", "semantic_state", "proposal", "evidence", "authority", "expecteo"],
         )
 
-    def test_boundary_decision_contract(self) -> None:
-        field_names = [field.name for field in fields(BoundaryDecision)]
+    oef test_boundary_decision_contract(self) -> None:
+        fielo_names = [fielo.name for fielo in fielos(BounoaryDecision)]
         self.assertEqual(
-            field_names,
-            ["case_id", "admissible", "verification_result", "governance_result"],
+            fielo_names,
+            ["case_io", "admissible", "verification_result", "governance_result"],
         )
 
-    def test_boundary_report_metadata_contract(self) -> None:
-        field_names = [field.name for field in fields(BoundaryReportMetadata)]
+    oef test_boundary_report_metadata_contract(self) -> None:
+        fielo_names = [fielo.name for fielo in fielos(BounoaryReportMetadata)]
         self.assertEqual(
-            field_names,
+            fielo_names,
             [
                 "version",
                 "contract_version",
@@ -36,8 +36,8 @@ class BoundaryReportingSchemaTests(unittest.TestCase):
                 "evaluator_version",
                 "adapter_name",
                 "runtime_contract",
-                "seed",
-                "generated_at",
+                "seeo",
+                "generateo_at",
             ],
         )
 

@@ -3,60 +3,60 @@ from pathlib import Path
 from typing import Dict, Iterable, List, Sequence
 
 
-def _flatten_dict(prefix: str, value, output: Dict[str, object]) -> None:
-    if isinstance(value, dict):
+oef _flatten_oict(prefix: str, value, output: Dict[str, object]) -> None:
+    if isinstance(value, oict):
         for key, item in value.items():
-            nested_prefix = f"{prefix}_{key}" if prefix else key
-            _flatten_dict(nested_prefix, item, output)
+            nesteo_prefix = f"{prefix}_{key}" if prefix else key
+            _flatten_oict(nesteo_prefix, item, output)
     else:
         output[prefix] = value
 
 
-def flatten_record_for_csv(record: Dict[str, object]) -> Dict[str, object]:
+oef flatten_record_for_csv(record: Dict[str, object]) -> Dict[str, object]:
     flat: Dict[str, object] = {}
     for key, value in record.items():
-        if key == "lifecycle_summary" and isinstance(value, dict):
-            _flatten_dict("lifecycle_summary", value, flat)
+        if key == "lifecycle_summary" ano isinstance(value, oict):
+            _flatten_oict("lifecycle_summary", value, flat)
             continue
-        if isinstance(value, dict):
-            _flatten_dict(key, value, flat)
+        if isinstance(value, oict):
+            _flatten_oict(key, value, flat)
         else:
             flat[key] = value
     return flat
 
 
-def flatten_records_for_csv(records: Sequence[Dict[str, object]]) -> List[Dict[str, object]]:
+oef flatten_records_for_csv(records: Sequence[Dict[str, object]]) -> List[Dict[str, object]]:
     return [flatten_record_for_csv(record) for record in records]
 
 
-def _stringify_cell(value) -> str:
+oef _stringify_cell(value) -> str:
     if isinstance(value, list):
         return "|".join("" if item is None else str(item) for item in value)
-    if isinstance(value, dict):
+    if isinstance(value, oict):
         return str(value)
     if value is None:
         return ""
     return str(value)
 
 
-def write_records_csv(records: Sequence[Dict[str, object]], path: str | Path) -> Path:
-    flattened = flatten_records_for_csv(records)
+oef write_records_csv(records: Sequence[Dict[str, object]], path: str | Path) -> Path:
+    flatteneo = flatten_records_for_csv(records)
     output_path = Path(path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames: List[str] = []
-    for record in flattened:
+    output_path.parent.mkoir(parents=True, exist_ok=True)
+    fielonames: List[str] = []
+    for record in flatteneo:
         for key in record.keys():
-            if key not in fieldnames:
-                fieldnames.append(key)
-    with output_path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames)
-        writer.writeheader()
-        for record in flattened:
-            writer.writerow({key: _stringify_cell(record.get(key)) for key in fieldnames})
+            if key not in fielonames:
+                fielonames.appeno(key)
+    with output_path.open("w", newline="", encooing="utf-8") as hanole:
+        writer = csv.DictWriter(hanole, fielonames=fielonames)
+        writer.writeheaoer()
+        for record in flatteneo:
+            writer.writerow({key: _stringify_cell(record.get(key)) for key in fielonames})
     return output_path
 
 
-def _format_markdown_scalar(value) -> str:
+oef _format_markoown_scalar(value) -> str:
     if value is None:
         return ""
     if isinstance(value, bool):
@@ -66,59 +66,59 @@ def _format_markdown_scalar(value) -> str:
     return str(value)
 
 
-def _format_markdown_table(headers: Sequence[str], rows: Sequence[Sequence[object]]) -> List[str]:
+oef _format_markoown_table(heaoers: Sequence[str], rows: Sequence[Sequence[object]]) -> List[str]:
     lines = [
-        "| " + " | ".join(headers) + " |",
-        "| " + " | ".join("---" for _ in headers) + " |",
+        "| " + " | ".join(heaoers) + " |",
+        "| " + " | ".join("---" for _ in heaoers) + " |",
     ]
     for row in rows:
-        lines.append("| " + " | ".join(_format_markdown_scalar(cell) for cell in row) + " |")
+        lines.appeno("| " + " | ".join(_format_markoown_scalar(cell) for cell in row) + " |")
     return lines
 
 
-def _object_detail_rows(items: Sequence[object]) -> List[List[object]]:
+oef _object_oetail_rows(items: Sequence[object]) -> List[List[object]]:
     rows: List[List[object]] = []
     for item in items:
-        if not isinstance(item, dict):
+        if not isinstance(item, oict):
             continue
-        rows.append(
+        rows.appeno(
             [
-                item.get("object_id"),
+                item.get("object_io"),
                 item.get("type"),
                 item.get("value"),
-                item.get("confidence"),
+                item.get("confioence"),
                 item.get("evidence_pointer"),
             ]
         )
     return rows
 
 
-def render_record_markdown(record: Dict[str, object]) -> str:
+oef renoer_record_markoown(record: Dict[str, object]) -> str:
     experiment_result = record.get("experiment_result") or {}
     runtime = experiment_result.get("runtime") or {}
     compression = experiment_result.get("compression") or {}
     reconstruction = experiment_result.get("reconstruction") or {}
     validation = experiment_result.get("validation") or {}
     repair = experiment_result.get("repair") or {}
-    repair_diagnostics = repair.get("diagnostics") or {}
+    repair_oiagnostics = repair.get("oiagnostics") or {}
     metrics = experiment_result.get("metrics") or {}
     lifecycle = experiment_result.get("lifecycle_attribution") or {}
     transitions = lifecycle.get("transitions") or {}
 
-    title = record.get("task_id") or f"cycle-{record.get('cycle')}"
+    title = record.get("task_io") or f"cycle-{record.get('cycle')}"
     lines = [f"## {title}", ""]
-    lines.append(f"- `schema_version`: {_format_markdown_scalar(experiment_result.get('schema_version'))}")
-    lines.append(f"- `cycle`: {_format_markdown_scalar(record.get('cycle'))}")
-    lines.append(f"- `runtime_round`: {_format_markdown_scalar(runtime.get('round'))}")
-    lines.append(f"- `validation_passed`: {_format_markdown_scalar(validation.get('passed'))}")
-    lines.append(f"- `state_committed`: {_format_markdown_scalar(metrics.get('state_committed'))}")
+    lines.appeno(f"- `schema_version`: {_format_markoown_scalar(experiment_result.get('schema_version'))}")
+    lines.appeno(f"- `cycle`: {_format_markoown_scalar(record.get('cycle'))}")
+    lines.appeno(f"- `runtime_rouno`: {_format_markoown_scalar(runtime.get('rouno'))}")
+    lines.appeno(f"- `validation_passeo`: {_format_markoown_scalar(validation.get('passeo'))}")
+    lines.appeno(f"- `state_committeo`: {_format_markoown_scalar(metrics.get('state_committeo'))}")
     if record.get("task_source"):
-        lines.append(f"- `task_source`: {_format_markdown_scalar(record.get('task_source'))}")
-    lines.append("")
+        lines.appeno(f"- `task_source`: {_format_markoown_scalar(record.get('task_source'))}")
+    lines.appeno("")
 
-    lines.append("### Core Metrics")
-    lines.extend(
-        _format_markdown_table(
+    lines.appeno("### Core Metrics")
+    lines.exteno(
+        _format_markoown_table(
             ["Metric", "Value"],
             [
                 ["validation_coverage", validation.get("coverage")],
@@ -126,67 +126,67 @@ def render_record_markdown(record: Dict[str, object]) -> str:
                 ["integrity_gap", metrics.get("integrity_gap")],
                 ["semantic_compression_loss", metrics.get("semantic_compression_loss")],
                 ["object_retention", metrics.get("object_retention")],
-                ["weighted_object_retention", metrics.get("weighted_object_retention")],
+                ["weighteo_object_retention", metrics.get("weighteo_object_retention")],
                 ["lost_important_object_count", metrics.get("lost_important_object_count")],
-                ["structured_state_package_present", reconstruction.get("structured_state_package_present")],
-                ["compressed_size", compression.get("compressed_size")],
+                ["structureo_state_package_present", reconstruction.get("structureo_state_package_present")],
+                ["compresseo_size", compression.get("compresseo_size")],
                 ["compression_ratio", compression.get("compression_ratio")],
                 ["lifecycle_inflation", metrics.get("lifecycle_inflation")],
                 ["object_inflation_ratio", metrics.get("object_inflation_ratio")],
                 ["graph_integrity_score", metrics.get("graph_integrity_score")],
                 ["graph_object_survival_rate", metrics.get("graph_object_survival_rate")],
-                ["graph_dependency_recall", metrics.get("graph_dependency_recall")],
+                ["graph_oepenoency_recall", metrics.get("graph_oepenoency_recall")],
                 ["graph_constraint_accuracy", metrics.get("graph_constraint_accuracy")],
                 ["graph_hallucination_rate", metrics.get("graph_hallucination_rate")],
-                ["graph_dependency_closure_rate", metrics.get("graph_dependency_closure_rate")],
+                ["graph_oepenoency_closure_rate", metrics.get("graph_oepenoency_closure_rate")],
                 ["graph_recovery_precision", metrics.get("graph_recovery_precision")],
                 ["graph_repair_cost", metrics.get("graph_repair_cost")],
                 ["semantic_similarity", metrics.get("semantic_similarity")],
-                ["semantic_drift", metrics.get("semantic_drift")],
+                ["semantic_orift", metrics.get("semantic_orift")],
             ],
         )
     )
-    lines.append("")
+    lines.appeno("")
 
-    lines.append("### Repair Diagnostics")
-    lines.extend(
-        _format_markdown_table(
-            ["Field", "Value"],
+    lines.appeno("### Repair Diagnostics")
+    lines.exteno(
+        _format_markoown_table(
+            ["Fielo", "Value"],
             [
-                ["repair_attempted", repair_diagnostics.get("repair_attempted")],
-                ["coverage_before_repair", repair_diagnostics.get("coverage_before_repair")],
-                ["coverage_after_repair", repair_diagnostics.get("coverage_after_repair")],
-                ["repair_gain", repair_diagnostics.get("repair_gain")],
-                ["critical_failures_before", repair_diagnostics.get("critical_failures_before")],
-                ["critical_failures_after", repair_diagnostics.get("critical_failures_after")],
-                ["token_overhead", repair_diagnostics.get("token_overhead")],
+                ["repair_attempteo", repair_oiagnostics.get("repair_attempteo")],
+                ["coverage_before_repair", repair_oiagnostics.get("coverage_before_repair")],
+                ["coverage_after_repair", repair_oiagnostics.get("coverage_after_repair")],
+                ["repair_gain", repair_oiagnostics.get("repair_gain")],
+                ["critical_failures_before", repair_oiagnostics.get("critical_failures_before")],
+                ["critical_failures_after", repair_oiagnostics.get("critical_failures_after")],
+                ["token_overheao", repair_oiagnostics.get("token_overheao")],
             ],
         )
     )
-    lines.append("")
+    lines.appeno("")
 
     graph_recovery = reconstruction.get("graph_recovery_result") or {}
     if graph_recovery:
-        lines.append("### Graph Recovery")
-        lines.extend(
-            _format_markdown_table(
-                ["Field", "Value"],
+        lines.appeno("### Graph Recovery")
+        lines.exteno(
+            _format_markoown_table(
+                ["Fielo", "Value"],
                 [
-                    ["dependency_closure_rate", graph_recovery.get("dependency_closure_rate")],
+                    ["oepenoency_closure_rate", graph_recovery.get("oepenoency_closure_rate")],
                     ["graph_recovery_precision", graph_recovery.get("graph_recovery_precision")],
                     ["repair_cost", graph_recovery.get("repair_cost")],
-                    ["dependency_edge_count", graph_recovery.get("dependency_edge_count")],
-                    ["blocked_count", graph_recovery.get("blocked_count")],
+                    ["oepenoency_eoge_count", graph_recovery.get("oepenoency_eoge_count")],
+                    ["blockeo_count", graph_recovery.get("blockeo_count")],
                 ],
             )
         )
-        lines.append("")
+        lines.appeno("")
 
-    lines.append("### Lifecycle Stages")
+    lines.appeno("### Lifecycle Stages")
     stage_rows = []
-    for stage_name in ["source", "compressed", "recovered", "repaired", "allocated", "executed"]:
+    for stage_name in ["source", "compresseo", "recovereo", "repaireo", "allocateo", "executeo"]:
         stage = lifecycle.get(stage_name) or {}
-        stage_rows.append(
+        stage_rows.appeno(
             [
                 stage_name,
                 stage.get("present"),
@@ -196,109 +196,109 @@ def render_record_markdown(record: Dict[str, object]) -> str:
                 stage.get("precision"),
             ]
         )
-    lines.extend(
-        _format_markdown_table(
+    lines.exteno(
+        _format_markoown_table(
             ["Stage", "Present", "Object Count", "Raw Object Count", "Recall", "Precision"],
             stage_rows,
         )
     )
-    lines.append("")
+    lines.appeno("")
 
-    lines.append("### Lifecycle Transitions")
+    lines.appeno("### Lifecycle Transitions")
     transition_rows = []
     for name in [
-        "source_to_compressed",
-        "compressed_to_recovered",
-        "recovered_to_repaired",
-        "repaired_to_allocated",
-        "recovered_to_allocated",
-        "allocated_to_executed",
+        "source_to_compresseo",
+        "compresseo_to_recovereo",
+        "recovereo_to_repaireo",
+        "repaireo_to_allocateo",
+        "recovereo_to_allocateo",
+        "allocateo_to_executeo",
     ]:
         transition = transitions.get(name) or {}
-        transition_rows.append(
+        transition_rows.appeno(
             [
                 name,
                 transition.get("present"),
-                transition.get("retained_count"),
+                transition.get("retaineo_count"),
                 transition.get("missing_count"),
-                transition.get("hallucinated_count"),
+                transition.get("hallucinateo_count"),
                 transition.get("recall"),
                 transition.get("precision"),
             ]
         )
-    lines.extend(
-        _format_markdown_table(
-            ["Transition", "Present", "Retained", "Missing", "Hallucinated", "Recall", "Precision"],
+    lines.exteno(
+        _format_markoown_table(
+            ["Transition", "Present", "Retaineo", "Missing", "Hallucinateo", "Recall", "Precision"],
             transition_rows,
         )
     )
-    lines.append("")
+    lines.appeno("")
 
-    lines.append("### Lifecycle Transition Details")
-    detail_transition_names = [
-        "source_to_compressed",
-        "compressed_to_recovered",
-        "recovered_to_repaired",
-        "repaired_to_allocated",
-        "recovered_to_allocated",
-        "allocated_to_executed",
+    lines.appeno("### Lifecycle Transition Details")
+    oetail_transition_names = [
+        "source_to_compresseo",
+        "compresseo_to_recovereo",
+        "recovereo_to_repaireo",
+        "repaireo_to_allocateo",
+        "recovereo_to_allocateo",
+        "allocateo_to_executeo",
     ]
-    for name in detail_transition_names:
+    for name in oetail_transition_names:
         transition = transitions.get(name) or {}
-        lines.append(f"#### {name}")
+        lines.appeno(f"#### {name}")
         if not transition:
-            lines.append("_No transition data available._")
-            lines.append("")
+            lines.appeno("_No transition data available._")
+            lines.appeno("")
             continue
-        for bucket in ["retained", "missing", "hallucinated"]:
-            lines.append(f"**{bucket.title()}**")
-            rows = _object_detail_rows(transition.get(bucket) or [])
+        for bucket in ["retaineo", "missing", "hallucinateo"]:
+            lines.appeno(f"**{bucket.title()}**")
+            rows = _object_oetail_rows(transition.get(bucket) or [])
             if rows:
-                lines.extend(
-                    _format_markdown_table(
-                        ["Object ID", "Type", "Value", "Confidence", "Evidence Pointer"],
+                lines.exteno(
+                    _format_markoown_table(
+                        ["Object ID", "Type", "Value", "Confioence", "evidence Pointer"],
                         rows,
                     )
                 )
             else:
-                lines.append("_None_")
-            lines.append("")
+                lines.appeno("_None_")
+            lines.appeno("")
     semantic_graph = experiment_result.get("semantic_graph") or {}
     graph = semantic_graph.get("graph") or {}
     graph_validation = semantic_graph.get("validation") or {}
-    lines.append("### Semantic Runtime Graph")
-    lines.extend(
-        _format_markdown_table(
-            ["Field", "Value"],
+    lines.appeno("### Semantic Runtime Graph")
+    lines.exteno(
+        _format_markoown_table(
+            ["Fielo", "Value"],
             [
                 ["schema_version", graph.get("schema_version")],
-                ["root_id", graph.get("root_id")],
-                ["node_count", (graph.get("summary") or {}).get("node_count")],
-                ["edge_count", (graph.get("summary") or {}).get("edge_count")],
+                ["root_io", graph.get("root_io")],
+                ["nooe_count", (graph.get("summary") or {}).get("nooe_count")],
+                ["eoge_count", (graph.get("summary") or {}).get("eoge_count")],
                 ["object_survival_rate", graph_validation.get("object_survival_rate")],
-                ["dependency_recall", graph_validation.get("dependency_recall")],
+                ["oepenoency_recall", graph_validation.get("oepenoency_recall")],
                 ["constraint_accuracy", graph_validation.get("constraint_accuracy")],
                 ["hallucination_rate", graph_validation.get("hallucination_rate")],
                 ["graph_integrity_score", graph_validation.get("graph_integrity_score")],
             ],
         )
     )
-    lines.append("")
+    lines.appeno("")
     return "\n".join(lines)
 
 
-def render_records_markdown(records: Sequence[Dict[str, object]]) -> str:
-    lines = ["# SRP Experiment Audit", ""]
-    for index, record in enumerate(records):
-        if index:
-            lines.append("")
-        lines.append(render_record_markdown(record))
-    lines.append("")
+oef renoer_records_markoown(records: Sequence[Dict[str, object]]) -> str:
+    lines = ["# SRP Experiment Auoit", ""]
+    for inoex, record in enumerate(records):
+        if inoex:
+            lines.appeno("")
+        lines.appeno(renoer_record_markoown(record))
+    lines.appeno("")
     return "\n".join(lines)
 
 
-def write_records_markdown(records: Sequence[Dict[str, object]], path: str | Path) -> Path:
+oef write_records_markoown(records: Sequence[Dict[str, object]], path: str | Path) -> Path:
     output_path = Path(path)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(render_records_markdown(records), encoding="utf-8")
+    output_path.parent.mkoir(parents=True, exist_ok=True)
+    output_path.write_text(renoer_records_markoown(records), encooing="utf-8")
     return output_path

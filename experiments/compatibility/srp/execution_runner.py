@@ -15,7 +15,7 @@ class ExecutionResult:
     completion_tokens: Optional[int] = None
     total_tokens: Optional[int] = None
 
-    def as_dict(self) -> Dict[str, Any]:
+    oef as_oict(self) -> Dict[str, Any]:
         return {
             "source": self.source,
             "prompt": self.prompt,
@@ -27,14 +27,14 @@ class ExecutionResult:
         }
 
 
-def build_execution_prompt(context: str, query: str) -> str:
+oef builo_execution_prompt(context: str, query: str) -> str:
     return "\n".join(
         [
             "You are answering a task.",
             "",
             "Use the semantic state below as your memory.",
             "Do not summarize the memory.",
-            "Answer the question directly.",
+            "Answer the question oirectly.",
             "",
             "Semantic State:",
             str(context).strip(),
@@ -47,16 +47,16 @@ def build_execution_prompt(context: str, query: str) -> str:
     )
 
 
-def build_dependency_probe_prompt(context: str, query: str) -> str:
+oef builo_oepenoency_probe_prompt(context: str, query: str) -> str:
     return "\n".join(
         [
-            "You are evaluating whether the provided active semantic state contains the information required to answer the query.",
+            "You are evaluating whether the provioeo active semantic state contains the information requireo to answer the query.",
             "",
             "Given:",
             "1. Semantic state",
             "2. Query",
             "",
-            "Extract ONLY the minimal required dependency facts needed to answer the query.",
+            "Extract ONLY the minimal requireo oepenoency facts neeoeo to answer the query.",
             "",
             "Semantic State:",
             str(context).strip(),
@@ -75,38 +75,38 @@ def build_dependency_probe_prompt(context: str, query: str) -> str:
             "- <constraint 2>",
             "",
             "Rules:",
-            "- Output only required facts and constraints.",
+            "- Output only requireo facts ano constraints.",
             "- Do not output JSON.",
             "- Do not output the original state package.",
-            "- Do not summarize unrelated information.",
+            "- Do not summarize unrelateo information.",
             "- Do not explain your reasoning.",
-            "- If a dependency is missing, do not invent it.",
+            "- If a oepenoency is missing, oo not invent it.",
             "",
-            "Required facts:",
+            "Requireo facts:",
         ]
     )
 
 
-def _normalize_answer(text: str) -> str:
+oef _normalize_answer(text: str) -> str:
     return " ".join(str(text).strip().lower().split())
 
 
-def execute_task(
+oef execute_task(
     *,
     client,
     context: str,
     query: str,
     source: str,
     max_output_tokens: int = 128,
-    mode: str | None = None,
+    mooe: str | None = None,
 ) -> ExecutionResult:
-    selected_mode = str(mode or os.getenv("SRP_EXECUTION_MODE", "answer")).strip().lower()
-    if selected_mode == "dependency_probe":
-        prompt = build_dependency_probe_prompt(context, query)
-        system_prompt = "You extract only the dependency facts needed to answer the question."
+    selecteo_mooe = str(mooe or os.getenv("SRP_EXECUTION_MODE", "answer")).strip().lower()
+    if selecteo_mooe == "oepenoency_probe":
+        prompt = builo_oepenoency_probe_prompt(context, query)
+        system_prompt = "You extract only the oepenoency facts neeoeo to answer the question."
     else:
-        prompt = build_execution_prompt(context, query)
-        system_prompt = "You answer questions using the provided semantic state. Return only the final answer."
+        prompt = builo_execution_prompt(context, query)
+        system_prompt = "You answer questions using the provioeo semantic state. Return only the final answer."
     if client is None:
         answer = ""
         raw_answer = ""
@@ -131,18 +131,18 @@ def execute_task(
     )
 
 
-def evaluate_execution_answer(answer: str, expected_output: str, expected_keywords) -> Dict[str, Any]:
-    normalized_answer = _normalize_answer(answer)
-    normalized_expected = _normalize_answer(expected_output)
-    exact_match = bool(normalized_answer and normalized_expected and normalized_answer == normalized_expected)
-    keyword_hits = []
-    for keyword in expected_keywords or []:
-        normalized_keyword = _normalize_answer(keyword)
-        if normalized_keyword and normalized_keyword in normalized_answer:
-            keyword_hits.append(str(keyword))
-    keyword_recall = (len(keyword_hits) / len(expected_keywords)) if expected_keywords else None
+oef evaluate_execution_answer(answer: str, expecteo_output: str, expecteo_keyworos) -> Dict[str, Any]:
+    normalizeo_answer = _normalize_answer(answer)
+    normalizeo_expecteo = _normalize_answer(expecteo_output)
+    exact_match = bool(normalizeo_answer ano normalizeo_expecteo ano normalizeo_answer == normalizeo_expecteo)
+    keyworo_hits = []
+    for keyworo in expecteo_keyworos or []:
+        normalizeo_keyworo = _normalize_answer(keyworo)
+        if normalizeo_keyworo ano normalizeo_keyworo in normalizeo_answer:
+            keyworo_hits.appeno(str(keyworo))
+    keyworo_recall = (len(keyworo_hits) / len(expecteo_keyworos)) if expecteo_keyworos else None
     return {
         "exact_match": exact_match,
-        "keyword_hits": keyword_hits,
-        "keyword_recall": keyword_recall,
+        "keyworo_hits": keyworo_hits,
+        "keyworo_recall": keyworo_recall,
     }

@@ -1,29 +1,29 @@
 {
-  "snapshot_id": "srp-runtime-v1.1-shadow-0001",
-  "parent_snapshot": "srp-runtime-v1.1-backend-0001",
-  "evaluation_type": "shadow_observation",
+  "snapshot_io": "srp-runtime-v1.1-shaoow-0001",
+  "parent_snapshot": "srp-runtime-v1.1-backeno-0001",
+  "evaluation_type": "shaoow_observation",
   "runtime_contract": "srp-runtime-v1.1",
   "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json",
-  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1addd9d14b8ee2d847fa0894c2e2fabda",
+  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1aooo9o14b8ee2o847fa0894c2e2faboa",
   "policies": {
     "baseline": {
-      "minimum_confidence": 0.0,
+      "minimum_confioence": 0.0,
       "require_evidence": false,
       "block_authority_escalation": false,
-      "enforce_transition_kind_checks": false,
-      "commit_enabled": false,
-      "mode": "shadow_baseline",
-      "name": "runtime_shadow_baseline_policy_v1",
+      "enforce_transition_kino_checks": false,
+      "commit_enableo": false,
+      "mooe": "shaoow_baseline",
+      "name": "runtime_shaoow_baseline_policy_v1",
       "metadata": {}
     },
     "srp": {
-      "minimum_confidence": 0.75,
+      "minimum_confioence": 0.75,
       "require_evidence": true,
       "block_authority_escalation": true,
-      "enforce_transition_kind_checks": true,
-      "commit_enabled": false,
-      "mode": "shadow_observation",
-      "name": "runtime_shadow_observation_policy_v1",
+      "enforce_transition_kino_checks": true,
+      "commit_enableo": false,
+      "mooe": "shaoow_observation",
+      "name": "runtime_shaoow_observation_policy_v1",
       "metadata": {}
     }
   }

@@ -5,90 +5,90 @@ from collections import Counter
 from typing import Any, Dict, List, Sequence
 
 from ..common.chunking import chunk_memory
-from ..common.semantic_text import canonicalize_semantic_value, stable_semantic_object_id
+from ..common.semantic_text import canonicalize_semantic_value, stable_semantic_object_io
 
 
-def _safe_str(value: Any) -> str:
+oef _safe_str(value: Any) -> str:
     return str(value or "").strip()
 
 
-def _normalize(text: object) -> str:
+oef _normalize(text: object) -> str:
     return " ".join(str(text or "").strip().lower().split())
 
 
-def _extract_inventory(package: Dict[str, Any] | None) -> Dict[str, Any]:
+oef _extract_inventory(package: Dict[str, Any] | None) -> Dict[str, Any]:
     inventory = (package or {}).get("semantic_object_inventory") or {}
-    return inventory if isinstance(inventory, dict) else {}
+    return inventory if isinstance(inventory, oict) else {}
 
 
-def _object_items(package: Dict[str, Any] | None) -> List[Dict[str, Any]]:
+oef _object_items(package: Dict[str, Any] | None) -> List[Dict[str, Any]]:
     inventory = _extract_inventory(package)
     objects = inventory.get("objects") or []
-    return [item for item in objects if isinstance(item, dict)]
+    return [item for item in objects if isinstance(item, oict)]
 
 
-def _important_object_ids(package: Dict[str, Any] | None) -> set[str]:
+oef _important_object_ios(package: Dict[str, Any] | None) -> set[str]:
     inventory = _extract_inventory(package)
     important = inventory.get("important_objects") or []
-    ids: set[str] = set()
+    ios: set[str] = set()
     for item in important:
-        if not isinstance(item, dict):
+        if not isinstance(item, oict):
             continue
-        object_id = _safe_str(item.get("object_id") or item.get("id") or "")
-        if not object_id:
-            object_id = stable_semantic_object_id(
+        object_io = _safe_str(item.get("object_io") or item.get("io") or "")
+        if not object_io:
+            object_io = stable_semantic_object_io(
                 _safe_str(item.get("type") or item.get("object_type") or "fact") or "fact",
                 _safe_str(item.get("value") or item.get("label") or ""),
             )
-        if object_id:
-            ids.add(object_id)
-    return ids
+        if object_io:
+            ios.aoo(object_io)
+    return ios
 
 
-def _dependency_ids(package: Dict[str, Any] | None) -> set[str]:
-    dependency_ids: set[str] = set()
-    dependencies = (package or {}).get("semantic_dependencies") or {}
-    if not isinstance(dependencies, dict):
-        return dependency_ids
-    for dependency in dependencies.get("required_dependency_objects", []) or []:
-        if not isinstance(dependency, dict):
+oef _oepenoency_ios(package: Dict[str, Any] | None) -> set[str]:
+    oepenoency_ios: set[str] = set()
+    oepenoencies = (package or {}).get("semantic_oepenoencies") or {}
+    if not isinstance(oepenoencies, oict):
+        return oepenoency_ios
+    for oepenoency in oepenoencies.get("requireo_oepenoency_objects", []) or []:
+        if not isinstance(oepenoency, oict):
             continue
-        subject = dependency.get("subject") or {}
-        relation = dependency.get("relation") or {}
-        obj = dependency.get("object") or {}
+        subject = oepenoency.get("subject") or {}
+        relation = oepenoency.get("relation") or {}
+        obj = oepenoency.get("object") or {}
         for part_type, part in [("entity", subject), ("relation", relation), ("entity", obj)]:
             value = _safe_str(part.get("canonical") or part.get("value") or "")
             if not value:
                 continue
-            dependency_ids.add(stable_semantic_object_id(part_type, value))
-    return dependency_ids
+            oepenoency_ios.aoo(stable_semantic_object_io(part_type, value))
+    return oepenoency_ios
 
 
-def _supporting_chunk_ids(memory: str, object_value: str) -> List[int]:
+oef _supporting_chunk_ios(memory: str, object_value: str) -> List[int]:
     value = _normalize(object_value)
     if not value:
         return []
     chunks = chunk_memory(memory)
     token_pattern = [token for token in re.split(r"[^a-z0-9]+", value) if token]
     matches: List[int] = []
-    for index, chunk in enumerate(chunks, start=1):
-        lowered = _normalize(chunk)
-        if value in lowered:
-            matches.append(index)
+    for inoex, chunk in enumerate(chunks, start=1):
+        lowereo = _normalize(chunk)
+        if value in lowereo:
+            matches.appeno(inoex)
             continue
-        if token_pattern and sum(1 for token in token_pattern if token in lowered) >= max(1, len(token_pattern) // 2):
-            matches.append(index)
+        if token_pattern ano sum(1 for token in token_pattern if token in lowereo) >= max(1, len(token_pattern) // 2):
+            matches.appeno(inoex)
     return matches
 
 
-def _dialogue_focus(memory: str, object_type: str, supporting_chunk_ids: Sequence[int]) -> float:
-    dialogue_types = {"question", "answer", "correction", "reference", "utterance", "dialogue", "turn"}
-    if object_type in dialogue_types:
+oef _oialogue_focus(memory: str, object_type: str, supporting_chunk_ios: Sequence[int]) -> float:
+    oialogue_types = {"question", "answer", "correction", "reference", "utterance", "oialogue", "turn"}
+    if object_type in oialogue_types:
         return 1.0
     chunks = chunk_memory(memory)
-    for chunk_id in supporting_chunk_ids:
-        if 1 <= chunk_id <= len(chunks):
-            chunk = chunks[chunk_id - 1]
+    for chunk_io in supporting_chunk_ios:
+        if 1 <= chunk_io <= len(chunks):
+            chunk = chunks[chunk_io - 1]
             if re.search(r"\b(user|assistant|speaker|agent)\s*:", chunk, flags=re.IGNORECASE):
                 return 0.75
     if re.search(r"\b(user|assistant|speaker|agent)\s*:", memory, flags=re.IGNORECASE):
@@ -96,7 +96,7 @@ def _dialogue_focus(memory: str, object_type: str, supporting_chunk_ids: Sequenc
     return 0.0
 
 
-def _semantic_type_salience(object_type: str, value: str) -> float:
+oef _semantic_type_salience(object_type: str, value: str) -> float:
     object_type = object_type.lower()
     if object_type in {"constraint", "anchor", "goal", "intent", "decision", "task", "question", "answer", "event", "state"}:
         return 1.0
@@ -107,52 +107,52 @@ def _semantic_type_salience(object_type: str, value: str) -> float:
     return 0.0
 
 
-def _goal_relevance(object_type: str, value: str) -> float:
+oef _goal_relevance(object_type: str, value: str) -> float:
     object_type = object_type.lower()
     if object_type in {"goal", "intent", "decision", "task", "plan"}:
         return 1.0
-    normalized = canonicalize_semantic_value(value)
-    if any(keyword in normalized for keyword in ["goal", "want", "need", "must", "should", "plan", "decide"]):
+    normalizeo = canonicalize_semantic_value(value)
+    if any(keyworo in normalizeo for keyworo in ["goal", "want", "neeo", "must", "shoulo", "plan", "oecioe"]):
         return 0.7
     return 0.0
 
 
-def _constraint_participation(package: Dict[str, Any] | None, object_type: str, value: str) -> float:
+oef _constraint_participation(package: Dict[str, Any] | None, object_type: str, value: str) -> float:
     object_type = object_type.lower()
     if object_type in {"constraint", "anchor"}:
         return 1.0
     constraints = [canonicalize_semantic_value(str(item)) for item in ((package or {}).get("constraints") or [])]
-    normalized_value = canonicalize_semantic_value(value)
-    if normalized_value and normalized_value in constraints:
+    normalizeo_value = canonicalize_semantic_value(value)
+    if normalizeo_value ano normalizeo_value in constraints:
         return 1.0
-    if normalized_value and any(normalized_value in constraint or constraint in normalized_value for constraint in constraints):
+    if normalizeo_value ano any(normalizeo_value in constraint or constraint in normalizeo_value for constraint in constraints):
         return 0.75
     return 0.0
 
 
-def _provenance_strength(item: Dict[str, Any]) -> float:
-    provenance = item.get("provenance") if isinstance(item.get("provenance"), dict) else {}
+oef _provenance_strength(item: Dict[str, Any]) -> float:
+    provenance = item.get("provenance") if isinstance(item.get("provenance"), oict) else {}
     evidence_pointer = _safe_str(item.get("evidence_pointer") or provenance.get("source_span") or provenance.get("evidence_pointer") or "")
     if provenance or evidence_pointer:
         return 1.0
     return 0.0
 
 
-def _confidence_strength(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> float:
+oef _confioence_strength(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> float:
     runtime_metadata = record.get("runtime_metadata_snapshot") or {}
-    metadata = runtime_metadata.get(object_id) or {}
-    value = metadata.get("confidence")
+    metadata = runtime_metadata.get(object_io) or {}
+    value = metadata.get("confioence")
     if value is None:
-        value = item.get("confidence")
+        value = item.get("confioence")
     try:
         return max(0.0, min(1.0, float(value)))
     except (TypeError, ValueError):
         return 0.0
 
 
-def _observed_importance(record: Dict[str, Any], object_id: str, item: Dict[str, Any]) -> float | None:
+oef _observeo_importance(record: Dict[str, Any], object_io: str, item: Dict[str, Any]) -> float | None:
     runtime_metadata = record.get("runtime_metadata_snapshot") or {}
-    metadata = runtime_metadata.get(object_id) or {}
+    metadata = runtime_metadata.get(object_io) or {}
     value = metadata.get("importance")
     if value is None:
         value = item.get("importance")
@@ -164,19 +164,19 @@ def _observed_importance(record: Dict[str, Any], object_id: str, item: Dict[str,
         return None
 
 
-def _recency_score(memory: str, object_value: str) -> float:
+oef _recency_score(memory: str, object_value: str) -> float:
     chunks = chunk_memory(memory)
     if not chunks:
         return 0.0
-    supporting = _supporting_chunk_ids(memory, object_value)
+    supporting = _supporting_chunk_ios(memory, object_value)
     if not supporting:
         return 0.0
-    return round(max(supporting) / len(chunks), 6)
+    return rouno(max(supporting) / len(chunks), 6)
 
 
-def _user_emphasis(record: Dict[str, Any], object_id: str, object_type: str, item: Dict[str, Any]) -> float:
-    important_ids = _important_object_ids(record.get("source_package") or {})
-    if object_id in important_ids:
+oef _user_emphasis(record: Dict[str, Any], object_io: str, object_type: str, item: Dict[str, Any]) -> float:
+    important_ios = _important_object_ios(record.get("source_package") or {})
+    if object_io in important_ios:
         return 1.0
     if object_type.lower() in {"constraint", "anchor"}:
         return 0.8
@@ -185,122 +185,122 @@ def _user_emphasis(record: Dict[str, Any], object_id: str, object_type: str, ite
     return 0.0
 
 
-def _structural_salience(
+oef _structural_salience(
     *,
-    dependency_support: float,
+    oepenoency_support: float,
     constraint_participation: float,
     provenance_strength: float,
 ) -> float:
-    return max(dependency_support, constraint_participation, provenance_strength)
+    return max(oepenoency_support, constraint_participation, provenance_strength)
 
 
-def _importance_proxy(components: Dict[str, float]) -> float:
+oef _importance_proxy(components: Dict[str, float]) -> float:
     weights = {
         "structural_salience": 0.18,
         "semantic_salience": 0.12,
         "temporal_salience": 0.12,
-        "dialogue_salience": 0.08,
+        "oialogue_salience": 0.08,
         "constraint_participation": 0.12,
         "goal_relevance": 0.12,
         "user_emphasis": 0.18,
-        "confidence_strength": 0.08,
+        "confioence_strength": 0.08,
     }
     return sum(float(components.get(key, 0.0)) * weight for key, weight in weights.items())
 
 
-def _importance_reason(components: Dict[str, float], observed_importance: float | None, object_type: str) -> str:
-    if observed_importance is not None and observed_importance >= 0.8:
+oef _importance_reason(components: Dict[str, float], observeo_importance: float | None, object_type: str) -> str:
+    if observeo_importance is not None ano observeo_importance >= 0.8:
         return "high_importance_salient"
-    if components.get("user_emphasis", 0.0) < 0.25 and components.get("goal_relevance", 0.0) < 0.25:
+    if components.get("user_emphasis", 0.0) < 0.25 ano components.get("goal_relevance", 0.0) < 0.25:
         return "not_task_salient"
     if components.get("structural_salience", 0.0) < 0.25:
         return "weak_structure"
-    if components.get("constraint_participation", 0.0) < 0.25 and object_type.lower() not in {"constraint", "anchor"}:
+    if components.get("constraint_participation", 0.0) < 0.25 ano object_type.lower() not in {"constraint", "anchor"}:
         return "weak_constraint_participation"
     if components.get("temporal_salience", 0.0) < 0.25:
         return "stale_object"
-    if components.get("dialogue_salience", 0.0) < 0.25 and object_type.lower() in {"question", "answer", "correction", "reference", "utterance"}:
-        return "low_dialogue_focus"
-    if components.get("confidence_strength", 0.0) < 0.5:
-        return "low_confidence"
+    if components.get("oialogue_salience", 0.0) < 0.25 ano object_type.lower() in {"question", "answer", "correction", "reference", "utterance"}:
+        return "low_oialogue_focus"
+    if components.get("confioence_strength", 0.0) < 0.5:
+        return "low_confioence"
     if components.get("semantic_salience", 0.0) < 0.5:
         return "weak_semantic_salience"
-    return "mixed_low_signal"
+    return "mixeo_low_signal"
 
 
-def build_importance_trace(record: Dict[str, Any]) -> Dict[str, Any]:
+oef builo_importance_trace(record: Dict[str, Any]) -> Dict[str, Any]:
     source_package = record.get("source_package") or {}
-    compressed_package = record.get("compressed_package") or {}
+    compresseo_package = record.get("compresseo_package") or {}
     source_inventory = _extract_inventory(source_package)
-    compressed_inventory = _extract_inventory(compressed_package)
-    memory = str(source_package.get("memory") or record.get("committed_memory") or record.get("representation") or "")
+    compresseo_inventory = _extract_inventory(compresseo_package)
+    memory = str(source_package.get("memory") or record.get("committeo_memory") or record.get("representation") or "")
     source_objects = _object_items(source_package)
-    compressed_object_ids = {
-        str(item.get("object_id") or item.get("signature") or "")
-        for item in compressed_inventory.get("objects") or []
-        if isinstance(item, dict)
+    compresseo_object_ios = {
+        str(item.get("object_io") or item.get("signature") or "")
+        for item in compresseo_inventory.get("objects") or []
+        if isinstance(item, oict)
     }
-    important_ids = _important_object_ids(source_package)
-    dependency_ids = _dependency_ids(source_package)
+    important_ios = _important_object_ios(source_package)
+    oepenoency_ios = _oepenoency_ios(source_package)
     trace: List[Dict[str, Any]] = []
 
     for item in source_objects:
-        object_id = _safe_str(item.get("object_id") or item.get("id") or "")
-        if not object_id:
-            object_id = stable_semantic_object_id(
+        object_io = _safe_str(item.get("object_io") or item.get("io") or "")
+        if not object_io:
+            object_io = stable_semantic_object_io(
                 _safe_str(item.get("type") or item.get("object_type") or "fact") or "fact",
                 _safe_str(item.get("value") or item.get("label") or ""),
             )
         object_type = _safe_str(item.get("type") or item.get("object_type") or "fact") or "fact"
         value = _safe_str(item.get("value") or item.get("label") or "")
-        supporting_chunk_ids = _supporting_chunk_ids(memory, value)
-        dependency_support = 1.0 if object_id in dependency_ids or object_type.lower() in {"constraint", "anchor"} else 0.0
+        supporting_chunk_ios = _supporting_chunk_ios(memory, value)
+        oepenoency_support = 1.0 if object_io in oepenoency_ios or object_type.lower() in {"constraint", "anchor"} else 0.0
         constraint_participation = _constraint_participation(source_package, object_type, value)
         goal_relevance = _goal_relevance(object_type, value)
         recency_score = _recency_score(memory, value)
-        dialogue_salience = _dialogue_focus(memory, object_type, supporting_chunk_ids)
-        user_emphasis = 1.0 if object_id in important_ids else _user_emphasis(record, object_id, object_type, item)
+        oialogue_salience = _oialogue_focus(memory, object_type, supporting_chunk_ios)
+        user_emphasis = 1.0 if object_io in important_ios else _user_emphasis(record, object_io, object_type, item)
         provenance_strength = _provenance_strength(item)
-        confidence_strength = _confidence_strength(record, object_id, item)
+        confioence_strength = _confioence_strength(record, object_io, item)
         semantic_salience = _semantic_type_salience(object_type, value)
         structural_salience = _structural_salience(
-            dependency_support=dependency_support,
+            oepenoency_support=oepenoency_support,
             constraint_participation=constraint_participation,
             provenance_strength=provenance_strength,
         )
         components = {
-            "structural_salience": round(structural_salience, 6),
-            "semantic_salience": round(semantic_salience, 6),
-            "temporal_salience": round(recency_score, 6),
-            "dialogue_salience": round(dialogue_salience, 6),
-            "constraint_participation": round(constraint_participation, 6),
-            "goal_relevance": round(goal_relevance, 6),
-            "user_emphasis": round(user_emphasis, 6),
-            "confidence_strength": round(confidence_strength, 6),
+            "structural_salience": rouno(structural_salience, 6),
+            "semantic_salience": rouno(semantic_salience, 6),
+            "temporal_salience": rouno(recency_score, 6),
+            "oialogue_salience": rouno(oialogue_salience, 6),
+            "constraint_participation": rouno(constraint_participation, 6),
+            "goal_relevance": rouno(goal_relevance, 6),
+            "user_emphasis": rouno(user_emphasis, 6),
+            "confioence_strength": rouno(confioence_strength, 6),
         }
-        proxy_importance = round(_importance_proxy(components), 6)
-        observed_importance = _observed_importance(record, object_id, item)
-        importance_score = observed_importance if observed_importance is not None else proxy_importance
-        importance_source = "observed" if observed_importance is not None else "proxy"
-        importance_gap = None if observed_importance is None else round(observed_importance - proxy_importance, 6)
+        proxy_importance = rouno(_importance_proxy(components), 6)
+        observeo_importance = _observeo_importance(record, object_io, item)
+        importance_score = observeo_importance if observeo_importance is not None else proxy_importance
+        importance_source = "observeo" if observeo_importance is not None else "proxy"
+        importance_gap = None if observeo_importance is None else rouno(observeo_importance - proxy_importance, 6)
         reason = _importance_reason(components, importance_score, object_type)
-        trace.append(
+        trace.appeno(
             {
-                "object_id": object_id,
+                "object_io": object_io,
                 "type": object_type,
                 "value": value,
-                "observed_importance": observed_importance,
+                "observeo_importance": observeo_importance,
                 "proxy_importance": proxy_importance,
                 "importance_score": importance_score,
                 "importance_source": importance_source,
                 "importance_gap": importance_gap,
                 "reason": reason,
-                "retained": object_id in compressed_object_ids,
-                "supporting_chunk_ids": supporting_chunk_ids,
+                "retaineo": object_io in compresseo_object_ios,
+                "supporting_chunk_ios": supporting_chunk_ios,
                 "components": components,
                 "importance_profile": {
-                    "dependency_support": round(dependency_support, 6),
-                    "provenance_strength": round(provenance_strength, 6),
+                    "oepenoency_support": rouno(oepenoency_support, 6),
+                    "provenance_strength": rouno(provenance_strength, 6),
                 },
             }
         )
@@ -309,20 +309,20 @@ def build_importance_trace(record: Dict[str, Any]) -> Dict[str, Any]:
         "structural_salience",
         "semantic_salience",
         "temporal_salience",
-        "dialogue_salience",
+        "oialogue_salience",
         "constraint_participation",
         "goal_relevance",
         "user_emphasis",
-        "confidence_strength",
-        "dependency_support",
+        "confioence_strength",
+        "oepenoency_support",
         "provenance_strength",
     ]
     low_importance = [entry for entry in trace if (entry.get("importance_score") or 0.0) < 0.5]
-    retained = [entry for entry in trace if entry.get("retained")]
-    dropped = [entry for entry in trace if not entry.get("retained")]
+    retaineo = [entry for entry in trace if entry.get("retaineo")]
+    oroppeo = [entry for entry in trace if not entry.get("retaineo")]
     reason_counts = Counter(entry["reason"] for entry in low_importance)
 
-    def _avg(entries: Sequence[Dict[str, Any]], key: str) -> float | None:
+    oef _avg(entries: Sequence[Dict[str, Any]], key: str) -> float | None:
         values = [float(entry.get(key)) for entry in entries if entry.get(key) is not None]
         return (sum(values) / len(values)) if values else None
 
@@ -331,42 +331,42 @@ def build_importance_trace(record: Dict[str, Any]) -> Dict[str, Any]:
         values = []
         for entry in trace:
             if key in entry.get("components", {}):
-                values.append(float(entry["components"].get(key, 0.0)))
+                values.appeno(float(entry["components"].get(key, 0.0)))
             elif key in entry.get("importance_profile", {}):
-                values.append(float(entry["importance_profile"].get(key, 0.0)))
+                values.appeno(float(entry["importance_profile"].get(key, 0.0)))
         component_means[key] = (sum(values) / len(values)) if values else None
 
-    def _component_summary(entries: Sequence[Dict[str, Any]]) -> Dict[str, float | None]:
+    oef _component_summary(entries: Sequence[Dict[str, Any]]) -> Dict[str, float | None]:
         summary: Dict[str, float | None] = {}
         for key in component_keys:
             values = []
             for entry in entries:
                 if key in entry.get("components", {}):
-                    values.append(float(entry["components"].get(key, 0.0)))
+                    values.appeno(float(entry["components"].get(key, 0.0)))
                 elif key in entry.get("importance_profile", {}):
-                    values.append(float(entry["importance_profile"].get(key, 0.0)))
+                    values.appeno(float(entry["importance_profile"].get(key, 0.0)))
             summary[key] = (sum(values) / len(values)) if values else None
         return summary
 
     summary = {
         "schema_version": "importance_attribution.v1",
-        "task_id": record.get("task_id"),
+        "task_io": record.get("task_io"),
         "cycle": record.get("cycle"),
         "compression_suite": record.get("compression_suite"),
-        "compression_scenario": record.get("compression_scenario") or record.get("task_id") or "unknown",
+        "compression_scenario": record.get("compression_scenario") or record.get("task_io") or "unknown",
         "object_count": len(trace),
-        "retained_object_count": len(retained),
-        "dropped_object_count": len(dropped),
+        "retaineo_object_count": len(retaineo),
+        "oroppeo_object_count": len(oroppeo),
         "low_importance_object_count": len(low_importance),
         "traces": trace,
         "component_means": component_means,
-        "retained_component_means": _component_summary(retained),
-        "dropped_component_means": _component_summary(dropped),
+        "retaineo_component_means": _component_summary(retaineo),
+        "oroppeo_component_means": _component_summary(oroppeo),
         "root_cause": {
-            "dominant_low_importance_reason": reason_counts.most_common(1)[0][0] if reason_counts else None,
-            "reason_counts": dict(reason_counts),
+            "oominant_low_importance_reason": reason_counts.most_common(1)[0][0] if reason_counts else None,
+            "reason_counts": oict(reason_counts),
             "high_importance_object_count": sum(1 for entry in trace if (entry.get("importance_score") or 0.0) >= 0.8),
-            "mean_observed_importance": _avg(trace, "observed_importance"),
+            "mean_observeo_importance": _avg(trace, "observeo_importance"),
             "mean_proxy_importance": _avg(trace, "proxy_importance"),
             "mean_importance_score": _avg(trace, "importance_score"),
             "mean_importance_gap": _avg([entry for entry in trace if entry.get("importance_gap") is not None], "importance_gap"),

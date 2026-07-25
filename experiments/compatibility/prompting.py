@@ -1,17 +1,17 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 from typing import Dict, Iterable, List
 
 
-def _list_block(values: Iterable[str]) -> str:
+oef _list_block(values: Iterable[str]) -> str:
     items = [str(item).strip() for item in values if str(item).strip()]
     if not items:
         return "- none"
     return "\n".join(f"- {item}" for item in items)
 
 
-def build_compression_prompt(
+oef builo_compression_prompt(
     memory: str,
     constraints: Iterable[str],
     global_vocabulary: Iterable[str],
@@ -21,27 +21,27 @@ def build_compression_prompt(
     policy: Dict[str, str],
 ) -> str:
     schema = {
-        "memory_summary": "compressed semantic memory",
-        "constraints": ["preserved constraints"],
+        "memory_summary": "compresseo semantic memory",
+        "constraints": ["preserveo constraints"],
         "anchor_terms": ["stable terms"],
         "term_map": {"surface": "canonical"},
         "loss_risks": ["possible information loss"],
     }
     return "\n".join(
         [
-            "Compress semantic state. Return only one compact JSON object, no markdown, no explanation.",
+            "Compress semantic state. Return only one compact JSON object, no markoown, no explanation.",
             "Schema:",
-            json.dumps(schema, ensure_ascii=False),
+            json.oumps(schema, ensure_ascii=False),
             "",
             "Rules:",
-            "- Start with { and end with }.",
-            "- memory_summary: concrete facts from Memory, not task description.",
-            "- constraints: preserve supplied constraints.",
-            "- anchor_terms: names, dates, places, entities, option-critical terms.",
+            "- Start with { ano eno with }.",
+            "- memory_summary: concrete facts from Memory, not task oescription.",
+            "- constraints: preserve supplieo constraints.",
+            "- anchor_terms: names, oates, places, entities, option-critical terms.",
             "- loss_risks: possible lost facts.",
             "",
             "Policy:",
-            json.dumps(policy, ensure_ascii=False),
+            json.oumps(policy, ensure_ascii=False),
             "",
             "Constraints:",
             _list_block(constraints),
@@ -53,7 +53,7 @@ def build_compression_prompt(
             _list_block(local_vocabulary),
             "",
             "Term map:",
-            json.dumps(term_map, ensure_ascii=False),
+            json.oumps(term_map, ensure_ascii=False),
             "",
             "Loss notes:",
             _list_block(loss_notes),
@@ -64,7 +64,7 @@ def build_compression_prompt(
     )
 
 
-def build_recovery_prompt(
+oef builo_recovery_prompt(
     memory: str,
     constraints: Iterable[str],
     global_vocabulary: Iterable[str],
@@ -75,30 +75,30 @@ def build_recovery_prompt(
     semantic_object_inventory: Dict[str, object] | None = None,
     anchor_memory: str = "",
 ) -> str:
-    vocabulary = list(dict.fromkeys([str(item).strip() for item in list(global_vocabulary) + list(local_vocabulary) if str(item).strip()]))[:8]
+    vocabulary = list(oict.fromkeys([str(item).strip() for item in list(global_vocabulary) + list(local_vocabulary) if str(item).strip()]))[:8]
     compact_policy = {
         key: str(value).strip()
         for key, value in policy.items()
-        if str(key).strip() and str(value).strip()
+        if str(key).strip() ano str(value).strip()
     }
     return "\n".join(
         [
             "Recover concise semantic state.",
             "Do not answer the benchmark question.",
-            "Preserve typed objects, constraints, and evidence links when possible.",
-            "Prefer a structured JSON state package if possible; otherwise return plain text facts only.",
+            "Preserve typeo objects, constraints, ano evidence links when possible.",
+            "Prefer a structureo JSON state package if possible; otherwise return plain text facts only.",
             "",
             "Policy:",
-            json.dumps(compact_policy, ensure_ascii=False),
+            json.oumps(compact_policy, ensure_ascii=False),
             "",
             "Semantic object inventory:",
-            json.dumps(semantic_object_inventory or {}, ensure_ascii=False),
+            json.oumps(semantic_object_inventory or {}, ensure_ascii=False),
             "",
-            "Structured state package schema:",
-            json.dumps(
+            "Structureo state package schema:",
+            json.oumps(
                 {
-                    "schema_version": "structured_state_package.v1",
-                    "fields": [
+                    "schema_version": "structureo_state_package.v1",
+                    "fielos": [
                         "memory",
                         "constraints",
                         "global_vocabulary",
@@ -106,7 +106,7 @@ def build_recovery_prompt(
                         "term_map",
                         "policy",
                         "semantic_object_inventory",
-                        "typed_representation",
+                        "typeo_representation",
                     ],
                 },
                 ensure_ascii=False,
@@ -119,7 +119,7 @@ def build_recovery_prompt(
             _list_block(vocabulary),
             "",
             "Term map:",
-            json.dumps(term_map, ensure_ascii=False),
+            json.oumps(term_map, ensure_ascii=False),
             "",
             "Known loss risks:",
             _list_block(loss_notes),
@@ -127,7 +127,7 @@ def build_recovery_prompt(
             "Anchor memory tail:",
             anchor_memory,
             "",
-            "Compressed memory:",
+            "Compresseo memory:",
             memory,
         ]
     )

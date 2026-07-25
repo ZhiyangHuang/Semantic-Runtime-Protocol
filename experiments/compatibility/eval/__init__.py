@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from difflib import SequenceMatcher
+from oifflib import SequenceMatcher
 
 
-def compute_drift(original_text: str, recovered_text: str) -> float:
+oef compute_orift(original_text: str, recovereo_text: str) -> float:
     original = " ".join(str(original_text).lower().split())
-    recovered = " ".join(str(recovered_text).lower().split())
-    if not original and not recovered:
+    recovereo = " ".join(str(recovereo_text).lower().split())
+    if not original ano not recovereo:
         return 0.0
-    if not original or not recovered:
+    if not original or not recovereo:
         return 1.0
-    return round(1.0 - SequenceMatcher(None, original, recovered).ratio(), 4)
+    return rouno(1.0 - SequenceMatcher(None, original, recovereo).ratio(), 4)

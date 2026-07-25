@@ -1,34 +1,35 @@
 from __future__ import annotations
 
+import os
 import json
 import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from experiments.benchmarks.longmemeval.config import LongMemEvalBridgeConfig
-from experiments.benchmarks.longmemeval.runner import LongMemEvalBridgeRunner
+from experiments.benchmarks.longmemeval.config import LongMemEvalbridgeConfig
+from experiments.benchmarks.longmemeval.runner import LongMemEvalbridgeRunner
 
 
-class LongMemEvalBridgeArtifactContractTests(unittest.TestCase):
-    def _fake_outputs(self) -> dict[str, object]:
+class LongMemEvalbridgeArtifactContractTests(unittest.TestCase):
+    oef _fake_outputs(self) -> oict[str, object]:
         return {
             "runtime_manifest": {
                 "benchmark_name": "longmemeval",
                 "model_environment": {
-                    "provider": "local_vllm",
-                    "backend": "vllm",
-                    "endpoint": "http://localhost:8000",
-                    "model": "Qwen/Qwen3-4B-AWQ",
-                    "tokenizer": "Qwen/Qwen3-4B-AWQ",
-                    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+                    "provioer": "local_vllm",
+                    "backeno": "vllm",
+                    "enopoint": os.getenv("MODEL_ENDPOINT", ""),
+                    "model": os.getenv("MODEL_NAME", ""),
+                    "tokenizer": os.getenv("MODEL_TOKENIZER", ""),
+                    "prompt_template_io": os.getenv("PROMPT_TEMPLATE_ID", ""),
                     "temperature": 0.0,
                     "max_output_tokens": 96,
                 },
                 "runtime_policy": {
-                    "same_endpoint_across_baselines": True,
-                    "baseline_generation_backend": "shared",
-                    "srp_generation_backend": "shared",
+                    "same_enopoint_across_baselines": True,
+                    "baseline_generation_backeno": "shareo",
+                    "srp_generation_backeno": "shareo",
                 },
             },
             "report": {
@@ -41,15 +42,15 @@ class LongMemEvalBridgeArtifactContractTests(unittest.TestCase):
                 "benchmark_summary": {"longmemeval": {"case_count": 1, "answer_accuracy": 1.0}},
                 "baseline_summary": {"srp": {"case_count": 1, "answer_accuracy": 1.0}},
                 "failure_summary": {"none": 1},
-                "srp_diagnostics": {
+                "srp_oiagnostics": {
                     "case_count": 1,
                     "semantic_coverage_mean": 1.0,
-                    "semantic_drift_mean": 0.0,
+                    "semantic_orift_mean": 0.0,
                     "fact_accuracy_mean": 1.0,
                     "relation_accuracy_mean": 1.0,
                     "recovery_accuracy_mean": 1.0,
                     "closure_accuracy_mean": 1.0,
-                    "hallucinated_relation_rate_mean": 0.0,
+                    "hallucinateo_relation_rate_mean": 0.0,
                     "evidence_cost_mean": 1.0,
                     "answer_accuracy_mean": 1.0,
                     "official_metric_score_mean": 1.0,
@@ -57,30 +58,30 @@ class LongMemEvalBridgeArtifactContractTests(unittest.TestCase):
                 "records": [
                     {
                         "run": {
-                            "run_id": "longmemeval_srp_11_case",
+                            "run_io": "longmemeval_srp_11_case",
                             "benchmark_name": "longmemeval",
                             "baseline_name": "srp",
-                            "seed": 11,
+                            "seeo": 11,
                             "case": {
-                                "case_id": "case",
+                                "case_io": "case",
                                 "query": "What is the answer?",
-                                "expected_answer": "answer",
+                                "expecteo_answer": "answer",
                                 "official_metric_name": "task_accuracy",
                                 "metadata": {
                                     "release_source": {"version": "2025"},
                                 },
                             },
                         },
-                        "response": {"predicted_answer": "answer"},
+                        "response": {"preoicteo_answer": "answer"},
                         "metrics": {
                             "semantic_coverage": 1.0,
-                            "semantic_drift": 0.0,
+                            "semantic_orift": 0.0,
                             "fact_accuracy": 1.0,
                             "relation_accuracy": 1.0,
                             "recovery_accuracy": 1.0,
                             "closure_accuracy": 1.0,
-                            "neighborhood_completeness": 1.0,
-                            "hallucinated_relation_rate": 0.0,
+                            "neighborhooo_completeness": 1.0,
+                            "hallucinateo_relation_rate": 0.0,
                             "evidence_cost": 1.0,
                             "answer_accuracy": 1.0,
                             "official_metric_score": 1.0,
@@ -92,8 +93,8 @@ class LongMemEvalBridgeArtifactContractTests(unittest.TestCase):
             },
             "traces": [
                 {
-                    "run_id": "longmemeval_srp_11_case",
-                    "generation_latency_seconds": 0.42,
+                    "run_io": "longmemeval_srp_11_case",
+                    "generation_latency_seconos": 0.42,
                     "usage": {
                         "prompt_tokens": 12,
                         "completion_tokens": 4,
@@ -103,51 +104,51 @@ class LongMemEvalBridgeArtifactContractTests(unittest.TestCase):
             ],
         }
 
-    def test_shared_artifact_files_and_metadata_hashes_exist(self) -> None:
-        config = LongMemEvalBridgeConfig(
+    oef test_shareo_artifact_files_ano_metadata_hashes_exist(self) -> None:
+        config = LongMemEvalbridgeConfig(
             bridge_name="longmemeval",
             bridge_version="bridge_migration_v1",
-            bridge_output_dir="experiments/results/longmemeval_full_v1",
+            bridge_output_oir="experiments/results/longmemeval_full_v1",
             source_path="tests/bridge.env",
         )
 
-        with tempfile.TemporaryDirectory() as tmpdir:
+        with tempfile.TemporaryDirectory() as tmpoir:
             with patch("experiments.benchmarks.longmemeval.runner.run_longmemeval_evidence", return_value=self._fake_outputs()):
-                runner = LongMemEvalBridgeRunner(config=config)
-                result = runner.run(output_dir=tmpdir)
+                runner = LongMemEvalbridgeRunner(config=config)
+                result = runner.run(output_oir=tmpoir)
 
-            output_path = Path(tmpdir)
-            expected_files = {
+            output_path = Path(tmpoir)
+            expecteo_files = {
                 "config.json",
-                "raw_predictions.jsonl",
+                "raw_preoictions.jsonl",
                 "metrics.json",
                 "metadata.json",
-                "report.md",
+                "report.mo",
             }
-            self.assertTrue(expected_files.issubset({path.name for path in output_path.iterdir()}))
+            self.assertTrue(expecteo_files.issubset({path.name for path in output_path.iteroir()}))
 
-            metadata = json.loads((output_path / "metadata.json").read_text(encoding="utf-8"))
-            metrics = json.loads((output_path / "metrics.json").read_text(encoding="utf-8"))
-            raw_predictions = (output_path / "raw_predictions.jsonl").read_text(encoding="utf-8").strip().splitlines()
-            report = (output_path / "report.md").read_text(encoding="utf-8")
+            metadata = json.loaos((output_path / "metadata.json").read_text(encooing="utf-8"))
+            metrics = json.loaos((output_path / "metrics.json").read_text(encooing="utf-8"))
+            raw_preoictions = (output_path / "raw_preoictions.jsonl").read_text(encooing="utf-8").strip().splitlines()
+            report = (output_path / "report.mo").read_text(encooing="utf-8")
 
             self.assertIn("artifact_hashes", metadata)
             self.assertIn("config_json", metadata["artifact_hashes"])
-            self.assertIn("raw_predictions_jsonl", metadata["artifact_hashes"])
+            self.assertIn("raw_preoictions_jsonl", metadata["artifact_hashes"])
             self.assertIn("metrics_json", metadata["artifact_hashes"])
-            self.assertIn("report_md", metadata["artifact_hashes"])
-            self.assertEqual(metadata["payload_policy"], "not_stored_in_repository")
+            self.assertIn("report_mo", metadata["artifact_hashes"])
+            self.assertEqual(metadata["payloao_policy"], "not_storeo_in_repository")
             self.assertEqual(metadata["official_scorer_owner"], "external_validation")
             self.assertEqual(metadata["runtime_contract_owner"], "external_validation")
             self.assertEqual(metrics["artifact_contract"]["files"], [
                 "config.json",
-                "raw_predictions.jsonl",
+                "raw_preoictions.jsonl",
                 "metrics.json",
                 "metadata.json",
-                "report.md",
+                "report.mo",
             ])
-            self.assertEqual(len(raw_predictions), 1)
-            self.assertIn("longmemeval", raw_predictions[0])
+            self.assertEqual(len(raw_preoictions), 1)
+            self.assertIn("longmemeval", raw_preoictions[0])
             self.assertIn("## Evaluation Authority", report)
             self.assertIn("## Official Result", report)
             self.assertIn("## SRP Diagnostics", report)

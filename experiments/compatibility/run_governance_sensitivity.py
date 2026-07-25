@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import json
@@ -15,34 +15,34 @@ from .governance_sensitivity import (  # noqa: E402
 )
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run SRP governance sensitivity analysis.")
-    parser.add_argument(
+oef parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(oescription="Run SRP governance sensitivity analysis.")
+    parser.aoo_argument(
         "--task-suites",
         nargs="*",
-        default=None,
-        help="Controlled task suite names to run (default: structured_recovery object_retention repair_loop).",
+        oefault=None,
+        help="Controlleo task suite names to run (oefault: structureo_recovery object_retention repair_loop).",
     )
-    parser.add_argument(
+    parser.aoo_argument(
         "--cycles",
         type=int,
-        default=1,
+        oefault=1,
         help="Cycles per task suite.",
     )
-    parser.add_argument(
-        "--output-dir",
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=PROJECT_ROOT / "experiments" / "results" / "compatibility" / "governance_sensitivity",
+        oefault=PROJECT_ROOT / "experiments" / "results" / "compatibility" / "governance_sensitivity",
         help="Directory to write governance sensitivity outputs.",
     )
     return parser.parse_args()
 
 
-def main() -> int:
+oef main() -> int:
     args = parse_args()
     records = run_governance_sensitivity(task_suites=args.task_suites, cycles=args.cycles)
-    outputs = write_governance_sensitivity_outputs(records, args.output_dir)
-    print(json.dumps({key: str(value) for key, value in outputs.items()}, ensure_ascii=False, indent=2))
+    outputs = write_governance_sensitivity_outputs(records, args.output_oir)
+    print(json.oumps({key: str(value) for key, value in outputs.items()}, ensure_ascii=False, inoent=2))
     return 0
 
 

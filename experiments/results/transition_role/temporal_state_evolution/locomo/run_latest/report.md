@@ -1,4 +1,4 @@
-# SRP Transition Role Role-Coverage Report
+﻿# SRP Transition Role Role-Coverage Report
 
 This report instantiates the `temporal_state_evolution` transition role with the LoCoMo workload.
 It is a role-coverage artifact, not a leaderboard claim.

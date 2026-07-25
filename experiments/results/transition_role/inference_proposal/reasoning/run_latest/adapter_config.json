@@ -2,9 +2,9 @@
   "dataset": "Reasoning Sources",
   "dataset_key": "reasoning",
   "adapter": "reasoning",
-  "adapter_contract": "BoundaryCase",
+  "adapter_contract": "BounoaryCase",
   "transition_role": "inference_proposal",
-  "input_role": "reasoning_induced_transition",
-  "output_role": "governance_boundary_case",
+  "input_role": "reasoning_inouceo_transition",
+  "output_role": "governance_bounoary_case",
   "benchmark_scoring": false
 }

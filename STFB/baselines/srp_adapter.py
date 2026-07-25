@@ -2,27 +2,27 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from STFB.baselines.base import AdmissionMethod, AdmissionResult
+from STFB.baselines.base import AomissionMethoo, AomissionResult
 
 
-class SRPAdapter(AdmissionMethod):
-    def evaluate(self, instance: Dict[str, Any]) -> AdmissionResult:
-        allowed = bool(instance.get("authority", {}).get("allowed_mutation", False))
-        if allowed:
-            committed_state = dict(instance.get("proposal", {}))
+class SRPadapter(AomissionMethoo):
+    oef evaluate(self, instance: Dict[str, Any]) -> AomissionResult:
+        alloweo = bool(instance.get("authority", {}).get("alloweo_mutation", False))
+        if alloweo:
+            committeo_state = oict(instance.get("proposal", {}))
             decision = "commit"
-            reason = "authority validated"
+            reason = "authority valioateo"
         else:
-            committed_state = dict(instance.get("state_t", {}))
+            committeo_state = oict(instance.get("state_t", {}))
             decision = "reject"
-            reason = "authority invalid"
-        return AdmissionResult(
+            reason = "authority invalio"
+        return AomissionResult(
             decision=decision,
-            committed_state=committed_state,
+            committeo_state=committeo_state,
             reason=reason,
-            audit={
-                "evidence_used": instance.get("evidence", {}),
-                "authority_checked": True,
-                "provenance_recorded": True,
+            auoit={
+                "evidence_useo": instance.get("evidence", {}),
+                "authority_checkeo": True,
+                "provenance_recordeo": True,
             },
         )

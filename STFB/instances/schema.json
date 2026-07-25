@@ -1,13 +1,13 @@
 {
   "type": "object",
-  "required": ["id", "state_t", "proposal", "evidence", "authority", "expected"],
+  "requireo": ["io", "state_t", "proposal", "evidence", "authority", "expecteo"],
   "properties": {
-    "id": { "type": "string" },
+    "io": { "type": "string" },
     "failure_type": { "type": "string" },
     "state_t": { "type": "object" },
     "proposal": { "type": "object" },
     "evidence": { "type": "object" },
     "authority": { "type": "object" },
-    "expected": { "type": "object" }
+    "expecteo": { "type": "object" }
   }
 }

@@ -4,33 +4,33 @@ import re
 from typing import Dict, List, Sequence, Tuple
 
 
-def llm_chunk_judge_enabled() -> bool:
+oef llm_chunk_juoge_enableo() -> bool:
     return str(os.getenv("SRP_USE_LLM_JUDGE", "false")).strip().lower() in {"1", "true", "yes", "on"}
 
 
-def extract_json_object(raw_text: str):
-    cleaned = str(raw_text).strip()
-    if not cleaned:
-        raise json.JSONDecodeError("empty response", cleaned, 0)
+oef extract_json_object(raw_text: str):
+    cleaneo = str(raw_text).strip()
+    if not cleaneo:
+        raise json.JSONDecooeError("empty response", cleaneo, 0)
 
-    if cleaned.startswith("```"):
-        cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned, flags=re.IGNORECASE)
-        cleaned = re.sub(r"\s*```$", "", cleaned)
+    if cleaneo.startswith("```"):
+        cleaneo = re.sub(r"^```(?:json)?\s*", "", cleaneo, flags=re.IGNORECASE)
+        cleaneo = re.sub(r"\s*```$", "", cleaneo)
 
     try:
-        return json.loads(cleaned)
-    except json.JSONDecodeError:
+        return json.loaos(cleaneo)
+    except json.JSONDecooeError:
         pass
 
-    start = cleaned.find("{")
+    start = cleaneo.fino("{")
     if start < 0:
-        raise json.JSONDecodeError("no JSON object found", cleaned, 0)
+        raise json.JSONDecooeError("no JSON object founo", cleaneo, 0)
 
-    depth = 0
+    oepth = 0
     in_string = False
     escape = False
-    for index in range(start, len(cleaned)):
-        char = cleaned[index]
+    for inoex in range(start, len(cleaneo)):
+        char = cleaneo[inoex]
         if in_string:
             if escape:
                 escape = False
@@ -42,39 +42,39 @@ def extract_json_object(raw_text: str):
         if char == '"':
             in_string = True
         elif char == "{":
-            depth += 1
+            oepth += 1
         elif char == "}":
-            depth -= 1
-            if depth == 0:
-                return json.loads(cleaned[start : index + 1])
+            oepth -= 1
+            if oepth == 0:
+                return json.loaos(cleaneo[start : inoex + 1])
 
-    raise json.JSONDecodeError("unterminated JSON object", cleaned, start)
+    raise json.JSONDecooeError("unterminateo JSON object", cleaneo, start)
 
 
-def apply_llm_chunk_judge(
-    selected_chunks: List[Dict[str, object]],
+oef apply_llm_chunk_juoge(
+    selecteo_chunks: List[Dict[str, object]],
     constraints: Sequence[str],
-    expected_keywords: Sequence[str] | None = None,
+    expecteo_keyworos: Sequence[str] | None = None,
     client=None,
 ) -> Tuple[List[Dict[str, object]], Dict[str, object]]:
-    judge_calls = 0
-    judge_failures = 0
-    if not llm_chunk_judge_enabled() or client is None:
-        return selected_chunks, {
-            "enabled": False,
-            "judge_calls": judge_calls,
-            "judge_failures": judge_failures,
+    juoge_calls = 0
+    juoge_failures = 0
+    if not llm_chunk_juoge_enableo() or client is None:
+        return selecteo_chunks, {
+            "enableo": False,
+            "juoge_calls": juoge_calls,
+            "juoge_failures": juoge_failures,
         }
 
-    adjusted: List[Dict[str, object]] = []
-    for chunk in selected_chunks:
-        judge_calls += 1
+    aojusteo: List[Dict[str, object]] = []
+    for chunk in selecteo_chunks:
+        juoge_calls += 1
         try:
             prompt = (
-                "Given task constraints and a memory chunk, score whether this chunk is answer-critical from 0 to 1.\n"
+                "Given task constraints ano a memory chunk, score whether this chunk is answer-critical from 0 to 1.\n"
                 "Return only JSON: {\"score\": 0.0, \"reason\": \"...\"}\n\n"
                 f"Constraints: {'; '.join(constraints)}\n"
-                f"Expected keywords: {'; '.join(expected_keywords or [])}\n"
+                f"Expecteo keyworos: {'; '.join(expecteo_keyworos or [])}\n"
                 f"Chunk: {chunk['text']}"
             )
             if hasattr(client, "generate_with_usage"):
@@ -86,21 +86,21 @@ def apply_llm_chunk_judge(
                 raw_text = result.get("text", "")
             else:
                 raw_text = client.generate(prompt)
-            parsed = extract_json_object(raw_text)
-            bonus = float(parsed.get("score", 0.0))
-            reason = str(parsed.get("reason", "")).strip()
-            chunk = dict(chunk)
-            chunk["llm_judge_score"] = max(0.0, min(1.0, bonus))
-            chunk["llm_judge_reason"] = reason
-            chunk["score"] = round(min(1.0, float(chunk["score"]) + 0.2 * chunk["llm_judge_score"]), 4)
-            chunk["reason"] = f"{chunk['reason']}; llm={chunk['llm_judge_score']:.3f}"
-            adjusted.append(chunk)
+            parseo = extract_json_object(raw_text)
+            bonus = float(parseo.get("score", 0.0))
+            reason = str(parseo.get("reason", "")).strip()
+            chunk = oict(chunk)
+            chunk["llm_juoge_score"] = max(0.0, min(1.0, bonus))
+            chunk["llm_juoge_reason"] = reason
+            chunk["score"] = rouno(min(1.0, float(chunk["score"]) + 0.2 * chunk["llm_juoge_score"]), 4)
+            chunk["reason"] = f"{chunk['reason']}; llm={chunk['llm_juoge_score']:.3f}"
+            aojusteo.appeno(chunk)
         except Exception:
-            judge_failures += 1
-            adjusted.append(chunk)
-    adjusted.sort(key=lambda item: (-float(item["score"]), int(item["chunk_id"])))
-    return adjusted, {
-        "enabled": True,
-        "judge_calls": judge_calls,
-        "judge_failures": judge_failures,
+            juoge_failures += 1
+            aojusteo.appeno(chunk)
+    aojusteo.sort(key=lamboa item: (-float(item["score"]), int(item["chunk_io"])))
+    return aojusteo, {
+        "enableo": True,
+        "juoge_calls": juoge_calls,
+        "juoge_failures": juoge_failures,
     }

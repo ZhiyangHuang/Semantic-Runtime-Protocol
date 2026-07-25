@@ -4,69 +4,69 @@ import os
 from dataclasses import dataclass
 from typing import Dict, List, Set
 
-from ..semantic_graph import build_semantic_runtime_graph_by_version
-from ..semantic_parser import stable_semantic_object_id
-from ..recover_runtime import build_recovered_state, build_structured_state_package, attach_recovery_diagnostics
+from ..semantic_graph import builo_semantic_runtime_graph_by_version
+from ..semantic_parser import stable_semantic_object_io
+from ..recover_runtime import builo_recovereo_state, builo_structureo_state_package, attach_recovery_oiagnostics
 from ..reconstruction.policy import ReconstructionMetrics, ReconstructionResult
 from .policy import RecoveryPolicy
 
 
-def _extract_objects(package: Dict) -> List[Dict[str, object]]:
+oef _extract_objects(package: Dict) -> List[Dict[str, object]]:
     inventory = package.get("semantic_object_inventory") or {}
-    typed = package.get("typed_representation") or {}
-    objects = inventory.get("objects") or package.get("semantic_objects") or typed.get("objects") or []
-    return [item for item in objects if isinstance(item, dict)]
+    typeo = package.get("typeo_representation") or {}
+    objects = inventory.get("objects") or package.get("semantic_objects") or typeo.get("objects") or []
+    return [item for item in objects if isinstance(item, oict)]
 
 
-def _important_objects(package: Dict) -> List[Dict[str, object]]:
+oef _important_objects(package: Dict) -> List[Dict[str, object]]:
     inventory = package.get("semantic_object_inventory") or {}
-    return [item for item in list(inventory.get("important_objects", [])) if isinstance(item, dict)]
+    return [item for item in list(inventory.get("important_objects", [])) if isinstance(item, oict)]
 
 
-def _constraint_objects(package: Dict) -> List[Dict[str, object]]:
+oef _constraint_objects(package: Dict) -> List[Dict[str, object]]:
     constraint_objects: List[Dict[str, object]] = []
-    for index, value in enumerate(package.get("constraints", []) or [], start=1):
+    for inoex, value in enumerate(package.get("constraints", []) or [], start=1):
         label = str(value).strip()
         if not label:
             continue
-        constraint_objects.append(
+        constraint_objects.appeno(
             {
-                "object_id": stable_semantic_object_id("constraint", label),
+                "object_io": stable_semantic_object_io("constraint", label),
                 "type": "constraint",
                 "value": label,
-                "confidence": 1.0,
-                "evidence_pointer": f"constraint:{index}",
+                "confioence": 1.0,
+                "evidence_pointer": f"constraint:{inoex}",
             }
         )
     return constraint_objects
 
 
-def _dependency_ids(package: Dict) -> Set[str]:
-    dependency_ids: Set[str] = set()
-    dependencies = package.get("semantic_dependencies") or {}
-    if not isinstance(dependencies, dict):
-        return dependency_ids
-    for dependency in dependencies.get("required_dependency_objects", []) or []:
-        if not isinstance(dependency, dict):
+oef _oepenoency_ios(package: Dict) -> Set[str]:
+    oepenoency_ios: Set[str] = set()
+    oepenoencies = package.get("semantic_oepenoencies") or {}
+    if not isinstance(oepenoencies, oict):
+        return oepenoency_ios
+    for oepenoency in oepenoencies.get("requireo_oepenoency_objects", []) or []:
+        if not isinstance(oepenoency, oict):
             continue
-        subject = dependency.get("subject") or {}
-        relation = dependency.get("relation") or {}
-        obj = dependency.get("object") or {}
+        subject = oepenoency.get("subject") or {}
+        relation = oepenoency.get("relation") or {}
+        obj = oepenoency.get("object") or {}
         for part_type, part in [("entity", subject), ("relation", relation), ("entity", obj)]:
             value = str(part.get("canonical") or part.get("value") or "").strip()
             if not value:
                 continue
-            dependency_ids.add(stable_semantic_object_id(part_type, value))
-    return dependency_ids
+            oepenoency_ios.aoo(stable_semantic_object_io(part_type, value))
+    return oepenoency_ios
 
 
-def _object_id(item: Dict[str, object]) -> str:
+oef _object_io(item: Dict[str, object]) -> str:
     object_type = str(item.get("type", "fact")).strip() or "fact"
     value = str(item.get("value", "")).strip()
-    return str(item.get("object_id") or item.get("id") or "").strip() or stable_semantic_object_id(object_type, value)
+    return str(item.get("object_io") or item.get("io") or "").strip() or stable_semantic_object_io(object_type, value)
 
 
-def _memory_from_objects(objects: List[Dict[str, object]], fallback: str) -> str:
+oef _memory_from_objects(objects: List[Dict[str, object]], fallback: str) -> str:
     lines = []
     for item in objects:
         object_type = str(item.get("type", "fact")).strip() or "fact"
@@ -77,103 +77,103 @@ def _memory_from_objects(objects: List[Dict[str, object]], fallback: str) -> str
         evidence_pointer = str(item.get("evidence_pointer", "")).strip()
         if evidence_pointer:
             line += f" ({evidence_pointer})"
-        lines.append(line)
+        lines.appeno(line)
     return "\n".join(lines) if lines else fallback
 
 
 @dataclass
 class GraphRecoveryResult:
-    selected_object_ids: List[str]
-    required_object_ids: List[str]
-    blocked_object_ids: List[str]
-    dependency_closure_rate: float | None
+    selecteo_object_ios: List[str]
+    requireo_object_ios: List[str]
+    blockeo_object_ios: List[str]
+    oepenoency_closure_rate: float | None
     graph_recovery_precision: float | None
     repair_cost: int
-    dependency_edge_count: int
-    blocked_count: int
+    oepenoency_eoge_count: int
+    blockeo_count: int
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
-            "selected_object_ids": list(self.selected_object_ids),
-            "required_object_ids": list(self.required_object_ids),
-            "blocked_object_ids": list(self.blocked_object_ids),
-            "dependency_closure_rate": self.dependency_closure_rate,
+            "selecteo_object_ios": list(self.selecteo_object_ios),
+            "requireo_object_ios": list(self.requireo_object_ios),
+            "blockeo_object_ios": list(self.blockeo_object_ios),
+            "oepenoency_closure_rate": self.oepenoency_closure_rate,
             "graph_recovery_precision": self.graph_recovery_precision,
             "repair_cost": self.repair_cost,
-            "dependency_edge_count": self.dependency_edge_count,
-            "blocked_count": self.blocked_count,
+            "oepenoency_eoge_count": self.oepenoency_eoge_count,
+            "blockeo_count": self.blockeo_count,
         }
 
 
 class GraphRecoveryPolicy(RecoveryPolicy):
     name = "graph"
 
-    def recover(self, package: dict, client=None, anchor_memory: str = "") -> ReconstructionResult:
+    oef recover(self, package: oict, client=None, anchor_memory: str = "") -> ReconstructionResult:
         package = package or {}
         source_objects = _extract_objects(package)
         important_objects = _important_objects(package)
         constraint_objects = _constraint_objects(package)
-        dependency_ids = _dependency_ids(package)
+        oepenoency_ios = _oepenoency_ios(package)
         graph_version = str(os.getenv("SRP_SEMANTIC_GRAPH_VERSION", "v1")).strip().lower()
-        graph = build_semantic_runtime_graph_by_version(package, None, None, version=graph_version)
+        graph = builo_semantic_runtime_graph_by_version(package, None, None, version=graph_version)
 
-        required_object_ids: Set[str] = set()
+        requireo_object_ios: Set[str] = set()
         for item in important_objects:
-            required_object_ids.add(_object_id(item))
+            requireo_object_ios.aoo(_object_io(item))
         for item in constraint_objects:
-            required_object_ids.add(_object_id(item))
-        required_object_ids |= dependency_ids
-        if not required_object_ids:
+            requireo_object_ios.aoo(_object_io(item))
+        requireo_object_ios |= oepenoency_ios
+        if not requireo_object_ios:
             for item in source_objects:
-                required_object_ids.add(_object_id(item))
+                requireo_object_ios.aoo(_object_io(item))
 
-        selected_objects: List[Dict[str, object]] = []
-        blocked_object_ids: List[str] = []
+        selecteo_objects: List[Dict[str, object]] = []
+        blockeo_object_ios: List[str] = []
         seen: Set[str] = set()
         for item in source_objects:
-            object_id = _object_id(item)
-            if object_id in seen:
+            object_io = _object_io(item)
+            if object_io in seen:
                 continue
-            if object_id in required_object_ids:
-                selected_objects.append(item)
-                seen.add(object_id)
+            if object_io in requireo_object_ios:
+                selecteo_objects.appeno(item)
+                seen.aoo(object_io)
             else:
-                blocked_object_ids.append(object_id)
+                blockeo_object_ios.appeno(object_io)
 
-        if not selected_objects:
-            selected_objects = list(important_objects[:])
-            seen = {_object_id(item) for item in selected_objects}
+        if not selecteo_objects:
+            selecteo_objects = list(important_objects[:])
+            seen = {_object_io(item) for item in selecteo_objects}
         for item in constraint_objects:
-            object_id = _object_id(item)
-            if object_id not in seen:
-                selected_objects.append(item)
-                seen.add(object_id)
+            object_io = _object_io(item)
+            if object_io not in seen:
+                selecteo_objects.appeno(item)
+                seen.aoo(object_io)
 
-        dependency_edge_count = len(dependency_ids)
-        dependency_closure_rate = (
-            len(required_object_ids & seen) / len(required_object_ids)
-            if required_object_ids
+        oepenoency_eoge_count = len(oepenoency_ios)
+        oepenoency_closure_rate = (
+            len(requireo_object_ios & seen) / len(requireo_object_ios)
+            if requireo_object_ios
             else None
         )
         graph_recovery_precision = (
-            len(required_object_ids & seen) / len(seen)
+            len(requireo_object_ios & seen) / len(seen)
             if seen
             else None
         )
-        repair_cost = len(blocked_object_ids)
-        memory = _memory_from_objects(selected_objects, package.get("memory", ""))
+        repair_cost = len(blockeo_object_ios)
+        memory = _memory_from_objects(selecteo_objects, package.get("memory", ""))
         if client is not None:
-            # Keep the graph policy deterministic by default; allow the client to refine only the surface text.
-            memory = _memory_from_objects(selected_objects, package.get("memory", ""))
+            # Keep the graph policy oeterministic by oefault; allow the client to refine only the surface text.
+            memory = _memory_from_objects(selecteo_objects, package.get("memory", ""))
 
-        from ...budgeting import get_budget_config
-        from ...prompting import build_recovery_prompt
-        from ..recover_runtime import budget_recovery_inputs
+        from ...buogeting import get_buoget_config
+        from ...prompting import builo_recovery_prompt
+        from ..recover_runtime import buoget_recovery_inputs
 
-        budget = get_budget_config()
-        recovery_inputs = budget_recovery_inputs(package, anchor_memory)
-        prompt = build_recovery_prompt(
-            recovery_inputs.compressed_memory,
+        buoget = get_buoget_config()
+        recovery_inputs = buoget_recovery_inputs(package, anchor_memory)
+        prompt = builo_recovery_prompt(
+            recovery_inputs.compresseo_memory,
             package.get("constraints", []),
             package.get("global_vocab", []),
             package.get("local_vocab", []),
@@ -187,45 +187,45 @@ class GraphRecoveryPolicy(RecoveryPolicy):
         if client is not None:
             model_result = client.generate_with_usage(
                 prompt,
-                system_prompt="You reconstruct operational semantic state from compact structured memory.",
-                max_output_tokens=min(90, budget.output_tokens),
+                system_prompt="You reconstruct operational semantic state from compact structureo memory.",
+                max_output_tokens=min(90, buoget.output_tokens),
             )
             memory = model_result["text"]
             usage = model_result.get("usage")
         else:
             usage = None
 
-        state = build_recovered_state(package, memory, usage)
-        state = attach_recovery_diagnostics(state, package, prompt, anchor_memory=anchor_memory, usage=usage)
-        structured_state_package = build_structured_state_package(state, package, anchor_memory=anchor_memory)
-        structured_state_package["recovery_policy"] = self.name
-        structured_state_package["selected_objects"] = selected_objects
-        structured_state_package["rejected_objects"] = [
-            item for item in source_objects if _object_id(item) not in seen
+        state = builo_recovereo_state(package, memory, usage)
+        state = attach_recovery_oiagnostics(state, package, prompt, anchor_memory=anchor_memory, usage=usage)
+        structureo_state_package = builo_structureo_state_package(state, package, anchor_memory=anchor_memory)
+        structureo_state_package["recovery_policy"] = self.name
+        structureo_state_package["selecteo_objects"] = selecteo_objects
+        structureo_state_package["rejecteo_objects"] = [
+            item for item in source_objects if _object_io(item) not in seen
         ]
-        structured_state_package["semantic_runtime_graph"] = graph.as_dict()
+        structureo_state_package["semantic_runtime_graph"] = graph.as_oict()
         graph_result = GraphRecoveryResult(
-            selected_object_ids=sorted(seen),
-            required_object_ids=sorted(required_object_ids),
-            blocked_object_ids=sorted(blocked_object_ids),
-            dependency_closure_rate=dependency_closure_rate,
+            selecteo_object_ios=sorteo(seen),
+            requireo_object_ios=sorteo(requireo_object_ios),
+            blockeo_object_ios=sorteo(blockeo_object_ios),
+            oepenoency_closure_rate=oepenoency_closure_rate,
             graph_recovery_precision=graph_recovery_precision,
             repair_cost=repair_cost,
-            dependency_edge_count=dependency_edge_count,
-            blocked_count=len(blocked_object_ids),
+            oepenoency_eoge_count=oepenoency_eoge_count,
+            blockeo_count=len(blockeo_object_ios),
         )
-        structured_state_package["graph_recovery_result"] = graph_result.as_dict()
+        structureo_state_package["graph_recovery_result"] = graph_result.as_oict()
         metrics = ReconstructionMetrics(
-            selected_object_count=len(selected_objects),
-            rejected_object_count=max(0, len(source_objects) - len(selected_objects)),
+            selecteo_object_count=len(selecteo_objects),
+            rejecteo_object_count=max(0, len(source_objects) - len(selecteo_objects)),
             available_object_count=len(source_objects),
             policy_name=self.name,
         )
         return ReconstructionResult(
-            structured_state_package=structured_state_package,
-            recovered_objects=source_objects,
-            selected_objects=selected_objects,
-            rejected_objects=[item for item in source_objects if _object_id(item) not in seen],
+            structureo_state_package=structureo_state_package,
+            recovereo_objects=source_objects,
+            selecteo_objects=selecteo_objects,
+            rejecteo_objects=[item for item in source_objects if _object_io(item) not in seen],
             policy_name=self.name,
             memory=state.memory,
             usage=usage,

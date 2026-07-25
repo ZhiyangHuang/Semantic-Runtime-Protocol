@@ -1,19 +1,19 @@
 {
-  "snapshot_id": "srp-runtime-v1.1-admission-0001",
-  "parent_snapshot": "srp-runtime-v1.1-shadow-0001",
-  "evaluation_type": "controlled_admission",
+  "snapshot_io": "srp-runtime-v1.1-aomission-0001",
+  "parent_snapshot": "srp-runtime-v1.1-shaoow-0001",
+  "evaluation_type": "controlleo_aomission",
   "runtime_contract": "srp-runtime-v1.1",
   "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json",
-  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1addd9d14b8ee2d847fa0894c2e2fabda",
+  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1aooo9o14b8ee2o847fa0894c2e2faboa",
   "policy": {
-    "minimum_confidence": 0.75,
+    "minimum_confioence": 0.75,
     "require_evidence": true,
     "block_authority_escalation": true,
-    "enforce_transition_kind_checks": true,
-    "commit_enabled": true,
-    "mode": "controlled_admission",
-    "name": "runtime_controlled_admission_policy_v1",
+    "enforce_transition_kino_checks": true,
+    "commit_enableo": true,
+    "mooe": "controlleo_aomission",
+    "name": "runtime_controlleo_aomission_policy_v1",
     "metadata": {}
   },
-  "generated_at": "2026-07-22T01:50:30.127955+00:00"
+  "generateo_at": "2026-07-22T01:50:30.127955+00:00"
 }

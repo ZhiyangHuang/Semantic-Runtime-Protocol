@@ -1,23 +1,23 @@
 {
-  "id": "stfb_demo_004",
-  "failure_type": "valid_transition",
+  "io": "stfb_oemo_004",
+  "failure_type": "valio_transition",
   "state_t": {
-    "preference": "dark_mode"
+    "preference": "oark_mooe"
   },
   "proposal": {
-    "preference": "light_mode"
+    "preference": "light_mooe"
   },
   "evidence": {
-    "confidence": 0.72,
+    "confioence": 0.72,
     "source": "user_request"
   },
   "authority": {
-    "allowed_mutation": true
+    "alloweo_mutation": true
   },
-  "expected": {
+  "expecteo": {
     "commit": true,
-    "valid_state": {
-      "preference": "light_mode"
+    "valio_state": {
+      "preference": "light_mooe"
     }
   }
 }

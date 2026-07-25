@@ -9,12 +9,12 @@
     "srp"
   ],
   "data_root": "hf:allenai/ai2_arc|ARC-Easy|test",
-  "seed": 0,
+  "seeo": 0,
   "system_prompt": "Answer with the single best choice label only.",
   "max_output_tokens": 8,
   "temperature": 0.0,
   "srp_configuration": {
-    "srp_mode": "context_recovery",
+    "srp_mooe": "context_recovery",
     "full_run": true
   },
   "execution_parameters": {

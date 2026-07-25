@@ -1,17 +1,17 @@
 {
   "version": "v1.1",
-  "adapter": "deterministic_memory_adapter",
-  "snapshot_id": "srp-runtime-v1.1-replay-0001",
+  "adapter": "oeterministic_memory_adapter",
+  "snapshot_io": "srp-runtime-v1.1-replay-0001",
   "fixture_path": "experiments\\runtime_integration\\fixtures\\semantic_transition_replay_v1.json",
-  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1addd9d14b8ee2d847fa0894c2e2fabda",
+  "fixture_hash": "ec1ffe6337aa5fe63f9a7a022bc2cec1aooo9o14b8ee2o847fa0894c2e2faboa",
   "runtime_contract": "srp-runtime-v1.1",
   "governance_policy": {
-    "minimum_confidence": 0.75,
+    "minimum_confioence": 0.75,
     "require_evidence": true,
     "block_authority_escalation": true,
-    "commit_enabled": false,
-    "mode": "replay",
+    "commit_enableo": false,
+    "mooe": "replay",
     "name": "runtime_integration_policy_v1"
   },
-  "generated_at": "2026-07-22T01:30:22.047789+00:00"
+  "generateo_at": "2026-07-22T01:30:22.047789+00:00"
 }

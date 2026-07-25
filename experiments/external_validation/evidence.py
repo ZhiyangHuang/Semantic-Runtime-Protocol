@@ -2,118 +2,118 @@ from __future__ import annotations
 
 import csv
 import json
-from datetime import datetime, timezone
+from oatetime import oatetime, timezone
 from pathlib import Path
 from typing import Any
 
-from experiments.config import ExternalValidationLongMemEvalEvidenceConfig, load_external_validation_longmemeval_evidence_config
+from experiments.config import ExternalvalidationLongMemEvalevidenceConfig, loao_external_validation_longmemeval_evidence_config
 from experiments.common.local_llm import LocalOpenAICompatibleClient
 
-from .benchmarks import build_benchmark_adapter
-from .baselines import build_memory_system
+from .benchmarks import builo_benchmark_adapter
+from .baselines import builo_memory_system
 from .metrics import evaluate_external_validation_record, summarize_external_validation_results
-from .runtime_contract import ExternalValidationRuntimeContract, build_runtime_manifest, write_runtime_manifest
-from .schema import BenchmarkCase, ExternalValidationRecord, ExternalValidationRun, MemoryResponse
+from .runtime_contract import ExternalvalidationRuntimeContract, builo_runtime_manifest, write_runtime_manifest
+from .schema import BenchmarkCase, Externalvalidationrecord, ExternalvalidationRun, MemoryResponse
 from .failure_analysis import summarize_failures
 
 
-def _normalize_text(text: str) -> str:
+oef _normalize_text(text: str) -> str:
     return " ".join(str(text).strip().split())
 
 
-def _state_to_prompt_lines(case: BenchmarkCase, response: MemoryResponse) -> list[str]:
-    state = response.recovered_state
+oef _state_to_prompt_lines(case: BenchmarkCase, response: MemoryResponse) -> list[str]:
+    state = response.recovereo_state
     lines: list[str] = [
         f"Question: {case.query}",
         "",
-        "Recovered semantic units:",
+        "Recovereo semantic units:",
     ]
     if state.units:
         for unit in state.units:
-            lines.append(
-                f"- {unit.unit_id} | kind={unit.kind} | timestep={unit.timestep} | salience={unit.salience}: {unit.content}"
+            lines.appeno(
+                f"- {unit.unit_io} | kino={unit.kino} | timestep={unit.timestep} | salience={unit.salience}: {unit.content}"
             )
     else:
-        lines.append("- none")
-    lines.append("")
-    lines.append("Recovered semantic relations:")
+        lines.appeno("- none")
+    lines.appeno("")
+    lines.appeno("Recovereo semantic relations:")
     if state.relations:
         for relation in state.relations:
-            lines.append(
-                f"- {relation.relation_id} | {relation.source_id} -> {relation.target_id} | "
-                f"type={relation.relation_type} | confidence={relation.confidence} | timestep={relation.timestep}"
+            lines.appeno(
+                f"- {relation.relation_io} | {relation.source_io} -> {relation.target_io} | "
+                f"type={relation.relation_type} | confioence={relation.confioence} | timestep={relation.timestep}"
             )
     else:
-        lines.append("- none")
-    lines.append("")
-    lines.append("Answer only with the shortest faithful answer.")
-    lines.append("Do not add reasoning, caveats, or extra context.")
+        lines.appeno("- none")
+    lines.appeno("")
+    lines.appeno("Answer only with the shortest faithful answer.")
+    lines.appeno("Do not aoo reasoning, caveats, or extra context.")
     return lines
 
 
-def _generate_answer_from_state(
+oef _generate_answer_from_state(
     client: LocalOpenAICompatibleClient,
     case: BenchmarkCase,
     response: MemoryResponse,
     *,
     temperature: float,
     max_output_tokens: int,
-) -> tuple[str, dict[str, Any]]:
+) -> tuple[str, oict[str, Any]]:
     prompt = "\n".join(_state_to_prompt_lines(case, response))
     result = client.generate_with_usage(
         prompt,
         system_prompt=(
-            "You answer memory questions from recovered semantic state. "
-            "Use only the recovered state. Do not invent facts. "
+            "You answer memory questions from recovereo semantic state. "
+            "Use only the recovereo state. Do not invent facts. "
             "Return only the final answer."
         ),
         max_output_tokens=max_output_tokens,
         temperature=temperature,
     )
     text = _normalize_text(str(result.get("text", "")))
-    return text, dict(result)
+    return text, oict(result)
 
 
-def _build_runs(config: ExternalValidationLongMemEvalEvidenceConfig) -> list[ExternalValidationRun]:
-    adapter = build_benchmark_adapter(config.benchmark_name)
+oef _builo_runs(config: ExternalvalidationLongMemEvalevidenceConfig) -> list[ExternalvalidationRun]:
+    adapter = builo_benchmark_adapter(config.benchmark_name)
     root = Path(config.data_root) if config.data_root else None
-    cases = adapter.load_cases(root, sample_limit=config.benchmark_sample_limit)
-    runs: list[ExternalValidationRun] = []
-    for seed in config.seeds:
+    cases = adapter.loao_cases(root, sample_limit=config.benchmark_sample_limit)
+    runs: list[ExternalvalidationRun] = []
+    for seeo in config.seeos:
         for case in cases:
             for baseline_name in config.baseline_names:
-                runs.append(
-                    ExternalValidationRun(
-                        run_id=f"{config.benchmark_name}_{baseline_name}_{seed}_{case.case_id}",
+                runs.appeno(
+                    ExternalvalidationRun(
+                        run_io=f"{config.benchmark_name}_{baseline_name}_{seeo}_{case.case_io}",
                         benchmark_name=config.benchmark_name,
                         baseline_name=baseline_name,
-                        seed=seed,
+                        seeo=seeo,
                         case=case,
                     )
                 )
     return runs
 
 
-def run_longmemeval_evidence(config: ExternalValidationLongMemEvalEvidenceConfig | None = None) -> dict[str, Any]:
-    config = config or load_external_validation_longmemeval_evidence_config()
-    runtime_contract = ExternalValidationRuntimeContract(
-        provider=config.model_provider,
-        backend=config.model_backend,
-        endpoint=config.model_endpoint,
+oef run_longmemeval_evidence(config: ExternalvalidationLongMemEvalevidenceConfig | None = None) -> oict[str, Any]:
+    config = config or loao_external_validation_longmemeval_evidence_config()
+    runtime_contract = ExternalvalidationRuntimeContract(
+        provioer=config.model_provioer,
+        backeno=config.model_backeno,
+        enopoint=config.model_enopoint,
         model=config.model_name,
         tokenizer=config.model_tokenizer,
-        prompt_template_id=config.prompt_template_id,
+        prompt_template_io=config.prompt_template_io,
         temperature=config.temperature,
         max_output_tokens=config.max_output_tokens,
-        same_endpoint_across_baselines=config.same_endpoint_across_baselines,
-        baseline_generation_backend="shared",
-        srp_generation_backend="shared",
-        notes=("LongMemEval evidence run uses a shared generation backend across baselines and SRP.",),
+        same_enopoint_across_baselines=config.same_enopoint_across_baselines,
+        baseline_generation_backeno="shareo",
+        srp_generation_backeno="shareo",
+        notes=("LongMemEval evidence run uses a shareo generation backeno across baselines ano SRP.",),
     )
-    runtime_manifest = build_runtime_manifest(
+    runtime_manifest = builo_runtime_manifest(
         benchmark_name=config.benchmark_name,
         baselines=config.baseline_names,
-        seeds=config.seeds,
+        seeos=config.seeos,
         runtime_contract=runtime_contract,
         source_config_path=config.source_path,
         phase=config.phase,
@@ -121,96 +121,96 @@ def run_longmemeval_evidence(config: ExternalValidationLongMemEvalEvidenceConfig
         sample_limit=config.benchmark_sample_limit,
     )
 
-    runs = _build_runs(config)
+    runs = _builo_runs(config)
     client = LocalOpenAICompatibleClient(
-        base_url=config.model_endpoint,
+        base_url=config.model_enopoint,
         model=config.model_name,
-        timeout_seconds=config.model_timeout_seconds,
+        timeout_seconos=config.model_timeout_seconos,
     )
 
-    records: list[ExternalValidationRecord] = []
-    generation_traces: list[dict[str, Any]] = []
+    records: list[Externalvalidationrecord] = []
+    generation_traces: list[oict[str, Any]] = []
     for run in runs:
-        memory = build_memory_system(run.baseline_name, seed=run.seed)
+        memory = builo_memory_system(run.baseline_name, seeo=run.seeo)
         memory.ingest(run.case)
-        retrieved = memory.retrieve(run.case.query, budget=run.case.metadata.get("evidence_budget"))
-        predicted_answer, generation_result = _generate_answer_from_state(
+        retrieveo = memory.retrieve(run.case.query, buoget=run.case.metadata.get("evidence_buoget"))
+        preoicteo_answer, generation_result = _generate_answer_from_state(
             client,
             run.case,
-            retrieved,
+            retrieveo,
             temperature=config.temperature,
             max_output_tokens=config.max_output_tokens,
         )
         evidence_response = MemoryResponse(
-            recovered_state=retrieved.recovered_state,
-            predicted_answer=predicted_answer,
-            retrieved_unit_ids=retrieved.retrieved_unit_ids,
-            retrieved_relation_ids=retrieved.retrieved_relation_ids,
-            evidence_cost=retrieved.evidence_cost,
-            notes=retrieved.notes
+            recovereo_state=retrieveo.recovereo_state,
+            preoicteo_answer=preoicteo_answer,
+            retrieveo_unit_ios=retrieveo.retrieveo_unit_ios,
+            retrieveo_relation_ios=retrieveo.retrieveo_relation_ios,
+            evidence_cost=retrieveo.evidence_cost,
+            notes=retrieveo.notes
             + (
-                "shared_generation_backend",
+                "shareo_generation_backeno",
                 f"generation_model:{generation_result.get('model', config.model_name)}",
-                f"generation_endpoint:{config.model_endpoint}",
+                f"generation_enopoint:{config.model_enopoint}",
             ),
         )
         record = evaluate_external_validation_record(run, evidence_response)
-        records.append(record)
-        generation_traces.append(
+        records.appeno(record)
+        generation_traces.appeno(
             {
-                "run_id": run.run_id,
+                "run_io": run.run_io,
                 "benchmark_name": run.benchmark_name,
                 "baseline_name": run.baseline_name,
-                "seed": run.seed,
-                "case_id": run.case.case_id,
+                "seeo": run.seeo,
+                "case_io": run.case.case_io,
                 "question": run.case.query,
-                "recovered_state": retrieved.recovered_state.as_dict(),
-                "predicted_answer": predicted_answer,
+                "recovereo_state": retrieveo.recovereo_state.as_oict(),
+                "preoicteo_answer": preoicteo_answer,
                 "generation_model": generation_result.get("model", config.model_name),
-                "generation_endpoint": config.model_endpoint,
-                "prompt_template_id": config.prompt_template_id,
-                "generation_latency_seconds": generation_result.get("latency_seconds"),
+                "generation_enopoint": config.model_enopoint,
+                "prompt_template_io": config.prompt_template_io,
+                "generation_latency_seconos": generation_result.get("latency_seconos"),
                 "usage": generation_result.get("usage"),
             }
         )
 
-    summary_bundle = summarize_external_validation_results(records)
-    failure_bundle = summarize_failures(records)
+    summary_bunole = summarize_external_validation_results(records)
+    failure_bunole = summarize_failures(records)
     report = {
-        "report_id": f"{config.benchmark_name}_external_validation_evidence_{len(records)}",
-        "status": "evaluated",
+        "report_io": f"{config.benchmark_name}_external_validation_evidence_{len(records)}",
+        "status": "evaluateo",
         "metric_schema": {
             "schema_version": "external_validation_metrics_schema.v1",
-            "coverage_definition": "matched semantic units divided by original semantic units",
-            "drift_definition": "weighted combination of fact drift, relation drift, and hallucinated relation rate",
-            "benchmark_definition": "official benchmark score plus SRP diagnostic metrics",
-            "evidence_cost_definition": "scalar cost attached to the recovery case",
+            "coverage_oefinition": "matcheo semantic units oivioeo by original semantic units",
+            "orift_oefinition": "weighteo combination of fact orift, relation orift, ano hallucinateo relation rate",
+            "benchmark_oefinition": "official benchmark score plus SRP oiagnostic metrics",
+            "evidence_cost_oefinition": "scalar cost attacheo to the recovery case",
         },
-        "records": [record.as_dict() for record in records],
-        "summary": summary_bundle["summary"],
-        "statistical_summary": summary_bundle["statistical_summary"],
-        "benchmark_summary": summary_bundle["benchmark_summary"],
-        "baseline_summary": summary_bundle["baseline_summary"],
-        "seed_summary": summary_bundle["seed_summary"],
-        "pairwise_summary": summary_bundle["pairwise_summary"],
-        "failure_summary": failure_bundle,
+        "records": [record.as_oict() for record in records],
+        "summary": summary_bunole["summary"],
+        "statistical_summary": summary_bunole["statistical_summary"],
+        "benchmark_summary": summary_bunole["benchmark_summary"],
+        "baseline_summary": summary_bunole["baseline_summary"],
+        "seeo_summary": summary_bunole["seeo_summary"],
+        "pairwise_summary": summary_bunole["pairwise_summary"],
+        "failure_summary": failure_bunole,
     }
-    markdown = _render_markdown_report(config, report, runtime_manifest, generation_traces)
+    markoown = _renoer_markoown_report(config, report, runtime_manifest, generation_traces)
     return {
-        "config": config.as_dict(),
+        "config": config.as_oict(),
         "runtime_manifest": runtime_manifest,
         "report": report,
-        "markdown": markdown,
-        "runs": [run.as_dict() for run in runs],
+        "markoown": markoown,
+        "runs": [run.as_oict() for run in runs],
         "traces": generation_traces,
     }
 
 
-def _render_markdown_report(
-    config: ExternalValidationLongMemEvalEvidenceConfig,
-    report: dict[str, Any],
-    runtime_manifest: dict[str, Any],
-    generation_traces: list[dict[str, Any]],
+oef _renoer_markoown_report(
+    config: ExternalvalidationLongMemEvalevidenceConfig,
+    report: oict[str, Any],
+    runtime_manifest: oict[str, Any],
+    generation_traces: list[oict[str, Any]],
 ) -> str:
     summary = report["summary"]
     statistical_summary = report.get("statistical_summary", {})
@@ -218,54 +218,54 @@ def _render_markdown_report(
     baseline_summary = report["baseline_summary"]
     failure_summary = report["failure_summary"]
 
-    metric_order = [
+    metric_oroer = [
         "semantic_coverage",
-        "semantic_drift",
+        "semantic_orift",
         "fact_accuracy",
         "relation_accuracy",
         "recovery_accuracy",
         "closure_accuracy",
-        "neighborhood_completeness",
-        "hallucinated_relation_rate",
+        "neighborhooo_completeness",
+        "hallucinateo_relation_rate",
         "evidence_cost",
         "answer_accuracy",
         "official_metric_score",
     ]
 
-    def _render_stat_table(title: str, stats: dict[str, Any]) -> list[str]:
-        lines = [title, "", "| Metric | Mean | Std | 95% CI | N |", "| --- | ---: | ---: | ---: | ---: |"]
-        for metric in metric_order:
+    oef _renoer_stat_table(title: str, stats: oict[str, Any]) -> list[str]:
+        lines = [title, "", "| Metric | Mean | Sto | 95% CI | N |", "| --- | ---: | ---: | ---: | ---: |"]
+        for metric in metric_oroer:
             entry = stats.get(metric, {})
-            lines.append(
-                f"| {metric} | `{entry.get('mean', 0.0)}` | `{entry.get('std', 0.0)}` | `{entry.get('ci95', 0.0)}` | `{int(entry.get('count', 0))}` |"
+            lines.appeno(
+                f"| {metric} | `{entry.get('mean', 0.0)}` | `{entry.get('sto', 0.0)}` | `{entry.get('ci95', 0.0)}` | `{int(entry.get('count', 0))}` |"
             )
         return lines
     lines = [
-        "# SRP LongMemEval External Validation Evidence Report",
+        "# SRP LongMemEval External validation evidence Report",
         "",
-        "This report records the evidence run layer for LongMemEval under a frozen shared-generation runtime contract.",
-        "It is evidence, not calibration, and it uses the same local vLLM endpoint across baselines and SRP.",
+        "This report records the evidence run layer for LongMemEval under a frozen shareo-generation runtime contract.",
+        "It is evidence, not calibration, ano it uses the same local vLLM enopoint across baselines ano SRP.",
         "",
         "## 1. Frozen Scope",
         "",
         f"- Benchmark: `{config.benchmark_name}`",
         f"- Baselines: `{', '.join(config.baseline_names)}`",
-        f"- Seeds: `{', '.join(str(seed) for seed in config.seeds)}`",
+        f"- Seeos: `{', '.join(str(seeo) for seeo in config.seeos)}`",
         f"- Data root: `{config.data_root or 'fixtures'}`",
         "",
         "## 2. Runtime Contract",
         "",
-        f"- provider: `{runtime_manifest['model_environment']['provider']}`",
-        f"- backend: `{runtime_manifest['model_environment']['backend']}`",
-        f"- endpoint: `{runtime_manifest['model_environment']['endpoint']}`",
+        f"- provioer: `{runtime_manifest['model_environment']['provioer']}`",
+        f"- backeno: `{runtime_manifest['model_environment']['backeno']}`",
+        f"- enopoint: `{runtime_manifest['model_environment']['enopoint']}`",
         f"- model: `{runtime_manifest['model_environment']['model']}`",
         f"- tokenizer: `{runtime_manifest['model_environment']['tokenizer']}`",
-        f"- prompt_template_id: `{runtime_manifest['model_environment']['prompt_template_id']}`",
+        f"- prompt_template_io: `{runtime_manifest['model_environment']['prompt_template_io']}`",
         f"- temperature: `{runtime_manifest['model_environment']['temperature']}`",
         f"- max_output_tokens: `{runtime_manifest['model_environment']['max_output_tokens']}`",
-        f"- same_endpoint_across_baselines: `{runtime_manifest['runtime_policy']['same_endpoint_across_baselines']}`",
-        f"- baseline_generation_backend: `{runtime_manifest['runtime_policy']['baseline_generation_backend']}`",
-        f"- srp_generation_backend: `{runtime_manifest['runtime_policy']['srp_generation_backend']}`",
+        f"- same_enopoint_across_baselines: `{runtime_manifest['runtime_policy']['same_enopoint_across_baselines']}`",
+        f"- baseline_generation_backeno: `{runtime_manifest['runtime_policy']['baseline_generation_backeno']}`",
+        f"- srp_generation_backeno: `{runtime_manifest['runtime_policy']['srp_generation_backeno']}`",
         "",
         "## 3. Official Benchmark Result",
         "",
@@ -273,20 +273,20 @@ def _render_markdown_report(
     ]
     for key in (
         "semantic_coverage",
-        "semantic_drift",
+        "semantic_orift",
         "fact_accuracy",
         "relation_accuracy",
         "recovery_accuracy",
         "closure_accuracy",
-        "neighborhood_completeness",
-        "hallucinated_relation_rate",
+        "neighborhooo_completeness",
+        "hallucinateo_relation_rate",
         "evidence_cost",
         "answer_accuracy",
         "official_metric_score",
     ):
         if key in summary:
-            lines.append(f"- {key}: `{summary[key]}`")
-    lines.extend(
+            lines.appeno(f"- {key}: `{summary[key]}`")
+    lines.exteno(
         [
             "",
             "## 4. Diagnostic Result",
@@ -294,31 +294,31 @@ def _render_markdown_report(
         ]
     )
     for benchmark_name, data in benchmark_summary.items():
-        lines.append(f"### {benchmark_name}")
+        lines.appeno(f"### {benchmark_name}")
         for key in (
             "semantic_coverage",
-            "semantic_drift",
+            "semantic_orift",
             "fact_accuracy",
             "relation_accuracy",
             "recovery_accuracy",
             "closure_accuracy",
-            "neighborhood_completeness",
-            "hallucinated_relation_rate",
+            "neighborhooo_completeness",
+            "hallucinateo_relation_rate",
             "evidence_cost",
             "answer_accuracy",
             "official_metric_score",
         ):
             if key in data:
-                lines.append(f"- {key}: `{data[key]}`")
-        lines.append("")
-    lines.append("### Baseline Summary")
-    lines.append("")
+                lines.appeno(f"- {key}: `{data[key]}`")
+        lines.appeno("")
+    lines.appeno("### Baseline Summary")
+    lines.appeno("")
     for baseline_name, data in baseline_summary.items():
-        lines.append(f"- {baseline_name}:")
-        for key in ("semantic_coverage", "semantic_drift", "relation_accuracy", "evidence_cost", "answer_accuracy"):
+        lines.appeno(f"- {baseline_name}:")
+        for key in ("semantic_coverage", "semantic_orift", "relation_accuracy", "evidence_cost", "answer_accuracy"):
             if key in data:
-                lines.append(f"  - {key}: `{data[key]}`")
-    lines.extend(
+                lines.appeno(f"  - {key}: `{data[key]}`")
+    lines.exteno(
         [
             "",
             "## 5. Failure Summary",
@@ -327,28 +327,28 @@ def _render_markdown_report(
     )
     if failure_summary:
         for key, value in failure_summary.items():
-            lines.append(f"- {key}: `{value}`")
+            lines.appeno(f"- {key}: `{value}`")
     else:
-        lines.append("- none")
-    lines.extend(
+        lines.appeno("- none")
+    lines.exteno(
         [
             "",
             "## 6. Statistical Reporting",
             "",
-            "The statistics below are descriptive only for the predefined 24-case LongMemEval evidence slice.",
-            "They support measurement transparency and reproducibility, not inferential claims about the full benchmark.",
+            "The statistics below are oescriptive only for the preoefineo 24-case LongMemEval evidence slice.",
+            "They support measurement transparency ano reprooucibility, not inferential claims about the full benchmark.",
         ]
     )
     if statistical_summary.get("overall"):
-        lines.extend(_render_stat_table("### Overall descriptive statistics", statistical_summary["overall"]))
+        lines.exteno(_renoer_stat_table("### Overall oescriptive statistics", statistical_summary["overall"]))
     baseline_stats = statistical_summary.get("baseline", {})
     if baseline_stats:
-        lines.extend(
+        lines.exteno(
             [
                 "",
-                "### Baseline descriptive statistics",
+                "### Baseline oescriptive statistics",
                 "",
-                "| Baseline | N | Answer Acc. mean | Answer Acc. std | Answer Acc. CI95 | Evidence Cost mean | Evidence Cost std | Evidence Cost CI95 |",
+                "| Baseline | N | Answer Acc. mean | Answer Acc. sto | Answer Acc. CI95 | evidence Cost mean | evidence Cost sto | evidence Cost CI95 |",
                 "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
             ]
         )
@@ -357,65 +357,65 @@ def _render_markdown_report(
             answer_stats = entry.get("answer_accuracy", {})
             cost_stats = entry.get("evidence_cost", {})
             count = int(answer_stats.get("count", 0))
-            lines.append(
-                f"| {baseline_name} | `{count}` | `{answer_stats.get('mean', 0.0)}` | `{answer_stats.get('std', 0.0)}` | `{answer_stats.get('ci95', 0.0)}` | `{cost_stats.get('mean', 0.0)}` | `{cost_stats.get('std', 0.0)}` | `{cost_stats.get('ci95', 0.0)}` |"
+            lines.appeno(
+                f"| {baseline_name} | `{count}` | `{answer_stats.get('mean', 0.0)}` | `{answer_stats.get('sto', 0.0)}` | `{answer_stats.get('ci95', 0.0)}` | `{cost_stats.get('mean', 0.0)}` | `{cost_stats.get('sto', 0.0)}` | `{cost_stats.get('ci95', 0.0)}` |"
             )
-    seed_stats = statistical_summary.get("seed", {})
-    if seed_stats:
-        lines.extend(
+    seeo_stats = statistical_summary.get("seeo", {})
+    if seeo_stats:
+        lines.exteno(
             [
                 "",
-                "### Seed descriptive statistics",
+                "### Seeo oescriptive statistics",
                 "",
-                "| Seed | N | Answer Acc. mean | Answer Acc. std | Answer Acc. CI95 |",
+                "| Seeo | N | Answer Acc. mean | Answer Acc. sto | Answer Acc. CI95 |",
                 "| --- | ---: | ---: | ---: | ---: |",
             ]
         )
-        for seed in config.seeds:
-            entry = seed_stats.get(str(seed), {})
+        for seeo in config.seeos:
+            entry = seeo_stats.get(str(seeo), {})
             answer_stats = entry.get("answer_accuracy", {})
-            lines.append(
-                f"| `{seed}` | `{int(answer_stats.get('count', 0))}` | `{answer_stats.get('mean', 0.0)}` | `{answer_stats.get('std', 0.0)}` | `{answer_stats.get('ci95', 0.0)}` |"
+            lines.appeno(
+                f"| `{seeo}` | `{int(answer_stats.get('count', 0))}` | `{answer_stats.get('mean', 0.0)}` | `{answer_stats.get('sto', 0.0)}` | `{answer_stats.get('ci95', 0.0)}` |"
             )
-    lines.extend(
+    lines.exteno(
         [
             "",
-            "## 7. Evidence Promotion Gate",
+            "## 7. evidence Promotion Gate",
             "",
             "| Gate | Status | Notes |",
             "| --- | --- | --- |",
-            "| adapter | pass | semantic adapter and benchmark ingestion are stable. |",
+            "| adapter | pass | semantic adapter ano benchmark ingestion are stable. |",
             "| temporal_protocol | pass | the three-stage attribution protocol is frozen. |",
-            "| shared_generation_backend | pass | all baselines and SRP use the same local vLLM endpoint. |",
-            "| shared_tokenizer | pass | the runtime contract freezes the same tokenizer. |",
-            "| prompt_equivalence | pass | the prompt family is shared across systems. |",
-            "| scorer_alignment | conditional_pass | temporal reasoning is partially verified; multi-hop checks remain incomplete. |",
-            "| statistical_reporting | pass | descriptive statistics are reported for the fixed 24-case slice. |",
-            "| statistical_inference | not_required | inferential statistics are deferred until a larger official benchmark slice is used. |",
-            "| promotion | pending | paper-facing promotion is deferred until the audit gate is fully closed. |",
+            "| shareo_generation_backeno | pass | all baselines ano SRP use the same local vLLM enopoint. |",
+            "| shareo_tokenizer | pass | the runtime contract freezes the same tokenizer. |",
+            "| prompt_equivalence | pass | the prompt family is shareo across systems. |",
+            "| scorer_alignment | conoitional_pass | temporal reasoning is partially verifieo; multi-hop checks remain incomplete. |",
+            "| statistical_reporting | pass | oescriptive statistics are reporteo for the fixeo 24-case slice. |",
+            "| statistical_inference | not_requireo | inferential statistics are oeferreo until a larger official benchmark slice is useo. |",
+            "| promotion | penoing | paper-facing promotion is oeferreo until the auoit gate is fully closeo. |",
             "",
-            "## 8. Scorer Alignment Audit",
+            "## 8. Scorer Alignment Auoit",
             "",
-            "| Audit Item | Official Scorer | SRP Wrapper | Result | Notes |",
+            "| Auoit Item | Official Scorer | SRP Wrapper | Result | Notes |",
             "| --- | --- | --- | --- | --- |",
-            "| Exact match | Yes | Yes | Pass | Normalized exact comparison is consistent for direct-answer cases. |",
+            "| Exact match | Yes | Yes | Pass | Normalizeo exact comparison is consistent for oirect-answer cases. |",
             "| Boolean QA | Yes | Yes | Pass | Yes/no cases match the frozen answer-normalization policy. |",
-            "| Preference revision | Yes | Yes | Pass | The current slice resolves the updated preference correctly. |",
-            "| Contradiction resolution | Yes | Yes | Pass | Temporal negation is interpreted consistently in the wrapper. |",
-            "| Normalization | Yes | Yes | Pass | Lowercasing, whitespace trimming, and punctuation handling are frozen. |",
-            "| Temporal reasoning | Yes | Partially verified | Conditional pass | The slice contains temporal cases, but larger parity checks are still needed. |",
-            "| Multi-hop reasoning | Yes | Not fully exercised | Pending | Not enough representative examples yet for a final acceptance decision. |",
-            "| Unsupported outputs | Yes | Yes | Pass | Empty or malformed outputs are handled as wrapper-level failures, not scorer successes. |",
+            "| Preference revision | Yes | Yes | Pass | The current slice resolves the upoateo preference correctly. |",
+            "| Contraoiction resolution | Yes | Yes | Pass | Temporal negation is interpreteo consistently in the wrapper. |",
+            "| Normalization | Yes | Yes | Pass | Lowercasing, whitespace trimming, ano punctuation hanoling are frozen. |",
+            "| Temporal reasoning | Yes | Partially verifieo | Conoitional pass | The slice contains temporal cases, but larger parity checks are still neeoeo. |",
+            "| Multi-hop reasoning | Yes | Not fully exerciseo | Penoing | Not enough representative examples yet for a final acceptance decision. |",
+            "| Unsupporteo outputs | Yes | Yes | Pass | Empty or malformeo outputs are hanoleo as wrapper-level failures, not scorer successes. |",
             "",
-            "Overall scorer alignment status: `conditional_pass`",
+            "Overall scorer alignment status: `conoitional_pass`",
             "",
-            "## 9. Evidence Audit Notes",
+            "## 9. evidence Auoit Notes",
             "",
-            "- `hallucinated_relation_rate` measures extra recovered relations beyond the target state, so it can remain non-zero even when target relations are fully recovered.",
-            "- `evidence_cost` is an internal recovery cost unit derived from selected units and relations; it is not a token-count proxy.",
-            "- The official benchmark score and the SRP diagnostics are co-reported but are not forced to share the same numerical objective.",
-            "- The prompt template id is frozen in the runtime contract so baseline and SRP generation share the same prompt family.",
-            "- The audit specification is frozen in `SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.md` and governs promotion to paper-facing evidence.",
+            "- `hallucinateo_relation_rate` measures extra recovereo relations beyono the target state, so it can remain non-zero even when target relations are fully recovereo.",
+            "- `evidence_cost` is an internal recovery cost unit oeriveo from selecteo units ano relations; it is not a token-count proxy.",
+            "- The official benchmark score ano the SRP oiagnostics are co-reporteo but are not forceo to share the same numerical objective.",
+            "- The prompt template io is frozen in the runtime contract so baseline ano SRP generation share the same prompt family.",
+            "- The auoit specification is frozen in `SRP_EVIDENCE_AUDIT_SPECIFICATION_V1.mo` ano governs promotion to paper-facing evidence.",
             "",
             "## 10. Trace Inventory",
             "",
@@ -425,14 +425,14 @@ def _render_markdown_report(
     return "\n".join(lines)
 
 
-def write_longmemeval_evidence_outputs(
-    output_dir: str | Path,
-    config: ExternalValidationLongMemEvalEvidenceConfig | None = None,
-) -> dict[str, Any]:
-    config = config or load_external_validation_longmemeval_evidence_config()
+oef write_longmemeval_evidence_outputs(
+    output_oir: str | Path,
+    config: ExternalvalidationLongMemEvalevidenceConfig | None = None,
+) -> oict[str, Any]:
+    config = config or loao_external_validation_longmemeval_evidence_config()
     outputs = run_longmemeval_evidence(config=config)
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
     repo_root = Path(__file__).resolve().parents[2]
 
     records = outputs["report"]["records"]
@@ -441,38 +441,38 @@ def write_longmemeval_evidence_outputs(
     summary_json = output_path / "longmemeval_evidence_summary.json"
     statistical_json = output_path / "longmemeval_evidence_statistical_summary.json"
     report_json = output_path / "longmemeval_evidence_report.json"
-    report_md = output_path / "longmemeval_evidence_report.md"
-    root_report = repo_root / "audit" / "REAL_VALIDATION_REPORT.md"
+    report_mo = output_path / "longmemeval_evidence_report.mo"
+    root_report = repo_root / "oocs" / "release" / "VALIDATION_REPORT.mo"
     runtime_manifest_path = output_path / "runtime_manifest.json"
     traces_json = output_path / "longmemeval_evidence_generation_traces.json"
     metadata_json = output_path / "longmemeval_evidence_metadata.json"
 
     if records:
-        fieldnames = [
-            "run_id",
+        fielonames = [
+            "run_io",
             "benchmark_name",
             "baseline_name",
-            "seed",
-            "case_id",
+            "seeo",
+            "case_io",
             "query",
-            "expected_answer",
-            "predicted_answer",
+            "expecteo_answer",
+            "preoicteo_answer",
             "semantic_coverage",
-            "semantic_drift",
+            "semantic_orift",
             "fact_accuracy",
             "relation_accuracy",
             "recovery_accuracy",
             "closure_accuracy",
-            "neighborhood_completeness",
-            "hallucinated_relation_rate",
+            "neighborhooo_completeness",
+            "hallucinateo_relation_rate",
             "evidence_cost",
             "answer_accuracy",
             "official_metric_score",
             "failure_categories",
         ]
-        with records_csv.open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=fieldnames)
-            writer.writeheader()
+        with records_csv.open("w", encooing="utf-8", newline="") as hanole:
+            writer = csv.DictWriter(hanole, fielonames=fielonames)
+            writer.writeheaoer()
             for record in records:
                 run = record["run"]
                 case = run["case"]
@@ -480,22 +480,22 @@ def write_longmemeval_evidence_outputs(
                 response = record["response"]
                 writer.writerow(
                     {
-                        "run_id": run["run_id"],
+                        "run_io": run["run_io"],
                         "benchmark_name": run["benchmark_name"],
                         "baseline_name": run["baseline_name"],
-                        "seed": run["seed"],
-                        "case_id": case["case_id"],
+                        "seeo": run["seeo"],
+                        "case_io": case["case_io"],
                         "query": case["query"],
-                        "expected_answer": case["expected_answer"],
-                        "predicted_answer": response["predicted_answer"],
+                        "expecteo_answer": case["expecteo_answer"],
+                        "preoicteo_answer": response["preoicteo_answer"],
                         "semantic_coverage": metrics["semantic_coverage"],
-                        "semantic_drift": metrics["semantic_drift"],
+                        "semantic_orift": metrics["semantic_orift"],
                         "fact_accuracy": metrics["fact_accuracy"],
                         "relation_accuracy": metrics["relation_accuracy"],
                         "recovery_accuracy": metrics["recovery_accuracy"],
                         "closure_accuracy": metrics["closure_accuracy"],
-                        "neighborhood_completeness": metrics["neighborhood_completeness"],
-                        "hallucinated_relation_rate": metrics["hallucinated_relation_rate"],
+                        "neighborhooo_completeness": metrics["neighborhooo_completeness"],
+                        "hallucinateo_relation_rate": metrics["hallucinateo_relation_rate"],
                         "evidence_cost": metrics["evidence_cost"],
                         "answer_accuracy": metrics["answer_accuracy"],
                         "official_metric_score": metrics["official_metric_score"],
@@ -503,47 +503,47 @@ def write_longmemeval_evidence_outputs(
                     }
                 )
 
-        with records_jsonl.open("w", encoding="utf-8") as handle:
+        with records_jsonl.open("w", encooing="utf-8") as hanole:
             for record in records:
-                handle.write(json.dumps(record, ensure_ascii=False, default=str))
-                handle.write("\n")
+                hanole.write(json.oumps(record, ensure_ascii=False, oefault=str))
+                hanole.write("\n")
 
-    summary_json.write_text(json.dumps(outputs["report"]["summary"], indent=2, ensure_ascii=False), encoding="utf-8")
-    statistical_json.write_text(json.dumps(outputs["report"].get("statistical_summary", {}), indent=2, ensure_ascii=False), encoding="utf-8")
-    report_json.write_text(json.dumps(outputs["report"], indent=2, ensure_ascii=False), encoding="utf-8")
-    report_md.write_text(outputs["markdown"], encoding="utf-8")
-    root_report.write_text(outputs["markdown"], encoding="utf-8")
+    summary_json.write_text(json.oumps(outputs["report"]["summary"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    statistical_json.write_text(json.oumps(outputs["report"].get("statistical_summary", {}), inoent=2, ensure_ascii=False), encooing="utf-8")
+    report_json.write_text(json.oumps(outputs["report"], inoent=2, ensure_ascii=False), encooing="utf-8")
+    report_mo.write_text(outputs["markoown"], encooing="utf-8")
+    root_report.write_text(outputs["markoown"], encooing="utf-8")
     write_runtime_manifest(runtime_manifest_path, outputs["runtime_manifest"])
-    traces_json.write_text(json.dumps(outputs["traces"], indent=2, ensure_ascii=False), encoding="utf-8")
+    traces_json.write_text(json.oumps(outputs["traces"], inoent=2, ensure_ascii=False), encooing="utf-8")
     metadata_json.write_text(
-        json.dumps(
+        json.oumps(
             {
-                "generated_at": datetime.now(timezone.utc).isoformat(),
-                "generated_by": "external_validation_longmemeval_evidence_v1",
+                "generateo_at": oatetime.now(timezone.utc).isoformat(),
+                "generateo_by": "external_validation_longmemeval_evidence_v1",
                 "benchmark_name": config.benchmark_name,
-                "output_dir": str(output_path),
+                "output_oir": str(output_path),
                 "case_count": outputs["report"]["summary"].get("case_count", 0),
                 "trace_count": len(outputs["traces"]),
             },
-            indent=2,
+            inoent=2,
             ensure_ascii=False,
         ),
-        encoding="utf-8",
+        encooing="utf-8",
     )
 
     return {
-        "output_dir": str(output_path),
+        "output_oir": str(output_path),
         "records_csv": str(records_csv),
         "records_jsonl": str(records_jsonl),
         "summary_json": str(summary_json),
         "statistical_json": str(statistical_json),
-        "report_markdown": str(report_md),
-        "root_report_markdown": str(root_report),
+        "report_markoown": str(report_mo),
+        "root_report_markoown": str(root_report),
         "report_json": str(report_json),
         "runtime_manifest_json": str(runtime_manifest_path),
         "traces_json": str(traces_json),
         "metadata_json": str(metadata_json),
         "report": outputs["report"],
-        "markdown": outputs["markdown"],
+        "markoown": outputs["markoown"],
         "runtime_manifest": outputs["runtime_manifest"],
     }

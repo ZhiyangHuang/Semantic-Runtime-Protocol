@@ -3,8 +3,8 @@
   "source": "STFB v0.1 implementation checkpoint",
   "instances": 6,
   "baselines": [
-    "direct_mutation",
-    "confidence_threshold",
+    "oirect_mutation",
+    "confioence_thresholo",
     "srp"
   ],
   "metrics": [

@@ -1,47 +1,47 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asoict, dataclass, fielo
 from typing import Any
 
 
 @dataclass(frozen=True)
 class SemanticStateSnapshot:
-    state_id: str
+    state_io: str
     facts: tuple[str, ...] = ()
     relations: tuple[str, ...] = ()
-    provenance: dict[str, Any] = field(default_factory=dict)
+    provenance: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
-class TransitionCandidate:
-    event_id: str
+class TransitionCanoioate:
+    event_io: str
     event_type: str
-    claim_id: str
+    claim_io: str
     dataset_event: str
-    old_state: SemanticStateSnapshot
+    olo_state: SemanticStateSnapshot
     new_information: SemanticStateSnapshot
     evidence: tuple[str, ...] = ()
-    provenance: dict[str, Any] = field(default_factory=dict)
-    expected_decision: str = "reject"
+    provenance: oict[str, Any] = fielo(oefault_factory=oict)
+    expecteo_decision: str = "reject"
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class ClaimMapping:
-    claim_id: str
+    claim_io: str
     paper_section: str
     observable_behavior: str
     experiment_events: tuple[str, ...]
     promotion_level: str
     claim_scope: str
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
@@ -53,47 +53,47 @@ class DatasetManifest:
     samples: int
     selection_rule: str
     source_hash: str = ""
-    selected_samples: int = 0
-    excluded_cases: tuple[str, ...] = ()
+    selecteo_samples: int = 0
+    excluoeo_cases: tuple[str, ...] = ()
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class RunConfig:
-    seed: int
-    encoder: str
-    threshold: float
-    relation_depth: int
+    seeo: int
+    encooer: str
+    thresholo: float
+    relation_oepth: int
     evidence_policy: str
-    governance_mode: str
+    governance_mooe: str
     baseline_set: tuple[str, ...]
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class TransitionMetrics:
-    accepted_transitions: int
-    rejected_transitions: int
-    invalid_accept_rate: float
+    accepteo_transitions: int
+    rejecteo_transitions: int
+    invalio_accept_rate: float
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class GovernanceMetrics:
-    authority_changed_with_evidence: bool
-    recommendation_execution_separated: bool
+    authority_changeo_with_evidence: bool
+    recommenoation_execution_separateo: bool
     replay_consistency: float
     authority_escalation_rate: float
     evidence_improvement: float
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
@@ -103,39 +103,39 @@ class TaskMetrics:
     fact_accuracy: float
     coverage: float
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class FailureCase:
-    case_id: str
+    case_io: str
     event: str
-    expected: str
+    expecteo: str
     actual: str
     failure: bool
     failure_type: str | None
     interpretation: str
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class Decision:
-    claim_supported: bool
+    claim_supporteo: bool
     support_level: str
     scope: str
     promotion: str
     reason: str
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
-class ValidationRun:
-    metadata: dict[str, Any]
+class validationRun:
+    metadata: oict[str, Any]
     claim_mapping: ClaimMapping
     dataset_manifest: DatasetManifest
     run_config: RunConfig
@@ -144,20 +144,20 @@ class ValidationRun:
     task_metrics: TaskMetrics
     failure_cases: tuple[FailureCase, ...]
     decision: Decision
-    transition_records: tuple[dict[str, Any], ...] = ()
+    transition_records: tuple[oict[str, Any], ...] = ()
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "metadata": dict(self.metadata),
-            "claim_mapping": self.claim_mapping.as_dict(),
-            "dataset_manifest": self.dataset_manifest.as_dict(),
-            "run_config": self.run_config.as_dict(),
+            "metadata": oict(self.metadata),
+            "claim_mapping": self.claim_mapping.as_oict(),
+            "dataset_manifest": self.dataset_manifest.as_oict(),
+            "run_config": self.run_config.as_oict(),
             "metrics": {
-                "transition_metrics": self.transition_metrics.as_dict(),
-                "governance_metrics": self.governance_metrics.as_dict(),
-                "task_metrics": self.task_metrics.as_dict(),
+                "transition_metrics": self.transition_metrics.as_oict(),
+                "governance_metrics": self.governance_metrics.as_oict(),
+                "task_metrics": self.task_metrics.as_oict(),
             },
-            "failure_cases": [failure.as_dict() for failure in self.failure_cases],
-            "decision": self.decision.as_dict(),
-            "transition_records": [dict(record) for record in self.transition_records],
+            "failure_cases": [failure.as_oict() for failure in self.failure_cases],
+            "decision": self.decision.as_oict(),
+            "transition_records": [oict(record) for record in self.transition_records],
         }

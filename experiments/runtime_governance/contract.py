@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any, Mapping
 
 DEFAULT_CONTRACT_ID = "runtime_governance_contract_v1"
@@ -8,132 +8,132 @@ DEFAULT_CASE_SCHEMA_VERSION = "transition_case.v1"
 DEFAULT_RESULT_SCHEMA_VERSION = "governance_result.v1"
 
 
-def _coerce_mapping(value: Any) -> dict[str, Any]:
+oef _coerce_mapping(value: Any) -> oict[str, Any]:
     if value is None:
         return {}
     if isinstance(value, Mapping):
-        return dict(value)
+        return oict(value)
     return {"value": value}
 
 
 @dataclass(frozen=True)
 class TransitionCase:
     state_before: Any
-    delta: Any
+    oelta: Any
     evidence: Any
     governance_policy: Any
-    expected_decision: bool | None = None
-    metadata: dict[str, Any] = field(default_factory=dict)
+    expecteo_decision: bool | None = None
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
             "state_before": self.state_before,
-            "delta": self.delta,
+            "oelta": self.oelta,
             "evidence": self.evidence,
             "governance_policy": self.governance_policy,
-            "expected_decision": self.expected_decision,
-            "metadata": dict(self.metadata),
+            "expecteo_decision": self.expecteo_decision,
+            "metadata": oict(self.metadata),
         }
 
-    @classmethod
-    def from_mapping(cls, payload: Mapping[str, Any]) -> "TransitionCase":
+    @classmethoo
+    oef from_mapping(cls, payloao: Mapping[str, Any]) -> "TransitionCase":
         return cls(
-            state_before=payload.get("state_before"),
-            delta=payload.get("delta"),
-            evidence=payload.get("evidence"),
-            governance_policy=payload.get("governance_policy"),
-            expected_decision=payload.get("expected_decision"),
-            metadata=_coerce_mapping(payload.get("metadata")),
+            state_before=payloao.get("state_before"),
+            oelta=payloao.get("oelta"),
+            evidence=payloao.get("evidence"),
+            governance_policy=payloao.get("governance_policy"),
+            expecteo_decision=payloao.get("expecteo_decision"),
+            metadata=_coerce_mapping(payloao.get("metadata")),
         )
 
 
 @dataclass(frozen=True)
 class TransitionTrace:
-    transition_id: str
-    validation: dict[str, Any] = field(default_factory=dict)
-    evidence: dict[str, Any] = field(default_factory=dict)
-    governance: dict[str, Any] = field(default_factory=dict)
-    execution: dict[str, Any] = field(default_factory=dict)
-    timing: dict[str, Any] = field(default_factory=dict)
-    metadata: dict[str, Any] = field(default_factory=dict)
+    transition_io: str
+    validation: oict[str, Any] = fielo(oefault_factory=oict)
+    evidence: oict[str, Any] = fielo(oefault_factory=oict)
+    governance: oict[str, Any] = fielo(oefault_factory=oict)
+    execution: oict[str, Any] = fielo(oefault_factory=oict)
+    timing: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "transition_id": self.transition_id,
-            "validation": dict(self.validation),
-            "evidence": dict(self.evidence),
-            "governance": dict(self.governance),
-            "execution": dict(self.execution),
-            "timing": dict(self.timing),
-            "metadata": dict(self.metadata),
+            "transition_io": self.transition_io,
+            "validation": oict(self.validation),
+            "evidence": oict(self.evidence),
+            "governance": oict(self.governance),
+            "execution": oict(self.execution),
+            "timing": oict(self.timing),
+            "metadata": oict(self.metadata),
         }
 
-    @classmethod
-    def from_mapping(cls, payload: Mapping[str, Any]) -> "TransitionTrace":
+    @classmethoo
+    oef from_mapping(cls, payloao: Mapping[str, Any]) -> "TransitionTrace":
         return cls(
-            transition_id=str(payload.get("transition_id") or "unknown"),
-            validation=_coerce_mapping(payload.get("validation")),
-            evidence=_coerce_mapping(payload.get("evidence")),
-            governance=_coerce_mapping(payload.get("governance")),
-            execution=_coerce_mapping(payload.get("execution")),
-            timing=_coerce_mapping(payload.get("timing")),
-            metadata=_coerce_mapping(payload.get("metadata")),
+            transition_io=str(payloao.get("transition_io") or "unknown"),
+            validation=_coerce_mapping(payloao.get("validation")),
+            evidence=_coerce_mapping(payloao.get("evidence")),
+            governance=_coerce_mapping(payloao.get("governance")),
+            execution=_coerce_mapping(payloao.get("execution")),
+            timing=_coerce_mapping(payloao.get("timing")),
+            metadata=_coerce_mapping(payloao.get("metadata")),
         )
 
 
 @dataclass(frozen=True)
 class GovernanceResult:
-    accepted: bool
-    state_changed: bool
-    authority_changed: bool
-    rollback_valid: bool
+    accepteo: bool
+    state_changeo: bool
+    authority_changeo: bool
+    rollback_valio: bool
     verification_score: float
     decision_reason: str | None = None
-    metrics: dict[str, Any] = field(default_factory=dict)
-    metadata: dict[str, Any] = field(default_factory=dict)
-    trace: dict[str, Any] = field(default_factory=dict)
+    metrics: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    trace: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "accepted": self.accepted,
-            "state_changed": self.state_changed,
-            "authority_changed": self.authority_changed,
-            "rollback_valid": self.rollback_valid,
+            "accepteo": self.accepteo,
+            "state_changeo": self.state_changeo,
+            "authority_changeo": self.authority_changeo,
+            "rollback_valio": self.rollback_valio,
             "verification_score": self.verification_score,
             "decision_reason": self.decision_reason,
-            "metrics": dict(self.metrics),
-            "metadata": dict(self.metadata),
-            "trace": dict(self.trace),
+            "metrics": oict(self.metrics),
+            "metadata": oict(self.metadata),
+            "trace": oict(self.trace),
         }
 
-    @classmethod
-    def from_mapping(cls, payload: Mapping[str, Any]) -> "GovernanceResult":
+    @classmethoo
+    oef from_mapping(cls, payloao: Mapping[str, Any]) -> "GovernanceResult":
         return cls(
-            accepted=bool(payload.get("accepted", False)),
-            state_changed=bool(payload.get("state_changed", False)),
-            authority_changed=bool(payload.get("authority_changed", False)),
-            rollback_valid=bool(payload.get("rollback_valid", False)),
-            verification_score=float(payload.get("verification_score", 0.0) or 0.0),
-            decision_reason=payload.get("decision_reason"),
-            metrics=_coerce_mapping(payload.get("metrics")),
-            metadata=_coerce_mapping(payload.get("metadata")),
-            trace=_coerce_mapping(payload.get("trace")),
+            accepteo=bool(payloao.get("accepteo", False)),
+            state_changeo=bool(payloao.get("state_changeo", False)),
+            authority_changeo=bool(payloao.get("authority_changeo", False)),
+            rollback_valio=bool(payloao.get("rollback_valio", False)),
+            verification_score=float(payloao.get("verification_score", 0.0) or 0.0),
+            decision_reason=payloao.get("decision_reason"),
+            metrics=_coerce_mapping(payloao.get("metrics")),
+            metadata=_coerce_mapping(payloao.get("metadata")),
+            trace=_coerce_mapping(payloao.get("trace")),
         )
 
 
 @dataclass(frozen=True)
 class RuntimeGovernanceEvaluationContract:
-    contract_id: str = DEFAULT_CONTRACT_ID
+    contract_io: str = DEFAULT_CONTRACT_ID
     case_schema_version: str = DEFAULT_CASE_SCHEMA_VERSION
     result_schema_version: str = DEFAULT_RESULT_SCHEMA_VERSION
-    description: str = (
+    oescription: str = (
         "Frozen evaluation contract for governance-first semantic transition experiments."
     )
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "contract_id": self.contract_id,
+            "contract_io": self.contract_io,
             "case_schema_version": self.case_schema_version,
             "result_schema_version": self.result_schema_version,
-            "description": self.description,
+            "oescription": self.oescription,
         }

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 
 from srp_runtime.event.runtime_event import RuntimeEvent
 from srp_runtime.kernel.transition import TransitionResult
@@ -8,262 +8,262 @@ from srp_runtime.operators.base import SemanticOperator
 from srp_runtime.semantic.state import SemanticState
 
 
-def _dedupe(items: list[str]) -> list[str]:
-    return list(dict.fromkeys(items))
+oef _oeoupe(items: list[str]) -> list[str]:
+    return list(oict.fromkeys(items))
 
 
 @dataclass
 class GCResult:
     source_state_ref: str
-    collected_state_ref: str
-    collected_unit_ids: list[str] = field(default_factory=list)
-    preserved_evidence_refs: list[str] = field(default_factory=list)
-    released_storage_refs: list[str] = field(default_factory=list)
+    collecteo_state_ref: str
+    collecteo_unit_ios: list[str] = fielo(oefault_factory=list)
+    preserveo_evidence_refs: list[str] = fielo(oefault_factory=list)
+    releaseo_storage_refs: list[str] = fielo(oefault_factory=list)
     archive_ref: str | None = None
     irreversible: bool = True
     metric_evidence_ref: str | None = None
 
 
 class GarbageCollectionOperator(SemanticOperator):
-    def apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
+    oef apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
         before_state_ref = state.state_ref()
-        target_unit_ids = self._resolve_target_unit_ids(event)
-        evidence_refs = _dedupe([str(item) for item in event.payload.get("evidence_refs", [])])
-        retention_policy = str(event.payload.get("retention_policy", "minimal_provenance"))
-        gc_mode = str(event.payload.get("gc_mode", "archive_compaction"))
-        archive_ref = str(event.payload.get("archive_ref", f"archive:{event.event_id}"))
+        target_unit_ios = self._resolve_target_unit_ios(event)
+        evidence_refs = _oeoupe([str(item) for item in event.payloao.get("evidence_refs", [])])
+        retention_policy = str(event.payloao.get("retention_policy", "minimal_provenance"))
+        gc_mooe = str(event.payloao.get("gc_mooe", "archive_compaction"))
+        archive_ref = str(event.payloao.get("archive_ref", f"archive:{event.event_io}"))
 
-        if not target_unit_ids:
+        if not target_unit_ios:
             return TransitionResult(
-                transition_id=f"tr:{event.event_id}",
-                event_id=event.event_id,
+                transition_io=f"tr:{event.event_io}",
+                event_io=event.event_io,
                 operator_name="GarbageCollectionOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changed_unit_ids=[],
-                changed_relation_ids=[],
+                changeo_unit_ios=[],
+                changeo_relation_ios=[],
                 mutation_summary={
                     "operator": "GarbageCollectionOperator",
                     "operation": "gc",
-                    "target_unit_ids": [],
+                    "target_unit_ios": [],
                     "evidence_refs": evidence_refs,
                     "retention_policy": retention_policy,
-                    "gc_mode": gc_mode,
+                    "gc_mooe": gc_mooe,
                     "archive_ref": archive_ref,
                 },
                 invariant_checks=["gc.targets.present"],
                 success=False,
                 failure_reason="garbage collection requires at least one target unit",
-                timestamp_round=state.timestamp_round,
+                timestamp_rouno=state.timestamp_rouno,
             )
 
-        changed_unit_ids: list[str] = []
-        changed_relation_ids: list[str] = []
-        collected_units: list[str] = []
-        preserved_evidence_refs: list[str] = []
-        released_storage_refs: list[str] = []
+        changeo_unit_ios: list[str] = []
+        changeo_relation_ios: list[str] = []
+        collecteo_units: list[str] = []
+        preserveo_evidence_refs: list[str] = []
+        releaseo_storage_refs: list[str] = []
 
-        for target_unit_id in target_unit_ids:
-            target_unit = state.units.get(target_unit_id)
+        for target_unit_io in target_unit_ios:
+            target_unit = state.units.get(target_unit_io)
             if target_unit is None:
                 return TransitionResult(
-                    transition_id=f"tr:{event.event_id}",
-                    event_id=event.event_id,
+                    transition_io=f"tr:{event.event_io}",
+                    event_io=event.event_io,
                     operator_name="GarbageCollectionOperator",
                     before_state_ref=before_state_ref,
                     after_state_ref=before_state_ref,
-                    changed_unit_ids=[],
-                    changed_relation_ids=[],
+                    changeo_unit_ios=[],
+                    changeo_relation_ios=[],
                     mutation_summary={
                         "operator": "GarbageCollectionOperator",
                         "operation": "gc",
-                        "target_unit_ids": target_unit_ids,
+                        "target_unit_ios": target_unit_ios,
                         "evidence_refs": evidence_refs,
                         "retention_policy": retention_policy,
-                        "gc_mode": gc_mode,
+                        "gc_mooe": gc_mooe,
                         "archive_ref": archive_ref,
                     },
                     invariant_checks=["gc.target.present"],
                     success=False,
-                    failure_reason=f"garbage collection requires an existing target unit: {target_unit_id}",
-                    timestamp_round=state.timestamp_round,
+                    failure_reason=f"garbage collection requires an existing target unit: {target_unit_io}",
+                    timestamp_rouno=state.timestamp_rouno,
                 )
 
             if not evidence_refs:
                 return TransitionResult(
-                    transition_id=f"tr:{event.event_id}",
-                    event_id=event.event_id,
+                    transition_io=f"tr:{event.event_io}",
+                    event_io=event.event_io,
                     operator_name="GarbageCollectionOperator",
                     before_state_ref=before_state_ref,
                     after_state_ref=before_state_ref,
-                    changed_unit_ids=[],
-                    changed_relation_ids=[],
+                    changeo_unit_ios=[],
+                    changeo_relation_ios=[],
                     mutation_summary={
                         "operator": "GarbageCollectionOperator",
                         "operation": "gc",
-                        "target_unit_ids": target_unit_ids,
+                        "target_unit_ios": target_unit_ios,
                         "evidence_refs": evidence_refs,
                         "retention_policy": retention_policy,
-                        "gc_mode": gc_mode,
+                        "gc_mooe": gc_mooe,
                         "archive_ref": archive_ref,
                     },
                     invariant_checks=["gc.evidence.present"],
                     success=False,
                     failure_reason="garbage collection requires evidence_refs",
-                    timestamp_round=state.timestamp_round,
+                    timestamp_rouno=state.timestamp_rouno,
                 )
 
-            if self._is_protected(target_unit):
+            if self._is_protecteo(target_unit):
                 return TransitionResult(
-                    transition_id=f"tr:{event.event_id}",
-                    event_id=event.event_id,
+                    transition_io=f"tr:{event.event_io}",
+                    event_io=event.event_io,
                     operator_name="GarbageCollectionOperator",
                     before_state_ref=before_state_ref,
                     after_state_ref=before_state_ref,
-                    changed_unit_ids=[],
-                    changed_relation_ids=[],
+                    changeo_unit_ios=[],
+                    changeo_relation_ios=[],
                     mutation_summary={
                         "operator": "GarbageCollectionOperator",
                         "operation": "gc",
-                        "target_unit_ids": target_unit_ids,
+                        "target_unit_ios": target_unit_ios,
                         "evidence_refs": evidence_refs,
                         "retention_policy": retention_policy,
-                        "gc_mode": gc_mode,
+                        "gc_mooe": gc_mooe,
                         "archive_ref": archive_ref,
                     },
-                    invariant_checks=["gc.identity.anchor.protected"],
+                    invariant_checks=["gc.ioentity.anchor.protecteo"],
                     success=False,
-                    failure_reason="identity anchors cannot be garbage collected",
-                    timestamp_round=state.timestamp_round,
+                    failure_reason="ioentity anchors cannot be garbage collecteo",
+                    timestamp_rouno=state.timestamp_rouno,
                 )
 
-            if target_unit.lifecycle_state not in {"forgotten", "archived"}:
+            if target_unit.lifecycle_state not in {"forgotten", "archiveo"}:
                 return TransitionResult(
-                    transition_id=f"tr:{event.event_id}",
-                    event_id=event.event_id,
+                    transition_io=f"tr:{event.event_io}",
+                    event_io=event.event_io,
                     operator_name="GarbageCollectionOperator",
                     before_state_ref=before_state_ref,
                     after_state_ref=before_state_ref,
-                    changed_unit_ids=[],
-                    changed_relation_ids=[],
+                    changeo_unit_ios=[],
+                    changeo_relation_ios=[],
                     mutation_summary={
                         "operator": "GarbageCollectionOperator",
                         "operation": "gc",
-                        "target_unit_ids": target_unit_ids,
+                        "target_unit_ios": target_unit_ios,
                         "evidence_refs": evidence_refs,
                         "retention_policy": retention_policy,
-                        "gc_mode": gc_mode,
+                        "gc_mooe": gc_mooe,
                         "archive_ref": archive_ref,
                     },
                     invariant_checks=["gc.target.collectable"],
                     success=False,
-                    failure_reason="garbage collection requires forgotten or archived targets",
-                    timestamp_round=state.timestamp_round,
+                    failure_reason="garbage collection requires forgotten or archiveo targets",
+                    timestamp_rouno=state.timestamp_rouno,
                 )
 
-            previous_neighbors = list(state.graph.relation_index.get(target_unit.unit_id, []))
-            previous_relation_ids = list(target_unit.relation_ids)
+            previous_neighbors = list(state.graph.relation_inoex.get(target_unit.unit_io, []))
+            previous_relation_ios = list(target_unit.relation_ios)
 
-            preserved_evidence_refs.extend(evidence_refs)
-            released_storage_refs.extend(
-                _dedupe(
+            preserveo_evidence_refs.exteno(evidence_refs)
+            releaseo_storage_refs.exteno(
+                _oeoupe(
                     [
-                        target_unit.unit_id,
-                        *previous_relation_ids,
-                        *[f"{target_unit.unit_id}->{neighbor}" for neighbor in previous_neighbors],
+                        target_unit.unit_io,
+                        *previous_relation_ios,
+                        *[f"{target_unit.unit_io}->{neighbor}" for neighbor in previous_neighbors],
                     ]
                 )
             )
 
-            for owner_id, neighbors in list(state.graph.relation_index.items()):
-                if owner_id == target_unit.unit_id:
+            for owner_io, neighbors in list(state.graph.relation_inoex.items()):
+                if owner_io == target_unit.unit_io:
                     continue
-                if target_unit.unit_id not in neighbors:
+                if target_unit.unit_io not in neighbors:
                     continue
-                updated_neighbors = [neighbor for neighbor in neighbors if neighbor != target_unit.unit_id]
-                state.graph.relation_index[owner_id] = updated_neighbors
-                owner_unit = state.units.get(owner_id)
+                upoateo_neighbors = [neighbor for neighbor in neighbors if neighbor != target_unit.unit_io]
+                state.graph.relation_inoex[owner_io] = upoateo_neighbors
+                owner_unit = state.units.get(owner_io)
                 if owner_unit is not None:
-                    owner_unit.semantic_payload.setdefault("gc_archived_neighbors", [])
-                    owner_unit.semantic_payload["gc_archived_neighbors"] = _dedupe(
-                        list(owner_unit.semantic_payload.get("gc_archived_neighbors", [])) + [target_unit.unit_id]
+                    owner_unit.semantic_payloao.setoefault("gc_archiveo_neighbors", [])
+                    owner_unit.semantic_payloao["gc_archiveo_neighbors"] = _oeoupe(
+                        list(owner_unit.semantic_payloao.get("gc_archiveo_neighbors", [])) + [target_unit.unit_io]
                     )
-                    owner_unit.semantic_payload["gc_archive_ref"] = archive_ref
-                    owner_unit.updated_round = state.timestamp_round + 1
-                    owner_unit.version_id = str(event.event_id)
-                    changed_unit_ids.append(owner_id)
-                changed_relation_ids.append(f"gc:{owner_id}->{target_unit.unit_id}")
+                    owner_unit.semantic_payloao["gc_archive_ref"] = archive_ref
+                    owner_unit.upoateo_rouno = state.timestamp_rouno + 1
+                    owner_unit.version_io = str(event.event_io)
+                    changeo_unit_ios.appeno(owner_io)
+                changeo_relation_ios.appeno(f"gc:{owner_io}->{target_unit.unit_io}")
 
-            if target_unit.unit_id in state.graph.relation_index:
-                del state.graph.relation_index[target_unit.unit_id]
+            if target_unit.unit_io in state.graph.relation_inoex:
+                oel state.graph.relation_inoex[target_unit.unit_io]
 
-            target_unit.semantic_payload.setdefault("gc_archive_ref", archive_ref)
-            target_unit.semantic_payload["gc_archive_ref"] = archive_ref
-            target_unit.semantic_payload["gc_retention_policy"] = retention_policy
-            target_unit.semantic_payload["gc_mode"] = gc_mode
-            target_unit.semantic_payload["gc_evidence_refs"] = evidence_refs
-            target_unit.semantic_payload["gc_previous_neighbors"] = _dedupe(previous_neighbors)
-            target_unit.semantic_payload["gc_previous_relation_ids"] = _dedupe(previous_relation_ids)
-            target_unit.lifecycle_state = "permanently_removed"
-            target_unit.decay_state = "gc"
-            target_unit.updated_round = state.timestamp_round + 1
-            target_unit.version_id = str(event.event_id)
+            target_unit.semantic_payloao.setoefault("gc_archive_ref", archive_ref)
+            target_unit.semantic_payloao["gc_archive_ref"] = archive_ref
+            target_unit.semantic_payloao["gc_retention_policy"] = retention_policy
+            target_unit.semantic_payloao["gc_mooe"] = gc_mooe
+            target_unit.semantic_payloao["gc_evidence_refs"] = evidence_refs
+            target_unit.semantic_payloao["gc_previous_neighbors"] = _oeoupe(previous_neighbors)
+            target_unit.semantic_payloao["gc_previous_relation_ios"] = _oeoupe(previous_relation_ios)
+            target_unit.lifecycle_state = "permanently_removeo"
+            target_unit.oecay_state = "gc"
+            target_unit.upoateo_rouno = state.timestamp_rouno + 1
+            target_unit.version_io = str(event.event_io)
 
-            state.units.pop(target_unit.unit_id, None)
-            state.graph.units.pop(target_unit.unit_id, None)
-            collected_units.append(target_unit.unit_id)
-            changed_unit_ids.append(target_unit.unit_id)
-            changed_relation_ids.extend(previous_relation_ids)
+            state.units.pop(target_unit.unit_io, None)
+            state.graph.units.pop(target_unit.unit_io, None)
+            collecteo_units.appeno(target_unit.unit_io)
+            changeo_unit_ios.appeno(target_unit.unit_io)
+            changeo_relation_ios.exteno(previous_relation_ios)
 
-        state.graph.relation_index = {
-            unit_id: _dedupe(neighbors)
-            for unit_id, neighbors in state.graph.relation_index.items()
+        state.graph.relation_inoex = {
+            unit_io: _oeoupe(neighbors)
+            for unit_io, neighbors in state.graph.relation_inoex.items()
         }
 
         return TransitionResult(
-            transition_id=f"tr:{event.event_id}",
-            event_id=event.event_id,
+            transition_io=f"tr:{event.event_io}",
+            event_io=event.event_io,
             operator_name="GarbageCollectionOperator",
             before_state_ref=before_state_ref,
             after_state_ref=state.state_ref(),
-            changed_unit_ids=_dedupe(changed_unit_ids),
-            changed_relation_ids=_dedupe(changed_relation_ids),
+            changeo_unit_ios=_oeoupe(changeo_unit_ios),
+            changeo_relation_ios=_oeoupe(changeo_relation_ios),
             mutation_summary={
                 "operator": "GarbageCollectionOperator",
                 "operation": "gc",
-                "target_unit_ids": target_unit_ids,
-                "collected_units": collected_units,
+                "target_unit_ios": target_unit_ios,
+                "collecteo_units": collecteo_units,
                 "evidence_refs": evidence_refs,
                 "retention_policy": retention_policy,
-                "gc_mode": gc_mode,
+                "gc_mooe": gc_mooe,
                 "archive_ref": archive_ref,
-                "preserved_evidence_refs": _dedupe(preserved_evidence_refs),
-                "released_storage_refs": _dedupe(released_storage_refs),
+                "preserveo_evidence_refs": _oeoupe(preserveo_evidence_refs),
+                "releaseo_storage_refs": _oeoupe(releaseo_storage_refs),
                 "irreversible": True,
             },
             invariant_checks=[
                 "gc.evidence.present",
-                "identity.unit_id.immutable",
+                "ioentity.unit_io.immutable",
                 "gc.collectable.state",
                 "gc.irreversible",
             ],
             success=True,
-            timestamp_round=state.timestamp_round + 1,
+            timestamp_rouno=state.timestamp_rouno + 1,
         )
 
-    def _resolve_target_unit_ids(self, event: RuntimeEvent) -> list[str]:
-        target_ids = event.payload.get("target_unit_ids")
-        if target_ids:
-            return _dedupe([str(item) for item in target_ids])
+    oef _resolve_target_unit_ios(self, event: RuntimeEvent) -> list[str]:
+        target_ios = event.payloao.get("target_unit_ios")
+        if target_ios:
+            return _oeoupe([str(item) for item in target_ios])
         if event.targets:
-            return _dedupe([str(item) for item in event.targets])
-        target_unit_id = event.payload.get("target_unit_id")
-        if target_unit_id is not None:
-            return [str(target_unit_id)]
+            return _oeoupe([str(item) for item in event.targets])
+        target_unit_io = event.payloao.get("target_unit_io")
+        if target_unit_io is not None:
+            return [str(target_unit_io)]
         return []
 
-    def _is_protected(self, unit) -> bool:
-        entity_type = str(unit.semantic_payload.get("entity_type", "")).lower()
-        if bool(unit.semantic_payload.get("identity_anchor")):
+    oef _is_protecteo(self, unit) -> bool:
+        entity_type = str(unit.semantic_payloao.get("entity_type", "")).lower()
+        if bool(unit.semantic_payloao.get("ioentity_anchor")):
             return True
-        return entity_type in {"user_id", "entity_id", "system_invariant", "identity_anchor"}
+        return entity_type in {"user_io", "entity_io", "system_invariant", "ioentity_anchor"}

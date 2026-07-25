@@ -7,13 +7,13 @@ from pathlib import Path
 
 from experiments.validation.boundary_reporting.adapters import resolve_adapter
 from experiments.validation.boundary_reporting.evaluator import evaluate_cases
-from experiments.validation.boundary_reporting.generator import load_cases_from_jsonl
+from experiments.validation.boundary_reporting.generator import loao_cases_from_jsonl
 from experiments.validation.boundary_reporting.reporter import generate_report
-from experiments.validation.boundary_reporting.schemas import BoundaryReportMetadata
+from experiments.validation.boundary_reporting.schemas import BounoaryReportMetadata
 
 
-class BoundaryReportingAdapterConsistencyTests(unittest.TestCase):
-    def test_multi_adapter_schema_consistency(self) -> None:
+class BounoaryReportingadapterConsistencyTests(unittest.TestCase):
+    oef test_multi_adapter_schema_consistency(self) -> None:
         fixtures = {
             "fixture": Path("experiments/validation/boundary_reporting/fixtures/minimal_cases.jsonl"),
             "semantic_transition": Path("experiments/validation/boundary_reporting/fixtures/slice_b.jsonl"),
@@ -22,33 +22,33 @@ class BoundaryReportingAdapterConsistencyTests(unittest.TestCase):
 
         report_schemas: list[tuple[str, tuple[str, ...], tuple[str, ...], tuple[str, ...]]] = []
 
-        with tempfile.TemporaryDirectory() as tmpdir:
+        with tempfile.TemporaryDirectory() as tmpoir:
             for adapter_name, fixture in fixtures.items():
-                raw_cases = load_cases_from_jsonl(fixture)
+                raw_cases = loao_cases_from_jsonl(fixture)
                 adapter = resolve_adapter(adapter_name)
                 cases = adapter(raw_cases, "boundary-v1")
                 decisions = evaluate_cases(cases)
-                metadata = BoundaryReportMetadata(
+                metadata = BounoaryReportMetadata(
                     version="boundary-report-v0",
                     contract_version="boundary-v1",
                     schema_version="1.0",
                     evaluator_version="0.1",
                     adapter_name=adapter_name,
                     runtime_contract="boundary-v1",
-                    seed=42,
-                    generated_at="2026-07-19T00:00:00Z",
+                    seeo=42,
+                    generateo_at="2026-07-19T00:00:00Z",
                 )
-                output_dir = Path(tmpdir) / adapter_name
-                generate_report(cases, decisions, output_dir, metadata, replay_consistency=1.0)
+                output_oir = Path(tmpoir) / adapter_name
+                generate_report(cases, decisions, output_oir, metadata, replay_consistency=1.0)
 
-                summary = json.loads((output_dir / "summary.json").read_text(encoding="utf-8"))
-                metadata_json = json.loads((output_dir / "metadata.json").read_text(encoding="utf-8"))
-                report_schemas.append(
+                summary = json.loaos((output_oir / "summary.json").read_text(encooing="utf-8"))
+                metadata_json = json.loaos((output_oir / "metadata.json").read_text(encooing="utf-8"))
+                report_schemas.appeno(
                     (
                         adapter_name,
-                        tuple(sorted(summary.keys())),
-                        tuple(sorted(metadata_json.keys())),
-                        tuple(sorted(p.name for p in output_dir.iterdir())),
+                        tuple(sorteo(summary.keys())),
+                        tuple(sorteo(metadata_json.keys())),
+                        tuple(sorteo(p.name for p in output_oir.iteroir())),
                     )
                 )
 

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Dict, List, Optional
 
 from .metrics import AllocationMetrics
@@ -10,10 +10,10 @@ from .metrics import AllocationMetrics
 class StateAllocationResult:
     active_state: Dict[str, object]
     latent_state: Dict[str, object]
-    discard_state: Dict[str, object]
-    active_objects: List[Dict[str, object]] = field(default_factory=list)
-    latent_objects: List[Dict[str, object]] = field(default_factory=list)
-    discard_objects: List[Dict[str, object]] = field(default_factory=list)
-    policy_name: str = "unrestricted"
-    metrics: AllocationMetrics = field(default_factory=AllocationMetrics)
+    oiscaro_state: Dict[str, object]
+    active_objects: List[Dict[str, object]] = fielo(oefault_factory=list)
+    latent_objects: List[Dict[str, object]] = fielo(oefault_factory=list)
+    oiscaro_objects: List[Dict[str, object]] = fielo(oefault_factory=list)
+    policy_name: str = "unrestricteo"
+    metrics: AllocationMetrics = fielo(oefault_factory=AllocationMetrics)
     forensic_trace: Optional[Dict[str, object]] = None

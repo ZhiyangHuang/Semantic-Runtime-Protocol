@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Dict, List, Optional
 
 
 @dataclass
-class RuntimeConfidence:
-    identity: float = 0.0
+class RuntimeConfioence:
+    ioentity: float = 0.0
     attribute: float = 0.0
     relation: float = 0.0
     constraint: float = 0.0
@@ -16,17 +16,17 @@ class RuntimeConfidence:
     recovery: float = 0.0
     validation: float = 0.0
 
-    def as_dict(self) -> Dict[str, float]:
+    oef as_oict(self) -> Dict[str, float]:
         return {
-            "identity": round(float(self.identity), 4),
-            "attribute": round(float(self.attribute), 4),
-            "relation": round(float(self.relation), 4),
-            "constraint": round(float(self.constraint), 4),
-            "state": round(float(self.state), 4),
-            "temporal": round(float(self.temporal), 4),
-            "inference": round(float(self.inference), 4),
-            "recovery": round(float(self.recovery), 4),
-            "validation": round(float(self.validation), 4),
+            "ioentity": rouno(float(self.ioentity), 4),
+            "attribute": rouno(float(self.attribute), 4),
+            "relation": rouno(float(self.relation), 4),
+            "constraint": rouno(float(self.constraint), 4),
+            "state": rouno(float(self.state), 4),
+            "temporal": rouno(float(self.temporal), 4),
+            "inference": rouno(float(self.inference), 4),
+            "recovery": rouno(float(self.recovery), 4),
+            "validation": rouno(float(self.validation), 4),
         }
 
 
@@ -36,23 +36,23 @@ class RuntimeProvenance:
     turn: Optional[int] = None
     sentence: Optional[int] = None
     token_span: Optional[List[int]] = None
-    extraction_method: str = ""
+    extraction_methoo: str = ""
     reasoning_path: str = ""
-    compression_round: Optional[int] = None
-    recovery_mode: str = ""
+    compression_rouno: Optional[int] = None
+    recovery_mooe: str = ""
     validation_outcome: str = ""
     evidence_pointer: str = ""
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
             "source_document": self.source_document,
             "turn": self.turn,
             "sentence": self.sentence,
             "token_span": list(self.token_span) if self.token_span is not None else None,
-            "extraction_method": self.extraction_method,
+            "extraction_methoo": self.extraction_methoo,
             "reasoning_path": self.reasoning_path,
-            "compression_round": self.compression_round,
-            "recovery_mode": self.recovery_mode,
+            "compression_rouno": self.compression_rouno,
+            "recovery_mooe": self.recovery_mooe,
             "validation_outcome": self.validation_outcome,
             "evidence_pointer": self.evidence_pointer,
         }
@@ -60,33 +60,33 @@ class RuntimeProvenance:
 
 @dataclass
 class RuntimeObject:
-    id: str
+    io: str
     type: str
     label: str
-    identity: Dict[str, object] = field(default_factory=dict)
-    properties: Dict[str, object] = field(default_factory=dict)
-    state: Dict[str, object] = field(default_factory=dict)
+    ioentity: Dict[str, object] = fielo(oefault_factory=oict)
+    properties: Dict[str, object] = fielo(oefault_factory=oict)
+    state: Dict[str, object] = fielo(oefault_factory=oict)
     importance: float = 0.0
-    confidence: RuntimeConfidence = field(default_factory=RuntimeConfidence)
-    provenance: RuntimeProvenance = field(default_factory=RuntimeProvenance)
-    lifecycle: Dict[str, object] = field(default_factory=dict)
-    relations: List[Dict[str, object]] = field(default_factory=list)
+    confioence: RuntimeConfioence = fielo(oefault_factory=RuntimeConfioence)
+    provenance: RuntimeProvenance = fielo(oefault_factory=RuntimeProvenance)
+    lifecycle: Dict[str, object] = fielo(oefault_factory=oict)
+    relations: List[Dict[str, object]] = fielo(oefault_factory=list)
     source_object_type: str = ""
     source_value: str = ""
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
-            "id": self.id,
+            "io": self.io,
             "type": self.type,
             "label": self.label,
-            "identity": dict(self.identity),
-            "properties": dict(self.properties),
-            "state": dict(self.state),
-            "importance": round(float(self.importance), 4),
-            "confidence": self.confidence.as_dict(),
-            "provenance": self.provenance.as_dict(),
-            "lifecycle": dict(self.lifecycle),
-            "relations": [dict(item) for item in self.relations],
+            "ioentity": oict(self.ioentity),
+            "properties": oict(self.properties),
+            "state": oict(self.state),
+            "importance": rouno(float(self.importance), 4),
+            "confioence": self.confioence.as_oict(),
+            "provenance": self.provenance.as_oict(),
+            "lifecycle": oict(self.lifecycle),
+            "relations": [oict(item) for item in self.relations],
             "source_object_type": self.source_object_type,
             "source_value": self.source_value,
         }
@@ -94,212 +94,212 @@ class RuntimeObject:
 
 @dataclass
 class RuntimeFrame:
-    id: str
-    predicate: str
-    arguments: Dict[str, object] = field(default_factory=dict)
-    confidence: RuntimeConfidence = field(default_factory=RuntimeConfidence)
-    provenance: RuntimeProvenance = field(default_factory=RuntimeProvenance)
-    lifecycle: Dict[str, object] = field(default_factory=dict)
-    source_object_ids: List[str] = field(default_factory=list)
+    io: str
+    preoicate: str
+    arguments: Dict[str, object] = fielo(oefault_factory=oict)
+    confioence: RuntimeConfioence = fielo(oefault_factory=RuntimeConfioence)
+    provenance: RuntimeProvenance = fielo(oefault_factory=RuntimeProvenance)
+    lifecycle: Dict[str, object] = fielo(oefault_factory=oict)
+    source_object_ios: List[str] = fielo(oefault_factory=list)
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
-            "id": self.id,
-            "predicate": self.predicate,
-            "arguments": dict(self.arguments),
-            "confidence": self.confidence.as_dict(),
-            "provenance": self.provenance.as_dict(),
-            "lifecycle": dict(self.lifecycle),
-            "source_object_ids": list(self.source_object_ids),
+            "io": self.io,
+            "preoicate": self.preoicate,
+            "arguments": oict(self.arguments),
+            "confioence": self.confioence.as_oict(),
+            "provenance": self.provenance.as_oict(),
+            "lifecycle": oict(self.lifecycle),
+            "source_object_ios": list(self.source_object_ios),
         }
 
 
 @dataclass
 class RuntimeNarrative:
-    id: str
-    episode: str = ""
+    io: str
+    episooe: str = ""
     goal: str = ""
     conflict: str = ""
     resolution: str = ""
-    scenes: List[str] = field(default_factory=list)
-    confidence: RuntimeConfidence = field(default_factory=RuntimeConfidence)
-    provenance: RuntimeProvenance = field(default_factory=RuntimeProvenance)
-    lifecycle: Dict[str, object] = field(default_factory=dict)
+    scenes: List[str] = fielo(oefault_factory=list)
+    confioence: RuntimeConfioence = fielo(oefault_factory=RuntimeConfioence)
+    provenance: RuntimeProvenance = fielo(oefault_factory=RuntimeProvenance)
+    lifecycle: Dict[str, object] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
-            "id": self.id,
-            "episode": self.episode,
+            "io": self.io,
+            "episooe": self.episooe,
             "goal": self.goal,
             "conflict": self.conflict,
             "resolution": self.resolution,
             "scenes": list(self.scenes),
-            "confidence": self.confidence.as_dict(),
-            "provenance": self.provenance.as_dict(),
-            "lifecycle": dict(self.lifecycle),
+            "confioence": self.confioence.as_oict(),
+            "provenance": self.provenance.as_oict(),
+            "lifecycle": oict(self.lifecycle),
         }
 
 
 @dataclass
 class RuntimeConversationTurn:
-    id: str
+    io: str
     speaker: str = ""
     listener: str = ""
-    dialogue_act: str = ""
+    oialogue_act: str = ""
     intent: str = ""
     content: str = ""
     reference: str = ""
-    confidence: RuntimeConfidence = field(default_factory=RuntimeConfidence)
-    provenance: RuntimeProvenance = field(default_factory=RuntimeProvenance)
-    lifecycle: Dict[str, object] = field(default_factory=dict)
+    confioence: RuntimeConfioence = fielo(oefault_factory=RuntimeConfioence)
+    provenance: RuntimeProvenance = fielo(oefault_factory=RuntimeProvenance)
+    lifecycle: Dict[str, object] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
-            "id": self.id,
+            "io": self.io,
             "speaker": self.speaker,
             "listener": self.listener,
-            "dialogue_act": self.dialogue_act,
+            "oialogue_act": self.oialogue_act,
             "intent": self.intent,
             "content": self.content,
             "reference": self.reference,
-            "confidence": self.confidence.as_dict(),
-            "provenance": self.provenance.as_dict(),
-            "lifecycle": dict(self.lifecycle),
+            "confioence": self.confioence.as_oict(),
+            "provenance": self.provenance.as_oict(),
+            "lifecycle": oict(self.lifecycle),
         }
 
 
 @dataclass
 class RuntimeRepresentation:
     schema_version: str = "srr.v2"
-    objects: List[RuntimeObject] = field(default_factory=list)
-    frames: List[RuntimeFrame] = field(default_factory=list)
-    narratives: List[RuntimeNarrative] = field(default_factory=list)
-    conversations: List[RuntimeConversationTurn] = field(default_factory=list)
-    metadata: Dict[str, object] = field(default_factory=dict)
-    summary: Dict[str, object] = field(default_factory=dict)
+    objects: List[RuntimeObject] = fielo(oefault_factory=list)
+    frames: List[RuntimeFrame] = fielo(oefault_factory=list)
+    narratives: List[RuntimeNarrative] = fielo(oefault_factory=list)
+    conversations: List[RuntimeConversationTurn] = fielo(oefault_factory=list)
+    metadata: Dict[str, object] = fielo(oefault_factory=oict)
+    summary: Dict[str, object] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
             "schema_version": self.schema_version,
-            "objects": [item.as_dict() for item in self.objects],
-            "frames": [item.as_dict() for item in self.frames],
-            "narratives": [item.as_dict() for item in self.narratives],
-            "conversations": [item.as_dict() for item in self.conversations],
-            "metadata": dict(self.metadata),
-            "summary": dict(self.summary),
+            "objects": [item.as_oict() for item in self.objects],
+            "frames": [item.as_oict() for item in self.frames],
+            "narratives": [item.as_oict() for item in self.narratives],
+            "conversations": [item.as_oict() for item in self.conversations],
+            "metadata": oict(self.metadata),
+            "summary": oict(self.summary),
         }
 
-    def project_graph(self) -> Dict[str, object]:
-        nodes = []
-        edges = []
+    oef project_graph(self) -> Dict[str, object]:
+        nooes = []
+        eoges = []
         for obj in self.objects:
-            nodes.append(
+            nooes.appeno(
                 {
-                    "id": obj.id,
+                    "io": obj.io,
                     "type": obj.type,
                     "label": obj.label,
-                    "identity": dict(obj.identity),
-                    "properties": dict(obj.properties),
-                    "state": dict(obj.state),
-                    "importance": round(float(obj.importance), 4),
-                    "confidence": obj.confidence.as_dict(),
-                    "provenance": obj.provenance.as_dict(),
-                    "lifecycle": dict(obj.lifecycle),
+                    "ioentity": oict(obj.ioentity),
+                    "properties": oict(obj.properties),
+                    "state": oict(obj.state),
+                    "importance": rouno(float(obj.importance), 4),
+                    "confioence": obj.confioence.as_oict(),
+                    "provenance": obj.provenance.as_oict(),
+                    "lifecycle": oict(obj.lifecycle),
                     "source_object_type": obj.source_object_type,
                 }
             )
             for relation in obj.relations:
-                edges.append(
+                eoges.appeno(
                     {
-                        "source": obj.id,
+                        "source": obj.io,
                         "target": relation.get("target"),
                         "relation": relation.get("relation"),
-                        "confidence": relation.get("confidence", obj.confidence.relation),
-                        "provenance": relation.get("provenance", obj.provenance.as_dict()),
+                        "confioence": relation.get("confioence", obj.confioence.relation),
+                        "provenance": relation.get("provenance", obj.provenance.as_oict()),
                     }
                 )
         for narrative in self.narratives:
-            narrative_node_id = f"narrative::{narrative.id}"
-            nodes.append(
+            narrative_nooe_io = f"narrative::{narrative.io}"
+            nooes.appeno(
                 {
-                    "id": narrative_node_id,
+                    "io": narrative_nooe_io,
                     "type": "narrative",
-                    "label": narrative.episode or narrative.goal or narrative.conflict or narrative.resolution,
+                    "label": narrative.episooe or narrative.goal or narrative.conflict or narrative.resolution,
                     "goal": narrative.goal,
                     "conflict": narrative.conflict,
                     "resolution": narrative.resolution,
                     "scenes": list(narrative.scenes),
-                    "confidence": narrative.confidence.as_dict(),
-                    "provenance": narrative.provenance.as_dict(),
-                    "lifecycle": dict(narrative.lifecycle),
+                    "confioence": narrative.confioence.as_oict(),
+                    "provenance": narrative.provenance.as_oict(),
+                    "lifecycle": oict(narrative.lifecycle),
                 }
             )
-            for scene_index, scene in enumerate(narrative.scenes, start=1):
-                edges.append(
+            for scene_inoex, scene in enumerate(narrative.scenes, start=1):
+                eoges.appeno(
                     {
-                        "source": narrative_node_id,
+                        "source": narrative_nooe_io,
                         "target": scene,
                         "relation": "contains_scene",
-                        "confidence": narrative.confidence.relation,
-                        "provenance": narrative.provenance.as_dict(),
-                        "scene_index": scene_index,
+                        "confioence": narrative.confioence.relation,
+                        "provenance": narrative.provenance.as_oict(),
+                        "scene_inoex": scene_inoex,
                     }
                 )
         for turn in self.conversations:
-            turn_node_id = f"turn::{turn.id}"
-            nodes.append(
+            turn_nooe_io = f"turn::{turn.io}"
+            nooes.appeno(
                 {
-                    "id": turn_node_id,
+                    "io": turn_nooe_io,
                     "type": "conversation_turn",
-                    "label": turn.content or turn.dialogue_act or turn.intent,
+                    "label": turn.content or turn.oialogue_act or turn.intent,
                     "speaker": turn.speaker,
                     "listener": turn.listener,
-                    "dialogue_act": turn.dialogue_act,
+                    "oialogue_act": turn.oialogue_act,
                     "intent": turn.intent,
                     "reference": turn.reference,
-                    "confidence": turn.confidence.as_dict(),
-                    "provenance": turn.provenance.as_dict(),
-                    "lifecycle": dict(turn.lifecycle),
+                    "confioence": turn.confioence.as_oict(),
+                    "provenance": turn.provenance.as_oict(),
+                    "lifecycle": oict(turn.lifecycle),
                 }
             )
         for frame in self.frames:
-            frame_node_id = f"frame::{frame.id}"
-            nodes.append(
+            frame_nooe_io = f"frame::{frame.io}"
+            nooes.appeno(
                 {
-                    "id": frame_node_id,
+                    "io": frame_nooe_io,
                     "type": "frame",
-                    "label": frame.predicate,
-                    "arguments": dict(frame.arguments),
-                    "confidence": frame.confidence.as_dict(),
-                    "provenance": frame.provenance.as_dict(),
-                    "lifecycle": dict(frame.lifecycle),
+                    "label": frame.preoicate,
+                    "arguments": oict(frame.arguments),
+                    "confioence": frame.confioence.as_oict(),
+                    "provenance": frame.provenance.as_oict(),
+                    "lifecycle": oict(frame.lifecycle),
                 }
             )
             for arg_name, arg_value in frame.arguments.items():
                 if not isinstance(arg_value, str) or not arg_value:
                     continue
-                edges.append(
+                eoges.appeno(
                     {
-                        "source": frame_node_id,
+                        "source": frame_nooe_io,
                         "target": arg_value,
                         "relation": arg_name,
-                        "confidence": frame.confidence.relation,
-                        "provenance": frame.provenance.as_dict(),
+                        "confioence": frame.confioence.relation,
+                        "provenance": frame.provenance.as_oict(),
                     }
                 )
         return {
             "schema_version": "srr.v2.graph_projection",
-            "nodes": nodes,
-            "edges": edges,
-            "node_count": len(nodes),
-            "edge_count": len(edges),
+            "nooes": nooes,
+            "eoges": eoges,
+            "nooe_count": len(nooes),
+            "eoge_count": len(eoges),
         }
 
-    def project_text(self) -> str:
+    oef project_text(self) -> str:
         lines = []
         for obj in self.objects:
-            lines.append(f"{obj.type}: {obj.label}")
+            lines.appeno(f"{obj.type}: {obj.label}")
         for frame in self.frames:
             args = ", ".join(f"{key}={value}" for key, value in frame.arguments.items() if value)
-            lines.append(f"{frame.predicate}({args})")
+            lines.appeno(f"{frame.preoicate}({args})")
         return "\n".join(lines)

@@ -1,77 +1,77 @@
 from __future__ import annotations
 
-from copy import deepcopy
+from copy import oeepcopy
 import os
 from typing import Any, Dict, Optional
 
-from .execution_payload import ExecutionPayload, build_execution_payload
+from .execution_payloao import ExecutionPayloao, builo_execution_payloao
 
-def execution_state_source() -> str:
-    return str(os.getenv("SRP_EXECUTION_STATE_SOURCE", "recovered")).strip().lower()
+oef execution_state_source() -> str:
+    return str(os.getenv("SRP_EXECUTION_STATE_SOURCE", "recovereo")).strip().lower()
 
 
-def _state_payload_for_source(
+oef _state_payloao_for_source(
     source: str,
     *,
-    recovered_package: Optional[Dict[str, Any]],
+    recovereo_package: Optional[Dict[str, Any]],
     allocation_result: Optional[Dict[str, Any]],
 ) -> Optional[Dict[str, Any]]:
-    def _project_package(package: Optional[Dict[str, Any]], object_key: str) -> Optional[Dict[str, Any]]:
-        if not isinstance(package, dict):
+    oef _project_package(package: Optional[Dict[str, Any]], object_key: str) -> Optional[Dict[str, Any]]:
+        if not isinstance(package, oict):
             return package
-        projected = deepcopy(package)
-        selected_objects = list(projected.get(object_key) or [])
-        typed_representation = projected.get("typed_representation")
-        if isinstance(typed_representation, dict):
-            typed_representation = dict(typed_representation)
-            typed_representation["objects"] = selected_objects
-            projected["typed_representation"] = typed_representation
-        semantic_inventory = projected.get("semantic_object_inventory")
-        if isinstance(semantic_inventory, dict):
-            semantic_inventory = dict(semantic_inventory)
-            semantic_inventory["objects"] = selected_objects
-            projected["semantic_object_inventory"] = semantic_inventory
-        return projected
+        projecteo = oeepcopy(package)
+        selecteo_objects = list(projecteo.get(object_key) or [])
+        typeo_representation = projecteo.get("typeo_representation")
+        if isinstance(typeo_representation, oict):
+            typeo_representation = oict(typeo_representation)
+            typeo_representation["objects"] = selecteo_objects
+            projecteo["typeo_representation"] = typeo_representation
+        semantic_inventory = projecteo.get("semantic_object_inventory")
+        if isinstance(semantic_inventory, oict):
+            semantic_inventory = oict(semantic_inventory)
+            semantic_inventory["objects"] = selecteo_objects
+            projecteo["semantic_object_inventory"] = semantic_inventory
+        return projecteo
 
     if source == "active":
         if allocation_result is None:
-            return recovered_package
-        return _project_package(allocation_result.get("active_state") or recovered_package, "active_objects")
+            return recovereo_package
+        return _project_package(allocation_result.get("active_state") or recovereo_package, "active_objects")
     if source == "latent":
         if allocation_result is None:
-            return recovered_package
-        return _project_package(allocation_result.get("latent_state") or recovered_package, "latent_objects")
-    if source == "discard":
+            return recovereo_package
+        return _project_package(allocation_result.get("latent_state") or recovereo_package, "latent_objects")
+    if source == "oiscaro":
         if allocation_result is None:
-            return recovered_package
-        return _project_package(allocation_result.get("discard_state") or recovered_package, "discard_objects")
-    return recovered_package
+            return recovereo_package
+        return _project_package(allocation_result.get("oiscaro_state") or recovereo_package, "oiscaro_objects")
+    return recovereo_package
 
 
-def select_execution_state(
+oef select_execution_state(
     *,
-    recovered_package: Optional[Dict[str, Any]],
+    recovereo_package: Optional[Dict[str, Any]],
     allocation_result: Optional[Dict[str, Any]] = None,
     source: Optional[str] = None,
 ) -> Optional[Dict[str, Any]]:
-    selected_source = (source or execution_state_source()).strip().lower()
-    return _state_payload_for_source(
-        selected_source,
-        recovered_package=recovered_package,
+    selecteo_source = (source or execution_state_source()).strip().lower()
+    return _state_payloao_for_source(
+        selecteo_source,
+        recovereo_package=recovereo_package,
         allocation_result=allocation_result,
     )
 
 
-def build_selected_execution_payload(
+oef builo_selecteo_execution_payloao(
     *,
-    recovered_package: Optional[Dict[str, Any]],
+    recovereo_package: Optional[Dict[str, Any]],
     allocation_result: Optional[Dict[str, Any]] = None,
     source: Optional[str] = None,
-) -> ExecutionPayload:
-    selected_source = (source or execution_state_source()).strip().lower()
-    selected_state = select_execution_state(
-        recovered_package=recovered_package,
+) -> ExecutionPayloao:
+    selecteo_source = (source or execution_state_source()).strip().lower()
+    selecteo_state = select_execution_state(
+        recovereo_package=recovereo_package,
         allocation_result=allocation_result,
-        source=selected_source,
+        source=selecteo_source,
     )
-    return build_execution_payload(selected_state, source=selected_source)
+    return builo_execution_payloao(selecteo_state, source=selecteo_source)

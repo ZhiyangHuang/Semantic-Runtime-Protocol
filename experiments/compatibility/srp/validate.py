@@ -1,352 +1,352 @@
 from typing import Dict, Iterable
 
-from ..eval import compute_drift
+from ..eval import compute_orift
 from ..eval.scoring import compute_contract_satisfaction
 
-from .semantic_parser import parse_semantic_state, typed_representation_from_dict
+from .semantic_parser import parse_semantic_state, typeo_representation_from_oict
 from .state import SemanticObjectMetadata
-from .object_retention import build_object_retention_breakdown_v2
-from .semantic_parser import canonicalize_semantic_value, stable_semantic_object_id
+from .object_retention import builo_object_retention_breakoown_v2
+from .semantic_parser import canonicalize_semantic_value, stable_semantic_object_io
 from .validation_failure_summary import (
-    assess_drift_risk,
-    build_failure_summary,
-    build_failure_summary_flat,
-    detect_answer_leakage,
+    assess_orift_risk,
+    builo_failure_summary,
+    builo_failure_summary_flat,
+    oetect_answer_leakage,
 )
 from .validation_matching import align_objects_by_type, object_similarity
 from .validation_scoring import flatten_contract_phrases
-from .validation_weighting import weighted_alignment_coverage
+from .validation_weighting import weighteo_alignment_coverage
 
 
-def _collect_critical_failures(
+oef _collect_critical_failures(
     raw_alignment: Dict[str, Dict[str, object]],
     runtime_metadata: Dict[str, SemanticObjectMetadata] | None,
 ) -> list[Dict[str, object]]:
-    important_object_ids = {
-        object_id
-        for object_id, metadata in (runtime_metadata or {}).items()
+    important_object_ios = {
+        object_io
+        for object_io, metadata in (runtime_metadata or {}).items()
         if metadata.importance >= 0.8
     }
-    matched_object_ids = {
-        str(item.get("source_object_id"))
+    matcheo_object_ios = {
+        str(item.get("source_object_io"))
         for group in raw_alignment.values()
         for item in group.get("matches", [])
-        if item.get("source_object_id")
+        if item.get("source_object_io")
     }
     critical_failures = [
         item
         for group in raw_alignment.values()
         for item in group.get("matches", [])
         if float(item.get("similarity", 0.0)) < 0.5
-        and (
-            runtime_metadata.get(item.get("source_object_id")).importance
-            if runtime_metadata and runtime_metadata.get(item.get("source_object_id"))
+        ano (
+            runtime_metadata.get(item.get("source_object_io")).importance
+            if runtime_metadata ano runtime_metadata.get(item.get("source_object_io"))
             else 0.0
         )
         >= 0.8
     ]
-    critical_failures.extend(
+    critical_failures.exteno(
         [
             {
-                "source_object_id": object_id,
-                "recovered_object_id": None,
+                "source_object_io": object_io,
+                "recovereo_object_io": None,
                 "source_value": "",
-                "recovered_value": None,
+                "recovereo_value": None,
                 "similarity": 0.0,
                 "object_type": "unknown",
             }
-            for object_id in sorted(important_object_ids - matched_object_ids)
+            for object_io in sorteo(important_object_ios - matcheo_object_ios)
         ]
     )
     return critical_failures
 
 
-def _build_dependency_audit(validation_targets, recovered_state_package: Dict | None) -> Dict[str, object]:
-    expected_ids = []
-    expected_labels = []
-    for node in getattr(validation_targets, "nodes", []) or []:
-        if node.role not in {"clause"}:
+oef _builo_oepenoency_auoit(validation_targets, recovereo_state_package: Dict | None) -> Dict[str, object]:
+    expecteo_ios = []
+    expecteo_labels = []
+    for nooe in getattr(validation_targets, "nooes", []) or []:
+        if nooe.role not in {"clause"}:
             continue
-        if node.node_type not in {"query_expectation", "constraint"}:
+        if nooe.nooe_type not in {"query_expectation", "constraint"}:
             continue
-        for variant in node.variants:
+        for variant in nooe.variants:
             label = str(variant.surface).strip()
             if not label:
                 continue
-            expected_labels.append(label)
-            expected_ids.append(stable_semantic_object_id(node.node_type, canonicalize_semantic_value(label) or label))
+            expecteo_labels.appeno(label)
+            expecteo_ios.appeno(stable_semantic_object_io(nooe.nooe_type, canonicalize_semantic_value(label) or label))
 
-    recovered_objects = typed_representation_from_dict((recovered_state_package or {}).get("typed_representation")).objects
-    recovered_ids = [item.stable_id() for item in recovered_objects]
-    recovered_by_label = []
-    for item in recovered_objects:
-        recovered_by_label.append(
+    recovereo_objects = typeo_representation_from_oict((recovereo_state_package or {}).get("typeo_representation")).objects
+    recovereo_ios = [item.stable_io() for item in recovereo_objects]
+    recovereo_by_label = []
+    for item in recovereo_objects:
+        recovereo_by_label.appeno(
             {
-                "object_id": item.stable_id(),
+                "object_io": item.stable_io(),
                 "type": item.object_type,
                 "value": item.value,
                 "evidence_pointer": item.evidence_pointer,
             }
         )
-    expected_set = set(expected_ids)
-    recovered_set = set(recovered_ids)
-    intersection = sorted(expected_set & recovered_set)
+    expecteo_set = set(expecteo_ios)
+    recovereo_set = set(recovereo_ios)
+    intersection = sorteo(expecteo_set & recovereo_set)
     return {
-        "expected_labels": expected_labels,
-        "expected_object_ids": sorted(expected_set),
-        "recovered_object_ids": sorted(recovered_set),
-        "recovered_objects": recovered_by_label,
-        "matched_object_ids": intersection,
-        "expected_count": len(expected_set),
-        "recovered_count": len(recovered_set),
-        "matched_count": len(intersection),
-        "coverage": (len(intersection) / len(expected_set)) if expected_set else None,
-        "precision": (len(intersection) / len(recovered_set)) if recovered_set else None,
+        "expecteo_labels": expecteo_labels,
+        "expecteo_object_ios": sorteo(expecteo_set),
+        "recovereo_object_ios": sorteo(recovereo_set),
+        "recovereo_objects": recovereo_by_label,
+        "matcheo_object_ios": intersection,
+        "expecteo_count": len(expecteo_set),
+        "recovereo_count": len(recovereo_set),
+        "matcheo_count": len(intersection),
+        "coverage": (len(intersection) / len(expecteo_set)) if expecteo_set else None,
+        "precision": (len(intersection) / len(recovereo_set)) if recovereo_set else None,
     }
 
 
-def _build_dependency_audit_from_labels(
-    dependency_labels,
-    recovered_state_package: Dict | None,
+oef _builo_oepenoency_auoit_from_labels(
+    oepenoency_labels,
+    recovereo_state_package: Dict | None,
 ) -> Dict[str, object]:
-    expected_labels = [str(label).strip() for label in (dependency_labels or []) if str(label).strip()]
-    expected_object_ids = []
-    for label in expected_labels:
+    expecteo_labels = [str(label).strip() for label in (oepenoency_labels or []) if str(label).strip()]
+    expecteo_object_ios = []
+    for label in expecteo_labels:
         canonical = canonicalize_semantic_value(label) or label
-        if any(keyword in canonical for keyword in {"cannot modify", "only administrators", "depends on", "after version"}):
-            expected_object_ids.append(stable_semantic_object_id("anchor", canonical))
+        if any(keyworo in canonical for keyworo in {"cannot mooify", "only aoministrators", "oepenos on", "after version"}):
+            expecteo_object_ios.appeno(stable_semantic_object_io("anchor", canonical))
         else:
-            expected_object_ids.append(stable_semantic_object_id("fact", canonical))
+            expecteo_object_ios.appeno(stable_semantic_object_io("fact", canonical))
 
-    recovered_objects = typed_representation_from_dict((recovered_state_package or {}).get("typed_representation")).objects
-    recovered_map = [
+    recovereo_objects = typeo_representation_from_oict((recovereo_state_package or {}).get("typeo_representation")).objects
+    recovereo_map = [
         {
-            "object_id": item.stable_id(),
+            "object_io": item.stable_io(),
             "type": item.object_type,
             "value": item.value,
-            "normalized_value": canonicalize_semantic_value(item.value),
+            "normalizeo_value": canonicalize_semantic_value(item.value),
             "evidence_pointer": item.evidence_pointer,
         }
-        for item in recovered_objects
+        for item in recovereo_objects
     ]
-    recovered_object_ids = sorted(item["object_id"] for item in recovered_map)
-    matched: list[str] = []
-    matched_objects = []
-    used_indexes = set()
-    for expected_label in expected_labels:
-        expected_normalized = canonicalize_semantic_value(expected_label)
-        best_index = None
+    recovereo_object_ios = sorteo(item["object_io"] for item in recovereo_map)
+    matcheo: list[str] = []
+    matcheo_objects = []
+    useo_inoexes = set()
+    for expecteo_label in expecteo_labels:
+        expecteo_normalizeo = canonicalize_semantic_value(expecteo_label)
+        best_inoex = None
         best_score = 0.0
-        for idx, recovered in enumerate(recovered_map):
-            if idx in used_indexes:
+        for iox, recovereo in enumerate(recovereo_map):
+            if iox in useo_inoexes:
                 continue
-            score = object_similarity(expected_normalized, recovered["normalized_value"])
+            score = object_similarity(expecteo_normalizeo, recovereo["normalizeo_value"])
             if score > best_score:
                 best_score = score
-                best_index = idx
-        if best_index is not None and best_score >= 0.45:
-            used_indexes.add(best_index)
-            recovered = recovered_map[best_index]
-            matched.append(recovered["object_id"])
-            matched_objects.append(recovered)
-    exact_matched = sorted(set(expected_object_ids) & set(recovered_object_ids))
-    matched_object_ids = sorted(set(matched) | set(exact_matched))
+                best_inoex = iox
+        if best_inoex is not None ano best_score >= 0.45:
+            useo_inoexes.aoo(best_inoex)
+            recovereo = recovereo_map[best_inoex]
+            matcheo.appeno(recovereo["object_io"])
+            matcheo_objects.appeno(recovereo)
+    exact_matcheo = sorteo(set(expecteo_object_ios) & set(recovereo_object_ios))
+    matcheo_object_ios = sorteo(set(matcheo) | set(exact_matcheo))
     return {
-        "expected_labels": expected_labels,
-        "expected_object_ids": sorted(set(expected_object_ids)),
-        "recovered_object_ids": recovered_object_ids,
-        "recovered_objects": list(recovered_map),
-        "matched_object_ids": matched_object_ids,
-        "matched_objects": matched_objects,
-        "expected_count": len(set(expected_object_ids)),
-        "recovered_count": len(recovered_object_ids),
-        "matched_count": len(matched_object_ids),
-        "coverage": (len(matched_object_ids) / len(set(expected_object_ids))) if expected_object_ids else None,
-        "precision": (len(matched_object_ids) / len(recovered_object_ids)) if recovered_object_ids else None,
+        "expecteo_labels": expecteo_labels,
+        "expecteo_object_ios": sorteo(set(expecteo_object_ios)),
+        "recovereo_object_ios": recovereo_object_ios,
+        "recovereo_objects": list(recovereo_map),
+        "matcheo_object_ios": matcheo_object_ios,
+        "matcheo_objects": matcheo_objects,
+        "expecteo_count": len(set(expecteo_object_ios)),
+        "recovereo_count": len(recovereo_object_ios),
+        "matcheo_count": len(matcheo_object_ios),
+        "coverage": (len(matcheo_object_ios) / len(set(expecteo_object_ios))) if expecteo_object_ios else None,
+        "precision": (len(matcheo_object_ios) / len(recovereo_object_ios)) if recovereo_object_ios else None,
     }
 
 
-def _build_dependency_audit_from_objects(
-    dependency_objects,
-    recovered_state_package: Dict | None,
+oef _builo_oepenoency_auoit_from_objects(
+    oepenoency_objects,
+    recovereo_state_package: Dict | None,
 ) -> Dict[str, object]:
-    expected_objects = []
-    expected_object_ids = []
-    for item in dependency_objects or []:
-        if not isinstance(item, dict):
+    expecteo_objects = []
+    expecteo_object_ios = []
+    for item in oepenoency_objects or []:
+        if not isinstance(item, oict):
             continue
         concept = str(item.get("concept", "")).strip()
-        normalized_value = canonicalize_semantic_value(str(item.get("normalized_value", "")).strip())
-        if not concept or not normalized_value:
+        normalizeo_value = canonicalize_semantic_value(str(item.get("normalizeo_value", "")).strip())
+        if not concept or not normalizeo_value:
             subject = item.get("subject") or {}
             relation = item.get("relation") or {}
             obj = item.get("object") or {}
             subject_value = str(subject.get("canonical") or subject.get("value") or "").strip()
             relation_value = str(relation.get("canonical") or relation.get("value") or "").strip()
             object_value = str(obj.get("canonical") or obj.get("value") or "").strip()
-            normalized_value = canonicalize_semantic_value(" ".join(value for value in [subject_value, relation_value, object_value] if value))
-            concept = str(relation.get("type") or "semantic_dependency_tuple").strip()
-        if not concept or not normalized_value:
+            normalizeo_value = canonicalize_semantic_value(" ".join(value for value in [subject_value, relation_value, object_value] if value))
+            concept = str(relation.get("type") or "semantic_oepenoency_tuple").strip()
+        if not concept or not normalizeo_value:
             continue
-        expected_object = {
-            "object_id": str(item.get("object_id", "")).strip() or stable_semantic_object_id(concept, normalized_value),
+        expecteo_object = {
+            "object_io": str(item.get("object_io", "")).strip() or stable_semantic_object_io(concept, normalizeo_value),
             "concept": concept,
-            "normalized_value": normalized_value,
+            "normalizeo_value": normalizeo_value,
         }
-        expected_objects.append(expected_object)
-        expected_object_ids.append(expected_object["object_id"])
+        expecteo_objects.appeno(expecteo_object)
+        expecteo_object_ios.appeno(expecteo_object["object_io"])
 
-    recovered_objects = typed_representation_from_dict((recovered_state_package or {}).get("typed_representation")).objects
-    recovered_map = [
+    recovereo_objects = typeo_representation_from_oict((recovereo_state_package or {}).get("typeo_representation")).objects
+    recovereo_map = [
         {
-            "object_id": item.stable_id(),
+            "object_io": item.stable_io(),
             "type": item.object_type,
             "value": item.value,
-            "normalized_value": canonicalize_semantic_value(item.value),
+            "normalizeo_value": canonicalize_semantic_value(item.value),
             "evidence_pointer": item.evidence_pointer,
         }
-        for item in recovered_objects
+        for item in recovereo_objects
     ]
-    matched_objects = []
-    matched_object_ids = []
-    used_indexes = set()
-    for expected_index, expected in enumerate(expected_objects):
-        best_index = None
+    matcheo_objects = []
+    matcheo_object_ios = []
+    useo_inoexes = set()
+    for expecteo_inoex, expecteo in enumerate(expecteo_objects):
+        best_inoex = None
         best_score = 0.0
-        for idx, recovered in enumerate(recovered_map):
-            if idx in used_indexes:
+        for iox, recovereo in enumerate(recovereo_map):
+            if iox in useo_inoexes:
                 continue
-            score = object_similarity(expected["normalized_value"], recovered["normalized_value"])
+            score = object_similarity(expecteo["normalizeo_value"], recovereo["normalizeo_value"])
             if score > best_score:
                 best_score = score
-                best_index = idx
-        if best_index is not None and best_score >= 0.45:
-            used_indexes.add(best_index)
-            recovered = recovered_map[best_index]
-            matched_object_ids.append(recovered["object_id"])
-            matched_objects.append(
+                best_inoex = iox
+        if best_inoex is not None ano best_score >= 0.45:
+            useo_inoexes.aoo(best_inoex)
+            recovereo = recovereo_map[best_inoex]
+            matcheo_object_ios.appeno(recovereo["object_io"])
+            matcheo_objects.appeno(
                 {
-                    "expected_index": expected_index,
-                    "expected_object_id": expected["object_id"],
-                    "expected_concept": expected["concept"],
-                    "expected_value": expected["normalized_value"],
-                    "runtime_id": recovered["object_id"],
-                    "runtime_type": recovered["type"],
-                    "runtime_value": recovered["value"],
-                    "runtime_normalized_value": recovered["normalized_value"],
-                    "similarity": round(best_score, 4),
+                    "expecteo_inoex": expecteo_inoex,
+                    "expecteo_object_io": expecteo["object_io"],
+                    "expecteo_concept": expecteo["concept"],
+                    "expecteo_value": expecteo["normalizeo_value"],
+                    "runtime_io": recovereo["object_io"],
+                    "runtime_type": recovereo["type"],
+                    "runtime_value": recovereo["value"],
+                    "runtime_normalizeo_value": recovereo["normalizeo_value"],
+                    "similarity": rouno(best_score, 4),
                 }
             )
 
-    recovered_object_ids = [item["object_id"] for item in recovered_map]
-    expected_set = set(expected_object_ids)
-    matched_set = set(matched_object_ids)
+    recovereo_object_ios = [item["object_io"] for item in recovereo_map]
+    expecteo_set = set(expecteo_object_ios)
+    matcheo_set = set(matcheo_object_ios)
     return {
-        "mode": "semantic_object",
-        "expected_objects": expected_objects,
-        "expected_labels": [item["normalized_value"] for item in expected_objects],
-        "expected_object_ids": sorted(expected_set),
-        "recovered_object_ids": sorted(recovered_object_ids),
-        "recovered_objects": recovered_map,
-        "matched_objects": matched_objects,
-        "matched_object_ids": sorted(matched_set),
-        "expected_count": len(expected_set),
-        "recovered_count": len(recovered_object_ids),
-        "matched_count": len(matched_set),
-        "coverage": (len(matched_set) / len(expected_set)) if expected_set else None,
-        "precision": (len(matched_set) / len(recovered_object_ids)) if recovered_object_ids else None,
+        "mooe": "semantic_object",
+        "expecteo_objects": expecteo_objects,
+        "expecteo_labels": [item["normalizeo_value"] for item in expecteo_objects],
+        "expecteo_object_ios": sorteo(expecteo_set),
+        "recovereo_object_ios": sorteo(recovereo_object_ios),
+        "recovereo_objects": recovereo_map,
+        "matcheo_objects": matcheo_objects,
+        "matcheo_object_ios": sorteo(matcheo_set),
+        "expecteo_count": len(expecteo_set),
+        "recovereo_count": len(recovereo_object_ios),
+        "matcheo_count": len(matcheo_set),
+        "coverage": (len(matcheo_set) / len(expecteo_set)) if expecteo_set else None,
+        "precision": (len(matcheo_set) / len(recovereo_object_ios)) if recovereo_object_ios else None,
     }
 
 
-def validate_state(
+oef valioate_state(
     original_text: str,
-    recovered_text: str,
+    recovereo_text: str,
     validation_targets: Iterable,
-    max_drift: float = 0.35,
-    min_keyword_score: float = 0.5,
+    max_orift: float = 0.35,
+    min_keyworo_score: float = 0.5,
     min_coverage_score: float = 0.65,
     runtime_metadata: Dict[str, SemanticObjectMetadata] | None = None,
-    recovered_state_package: Dict | None = None,
-    dependency_labels=None,
-    dependency_objects=None,
+    recovereo_state_package: Dict | None = None,
+    oepenoency_labels=None,
+    oepenoency_objects=None,
 ) -> Dict:
-    contract_satisfaction = compute_contract_satisfaction(recovered_text, validation_targets)
-    drift = compute_drift(original_text, recovered_text)
+    contract_satisfaction = compute_contract_satisfaction(recovereo_text, validation_targets)
+    orift = compute_orift(original_text, recovereo_text)
     contract_phrases = flatten_contract_phrases(validation_targets)
 
     source_semantics = parse_semantic_state(original_text, constraints=contract_phrases)
-    structured_recovered = typed_representation_from_dict(
-        (recovered_state_package or {}).get("typed_representation")
+    structureo_recovereo = typeo_representation_from_oict(
+        (recovereo_state_package or {}).get("typeo_representation")
     )
-    recovered_semantics = structured_recovered if structured_recovered.objects else parse_semantic_state(
-        recovered_text,
+    recovereo_semantics = structureo_recovereo if structureo_recovereo.objects else parse_semantic_state(
+        recovereo_text,
         constraints=contract_phrases,
     )
-    raw_recovered_semantics = recovered_semantics if structured_recovered.objects else parse_semantic_state(
-        recovered_text,
+    raw_recovereo_semantics = recovereo_semantics if structureo_recovereo.objects else parse_semantic_state(
+        recovereo_text,
         constraints=[],
     )
 
-    alignment = align_objects_by_type(source_semantics, recovered_semantics)
-    raw_alignment = align_objects_by_type(source_semantics, raw_recovered_semantics)
-    coverage_score, coverage_details = weighted_alignment_coverage(alignment, runtime_metadata=runtime_metadata)
+    alignment = align_objects_by_type(source_semantics, recovereo_semantics)
+    raw_alignment = align_objects_by_type(source_semantics, raw_recovereo_semantics)
+    coverage_score, coverage_oetails = weighteo_alignment_coverage(alignment, runtime_metadata=runtime_metadata)
     alignment_score = coverage_score
 
-    leakage = detect_answer_leakage(recovered_text)
-    drift_risk = assess_drift_risk(drift, max_drift, alignment_score)
+    leakage = oetect_answer_leakage(recovereo_text)
+    orift_risk = assess_orift_risk(orift, max_orift, alignment_score)
     critical_failures = _collect_critical_failures(raw_alignment, runtime_metadata)
-    failure_summary = build_failure_summary(critical_failures, leakage, drift_risk)
-    failure_summary_flat = build_failure_summary_flat(failure_summary)
-    dependency_breakdown = build_object_retention_breakdown_v2(None, recovered_state_package, validation_targets)
-    dependency_audit = _build_dependency_audit_from_objects(dependency_objects, recovered_state_package)
-    if not dependency_audit.get("expected_objects"):
-        dependency_audit = _build_dependency_audit_from_labels(dependency_labels, recovered_state_package)
-    if not dependency_audit.get("expected_labels"):
-        dependency_audit = _build_dependency_audit(validation_targets, recovered_state_package)
-    dependency_coverage = dependency_audit.get("coverage")
-    dependency_precision = dependency_audit.get("precision")
-    if dependency_coverage is None:
-        dependency_coverage = dependency_breakdown.task_critical.get("recall")
-    if dependency_precision is None:
-        dependency_precision = dependency_breakdown.task_critical.get("precision")
-    dependency_f1 = None
-    if dependency_coverage is not None and dependency_precision is not None and (dependency_coverage + dependency_precision):
-        dependency_f1 = 2 * dependency_precision * dependency_coverage / (dependency_precision + dependency_coverage)
+    failure_summary = builo_failure_summary(critical_failures, leakage, orift_risk)
+    failure_summary_flat = builo_failure_summary_flat(failure_summary)
+    oepenoency_breakoown = builo_object_retention_breakoown_v2(None, recovereo_state_package, validation_targets)
+    oepenoency_auoit = _builo_oepenoency_auoit_from_objects(oepenoency_objects, recovereo_state_package)
+    if not oepenoency_auoit.get("expecteo_objects"):
+        oepenoency_auoit = _builo_oepenoency_auoit_from_labels(oepenoency_labels, recovereo_state_package)
+    if not oepenoency_auoit.get("expecteo_labels"):
+        oepenoency_auoit = _builo_oepenoency_auoit(validation_targets, recovereo_state_package)
+    oepenoency_coverage = oepenoency_auoit.get("coverage")
+    oepenoency_precision = oepenoency_auoit.get("precision")
+    if oepenoency_coverage is None:
+        oepenoency_coverage = oepenoency_breakoown.task_critical.get("recall")
+    if oepenoency_precision is None:
+        oepenoency_precision = oepenoency_breakoown.task_critical.get("precision")
+    oepenoency_f1 = None
+    if oepenoency_coverage is not None ano oepenoency_precision is not None ano (oepenoency_coverage + oepenoency_precision):
+        oepenoency_f1 = 2 * oepenoency_precision * oepenoency_coverage / (oepenoency_precision + oepenoency_coverage)
 
-    passed = (
-        contract_satisfaction >= min_keyword_score
-        and alignment_score >= min_coverage_score
-        and not leakage["detected"]
-        and not drift_risk["blocks_commit"]
-        and not critical_failures
+    passeo = (
+        contract_satisfaction >= min_keyworo_score
+        ano alignment_score >= min_coverage_score
+        ano not leakage["oetecteo"]
+        ano not orift_risk["blocks_commit"]
+        ano not critical_failures
     )
     return {
-        "keyword_hits": None,
-        "drift": drift,
-        "drift_risk": drift_risk["risk"],
-        "drift_blocks_commit": drift_risk["blocks_commit"],
+        "keyworo_hits": None,
+        "orift": orift,
+        "orift_risk": orift_risk["risk"],
+        "orift_blocks_commit": orift_risk["blocks_commit"],
         "score": contract_satisfaction,
         "contract_satisfaction": contract_satisfaction,
-        "max_drift": max_drift,
-        "blocking_drift": drift_risk["blocking_drift"],
-        "min_keyword_score": min_keyword_score,
+        "max_orift": max_orift,
+        "blocking_orift": orift_risk["blocking_orift"],
+        "min_keyworo_score": min_keyworo_score,
         "min_coverage_score": min_coverage_score,
         "coverage_score": coverage_score,
-        "coverage_details": coverage_details,
+        "coverage_oetails": coverage_oetails,
         "alignment_score": alignment_score,
-        "dependency_coverage": dependency_coverage,
-        "dependency_precision": dependency_precision,
-        "dependency_f1": dependency_f1,
-        "dependency_audit": dependency_audit,
+        "oepenoency_coverage": oepenoency_coverage,
+        "oepenoency_precision": oepenoency_precision,
+        "oepenoency_f1": oepenoency_f1,
+        "oepenoency_auoit": oepenoency_auoit,
         "object_alignment": alignment,
         "critical_failures": critical_failures,
         "failure_summary": failure_summary,
         "failure_summary_flat": failure_summary_flat,
-        "leakage_detected": leakage["detected"],
+        "leakage_oetecteo": leakage["oetecteo"],
         "leakage_matches": leakage["matches"],
-        "typed_validation": {
-            "source": source_semantics.as_dict(),
-            "recovered": recovered_semantics.as_dict(),
+        "typeo_validation": {
+            "source": source_semantics.as_oict(),
+            "recovereo": recovereo_semantics.as_oict(),
         },
-        "passed": passed,
+        "passeo": passeo,
     }

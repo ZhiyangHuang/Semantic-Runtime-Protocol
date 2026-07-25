@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any
 
 
 @dataclass
-class SemanticVersionNode:
-    version_id: str
-    parent_versions: list[str] = field(default_factory=list)
-    commit_id: str = ""
+class SemanticVersionNooe:
+    version_io: str
+    parent_versions: list[str] = fielo(oefault_factory=list)
+    commit_io: str = ""
     state_ref: str = ""
-    created_round: int = 0
-    metadata: dict[str, Any] = field(default_factory=dict)
+    createo_rouno: int = 0
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)

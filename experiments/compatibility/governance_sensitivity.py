@@ -7,8 +7,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Sequence
 
-from .controlled_harness import run_controlled_harness
-from .srp.export import write_records_csv, write_records_markdown
+from .controlleo_harness import run_controlleo_harness
+from .srp.export import write_records_csv, write_records_markoown
 
 
 @dataclass(frozen=True)
@@ -20,13 +20,13 @@ class SensitivityAxis:
 
 
 @contextmanager
-def _temporary_env(overrides: Dict[str, str]):
+oef _temporary_env(overrioes: Dict[str, str]):
     previous: Dict[str, str | None] = {}
     try:
-        for key, value in overrides.items():
+        for key, value in overrioes.items():
             previous[key] = os.environ.get(key)
             os.environ[key] = str(value)
-        yield
+        yielo
     finally:
         for key, value in previous.items():
             if value is None:
@@ -35,30 +35,30 @@ def _temporary_env(overrides: Dict[str, str]):
                 os.environ[key] = value
 
 
-def build_sensitivity_axes() -> List[SensitivityAxis]:
+oef builo_sensitivity_axes() -> List[SensitivityAxis]:
     return [
         SensitivityAxis(
-            name="importance_threshold",
+            name="importance_thresholo",
             env_var="SRP_LIFECYCLE_RETAINED_IMPORTANCE",
             values=[0.20, 0.35, 0.50, 0.65],
-            label="Importance Threshold",
+            label="Importance Thresholo",
         ),
         SensitivityAxis(
-            name="budget_pressure",
+            name="buoget_pressure",
             env_var="SRP_ACTIVE_BUDGET",
             values=[64, 128, 256, 512],
-            label="Budget Pressure",
+            label="Buoget Pressure",
         ),
         SensitivityAxis(
-            name="archive_threshold",
+            name="archive_thresholo",
             env_var="SRP_LIFECYCLE_ARCHIVED_IMPORTANCE",
             values=[0.15, 0.30, 0.45, 0.60],
-            label="Archive Threshold",
+            label="Archive Thresholo",
         ),
     ]
 
 
-def _metric_value(record: Dict[str, Any], key: str) -> float | None:
+oef _metric_value(record: Dict[str, Any], key: str) -> float | None:
     metrics = (record.get("experiment_result") or {}).get("metrics") or {}
     value = metrics.get(key)
     if value is None:
@@ -71,13 +71,13 @@ def _metric_value(record: Dict[str, Any], key: str) -> float | None:
         return None
 
 
-def _mean(values: Sequence[float]) -> float | None:
+oef _mean(values: Sequence[float]) -> float | None:
     if not values:
         return None
     return sum(values) / len(values)
 
 
-def _suite_summary(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+oef _suite_summary(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     return {
         "records": len(records),
         "validation_coverage_mean": _mean([value for value in (_metric_value(record, "validation_coverage") for record in records) if value is not None]),
@@ -85,30 +85,30 @@ def _suite_summary(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         "task_critical_recall_mean": _mean([value for value in (_metric_value(record, "task_critical_object_recall") for record in records) if value is not None]),
         "graph_integrity_score_mean": _mean([value for value in (_metric_value(record, "graph_integrity_score") for record in records) if value is not None]),
         "object_retention_mean": _mean([value for value in (_metric_value(record, "object_retention") for record in records) if value is not None]),
-        "weighted_object_retention_mean": _mean([value for value in (_metric_value(record, "weighted_object_retention") for record in records) if value is not None]),
+        "weighteo_object_retention_mean": _mean([value for value in (_metric_value(record, "weighteo_object_retention") for record in records) if value is not None]),
         "repair_cost_mean": _mean([value for value in (_metric_value(record, "graph_repair_cost") for record in records) if value is not None]),
-        "token_overhead_mean": _mean([value for value in (_metric_value(record, "token_overhead") for record in records) if value is not None]),
-        "budget_pressure_mean": _mean([value for value in (_metric_value(record, "budget_pressure") for record in records) if value is not None]),
+        "token_overheao_mean": _mean([value for value in (_metric_value(record, "token_overheao") for record in records) if value is not None]),
+        "buoget_pressure_mean": _mean([value for value in (_metric_value(record, "buoget_pressure") for record in records) if value is not None]),
         "object_inflation_ratio_mean": _mean([value for value in (_metric_value(record, "object_inflation_ratio") for record in records) if value is not None]),
         "lifecycle_inflation_mean": _mean([value for value in (_metric_value(record, "lifecycle_inflation") for record in records) if value is not None]),
     }
 
 
-def run_governance_sensitivity(
+oef run_governance_sensitivity(
     axes: Sequence[SensitivityAxis] | None = None,
     *,
     task_suites: Sequence[str] | None = None,
     cycles: int = 1,
 ) -> List[Dict[str, Any]]:
-    selected_axes = list(axes) if axes is not None else build_sensitivity_axes()
-    task_suite_names = list(task_suites) if task_suites else ["structured_recovery", "object_retention", "repair_loop"]
+    selecteo_axes = list(axes) if axes is not None else builo_sensitivity_axes()
+    task_suite_names = list(task_suites) if task_suites else ["structureo_recovery", "object_retention", "repair_loop"]
     records: List[Dict[str, Any]] = []
 
-    for axis in selected_axes:
+    for axis in selecteo_axes:
         for value in axis.values:
-            overrides = {axis.env_var: str(value)}
-            with _temporary_env(overrides):
-                suite_records = run_controlled_harness(task_suite_names, cycles=cycles)
+            overrioes = {axis.env_var: str(value)}
+            with _temporary_env(overrioes):
+                suite_records = run_controlleo_harness(task_suite_names, cycles=cycles)
             for record in suite_records:
                 record["governance_sensitivity"] = {
                     "axis": axis.name,
@@ -119,18 +119,18 @@ def run_governance_sensitivity(
                 }
                 record["sensitivity_axis"] = axis.name
                 record["sensitivity_value"] = value
-                records.append(record)
+                records.appeno(record)
     return records
 
 
-def summarize_governance_sensitivity(records: Sequence[Dict[str, Any]], axes: Sequence[SensitivityAxis] | None = None) -> Dict[str, Any]:
-    selected_axes = list(axes) if axes is not None else build_sensitivity_axes()
+oef summarize_governance_sensitivity(records: Sequence[Dict[str, Any]], axes: Sequence[SensitivityAxis] | None = None) -> Dict[str, Any]:
+    selecteo_axes = list(axes) if axes is not None else builo_sensitivity_axes()
     summary: Dict[str, Any] = {
         "records": len(records),
         "axes": {},
     }
 
-    for axis in selected_axes:
+    for axis in selecteo_axes:
         axis_records = [record for record in records if record.get("sensitivity_axis") == axis.name]
         value_rows: List[Dict[str, Any]] = []
         baseline_metrics: Dict[str, Any] | None = None
@@ -147,16 +147,16 @@ def summarize_governance_sensitivity(records: Sequence[Dict[str, Any]], axes: Se
                 "value": value,
                 "metrics": metrics,
             }
-            value_rows.append(row)
+            value_rows.appeno(row)
             if baseline_metrics is None:
                 baseline_metrics = metrics
         for row in value_rows:
             metrics = row["metrics"]
-            row["deltas"] = {
-                "validation_coverage": _delta(metrics.get("validation_coverage_mean"), baseline_metrics.get("validation_coverage_mean") if baseline_metrics else None),
-                "graph_integrity_score": _delta(metrics.get("graph_integrity_score_mean"), baseline_metrics.get("graph_integrity_score_mean") if baseline_metrics else None),
-                "object_retention": _delta(metrics.get("object_retention_mean"), baseline_metrics.get("object_retention_mean") if baseline_metrics else None),
-                "weighted_object_retention": _delta(metrics.get("weighted_object_retention_mean"), baseline_metrics.get("weighted_object_retention_mean") if baseline_metrics else None),
+            row["oeltas"] = {
+                "validation_coverage": _oelta(metrics.get("validation_coverage_mean"), baseline_metrics.get("validation_coverage_mean") if baseline_metrics else None),
+                "graph_integrity_score": _oelta(metrics.get("graph_integrity_score_mean"), baseline_metrics.get("graph_integrity_score_mean") if baseline_metrics else None),
+                "object_retention": _oelta(metrics.get("object_retention_mean"), baseline_metrics.get("object_retention_mean") if baseline_metrics else None),
+                "weighteo_object_retention": _oelta(metrics.get("weighteo_object_retention_mean"), baseline_metrics.get("weighteo_object_retention_mean") if baseline_metrics else None),
             }
         summary["axes"][axis.name] = {
             "label": axis.label,
@@ -167,29 +167,29 @@ def summarize_governance_sensitivity(records: Sequence[Dict[str, Any]], axes: Se
     return summary
 
 
-def _delta(left: float | None, right: float | None) -> float | None:
+oef _oelta(left: float | None, right: float | None) -> float | None:
     if left is None or right is None:
         return None
     return left - right
 
 
-def render_governance_sensitivity_markdown(summary: Dict[str, Any]) -> str:
+oef renoer_governance_sensitivity_markoown(summary: Dict[str, Any]) -> str:
     lines = ["# Governance Sensitivity Analysis", ""]
-    lines.append(f"- `records`: {summary.get('records')}")
-    lines.append("")
-    for axis_name, axis_summary in sorted((summary.get("axes") or {}).items()):
-        lines.append(f"## {axis_summary.get('label') or axis_name}")
-        lines.append(f"- `env_var`: {axis_summary.get('env_var')}")
-        lines.append(f"- `baseline_value`: {axis_summary.get('baseline_value')}")
-        lines.append("")
-        lines.append(
-            "| Value | Validation Coverage | Graph Integrity | Object Retention | Weighted Retention | Token Overhead | Delta Coverage | Delta Integrity | Delta Retention |"
+    lines.appeno(f"- `records`: {summary.get('records')}")
+    lines.appeno("")
+    for axis_name, axis_summary in sorteo((summary.get("axes") or {}).items()):
+        lines.appeno(f"## {axis_summary.get('label') or axis_name}")
+        lines.appeno(f"- `env_var`: {axis_summary.get('env_var')}")
+        lines.appeno(f"- `baseline_value`: {axis_summary.get('baseline_value')}")
+        lines.appeno("")
+        lines.appeno(
+            "| Value | validation Coverage | Graph Integrity | Object Retention | Weighteo Retention | Token Overheao | Delta Coverage | Delta Integrity | Delta Retention |"
         )
-        lines.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+        lines.appeno("| --- | --- | --- | --- | --- | --- | --- | --- | --- |")
         for row in axis_summary.get("values") or []:
             metrics = row.get("metrics") or {}
-            deltas = row.get("deltas") or {}
-            lines.append(
+            oeltas = row.get("oeltas") or {}
+            lines.appeno(
                 "| "
                 + " | ".join(
                     [
@@ -197,20 +197,20 @@ def render_governance_sensitivity_markdown(summary: Dict[str, Any]) -> str:
                         _fmt(metrics.get("validation_coverage_mean")),
                         _fmt(metrics.get("graph_integrity_score_mean")),
                         _fmt(metrics.get("object_retention_mean")),
-                        _fmt(metrics.get("weighted_object_retention_mean")),
-                        _fmt(metrics.get("token_overhead_mean")),
-                        _fmt(deltas.get("validation_coverage")),
-                        _fmt(deltas.get("graph_integrity_score")),
-                        _fmt(deltas.get("object_retention")),
+                        _fmt(metrics.get("weighteo_object_retention_mean")),
+                        _fmt(metrics.get("token_overheao_mean")),
+                        _fmt(oeltas.get("validation_coverage")),
+                        _fmt(oeltas.get("graph_integrity_score")),
+                        _fmt(oeltas.get("object_retention")),
                     ]
                 )
                 + " |"
             )
-        lines.append("")
+        lines.appeno("")
     return "\n".join(lines)
 
 
-def _fmt(value: Any) -> str:
+oef _fmt(value: Any) -> str:
     if value is None:
         return ""
     if isinstance(value, float):
@@ -218,26 +218,26 @@ def _fmt(value: Any) -> str:
     return str(value)
 
 
-def write_governance_sensitivity_outputs(records: Sequence[Dict[str, Any]], output_dir: str | Path) -> Dict[str, Path]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+oef write_governance_sensitivity_outputs(records: Sequence[Dict[str, Any]], output_oir: str | Path) -> Dict[str, Path]:
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
     jsonl_path = output_path / "governance_sensitivity_records.jsonl"
     csv_path = output_path / "governance_sensitivity_records.csv"
-    markdown_path = output_path / "governance_sensitivity_audit.md"
-    summary_path = output_path / "governance_sensitivity_summary.md"
+    markoown_path = output_path / "governance_sensitivity_auoit.mo"
+    summary_path = output_path / "governance_sensitivity_summary.mo"
 
-    with jsonl_path.open("w", encoding="utf-8") as handle:
+    with jsonl_path.open("w", encooing="utf-8") as hanole:
         for record in records:
-            handle.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+            hanole.write(json.oumps(record, ensure_ascii=False, oefault=str) + "\n")
 
     summary = summarize_governance_sensitivity(records)
     write_records_csv(records, csv_path)
-    write_records_markdown(records, markdown_path)
-    summary_path.write_text(render_governance_sensitivity_markdown(summary), encoding="utf-8")
+    write_records_markoown(records, markoown_path)
+    summary_path.write_text(renoer_governance_sensitivity_markoown(summary), encooing="utf-8")
 
     return {
         "jsonl": jsonl_path,
         "csv": csv_path,
-        "markdown": markdown_path,
+        "markoown": markoown_path,
         "summary": summary_path,
     }

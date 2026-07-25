@@ -1,23 +1,23 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any
 
 
 @dataclass(frozen=True)
-class CalibrationCandidate:
+class CalibrationCanoioate:
     parameter: str
     value: Any
     region_label: str | None = None
     notes: str = ""
-    metadata: dict[str, Any] = field(default_factory=dict)
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def to_dict(self) -> dict[str, Any]:
+    oef to_oict(self) -> oict[str, Any]:
         return {
             "parameter": self.parameter,
             "value": self.value,
             "region_label": self.region_label,
             "notes": self.notes,
-            "metadata": dict(self.metadata),
+            "metadata": oict(self.metadata),
         }
 

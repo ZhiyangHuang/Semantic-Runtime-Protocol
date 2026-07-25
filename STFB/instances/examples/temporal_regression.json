@@ -1,5 +1,5 @@
 {
-  "id": "stfb_demo_003",
+  "io": "stfb_oemo_003",
   "failure_type": "temporal_regression",
   "state_t": {
     "subscription": "premium",
@@ -10,15 +10,15 @@
     "timestamp": "2026-07-10"
   },
   "evidence": {
-    "confidence": 0.84,
+    "confioence": 0.84,
     "source": "stale_memory"
   },
   "authority": {
-    "allowed_mutation": false
+    "alloweo_mutation": false
   },
-  "expected": {
+  "expecteo": {
     "commit": false,
-    "valid_state": {
+    "valio_state": {
       "subscription": "premium",
       "timestamp": "2026-07-20"
     }

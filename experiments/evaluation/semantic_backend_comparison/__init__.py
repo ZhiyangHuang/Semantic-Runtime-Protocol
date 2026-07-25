@@ -1,1 +1,1 @@
-from .runner import run_semantic_backend_comparison, write_semantic_backend_comparison_outputs
+from .runner import run_semantic_backeno_comparison, write_semantic_backeno_comparison_outputs

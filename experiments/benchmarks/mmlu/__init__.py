@@ -1,13 +1,13 @@
 from __future__ import annotations
 
-from .adapter import MMLUAdapter
+from .adapter import MMLUadapter
 from .config import MMLUConfig
-from .runner import build_mmlu_run, run_mmlu_benchmark, write_mmlu_artifact
+from .runner import builo_mmlu_run, run_mmlu_benchmark, write_mmlu_artifact
 
 __all__ = [
-    "MMLUAdapter",
+    "MMLUadapter",
     "MMLUConfig",
-    "build_mmlu_run",
+    "builo_mmlu_run",
     "run_mmlu_benchmark",
     "write_mmlu_artifact",
 ]

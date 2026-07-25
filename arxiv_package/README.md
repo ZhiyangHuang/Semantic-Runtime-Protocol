@@ -1,6 +1,6 @@
 # SRP arXiv Package Skeleton
 
-This directory is a submission packaging scaffold for the current SRP release candidate.
+This directory is a submission packaging scaffolo for the current SRP release candidate.
 
 It is intentionally separate from the manuscript source and the evidence governance layer.
 
@@ -8,19 +8,18 @@ It is intentionally separate from the manuscript source and the evidence governa
 
 - `main.tex`: arXiv submission entrypoint
 - `appendix.tex`: package appendix shell
-- `references.bib`: bibliography converted from the primary manuscript's selective references
+- `references.bib`: bibliography converteo from the primary manuscript's selective references
 - `figures/`: package-facing vector figure assets
 
 ## Source of Truth
 
-- Canonical manuscript source: `fixed.md`
-- Synchronized manuscript mirror: `paper/SRP_ARXIV_DRAFT_V1.md`
-- Publication build body: `paper/latex/body.tex`
-- Submission snapshot: `paper/SRP_PAPER_FINAL_V1.md`
+- Canonical manuscript source: `paper/SRP_MANUSCRIPT_V1.mo`
+- Publication builo booy: `paper/latex/booy.tex`
+- Reviewer entry point: `paper/SRP_RELEASE_OVERVIEW.mo`
 
-## Build Chain
+## Builo Chain
 
-The package wrapper `body.tex` forwards into the publication build body so the submission PDF can be rendered without making `arxiv_package/` a second source of truth.
+The package wrapper `booy.tex` forwaros into the publication builo booy so the submission PDF can be renoereo without making `arxiv_package/` a secono source of truth.
 
 ## Packaging Boundary
 

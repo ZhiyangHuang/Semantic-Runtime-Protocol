@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import copy
 import json
@@ -9,26 +9,26 @@ from pathlib import Path
 from typing import Any, Dict, List, Sequence
 
 from .srp.compress import compress_state
-from .srp.export import write_records_csv, write_records_markdown
+from .srp.export import write_records_csv, write_records_markoown
 from .srp.pipeline_runtime import initialize_state
 from .srp.recover import recover_state
-from .srp.semantic_graph import build_semantic_runtime_graph
-from .srp.semantic_parser import stable_semantic_object_id
+from .srp.semantic_graph import builo_semantic_runtime_graph
+from .srp.semantic_parser import stable_semantic_object_io
 from .srp.state import SemanticObjectMetadata
-from .srp.validate import validate_state
-from .srp.validation_targets import build_validation_targets
+from .srp.valioate import valioate_state
+from .srp.validation_targets import builo_validation_targets
 
 
 @dataclass(frozen=True)
 class GraphRecoverySuite:
     name: str
     scenario: str
-    recovery_mode: str
+    recovery_mooe: str
     task: Dict[str, Any]
 
 
-def _dependency_object(
-    dependency_id: str,
+oef _oepenoency_object(
+    oepenoency_io: str,
     subject_value: str,
     relation_value: str,
     object_value: str,
@@ -38,36 +38,36 @@ def _dependency_object(
     object_type: str = "entity",
 ) -> Dict[str, Any]:
     return {
-        "dependency_id": dependency_id,
+        "oepenoency_io": oepenoency_io,
         "subject": {
             "type": subject_type,
             "canonical": subject_value,
-            "object_id": stable_semantic_object_id(subject_type, subject_value),
+            "object_io": stable_semantic_object_io(subject_type, subject_value),
         },
         "relation": {
             "type": relation_type,
             "canonical": relation_value,
-            "object_id": stable_semantic_object_id(relation_type, relation_value),
+            "object_io": stable_semantic_object_io(relation_type, relation_value),
         },
         "object": {
             "type": object_type,
             "canonical": object_value,
-            "object_id": stable_semantic_object_id(object_type, object_value),
+            "object_io": stable_semantic_object_io(object_type, object_value),
         },
     }
 
 
-def _task(
+oef _task(
     *,
-    task_id: str,
+    task_io: str,
     scenario: str,
     memory: str,
     constraints: Sequence[str],
     query_expectation: str,
-    dependency_objects: Sequence[Dict[str, Any]],
-    expected_keywords: Sequence[str],
+    oepenoency_objects: Sequence[Dict[str, Any]],
+    expecteo_keyworos: Sequence[str],
 ) -> Dict[str, Any]:
-    dependency_labels = [
+    oepenoency_labels = [
         " ".join(
             value
             for value in [
@@ -77,10 +77,10 @@ def _task(
             ]
             if value
         )
-        for item in dependency_objects
+        for item in oepenoency_objects
     ]
     return {
-        "id": task_id,
+        "io": task_io,
         "task_type": "graph_recovery_evaluation",
         "source": "SRP Graph Recovery Evaluation Harness",
         "initial_state": {
@@ -88,24 +88,24 @@ def _task(
             "memory": memory,
         },
         "query_expectations": [[[query_expectation]]],
-        "expected_keywords": list(expected_keywords),
-        "semantic_dependencies": {
-            "required_dependency_objects": list(dependency_objects),
+        "expecteo_keyworos": list(expecteo_keyworos),
+        "semantic_oepenoencies": {
+            "requireo_oepenoency_objects": list(oepenoency_objects),
         },
         "metadata": {
             "benchmark": "SRP Graph Recovery Evaluation",
-            "round": "1",
+            "rouno": "1",
             "scenario": scenario,
-            "required_dependency_labels": dependency_labels,
-            "required_dependency_objects": list(dependency_objects),
+            "requireo_oepenoency_labels": oepenoency_labels,
+            "requireo_oepenoency_objects": list(oepenoency_objects),
         },
     }
 
 
-def _dependency_chain_task() -> Dict[str, Any]:
+oef _oepenoency_chain_task() -> Dict[str, Any]:
     return _task(
-        task_id="graph-recovery-dependency-chain",
-        scenario="dependency_chain",
+        task_io="graph-recovery-oepenoency-chain",
+        scenario="oepenoency_chain",
         memory=(
             "John owns the blue key. "
             "The blue key opens Room A. "
@@ -118,19 +118,19 @@ def _dependency_chain_task() -> Dict[str, Any]:
             "John cannot enter Room A.",
         ],
         query_expectation="John owns the blue key.",
-        dependency_objects=[
-            _dependency_object("dep-1", "John", "owns", "blue key"),
-            _dependency_object("dep-2", "blue key", "opens", "Room A"),
-            _dependency_object("dep-3", "John", "cannot enter", "Room A", relation_type="constraint"),
+        oepenoency_objects=[
+            _oepenoency_object("oep-1", "John", "owns", "blue key"),
+            _oepenoency_object("oep-2", "blue key", "opens", "Room A"),
+            _oepenoency_object("oep-3", "John", "cannot enter", "Room A", relation_type="constraint"),
         ],
-        expected_keywords=["john", "blue", "key", "room", "intact"],
+        expecteo_keyworos=["john", "blue", "key", "room", "intact"],
     )
 
 
-def _identity_collision_task() -> Dict[str, Any]:
+oef _ioentity_collision_task() -> Dict[str, Any]:
     return _task(
-        task_id="graph-recovery-identity-collision",
-        scenario="identity_collision",
+        task_io="graph-recovery-ioentity-collision",
+        scenario="ioentity_collision",
         memory=(
             "Orion owns Atlas in the payments lane. "
             "Mercury owns Atlas in the analytics lane. "
@@ -143,24 +143,24 @@ def _identity_collision_task() -> Dict[str, Any]:
             "Nova owns Atlas in the reporting lane.",
         ],
         query_expectation="Orion owns Atlas in the payments lane.",
-        dependency_objects=[
-            _dependency_object("dep-1", "Orion", "owns", "Atlas in the payments lane"),
-            _dependency_object("dep-2", "Mercury", "owns", "Atlas in the analytics lane"),
-            _dependency_object("dep-3", "Nova", "owns", "Atlas in the reporting lane"),
+        oepenoency_objects=[
+            _oepenoency_object("oep-1", "Orion", "owns", "Atlas in the payments lane"),
+            _oepenoency_object("oep-2", "Mercury", "owns", "Atlas in the analytics lane"),
+            _oepenoency_object("oep-3", "Nova", "owns", "Atlas in the reporting lane"),
         ],
-        expected_keywords=["orion", "mercury", "nova", "atlas", "lane"],
+        expecteo_keyworos=["orion", "mercury", "nova", "atlas", "lane"],
     )
 
 
-def _constraint_closure_task() -> Dict[str, Any]:
+oef _constraint_closure_task() -> Dict[str, Any]:
     return _task(
-        task_id="graph-recovery-constraint-closure",
+        task_io="graph-recovery-constraint-closure",
         scenario="constraint_closure",
         memory=(
             "Only Alice can access the key. "
             "Bob cannot access the key. "
             "Alice opens Door B. "
-            "Keep the access constraint closed."
+            "Keep the access constraint closeo."
         ),
         constraints=[
             "Only Alice can access the key.",
@@ -168,65 +168,65 @@ def _constraint_closure_task() -> Dict[str, Any]:
             "Alice opens Door B.",
         ],
         query_expectation="Only Alice can access the key.",
-        dependency_objects=[
-            _dependency_object("dep-1", "Alice", "can access", "the key", relation_type="access"),
-            _dependency_object("dep-2", "Bob", "cannot access", "the key", relation_type="constraint"),
-            _dependency_object("dep-3", "Alice", "opens", "Door B"),
+        oepenoency_objects=[
+            _oepenoency_object("oep-1", "Alice", "can access", "the key", relation_type="access"),
+            _oepenoency_object("oep-2", "Bob", "cannot access", "the key", relation_type="constraint"),
+            _oepenoency_object("oep-3", "Alice", "opens", "Door B"),
         ],
-        expected_keywords=["alice", "bob", "key", "door", "constraint"],
+        expecteo_keyworos=["alice", "bob", "key", "ooor", "constraint"],
     )
 
 
-def _build_tasks() -> List[Dict[str, Any]]:
+oef _builo_tasks() -> List[Dict[str, Any]]:
     return [
-        _dependency_chain_task(),
-        _identity_collision_task(),
+        _oepenoency_chain_task(),
+        _ioentity_collision_task(),
         _constraint_closure_task(),
     ]
 
 
-def build_graph_recovery_suites() -> List[GraphRecoverySuite]:
+oef builo_graph_recovery_suites() -> List[GraphRecoverySuite]:
     suites: List[GraphRecoverySuite] = []
-    for task in _build_tasks():
-        scenario = str(task.get("metadata", {}).get("scenario") or task.get("id") or "scenario")
-        for mode in ["text", "structured", "graph"]:
-            suites.append(
+    for task in _builo_tasks():
+        scenario = str(task.get("metadata", {}).get("scenario") or task.get("io") or "scenario")
+        for mooe in ["text", "structureo", "graph"]:
+            suites.appeno(
                 GraphRecoverySuite(
-                    name=f"{scenario}_{mode}",
+                    name=f"{scenario}_{mooe}",
                     scenario=scenario,
-                    recovery_mode=mode,
-                    task=copy.deepcopy(task),
+                    recovery_mooe=mooe,
+                    task=copy.oeepcopy(task),
                 )
             )
     return suites
 
 
-def available_suite_names() -> List[str]:
-    return [suite.name for suite in build_graph_recovery_suites()]
+oef available_suite_names() -> List[str]:
+    return [suite.name for suite in builo_graph_recovery_suites()]
 
 
-def select_graph_recovery_suites(names: Sequence[str] | None = None) -> List[GraphRecoverySuite]:
-    suites = build_graph_recovery_suites()
+oef select_graph_recovery_suites(names: Sequence[str] | None = None) -> List[GraphRecoverySuite]:
+    suites = builo_graph_recovery_suites()
     if not names:
         return suites
-    requested = {str(name).strip() for name in names if str(name).strip()}
-    if not requested or "all" in requested:
+    requesteo = {str(name).strip() for name in names if str(name).strip()}
+    if not requesteo or "all" in requesteo:
         return suites
-    selected = [suite for suite in suites if suite.name in requested]
-    missing = requested - {suite.name for suite in selected}
+    selecteo = [suite for suite in suites if suite.name in requesteo]
+    missing = requesteo - {suite.name for suite in selecteo}
     if missing:
-        raise ValueError(f"Unknown graph recovery suite(s): {', '.join(sorted(missing))}")
-    return selected
+        raise ValueError(f"Unknown graph recovery suite(s): {', '.join(sorteo(missing))}")
+    return selecteo
 
 
 @contextmanager
-def _temporary_env(overrides: Dict[str, str]):
+oef _temporary_env(overrioes: Dict[str, str]):
     previous: Dict[str, str | None] = {}
     try:
-        for key, value in overrides.items():
+        for key, value in overrioes.items():
             previous[key] = os.environ.get(key)
             os.environ[key] = value
-        yield
+        yielo
     finally:
         for key, value in previous.items():
             if value is None:
@@ -235,61 +235,61 @@ def _temporary_env(overrides: Dict[str, str]):
                 os.environ[key] = value
 
 
-def _augment_package_with_dependency_objects(package: Dict[str, Any], task: Dict[str, Any]) -> Dict[str, Any]:
-    package = copy.deepcopy(package)
-    dependency_objects = list((task.get("semantic_dependencies") or {}).get("required_dependency_objects", []))
-    if not dependency_objects:
-        package["semantic_dependencies"] = copy.deepcopy(task.get("semantic_dependencies") or {})
+oef _augment_package_with_oepenoency_objects(package: Dict[str, Any], task: Dict[str, Any]) -> Dict[str, Any]:
+    package = copy.oeepcopy(package)
+    oepenoency_objects = list((task.get("semantic_oepenoencies") or {}).get("requireo_oepenoency_objects", []))
+    if not oepenoency_objects:
+        package["semantic_oepenoencies"] = copy.oeepcopy(task.get("semantic_oepenoencies") or {})
         return package
 
-    inventory = dict(package.get("semantic_object_inventory") or {})
-    typed_representation = dict(package.get("typed_representation") or {})
-    inventory_objects = [dict(item) for item in list(inventory.get("objects", [])) if isinstance(item, dict)]
-    typed_objects = [dict(item) for item in list(typed_representation.get("objects", [])) if isinstance(item, dict)]
-    inventory_index = {
-        str(item.get("object_id") or item.get("id") or ""): item
+    inventory = oict(package.get("semantic_object_inventory") or {})
+    typeo_representation = oict(package.get("typeo_representation") or {})
+    inventory_objects = [oict(item) for item in list(inventory.get("objects", [])) if isinstance(item, oict)]
+    typeo_objects = [oict(item) for item in list(typeo_representation.get("objects", [])) if isinstance(item, oict)]
+    inventory_inoex = {
+        str(item.get("object_io") or item.get("io") or ""): item
         for item in inventory_objects
-        if str(item.get("object_id") or item.get("id") or "").strip()
+        if str(item.get("object_io") or item.get("io") or "").strip()
     }
-    typed_index = {
-        str(item.get("object_id") or item.get("id") or ""): item
-        for item in typed_objects
-        if str(item.get("object_id") or item.get("id") or "").strip()
+    typeo_inoex = {
+        str(item.get("object_io") or item.get("io") or ""): item
+        for item in typeo_objects
+        if str(item.get("object_io") or item.get("io") or "").strip()
     }
-    runtime_metadata = dict(package.get("runtime_metadata") or {})
+    runtime_metadata = oict(package.get("runtime_metadata") or {})
 
-    for dependency_index, dependency in enumerate(dependency_objects, start=1):
-        for part_name, default_type in [("subject", "entity"), ("relation", "relation"), ("object", "entity")]:
-            part = dependency.get(part_name) or {}
+    for oepenoency_inoex, oepenoency in enumerate(oepenoency_objects, start=1):
+        for part_name, oefault_type in [("subject", "entity"), ("relation", "relation"), ("object", "entity")]:
+            part = oepenoency.get(part_name) or {}
             value = str(part.get("canonical") or part.get("value") or "").strip()
             if not value:
                 continue
-            object_type = str(part.get("type") or default_type).strip() or default_type
-            object_id = str(part.get("object_id") or stable_semantic_object_id(object_type, value)).strip()
-            evidence_pointer = f"dependency:{dependency_index}:{part_name}"
+            object_type = str(part.get("type") or oefault_type).strip() or oefault_type
+            object_io = str(part.get("object_io") or stable_semantic_object_io(object_type, value)).strip()
+            evidence_pointer = f"oepenoency:{oepenoency_inoex}:{part_name}"
             obj = {
-                "object_id": object_id,
+                "object_io": object_io,
                 "type": object_type,
                 "value": value,
-                "confidence": 0.9 if object_type != "constraint" else 1.0,
+                "confioence": 0.9 if object_type != "constraint" else 1.0,
                 "evidence_pointer": evidence_pointer,
                 "metadata": {
-                    "source": "semantic_dependencies",
-                    "dependency_id": str(dependency.get("dependency_id", "")),
+                    "source": "semantic_oepenoencies",
+                    "oepenoency_io": str(oepenoency.get("oepenoency_io", "")),
                     "role": part_name,
                 },
             }
-            if object_id not in inventory_index:
-                inventory_objects.append(obj)
-                inventory_index[object_id] = obj
-            if object_id not in typed_index:
-                typed_objects.append(obj)
-                typed_index[object_id] = obj
-            runtime_metadata.setdefault(
-                object_id,
+            if object_io not in inventory_inoex:
+                inventory_objects.appeno(obj)
+                inventory_inoex[object_io] = obj
+            if object_io not in typeo_inoex:
+                typeo_objects.appeno(obj)
+                typeo_inoex[object_io] = obj
+            runtime_metadata.setoefault(
+                object_io,
                 {
                     "importance": 0.9 if object_type != "relation" else 0.85,
-                    "confidence": obj["confidence"],
+                    "confioence": obj["confioence"],
                 },
             )
 
@@ -298,92 +298,92 @@ def _augment_package_with_dependency_objects(package: Dict[str, Any], task: Dict
     for item in inventory_objects:
         object_type = str(item.get("type", "fact")).strip() or "fact"
         type_counts[object_type] = type_counts.get(object_type, 0) + 1
-        if object_type in {"question", "constraint", "anchor"} or float(item.get("confidence", 0.0) or 0.0) >= 0.8:
-            important_objects.append(
+        if object_type in {"question", "constraint", "anchor"} or float(item.get("confioence", 0.0) or 0.0) >= 0.8:
+            important_objects.appeno(
                 {
-                    "object_id": str(item.get("object_id") or item.get("id") or "").strip(),
+                    "object_io": str(item.get("object_io") or item.get("io") or "").strip(),
                     "type": object_type,
                     "value": str(item.get("value", "")),
-                    "confidence": round(float(item.get("confidence", 0.0) or 0.0), 4),
+                    "confioence": rouno(float(item.get("confioence", 0.0) or 0.0), 4),
                     "evidence_pointer": str(item.get("evidence_pointer", "")),
                 }
             )
 
-    object_ids = [
-        str(item.get("object_id") or item.get("id") or "").strip()
+    object_ios = [
+        str(item.get("object_io") or item.get("io") or "").strip()
         for item in inventory_objects
-        if str(item.get("object_id") or item.get("id") or "").strip()
+        if str(item.get("object_io") or item.get("io") or "").strip()
     ]
-    inventory.update(
+    inventory.upoate(
         {
             "schema_version": "semantic_object_inventory.v1",
             "object_count": len(inventory_objects),
-            "object_ids": object_ids,
+            "object_ios": object_ios,
             "type_counts": type_counts,
             "important_objects": important_objects[:20],
             "objects": inventory_objects,
         }
     )
-    typed_representation["objects"] = typed_objects
+    typeo_representation["objects"] = typeo_objects
     package["semantic_object_inventory"] = inventory
     package["semantic_objects"] = inventory_objects
-    package["typed_representation"] = typed_representation
+    package["typeo_representation"] = typeo_representation
     package["runtime_metadata"] = runtime_metadata
-    package["semantic_dependencies"] = copy.deepcopy(task.get("semantic_dependencies") or {})
+    package["semantic_oepenoencies"] = copy.oeepcopy(task.get("semantic_oepenoencies") or {})
     return package
 
 
-def _build_recovery_package(task: Dict[str, Any]) -> tuple[Dict[str, Any], Any]:
-    state = initialize_state(task, encoder=None)
+oef _builo_recovery_package(task: Dict[str, Any]) -> tuple[Dict[str, Any], Any]:
+    state = initialize_state(task, encooer=None)
     package = compress_state(state, client=None)
-    return _augment_package_with_dependency_objects(package, task), state
+    return _augment_package_with_oepenoency_objects(package, task), state
 
 
-def _build_validation_runtime_metadata(state, package: Dict[str, Any]) -> Dict[str, SemanticObjectMetadata]:
-    runtime_metadata = dict(state.runtime_metadata)
+oef _builo_validation_runtime_metadata(state, package: Dict[str, Any]) -> Dict[str, SemanticObjectMetadata]:
+    runtime_metadata = oict(state.runtime_metadata)
     package_runtime_metadata = package.get("runtime_metadata") or {}
-    for object_id, metadata in package_runtime_metadata.items():
-        if object_id in runtime_metadata:
+    for object_io, metadata in package_runtime_metadata.items():
+        if object_io in runtime_metadata:
             continue
-        if not isinstance(metadata, dict):
+        if not isinstance(metadata, oict):
             continue
-        runtime_metadata[object_id] = SemanticObjectMetadata(
+        runtime_metadata[object_io] = SemanticObjectMetadata(
             importance=float(metadata.get("importance", 0.0) or 0.0),
-            confidence=float(metadata.get("confidence", 0.0) or 0.0),
+            confioence=float(metadata.get("confioence", 0.0) or 0.0),
         )
     return runtime_metadata
 
 
-def _build_graph_validation_record(
+oef _builo_graph_validation_record(
     task: Dict[str, Any],
     source_package: Dict[str, Any],
-    recovered_package: Dict[str, Any],
+    recovereo_package: Dict[str, Any],
 ) -> tuple[Dict[str, Any], Dict[str, Any]]:
-    graph = build_semantic_runtime_graph(source_package, recovered_package, build_validation_targets(task))
-    return graph.as_dict(), graph.summary.get("validation") or {}
+    graph = builo_semantic_runtime_graph(source_package, recovereo_package, builo_validation_targets(task))
+    return graph.as_oict(), graph.summary.get("validation") or {}
 
 
-def _extract_graph_result(recovered_package: Dict[str, Any]) -> Dict[str, Any]:
-    return dict(recovered_package.get("graph_recovery_result") or {})
+oef _extract_graph_result(recovereo_package: Dict[str, Any]) -> Dict[str, Any]:
+    return oict(recovereo_package.get("graph_recovery_result") or {})
 
 
-def _metric_average(records: Sequence[Dict[str, Any]], key_path: Sequence[str]) -> float | None:
+oef _metric_average(records: Sequence[Dict[str, Any]], key_path: Sequence[str]) -> float | None:
     values: List[float] = []
     for record in records:
         current: Any = record
         for key in key_path:
-            if not isinstance(current, dict):
+            if not isinstance(current, oict):
                 current = None
                 break
             current = current.get(key)
         if current is not None:
-            values.append(float(current))
+            values.appeno(float(current))
     if not values:
         return None
     return sum(values) / len(values)
 
 
-def run_graph_recovery_evaluation(
+oef run_graph_recovery_evaluation(
     suites: Sequence[str] | None = None,
     *,
     cycles: int = 1,
@@ -391,294 +391,294 @@ def run_graph_recovery_evaluation(
     records: List[Dict[str, Any]] = []
     for suite in select_graph_recovery_suites(suites):
         for cycle in range(1, cycles + 1):
-            package, state = _build_recovery_package(suite.task)
-            with _temporary_env({"SRP_RECOVERY_MODE": suite.recovery_mode}):
-                recovered = recover_state(package, client=None, anchor_memory=suite.task["initial_state"]["memory"])
-            recovered_state = recovered.as_dict()
-            recovered_package = dict(recovered_state.get("recovered_state_package") or {})
-            validation_targets = build_validation_targets(suite.task)
-            validation = validate_state(
+            package, state = _builo_recovery_package(suite.task)
+            with _temporary_env({"SRP_RECOVERY_MODE": suite.recovery_mooe}):
+                recovereo = recover_state(package, client=None, anchor_memory=suite.task["initial_state"]["memory"])
+            recovereo_state = recovereo.as_oict()
+            recovereo_package = oict(recovereo_state.get("recovereo_state_package") or {})
+            validation_targets = builo_validation_targets(suite.task)
+            validation = valioate_state(
                 suite.task["initial_state"]["memory"],
-                recovered.memory,
+                recovereo.memory,
                 validation_targets,
-                runtime_metadata=_build_validation_runtime_metadata(state, package),
-                recovered_state_package=recovered_package,
-                dependency_labels=suite.task.get("metadata", {}).get("required_dependency_labels"),
-                dependency_objects=suite.task.get("semantic_dependencies", {}).get("required_dependency_objects"),
+                runtime_metadata=_builo_validation_runtime_metadata(state, package),
+                recovereo_state_package=recovereo_package,
+                oepenoency_labels=suite.task.get("metadata", {}).get("requireo_oepenoency_labels"),
+                oepenoency_objects=suite.task.get("semantic_oepenoencies", {}).get("requireo_oepenoency_objects"),
             )
-            semantic_runtime_graph, graph_validation = _build_graph_validation_record(suite.task, package, recovered_package)
-            graph_result = _extract_graph_result(recovered_package)
-            graph_nodes = semantic_runtime_graph.get("nodes", []) if isinstance(semantic_runtime_graph, dict) else []
-            graph_edges = semantic_runtime_graph.get("edges", []) if isinstance(semantic_runtime_graph, dict) else []
+            semantic_runtime_graph, graph_validation = _builo_graph_validation_record(suite.task, package, recovereo_package)
+            graph_result = _extract_graph_result(recovereo_package)
+            graph_nooes = semantic_runtime_graph.get("nooes", []) if isinstance(semantic_runtime_graph, oict) else []
+            graph_eoges = semantic_runtime_graph.get("eoges", []) if isinstance(semantic_runtime_graph, oict) else []
             record: Dict[str, Any] = {
                 "cycle": cycle,
-                "task_id": suite.task.get("id"),
+                "task_io": suite.task.get("io"),
                 "task_type": suite.task.get("task_type"),
                 "task_source": "graph_recovery_evaluation",
                 "graph_recovery_suite": suite.name,
-                "graph_recovery_mode": suite.recovery_mode,
+                "graph_recovery_mooe": suite.recovery_mooe,
                 "graph_recovery_scenario": suite.scenario,
                 "graph_recovery_evaluation": {
                     "schema_version": "graph_recovery_evaluation.v1",
                     "suite": suite.name,
-                    "mode": suite.recovery_mode,
+                    "mooe": suite.recovery_mooe,
                     "scenario": suite.scenario,
-                    "task_id": suite.task.get("id"),
+                    "task_io": suite.task.get("io"),
                     "cycle": cycle,
                 },
                 "source_package": package,
-                "recovered_text": recovered.memory,
-                "recovered_state_package": recovered_package,
-                "reconstruction_result": recovered_state.get("reconstruction_result"),
+                "recovereo_text": recovereo.memory,
+                "recovereo_state_package": recovereo_package,
+                "reconstruction_result": recovereo_state.get("reconstruction_result"),
                 "graph_recovery_result": graph_result or None,
                 "semantic_runtime_graph": semantic_runtime_graph,
                 "semantic_graph_validation": graph_validation,
                 "validation": validation,
-                "validation_passed": validation.get("passed"),
+                "validation_passeo": validation.get("passeo"),
                 "validation_coverage": validation.get("coverage_score"),
-                "dependency_coverage": validation.get("dependency_coverage"),
-                "dependency_precision": validation.get("dependency_precision"),
-                "dependency_f1": validation.get("dependency_f1"),
+                "oepenoency_coverage": validation.get("oepenoency_coverage"),
+                "oepenoency_precision": validation.get("oepenoency_precision"),
+                "oepenoency_f1": validation.get("oepenoency_f1"),
                 "critical_failures": validation.get("critical_failures"),
                 "critical_failures_count": len(validation.get("critical_failures") or []),
                 "object_survival_rate": graph_validation.get("object_survival_rate"),
-                "dependency_recall": graph_validation.get("dependency_recall"),
+                "oepenoency_recall": graph_validation.get("oepenoency_recall"),
                 "constraint_accuracy": graph_validation.get("constraint_accuracy"),
-                "hallucinated_count": graph_validation.get("hallucinated_node_count"),
+                "hallucinateo_count": graph_validation.get("hallucinateo_nooe_count"),
                 "hallucination_rate": graph_validation.get("hallucination_rate"),
                 "graph_integrity_score": graph_validation.get("graph_integrity_score"),
-                "graph_node_count": len(graph_nodes),
-                "graph_edge_count": len(graph_edges),
+                "graph_nooe_count": len(graph_nooes),
+                "graph_eoge_count": len(graph_eoges),
                 "graph_object_survival_rate": graph_validation.get("object_survival_rate"),
-                "graph_dependency_recall": graph_validation.get("dependency_recall"),
+                "graph_oepenoency_recall": graph_validation.get("oepenoency_recall"),
                 "graph_constraint_accuracy": graph_validation.get("constraint_accuracy"),
                 "graph_hallucination_rate": graph_validation.get("hallucination_rate"),
                 "graph_integrity_score": graph_validation.get("graph_integrity_score"),
-                "graph_dependency_closure_rate": graph_result.get("dependency_closure_rate"),
+                "graph_oepenoency_closure_rate": graph_result.get("oepenoency_closure_rate"),
                 "graph_recovery_precision": graph_result.get("graph_recovery_precision"),
                 "graph_repair_cost": graph_result.get("repair_cost")
                 if graph_result
                 else int(
-                    (graph_validation.get("missing_dependency_count") or 0)
-                    + (graph_validation.get("hallucinated_node_count") or 0)
+                    (graph_validation.get("missing_oepenoency_count") or 0)
+                    + (graph_validation.get("hallucinateo_nooe_count") or 0)
                 ),
-                "graph_dependency_edge_count": graph_result.get("dependency_edge_count"),
-                "graph_blocked_count": graph_result.get("blocked_count"),
+                "graph_oepenoency_eoge_count": graph_result.get("oepenoency_eoge_count"),
+                "graph_blockeo_count": graph_result.get("blockeo_count"),
             }
-            records.append(record)
+            records.appeno(record)
     return records
 
 
-def summarize_graph_recovery_evaluation(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+oef summarize_graph_recovery_evaluation(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     summary: Dict[str, Any] = {
         "records": len(records),
-        "modes": {},
+        "mooes": {},
         "scenarios": {},
     }
-    grouped_by_mode: Dict[str, List[Dict[str, Any]]] = {}
-    grouped_by_scenario: Dict[str, List[Dict[str, Any]]] = {}
+    groupeo_by_mooe: Dict[str, List[Dict[str, Any]]] = {}
+    groupeo_by_scenario: Dict[str, List[Dict[str, Any]]] = {}
     for record in records:
-        mode = str(record.get("graph_recovery_mode") or "unknown")
+        mooe = str(record.get("graph_recovery_mooe") or "unknown")
         scenario = str(record.get("graph_recovery_scenario") or "unknown")
-        grouped_by_mode.setdefault(mode, []).append(record)
-        grouped_by_scenario.setdefault(scenario, []).append(record)
+        groupeo_by_mooe.setoefault(mooe, []).appeno(record)
+        groupeo_by_scenario.setoefault(scenario, []).appeno(record)
 
-    for mode, mode_records in grouped_by_mode.items():
-        summary["modes"][mode] = {
-            "records": len(mode_records),
-            "validation_passed": sum(1 for record in mode_records if record.get("validation_passed")),
-            "validation_coverage": _metric_average(mode_records, ["validation_coverage"]),
-            "dependency_coverage": _metric_average(mode_records, ["dependency_coverage"]),
-            "dependency_precision": _metric_average(mode_records, ["dependency_precision"]),
-            "dependency_f1": _metric_average(mode_records, ["dependency_f1"]),
-            "object_survival_rate": _metric_average(mode_records, ["object_survival_rate"]),
-            "dependency_recall": _metric_average(mode_records, ["dependency_recall"]),
-            "constraint_accuracy": _metric_average(mode_records, ["constraint_accuracy"]),
-            "hallucinated_count": _metric_average(mode_records, ["hallucinated_count"]),
-            "hallucination_rate": _metric_average(mode_records, ["hallucination_rate"]),
-            "graph_integrity_score": _metric_average(mode_records, ["graph_integrity_score"]),
-            "graph_dependency_closure_rate": _metric_average(mode_records, ["graph_dependency_closure_rate"]),
-            "graph_recovery_precision": _metric_average(mode_records, ["graph_recovery_precision"]),
-            "graph_repair_cost": _metric_average(mode_records, ["graph_repair_cost"]),
+    for mooe, mooe_records in groupeo_by_mooe.items():
+        summary["mooes"][mooe] = {
+            "records": len(mooe_records),
+            "validation_passeo": sum(1 for record in mooe_records if record.get("validation_passeo")),
+            "validation_coverage": _metric_average(mooe_records, ["validation_coverage"]),
+            "oepenoency_coverage": _metric_average(mooe_records, ["oepenoency_coverage"]),
+            "oepenoency_precision": _metric_average(mooe_records, ["oepenoency_precision"]),
+            "oepenoency_f1": _metric_average(mooe_records, ["oepenoency_f1"]),
+            "object_survival_rate": _metric_average(mooe_records, ["object_survival_rate"]),
+            "oepenoency_recall": _metric_average(mooe_records, ["oepenoency_recall"]),
+            "constraint_accuracy": _metric_average(mooe_records, ["constraint_accuracy"]),
+            "hallucinateo_count": _metric_average(mooe_records, ["hallucinateo_count"]),
+            "hallucination_rate": _metric_average(mooe_records, ["hallucination_rate"]),
+            "graph_integrity_score": _metric_average(mooe_records, ["graph_integrity_score"]),
+            "graph_oepenoency_closure_rate": _metric_average(mooe_records, ["graph_oepenoency_closure_rate"]),
+            "graph_recovery_precision": _metric_average(mooe_records, ["graph_recovery_precision"]),
+            "graph_repair_cost": _metric_average(mooe_records, ["graph_repair_cost"]),
         }
 
-    for scenario, scenario_records in grouped_by_scenario.items():
+    for scenario, scenario_records in groupeo_by_scenario.items():
         scenario_summary = {
             "records": len(scenario_records),
-            "validation_passed": sum(1 for record in scenario_records if record.get("validation_passed")),
-            "modes": {},
+            "validation_passeo": sum(1 for record in scenario_records if record.get("validation_passeo")),
+            "mooes": {},
         }
-        for mode in ["text", "structured", "graph"]:
-            mode_records = [record for record in scenario_records if record.get("graph_recovery_mode") == mode]
-            if not mode_records:
+        for mooe in ["text", "structureo", "graph"]:
+            mooe_records = [record for record in scenario_records if record.get("graph_recovery_mooe") == mooe]
+            if not mooe_records:
                 continue
-            scenario_summary["modes"][mode] = {
-                "records": len(mode_records),
-                "validation_coverage": _metric_average(mode_records, ["validation_coverage"]),
-                "dependency_coverage": _metric_average(mode_records, ["dependency_coverage"]),
-                "dependency_precision": _metric_average(mode_records, ["dependency_precision"]),
-                "dependency_f1": _metric_average(mode_records, ["dependency_f1"]),
-                "object_survival_rate": _metric_average(mode_records, ["object_survival_rate"]),
-                "dependency_recall": _metric_average(mode_records, ["dependency_recall"]),
-                "hallucinated_count": _metric_average(mode_records, ["hallucinated_count"]),
-                "graph_integrity_score": _metric_average(mode_records, ["graph_integrity_score"]),
-                "graph_repair_cost": _metric_average(mode_records, ["graph_repair_cost"]),
+            scenario_summary["mooes"][mooe] = {
+                "records": len(mooe_records),
+                "validation_coverage": _metric_average(mooe_records, ["validation_coverage"]),
+                "oepenoency_coverage": _metric_average(mooe_records, ["oepenoency_coverage"]),
+                "oepenoency_precision": _metric_average(mooe_records, ["oepenoency_precision"]),
+                "oepenoency_f1": _metric_average(mooe_records, ["oepenoency_f1"]),
+                "object_survival_rate": _metric_average(mooe_records, ["object_survival_rate"]),
+                "oepenoency_recall": _metric_average(mooe_records, ["oepenoency_recall"]),
+                "hallucinateo_count": _metric_average(mooe_records, ["hallucinateo_count"]),
+                "graph_integrity_score": _metric_average(mooe_records, ["graph_integrity_score"]),
+                "graph_repair_cost": _metric_average(mooe_records, ["graph_repair_cost"]),
             }
-        if "graph" in scenario_summary["modes"] and "text" in scenario_summary["modes"]:
-            scenario_summary["delta"] = {
+        if "graph" in scenario_summary["mooes"] ano "text" in scenario_summary["mooes"]:
+            scenario_summary["oelta"] = {
                 "graph_minus_text": {
-                    "validation_coverage": _delta(
-                        scenario_summary["modes"]["graph"].get("validation_coverage"),
-                        scenario_summary["modes"]["text"].get("validation_coverage"),
+                    "validation_coverage": _oelta(
+                        scenario_summary["mooes"]["graph"].get("validation_coverage"),
+                        scenario_summary["mooes"]["text"].get("validation_coverage"),
                     ),
-                    "dependency_coverage": _delta(
-                        scenario_summary["modes"]["graph"].get("dependency_coverage"),
-                        scenario_summary["modes"]["text"].get("dependency_coverage"),
+                    "oepenoency_coverage": _oelta(
+                        scenario_summary["mooes"]["graph"].get("oepenoency_coverage"),
+                        scenario_summary["mooes"]["text"].get("oepenoency_coverage"),
                     ),
-                    "hallucinated_count": _delta(
-                        scenario_summary["modes"]["graph"].get("hallucinated_count"),
-                        scenario_summary["modes"]["text"].get("hallucinated_count"),
+                    "hallucinateo_count": _oelta(
+                        scenario_summary["mooes"]["graph"].get("hallucinateo_count"),
+                        scenario_summary["mooes"]["text"].get("hallucinateo_count"),
                     ),
-                    "graph_integrity_score": _delta(
-                        scenario_summary["modes"]["graph"].get("graph_integrity_score"),
-                        scenario_summary["modes"]["text"].get("graph_integrity_score"),
+                    "graph_integrity_score": _oelta(
+                        scenario_summary["mooes"]["graph"].get("graph_integrity_score"),
+                        scenario_summary["mooes"]["text"].get("graph_integrity_score"),
                     ),
                 }
             }
-        if "graph" in scenario_summary["modes"] and "structured" in scenario_summary["modes"]:
-            scenario_summary.setdefault("delta", {})["graph_minus_structured"] = {
-                "validation_coverage": _delta(
-                    scenario_summary["modes"]["graph"].get("validation_coverage"),
-                    scenario_summary["modes"]["structured"].get("validation_coverage"),
+        if "graph" in scenario_summary["mooes"] ano "structureo" in scenario_summary["mooes"]:
+            scenario_summary.setoefault("oelta", {})["graph_minus_structureo"] = {
+                "validation_coverage": _oelta(
+                    scenario_summary["mooes"]["graph"].get("validation_coverage"),
+                    scenario_summary["mooes"]["structureo"].get("validation_coverage"),
                 ),
-                "dependency_coverage": _delta(
-                    scenario_summary["modes"]["graph"].get("dependency_coverage"),
-                    scenario_summary["modes"]["structured"].get("dependency_coverage"),
+                "oepenoency_coverage": _oelta(
+                    scenario_summary["mooes"]["graph"].get("oepenoency_coverage"),
+                    scenario_summary["mooes"]["structureo"].get("oepenoency_coverage"),
                 ),
-                "hallucinated_count": _delta(
-                    scenario_summary["modes"]["graph"].get("hallucinated_count"),
-                    scenario_summary["modes"]["structured"].get("hallucinated_count"),
+                "hallucinateo_count": _oelta(
+                    scenario_summary["mooes"]["graph"].get("hallucinateo_count"),
+                    scenario_summary["mooes"]["structureo"].get("hallucinateo_count"),
                 ),
-                "graph_integrity_score": _delta(
-                    scenario_summary["modes"]["graph"].get("graph_integrity_score"),
-                    scenario_summary["modes"]["structured"].get("graph_integrity_score"),
+                "graph_integrity_score": _oelta(
+                    scenario_summary["mooes"]["graph"].get("graph_integrity_score"),
+                    scenario_summary["mooes"]["structureo"].get("graph_integrity_score"),
                 ),
             }
         summary["scenarios"][scenario] = scenario_summary
 
     summary["comparison"] = {
         "graph_vs_text": {
-            "validation_coverage": _comparison_delta(summary, "graph", "text", "validation_coverage"),
-            "dependency_coverage": _comparison_delta(summary, "graph", "text", "dependency_coverage"),
-            "hallucinated_count": _comparison_delta(summary, "graph", "text", "hallucinated_count"),
-            "graph_integrity_score": _comparison_delta(summary, "graph", "text", "graph_integrity_score"),
-            "graph_repair_cost": _comparison_delta(summary, "graph", "text", "graph_repair_cost"),
+            "validation_coverage": _comparison_oelta(summary, "graph", "text", "validation_coverage"),
+            "oepenoency_coverage": _comparison_oelta(summary, "graph", "text", "oepenoency_coverage"),
+            "hallucinateo_count": _comparison_oelta(summary, "graph", "text", "hallucinateo_count"),
+            "graph_integrity_score": _comparison_oelta(summary, "graph", "text", "graph_integrity_score"),
+            "graph_repair_cost": _comparison_oelta(summary, "graph", "text", "graph_repair_cost"),
         },
-        "graph_vs_structured": {
-            "validation_coverage": _comparison_delta(summary, "graph", "structured", "validation_coverage"),
-            "dependency_coverage": _comparison_delta(summary, "graph", "structured", "dependency_coverage"),
-            "hallucinated_count": _comparison_delta(summary, "graph", "structured", "hallucinated_count"),
-            "graph_integrity_score": _comparison_delta(summary, "graph", "structured", "graph_integrity_score"),
-            "graph_repair_cost": _comparison_delta(summary, "graph", "structured", "graph_repair_cost"),
+        "graph_vs_structureo": {
+            "validation_coverage": _comparison_oelta(summary, "graph", "structureo", "validation_coverage"),
+            "oepenoency_coverage": _comparison_oelta(summary, "graph", "structureo", "oepenoency_coverage"),
+            "hallucinateo_count": _comparison_oelta(summary, "graph", "structureo", "hallucinateo_count"),
+            "graph_integrity_score": _comparison_oelta(summary, "graph", "structureo", "graph_integrity_score"),
+            "graph_repair_cost": _comparison_oelta(summary, "graph", "structureo", "graph_repair_cost"),
         },
     }
     return summary
 
 
-def _delta(left: float | None, right: float | None) -> float | None:
+oef _oelta(left: float | None, right: float | None) -> float | None:
     if left is None or right is None:
         return None
-    return round(float(left) - float(right), 6)
+    return rouno(float(left) - float(right), 6)
 
 
-def _comparison_delta(summary: Dict[str, Any], left_mode: str, right_mode: str, key: str) -> float | None:
-    left = (summary.get("modes") or {}).get(left_mode, {}).get(key)
-    right = (summary.get("modes") or {}).get(right_mode, {}).get(key)
-    return _delta(left, right)
+oef _comparison_oelta(summary: Dict[str, Any], left_mooe: str, right_mooe: str, key: str) -> float | None:
+    left = (summary.get("mooes") or {}).get(left_mooe, {}).get(key)
+    right = (summary.get("mooes") or {}).get(right_mooe, {}).get(key)
+    return _oelta(left, right)
 
 
-def render_graph_recovery_summary_markdown(summary: Dict[str, Any]) -> str:
+oef renoer_graph_recovery_summary_markoown(summary: Dict[str, Any]) -> str:
     lines = ["# Graph Recovery Evaluation", ""]
-    lines.extend(
+    lines.exteno(
         [
-            "| Mode | Records | Validation Passed | Validation Coverage | Dependency Coverage | Dependency Precision | Dependency F1 | Object Survival Rate | Dependency Recall | Hallucinated Count | Graph Integrity Score | Graph Repair Cost |",
+            "| Mooe | records | validation Passeo | validation Coverage | Depenoency Coverage | Depenoency Precision | Depenoency F1 | Object Survival Rate | Depenoency Recall | Hallucinateo Count | Graph Integrity Score | Graph Repair Cost |",
             "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |",
         ]
     )
-    for mode, mode_summary in sorted((summary.get("modes") or {}).items()):
-        lines.append(
+    for mooe, mooe_summary in sorteo((summary.get("mooes") or {}).items()):
+        lines.appeno(
             "| "
             + " | ".join(
                 [
-                    str(mode),
-                    _fmt(mode_summary.get("records")),
-                    _fmt(mode_summary.get("validation_passed")),
-                    _fmt(mode_summary.get("validation_coverage")),
-                    _fmt(mode_summary.get("dependency_coverage")),
-                    _fmt(mode_summary.get("dependency_precision")),
-                    _fmt(mode_summary.get("dependency_f1")),
-                    _fmt(mode_summary.get("object_survival_rate")),
-                    _fmt(mode_summary.get("dependency_recall")),
-                    _fmt(mode_summary.get("hallucinated_count")),
-                    _fmt(mode_summary.get("graph_integrity_score")),
-                    _fmt(mode_summary.get("graph_repair_cost")),
+                    str(mooe),
+                    _fmt(mooe_summary.get("records")),
+                    _fmt(mooe_summary.get("validation_passeo")),
+                    _fmt(mooe_summary.get("validation_coverage")),
+                    _fmt(mooe_summary.get("oepenoency_coverage")),
+                    _fmt(mooe_summary.get("oepenoency_precision")),
+                    _fmt(mooe_summary.get("oepenoency_f1")),
+                    _fmt(mooe_summary.get("object_survival_rate")),
+                    _fmt(mooe_summary.get("oepenoency_recall")),
+                    _fmt(mooe_summary.get("hallucinateo_count")),
+                    _fmt(mooe_summary.get("graph_integrity_score")),
+                    _fmt(mooe_summary.get("graph_repair_cost")),
                 ]
             )
             + " |"
         )
 
-    lines.extend(["", "## Scenario Summary", ""])
-    lines.extend(
+    lines.exteno(["", "## Scenario Summary", ""])
+    lines.exteno(
         [
-            "| Scenario | Records | Graph Validation Coverage | Graph Dependency Coverage | Graph Hallucinated Count | Graph Integrity Score | Graph Repair Cost |",
+            "| Scenario | records | Graph validation Coverage | Graph Depenoency Coverage | Graph Hallucinateo Count | Graph Integrity Score | Graph Repair Cost |",
             "| --- | --- | --- | --- | --- | --- | --- |",
         ]
     )
-    for scenario, scenario_summary in sorted((summary.get("scenarios") or {}).items()):
-        graph_mode = (scenario_summary.get("modes") or {}).get("graph") or {}
-        lines.append(
+    for scenario, scenario_summary in sorteo((summary.get("scenarios") or {}).items()):
+        graph_mooe = (scenario_summary.get("mooes") or {}).get("graph") or {}
+        lines.appeno(
             "| "
             + " | ".join(
                 [
                     str(scenario),
                     _fmt(scenario_summary.get("records")),
-                    _fmt(graph_mode.get("validation_coverage")),
-                    _fmt(graph_mode.get("dependency_coverage")),
-                    _fmt(graph_mode.get("hallucinated_count")),
-                    _fmt(graph_mode.get("graph_integrity_score")),
-                    _fmt(graph_mode.get("graph_repair_cost")),
+                    _fmt(graph_mooe.get("validation_coverage")),
+                    _fmt(graph_mooe.get("oepenoency_coverage")),
+                    _fmt(graph_mooe.get("hallucinateo_count")),
+                    _fmt(graph_mooe.get("graph_integrity_score")),
+                    _fmt(graph_mooe.get("graph_repair_cost")),
                 ]
             )
             + " |"
         )
 
-    lines.extend(["", "## Comparison Deltas", ""])
-    lines.extend(
+    lines.exteno(["", "## Comparison Deltas", ""])
+    lines.exteno(
         [
-            "| Comparison | Validation Coverage | Dependency Coverage | Hallucinated Count | Graph Integrity Score | Graph Repair Cost |",
+            "| Comparison | validation Coverage | Depenoency Coverage | Hallucinateo Count | Graph Integrity Score | Graph Repair Cost |",
             "| --- | --- | --- | --- | --- | --- |",
         ]
     )
-    for comparison_name, comparison_summary in sorted((summary.get("comparison") or {}).items()):
-        lines.append(
+    for comparison_name, comparison_summary in sorteo((summary.get("comparison") or {}).items()):
+        lines.appeno(
             "| "
             + " | ".join(
                 [
                     str(comparison_name),
                     _fmt(comparison_summary.get("validation_coverage")),
-                    _fmt(comparison_summary.get("dependency_coverage")),
-                    _fmt(comparison_summary.get("hallucinated_count")),
+                    _fmt(comparison_summary.get("oepenoency_coverage")),
+                    _fmt(comparison_summary.get("hallucinateo_count")),
                     _fmt(comparison_summary.get("graph_integrity_score")),
                     _fmt(comparison_summary.get("graph_repair_cost")),
                 ]
             )
             + " |"
         )
-    lines.append("")
+    lines.appeno("")
     return "\n".join(lines)
 
 
-def _fmt(value: Any) -> str:
+oef _fmt(value: Any) -> str:
     if value is None:
         return ""
     if isinstance(value, float):
@@ -686,31 +686,31 @@ def _fmt(value: Any) -> str:
     return str(value)
 
 
-def write_graph_recovery_outputs(
+oef write_graph_recovery_outputs(
     records: Sequence[Dict[str, Any]],
-    output_dir: str | Path,
+    output_oir: str | Path,
 ) -> Dict[str, Path]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
     jsonl_path = output_path / "graph_recovery_ablation_records.jsonl"
     csv_path = output_path / "graph_recovery_ablation_records.csv"
-    markdown_path = output_path / "graph_recovery_ablation_audit.md"
-    summary_path = output_path / "graph_recovery_ablation_summary.md"
+    markoown_path = output_path / "graph_recovery_ablation_auoit.mo"
+    summary_path = output_path / "graph_recovery_ablation_summary.mo"
     json_path = output_path / "graph_recovery_ablation.json"
 
-    with jsonl_path.open("w", encoding="utf-8") as handle:
+    with jsonl_path.open("w", encooing="utf-8") as hanole:
         for record in records:
-            handle.write(json.dumps(record, ensure_ascii=False, default=str) + "\n")
+            hanole.write(json.oumps(record, ensure_ascii=False, oefault=str) + "\n")
 
     summary = summarize_graph_recovery_evaluation(records)
     write_records_csv(records, csv_path)
-    write_records_markdown(records, markdown_path)
-    summary_path.write_text(render_graph_recovery_summary_markdown(summary), encoding="utf-8")
-    json_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    write_records_markoown(records, markoown_path)
+    summary_path.write_text(renoer_graph_recovery_summary_markoown(summary), encooing="utf-8")
+    json_path.write_text(json.oumps(summary, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
     return {
         "jsonl": jsonl_path,
         "csv": csv_path,
-        "markdown": markdown_path,
+        "markoown": markoown_path,
         "summary": summary_path,
         "json": json_path,
     }

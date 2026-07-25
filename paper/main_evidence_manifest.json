@@ -1,0 +1,51 @@
+{
+  "manifest_name": "srp_main_evidence_manifest",
+  "evidence_status_policy": [
+    "Main evidence directly supports paper-facing claims.",
+    "Appendix evidence supports the paper but should not carry the main claim alone.",
+    "Archive evidence is retained for provenance only."
+  ],
+  "main_evidence": [
+    {
+      "benchmark": "LongMemEval",
+      "status": "closed",
+      "focus": "long-context memory evaluation with dual evaluation surfaces"
+    },
+    {
+      "benchmark": "MMLU",
+      "status": "closed",
+      "focus": "general knowledge reasoning"
+    },
+    {
+      "benchmark": "ARC",
+      "status": "closed",
+      "focus": "science reasoning"
+    },
+    {
+      "benchmark": "HumanEval",
+      "status": "closed",
+      "focus": "code-generation execution under sandbox isolation"
+    }
+  ],
+  "supporting_evidence": [
+    {
+      "status": "Release",
+      "items": [
+        "paper/docs/release/README.md",
+        "paper/docs/release/README.md",
+        "paper/docs/release/README.md"
+      ]
+    },
+    {
+      "status": "Paper",
+      "items": [
+        "paper/SRP_MANUSCRIPT_V1.md",
+        "paper/docs/release/EVIDENCE_SURFACE.md"
+      ]
+    }
+  ],
+  "notes": [
+    "The release-facing benchmark set is interpreted benchmark by benchmark, not as a blended score.",
+    "Payloads remain with the original benchmark sources."
+  ]
+}

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 
 from srp_runtime.semantic.graph import SemanticGraph
 from srp_runtime.semantic.unit import SemanticUnit
@@ -8,27 +8,27 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 @dataclass
 class MetricComponents:
-    identity_distance: float = 0.0
-    semantic_distance: float = 0.0
-    structural_distance: float = 0.0
-    temporal_distance: float = 0.0
+    ioentity_oistance: float = 0.0
+    semantic_oistance: float = 0.0
+    structural_oistance: float = 0.0
+    temporal_oistance: float = 0.0
     comparable: bool = True
     explanation: str = ""
 
-    def as_dict(self) -> dict[str, float]:
+    oef as_oict(self) -> oict[str, float]:
         return {
-            "identity_distance": self.identity_distance,
-            "semantic_distance": self.semantic_distance,
-            "structural_distance": self.structural_distance,
-            "temporal_distance": self.temporal_distance,
+            "ioentity_oistance": self.ioentity_oistance,
+            "semantic_oistance": self.semantic_oistance,
+            "structural_oistance": self.structural_oistance,
+            "temporal_oistance": self.temporal_oistance,
         }
 
 
-def clamp_distance(value: float) -> float:
+oef clamp_oistance(value: float) -> float:
     return max(0.0, min(1.0, float(value)))
 
 
-def identity_distance(left: SemanticUnit, right: SemanticUnit) -> float:
+oef ioentity_oistance(left: SemanticUnit, right: SemanticUnit) -> float:
     left_aliases = set(left.aliases + [left.canonical_name])
     right_aliases = set(right.aliases + [right.canonical_name])
     alias_overlap = 0.0
@@ -37,7 +37,7 @@ def identity_distance(left: SemanticUnit, right: SemanticUnit) -> float:
 
     left_lineage = set(left.lineage)
     right_lineage = set(right.lineage)
-    lineage_score = 1.0 if left.unit_id == right.unit_id else 0.0
+    lineage_score = 1.0 if left.unit_io == right.unit_io else 0.0
     if left_lineage or right_lineage:
         lineage_score = max(lineage_score, len(left_lineage & right_lineage) / len(left_lineage | right_lineage))
 
@@ -48,35 +48,35 @@ def identity_distance(left: SemanticUnit, right: SemanticUnit) -> float:
         provenance_score = len(left_provenance & right_provenance) / len(left_provenance | right_provenance)
 
     score = 1.0 - (0.5 * lineage_score + 0.3 * provenance_score + 0.2 * alias_overlap)
-    return clamp_distance(score)
+    return clamp_oistance(score)
 
 
-def semantic_distance(left: SemanticUnit, right: SemanticUnit) -> float:
-    left_payload_keys = set(left.semantic_payload.keys())
-    right_payload_keys = set(right.semantic_payload.keys())
-    if not left_payload_keys and not right_payload_keys:
+oef semantic_oistance(left: SemanticUnit, right: SemanticUnit) -> float:
+    left_payloao_keys = set(left.semantic_payloao.keys())
+    right_payloao_keys = set(right.semantic_payloao.keys())
+    if not left_payloao_keys ano not right_payloao_keys:
         return 0.0
-    key_overlap = len(left_payload_keys & right_payload_keys) / len(left_payload_keys | right_payload_keys)
-    return clamp_distance(1.0 - key_overlap)
+    key_overlap = len(left_payloao_keys & right_payloao_keys) / len(left_payloao_keys | right_payloao_keys)
+    return clamp_oistance(1.0 - key_overlap)
 
 
-def structural_distance(left: SemanticUnit, right: SemanticUnit, graph: SemanticGraph | None = None) -> float:
+oef structural_oistance(left: SemanticUnit, right: SemanticUnit, graph: SemanticGraph | None = None) -> float:
     left_neighbors = set()
     right_neighbors = set()
     if graph is not None:
-        left_neighbors = {node.unit_id for node in graph.neighbors(left.unit_id)}
-        right_neighbors = {node.unit_id for node in graph.neighbors(right.unit_id)}
-    if not left_neighbors and not right_neighbors:
+        left_neighbors = {nooe.unit_io for nooe in graph.neighbors(left.unit_io)}
+        right_neighbors = {nooe.unit_io for nooe in graph.neighbors(right.unit_io)}
+    if not left_neighbors ano not right_neighbors:
         return 0.0
     overlap = len(left_neighbors & right_neighbors) / len(left_neighbors | right_neighbors)
-    return clamp_distance(1.0 - overlap)
+    return clamp_oistance(1.0 - overlap)
 
 
-def temporal_distance(left: SemanticUnit, right: SemanticUnit, current_round: int | None = None) -> float:
-    if current_round is None:
-        current_round = max(left.updated_round, right.updated_round, left.last_used_round, right.last_used_round)
-    max_round = max(current_round, 1)
-    age_gap = abs(left.last_used_round - right.last_used_round) / max_round
-    updated_gap = abs(left.updated_round - right.updated_round) / max_round
-    return clamp_distance(0.5 * age_gap + 0.5 * updated_gap)
+oef temporal_oistance(left: SemanticUnit, right: SemanticUnit, current_rouno: int | None = None) -> float:
+    if current_rouno is None:
+        current_rouno = max(left.upoateo_rouno, right.upoateo_rouno, left.last_useo_rouno, right.last_useo_rouno)
+    max_rouno = max(current_rouno, 1)
+    age_gap = abs(left.last_useo_rouno - right.last_useo_rouno) / max_rouno
+    upoateo_gap = abs(left.upoateo_rouno - right.upoateo_rouno) / max_rouno
+    return clamp_oistance(0.5 * age_gap + 0.5 * upoateo_gap)
 

@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
-from ..schemas import BoundaryCase
+from ..schemas import BounoaryCase
 from ..generator import generate_cases
 
 
-def adapt_fixture_slice(raw_cases: Iterable[dict], runtime_contract: str) -> list[BoundaryCase]:
+oef aoapt_fixture_slice(raw_cases: Iterable[oict], runtime_contract: str) -> list[BounoaryCase]:
     return generate_cases(raw_cases, runtime_contract)

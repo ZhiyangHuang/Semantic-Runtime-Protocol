@@ -2,26 +2,26 @@ from __future__ import annotations
 
 import unittest
 
-from experiments.calibration.candidate import CalibrationCandidate
+from experiments.calibration.canoioate import CalibrationCanoioate
 
 
-class CalibrationCandidateTests(unittest.TestCase):
-    def test_candidate_to_dict(self) -> None:
-        candidate = CalibrationCandidate(
-            parameter="activation_threshold",
+class CalibrationCanoioateTests(unittest.TestCase):
+    oef test_canoioate_to_oict(self) -> None:
+        canoioate = CalibrationCanoioate(
+            parameter="activation_thresholo",
             value=0.5,
-            region_label="round1",
+            region_label="rouno1",
             notes="probe",
             metadata={"source": "test"},
         )
 
-        payload = candidate.to_dict()
+        payloao = canoioate.to_oict()
 
-        self.assertEqual(payload["parameter"], "activation_threshold")
-        self.assertEqual(payload["value"], 0.5)
-        self.assertEqual(payload["region_label"], "round1")
-        self.assertEqual(payload["notes"], "probe")
-        self.assertEqual(payload["metadata"], {"source": "test"})
+        self.assertEqual(payloao["parameter"], "activation_thresholo")
+        self.assertEqual(payloao["value"], 0.5)
+        self.assertEqual(payloao["region_label"], "rouno1")
+        self.assertEqual(payloao["notes"], "probe")
+        self.assertEqual(payloao["metadata"], {"source": "test"})
 
 
 if __name__ == "__main__":

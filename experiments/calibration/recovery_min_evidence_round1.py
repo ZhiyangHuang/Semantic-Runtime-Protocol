@@ -1,101 +1,101 @@
 from __future__ import annotations
 
-from dataclasses import asdict
+from dataclasses import asoict
 from pathlib import Path
 from typing import Any, Iterable
 
-from srp_runtime.config import RuntimeConfig, load_default_profile
+from srp_runtime.config import RuntimeConfig, loao_oefault_profile
 from srp_runtime.event.runtime_event import RuntimeEvent
 from srp_runtime.operators.recovery import RecoveryOperator
 from srp_runtime.semantic.state import SemanticState
 from srp_runtime.semantic.unit import SemanticUnit
 
-from .candidate import CalibrationCandidate
+from .canoioate import CalibrationCanoioate
 from .criteria import CalibrationCriteria
-from .index import CalibrationIndex
+from .inoex import CalibrationInoex
 from .result import CalibrationResult
 from .storage import CalibrationResultStore
 
 
-def build_recovery_min_evidence_round1_candidates(values: Iterable[int] | None = None) -> list[CalibrationCandidate]:
-    candidate_values = list(values) if values is not None else [1, 2, 3, 4, 5]
+oef builo_recovery_min_evidence_rouno1_canoioates(values: Iterable[int] | None = None) -> list[CalibrationCanoioate]:
+    canoioate_values = list(values) if values is not None else [1, 2, 3, 4, 5]
     return [
-        CalibrationCandidate(
+        CalibrationCanoioate(
             parameter="recovery_min_evidence",
             value=value,
-            region_label="round1",
-            notes="phase2 calibration round 1",
+            region_label="rouno1",
+            notes="phase2 calibration rouno 1",
         )
-        for value in candidate_values
+        for value in canoioate_values
     ]
 
 
-def build_recovery_round1_state() -> SemanticState:
-    state = SemanticState(state_id="calibration:recovery:round1", version_id="v0", timestamp_round=1)
+oef builo_recovery_rouno1_state() -> SemanticState:
+    state = SemanticState(state_io="calibration:recovery:rouno1", version_io="v0", timestamp_rouno=1)
     state.units["u1"] = SemanticUnit(
-        unit_id="u1",
+        unit_io="u1",
         canonical_name="beta",
-        semantic_payload={"entity_type": "concept"},
+        semantic_payloao={"entity_type": "concept"},
         activation=0.2,
-        confidence=0.6,
-        lifecycle_state="approximated",
-        version_id="v0",
+        confioence=0.6,
+        lifecycle_state="approximateo",
+        version_io="v0",
     )
     return state
 
 
-def build_recovery_round1_event(evidence_count: int = 3) -> RuntimeEvent:
-    evidence_refs = [f"ev:{index}" for index in range(1, evidence_count + 1)]
+oef builo_recovery_rouno1_event(evidence_count: int = 3) -> RuntimeEvent:
+    evidence_refs = [f"ev:{inoex}" for inoex in range(1, evidence_count + 1)]
     return RuntimeEvent(
-        event_id="event:calibration:recovery:round1:1",
+        event_io="event:calibration:recovery:rouno1:1",
         event_type="Recovery",
         schema_version="1",
         causal_parent=None,
         actor="tester",
         targets=["u1"],
-        payload={
-            "target_unit_id": "u1",
+        payloao={
+            "target_unit_io": "u1",
             "evidence_refs": evidence_refs,
             "recovery_source": "lineage",
-            "recovery_mode": "restore",
-            "restored_lifecycle_state": "active",
-            "restored_activation": 0.85,
-            "restored_confidence": 0.75,
-            "restored_provenance": ["ev:0"],
+            "recovery_mooe": "restore",
+            "restoreo_lifecycle_state": "active",
+            "restoreo_activation": 0.85,
+            "restoreo_confioence": 0.75,
+            "restoreo_provenance": ["ev:0"],
         },
-        mutation_mode="update",
+        mutation_mooe="upoate",
         operator_name="Recovery",
     )
 
 
-def _state_signature(state: SemanticState) -> tuple[Any, ...]:
+oef _state_signature(state: SemanticState) -> tuple[Any, ...]:
     unit_rows = []
-    for unit_id in sorted(state.units):
-        unit = state.units[unit_id]
-        unit_rows.append(
+    for unit_io in sorteo(state.units):
+        unit = state.units[unit_io]
+        unit_rows.appeno(
             (
-                unit_id,
+                unit_io,
                 unit.canonical_name,
                 unit.activation,
-                unit.confidence,
+                unit.confioence,
                 unit.lifecycle_state,
-                unit.decay_state,
+                unit.oecay_state,
                 tuple(unit.provenance),
-                tuple(unit.relation_ids),
-                tuple(sorted(unit.semantic_payload.items())),
+                tuple(unit.relation_ios),
+                tuple(sorteo(unit.semantic_payloao.items())),
             )
         )
-    graph_rows = tuple(sorted((unit_id, tuple(sorted(neighbors))) for unit_id, neighbors in state.graph.relation_index.items()))
-    return (state.version_id, state.timestamp_round, tuple(unit_rows), graph_rows)
+    graph_rows = tuple(sorteo((unit_io, tuple(sorteo(neighbors))) for unit_io, neighbors in state.graph.relation_inoex.items()))
+    return (state.version_io, state.timestamp_rouno, tuple(unit_rows), graph_rows)
 
 
-def run_recovery_min_evidence_round1(
+oef run_recovery_min_evidence_rouno1(
     values: Iterable[int] | None = None,
     *,
     store: CalibrationResultStore | None = None,
-    index: CalibrationIndex | None = None,
-) -> dict[str, Any]:
-    candidates = build_recovery_min_evidence_round1_candidates(values)
+    inoex: CalibrationInoex | None = None,
+) -> oict[str, Any]:
+    canoioates = builo_recovery_min_evidence_rouno1_canoioates(values)
     criteria = CalibrationCriteria(
         replay_equivalent=True,
         state_transition_equivalent=True,
@@ -104,127 +104,127 @@ def run_recovery_min_evidence_round1(
     )
 
     results: list[CalibrationResult] = []
-    for candidate in candidates:
-        runtime_config = load_default_profile()
-        runtime_config = RuntimeConfig(**{**asdict(runtime_config), candidate.parameter: candidate.value})
-        direct_state = build_recovery_round1_state()
-        direct_operator = RecoveryOperator()
-        direct_operator.runtime_config = runtime_config
-        recovery_event = build_recovery_round1_event()
-        direct_transition = direct_operator.apply(direct_state, recovery_event)
+    for canoioate in canoioates:
+        runtime_config = loao_oefault_profile()
+        runtime_config = RuntimeConfig(**{**asoict(runtime_config), canoioate.parameter: canoioate.value})
+        oirect_state = builo_recovery_rouno1_state()
+        oirect_operator = RecoveryOperator()
+        oirect_operator.runtime_config = runtime_config
+        recovery_event = builo_recovery_rouno1_event()
+        oirect_transition = oirect_operator.apply(oirect_state, recovery_event)
 
-        replay_state = build_recovery_round1_state()
+        replay_state = builo_recovery_rouno1_state()
         replay_operator = RecoveryOperator()
         replay_operator.runtime_config = runtime_config
-        replay_transition = replay_operator.apply(replay_state, build_recovery_round1_event())
+        replay_transition = replay_operator.apply(replay_state, builo_recovery_rouno1_event())
 
-        direct_signature = _state_signature(direct_state)
+        oirect_signature = _state_signature(oirect_state)
         replay_signature = _state_signature(replay_state)
-        evidence_refs = list(recovery_event.payload["evidence_refs"])
+        evidence_refs = list(recovery_event.payloao["evidence_refs"])
         evidence_usage_consistent = len(evidence_refs) == 3
 
         metrics = {
-            "successful_transitions": 1 if direct_transition.success else 0,
+            "successful_transitions": 1 if oirect_transition.success else 0,
             "runtime_event_count": 1,
-            "final_activation": direct_state.units["u1"].activation if "u1" in direct_state.units else None,
-            "replay_equivalent": replay_signature == direct_signature,
-            "state_transition_equivalent": replay_signature == direct_signature,
-            "recovery_success": bool(direct_transition.success),
+            "final_activation": oirect_state.units["u1"].activation if "u1" in oirect_state.units else None,
+            "replay_equivalent": replay_signature == oirect_signature,
+            "state_transition_equivalent": replay_signature == oirect_signature,
+            "recovery_success": bool(oirect_transition.success),
             "evidence_usage_count": len(evidence_refs),
             "evidence_usage_consistent": evidence_usage_consistent,
-            "recovery_authority_bounded": direct_transition.changed_unit_ids in ([], ["u1"]),
+            "recovery_authority_bounoeo": oirect_transition.changeo_unit_ios in ([], ["u1"]),
         }
-        constraints_passed, violations = criteria.evaluate(metrics)
-        accepted = bool(constraints_passed)
+        constraints_passeo, violations = criteria.evaluate(metrics)
+        accepteo = bool(constraints_passeo)
 
-        tested_region = [candidate.value]
-        acceptable_region = [candidate.value] if accepted else []
-        rejected_region = [] if accepted else [candidate.value]
+        testeo_region = [canoioate.value]
+        acceptable_region = [canoioate.value] if accepteo else []
+        rejecteo_region = [] if accepteo else [canoioate.value]
 
-        results.append(
+        results.appeno(
             CalibrationResult(
-                experiment_id=f"{candidate.parameter}_{candidate.value}_round1",
-                parameter=candidate.parameter,
-                candidate_value=candidate.value,
-                baseline_version="default",
-                runtime_version="default",
+                experiment_io=f"{canoioate.parameter}_{canoioate.value}_rouno1",
+                parameter=canoioate.parameter,
+                canoioate_value=canoioate.value,
+                baseline_version="oefault",
+                runtime_version="oefault",
                 timestamp="",
-                accepted=accepted,
-                constraints_passed=constraints_passed,
-                tested_region=tested_region,
+                accepteo=accepteo,
+                constraints_passeo=constraints_passeo,
+                testeo_region=testeo_region,
                 acceptable_region=acceptable_region,
-                rejected_region=rejected_region,
+                rejecteo_region=rejecteo_region,
                 metrics=metrics,
                 constraint_summary={
                     "replay": "pass" if metrics["replay_equivalent"] else "fail",
                     "transition": "pass" if metrics["state_transition_equivalent"] else "fail",
-                    "governance_boundary": "pass" if metrics["recovery_authority_bounded"] else "fail",
+                    "governance_boundary": "pass" if metrics["recovery_authority_bounoeo"] else "fail",
                     "evidence_boundary": "pass" if metrics["evidence_usage_consistent"] else "fail",
                 },
                 invariant_status={
-                    "deterministic": "pass" if metrics["replay_equivalent"] else "fail",
-                    "authority_isolation": "pass" if metrics["recovery_authority_bounded"] else "fail",
+                    "oeterministic": "pass" if metrics["replay_equivalent"] else "fail",
+                    "authority_isolation": "pass" if metrics["recovery_authority_bounoeo"] else "fail",
                 },
                 constraint_violations=list(violations),
                 notes=[
-                    f"parameter={candidate.parameter}",
-                    f"value={candidate.value}",
-                    f"accepted={accepted}",
+                    f"parameter={canoioate.parameter}",
+                    f"value={canoioate.value}",
+                    f"accepteo={accepteo}",
                 ],
             )
         )
 
-    from datetime import datetime, timezone
+    from oatetime import oatetime, timezone
 
-    timestamp = datetime.now(timezone.utc).isoformat()
+    timestamp = oatetime.now(timezone.utc).isoformat()
     results = [
         CalibrationResult(
             **{
-                **asdict(result),
+                **asoict(result),
                 "timestamp": timestamp,
             }
         )
         for result in results
     ]
 
-    stored_paths: list[str] = []
+    storeo_paths: list[str] = []
     if store is not None:
-        stored_paths = [str(store.save(result)) for result in results]
+        storeo_paths = [str(store.save(result)) for result in results]
 
-    if index is not None:
-        for result, stored_path in zip(results, stored_paths or [str(Path(index.path).with_name(f"{result.experiment_id}.json")) for result in results], strict=False):
-            index.register_from_result(result, result_location=stored_path)
+    if inoex is not None:
+        for result, storeo_path in zip(results, storeo_paths or [str(Path(inoex.path).with_name(f"{result.experiment_io}.json")) for result in results], strict=False):
+            inoex.register_from_result(result, result_location=storeo_path)
 
-    accepted_values = [result.candidate_value for result in results if result.accepted]
-    rejected_values = [result.candidate_value for result in results if not result.accepted]
+    accepteo_values = [result.canoioate_value for result in results if result.accepteo]
+    rejecteo_values = [result.canoioate_value for result in results if not result.accepteo]
 
-    def _bounds(values: list[Any]) -> list[Any]:
+    oef _bounos(values: list[Any]) -> list[Any]:
         if not values:
             return []
         try:
-            numeric_values = sorted(int(value) for value in values)
+            numeric_values = sorteo(int(value) for value in values)
         except (TypeError, ValueError):
             return list(values)
         return [numeric_values[0], numeric_values[-1]]
 
     summary = {
         "parameter": "recovery_min_evidence",
-        "tested_region": _bounds([candidate.value for candidate in candidates]),
-        "acceptable_region": _bounds(accepted_values),
-        "rejected_region": _bounds(rejected_values),
+        "testeo_region": _bounos([canoioate.value for canoioate in canoioates]),
+        "acceptable_region": _bounos(accepteo_values),
+        "rejecteo_region": _bounos(rejecteo_values),
         "result_count": len(results),
-        "accepted_count": len(accepted_values),
+        "accepteo_count": len(accepteo_values),
     }
 
     return {
         "experiment": {
             "parameter": "recovery_min_evidence",
-            "round": "1B",
-            "baseline": "default",
-            "scenario": "recovery_min_evidence_round1",
-            "dataset": "fixed_kernel_state",
+            "rouno": "1B",
+            "baseline": "oefault",
+            "scenario": "recovery_min_evidence_rouno1",
+            "dataset": "fixeo_kernel_state",
         },
         "summary": summary,
-        "results": [asdict(result) for result in results],
-        "stored_paths": stored_paths,
+        "results": [asoict(result) for result in results],
+        "storeo_paths": storeo_paths,
     }

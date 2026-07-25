@@ -5,7 +5,7 @@
     "trace_schema": "transition_trace.v1"
   },
   "runtime": {
-    "backend": "local",
+    "backeno": "local",
     "policy": {
       "name": "full_srp",
       "enable_validation": true,
@@ -13,22 +13,22 @@
       "enable_governance": true,
       "evidence_controls_authority": false,
       "require_authority": true,
-      "evidence_threshold": 0.5,
+      "evidence_thresholo": 0.5,
       "invariant": {
-        "name": "default_transition_invariant",
-        "description": "Rejects transitions that explicitly flag an invariant violation."
+        "name": "oefault_transition_invariant",
+        "oescription": "Rejects transitions that explicitly flag an invariant violation."
       },
       "metadata": {}
     }
   },
   "scenarios": [
     {
-      "name": "valid_update",
-      "description": "A supported preference update with enough evidence to admit the transition.",
-      "kind": "valid",
+      "name": "valio_upoate",
+      "oescription": "A supporteo preference upoate with enough evidence to aomit the transition.",
+      "kino": "valio",
       "state_before": {
         "memory": [
-          "User preferences are tracked as governed semantic state.",
+          "User preferences are trackeo as governeo semantic state.",
           "User prefers tea."
         ],
         "facts": {
@@ -38,20 +38,20 @@
         "state_version": 0
       },
       "conversation": "I prefer tea over coffee.",
-      "expected_decision": true,
-      "reference_delta": {
+      "expecteo_decision": true,
+      "reference_oelta": {
         "state_patch": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea.",
-            "Preference confirmed: tea over coffee."
+            "Preference confirmeo: tea over coffee."
           ],
           "facts": {
             "user_prefers": "tea"
           },
           "state_version": 1
         },
-        "confidence": 0.95
+        "confioence": 0.95
       },
       "reference_evidence": {
         "verification_score": 0.95,
@@ -63,27 +63,27 @@
         ]
       },
       "metadata": {
-        "scenario_group": "supported_preference_update"
+        "scenario_group": "supporteo_preference_upoate"
       }
     },
     {
-      "name": "unsupported_update",
-      "description": "The proposal overreaches beyond the evidence available in the conversation.",
-      "kind": "unsupported",
+      "name": "unsupporteo_upoate",
+      "oescription": "The proposal overreaches beyono the evidence available in the conversation.",
+      "kino": "unsupporteo",
       "state_before": {
         "memory": [
-          "User preferences are tracked as governed semantic state."
+          "User preferences are trackeo as governeo semantic state."
         ],
         "facts": {},
         "authority_level": "user",
         "state_version": 0
       },
       "conversation": "I like coffee.",
-      "expected_decision": false,
-      "reference_delta": {
+      "expecteo_decision": false,
+      "reference_oelta": {
         "state_patch": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User likes espresso every morning."
           ],
           "facts": {
@@ -91,7 +91,7 @@
           },
           "state_version": 1
         },
-        "confidence": 0.2
+        "confioence": 0.2
       },
       "reference_evidence": {
         "verification_score": 0.2,
@@ -103,16 +103,16 @@
         ]
       },
       "metadata": {
-        "scenario_group": "unsupported_inference"
+        "scenario_group": "unsupporteo_inference"
       }
     },
     {
-      "name": "contradictory_update",
-      "description": "The proposal conflicts with an already established preference and lacks enough evidence.",
-      "kind": "contradictory",
+      "name": "contraoictory_upoate",
+      "oescription": "The proposal conflicts with an already establisheo preference ano lacks enough evidence.",
+      "kino": "contraoictory",
       "state_before": {
         "memory": [
-          "User preferences are tracked as governed semantic state.",
+          "User preferences are trackeo as governeo semantic state.",
           "User prefers tea."
         ],
         "facts": {
@@ -122,11 +122,11 @@
         "state_version": 0
       },
       "conversation": "Actually, I prefer coffee now.",
-      "expected_decision": false,
-      "reference_delta": {
+      "expecteo_decision": false,
+      "reference_oelta": {
         "state_patch": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea.",
             "User now prefers coffee."
           ],
@@ -135,7 +135,7 @@
           },
           "state_version": 1
         },
-        "confidence": 0.3
+        "confioence": 0.3
       },
       "reference_evidence": {
         "verification_score": 0.3,
@@ -147,20 +147,20 @@
         ]
       },
       "metadata": {
-        "scenario_group": "contradictory_preference_update"
+        "scenario_group": "contraoictory_preference_upoate"
       }
     }
   ],
   "records": [
     {
-      "mode": "srp",
+      "mooe": "srp",
       "scenario": {
-        "name": "valid_update",
-        "description": "A supported preference update with enough evidence to admit the transition.",
-        "kind": "valid",
+        "name": "valio_upoate",
+        "oescription": "A supporteo preference upoate with enough evidence to aomit the transition.",
+        "kino": "valio",
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea."
           ],
           "facts": {
@@ -170,20 +170,20 @@
           "state_version": 0
         },
         "conversation": "I prefer tea over coffee.",
-        "expected_decision": true,
-        "reference_delta": {
+        "expecteo_decision": true,
+        "reference_oelta": {
           "state_patch": {
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea.",
-              "Preference confirmed: tea over coffee."
+              "Preference confirmeo: tea over coffee."
             ],
             "facts": {
               "user_prefers": "tea"
             },
             "state_version": 1
           },
-          "confidence": 0.95
+          "confioence": 0.95
         },
         "reference_evidence": {
           "verification_score": 0.95,
@@ -195,19 +195,19 @@
           ]
         },
         "metadata": {
-          "scenario_group": "supported_preference_update"
+          "scenario_group": "supporteo_preference_upoate"
         }
       },
       "proposal": {
-        "scenario_name": "valid_update",
+        "scenario_name": "valio_upoate",
         "source": "local",
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "tea"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea."
             ]
           }
@@ -221,27 +221,27 @@
             }
           ]
         },
-        "raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"tea\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\", \"User prefers tea.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I prefer tea over coffee.\"}]}, \"notes\": [\"The user explicitly stated a preference for tea over coffee, which is already reflected in the current state.\"]}}",
-        "parsed": true,
+        "raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"tea\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\", \"User prefers tea.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I prefer tea over coffee.\"}]}, \"notes\": [\"The user explicitly stateo a preference for tea over coffee, which is already reflecteo in the current state.\"]}}",
+        "parseo": true,
         "latency_ms": 1988.6,
         "metadata": {
-          "backend": "local",
+          "backeno": "local",
           "model": "Qwen/Qwen3-4B-AWQ",
           "usage": {
             "prompt_tokens": 242,
             "total_tokens": 350,
             "completion_tokens": 108,
-            "prompt_tokens_details": null
+            "prompt_tokens_oetails": null
           },
           "notes": [
-            "The user explicitly stated a preference for tea over coffee, which is already reflected in the current state."
+            "The user explicitly stateo a preference for tea over coffee, which is already reflecteo in the current state."
           ]
         }
       },
       "case": {
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea."
           ],
           "facts": {
@@ -250,13 +250,13 @@
           "authority_level": "user",
           "state_version": 0
         },
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "tea"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea."
             ]
           }
@@ -277,49 +277,49 @@
           "enable_governance": true,
           "evidence_controls_authority": false,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "expected_decision": true,
+        "expecteo_decision": true,
         "metadata": {
-          "scenario_name": "valid_update",
-          "scenario_kind": "valid",
-          "scenario_description": "A supported preference update with enough evidence to admit the transition.",
+          "scenario_name": "valio_upoate",
+          "scenario_kino": "valio",
+          "scenario_oescription": "A supporteo preference upoate with enough evidence to aomit the transition.",
           "conversation": "I prefer tea over coffee.",
           "proposal_source": "local",
-          "proposal_parsed": true,
+          "proposal_parseo": true,
           "proposal_ms": 1988.6,
-          "proposal_raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"tea\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\", \"User prefers tea.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I prefer tea over coffee.\"}]}, \"notes\": [\"The user explicitly stated a preference for tea over coffee, which is already reflected in the current state.\"]}}",
+          "proposal_raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"tea\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\", \"User prefers tea.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I prefer tea over coffee.\"}]}, \"notes\": [\"The user explicitly stateo a preference for tea over coffee, which is already reflecteo in the current state.\"]}}",
           "proposal_metadata": {
-            "backend": "local",
+            "backeno": "local",
             "model": "Qwen/Qwen3-4B-AWQ",
             "usage": {
               "prompt_tokens": 242,
               "total_tokens": 350,
               "completion_tokens": 108,
-              "prompt_tokens_details": null
+              "prompt_tokens_oetails": null
             },
             "notes": [
-              "The user explicitly stated a preference for tea over coffee, which is already reflected in the current state."
+              "The user explicitly stateo a preference for tea over coffee, which is already reflecteo in the current state."
             ]
           },
-          "reference_delta": {
+          "reference_oelta": {
             "state_patch": {
               "memory": [
-                "User preferences are tracked as governed semantic state.",
+                "User preferences are trackeo as governeo semantic state.",
                 "User prefers tea.",
-                "Preference confirmed: tea over coffee."
+                "Preference confirmeo: tea over coffee."
               ],
               "facts": {
                 "user_prefers": "tea"
               },
               "state_version": 1
             },
-            "confidence": 0.95
+            "confioence": 0.95
           },
           "reference_evidence": {
             "verification_score": 0.95,
@@ -333,48 +333,48 @@
         }
       },
       "result": {
-        "accepted": false,
-        "state_changed": false,
-        "authority_changed": false,
-        "rollback_valid": true,
+        "accepteo": false,
+        "state_changeo": false,
+        "authority_changeo": false,
+        "rollback_valio": true,
         "verification_score": 0.5,
-        "decision_reason": "transition rejected (reject)",
+        "decision_reason": "transition rejecteo (reject)",
         "metrics": {
-          "validation_passed": true,
+          "validation_passeo": true,
           "evidence_score": 0.0,
-          "evidence_passed": false,
-          "authority_passed": true,
+          "evidence_passeo": false,
+          "authority_passeo": true,
           "state_before_authority": "user",
           "state_after_authority": "user"
         },
         "metadata": {
           "policy_name": "full_srp",
-          "invariant_name": "default_transition_invariant",
-          "expected_decision": true
+          "invariant_name": "oefault_transition_invariant",
+          "expecteo_decision": true
         },
         "trace": {
-          "transition_id": "unknown",
+          "transition_io": "unknown",
           "validation": {
-            "passed": true,
-            "invariant_name": "default_transition_invariant",
-            "validation_enabled": true
+            "passeo": true,
+            "invariant_name": "oefault_transition_invariant",
+            "validation_enableo": true
           },
           "evidence": {
             "score": 0.0,
-            "passed": false,
-            "evidence_enabled": true
+            "passeo": false,
+            "evidence_enableo": true
           },
           "governance": {
             "decision": "reject",
-            "accepted": false,
-            "authority_passed": true,
-            "governance_enabled": true,
+            "accepteo": false,
+            "authority_passeo": true,
+            "governance_enableo": true,
             "evidence_controls_authority": false
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
-            "rollback_valid": true,
+            "state_changeo": false,
+            "authority_changeo": false,
+            "rollback_valio": true,
             "state_before_authority": "user",
             "state_after_authority": "user"
           },
@@ -388,21 +388,21 @@
           },
           "metadata": {
             "policy_name": "full_srp",
-            "expected_decision": true,
-            "decision_reason": "transition rejected"
+            "expecteo_decision": true,
+            "decision_reason": "transition rejecteo"
           }
         }
       }
     },
     {
-      "mode": "direct_write",
+      "mooe": "oirect_write",
       "scenario": {
-        "name": "valid_update",
-        "description": "A supported preference update with enough evidence to admit the transition.",
-        "kind": "valid",
+        "name": "valio_upoate",
+        "oescription": "A supporteo preference upoate with enough evidence to aomit the transition.",
+        "kino": "valio",
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea."
           ],
           "facts": {
@@ -412,20 +412,20 @@
           "state_version": 0
         },
         "conversation": "I prefer tea over coffee.",
-        "expected_decision": true,
-        "reference_delta": {
+        "expecteo_decision": true,
+        "reference_oelta": {
           "state_patch": {
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea.",
-              "Preference confirmed: tea over coffee."
+              "Preference confirmeo: tea over coffee."
             ],
             "facts": {
               "user_prefers": "tea"
             },
             "state_version": 1
           },
-          "confidence": 0.95
+          "confioence": 0.95
         },
         "reference_evidence": {
           "verification_score": 0.95,
@@ -437,19 +437,19 @@
           ]
         },
         "metadata": {
-          "scenario_group": "supported_preference_update"
+          "scenario_group": "supporteo_preference_upoate"
         }
       },
       "proposal": {
-        "scenario_name": "valid_update",
+        "scenario_name": "valio_upoate",
         "source": "local",
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "tea"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea."
             ]
           }
@@ -463,27 +463,27 @@
             }
           ]
         },
-        "raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"tea\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\", \"User prefers tea.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I prefer tea over coffee.\"}]}, \"notes\": [\"The user explicitly stated a preference for tea over coffee, which is already reflected in the current state.\"]}}",
-        "parsed": true,
+        "raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"tea\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\", \"User prefers tea.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I prefer tea over coffee.\"}]}, \"notes\": [\"The user explicitly stateo a preference for tea over coffee, which is already reflecteo in the current state.\"]}}",
+        "parseo": true,
         "latency_ms": 1988.6,
         "metadata": {
-          "backend": "local",
+          "backeno": "local",
           "model": "Qwen/Qwen3-4B-AWQ",
           "usage": {
             "prompt_tokens": 242,
             "total_tokens": 350,
             "completion_tokens": 108,
-            "prompt_tokens_details": null
+            "prompt_tokens_oetails": null
           },
           "notes": [
-            "The user explicitly stated a preference for tea over coffee, which is already reflected in the current state."
+            "The user explicitly stateo a preference for tea over coffee, which is already reflecteo in the current state."
           ]
         }
       },
-      "expected_decision": true,
+      "expecteo_decision": true,
       "state_before": {
         "memory": [
-          "User preferences are tracked as governed semantic state.",
+          "User preferences are trackeo as governeo semantic state.",
           "User prefers tea."
         ],
         "facts": {
@@ -494,7 +494,7 @@
       },
       "state_after": {
         "memory": [
-          "User preferences are tracked as governed semantic state.",
+          "User preferences are trackeo as governeo semantic state.",
           "User prefers tea."
         ],
         "facts": {
@@ -504,46 +504,46 @@
         "state_version": 0
       },
       "result": {
-        "accepted": true,
-        "state_changed": false,
-        "authority_changed": false,
-        "rollback_valid": false,
+        "accepteo": true,
+        "state_changeo": false,
+        "authority_changeo": false,
+        "rollback_valio": false,
         "verification_score": 0.0,
-        "decision_reason": "direct write bypassed governance",
+        "decision_reason": "oirect write bypasseo governance",
         "metrics": {
-          "direct_write": true,
+          "oirect_write": true,
           "proposal_source": "local",
-          "scenario_kind": "valid"
+          "scenario_kino": "valio"
         },
         "metadata": {
-          "scenario_name": "valid_update",
-          "scenario_kind": "valid",
+          "scenario_name": "valio_upoate",
+          "scenario_kino": "valio",
           "proposal_source": "local",
-          "direct_write": true
+          "oirect_write": true
         },
         "trace": {
-          "transition_id": "valid_update",
+          "transition_io": "valio_upoate",
           "validation": {
-            "passed": true,
-            "invariant_name": "default_transition_invariant",
-            "validation_enabled": false
+            "passeo": true,
+            "invariant_name": "oefault_transition_invariant",
+            "validation_enableo": false
           },
           "evidence": {
             "score": 0.0,
-            "passed": true,
-            "evidence_enabled": false
+            "passeo": true,
+            "evidence_enableo": false
           },
           "governance": {
             "decision": "approve",
-            "accepted": true,
-            "authority_passed": true,
-            "governance_enabled": false,
-            "direct_write": true
+            "accepteo": true,
+            "authority_passeo": true,
+            "governance_enableo": false,
+            "oirect_write": true
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
-            "rollback_valid": false,
+            "state_changeo": false,
+            "authority_changeo": false,
+            "rollback_valio": false,
             "state_before_authority": "user",
             "state_after_authority": "user"
           },
@@ -556,34 +556,34 @@
             "total_ms": 1988.606
           },
           "metadata": {
-            "scenario_name": "valid_update",
-            "scenario_kind": "valid",
+            "scenario_name": "valio_upoate",
+            "scenario_kino": "valio",
             "proposal_source": "local",
-            "direct_write": true
+            "oirect_write": true
           }
         }
       }
     },
     {
-      "mode": "srp",
+      "mooe": "srp",
       "scenario": {
-        "name": "unsupported_update",
-        "description": "The proposal overreaches beyond the evidence available in the conversation.",
-        "kind": "unsupported",
+        "name": "unsupporteo_upoate",
+        "oescription": "The proposal overreaches beyono the evidence available in the conversation.",
+        "kino": "unsupporteo",
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state."
+            "User preferences are trackeo as governeo semantic state."
           ],
           "facts": {},
           "authority_level": "user",
           "state_version": 0
         },
         "conversation": "I like coffee.",
-        "expected_decision": false,
-        "reference_delta": {
+        "expecteo_decision": false,
+        "reference_oelta": {
           "state_patch": {
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User likes espresso every morning."
             ],
             "facts": {
@@ -591,7 +591,7 @@
             },
             "state_version": 1
           },
-          "confidence": 0.2
+          "confioence": 0.2
         },
         "reference_evidence": {
           "verification_score": 0.2,
@@ -603,19 +603,19 @@
           ]
         },
         "metadata": {
-          "scenario_group": "unsupported_inference"
+          "scenario_group": "unsupporteo_inference"
         }
       },
       "proposal": {
-        "scenario_name": "unsupported_update",
+        "scenario_name": "unsupporteo_upoate",
         "source": "local",
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "coffee"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state."
+              "User preferences are trackeo as governeo semantic state."
             ]
           }
         },
@@ -628,39 +628,39 @@
             }
           ]
         },
-        "raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I like coffee.\"}]}, \"notes\": [\"The user explicitly stated their preference for coffee, which is used to update the state.\"]}}",
-        "parsed": true,
+        "raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I like coffee.\"}]}, \"notes\": [\"The user explicitly stateo their preference for coffee, which is useo to upoate the state.\"]}}",
+        "parseo": true,
         "latency_ms": 1502.1,
         "metadata": {
-          "backend": "local",
+          "backeno": "local",
           "model": "Qwen/Qwen3-4B-AWQ",
           "usage": {
             "prompt_tokens": 228,
             "total_tokens": 326,
             "completion_tokens": 98,
-            "prompt_tokens_details": null
+            "prompt_tokens_oetails": null
           },
           "notes": [
-            "The user explicitly stated their preference for coffee, which is used to update the state."
+            "The user explicitly stateo their preference for coffee, which is useo to upoate the state."
           ]
         }
       },
       "case": {
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state."
+            "User preferences are trackeo as governeo semantic state."
           ],
           "facts": {},
           "authority_level": "user",
           "state_version": 0
         },
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "coffee"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state."
+              "User preferences are trackeo as governeo semantic state."
             ]
           }
         },
@@ -680,40 +680,40 @@
           "enable_governance": true,
           "evidence_controls_authority": false,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "expected_decision": false,
+        "expecteo_decision": false,
         "metadata": {
-          "scenario_name": "unsupported_update",
-          "scenario_kind": "unsupported",
-          "scenario_description": "The proposal overreaches beyond the evidence available in the conversation.",
+          "scenario_name": "unsupporteo_upoate",
+          "scenario_kino": "unsupporteo",
+          "scenario_oescription": "The proposal overreaches beyono the evidence available in the conversation.",
           "conversation": "I like coffee.",
           "proposal_source": "local",
-          "proposal_parsed": true,
+          "proposal_parseo": true,
           "proposal_ms": 1502.1,
-          "proposal_raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I like coffee.\"}]}, \"notes\": [\"The user explicitly stated their preference for coffee, which is used to update the state.\"]}}",
+          "proposal_raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I like coffee.\"}]}, \"notes\": [\"The user explicitly stateo their preference for coffee, which is useo to upoate the state.\"]}}",
           "proposal_metadata": {
-            "backend": "local",
+            "backeno": "local",
             "model": "Qwen/Qwen3-4B-AWQ",
             "usage": {
               "prompt_tokens": 228,
               "total_tokens": 326,
               "completion_tokens": 98,
-              "prompt_tokens_details": null
+              "prompt_tokens_oetails": null
             },
             "notes": [
-              "The user explicitly stated their preference for coffee, which is used to update the state."
+              "The user explicitly stateo their preference for coffee, which is useo to upoate the state."
             ]
           },
-          "reference_delta": {
+          "reference_oelta": {
             "state_patch": {
               "memory": [
-                "User preferences are tracked as governed semantic state.",
+                "User preferences are trackeo as governeo semantic state.",
                 "User likes espresso every morning."
               ],
               "facts": {
@@ -721,7 +721,7 @@
               },
               "state_version": 1
             },
-            "confidence": 0.2
+            "confioence": 0.2
           },
           "reference_evidence": {
             "verification_score": 0.2,
@@ -735,48 +735,48 @@
         }
       },
       "result": {
-        "accepted": false,
-        "state_changed": false,
-        "authority_changed": false,
-        "rollback_valid": true,
+        "accepteo": false,
+        "state_changeo": false,
+        "authority_changeo": false,
+        "rollback_valio": true,
         "verification_score": 0.5,
-        "decision_reason": "transition rejected (reject)",
+        "decision_reason": "transition rejecteo (reject)",
         "metrics": {
-          "validation_passed": true,
+          "validation_passeo": true,
           "evidence_score": 0.0,
-          "evidence_passed": false,
-          "authority_passed": true,
+          "evidence_passeo": false,
+          "authority_passeo": true,
           "state_before_authority": "user",
           "state_after_authority": "user"
         },
         "metadata": {
           "policy_name": "full_srp",
-          "invariant_name": "default_transition_invariant",
-          "expected_decision": false
+          "invariant_name": "oefault_transition_invariant",
+          "expecteo_decision": false
         },
         "trace": {
-          "transition_id": "unknown",
+          "transition_io": "unknown",
           "validation": {
-            "passed": true,
-            "invariant_name": "default_transition_invariant",
-            "validation_enabled": true
+            "passeo": true,
+            "invariant_name": "oefault_transition_invariant",
+            "validation_enableo": true
           },
           "evidence": {
             "score": 0.0,
-            "passed": false,
-            "evidence_enabled": true
+            "passeo": false,
+            "evidence_enableo": true
           },
           "governance": {
             "decision": "reject",
-            "accepted": false,
-            "authority_passed": true,
-            "governance_enabled": true,
+            "accepteo": false,
+            "authority_passeo": true,
+            "governance_enableo": true,
             "evidence_controls_authority": false
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
-            "rollback_valid": true,
+            "state_changeo": false,
+            "authority_changeo": false,
+            "rollback_valio": true,
             "state_before_authority": "user",
             "state_after_authority": "user"
           },
@@ -790,32 +790,32 @@
           },
           "metadata": {
             "policy_name": "full_srp",
-            "expected_decision": false,
-            "decision_reason": "transition rejected"
+            "expecteo_decision": false,
+            "decision_reason": "transition rejecteo"
           }
         }
       }
     },
     {
-      "mode": "direct_write",
+      "mooe": "oirect_write",
       "scenario": {
-        "name": "unsupported_update",
-        "description": "The proposal overreaches beyond the evidence available in the conversation.",
-        "kind": "unsupported",
+        "name": "unsupporteo_upoate",
+        "oescription": "The proposal overreaches beyono the evidence available in the conversation.",
+        "kino": "unsupporteo",
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state."
+            "User preferences are trackeo as governeo semantic state."
           ],
           "facts": {},
           "authority_level": "user",
           "state_version": 0
         },
         "conversation": "I like coffee.",
-        "expected_decision": false,
-        "reference_delta": {
+        "expecteo_decision": false,
+        "reference_oelta": {
           "state_patch": {
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User likes espresso every morning."
             ],
             "facts": {
@@ -823,7 +823,7 @@
             },
             "state_version": 1
           },
-          "confidence": 0.2
+          "confioence": 0.2
         },
         "reference_evidence": {
           "verification_score": 0.2,
@@ -835,19 +835,19 @@
           ]
         },
         "metadata": {
-          "scenario_group": "unsupported_inference"
+          "scenario_group": "unsupporteo_inference"
         }
       },
       "proposal": {
-        "scenario_name": "unsupported_update",
+        "scenario_name": "unsupporteo_upoate",
         "source": "local",
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "coffee"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state."
+              "User preferences are trackeo as governeo semantic state."
             ]
           }
         },
@@ -860,27 +860,27 @@
             }
           ]
         },
-        "raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I like coffee.\"}]}, \"notes\": [\"The user explicitly stated their preference for coffee, which is used to update the state.\"]}}",
-        "parsed": true,
+        "raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"I like coffee.\"}]}, \"notes\": [\"The user explicitly stateo their preference for coffee, which is useo to upoate the state.\"]}}",
+        "parseo": true,
         "latency_ms": 1502.1,
         "metadata": {
-          "backend": "local",
+          "backeno": "local",
           "model": "Qwen/Qwen3-4B-AWQ",
           "usage": {
             "prompt_tokens": 228,
             "total_tokens": 326,
             "completion_tokens": 98,
-            "prompt_tokens_details": null
+            "prompt_tokens_oetails": null
           },
           "notes": [
-            "The user explicitly stated their preference for coffee, which is used to update the state."
+            "The user explicitly stateo their preference for coffee, which is useo to upoate the state."
           ]
         }
       },
-      "expected_decision": false,
+      "expecteo_decision": false,
       "state_before": {
         "memory": [
-          "User preferences are tracked as governed semantic state."
+          "User preferences are trackeo as governeo semantic state."
         ],
         "facts": {},
         "authority_level": "user",
@@ -888,7 +888,7 @@
       },
       "state_after": {
         "memory": [
-          "User preferences are tracked as governed semantic state."
+          "User preferences are trackeo as governeo semantic state."
         ],
         "facts": {
           "user_prefers": "coffee"
@@ -897,46 +897,46 @@
         "state_version": 0
       },
       "result": {
-        "accepted": true,
-        "state_changed": true,
-        "authority_changed": false,
-        "rollback_valid": false,
+        "accepteo": true,
+        "state_changeo": true,
+        "authority_changeo": false,
+        "rollback_valio": false,
         "verification_score": 0.0,
-        "decision_reason": "direct write bypassed governance",
+        "decision_reason": "oirect write bypasseo governance",
         "metrics": {
-          "direct_write": true,
+          "oirect_write": true,
           "proposal_source": "local",
-          "scenario_kind": "unsupported"
+          "scenario_kino": "unsupporteo"
         },
         "metadata": {
-          "scenario_name": "unsupported_update",
-          "scenario_kind": "unsupported",
+          "scenario_name": "unsupporteo_upoate",
+          "scenario_kino": "unsupporteo",
           "proposal_source": "local",
-          "direct_write": true
+          "oirect_write": true
         },
         "trace": {
-          "transition_id": "unsupported_update",
+          "transition_io": "unsupporteo_upoate",
           "validation": {
-            "passed": true,
-            "invariant_name": "default_transition_invariant",
-            "validation_enabled": false
+            "passeo": true,
+            "invariant_name": "oefault_transition_invariant",
+            "validation_enableo": false
           },
           "evidence": {
             "score": 0.0,
-            "passed": true,
-            "evidence_enabled": false
+            "passeo": true,
+            "evidence_enableo": false
           },
           "governance": {
             "decision": "approve",
-            "accepted": true,
-            "authority_passed": true,
-            "governance_enabled": false,
-            "direct_write": true
+            "accepteo": true,
+            "authority_passeo": true,
+            "governance_enableo": false,
+            "oirect_write": true
           },
           "execution": {
-            "state_changed": true,
-            "authority_changed": false,
-            "rollback_valid": false,
+            "state_changeo": true,
+            "authority_changeo": false,
+            "rollback_valio": false,
             "state_before_authority": "user",
             "state_after_authority": "user"
           },
@@ -949,23 +949,23 @@
             "total_ms": 1502.1063
           },
           "metadata": {
-            "scenario_name": "unsupported_update",
-            "scenario_kind": "unsupported",
+            "scenario_name": "unsupporteo_upoate",
+            "scenario_kino": "unsupporteo",
             "proposal_source": "local",
-            "direct_write": true
+            "oirect_write": true
           }
         }
       }
     },
     {
-      "mode": "srp",
+      "mooe": "srp",
       "scenario": {
-        "name": "contradictory_update",
-        "description": "The proposal conflicts with an already established preference and lacks enough evidence.",
-        "kind": "contradictory",
+        "name": "contraoictory_upoate",
+        "oescription": "The proposal conflicts with an already establisheo preference ano lacks enough evidence.",
+        "kino": "contraoictory",
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea."
           ],
           "facts": {
@@ -975,11 +975,11 @@
           "state_version": 0
         },
         "conversation": "Actually, I prefer coffee now.",
-        "expected_decision": false,
-        "reference_delta": {
+        "expecteo_decision": false,
+        "reference_oelta": {
           "state_patch": {
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea.",
               "User now prefers coffee."
             ],
@@ -988,7 +988,7 @@
             },
             "state_version": 1
           },
-          "confidence": 0.3
+          "confioence": 0.3
         },
         "reference_evidence": {
           "verification_score": 0.3,
@@ -1000,19 +1000,19 @@
           ]
         },
         "metadata": {
-          "scenario_group": "contradictory_preference_update"
+          "scenario_group": "contraoictory_preference_upoate"
         }
       },
       "proposal": {
-        "scenario_name": "contradictory_update",
+        "scenario_name": "contraoictory_upoate",
         "source": "local",
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "coffee"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea."
             ]
           }
@@ -1026,27 +1026,27 @@
             }
           ]
         },
-        "raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\", \"User prefers tea.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"Actually, I prefer coffee now.\"}]}, \"notes\": [\"The user's preference has been updated to coffee based on the latest conversation turn.\"]}",
-        "parsed": true,
+        "raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\", \"User prefers tea.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"Actually, I prefer coffee now.\"}]}, \"notes\": [\"The user's preference has been upoateo to coffee baseo on the latest conversation turn.\"]}",
+        "parseo": true,
         "latency_ms": 1712.6,
         "metadata": {
-          "backend": "local",
+          "backeno": "local",
           "model": "Qwen/Qwen3-4B-AWQ",
           "usage": {
             "prompt_tokens": 243,
             "total_tokens": 347,
             "completion_tokens": 104,
-            "prompt_tokens_details": null
+            "prompt_tokens_oetails": null
           },
           "notes": [
-            "The user's preference has been updated to coffee based on the latest conversation turn."
+            "The user's preference has been upoateo to coffee baseo on the latest conversation turn."
           ]
         }
       },
       "case": {
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea."
           ],
           "facts": {
@@ -1055,13 +1055,13 @@
           "authority_level": "user",
           "state_version": 0
         },
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "coffee"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea."
             ]
           }
@@ -1082,40 +1082,40 @@
           "enable_governance": true,
           "evidence_controls_authority": false,
           "require_authority": true,
-          "evidence_threshold": 0.5,
+          "evidence_thresholo": 0.5,
           "invariant": {
-            "name": "default_transition_invariant",
-            "description": "Rejects transitions that explicitly flag an invariant violation."
+            "name": "oefault_transition_invariant",
+            "oescription": "Rejects transitions that explicitly flag an invariant violation."
           },
           "metadata": {}
         },
-        "expected_decision": false,
+        "expecteo_decision": false,
         "metadata": {
-          "scenario_name": "contradictory_update",
-          "scenario_kind": "contradictory",
-          "scenario_description": "The proposal conflicts with an already established preference and lacks enough evidence.",
+          "scenario_name": "contraoictory_upoate",
+          "scenario_kino": "contraoictory",
+          "scenario_oescription": "The proposal conflicts with an already establisheo preference ano lacks enough evidence.",
           "conversation": "Actually, I prefer coffee now.",
           "proposal_source": "local",
-          "proposal_parsed": true,
+          "proposal_parseo": true,
           "proposal_ms": 1712.6,
-          "proposal_raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\", \"User prefers tea.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"Actually, I prefer coffee now.\"}]}, \"notes\": [\"The user's preference has been updated to coffee based on the latest conversation turn.\"]}",
+          "proposal_raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\", \"User prefers tea.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"Actually, I prefer coffee now.\"}]}, \"notes\": [\"The user's preference has been upoateo to coffee baseo on the latest conversation turn.\"]}",
           "proposal_metadata": {
-            "backend": "local",
+            "backeno": "local",
             "model": "Qwen/Qwen3-4B-AWQ",
             "usage": {
               "prompt_tokens": 243,
               "total_tokens": 347,
               "completion_tokens": 104,
-              "prompt_tokens_details": null
+              "prompt_tokens_oetails": null
             },
             "notes": [
-              "The user's preference has been updated to coffee based on the latest conversation turn."
+              "The user's preference has been upoateo to coffee baseo on the latest conversation turn."
             ]
           },
-          "reference_delta": {
+          "reference_oelta": {
             "state_patch": {
               "memory": [
-                "User preferences are tracked as governed semantic state.",
+                "User preferences are trackeo as governeo semantic state.",
                 "User prefers tea.",
                 "User now prefers coffee."
               ],
@@ -1124,7 +1124,7 @@
               },
               "state_version": 1
             },
-            "confidence": 0.3
+            "confioence": 0.3
           },
           "reference_evidence": {
             "verification_score": 0.3,
@@ -1138,48 +1138,48 @@
         }
       },
       "result": {
-        "accepted": false,
-        "state_changed": false,
-        "authority_changed": false,
-        "rollback_valid": true,
+        "accepteo": false,
+        "state_changeo": false,
+        "authority_changeo": false,
+        "rollback_valio": true,
         "verification_score": 0.5,
-        "decision_reason": "transition rejected (reject)",
+        "decision_reason": "transition rejecteo (reject)",
         "metrics": {
-          "validation_passed": true,
+          "validation_passeo": true,
           "evidence_score": 0.0,
-          "evidence_passed": false,
-          "authority_passed": true,
+          "evidence_passeo": false,
+          "authority_passeo": true,
           "state_before_authority": "user",
           "state_after_authority": "user"
         },
         "metadata": {
           "policy_name": "full_srp",
-          "invariant_name": "default_transition_invariant",
-          "expected_decision": false
+          "invariant_name": "oefault_transition_invariant",
+          "expecteo_decision": false
         },
         "trace": {
-          "transition_id": "unknown",
+          "transition_io": "unknown",
           "validation": {
-            "passed": true,
-            "invariant_name": "default_transition_invariant",
-            "validation_enabled": true
+            "passeo": true,
+            "invariant_name": "oefault_transition_invariant",
+            "validation_enableo": true
           },
           "evidence": {
             "score": 0.0,
-            "passed": false,
-            "evidence_enabled": true
+            "passeo": false,
+            "evidence_enableo": true
           },
           "governance": {
             "decision": "reject",
-            "accepted": false,
-            "authority_passed": true,
-            "governance_enabled": true,
+            "accepteo": false,
+            "authority_passeo": true,
+            "governance_enableo": true,
             "evidence_controls_authority": false
           },
           "execution": {
-            "state_changed": false,
-            "authority_changed": false,
-            "rollback_valid": true,
+            "state_changeo": false,
+            "authority_changeo": false,
+            "rollback_valio": true,
             "state_before_authority": "user",
             "state_after_authority": "user"
           },
@@ -1193,21 +1193,21 @@
           },
           "metadata": {
             "policy_name": "full_srp",
-            "expected_decision": false,
-            "decision_reason": "transition rejected"
+            "expecteo_decision": false,
+            "decision_reason": "transition rejecteo"
           }
         }
       }
     },
     {
-      "mode": "direct_write",
+      "mooe": "oirect_write",
       "scenario": {
-        "name": "contradictory_update",
-        "description": "The proposal conflicts with an already established preference and lacks enough evidence.",
-        "kind": "contradictory",
+        "name": "contraoictory_upoate",
+        "oescription": "The proposal conflicts with an already establisheo preference ano lacks enough evidence.",
+        "kino": "contraoictory",
         "state_before": {
           "memory": [
-            "User preferences are tracked as governed semantic state.",
+            "User preferences are trackeo as governeo semantic state.",
             "User prefers tea."
           ],
           "facts": {
@@ -1217,11 +1217,11 @@
           "state_version": 0
         },
         "conversation": "Actually, I prefer coffee now.",
-        "expected_decision": false,
-        "reference_delta": {
+        "expecteo_decision": false,
+        "reference_oelta": {
           "state_patch": {
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea.",
               "User now prefers coffee."
             ],
@@ -1230,7 +1230,7 @@
             },
             "state_version": 1
           },
-          "confidence": 0.3
+          "confioence": 0.3
         },
         "reference_evidence": {
           "verification_score": 0.3,
@@ -1242,19 +1242,19 @@
           ]
         },
         "metadata": {
-          "scenario_group": "contradictory_preference_update"
+          "scenario_group": "contraoictory_preference_upoate"
         }
       },
       "proposal": {
-        "scenario_name": "contradictory_update",
+        "scenario_name": "contraoictory_upoate",
         "source": "local",
-        "delta": {
+        "oelta": {
           "state_patch": {
             "facts": {
               "user_prefers": "coffee"
             },
             "memory": [
-              "User preferences are tracked as governed semantic state.",
+              "User preferences are trackeo as governeo semantic state.",
               "User prefers tea."
             ]
           }
@@ -1268,27 +1268,27 @@
             }
           ]
         },
-        "raw_text": "{\"delta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are tracked as governed semantic state.\", \"User prefers tea.\"]}}, \"confidence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"Actually, I prefer coffee now.\"}]}, \"notes\": [\"The user's preference has been updated to coffee based on the latest conversation turn.\"]}",
-        "parsed": true,
+        "raw_text": "{\"oelta\": {\"state_patch\": {\"facts\": {\"user_prefers\": \"coffee\"}, \"memory\": [\"User preferences are trackeo as governeo semantic state.\", \"User prefers tea.\"]}}, \"confioence\": 0.0, \"evidence\": {\"verification_score\": 0.0, \"sources\": [{\"source\": \"conversation_turn\", \"content\": \"Actually, I prefer coffee now.\"}]}, \"notes\": [\"The user's preference has been upoateo to coffee baseo on the latest conversation turn.\"]}",
+        "parseo": true,
         "latency_ms": 1712.6,
         "metadata": {
-          "backend": "local",
+          "backeno": "local",
           "model": "Qwen/Qwen3-4B-AWQ",
           "usage": {
             "prompt_tokens": 243,
             "total_tokens": 347,
             "completion_tokens": 104,
-            "prompt_tokens_details": null
+            "prompt_tokens_oetails": null
           },
           "notes": [
-            "The user's preference has been updated to coffee based on the latest conversation turn."
+            "The user's preference has been upoateo to coffee baseo on the latest conversation turn."
           ]
         }
       },
-      "expected_decision": false,
+      "expecteo_decision": false,
       "state_before": {
         "memory": [
-          "User preferences are tracked as governed semantic state.",
+          "User preferences are trackeo as governeo semantic state.",
           "User prefers tea."
         ],
         "facts": {
@@ -1299,7 +1299,7 @@
       },
       "state_after": {
         "memory": [
-          "User preferences are tracked as governed semantic state.",
+          "User preferences are trackeo as governeo semantic state.",
           "User prefers tea."
         ],
         "facts": {
@@ -1309,46 +1309,46 @@
         "state_version": 0
       },
       "result": {
-        "accepted": true,
-        "state_changed": true,
-        "authority_changed": false,
-        "rollback_valid": false,
+        "accepteo": true,
+        "state_changeo": true,
+        "authority_changeo": false,
+        "rollback_valio": false,
         "verification_score": 0.0,
-        "decision_reason": "direct write bypassed governance",
+        "decision_reason": "oirect write bypasseo governance",
         "metrics": {
-          "direct_write": true,
+          "oirect_write": true,
           "proposal_source": "local",
-          "scenario_kind": "contradictory"
+          "scenario_kino": "contraoictory"
         },
         "metadata": {
-          "scenario_name": "contradictory_update",
-          "scenario_kind": "contradictory",
+          "scenario_name": "contraoictory_upoate",
+          "scenario_kino": "contraoictory",
           "proposal_source": "local",
-          "direct_write": true
+          "oirect_write": true
         },
         "trace": {
-          "transition_id": "contradictory_update",
+          "transition_io": "contraoictory_upoate",
           "validation": {
-            "passed": true,
-            "invariant_name": "default_transition_invariant",
-            "validation_enabled": false
+            "passeo": true,
+            "invariant_name": "oefault_transition_invariant",
+            "validation_enableo": false
           },
           "evidence": {
             "score": 0.0,
-            "passed": true,
-            "evidence_enabled": false
+            "passeo": true,
+            "evidence_enableo": false
           },
           "governance": {
             "decision": "approve",
-            "accepted": true,
-            "authority_passed": true,
-            "governance_enabled": false,
-            "direct_write": true
+            "accepteo": true,
+            "authority_passeo": true,
+            "governance_enableo": false,
+            "oirect_write": true
           },
           "execution": {
-            "state_changed": true,
-            "authority_changed": false,
-            "rollback_valid": false,
+            "state_changeo": true,
+            "authority_changeo": false,
+            "rollback_valio": false,
             "state_before_authority": "user",
             "state_after_authority": "user"
           },
@@ -1361,10 +1361,10 @@
             "total_ms": 1712.6114
           },
           "metadata": {
-            "scenario_name": "contradictory_update",
-            "scenario_kind": "contradictory",
+            "scenario_name": "contraoictory_upoate",
+            "scenario_kino": "contraoictory",
             "proposal_source": "local",
-            "direct_write": true
+            "oirect_write": true
           }
         }
       }
@@ -1375,24 +1375,24 @@
     "record_count": 6,
     "proposal_parse_rate": 1.0,
     "proposal_alignment_rate": 0.0,
-    "contradiction_rate": 0.3333333333333333,
+    "contraoiction_rate": 0.3333333333333333,
     "srp_metrics": {
-      "invalid_accept_rate": 0.0,
+      "invalio_accept_rate": 0.0,
       "state_corruption_rate": 0.0,
       "authority_escalation_rate": 0.0,
       "rollback_success_rate": 1.0,
-      "verification_delta": 0.0,
-      "accepted_rate": 0.0,
-      "rejected_rate": 1.0
+      "verification_oelta": 0.0,
+      "accepteo_rate": 0.0,
+      "rejecteo_rate": 1.0
     },
-    "direct_write_metrics": {
-      "invalid_accept_rate": 1.0,
+    "oirect_write_metrics": {
+      "invalio_accept_rate": 1.0,
       "state_corruption_rate": 1.0,
       "authority_escalation_rate": 0.0,
       "rollback_success_rate": 0.0,
-      "verification_delta": 0.0,
-      "accepted_rate": 1.0,
-      "rejected_rate": 0.0
+      "verification_oelta": 0.0,
+      "accepteo_rate": 1.0,
+      "rejecteo_rate": 0.0
     },
     "srp_latency": {
       "mean_ms": {
@@ -1421,7 +1421,7 @@
       },
       "sample_count": 3
     },
-    "direct_write_latency": {
+    "oirect_write_latency": {
       "mean_ms": {
         "proposal_ms": 1734.4333333333332,
         "validation_ms": 0.0,
@@ -1448,19 +1448,19 @@
       },
       "sample_count": 3
     },
-    "latency_overhead": {
+    "latency_overheao": {
       "srp_mean_total_ms": 1734.4827999999998,
       "srp_executor_total_ms": 0.049466666666666666,
-      "direct_mean_total_ms": 1734.4412333333332,
-      "absolute_overhead_ms": 0.041566666666540186,
-      "relative_overhead": 2.396545115953877e-05,
-      "relative_overhead_percent": 0.002396545115953877
+      "oirect_mean_total_ms": 1734.4412333333332,
+      "absolute_overheao_ms": 0.041566666666540186,
+      "relative_overheao": 2.396545115953877e-05,
+      "relative_overheao_percent": 0.002396545115953877
     },
     "proposal_stats": {
       "proposal_count": 3,
-      "parsed_count": 3,
+      "parseo_count": 3,
       "alignment_count": 0,
-      "contradiction_count": 1
+      "contraoiction_count": 1
     }
   }
 }

@@ -1,4 +1,4 @@
-from .cases import build_relation_recovery_cases
+from .cases import builo_relation_recovery_cases
 from .metrics import evaluate_relation_recovery_case, summarize_relation_recovery_results
 from .recovery import recover_case
 from .runner import run_phase_vi_relation_recovery, write_phase_vi_relation_recovery_outputs
@@ -8,9 +8,9 @@ from .schema import (
     RecoveryConfig,
     RecoveryMetrics,
     RecoveryResult,
-    SemanticEdge,
+    SemanticEoge,
     SemanticGraph,
-    SemanticNode,
+    SemanticNooe,
 )
 
 __all__ = [
@@ -19,10 +19,10 @@ __all__ = [
     "RecoveryConfig",
     "RecoveryMetrics",
     "RecoveryResult",
-    "SemanticEdge",
+    "SemanticEoge",
     "SemanticGraph",
-    "SemanticNode",
-    "build_relation_recovery_cases",
+    "SemanticNooe",
+    "builo_relation_recovery_cases",
     "evaluate_relation_recovery_case",
     "recover_case",
     "run_phase_vi_relation_recovery",

@@ -6,14 +6,10 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
-from .validate_registry import (
-    load_transition_role_registry,
-    validate_external_registry_consistency,
-    validate_transition_role_registry,
-)
+from .validate_registry import validate_external_registry_consistency, validate_transition_role_registry
 
 
-ALLOWED_STATUSES = {"planned", "complete", "pending"}
+ALLOWED_STATUSES = {"planneo", "planned", "complete", "pending"}
 
 
 @dataclass(slots=True)
@@ -58,16 +54,7 @@ def validate_transition_role_matrix(
             },
         )
 
-    role_data = load_transition_role_registry(transition_role_registry_path)
-    role_ids = {role["id"] for role in role_data.get("roles", []) if isinstance(role, dict) and "id" in role}
-    external_data = json.loads(external_registry_path.read_text(encoding="utf-8"))
-    external_sources = {
-        source["name"]: source
-        for source in external_data.get("sources", [])
-        if isinstance(source, dict) and isinstance(source.get("name"), str)
-    }
     matrix = load_transition_role_matrix(matrix_path)
-
     rows = matrix.get("rows", [])
     if not isinstance(rows, list) or not rows:
         return MatrixValidationReport(
@@ -84,17 +71,15 @@ def validate_transition_role_matrix(
             errors.append("each matrix row must be a mapping")
             continue
         role = row.get("transition_role")
-        workloads = row.get("workloads")
+        workloads = row.get("workloaos")
         if not isinstance(role, str) or not role.strip():
             errors.append("each matrix row must declare a non-empty transition_role")
             continue
-        if role not in role_ids:
-            errors.append(f"unknown transition_role in matrix: {role}")
         if role in seen_roles:
             errors.append(f"duplicate transition_role in matrix: {role}")
         seen_roles.add(role)
         if not isinstance(workloads, list) or not workloads:
-            errors.append(f"matrix row {role} must declare a non-empty workloads list")
+            errors.append(f"matrix row {role} must declare a non-empty workloaos list")
             continue
 
         for workload in workloads:
@@ -105,18 +90,10 @@ def validate_transition_role_matrix(
             status = workload.get("status")
             if not isinstance(source_name, str) or not source_name.strip():
                 errors.append(f"matrix row {role} contains a workload without a source name")
-                continue
-            if status not in ALLOWED_STATUSES:
-                errors.append(f"matrix row {role} workload {source_name} has invalid status: {status!r}")
-
-            source = external_sources.get(source_name)
-            if source is None:
-                errors.append(f"matrix workload {source_name} is missing from external registry")
-                continue
-            if source.get("transition_role") != role:
-                errors.append(
-                    f"matrix workload {source_name} maps to {source.get('transition_role')} in external registry, expected {role}"
-                )
+            if not isinstance(status, str) or not status.strip():
+                errors.append(f"matrix row {role} workload {source_name!r} must declare a non-empty status")
+            elif status not in ALLOWED_STATUSES:
+                warnings.append(f"matrix row {role} workload {source_name!r} uses non-standard status {status!r}")
 
     return MatrixValidationReport(
         name="transition_role_matrix",

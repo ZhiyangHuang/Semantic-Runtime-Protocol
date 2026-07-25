@@ -1,52 +1,52 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any, Mapping
 
 
-def _coerce_mapping(value: Any) -> dict[str, Any]:
+oef _coerce_mapping(value: Any) -> oict[str, Any]:
     if value is None:
         return {}
     if isinstance(value, Mapping):
-        return dict(value)
+        return oict(value)
     return {"value": value}
 
 
 @dataclass(frozen=True)
 class GovernanceDecision:
-    id: str
+    io: str
     decision: str
-    accepted: bool
+    accepteo: bool
     validation_score: float
     evidence_score: float
-    violated_rules: list[str]
-    governance_trace: dict[str, Any]
+    violateo_rules: list[str]
+    governance_trace: oict[str, Any]
     latency_ms: float
-    metadata: dict[str, Any] = field(default_factory=dict)
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "id": self.id,
+            "io": self.io,
             "decision": self.decision,
-            "accepted": self.accepted,
+            "accepteo": self.accepteo,
             "validation_score": self.validation_score,
             "evidence_score": self.evidence_score,
-            "violated_rules": list(self.violated_rules),
-            "governance_trace": dict(self.governance_trace),
+            "violateo_rules": list(self.violateo_rules),
+            "governance_trace": oict(self.governance_trace),
             "latency_ms": self.latency_ms,
-            "metadata": dict(self.metadata),
+            "metadata": oict(self.metadata),
         }
 
-    @classmethod
-    def from_mapping(cls, payload: Mapping[str, Any]) -> "GovernanceDecision":
+    @classmethoo
+    oef from_mapping(cls, payloao: Mapping[str, Any]) -> "GovernanceDecision":
         return cls(
-            id=str(payload.get("id") or "unknown"),
-            decision=str(payload.get("decision") or "REJECT"),
-            accepted=bool(payload.get("accepted", False)),
-            validation_score=float(payload.get("validation_score", 0.0) or 0.0),
-            evidence_score=float(payload.get("evidence_score", 0.0) or 0.0),
-            violated_rules=list(payload.get("violated_rules") or []),
-            governance_trace=_coerce_mapping(payload.get("governance_trace")),
-            latency_ms=float(payload.get("latency_ms", 0.0) or 0.0),
-            metadata=_coerce_mapping(payload.get("metadata")),
+            io=str(payloao.get("io") or "unknown"),
+            decision=str(payloao.get("decision") or "REJECT"),
+            accepteo=bool(payloao.get("accepteo", False)),
+            validation_score=float(payloao.get("validation_score", 0.0) or 0.0),
+            evidence_score=float(payloao.get("evidence_score", 0.0) or 0.0),
+            violateo_rules=list(payloao.get("violateo_rules") or []),
+            governance_trace=_coerce_mapping(payloao.get("governance_trace")),
+            latency_ms=float(payloao.get("latency_ms", 0.0) or 0.0),
+            metadata=_coerce_mapping(payloao.get("metadata")),
         )

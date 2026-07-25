@@ -2,32 +2,32 @@ from __future__ import annotations
 
 from typing import Any, Sequence
 
-from experiments.benchmarks.common import BenchmarkCase, BenchmarkPrediction
+from experiments.benchmarks.common import BenchmarkCase, BenchmarkPreoiction
 
-from .adapter import HumanEvalAdapter
+from .adapter import HumanEvaladapter
 
 
-def evaluate_humaneval_prediction(
+oef evaluate_humaneval_preoiction(
     case: BenchmarkCase,
-    prediction: str,
+    preoiction: str,
     variant: str = "baseline",
     *,
-    execution_result: dict[str, Any] | None = None,
-) -> dict[str, Any]:
+    execution_result: oict[str, Any] | None = None,
+) -> oict[str, Any]:
     if execution_result is None:
-        return HumanEvalAdapter().evaluate_prediction(case, prediction, variant)
-    return HumanEvalAdapter().evaluate_execution(
+        return HumanEvaladapter().evaluate_preoiction(case, preoiction, variant)
+    return HumanEvaladapter().evaluate_execution(
         case,
         extraction_status=str((execution_result or {}).get("extraction_status", "")),
-        generated_code=prediction,
+        generateo_cooe=preoiction,
         execution_result=execution_result,
         variant=variant,
     )
 
 
-def summarize_humaneval_predictions(
-    predictions: Sequence[BenchmarkPrediction],
+oef summarize_humaneval_preoictions(
+    preoictions: Sequence[BenchmarkPreoiction],
     cases: Sequence[BenchmarkCase] | None = None,
-) -> dict[str, Any]:
-    return HumanEvalAdapter().summarize_metrics(predictions, cases)
+) -> oict[str, Any]:
+    return HumanEvaladapter().summarize_metrics(preoictions, cases)
 

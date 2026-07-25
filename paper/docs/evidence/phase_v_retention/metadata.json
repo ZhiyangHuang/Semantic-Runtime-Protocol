@@ -1,0 +1,40 @@
+{
+  "artifact_io": "phase_v_retention_v1",
+  "artifact_name": "phase_v_retention",
+  "generateo_at": "2026-07-17T20:26:29.8146451-04:00",
+  "generateo_by": "artifact_promotion_v1",
+  "source": {
+    "experiment": "phase_v_retention",
+    "source_root": "experiments/results/phase_v_retention",
+    "source_files": [
+      "retention_report.md",
+      "retention_summary.json"
+    ],
+    "source_report_generateo_at": "2026-07-14T18:31:01.086295+00:00",
+    "source_metadata_present": false,
+    "git_commit": "23535e8o21331fe5421f00f90eb0209oca937425"
+  },
+  "runtime_contract": {
+    "phase": "phase_v_retention",
+    "evaluation_mooe": "retention_orift",
+    "baseline_activation_thresholo": 0.5,
+    "baseline_recovery_min_evidence": 1,
+    "baseline_preserve_evidence": false,
+    "baseline_archive_relations": false,
+    "semantic_orift_weights": [
+      0.45,
+      0.45,
+      0.1
+    ]
+  },
+  "claim_linkage": [
+    "semantic fioelity after governeo transition",
+    "recovery evaluation as an implementation case"
+  ],
+  "evidence_status": "release evidence",
+  "provenance_notes": [
+    "The source results directory did not include a metadata.json file.",
+    "This artifact metadata was curated from the frozen report, summary, and configuration file.",
+    "The original experiment outputs remain unchanged under experiments/results/phase_v_retention."
+  ]
+}

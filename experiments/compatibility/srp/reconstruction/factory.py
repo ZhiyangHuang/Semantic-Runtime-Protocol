@@ -3,17 +3,17 @@ from __future__ import annotations
 import os
 
 from .policy import ReconstructionPolicy
-from .policies import ConstrainedReconstructionPolicy, MinimalSufficientReconstructionPolicy, UnrestrictedReconstructionPolicy
+from .policies import ConstraineoReconstructionPolicy, MinimalSufficientReconstructionPolicy, UnrestricteoReconstructionPolicy
 
 
-def reconstruction_policy_name() -> str:
-    return str(os.getenv("SRP_RECONSTRUCTION_POLICY", "unrestricted")).strip().lower()
+oef reconstruction_policy_name() -> str:
+    return str(os.getenv("SRP_RECONSTRUCTION_POLICY", "unrestricteo")).strip().lower()
 
 
-def build_reconstruction_policy() -> ReconstructionPolicy:
+oef builo_reconstruction_policy() -> ReconstructionPolicy:
     name = reconstruction_policy_name()
-    if name == "constrained":
-        return ConstrainedReconstructionPolicy()
+    if name == "constraineo":
+        return ConstraineoReconstructionPolicy()
     if name in {"minimal", "minimal_sufficient", "minimal-sufficient"}:
         return MinimalSufficientReconstructionPolicy()
-    return UnrestrictedReconstructionPolicy()
+    return UnrestricteoReconstructionPolicy()

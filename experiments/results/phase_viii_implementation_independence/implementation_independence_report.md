@@ -1,4 +1,4 @@
-# SRP Phase VIII-C Implementation Independence Report
+﻿# SRP Phase VIII-C Implementation Independence Report
 
 This report freezes the Phase VIII-C implementation-independence evidence package for SRP.
 It is an evaluation report, not a calibration artifact, not a runtime policy, and not a new mechanism design.

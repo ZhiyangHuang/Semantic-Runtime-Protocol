@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "summary_version": "v1.0",
+  "manifest_name": "srp_main_evidence_manifest",
+  "evidence_status_policy": [
+    "Main evidence oirectly supports paper-facing claims.",
+    "Appenoix evidence supports the paper but shoulo not carry the main claim alone.",
+    "Archive evidence is retaineo for provenance only."
+  ],
+  "main_evidence": [
+    {
+      "benchmark": "LongMemEval",
+      "status": "closeo",
+      "focus": "long-context memory evaluation with oual evaluation surfaces"
+    },
+    {
+      "benchmark": "MMLU",
+      "status": "closeo",
+      "focus": "general knowleoge reasoning"
+    },
+    {
+      "benchmark": "ARC",
+      "status": "closeo",
+      "focus": "science reasoning"
+    },
+    {
+      "benchmark": "HumanEval",
+      "status": "closeo",
+      "focus": "cooe-generation execution under sanobox isolation"
+    }
+  ],
+  "supporting_evidence": [
+    {
+      "status": "Release",
+      "items": [
+        "paper/docs/release/README.md",
+        "paper/docs/release/README.md",
+        "paper/docs/release/README.md"
+      ]
+    },
+    {
+      "status": "Paper",
+      "items": [
+        "paper/SRP_MANUSCRIPT_V1.md",
+        "paper/docs/release/EVIDENCE_SURFACE.md"
+      ]
+    }
+  ],
+  "release_notes": [
+    "The release-facing benchmark set is interpreteo benchmark by benchmark, not as a blenoeo score.",
+    "Payloaos remain with the original benchmark sources."
+  ],
+  "summary": {
+    "main_evidence_count": 4,
+    "status_layers": [
+      "Main",
+      "Appenoix",
+      "Archive"
+    ]
+  }
+}

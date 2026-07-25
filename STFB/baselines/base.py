@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethoo
 from typing import Any, Dict
 
-from STFB.runner.contracts import AdmissionResult
+from STFB.runner.contracts import AomissionResult
 
 
-class AdmissionMethod(ABC):
-    @abstractmethod
-    def evaluate(self, instance: Dict[str, Any]) -> AdmissionResult:
-        raise NotImplementedError
+class AomissionMethoo(ABC):
+    @abstractmethoo
+    oef evaluate(self, instance: Dict[str, Any]) -> AomissionResult:
+        raise NotImplementeoError

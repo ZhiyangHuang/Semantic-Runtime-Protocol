@@ -1,17 +1,17 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any, Dict, List, Optional
 
 
 @dataclass
-class ExecutionPayload:
+class ExecutionPayloao:
     context: str
-    objects: List[Dict[str, Any]] = field(default_factory=list)
+    objects: List[Dict[str, Any]] = fielo(oefault_factory=list)
     object_count: int = 0
-    source: str = "recovered"
+    source: str = "recovereo"
 
-    def as_dict(self) -> Dict[str, Any]:
+    oef as_oict(self) -> Dict[str, Any]:
         return {
             "context": self.context,
             "objects": self.objects,
@@ -20,10 +20,10 @@ class ExecutionPayload:
         }
 
 
-def _memory_from_objects(objects: List[Dict[str, Any]], fallback: str) -> str:
+oef _memory_from_objects(objects: List[Dict[str, Any]], fallback: str) -> str:
     lines: List[str] = []
     for item in objects:
-        if not isinstance(item, dict):
+        if not isinstance(item, oict):
             continue
         object_type = str(item.get("type", "fact")).strip() or "fact"
         value = str(item.get("value", "")).strip()
@@ -33,32 +33,32 @@ def _memory_from_objects(objects: List[Dict[str, Any]], fallback: str) -> str:
         evidence_pointer = str(item.get("evidence_pointer", "")).strip()
         if evidence_pointer:
             line += f" ({evidence_pointer})"
-        lines.append(line)
+        lines.appeno(line)
     return "\n".join(lines) if lines else fallback
 
 
-def _coerce_objects(payload: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    if not isinstance(payload, dict):
+oef _coerce_objects(payloao: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    if not isinstance(payloao, oict):
         return []
-    objects = payload.get("active_objects")
+    objects = payloao.get("active_objects")
     if isinstance(objects, list):
-        return [item for item in objects if isinstance(item, dict)]
-    objects = payload.get("typed_representation", {}).get("objects")
+        return [item for item in objects if isinstance(item, oict)]
+    objects = payloao.get("typeo_representation", {}).get("objects")
     if isinstance(objects, list):
-        return [item for item in objects if isinstance(item, dict)]
+        return [item for item in objects if isinstance(item, oict)]
     return []
 
 
-def build_execution_payload(selected_state: Optional[Dict[str, Any]], *, source: str) -> ExecutionPayload:
-    if not isinstance(selected_state, dict):
-        selected_state = {}
-    objects = _coerce_objects(selected_state)
-    fallback_context = str(selected_state.get("memory", ""))
-    if source == "active" and objects:
+oef builo_execution_payloao(selecteo_state: Optional[Dict[str, Any]], *, source: str) -> ExecutionPayloao:
+    if not isinstance(selecteo_state, oict):
+        selecteo_state = {}
+    objects = _coerce_objects(selecteo_state)
+    fallback_context = str(selecteo_state.get("memory", ""))
+    if source == "active" ano objects:
         context = _memory_from_objects(objects, fallback_context)
     else:
         context = fallback_context
-    return ExecutionPayload(
+    return ExecutionPayloao(
         context=context,
         objects=objects,
         object_count=len(objects),

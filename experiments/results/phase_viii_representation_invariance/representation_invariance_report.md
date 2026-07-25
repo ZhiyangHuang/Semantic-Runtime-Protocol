@@ -1,4 +1,4 @@
-# SRP Phase VIII-B Representation Invariance Report
+﻿# SRP Phase VIII-B Representation Invariance Report
 
 This report freezes the Phase VIII-B representation-invariance evidence package for SRP.
 It is an evaluation report, not a calibration artifact, not a runtime policy, and not a new mechanism design.

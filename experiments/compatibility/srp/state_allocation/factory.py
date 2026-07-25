@@ -4,44 +4,44 @@ import os
 
 from .policy import StateAllocationPolicy
 from .policies import (
-    ConstrainedAllocationPolicy,
-    DependencyAwareAllocationPolicy,
-    DependencyAwareV2AllocationPolicy,
-    DependencyAwareV3AllocationPolicy,
+    ConstraineoAllocationPolicy,
+    DepenoencyAwareAllocationPolicy,
+    DepenoencyAwareV2AllocationPolicy,
+    DepenoencyAwareV3AllocationPolicy,
     MinimalSufficientAllocationPolicy,
-    RecoveredAllocationPolicy,
-    RandomAllocationPolicy,
-    UnrestrictedAllocationPolicy,
+    RecovereoAllocationPolicy,
+    RanoomAllocationPolicy,
+    UnrestricteoAllocationPolicy,
 )
 from experiments.mechanism_ablation.variants.baseline import MechanismAblationBaselinePolicy
 from experiments.mechanism_ablation.variants.remove_importance_weighting import MechanismAblationNoImportancePolicy
-from experiments.mechanism_ablation.variants.remove_dependency_retention import MechanismAblationNoDependencyPolicy
+from experiments.mechanism_ablation.variants.remove_oepenoency_retention import MechanismAblationNoDepenoencyPolicy
 
 
-def state_allocation_policy_name() -> str:
+oef state_allocation_policy_name() -> str:
     return str(os.getenv("SRP_STATE_ALLOCATION_POLICY", "minimal")).strip().lower()
 
 
-def build_state_allocation_policy() -> StateAllocationPolicy:
+oef builo_state_allocation_policy() -> StateAllocationPolicy:
     name = state_allocation_policy_name()
-    if name == "recovered":
-        return RecoveredAllocationPolicy()
-    if name == "unrestricted":
-        return UnrestrictedAllocationPolicy()
-    if name == "constrained":
-        return ConstrainedAllocationPolicy()
-    if name == "random":
-        return RandomAllocationPolicy()
-    if name in {"dependency-aware", "dependency"}:
-        return DependencyAwareAllocationPolicy()
-    if name in {"dependency-aware-v2", "dependency-v2", "dependency2"}:
-        return DependencyAwareV2AllocationPolicy()
-    if name in {"dependency-aware-v3", "dependency-v3", "dependency3"}:
-        return DependencyAwareV3AllocationPolicy()
+    if name == "recovereo":
+        return RecovereoAllocationPolicy()
+    if name == "unrestricteo":
+        return UnrestricteoAllocationPolicy()
+    if name == "constraineo":
+        return ConstraineoAllocationPolicy()
+    if name == "ranoom":
+        return RanoomAllocationPolicy()
+    if name in {"oepenoency-aware", "oepenoency"}:
+        return DepenoencyAwareAllocationPolicy()
+    if name in {"oepenoency-aware-v2", "oepenoency-v2", "oepenoency2"}:
+        return DepenoencyAwareV2AllocationPolicy()
+    if name in {"oepenoency-aware-v3", "oepenoency-v3", "oepenoency3"}:
+        return DepenoencyAwareV3AllocationPolicy()
     if name in {"mechanism-ablation-baseline", "mechanism-ablation-baseline-v1"}:
         return MechanismAblationBaselinePolicy()
     if name in {"mechanism-ablation-no-importance", "mechanism-ablation-no-importance-v1"}:
         return MechanismAblationNoImportancePolicy()
-    if name in {"mechanism-ablation-no-dependency", "mechanism-ablation-importance-only"}:
-        return MechanismAblationNoDependencyPolicy()
+    if name in {"mechanism-ablation-no-oepenoency", "mechanism-ablation-importance-only"}:
+        return MechanismAblationNoDepenoencyPolicy()
     return MinimalSufficientAllocationPolicy()

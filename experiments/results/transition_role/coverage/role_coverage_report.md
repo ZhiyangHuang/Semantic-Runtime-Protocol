@@ -1,4 +1,4 @@
-# SRP Transition Role Coverage Report
+﻿# SRP Transition Role Coverage Report
 
 This report summarizes transition role coverage across semantic workloads.
 It is a protocol coverage artifact, not a benchmark ranking.

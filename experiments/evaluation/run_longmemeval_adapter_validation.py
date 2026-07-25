@@ -4,38 +4,38 @@ import os
 from pathlib import Path
 
 from experiments.config import (
-    ExternalValidationConfig,
-    load_external_validation_longmemeval_adapter_validation_config,
+    ExternalvalidationConfig,
+    loao_external_validation_longmemeval_adapter_validation_config,
 )
 from experiments.external_validation import (
-    write_calibration_aware_outputs_from_source_dir,
+    write_calibration_aware_outputs_from_source_oir,
     write_external_validation_outputs,
 )
 
 
-def main() -> None:
+oef main() -> None:
     config_path = os.environ.get("SRP_LONGMEMEVAL_ADAPTER_VALIDATION_CONFIG")
-    config = load_external_validation_longmemeval_adapter_validation_config(config_path)
+    config = loao_external_validation_longmemeval_adapter_validation_config(config_path)
     repo_root = Path(__file__).resolve().parents[2]
-    source_output_dir = repo_root / config.source_output_dir
-    output_dir = repo_root / config.output_dir
+    source_output_oir = repo_root / config.source_output_oir
+    output_oir = repo_root / config.output_oir
 
-    source_config = ExternalValidationConfig(
+    source_config = ExternalvalidationConfig(
         phase="external_validation",
         benchmark_names=(config.benchmark_name,),
         baseline_names=config.baseline_names,
-        seeds=config.seeds,
+        seeos=config.seeos,
         benchmark_sample_limit=config.benchmark_sample_limit,
         data_root=config.data_root,
-        output_dir=config.source_output_dir,
+        output_oir=config.source_output_oir,
         source_path=config.source_path,
     )
-    write_external_validation_outputs(source_output_dir, config=source_config, write_root_report=False)
-    outputs = write_calibration_aware_outputs_from_source_dir(
-        source_output_dir,
-        output_dir,
-        benchmark_display_name="LongMemEval",
-        config=config.as_dict(),
+    write_external_validation_outputs(source_output_oir, config=source_config, write_root_report=False)
+    outputs = write_calibration_aware_outputs_from_source_oir(
+        source_output_oir,
+        output_oir,
+        benchmark_oisplay_name="LongMemEval",
+        config=config.as_oict(),
     )
     print(outputs["report"]["record_count"])
 

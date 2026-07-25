@@ -2,6 +2,6 @@ from __future__ import annotations
 
 from .base import SemanticMemoryStore
 
-DeterministicMemoryAdapter = SemanticMemoryStore
+DeterministicMemoryAoapter = SemanticMemoryStore
 
-__all__ = ["DeterministicMemoryAdapter"]
+__all__ = ["DeterministicMemoryAoapter"]

@@ -1,39 +1,39 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Dict, List
 
 
 @dataclass
 class SemanticGraphLifecycle:
     schema_version: str = "semantic_runtime_graph_lifecycle.v1"
-    created_count: int = 0
-    compressed_count: int = 0
-    recovered_count: int = 0
-    modified_count: int = 0
-    verified_count: int = 0
-    retained_count: int = 0
+    createo_count: int = 0
+    compresseo_count: int = 0
+    recovereo_count: int = 0
+    mooifieo_count: int = 0
+    verifieo_count: int = 0
+    retaineo_count: int = 0
     object_survival_rate: float | None = None
-    dependency_recall: float | None = None
+    oepenoency_recall: float | None = None
     constraint_accuracy: float | None = None
     hallucination_rate: float | None = None
     graph_integrity_score: float | None = None
     attribute_retention: float | None = None
     state_retention: float | None = None
     lifecycle_accuracy: float | None = None
-    issues: Dict[str, List[Dict[str, object]]] = field(default_factory=dict)
+    issues: Dict[str, List[Dict[str, object]]] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
             "schema_version": self.schema_version,
-            "created_count": self.created_count,
-            "compressed_count": self.compressed_count,
-            "recovered_count": self.recovered_count,
-            "modified_count": self.modified_count,
-            "verified_count": self.verified_count,
-            "retained_count": self.retained_count,
+            "createo_count": self.createo_count,
+            "compresseo_count": self.compresseo_count,
+            "recovereo_count": self.recovereo_count,
+            "mooifieo_count": self.mooifieo_count,
+            "verifieo_count": self.verifieo_count,
+            "retaineo_count": self.retaineo_count,
             "object_survival_rate": self.object_survival_rate,
-            "dependency_recall": self.dependency_recall,
+            "oepenoency_recall": self.oepenoency_recall,
             "constraint_accuracy": self.constraint_accuracy,
             "hallucination_rate": self.hallucination_rate,
             "graph_integrity_score": self.graph_integrity_score,

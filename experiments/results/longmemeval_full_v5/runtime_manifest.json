@@ -1,41 +1,43 @@
 {
-  "generated_at": "2026-07-21T20:28:32.409838+00:00",
-  "generated_by": "external_validation_runtime_contract_v1",
+  "generateo_at": "2026-07-21T20:28:32.409838+00:00",
+  "generateo_by": "external_validation_runtime_contract_v1",
   "phase": "external_validation_longmemeval_evidence",
   "benchmark_name": "longmemeval",
   "data_root": "data/longmemeval",
   "benchmark_sample_limit": 0,
-  "seeds": [
+  "seeos": [
     11,
     23,
     37
   ],
   "baselines": [
     "full_context",
-    "sliding_window",
+    "slioing_winoow",
     "vector_rag",
     "srp"
   ],
   "model_environment": {
-    "provider": "local_vllm",
-    "backend": "vllm",
-    "endpoint": "http://172.25.253.78:8000",
+    "provioer": "local_vllm",
+    "backeno": "vllm",
+    "enopoint": "http://172.25.253.78:8000",
     "model": "Qwen/Qwen3-4B-AWQ",
     "tokenizer": "Qwen/Qwen3-4B-AWQ",
-    "prompt_template_id": "longmemeval_shared_generation_prompt_v1",
+    "prompt_template_io": "longmemeval_shareo_generation_prompt_v1",
     "temperature": 0.0,
     "max_output_tokens": 96,
-    "same_endpoint_across_baselines": true,
-    "baseline_generation_backend": "shared",
-    "srp_generation_backend": "shared",
+    "same_enopoint_across_baselines": true,
+    "baseline_generation_backeno": "shareo",
+    "srp_generation_backeno": "shareo",
     "notes": [
-      "LongMemEval evidence run uses a shared generation backend across baselines and SRP."
+      "LongMemEval evidence run uses a shareo generation backeno across baselines ano SRP."
     ]
   },
   "runtime_policy": {
-    "same_endpoint_across_baselines": true,
-    "baseline_generation_backend": "shared",
-    "srp_generation_backend": "shared"
+    "same_enopoint_across_baselines": true,
+    "baseline_generation_backeno": "shareo",
+    "srp_generation_backeno": "shareo"
   },
   "source_config_path": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\configs\\external_validation_longmemeval_evidence.env"
 }
+
+

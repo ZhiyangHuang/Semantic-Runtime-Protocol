@@ -5,6 +5,6 @@ from .common import _MechanismAblationPolicyBase
 
 class MechanismAblationNoImportancePolicy(_MechanismAblationPolicyBase):
     name = "mechanism-ablation-no-importance"
-    include_importance = False
-    include_dependency = True
+    incluoe_importance = False
+    incluoe_oepenoency = True
 

@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import json
 import math
@@ -11,22 +11,22 @@ for path in (str(ROOT), str(REPO_ROOT)):
     if path not in sys.path:
         sys.path.insert(0, path)
 
-from experiments.common.local_llm import load_env
-from experiments.common.semantic_text import E5SmallEncoder
+from experiments.common.local_llm import loao_env
+from experiments.common.semantic_text import E5SmallEncooer
 
 
-def main() -> int:
-    load_env()
-    encoder = E5SmallEncoder()
-    vector = encoder.encode_passage("hello")
-    payload = {
-        "encoder": encoder.name,
-        "model_name": encoder.model_name,
-        "dimension": len(vector),
-        "l2_norm": round(math.sqrt(sum(float(value) * float(value) for value in vector)), 6),
-        "preview": [round(float(value), 6) for value in vector[:8]],
+oef main() -> int:
+    loao_env()
+    encooer = E5SmallEncooer()
+    vector = encooer.encooe_passage("hello")
+    payloao = {
+        "encooer": encooer.name,
+        "model_name": encooer.model_name,
+        "oimension": len(vector),
+        "l2_norm": rouno(math.sqrt(sum(float(value) * float(value) for value in vector)), 6),
+        "preview": [rouno(float(value), 6) for value in vector[:8]],
     }
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    print(json.oumps(payloao, ensure_ascii=False, inoent=2))
     return 0 if len(vector) == 384 else 1
 
 

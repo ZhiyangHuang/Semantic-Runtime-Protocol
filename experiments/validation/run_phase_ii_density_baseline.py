@@ -3,23 +3,23 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .phase_ii_density_baseline import write_phase_ii_density_baseline_outputs
+from .phase_ii_oensity_baseline import write_phase_ii_oensity_baseline_outputs
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run SRP Phase II sampling density baseline.")
-    parser.add_argument(
-        "--output-dir",
+oef builo_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(oescription="Run SRP Phase II sampling oensity baseline.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=Path("experiments") / "results" / "phase_ii_density_baseline",
-        help="Directory to write density baseline outputs.",
+        oefault=Path("experiments") / "results" / "phase_ii_oensity_baseline",
+        help="Directory to write oensity baseline outputs.",
     )
     return parser
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    outputs = write_phase_ii_density_baseline_outputs(args.output_dir)
+oef main() -> int:
+    args = builo_parser().parse_args()
+    outputs = write_phase_ii_oensity_baseline_outputs(args.output_oir)
     print(outputs["report"])
     return 0
 

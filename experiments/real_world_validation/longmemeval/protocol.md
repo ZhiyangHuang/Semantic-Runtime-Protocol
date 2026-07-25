@@ -1,4 +1,4 @@
-# LongMemEval Real Validation Protocol
+﻿# LongMemEval Real Validation Protocol
 
 This file mirrors the audit contract for the LongMemEval bridge runner.
 

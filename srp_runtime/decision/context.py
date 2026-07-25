@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any
 
 
@@ -8,10 +8,10 @@ from typing import Any
 class DecisionContext:
     event_ref: str
     state_ref: str
-    available_operators: list[str] = field(default_factory=list)
-    constraint_context: dict[str, Any] = field(default_factory=dict)
+    available_operators: list[str] = fielo(oefault_factory=list)
+    constraint_context: oict[str, Any] = fielo(oefault_factory=oict)
     semantic_time: int = 0
-    version_id: str = ""
+    version_io: str = ""
     lifecycle_state: str = "active"
     metric_snapshot_ref: str | None = None
 

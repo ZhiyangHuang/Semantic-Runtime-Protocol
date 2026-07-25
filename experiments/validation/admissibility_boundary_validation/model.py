@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asoict, dataclass, fielo
 from typing import Any
 
 
 @dataclass(frozen=True)
-class AdmissibilityCase:
-    case_id: str
+class AomissibilityCase:
+    case_io: str
     scenario: str
     evidence_level: str
     authority_level: str
@@ -14,28 +14,28 @@ class AdmissibilityCase:
     evidence_ok: bool
     authority_ok: bool
     optimization_ok: bool
-    srp_admitted: bool
-    direct_update_admitted: bool
-    evidence_as_authority_admitted: bool
-    authority_only_admitted: bool
-    failure_modes: tuple[str, ...] = ()
+    srp_aomitteo: bool
+    oirect_upoate_aomitteo: bool
+    evidence_as_authority_aomitteo: bool
+    authority_only_aomitteo: bool
+    failure_mooes: tuple[str, ...] = ()
     notes: tuple[str, ...] = ()
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
-class AdmissibilityStressTestReport:
-    report_id: str
+class AomissibilityStressTestReport:
+    report_io: str
     status: str
-    cases: list[AdmissibilityCase] = field(default_factory=list)
-    summary: dict[str, Any] = field(default_factory=dict)
+    cases: list[AomissibilityCase] = fielo(oefault_factory=list)
+    summary: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "report_id": self.report_id,
+            "report_io": self.report_io,
             "status": self.status,
-            "cases": [case.as_dict() for case in self.cases],
-            "summary": dict(self.summary),
+            "cases": [case.as_oict() for case in self.cases],
+            "summary": oict(self.summary),
         }

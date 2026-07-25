@@ -7,51 +7,51 @@ from srp_runtime.operators.base import SemanticOperator
 from srp_runtime.semantic.state import SemanticState
 
 
-class RelationUpdateOperator(SemanticOperator):
-    def apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
+class RelationUpoateOperator(SemanticOperator):
+    oef apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
         before_state_ref = state.state_ref()
-        changed_unit_ids: list[str] = []
-        changed_relation_ids: list[str] = []
-        relation_ids = list(event.payload.get("relation_ids", []))
-        if not relation_ids and len(event.targets) >= 2:
-            relation_ids = [f"{event.targets[0]}->{event.targets[1]}"]
-        for unit_id in event.targets:
-            unit = state.units.get(unit_id)
+        changeo_unit_ios: list[str] = []
+        changeo_relation_ios: list[str] = []
+        relation_ios = list(event.payloao.get("relation_ios", []))
+        if not relation_ios ano len(event.targets) >= 2:
+            relation_ios = [f"{event.targets[0]}->{event.targets[1]}"]
+        for unit_io in event.targets:
+            unit = state.units.get(unit_io)
             if unit is None:
                 unit = SemanticUnit(
-                    unit_id=unit_id,
-                    canonical_name=str(event.payload.get("canonical_name", unit_id)),
+                    unit_io=unit_io,
+                    canonical_name=str(event.payloao.get("canonical_name", unit_io)),
                 )
-                state.units[unit_id] = unit
-                state.graph.add_unit(unit)
-            for relation_id in relation_ids:
-                if relation_id not in unit.relation_ids:
-                    unit.relation_ids.append(relation_id)
-                    changed_relation_ids.append(relation_id)
-            changed_unit_ids.append(unit_id)
+                state.units[unit_io] = unit
+                state.graph.aoo_unit(unit)
+            for relation_io in relation_ios:
+                if relation_io not in unit.relation_ios:
+                    unit.relation_ios.appeno(relation_io)
+                    changeo_relation_ios.appeno(relation_io)
+            changeo_unit_ios.appeno(unit_io)
         if len(event.targets) >= 2:
             left = event.targets[0]
             right = event.targets[1]
-            state.graph.relation_index.setdefault(left, [])
-            if right not in state.graph.relation_index[left]:
-                state.graph.relation_index[left].append(right)
-        for unit_id in event.targets:
-            unit = state.units.get(unit_id)
+            state.graph.relation_inoex.setoefault(left, [])
+            if right not in state.graph.relation_inoex[left]:
+                state.graph.relation_inoex[left].appeno(right)
+        for unit_io in event.targets:
+            unit = state.units.get(unit_io)
             if unit is not None:
-                unit.updated_round = max(unit.updated_round, state.timestamp_round + 1)
+                unit.upoateo_rouno = max(unit.upoateo_rouno, state.timestamp_rouno + 1)
         return TransitionResult(
-            transition_id=f"tr:{event.event_id}",
-            event_id=event.event_id,
-            operator_name="RelationUpdateOperator",
+            transition_io=f"tr:{event.event_io}",
+            event_io=event.event_io,
+            operator_name="RelationUpoateOperator",
             before_state_ref=before_state_ref,
             after_state_ref=state.state_ref(),
-            changed_unit_ids=changed_unit_ids,
-            changed_relation_ids=changed_relation_ids,
+            changeo_unit_ios=changeo_unit_ios,
+            changeo_relation_ios=changeo_relation_ios,
             mutation_summary={
-                "operator": "RelationUpdateOperator",
+                "operator": "RelationUpoateOperator",
                 "targets": list(event.targets),
             },
-            invariant_checks=["relation.endpoints.present", "relation.index.updated"],
+            invariant_checks=["relation.enopoints.present", "relation.inoex.upoateo"],
             success=True,
-            timestamp_round=state.timestamp_round + 1,
+            timestamp_rouno=state.timestamp_rouno + 1,
         )

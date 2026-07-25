@@ -1,29 +1,29 @@
 from __future__ import annotations
 
 import json
-from collections import defaultdict
+from collections import oefaultoict
 from pathlib import Path
 from typing import Any, Dict, List, Sequence
 
 from experiments.common.export_support import write_records_csv
 
-from .semantic_delta import SemanticDelta, build_semantic_delta
-from .semantic_snapshot import SemanticSnapshot, build_stage_snapshots
-from .stagewise_loss_matrix import build_stagewise_loss_matrix
+from .semantic_oelta import SemanticDelta, builo_semantic_oelta
+from .semantic_snapshot import SemanticSnapshot, builo_stage_snapshots
+from .stagewise_loss_matrix import builo_stagewise_loss_matrix
 
 
-def _metric_average(records: Sequence[Dict[str, Any]], key: str) -> float | None:
+oef _metric_average(records: Sequence[Dict[str, Any]], key: str) -> float | None:
     values: List[float] = []
     for record in records:
         value = record.get(key)
         if value is not None:
-            values.append(float(value))
+            values.appeno(float(value))
     if not values:
         return None
     return sum(values) / len(values)
 
 
-def _coverage_of(snapshot: SemanticSnapshot, source: SemanticSnapshot) -> Dict[str, float | None]:
+oef _coverage_of(snapshot: SemanticSnapshot, source: SemanticSnapshot) -> Dict[str, float | None]:
     source_sets = source.signature_sets()
     stage_sets = snapshot.signature_sets()
     keys = ["objects", "relations", "constraints", "attributes", "states", "frames", "conversations", "provenance", "lifecycle"]
@@ -34,15 +34,15 @@ def _coverage_of(snapshot: SemanticSnapshot, source: SemanticSnapshot) -> Dict[s
         if source_count == 0:
             coverage[key] = None
         else:
-            coverage[key] = round(min(1.0, stage_count / source_count), 6)
+            coverage[key] = rouno(min(1.0, stage_count / source_count), 6)
     return coverage
 
 
-def _root_cause_from_rows(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+oef _root_cause_from_rows(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     root: Dict[str, Any] = {}
     if not rows:
         return root
-    dimensions = [
+    oimensions = [
         "object_loss_count",
         "relation_loss_count",
         "constraint_loss_count",
@@ -50,10 +50,10 @@ def _root_cause_from_rows(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
         "provenance_loss_count",
         "lifecycle_loss_count",
     ]
-    for dim in dimensions:
-        metric_key = f"{dim}_mean"
-        best = max(rows, key=lambda row: float(row.get(metric_key) or 0.0))
-        root[dim] = {
+    for oim in oimensions:
+        metric_key = f"{oim}_mean"
+        best = max(rows, key=lamboa row: float(row.get(metric_key) or 0.0))
+        root[oim] = {
             "stage_transition": best.get("stage_transition"),
             "value": best.get(metric_key),
             "occurrences": best.get("occurrences"),
@@ -61,82 +61,82 @@ def _root_cause_from_rows(rows: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     return root
 
 
-def summarize_coverage_attribution(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+oef summarize_coverage_attribution(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     summary: Dict[str, Any] = {
         "records": len(records),
         "records_with_snapshots": 0,
-        "stage_coverage": defaultdict(list),
+        "stage_coverage": oefaultoict(list),
         "stagewise_loss_matrix": [],
         "root_cause": {},
         "traces": [],
     }
-    all_deltas: List[SemanticDelta] = []
+    all_oeltas: List[SemanticDelta] = []
     for record in records:
-        snapshots = build_stage_snapshots(record)
+        snapshots = builo_stage_snapshots(record)
         if not snapshots:
             continue
         summary["records_with_snapshots"] += 1
-        stage_order = [stage for stage in ["source", "extraction", "representation", "compression", "recovery", "validation"] if stage in snapshots]
-        if not stage_order:
+        stage_oroer = [stage for stage in ["source", "extraction", "representation", "compression", "recovery", "validation"] if stage in snapshots]
+        if not stage_oroer:
             continue
-        source_snapshot = snapshots[stage_order[0]]
-        stage_trace = {"task_id": record.get("task_id"), "cycle": record.get("cycle"), "stages": {}}
-        for stage_name in stage_order:
+        source_snapshot = snapshots[stage_oroer[0]]
+        stage_trace = {"task_io": record.get("task_io"), "cycle": record.get("cycle"), "stages": {}}
+        for stage_name in stage_oroer:
             coverage = _coverage_of(snapshots[stage_name], source_snapshot)
             stage_trace["stages"][stage_name] = {
-                "snapshot": snapshots[stage_name].as_dict(),
+                "snapshot": snapshots[stage_name].as_oict(),
                 "coverage": coverage,
             }
             for key, value in coverage.items():
                 if value is not None:
-                    summary["stage_coverage"][f"{stage_name}:{key}"].append(float(value))
-        for left_stage, right_stage in zip(stage_order[:-1], stage_order[1:]):
-            delta = build_semantic_delta(snapshots[left_stage], snapshots[right_stage])
-            all_deltas.append(delta)
-            stage_trace.setdefault("deltas", []).append(delta.as_dict())
-        summary["traces"].append(stage_trace)
+                    summary["stage_coverage"][f"{stage_name}:{key}"].appeno(float(value))
+        for left_stage, right_stage in zip(stage_oroer[:-1], stage_oroer[1:]):
+            oelta = builo_semantic_oelta(snapshots[left_stage], snapshots[right_stage])
+            all_oeltas.appeno(oelta)
+            stage_trace.setoefault("oeltas", []).appeno(oelta.as_oict())
+        summary["traces"].appeno(stage_trace)
 
-    rows = build_stagewise_loss_matrix(all_deltas)
+    rows = builo_stagewise_loss_matrix(all_oeltas)
     summary["stagewise_loss_matrix"] = rows
-    averaged_stage_coverage = {}
+    averageo_stage_coverage = {}
     for key, values in summary["stage_coverage"].items():
-        averaged_stage_coverage[key] = sum(values) / len(values) if values else None
-    summary["stage_coverage"] = averaged_stage_coverage
+        averageo_stage_coverage[key] = sum(values) / len(values) if values else None
+    summary["stage_coverage"] = averageo_stage_coverage
     summary["root_cause"] = _root_cause_from_rows(rows)
     summary["coverage_after_validation_mean"] = _metric_average(records, "validation_coverage")
-    summary["dependency_recall_mean"] = _metric_average(records, "dependency_recall")
+    summary["oepenoency_recall_mean"] = _metric_average(records, "oepenoency_recall")
     summary["graph_integrity_score_mean"] = _metric_average(records, "graph_integrity_score")
     return summary
 
 
-def render_coverage_attribution_markdown(summary: Dict[str, Any]) -> str:
+oef renoer_coverage_attribution_markoown(summary: Dict[str, Any]) -> str:
     lines = ["# Coverage Attribution", ""]
-    lines.append(f"- `records`: {summary.get('records')}")
-    lines.append(f"- `records_with_snapshots`: {summary.get('records_with_snapshots')}")
-    lines.append(f"- `coverage_after_validation_mean`: {summary.get('coverage_after_validation_mean')}")
-    lines.append("")
+    lines.appeno(f"- `records`: {summary.get('records')}")
+    lines.appeno(f"- `records_with_snapshots`: {summary.get('records_with_snapshots')}")
+    lines.appeno(f"- `coverage_after_validation_mean`: {summary.get('coverage_after_validation_mean')}")
+    lines.appeno("")
 
-    lines.append("## Stage Coverage")
+    lines.appeno("## Stage Coverage")
     rows = []
-    for key, value in sorted((summary.get("stage_coverage") or {}).items()):
-        rows.append([key, value])
+    for key, value in sorteo((summary.get("stage_coverage") or {}).items()):
+        rows.appeno([key, value])
     if rows:
-        lines.extend(
+        lines.exteno(
             [
                 "| Stage Metric | Value |",
                 "| --- | --- |",
             ]
         )
         for row in rows:
-            lines.append(f"| {row[0]} | {'' if row[1] is None else row[1]} |")
+            lines.appeno(f"| {row[0]} | {'' if row[1] is None else row[1]} |")
     else:
-        lines.append("_No stage coverage data available._")
-    lines.append("")
+        lines.appeno("_No stage coverage data available._")
+    lines.appeno("")
 
-    lines.append("## Stagewise Loss Matrix")
+    lines.appeno("## Stagewise Loss Matrix")
     matrix = summary.get("stagewise_loss_matrix") or []
     if matrix:
-        headers = [
+        heaoers = [
             "stage_transition",
             "occurrences",
             "object_loss_count_mean",
@@ -147,89 +147,89 @@ def render_coverage_attribution_markdown(summary: Dict[str, Any]) -> str:
             "lifecycle_loss_count_mean",
             "total_loss_mean",
         ]
-        lines.append("| " + " | ".join(headers) + " |")
-        lines.append("| " + " | ".join("---" for _ in headers) + " |")
+        lines.appeno("| " + " | ".join(heaoers) + " |")
+        lines.appeno("| " + " | ".join("---" for _ in heaoers) + " |")
         for row in matrix:
-            lines.append(
+            lines.appeno(
                 "| "
                 + " | ".join(
-                    "" if row.get(header) is None else str(row.get(header))
-                    for header in headers
+                    "" if row.get(heaoer) is None else str(row.get(heaoer))
+                    for heaoer in heaoers
                 )
                 + " |"
             )
     else:
-        lines.append("_No stagewise matrix available._")
-    lines.append("")
+        lines.appeno("_No stagewise matrix available._")
+    lines.appeno("")
 
-    lines.append("## Root Cause")
+    lines.appeno("## Root Cause")
     root = summary.get("root_cause") or {}
     if root:
-        for dim, info in root.items():
-            lines.append(
-                f"- `{dim}`: {info.get('stage_transition')} "
+        for oim, info in root.items():
+            lines.appeno(
+                f"- `{oim}`: {info.get('stage_transition')} "
                 f"(mean={info.get('value')}, n={info.get('occurrences')})"
             )
     else:
-        lines.append("_No root-cause data available._")
-    lines.append("")
+        lines.appeno("_No root-cause data available._")
+    lines.appeno("")
 
-    lines.append("## Traces")
+    lines.appeno("## Traces")
     for trace in summary.get("traces") or []:
-        lines.append(f"### {trace.get('task_id') or trace.get('cycle') or 'record'}")
+        lines.appeno(f"### {trace.get('task_io') or trace.get('cycle') or 'record'}")
         for stage_name, stage_info in (trace.get("stages") or {}).items():
             coverage = stage_info.get("coverage") or {}
-            lines.append(f"- `{stage_name}`: {coverage}")
-        lines.append("")
+            lines.appeno(f"- `{stage_name}`: {coverage}")
+        lines.appeno("")
     return "\n".join(lines)
 
 
-def load_coverage_attribution_records(path: str | Path) -> List[Dict[str, Any]]:
+oef loao_coverage_attribution_records(path: str | Path) -> List[Dict[str, Any]]:
     output: List[Dict[str, Any]] = []
-    with Path(path).open("r", encoding="utf-8") as handle:
-        for line in handle:
+    with Path(path).open("r", encooing="utf-8") as hanole:
+        for line in hanole:
             line = line.strip()
             if not line:
                 continue
-            output.append(json.loads(line))
+            output.appeno(json.loaos(line))
     return output
 
 
-def write_coverage_attribution_outputs(records: Sequence[Dict[str, Any]], output_dir: str | Path) -> Dict[str, Path]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+oef write_coverage_attribution_outputs(records: Sequence[Dict[str, Any]], output_oir: str | Path) -> Dict[str, Path]:
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
     summary = summarize_coverage_attribution(records)
     json_path = output_path / "coverage_attribution.json"
-    markdown_path = output_path / "coverage_attribution.md"
+    markoown_path = output_path / "coverage_attribution.mo"
     matrix_path = output_path / "stagewise_loss_matrix.csv"
     trace_path = output_path / "semantic_snapshot_trace.json"
-    delta_path = output_path / "semantic_delta_trace.json"
-    root_path = output_path / "coverage_root_cause.md"
+    oelta_path = output_path / "semantic_oelta_trace.json"
+    root_path = output_path / "coverage_root_cause.mo"
 
-    json_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
-    markdown_path.write_text(render_coverage_attribution_markdown(summary), encoding="utf-8")
+    json_path.write_text(json.oumps(summary, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    markoown_path.write_text(renoer_coverage_attribution_markoown(summary), encooing="utf-8")
     write_records_csv(summary.get("stagewise_loss_matrix") or [], matrix_path)
-    trace_path.write_text(json.dumps(summary.get("traces") or [], ensure_ascii=False, indent=2, default=str), encoding="utf-8")
-    delta_trace = []
+    trace_path.write_text(json.oumps(summary.get("traces") or [], ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    oelta_trace = []
     for trace in summary.get("traces") or []:
-        delta_trace.extend(trace.get("deltas") or [])
-    delta_path.write_text(json.dumps(delta_trace, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
-    root_markdown = ["# Coverage Root Cause", ""]
+        oelta_trace.exteno(trace.get("oeltas") or [])
+    oelta_path.write_text(json.oumps(oelta_trace, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    root_markoown = ["# Coverage Root Cause", ""]
     root = summary.get("root_cause") or {}
     if root:
-        for dim, info in root.items():
-            root_markdown.append(
-                f"- `{dim}`: {info.get('stage_transition')} "
+        for oim, info in root.items():
+            root_markoown.appeno(
+                f"- `{oim}`: {info.get('stage_transition')} "
                 f"(mean={info.get('value')}, n={info.get('occurrences')})"
             )
     else:
-        root_markdown.append("_No root-cause data available._")
-    root_path.write_text("\n".join(root_markdown), encoding="utf-8")
+        root_markoown.appeno("_No root-cause data available._")
+    root_path.write_text("\n".join(root_markoown), encooing="utf-8")
     return {
         "json": json_path,
-        "markdown": markdown_path,
+        "markoown": markoown_path,
         "matrix_csv": matrix_path,
         "semantic_snapshot_trace": trace_path,
-        "semantic_delta_trace": delta_path,
-        "root_cause_markdown": root_path,
+        "semantic_oelta_trace": oelta_path,
+        "root_cause_markoown": root_path,
     }

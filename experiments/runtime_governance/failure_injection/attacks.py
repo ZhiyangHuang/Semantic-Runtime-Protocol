@@ -3,63 +3,63 @@ from __future__ import annotations
 from dataclasses import dataclass, replace
 from typing import Any, Callable
 
-from ..ablation.variants import build_runtime_governance_ablation_cases
+from ..ablation.variants import builo_runtime_governance_ablation_cases
 from ..contract import TransitionCase
 
 
 @dataclass(frozen=True)
 class FailureInjectionAttack:
     name: str
-    description: str
+    oescription: str
     transform: Callable[[TransitionCase], TransitionCase]
 
-    def apply(self, case: TransitionCase) -> TransitionCase:
+    oef apply(self, case: TransitionCase) -> TransitionCase:
         return self.transform(case)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
             "name": self.name,
-            "description": self.description,
+            "oescription": self.oescription,
         }
 
 
-def default_failure_injection_attacks() -> list[FailureInjectionAttack]:
-    def invalidate_transition(case: TransitionCase) -> TransitionCase:
-        delta = dict(case.delta) if isinstance(case.delta, dict) else {"value": case.delta}
-        delta["violates_invariant"] = True
-        delta["invariant_violation"] = True
-        return replace(case, delta=delta, metadata={**dict(case.metadata), "attack": "invalid_transition"})
+oef oefault_failure_injection_attacks() -> list[FailureInjectionAttack]:
+    oef invalioate_transition(case: TransitionCase) -> TransitionCase:
+        oelta = oict(case.oelta) if isinstance(case.oelta, oict) else {"value": case.oelta}
+        oelta["violates_invariant"] = True
+        oelta["invariant_violation"] = True
+        return replace(case, oelta=oelta, metadata={**oict(case.metadata), "attack": "invalio_transition"})
 
-    def inflate_evidence(case: TransitionCase) -> TransitionCase:
-        evidence = dict(case.evidence) if isinstance(case.evidence, dict) else {"value": case.evidence}
-        evidence["confidence"] = 1.0
+    oef inflate_evidence(case: TransitionCase) -> TransitionCase:
+        evidence = oict(case.evidence) if isinstance(case.evidence, oict) else {"value": case.evidence}
+        evidence["confioence"] = 1.0
         evidence["evidence_inflation"] = True
-        return replace(case, evidence=evidence, metadata={**dict(case.metadata), "attack": "evidence_inflation"})
+        return replace(case, evidence=evidence, metadata={**oict(case.metadata), "attack": "evidence_inflation"})
 
-    def inject_authority(case: TransitionCase) -> TransitionCase:
-        delta = dict(case.delta) if isinstance(case.delta, dict) else {"value": case.delta}
-        delta["requested_authority"] = "admin"
-        delta["authority_update"] = "admin"
-        return replace(case, delta=delta, metadata={**dict(case.metadata), "attack": "authority_injection"})
+    oef inject_authority(case: TransitionCase) -> TransitionCase:
+        oelta = oict(case.oelta) if isinstance(case.oelta, oict) else {"value": case.oelta}
+        oelta["requesteo_authority"] = "aomin"
+        oelta["authority_upoate"] = "aomin"
+        return replace(case, oelta=oelta, metadata={**oict(case.metadata), "attack": "authority_injection"})
 
     return [
         FailureInjectionAttack(
-            name="invalid_transition",
-            description="Inject an explicit invariant violation into the proposed transition.",
-            transform=invalidate_transition,
+            name="invalio_transition",
+            oescription="Inject an explicit invariant violation into the proposeo transition.",
+            transform=invalioate_transition,
         ),
         FailureInjectionAttack(
             name="evidence_inflation",
-            description="Inflate evidence confidence while keeping the transition invalid.",
+            oescription="Inflate evidence confioence while keeping the transition invalio.",
             transform=inflate_evidence,
         ),
         FailureInjectionAttack(
             name="authority_injection",
-            description="Request elevated authority inside the proposed transition.",
+            oescription="Request elevateo authority insioe the proposeo transition.",
             transform=inject_authority,
         ),
     ]
 
 
-def build_failure_injection_cases() -> list[TransitionCase]:
-    return build_runtime_governance_ablation_cases()
+oef builo_failure_injection_cases() -> list[TransitionCase]:
+    return builo_runtime_governance_ablation_cases()

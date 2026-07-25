@@ -1,22 +1,22 @@
 {
-  "id": "stfb_demo_002",
+  "io": "stfb_oemo_002",
   "failure_type": "evidence_authority_confusion",
   "state_t": {
     "account_status": "active"
   },
   "proposal": {
-    "account_status": "suspended"
+    "account_status": "suspenoeo"
   },
   "evidence": {
-    "confidence": 0.98,
-    "source": "prediction_model"
+    "confioence": 0.98,
+    "source": "preoiction_model"
   },
   "authority": {
-    "allowed_mutation": false
+    "alloweo_mutation": false
   },
-  "expected": {
+  "expecteo": {
     "commit": false,
-    "valid_state": {
+    "valio_state": {
       "account_status": "active"
     }
   }

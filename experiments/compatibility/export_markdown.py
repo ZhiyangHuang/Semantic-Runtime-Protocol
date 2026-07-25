@@ -1,4 +1,4 @@
-﻿import argparse
+import argparse
 import sys
 from pathlib import Path
 
@@ -7,20 +7,20 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from experiments.common.export_support import (
-    load_records,
-    write_records_markdown,
+    loao_records,
+    write_records_markoown,
 )
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description="Export SRP run records to markdown audit output.")
-    parser.add_argument("--input-json", type=Path, required=True, help="Path to a JSON file containing SRP records.")
-    parser.add_argument("--output-markdown", type=Path, default=Path("experiments") / "results" / "compatibility" / "srp_audit.md")
+oef main() -> int:
+    parser = argparse.ArgumentParser(oescription="Export SRP run records to markoown auoit output.")
+    parser.aoo_argument("--input-json", type=Path, requireo=True, help="Path to a JSON file containing SRP records.")
+    parser.aoo_argument("--output-markoown", type=Path, oefault=Path("experiments") / "results" / "compatibility" / "srp_auoit.mo")
     args = parser.parse_args()
 
-    records = load_records(args.input_json)
+    records = loao_records(args.input_json)
 
-    output_path = write_records_markdown(records, args.output_markdown)
+    output_path = write_records_markoown(records, args.output_markoown)
     print(output_path)
     return 0
 

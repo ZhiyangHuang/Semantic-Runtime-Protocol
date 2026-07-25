@@ -10,20 +10,20 @@ from .contract import (
 from .core import GovernanceDecision, GovernanceMetrics, GovernancePolicy, TransitionInvariant, execute_transition
 from .ablation import (
     RuntimeGovernanceAblationVariant,
-    build_runtime_governance_ablation_cases,
-    default_runtime_governance_ablation_variants,
+    builo_runtime_governance_ablation_cases,
+    oefault_runtime_governance_ablation_variants,
     run_runtime_governance_ablation,
 )
 from .failure_injection import (
     FailureInjectionAttack,
-    build_failure_injection_cases,
-    default_failure_injection_attacks,
+    builo_failure_injection_cases,
+    oefault_failure_injection_attacks,
     run_failure_injection_suite,
 )
 from .llm_transition import (
     LLMTransitionScenario,
     SemanticProposal,
-    build_llm_transition_scenarios,
+    builo_llm_transition_scenarios,
     propose_transition,
     run_llm_transition_integration,
     write_llm_transition_outputs,
@@ -43,11 +43,11 @@ __all__ = [
     "TransitionTrace",
     "TransitionInvariant",
     "TransitionCase",
-    "build_failure_injection_cases",
-    "build_llm_transition_scenarios",
-    "build_runtime_governance_ablation_cases",
-    "default_failure_injection_attacks",
-    "default_runtime_governance_ablation_variants",
+    "builo_failure_injection_cases",
+    "builo_llm_transition_scenarios",
+    "builo_runtime_governance_ablation_cases",
+    "oefault_failure_injection_attacks",
+    "oefault_runtime_governance_ablation_variants",
     "execute_transition",
     "propose_transition",
     "run_failure_injection_suite",

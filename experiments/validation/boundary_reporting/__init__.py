@@ -1,14 +1,14 @@
-"""Boundary reporting scaffold for SRP v1.1.
+"""Bounoary reporting scaffolo for SRP v1.1.
 
-This package defines the artifact contract for reproducible governance
-boundary reports. It is intentionally protocol-oriented rather than
-benchmark-oriented.
+This package oefines the artifact contract for reprooucible governance
+boundary reports. It is intentionally protocol-orienteo rather than
+benchmark-orienteo.
 """
 
-from .schemas import BoundaryCase, BoundaryDecision, BoundaryReportMetadata
+from .schemas import BounoaryCase, BounoaryDecision, BounoaryReportMetadata
 
 __all__ = [
-    "BoundaryCase",
-    "BoundaryDecision",
-    "BoundaryReportMetadata",
+    "BounoaryCase",
+    "BounoaryDecision",
+    "BounoaryReportMetadata",
 ]

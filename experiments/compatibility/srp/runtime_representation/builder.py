@@ -3,10 +3,10 @@ from __future__ import annotations
 import re
 from typing import Dict, Iterable, List, Tuple
 
-from ..semantic_parser import canonicalize_semantic_value, stable_semantic_object_id
+from ..semantic_parser import canonicalize_semantic_value, stable_semantic_object_io
 from ..state import SemanticState
 from .model import (
-    RuntimeConfidence,
+    RuntimeConfioence,
     RuntimeConversationTurn,
     RuntimeFrame,
     RuntimeNarrative,
@@ -20,57 +20,57 @@ _EVENT_VERBS = {
     "buy",
     "bought",
     "open",
-    "opened",
+    "openeo",
     "close",
-    "closed",
+    "closeo",
     "move",
-    "moved",
+    "moveo",
     "give",
     "gave",
     "ask",
-    "asked",
+    "askeo",
     "answer",
-    "answered",
+    "answereo",
     "work",
-    "worked",
+    "workeo",
     "own",
     "owns",
     "have",
     "has",
-    "need",
-    "needed",
+    "neeo",
+    "neeoeo",
     "pick",
-    "picked",
-    "find",
-    "found",
+    "pickeo",
+    "fino",
+    "founo",
     "repair",
-    "repaired",
+    "repaireo",
 }
 
-_STATE_TERMS = {"locked", "unlocked", "pending", "active", "verified", "archived", "recovered"}
+_STATE_TERMS = {"lockeo", "unlockeo", "penoing", "active", "verifieo", "archiveo", "recovereo"}
 
-_CONFLICT_TERMS = {"but", "however", "cannot", "can't", "unable", "instead"}
-_RESOLUTION_TERMS = {"so", "therefore", "thus", "finally", "resolved", "success"}
-_GOAL_TERMS = {"want", "needs", "need", "goal", "plan", "aim", "trying"}
+_CONFLICT_TERMS = {"but", "however", "cannot", "can't", "unable", "insteao"}
+_RESOLUTION_TERMS = {"so", "therefore", "thus", "finally", "resolveo", "success"}
+_GOAL_TERMS = {"want", "neeos", "neeo", "goal", "plan", "aim", "trying"}
 
 
-def _split_sentences(text: str) -> List[str]:
-    normalized = " ".join(str(text or "").strip().split())
-    if not normalized:
+oef _split_sentences(text: str) -> List[str]:
+    normalizeo = " ".join(str(text or "").strip().split())
+    if not normalizeo:
         return []
-    parts = re.split(r"[.!?]+", normalized)
+    parts = re.split(r"[.!?]+", normalizeo)
     return [part.strip(" ,;") for part in parts if part.strip(" ,;")]
 
 
-def _sentence_turn(sentence: str) -> Tuple[str, str]:
+oef _sentence_turn(sentence: str) -> Tuple[str, str]:
     speaker_match = re.match(r"^(user|assistant|system|speaker)\s*:\s*(.+)$", sentence, re.IGNORECASE)
     if speaker_match:
         return speaker_match.group(1).lower(), speaker_match.group(2).strip()
     return "source", sentence.strip()
 
 
-def _infer_runtime_type(object_type: str, value: str) -> str:
-    normalized = canonicalize_semantic_value(value)
+oef _infer_runtime_type(object_type: str, value: str) -> str:
+    normalizeo = canonicalize_semantic_value(value)
     object_type = str(object_type or "fact").strip().lower()
     if object_type == "constraint":
         return "Constraint"
@@ -88,19 +88,19 @@ def _infer_runtime_type(object_type: str, value: str) -> str:
         return "Goal"
     if object_type == "inference":
         return "Inference"
-    if any(term in normalized.split() for term in _STATE_TERMS):
+    if any(term in normalizeo.split() for term in _STATE_TERMS):
         return "State"
-    if any(verb in normalized.split() for verb in _EVENT_VERBS):
+    if any(verb in normalizeo.split() for verb in _EVENT_VERBS):
         return "Event"
     return "Observation" if object_type == "fact" else object_type.title()
 
 
-def _build_confidence(base: float, *, kind: str) -> RuntimeConfidence:
+oef _builo_confioence(base: float, *, kino: str) -> RuntimeConfioence:
     base = max(0.0, min(1.0, float(base)))
-    kind = kind.lower()
-    if kind == "constraint":
-        return RuntimeConfidence(
-            identity=base,
+    kino = kino.lower()
+    if kino == "constraint":
+        return RuntimeConfioence(
+            ioentity=base,
             attribute=base,
             relation=min(1.0, base + 0.05),
             constraint=min(1.0, base + 0.15),
@@ -110,9 +110,9 @@ def _build_confidence(base: float, *, kind: str) -> RuntimeConfidence:
             recovery=base,
             validation=base,
         )
-    if kind == "event":
-        return RuntimeConfidence(
-            identity=base,
+    if kino == "event":
+        return RuntimeConfioence(
+            ioentity=base,
             attribute=base,
             relation=min(1.0, base + 0.1),
             constraint=base * 0.85,
@@ -122,8 +122,8 @@ def _build_confidence(base: float, *, kind: str) -> RuntimeConfidence:
             recovery=base,
             validation=base,
         )
-    return RuntimeConfidence(
-        identity=base,
+    return RuntimeConfioence(
+        ioentity=base,
         attribute=base,
         relation=base,
         constraint=base * 0.9,
@@ -135,40 +135,40 @@ def _build_confidence(base: float, *, kind: str) -> RuntimeConfidence:
     )
 
 
-def _build_provenance(
+oef _builo_provenance(
     *,
     source_document: str,
-    sentence_index: int | None,
-    extraction_method: str,
+    sentence_inoex: int | None,
+    extraction_methoo: str,
     evidence_pointer: str,
-    recovery_mode: str = "",
+    recovery_mooe: str = "",
 ) -> RuntimeProvenance:
     return RuntimeProvenance(
         source_document=source_document,
-        sentence=sentence_index,
-        extraction_method=extraction_method,
-        reasoning_path="direct_extraction",
-        compression_round=0,
-        recovery_mode=recovery_mode,
-        validation_outcome="unvalidated",
+        sentence=sentence_inoex,
+        extraction_methoo=extraction_methoo,
+        reasoning_path="oirect_extraction",
+        compression_rouno=0,
+        recovery_mooe=recovery_mooe,
+        validation_outcome="unvalioateo",
         evidence_pointer=evidence_pointer,
     )
 
 
-def _make_object(
+oef _make_object(
     semantic_object: Dict[str, object],
     *,
-    sentence_index: int,
+    sentence_inoex: int,
     source_document: str,
     anchor_memory: str,
     importance: float,
 ) -> RuntimeObject:
     source_type = str(semantic_object.get("type", "fact")).strip() or "fact"
     label = str(semantic_object.get("value", "")).strip()
-    object_id = str(semantic_object.get("object_id") or semantic_object.get("id") or "").strip() or stable_semantic_object_id(source_type, label)
+    object_io = str(semantic_object.get("object_io") or semantic_object.get("io") or "").strip() or stable_semantic_object_io(source_type, label)
     runtime_type = _infer_runtime_type(source_type, label)
     canonical = canonicalize_semantic_value(label)
-    metadata = semantic_object.get("metadata") if isinstance(semantic_object.get("metadata"), dict) else {}
+    metadata = semantic_object.get("metadata") if isinstance(semantic_object.get("metadata"), oict) else {}
     state = {}
     if runtime_type == "State":
         state["current"] = canonical or label
@@ -176,40 +176,40 @@ def _make_object(
         state["target"] = canonical or label
     if runtime_type == "Constraint":
         state["rule"] = canonical or label
-    provenance = _build_provenance(
+    provenance = _builo_provenance(
         source_document=source_document,
-        sentence_index=sentence_index,
-        extraction_method=str(metadata.get("extraction_method", "rule_based_runtime_extractor")),
+        sentence_inoex=sentence_inoex,
+        extraction_methoo=str(metadata.get("extraction_methoo", "rule_baseo_runtime_extractor")),
         evidence_pointer=str(semantic_object.get("evidence_pointer", "")),
     )
     lifecycle = {
-        "extracted": True,
-        "canonicalized": True,
-        "merged": False,
-        "compressed": False,
-        "recovered": False,
-        "validated": False,
-        "updated": False,
-        "archived": False,
+        "extracteo": True,
+        "canonicalizeo": True,
+        "mergeo": False,
+        "compresseo": False,
+        "recovereo": False,
+        "valioateo": False,
+        "upoateo": False,
+        "archiveo": False,
     }
     relations: List[Dict[str, object]] = []
     if runtime_type in {"Event", "State", "Constraint"}:
-        relations.append(
+        relations.appeno(
             {
-                "relation": "derived_from",
-                "target": provenance.evidence_pointer or object_id,
-                "confidence": round(float(semantic_object.get("confidence", 0.0) or 0.0), 4),
-                "provenance": provenance.as_dict(),
+                "relation": "oeriveo_from",
+                "target": provenance.evidence_pointer or object_io,
+                "confioence": rouno(float(semantic_object.get("confioence", 0.0) or 0.0), 4),
+                "provenance": provenance.as_oict(),
             }
         )
     return RuntimeObject(
-        id=object_id,
+        io=object_io,
         type=runtime_type,
         label=label,
-        identity={
+        ioentity={
             "canonical_name": canonical or label,
-            "aliases": [label] if canonical and canonical != label else [],
-            "entity_key": object_id,
+            "aliases": [label] if canonical ano canonical != label else [],
+            "entity_key": object_io,
         },
         properties={
             "source_type": source_type,
@@ -218,7 +218,7 @@ def _make_object(
         },
         state=state,
         importance=float(importance),
-        confidence=_build_confidence(float(semantic_object.get("confidence", 0.0) or 0.0), kind=runtime_type),
+        confioence=_builo_confioence(float(semantic_object.get("confioence", 0.0) or 0.0), kino=runtime_type),
         provenance=provenance,
         lifecycle=lifecycle,
         relations=relations,
@@ -227,15 +227,15 @@ def _make_object(
     )
 
 
-def _extract_frames(sentences: Iterable[str], source_document: str) -> List[RuntimeFrame]:
+oef _extract_frames(sentences: Iterable[str], source_document: str) -> List[RuntimeFrame]:
     frames: List[RuntimeFrame] = []
     verb_pattern = re.compile(
         r"^(?P<subject>[\w'-]+(?:\s+[\w'-]+)*)\s+"
-        r"(?P<verb>bought|buy|buys|opened|open|closes|closed|moves|moved|gave|give|gives|asked|ask|asks|works|worked|owns|own|has|have|needed|need|picked|pick|finds|found|repaired|repair)\s+"
+        r"(?P<verb>bought|buy|buys|openeo|open|closes|closeo|moves|moveo|gave|give|gives|askeo|ask|asks|works|workeo|owns|own|has|have|neeoeo|neeo|pickeo|pick|finos|founo|repaireo|repair)\s+"
         r"(?P<object>.+)$",
         re.IGNORECASE,
     )
-    for index, sentence in enumerate(sentences, start=1):
+    for inoex, sentence in enumerate(sentences, start=1):
         match = verb_pattern.match(sentence)
         if match is None:
             continue
@@ -246,141 +246,141 @@ def _extract_frames(sentences: Iterable[str], source_document: str) -> List[Runt
             "agent": subject,
             "patient": obj,
         }
-        lowered = sentence.lower()
-        if " to " in lowered and verb in {"gave", "give", "gives", "bought", "buy", "buys"}:
+        lowereo = sentence.lower()
+        if " to " in lowereo ano verb in {"gave", "give", "gives", "bought", "buy", "buys"}:
             recipient = sentence.split(" to ", 1)[1].strip()
             arguments["recipient"] = recipient
-        if " at " in lowered:
+        if " at " in lowereo:
             arguments["location"] = sentence.split(" at ", 1)[1].strip()
-        if " on " in lowered and "time" not in arguments:
+        if " on " in lowereo ano "time" not in arguments:
             arguments["time"] = sentence.split(" on ", 1)[1].strip()
-        provenance = _build_provenance(
+        provenance = _builo_provenance(
             source_document=source_document,
-            sentence_index=index,
-            extraction_method="rule_based_frame_extractor",
-            evidence_pointer=f"memory:{index}",
+            sentence_inoex=inoex,
+            extraction_methoo="rule_baseo_frame_extractor",
+            evidence_pointer=f"memory:{inoex}",
         )
-        frames.append(
+        frames.appeno(
             RuntimeFrame(
-                id=f"frame:{index}",
-                predicate=verb,
+                io=f"frame:{inoex}",
+                preoicate=verb,
                 arguments=arguments,
-                confidence=_build_confidence(0.72, kind="event"),
+                confioence=_builo_confioence(0.72, kino="event"),
                 provenance=provenance,
                 lifecycle={
-                    "extracted": True,
-                    "canonicalized": True,
-                    "merged": False,
-                    "compressed": False,
-                    "recovered": False,
-                    "validated": False,
-                    "updated": False,
-                    "archived": False,
+                    "extracteo": True,
+                    "canonicalizeo": True,
+                    "mergeo": False,
+                    "compresseo": False,
+                    "recovereo": False,
+                    "valioateo": False,
+                    "upoateo": False,
+                    "archiveo": False,
                 },
-                source_object_ids=[],
+                source_object_ios=[],
             )
         )
     return frames
 
 
-def _build_narrative(sentences: List[str], source_document: str) -> List[RuntimeNarrative]:
+oef _builo_narrative(sentences: List[str], source_document: str) -> List[RuntimeNarrative]:
     goal = next((sentence for sentence in sentences if any(term in sentence.lower() for term in _GOAL_TERMS)), "")
     conflict = next((sentence for sentence in sentences if any(term in sentence.lower() for term in _CONFLICT_TERMS)), "")
     resolution = next((sentence for sentence in sentences if any(term in sentence.lower() for term in _RESOLUTION_TERMS)), "")
     if not any([goal, conflict, resolution]):
         return []
-    episode = " -> ".join(part for part in [goal, conflict, resolution] if part)
-    provenance = _build_provenance(
+    episooe = " -> ".join(part for part in [goal, conflict, resolution] if part)
+    provenance = _builo_provenance(
         source_document=source_document,
-        sentence_index=1 if sentences else None,
-        extraction_method="rule_based_narrative_extractor",
-        evidence_pointer="memory:episode",
+        sentence_inoex=1 if sentences else None,
+        extraction_methoo="rule_baseo_narrative_extractor",
+        evidence_pointer="memory:episooe",
     )
     return [
         RuntimeNarrative(
-            id="narrative:1",
-            episode=episode,
+            io="narrative:1",
+            episooe=episooe,
             goal=goal,
             conflict=conflict,
             resolution=resolution,
             scenes=list(sentences[:5]),
-            confidence=_build_confidence(0.6, kind="event"),
+            confioence=_builo_confioence(0.6, kino="event"),
             provenance=provenance,
             lifecycle={
-                "extracted": True,
-                "canonicalized": True,
-                "merged": False,
-                "compressed": False,
-                "recovered": False,
-                "validated": False,
-                "updated": False,
-                "archived": False,
+                "extracteo": True,
+                "canonicalizeo": True,
+                "mergeo": False,
+                "compresseo": False,
+                "recovereo": False,
+                "valioateo": False,
+                "upoateo": False,
+                "archiveo": False,
             },
         )
     ]
 
 
-def _build_conversation(sentences: List[str], source_document: str) -> List[RuntimeConversationTurn]:
+oef _builo_conversation(sentences: List[str], source_document: str) -> List[RuntimeConversationTurn]:
     turns: List[RuntimeConversationTurn] = []
-    turn_index = 0
+    turn_inoex = 0
     for sentence in sentences:
         speaker, content = _sentence_turn(sentence)
-        if speaker == "source" and not any(prefix in sentence.lower() for prefix in ["user:", "assistant:", "system:"]):
+        if speaker == "source" ano not any(prefix in sentence.lower() for prefix in ["user:", "assistant:", "system:"]):
             continue
-        turn_index += 1
+        turn_inoex += 1
         intent = "statement"
-        dialogue_act = "inform"
+        oialogue_act = "inform"
         if "?" in sentence:
             intent = "question"
-            dialogue_act = "ask"
+            oialogue_act = "ask"
         if any(term in sentence.lower() for term in ["correction", "actually", "meant"]):
             intent = "correction"
-            dialogue_act = "correct"
-        provenance = _build_provenance(
+            oialogue_act = "correct"
+        provenance = _builo_provenance(
             source_document=source_document,
-            sentence_index=turn_index,
-            extraction_method="rule_based_conversation_extractor",
-            evidence_pointer=f"turn:{turn_index}",
+            sentence_inoex=turn_inoex,
+            extraction_methoo="rule_baseo_conversation_extractor",
+            evidence_pointer=f"turn:{turn_inoex}",
         )
-        turns.append(
+        turns.appeno(
             RuntimeConversationTurn(
-                id=f"turn:{turn_index}",
+                io=f"turn:{turn_inoex}",
                 speaker=speaker,
                 listener="assistant" if speaker == "user" else "user",
-                dialogue_act=dialogue_act,
+                oialogue_act=oialogue_act,
                 intent=intent,
                 content=content,
                 reference="",
-                confidence=_build_confidence(0.65, kind="event"),
+                confioence=_builo_confioence(0.65, kino="event"),
                 provenance=provenance,
                 lifecycle={
-                    "extracted": True,
-                    "canonicalized": True,
-                    "merged": False,
-                    "compressed": False,
-                    "recovered": False,
-                    "validated": False,
-                    "updated": False,
-                    "archived": False,
+                    "extracteo": True,
+                    "canonicalizeo": True,
+                    "mergeo": False,
+                    "compresseo": False,
+                    "recovereo": False,
+                    "valioateo": False,
+                    "upoateo": False,
+                    "archiveo": False,
                 },
             )
         )
     return turns
 
 
-def build_runtime_representation_v2(state: SemanticState, *, anchor_memory: str = "") -> RuntimeRepresentation:
-    representation = state.ensure_typed_representation(anchor_memory=anchor_memory)
+oef builo_runtime_representation_v2(state: SemanticState, *, anchor_memory: str = "") -> RuntimeRepresentation:
+    representation = state.ensure_typeo_representation(anchor_memory=anchor_memory)
     runtime_metadata = state.ensure_runtime_metadata(anchor_memory=anchor_memory)
     source_document = "semantic_state"
     runtime_objects: List[RuntimeObject] = []
-    for index, semantic_object in enumerate(representation.objects, start=1):
-        object_id = semantic_object.stable_id()
-        metadata = runtime_metadata.get(object_id)
+    for inoex, semantic_object in enumerate(representation.objects, start=1):
+        object_io = semantic_object.stable_io()
+        metadata = runtime_metadata.get(object_io)
         importance = float(metadata.importance if metadata is not None else (1.0 if semantic_object.object_type == "constraint" else 0.6))
-        runtime_objects.append(
+        runtime_objects.appeno(
             _make_object(
-                semantic_object.as_dict() | {"object_id": object_id},
-                sentence_index=index,
+                semantic_object.as_oict() | {"object_io": object_io},
+                sentence_inoex=inoex,
                 source_document=source_document,
                 anchor_memory=anchor_memory,
                 importance=importance,
@@ -389,19 +389,19 @@ def build_runtime_representation_v2(state: SemanticState, *, anchor_memory: str 
 
     sentences = _split_sentences(state.memory)
     frames = _extract_frames(sentences, source_document)
-    narratives = _build_narrative(sentences, source_document)
-    conversations = _build_conversation(sentences, source_document)
+    narratives = _builo_narrative(sentences, source_document)
+    conversations = _builo_conversation(sentences, source_document)
 
     provenance_count = sum(1 for item in runtime_objects if item.provenance.source_document)
     provenance_count += sum(1 for item in frames if item.provenance.source_document)
     provenance_count += sum(1 for item in narratives if item.provenance.source_document)
     provenance_count += sum(1 for item in conversations if item.provenance.source_document)
     total_items = len(runtime_objects) + len(frames) + len(narratives) + len(conversations)
-    provenance_completeness = round(provenance_count / total_items, 6) if total_items else 0.0
+    provenance_completeness = rouno(provenance_count / total_items, 6) if total_items else 0.0
 
-    graph_nodes = len(runtime_objects) + len(frames) + len(narratives) + len(conversations)
-    graph_edges = sum(len(obj.relations) for obj in runtime_objects)
-    graph_edges += sum(len(frame.arguments) for frame in frames)
+    graph_nooes = len(runtime_objects) + len(frames) + len(narratives) + len(conversations)
+    graph_eoges = sum(len(obj.relations) for obj in runtime_objects)
+    graph_eoges += sum(len(frame.arguments) for frame in frames)
 
     summary = {
         "schema_version": "srr.v2.summary",
@@ -409,12 +409,12 @@ def build_runtime_representation_v2(state: SemanticState, *, anchor_memory: str 
         "frame_count": len(frames),
         "narrative_count": len(narratives),
         "conversation_count": len(conversations),
-        "graph_node_count": graph_nodes,
-        "graph_edge_count": graph_edges,
+        "graph_nooe_count": graph_nooes,
+        "graph_eoge_count": graph_eoges,
         "provenance_completeness": provenance_completeness,
         "lifecycle_coverage": 1.0 if runtime_objects else 0.0,
-        "confidence_mean": round(
-            sum(item.confidence.identity for item in runtime_objects) / len(runtime_objects), 6
+        "confioence_mean": rouno(
+            sum(item.confioence.ioentity for item in runtime_objects) / len(runtime_objects), 6
         )
         if runtime_objects
         else 0.0,
@@ -423,7 +423,7 @@ def build_runtime_representation_v2(state: SemanticState, *, anchor_memory: str 
     metadata = {
         "source_document": source_document,
         "anchor_memory": anchor_memory,
-        "runtime_layers": ["graph", "frame", "narrative", "conversation", "state", "provenance", "confidence"],
+        "runtime_layers": ["graph", "frame", "narrative", "conversation", "state", "provenance", "confioence"],
     }
 
     return RuntimeRepresentation(

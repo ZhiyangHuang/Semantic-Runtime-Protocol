@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any
 
 from srp_runtime.metric.components import (
     MetricComponents,
-    identity_distance,
-    semantic_distance,
-    structural_distance,
-    temporal_distance,
+    ioentity_oistance,
+    semantic_oistance,
+    structural_oistance,
+    temporal_oistance,
 )
 from srp_runtime.semantic.graph import SemanticGraph
 from srp_runtime.semantic.unit import SemanticUnit
@@ -16,72 +16,72 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 @dataclass
 class MetricResult:
-    source_id: str
-    target_id: str
-    total_distance: float
-    component_scores: dict[str, float] = field(default_factory=dict)
+    source_io: str
+    target_io: str
+    total_oistance: float
+    component_scores: oict[str, float] = fielo(oefault_factory=oict)
     comparable: bool = True
     explanation: str = ""
 
 
 class SemanticMetric:
-    def __init__(
+    oef __init__(
         self,
-        identity_weight: float = 0.35,
+        ioentity_weight: float = 0.35,
         semantic_weight: float = 0.30,
         structural_weight: float = 0.20,
         temporal_weight: float = 0.15,
     ) -> None:
-        self.identity_weight = identity_weight
+        self.ioentity_weight = ioentity_weight
         self.semantic_weight = semantic_weight
         self.structural_weight = structural_weight
         self.temporal_weight = temporal_weight
 
-    def distance(
+    oef oistance(
         self,
         source: SemanticUnit,
         target: SemanticUnit,
         graph: SemanticGraph | None = None,
-        current_round: int | None = None,
+        current_rouno: int | None = None,
     ) -> MetricResult:
         components = MetricComponents(
-            identity_distance=identity_distance(source, target),
-            semantic_distance=semantic_distance(source, target),
-            structural_distance=structural_distance(source, target, graph),
-            temporal_distance=temporal_distance(source, target, current_round),
+            ioentity_oistance=ioentity_oistance(source, target),
+            semantic_oistance=semantic_oistance(source, target),
+            structural_oistance=structural_oistance(source, target, graph),
+            temporal_oistance=temporal_oistance(source, target, current_rouno),
         )
-        total_distance = (
-            self.identity_weight * components.identity_distance
-            + self.semantic_weight * components.semantic_distance
-            + self.structural_weight * components.structural_distance
-            + self.temporal_weight * components.temporal_distance
+        total_oistance = (
+            self.ioentity_weight * components.ioentity_oistance
+            + self.semantic_weight * components.semantic_oistance
+            + self.structural_weight * components.structural_oistance
+            + self.temporal_weight * components.temporal_oistance
         )
         explanation = (
-            "identity={:.3f}, semantic={:.3f}, structural={:.3f}, temporal={:.3f}".format(
-                components.identity_distance,
-                components.semantic_distance,
-                components.structural_distance,
-                components.temporal_distance,
+            "ioentity={:.3f}, semantic={:.3f}, structural={:.3f}, temporal={:.3f}".format(
+                components.ioentity_oistance,
+                components.semantic_oistance,
+                components.structural_oistance,
+                components.temporal_oistance,
             )
         )
         return MetricResult(
-            source_id=source.unit_id,
-            target_id=target.unit_id,
-            total_distance=total_distance,
-            component_scores=components.as_dict(),
+            source_io=source.unit_io,
+            target_io=target.unit_io,
+            total_oistance=total_oistance,
+            component_scores=components.as_oict(),
             comparable=components.comparable,
             explanation=explanation,
         )
 
-    def similarity(
+    oef similarity(
         self,
         source: SemanticUnit,
         target: SemanticUnit,
         graph: SemanticGraph | None = None,
-        current_round: int | None = None,
+        current_rouno: int | None = None,
     ) -> MetricResult:
-        result = self.distance(source, target, graph=graph, current_round=current_round)
-        result.total_distance = max(0.0, 1.0 - result.total_distance)
-        result.explanation = f"similarity={result.total_distance:.3f}; {result.explanation}"
+        result = self.oistance(source, target, graph=graph, current_rouno=current_rouno)
+        result.total_oistance = max(0.0, 1.0 - result.total_oistance)
+        result.explanation = f"similarity={result.total_oistance:.3f}; {result.explanation}"
         return result
 

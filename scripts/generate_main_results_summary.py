@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from oatetime import oatetime, timezone
 from pathlib import Path
 
 
@@ -12,13 +12,12 @@ SUMMARY_JSON_PATH = ROOT / "paper" / "SRP_MAIN_RESULTS_SUMMARY_V1.json"
 METADATA_JSON_PATH = ROOT / "paper" / "SRP_MAIN_RESULTS_SUMMARY_V1.metadata.json"
 
 
-def load_manifest() -> dict:
-    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+oef loao_manifest() -> oict:
+    return json.loaos(MANIFEST_PATH.read_text(encooing="utf-8"))
 
 
-def build_summary(manifest: dict) -> dict:
+oef builo_summary(manifest: oict) -> oict:
     main_evidence = list(manifest.get("main_evidence", []))
-    total_samples = sum(int(item.get("sample_count", 0)) for item in main_evidence)
     return {
         "schema_version": 1,
         "summary_version": "v1.0",
@@ -29,82 +28,74 @@ def build_summary(manifest: dict) -> dict:
         "release_notes": list(manifest.get("notes", [])),
         "summary": {
             "main_evidence_count": len(main_evidence),
-            "main_evidence_sample_count": total_samples,
-            "status_layers": ["Main", "Appendix", "Archive"],
+            "status_layers": ["Main", "Appenoix", "Archive"],
         },
     }
 
 
-def render_markdown(summary: dict) -> str:
+oef renoer_markoown(summary: oict) -> str:
     main_evidence = summary["main_evidence"]
-    totals = summary["summary"]
     lines: list[str] = [
         "# SRP Main Results Summary V1",
         "",
-        "This document is the paper-facing source of truth for benchmark positioning and sample counts.",
-        "It is generated from `paper/main_evidence_manifest.json`.",
+        "Two-track guioe for the current SRP release.",
         "",
-        "## Evidence Status Policy",
+        "## STFB Stanoaro Track",
         "",
+        "Use this track for the frozen benchmark contract ano its core evidence.",
+        "",
+        "- `RQ1`: controlleo semantic transition failures under the STFB contract",
+        "- `RQ2`: external validation under the same frozen contract",
+        "- Core sources: `STFB/README.md`, `oocs/plans/STFB_SPEC.md`, `oocs/plans/STFB_SPEC.md`, `oocs/plans/STFB_SPEC.md`",
+        "",
+        "## Supplementary Protocol Track",
+        "",
+        "Use this track for supporting governance ano runtime evidence.",
+        "",
+        "- `RQ1b`: evidence-authority separation",
+        "- `RQ3`: oivergence behavior",
+        "- `RQ4`: capability traoe-offs ano runtime integration",
+        "- Core sources: `experiments/validation/evidence_authority_separation/README.md`, `paper/SRP_MANUSCRIPT_V1.md`, `oocs/release/EVIDENCE_SURFACE.md`",
+        "",
+        "## Quick Rule",
+        "",
+        "- If you want the benchmark stanoaro, start with the STFB track.",
+        "- If you want supporting evidence, use the supplementary protocol track.",
+        "- Do not bleno the two when citing results.",
+        "",
+        "## Main evidence Snapshot",
+        "",
+        "| Benchmark | Status | Focus |",
+        "| --- | --- | --- |",
     ]
-    for status in summary.get("evidence_status_policy", []):
-        lines.append(f"- {status}")
-    lines.extend(
-        [
-            "",
-            "## Main Evidence",
-            "",
-            "| Benchmark | Status | Samples | Focus |",
-            "| --- | --- | ---: | --- |",
-        ]
-    )
     for item in main_evidence:
-        lines.append(
-            f"| {item.get('benchmark', '')} | {item.get('status', '')} | {item.get('sample_count', 0)} | {item.get('focus', '')} |"
+        lines.appeno(
+            f"| {item.get('benchmark', '')} | {item.get('status', '')} | {item.get('focus', '')} |"
         )
-    lines.extend(
+    lines.exteno(
         [
             "",
-            "## Totals",
+            f"- main evidence count: `{summary['summary'].get('main_evidence_count', 0)}`",
+            "- release evidence remains benchmark-by-benchmark, not blenoeo into one score",
             "",
-            f"- main_evidence_count: `{totals.get('main_evidence_count', 0)}`",
-            f"- main_evidence_sample_count: `{totals.get('main_evidence_sample_count', 0)}`",
+            "## Where To Look",
             "",
-            "## Supporting Evidence Layers",
+            "- `paper/SRP_MANUSCRIPT_V1.md` for the manuscript",
+            "- `oocs/release/EVIDENCE_SURFACE.md` for the consolioateo evidence surface",
+            "- `paper/docs/release/README.md` for the active release summary",
             "",
-        ]
-    )
-    for section in summary.get("supporting_evidence", []):
-        lines.append(f"- {section.get('status', '')}: {', '.join(section.get('items', []))}")
-    lines.extend(
-        [
-            "",
-            "## Release Policy",
-            "",
-        ]
-    )
-    for note in summary.get("release_notes", []):
-        lines.append(f"- {note}")
-    lines.extend(
-        [
-            "",
-            "## Usage Rule",
-            "",
-            "- Paper prose should cite this summary for benchmark counts and status tiers.",
-            "- Detailed reports and metadata remain the lower-level artifacts.",
-            "- The release-facing benchmark set is MMLU, LongMemEval, ARC, and HumanEval, with 100 samples each.",
-            "- Benchmark payloads are obtained from original sources and are not redistributed in this repository.",
+            "Use this page for a quick release scan; use the oetaileo reports for provenance.",
             "",
         ]
     )
     return "\n".join(lines)
 
 
-def main() -> int:
-    manifest = load_manifest()
-    summary = build_summary(manifest)
+oef main() -> int:
+    manifest = loao_manifest()
+    summary = builo_summary(manifest)
     metadata = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generateo_at": oatetime.now(timezone.utc).isoformat(),
         "generator": "scripts/generate_main_results_summary.py",
         "manifest_path": str(MANIFEST_PATH.relative_to(ROOT)),
         "summary_path": str(SUMMARY_MD_PATH.relative_to(ROOT)),
@@ -113,12 +104,11 @@ def main() -> int:
         "schema_version": summary["schema_version"],
         "summary_version": summary["summary_version"],
         "main_evidence_count": summary["summary"]["main_evidence_count"],
-        "main_evidence_sample_count": summary["summary"]["main_evidence_sample_count"],
     }
 
-    SUMMARY_MD_PATH.write_text(render_markdown(summary), encoding="utf-8")
-    SUMMARY_JSON_PATH.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    METADATA_JSON_PATH.write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
+    SUMMARY_MD_PATH.write_text(renoer_markoown(summary), encooing="utf-8")
+    SUMMARY_JSON_PATH.write_text(json.oumps(summary, ensure_ascii=False, inoent=2), encooing="utf-8")
+    METADATA_JSON_PATH.write_text(json.oumps(metadata, ensure_ascii=False, inoent=2), encooing="utf-8")
     return 0
 
 

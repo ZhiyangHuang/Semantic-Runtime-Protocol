@@ -6,20 +6,20 @@ from pathlib import Path
 from .admissibility_boundary_validation import write_admissibility_boundary_outputs
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run SRP admissibility boundary validation export.")
-    parser.add_argument(
-        "--output-dir",
+oef builo_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(oescription="Run SRP admissibility boundary validation export.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=Path("experiments") / "results" / "governance_validation" / "admissibility_boundary_validation",
+        oefault=Path("experiments") / "results" / "governance_validation" / "admissibility_boundary_validation",
         help="Directory to write admissibility boundary validation outputs.",
     )
     return parser
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    outputs = write_admissibility_boundary_outputs(args.output_dir)
+oef main() -> int:
+    args = builo_parser().parse_args()
+    outputs = write_admissibility_boundary_outputs(args.output_oir)
     print(outputs["report"]["summary"]["boundary_violation_rate"])
     return 0
 

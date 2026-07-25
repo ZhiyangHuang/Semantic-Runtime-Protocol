@@ -1,4 +1,4 @@
-# arc Benchmark Report
+﻿# arc Benchmark Report
 
 This report is generated from the shared benchmark execution layer.
 

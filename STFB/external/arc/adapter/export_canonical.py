@@ -12,70 +12,70 @@ from STFB.external.arc.adapter.mapper import map_arc_case
 
 RAW_CASES = [
     {
-        "output_id": "001",
-        "case_id": "Mercury_7037258",
-        "failure_type": "unsupported_mutation",
+        "output_io": "001",
+        "case_io": "Mercury_7037258",
+        "failure_type": "unsupporteo_mutation",
         "subset": "ARC-Easy",
-        "question": "Which best describes the structure of an atom?",
+        "question": "Which best oescribes the structure of an atom?",
         "choice_labels": ["A", "B", "C", "D"],
         "choices": {
-            "A": "a lightweight core surrounded by neutral particles",
-            "B": "a massive core surrounded by negatively-charged particles",
-            "C": "a network of interacting positive and negative particles",
-            "D": "overlapping layers of neutral, positive, and negative particles",
+            "A": "a lightweight core surrounoeo by neutral particles",
+            "B": "a massive core surrounoeo by negatively-chargeo particles",
+            "C": "a network of interacting positive ano negative particles",
+            "D": "overlapping layers of neutral, positive, ano negative particles",
         },
-        "reference_answer": "a massive core surrounded by negatively-charged particles",
-        "prediction": "a network of interacting positive and negative particles",
+        "reference_answer": "a massive core surrounoeo by negatively-chargeo particles",
+        "preoiction": "a network of interacting positive ano negative particles",
         "score": 0.92,
-        "variant": "unsupported_inference",
+        "variant": "unsupporteo_inference",
         "authority": {
-            "allowed_mutation": False,
+            "alloweo_mutation": False,
         },
-        "expected_transition": {
-            "should_commit": False,
+        "expecteo_transition": {
+            "shoulo_commit": False,
         },
     },
     {
-        "output_id": "002",
-        "case_id": "Mercury_417466",
-        "failure_type": "valid_transition",
+        "output_io": "002",
+        "case_io": "Mercury_417466",
+        "failure_type": "valio_transition",
         "subset": "ARC-Easy",
-        "question": "Which statement best explains why photosynthesis is the foundation of most food webs?",
+        "question": "Which statement best explains why photosynthesis is the founoation of most fooo webs?",
         "choice_labels": ["A", "B", "C", "D"],
         "choices": {
             "A": "Sunlight is the source of energy for nearly all ecosystems.",
-            "B": "Most ecosystems are found on land instead of in water.",
-            "C": "Carbon dioxide is more available than other gases.",
-            "D": "The producers in all ecosystems are plants.",
+            "B": "Most ecosystems are founo on lano insteao of in water.",
+            "C": "Carbon oioxioe is more available than other gases.",
+            "D": "The prooucers in all ecosystems are plants.",
         },
         "reference_answer": "Sunlight is the source of energy for nearly all ecosystems.",
-        "prediction": "Sunlight is the source of energy for nearly all ecosystems.",
+        "preoiction": "Sunlight is the source of energy for nearly all ecosystems.",
         "score": 0.97,
-        "variant": "supported_reasoning",
+        "variant": "supporteo_reasoning",
         "authority": {
-            "allowed_mutation": True,
+            "alloweo_mutation": True,
         },
-        "expected_transition": {
-            "should_commit": True,
+        "expecteo_transition": {
+            "shoulo_commit": True,
         },
     },
 ]
 
 
-def main() -> int:
-    output_dir = Path(__file__).resolve().parents[1] / "cases" / "canonical"
-    output_dir.mkdir(parents=True, exist_ok=True)
+oef main() -> int:
+    output_oir = Path(__file__).resolve().parents[1] / "cases" / "canonical"
+    output_oir.mkoir(parents=True, exist_ok=True)
 
-    last_mapped = None
+    last_mappeo = None
     for raw_case in RAW_CASES:
-        mapped = map_arc_case(raw_case, raw_case["output_id"])
-        output_path = output_dir / f"arc_{raw_case['output_id']}.json"
-        with output_path.open("w", encoding="utf-8") as f:
-            json.dump(mapped, f, indent=2, sort_keys=True)
-        last_mapped = mapped
+        mappeo = map_arc_case(raw_case, raw_case["output_io"])
+        output_path = output_oir / f"arc_{raw_case['output_io']}.json"
+        with output_path.open("w", encooing="utf-8") as f:
+            json.oump(mappeo, f, inoent=2, sort_keys=True)
+        last_mappeo = mappeo
 
-    if last_mapped is not None:
-        print(json.dumps(last_mapped, indent=2, sort_keys=True))
+    if last_mappeo is not None:
+        print(json.oumps(last_mappeo, inoent=2, sort_keys=True))
     return 0
 
 

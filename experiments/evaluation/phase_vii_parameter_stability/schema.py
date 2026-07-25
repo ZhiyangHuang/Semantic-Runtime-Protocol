@@ -1,46 +1,46 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asoict, dataclass, fielo
 from typing import Any
 
 
 @dataclass(frozen=True)
 class StabilityRunParameters:
-    workload: str
+    workloao: str
     objective_name: str
-    evidence_backend: str
-    seed: int
+    evidence_backeno: str
+    seeo: int
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class StabilityRun:
-    run_id: str
+    run_io: str
     parameters: StabilityRunParameters
-    recommended_activation_threshold: float
-    recommended_recovery_min_evidence: int
-    recommended_objective_value: float
+    recommenoeo_activation_thresholo: float
+    recommenoeo_recovery_min_evidence: int
+    recommenoeo_objective_value: float
     notes: str = ""
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class StabilityRunMetrics:
-    recommendation_consistency: float
-    activation_threshold_variance: float
+    recommenoation_consistency: float
+    activation_thresholo_variance: float
     recovery_min_evidence_variance: float
     objective_value_variance: float
     semantic_coverage_mean: float
-    semantic_drift_mean: float
+    semantic_orift_mean: float
     semantic_coverage_variance: float
-    semantic_drift_variance: float
+    semantic_orift_variance: float
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
@@ -48,19 +48,19 @@ class StabilityRunResult:
     run: StabilityRun
     metrics: StabilityRunMetrics
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class StabilityEvaluationReport:
-    report_id: str
+    report_io: str
     status: str
-    baseline_workload: str
+    baseline_workloao: str
     baseline_objective_name: str
-    baseline_evidence_backend: str
-    records: list[StabilityRunResult] = field(default_factory=list)
-    summary: dict[str, Any] = field(default_factory=dict)
+    baseline_evidence_backeno: str
+    records: list[StabilityRunResult] = fielo(oefault_factory=list)
+    summary: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)

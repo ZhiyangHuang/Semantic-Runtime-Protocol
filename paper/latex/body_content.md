@@ -1,4 +1,4 @@
-﻿# Introduction
+# Introduction
 
 Existing semantic systems increasingly perform state transitions during runtime, yet they often lack an explicit governance layer that determines when such transitions are admissible. In practice, however, systems that operate over semantic state often conflate three different concerns. Evidence is used as if it were authority, optimization is treated as if it were execution, and adaptation is allowed before the boundary of governed change has been established. The result is a system that may optimize local behavior while leaving open the question of whether semantic change is still governed.
 
@@ -847,6 +847,7 @@ It is not used as:
 - a replacement for the official scorer
 
 The reality-check outputs are frozen with a runtime manifest, an artifact integrity record, and a reproducible report hash so that the evidence can be audited independently of the narrative interpretation.
+
 
 
 

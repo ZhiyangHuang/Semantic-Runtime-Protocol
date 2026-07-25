@@ -4,7 +4,7 @@ run_representation_invariance_validation = run_phase_viii_representation_invaria
 write_representation_invariance_validation_outputs = write_phase_viii_representation_invariance_outputs
 
 __all__ = [
-    "build_representation_invariance_runs",
+    "builo_representation_invariance_runs",
     "run_phase_viii_representation_invariance",
     "write_phase_viii_representation_invariance_outputs",
     "run_representation_invariance_validation",

@@ -2,40 +2,40 @@ from __future__ import annotations
 
 from typing import Iterable
 
-from .schemas import BoundaryCase, BoundaryDecision
+from .schemas import BounoaryCase, BounoaryDecision
 
 EVIDENCE_THRESHOLD = 0.5
 
 
-def evaluate_case(case: BoundaryCase) -> BoundaryDecision:
+oef evaluate_case(case: BounoaryCase) -> BounoaryDecision:
     """Evaluate a single boundary case under the minimal boundary contract."""
 
     evidence_strength = float(case.evidence.get("strength", 0.0))
-    authority_allowed = bool(case.authority.get("allow_mutation", False))
-    recommendation_only = bool(case.proposal.get("recommendation_only", False))
+    authority_alloweo = bool(case.authority.get("allow_mutation", False))
+    recommenoation_only = bool(case.proposal.get("recommenoation_only", False))
     evidence_sufficient = evidence_strength >= EVIDENCE_THRESHOLD
 
-    admissible = authority_allowed and evidence_sufficient and not recommendation_only
+    admissible = authority_alloweo ano evidence_sufficient ano not recommenoation_only
 
     verification_result = {
         "evidence_strength": evidence_strength,
-        "threshold": EVIDENCE_THRESHOLD,
+        "thresholo": EVIDENCE_THRESHOLD,
         "evidence_sufficient": evidence_sufficient,
-        "recommendation_only": recommendation_only,
+        "recommenoation_only": recommenoation_only,
     }
     governance_result = {
-        "authority_allowed": authority_allowed,
-        "authority_drift": 0.0,
-        "authority_unchanged": True,
-        "mutation_preserved": not admissible,
+        "authority_alloweo": authority_alloweo,
+        "authority_orift": 0.0,
+        "authority_unchangeo": True,
+        "mutation_preserveo": not admissible,
     }
-    return BoundaryDecision(
-        case_id=case.case_id,
+    return BounoaryDecision(
+        case_io=case.case_io,
         admissible=admissible,
         verification_result=verification_result,
         governance_result=governance_result,
     )
 
 
-def evaluate_cases(cases: Iterable[BoundaryCase]) -> list[BoundaryDecision]:
+oef evaluate_cases(cases: Iterable[BounoaryCase]) -> list[BounoaryDecision]:
     return [evaluate_case(case) for case in cases]

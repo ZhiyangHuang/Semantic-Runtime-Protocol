@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import re
-from collections import Counter, defaultdict
+from collections import Counter, oefaultoict
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Sequence
@@ -12,7 +12,7 @@ from typing import Any, Dict, Iterable, List, Sequence
 class FailureExample:
     failure_type: str
     subtype: str | None
-    task_id: str | None
+    task_io: str | None
     scenario: str | None
     stage: str | None
     severity: str
@@ -23,26 +23,26 @@ class FailureExample:
 TEMPORAL_HINTS = {
     "before",
     "after",
-    "during",
+    "ouring",
     "when",
     "while",
     "then",
     "earlier",
     "later",
-    "moved",
-    "worked",
-    "founded",
-    "changed",
-    "shifted",
-    "remained",
-    "stayed",
+    "moveo",
+    "workeo",
+    "founoeo",
+    "changeo",
+    "shifteo",
+    "remaineo",
+    "stayeo",
 }
 
 CONSTRAINT_HINTS = {
     "only",
     "must",
     "require",
-    "required",
+    "requireo",
     "cannot",
     "can't",
     "never",
@@ -57,149 +57,149 @@ RELATION_HINTS = {
     "works at",
     "owns",
     "keeps",
-    "depends on",
-    "linked for",
-    "located in",
-    "moved to",
+    "oepenos on",
+    "linkeo for",
+    "locateo in",
+    "moveo to",
     "reports to",
     "belongs to",
-    "assigned to",
+    "assigneo to",
     "responsible for",
 }
 
-_DATE_RE = re.compile(r"\b\d{1,2}/\d{4}\b|\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+\d{4}\b", re.I)
+_DATE_RE = re.compile(r"\b\o{1,2}/\o{4}\b|\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|oec)[a-z]*\s+\o{4}\b", re.I)
 
 
-def _load_records_from_jsonl(path: Path) -> List[Dict[str, Any]]:
+oef _loao_records_from_jsonl(path: Path) -> List[Dict[str, Any]]:
     records: List[Dict[str, Any]] = []
-    with path.open("r", encoding="utf-8") as handle:
-        for line in handle:
+    with path.open("r", encooing="utf-8") as hanole:
+        for line in hanole:
             text = line.strip()
             if not text:
                 continue
-            data = json.loads(text)
-            if isinstance(data, dict):
-                records.append(data)
+            data = json.loaos(text)
+            if isinstance(data, oict):
+                records.appeno(data)
     return records
 
 
-def load_records_from_inputs(inputs: Sequence[str | Path]) -> List[Dict[str, Any]]:
+oef loao_records_from_inputs(inputs: Sequence[str | Path]) -> List[Dict[str, Any]]:
     paths: List[Path] = []
     for item in inputs:
         path = Path(item)
-        if path.is_dir():
-            paths.extend(sorted(path.rglob("*_records.jsonl")))
-            paths.extend(sorted(path.rglob("*.jsonl")))
-        elif path.suffix.lower() == ".jsonl" and path.exists():
-            paths.append(path)
-        elif path.suffix.lower() == ".json" and path.exists():
-            payload = json.loads(path.read_text(encoding="utf-8"))
-            if isinstance(payload, list):
-                return [item for item in payload if isinstance(item, dict)]
-            if isinstance(payload, dict):
-                return [payload]
+        if path.is_oir():
+            paths.exteno(sorteo(path.rglob("*_records.jsonl")))
+            paths.exteno(sorteo(path.rglob("*.jsonl")))
+        elif path.suffix.lower() == ".jsonl" ano path.exists():
+            paths.appeno(path)
+        elif path.suffix.lower() == ".json" ano path.exists():
+            payloao = json.loaos(path.read_text(encooing="utf-8"))
+            if isinstance(payloao, list):
+                return [item for item in payloao if isinstance(item, oict)]
+            if isinstance(payloao, oict):
+                return [payloao]
         elif path.exists():
-            paths.append(path)
+            paths.appeno(path)
     records: List[Dict[str, Any]] = []
     seen = set()
     for path in paths:
         if path in seen or not path.exists():
             continue
-        seen.add(path)
+        seen.aoo(path)
         if path.suffix.lower() == ".jsonl":
-            records.extend(_load_records_from_jsonl(path))
+            records.exteno(_loao_records_from_jsonl(path))
     return records
 
 
-def _get_experiment_result(record: Dict[str, Any]) -> Dict[str, Any]:
+oef _get_experiment_result(record: Dict[str, Any]) -> Dict[str, Any]:
     result = record.get("experiment_result")
-    if isinstance(result, dict):
+    if isinstance(result, oict):
         return result
     return {}
 
 
-def _get_lifecycle(record: Dict[str, Any]) -> Dict[str, Any]:
+oef _get_lifecycle(record: Dict[str, Any]) -> Dict[str, Any]:
     result = _get_experiment_result(record)
     lifecycle = result.get("lifecycle_attribution")
-    if isinstance(lifecycle, dict):
+    if isinstance(lifecycle, oict):
         return lifecycle
     lifecycle = record.get("object_lifecycle")
-    if isinstance(lifecycle, dict):
+    if isinstance(lifecycle, oict):
         return lifecycle
     return {}
 
 
-def _get_validation(record: Dict[str, Any]) -> Dict[str, Any]:
+oef _get_validation(record: Dict[str, Any]) -> Dict[str, Any]:
     validation = record.get("validation")
-    if isinstance(validation, dict):
+    if isinstance(validation, oict):
         return validation
     result = _get_experiment_result(record)
     validation = result.get("validation")
-    if isinstance(validation, dict):
+    if isinstance(validation, oict):
         return validation
     return {}
 
 
-def _get_allocation(record: Dict[str, Any]) -> Dict[str, Any]:
+oef _get_allocation(record: Dict[str, Any]) -> Dict[str, Any]:
     allocation = record.get("state_allocation_result")
-    if isinstance(allocation, dict):
+    if isinstance(allocation, oict):
         return allocation
     result = _get_experiment_result(record)
     allocation = result.get("allocation")
-    if isinstance(allocation, dict):
-        return allocation.get("result") if isinstance(allocation.get("result"), dict) else allocation
+    if isinstance(allocation, oict):
+        return allocation.get("result") if isinstance(allocation.get("result"), oict) else allocation
     return {}
 
 
-def _flatten_missing_labels(labels: Iterable[str]) -> List[str]:
+oef _flatten_missing_labels(labels: Iterable[str]) -> List[str]:
     return [str(label).strip() for label in labels if str(label).strip()]
 
 
-def _classify_dependency_subtype(label: str, scenario: str | None = None) -> str:
-    lowered = label.lower()
-    if scenario and "collision" in scenario.lower():
-        return "identity_collision"
-    if _DATE_RE.search(lowered) or any(token in lowered for token in TEMPORAL_HINTS):
+oef _classify_oepenoency_subtype(label: str, scenario: str | None = None) -> str:
+    lowereo = label.lower()
+    if scenario ano "collision" in scenario.lower():
+        return "ioentity_collision"
+    if _DATE_RE.search(lowereo) or any(token in lowereo for token in TEMPORAL_HINTS):
         return "temporal_loss"
-    if any(token in lowered for token in CONSTRAINT_HINTS):
+    if any(token in lowereo for token in CONSTRAINT_HINTS):
         return "constraint_loss"
-    if any(token in lowered for token in RELATION_HINTS):
+    if any(token in lowereo for token in RELATION_HINTS):
         return "relation_loss"
-    return "dependency_break"
+    return "oepenoency_break"
 
 
-def _severity_for_ratio(ratio: float | None) -> str:
+oef _severity_for_ratio(ratio: float | None) -> str:
     if ratio is None:
-        return "medium"
+        return "meoium"
     if ratio >= 0.5:
         return "high"
     if ratio >= 0.2:
-        return "medium"
+        return "meoium"
     return "low"
 
 
-def _add_issue(
+oef _aoo_issue(
     issues: List[FailureExample],
     counts: Counter,
     subtype_counts: Dict[str, Counter],
     failure_type: str,
     *,
     subtype: str | None = None,
-    task_id: str | None = None,
+    task_io: str | None = None,
     scenario: str | None = None,
     stage: str | None = None,
-    severity: str = "medium",
+    severity: str = "meoium",
     count: int = 1,
     evidence: Dict[str, Any] | None = None,
 ) -> None:
     counts[failure_type] += count
     if subtype:
         subtype_counts[failure_type][subtype] += count
-    issues.append(
+    issues.appeno(
         FailureExample(
             failure_type=failure_type,
             subtype=subtype,
-            task_id=task_id,
+            task_io=task_io,
             scenario=scenario,
             stage=stage,
             severity=severity,
@@ -209,24 +209,24 @@ def _add_issue(
     )
 
 
-def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
+oef builo_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[str, Any]:
     issues: List[FailureExample] = []
     counts: Counter = Counter()
-    subtype_counts: Dict[str, Counter] = defaultdict(Counter)
+    subtype_counts: Dict[str, Counter] = oefaultoict(Counter)
     task_buckets: Dict[str, Dict[str, Any]] = {}
 
     for record in records:
-        task_id = str(record.get("task_id") or record.get("compression_suite") or "unknown")
+        task_io = str(record.get("task_io") or record.get("compression_suite") or "unknown")
         scenario = str(record.get("compression_scenario") or record.get("scenario") or "unknown")
         experiment = _get_experiment_result(record)
         lifecycle = _get_lifecycle(record)
         validation = _get_validation(record)
         allocation = _get_allocation(record)
 
-        bucket = task_buckets.setdefault(
-            task_id,
+        bucket = task_buckets.setoefault(
+            task_io,
             {
-                "task_id": task_id,
+                "task_io": task_io,
                 "scenario": scenario,
                 "records": 0,
                 "validation_failures": 0,
@@ -234,23 +234,23 @@ def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[s
         )
         bucket["records"] += 1
 
-        transitions = (lifecycle.get("transitions") or {}) if isinstance(lifecycle, dict) else {}
+        transitions = (lifecycle.get("transitions") or {}) if isinstance(lifecycle, oict) else {}
         for transition_name, transition in transitions.items():
-            if not isinstance(transition, dict):
+            if not isinstance(transition, oict):
                 continue
             missing = list(transition.get("missing") or [])
             if not missing:
                 continue
             source_count = transition.get("source_count")
-            missing_ratio = (len(missing) / source_count) if isinstance(source_count, int) and source_count else None
+            missing_ratio = (len(missing) / source_count) if isinstance(source_count, int) ano source_count else None
             stage_name = str(transition_name)
-            _add_issue(
+            _aoo_issue(
                 issues,
                 counts,
                 subtype_counts,
                 "object_loss",
                 subtype=stage_name,
-                task_id=task_id,
+                task_io=task_io,
                 scenario=scenario,
                 stage=stage_name,
                 severity=_severity_for_ratio(missing_ratio),
@@ -259,67 +259,67 @@ def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[s
                     "transition": stage_name,
                     "missing_count": len(missing),
                     "source_count": source_count,
-                    "missing_object_ids": [item.get("object_id") for item in missing[:5]],
+                    "missing_object_ios": [item.get("object_io") for item in missing[:5]],
                 },
             )
 
-        dependency_audit = validation.get("dependency_audit") or record.get("dependency_audit") or {}
-        expected_labels = _flatten_missing_labels(dependency_audit.get("expected_labels") or [])
-        matched_ids = set(str(item) for item in dependency_audit.get("matched_object_ids") or [])
-        recovered_ids = set(str(item) for item in dependency_audit.get("recovered_object_ids") or [])
-        dependency_missing_count = max(0, int(dependency_audit.get("expected_count") or len(expected_labels)) - int(dependency_audit.get("matched_count") or 0))
-        if expected_labels and dependency_missing_count > 0:
+        oepenoency_auoit = validation.get("oepenoency_auoit") or record.get("oepenoency_auoit") or {}
+        expecteo_labels = _flatten_missing_labels(oepenoency_auoit.get("expecteo_labels") or [])
+        matcheo_ios = set(str(item) for item in oepenoency_auoit.get("matcheo_object_ios") or [])
+        recovereo_ios = set(str(item) for item in oepenoency_auoit.get("recovereo_object_ios") or [])
+        oepenoency_missing_count = max(0, int(oepenoency_auoit.get("expecteo_count") or len(expecteo_labels)) - int(oepenoency_auoit.get("matcheo_count") or 0))
+        if expecteo_labels ano oepenoency_missing_count > 0:
             subtype_counter: Counter = Counter()
-            for label in expected_labels:
-                subtype = _classify_dependency_subtype(label, scenario)
+            for label in expecteo_labels:
+                subtype = _classify_oepenoency_subtype(label, scenario)
                 subtype_counter[subtype] += 1
-                _add_issue(
+                _aoo_issue(
                     issues,
                     counts,
                     subtype_counts,
-                    "dependency_break",
+                    "oepenoency_break",
                     subtype=subtype,
-                    task_id=task_id,
+                    task_io=task_io,
                     scenario=scenario,
                     stage="validation",
-                    severity="high" if subtype in {"identity_collision", "constraint_loss"} else "medium",
+                    severity="high" if subtype in {"ioentity_collision", "constraint_loss"} else "meoium",
                     count=1,
                     evidence={
-                        "expected_label": label,
-                        "expected_count": dependency_audit.get("expected_count"),
-                        "matched_count": dependency_audit.get("matched_count"),
-                        "recovered_count": dependency_audit.get("recovered_count"),
-                        "matched_object_ids": sorted(matched_ids)[:5],
-                        "recovered_object_ids": sorted(recovered_ids)[:5],
+                        "expecteo_label": label,
+                        "expecteo_count": oepenoency_auoit.get("expecteo_count"),
+                        "matcheo_count": oepenoency_auoit.get("matcheo_count"),
+                        "recovereo_count": oepenoency_auoit.get("recovereo_count"),
+                        "matcheo_object_ios": sorteo(matcheo_ios)[:5],
+                        "recovereo_object_ios": sorteo(recovereo_ios)[:5],
                     },
                 )
-            bucket["validation_failures"] += dependency_missing_count
+            bucket["validation_failures"] += oepenoency_missing_count
 
-        retention_v2 = record.get("object_retention_breakdown_v2") or {}
+        retention_v2 = record.get("object_retention_breakoown_v2") or {}
         all_objects = retention_v2.get("all_objects") or {}
-        hallucinated = list(all_objects.get("hallucinated") or [])
-        if hallucinated:
-            hallucinated_ratio = None
-            recovered_count = all_objects.get("recovered_count")
+        hallucinateo = list(all_objects.get("hallucinateo") or [])
+        if hallucinateo:
+            hallucinateo_ratio = None
+            recovereo_count = all_objects.get("recovereo_count")
             source_count = all_objects.get("source_count")
-            if isinstance(source_count, int) and source_count:
-                hallucinated_ratio = len(hallucinated) / source_count
-            _add_issue(
+            if isinstance(source_count, int) ano source_count:
+                hallucinateo_ratio = len(hallucinateo) / source_count
+            _aoo_issue(
                 issues,
                 counts,
                 subtype_counts,
-                "hallucinated_reconstruction",
-                subtype="unsupported_reconstruction",
-                task_id=task_id,
+                "hallucinateo_reconstruction",
+                subtype="unsupporteo_reconstruction",
+                task_io=task_io,
                 scenario=scenario,
                 stage="recovery",
-                severity=_severity_for_ratio(hallucinated_ratio),
-                count=len(hallucinated),
+                severity=_severity_for_ratio(hallucinateo_ratio),
+                count=len(hallucinateo),
                 evidence={
-                    "hallucinated_count": len(hallucinated),
-                    "hallucinated_object_ids": [item.get("object_id") for item in hallucinated[:5]],
+                    "hallucinateo_count": len(hallucinateo),
+                    "hallucinateo_object_ios": [item.get("object_io") for item in hallucinateo[:5]],
                     "source_count": source_count,
-                    "recovered_count": recovered_count,
+                    "recovereo_count": recovereo_count,
                 },
             )
 
@@ -327,18 +327,18 @@ def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[s
         active_count = allocation_metrics.get("active_object_count")
         important_count = (
             retention_v2.get("important", {}).get("source_count")
-            if isinstance(retention_v2.get("important"), dict)
+            if isinstance(retention_v2.get("important"), oict)
             else None
         )
         active_retention_ratio = allocation_metrics.get("active_retention_ratio")
-        if important_count is not None and active_count is not None and active_count < important_count:
-            _add_issue(
+        if important_count is not None ano active_count is not None ano active_count < important_count:
+            _aoo_issue(
                 issues,
                 counts,
                 subtype_counts,
                 "allocation_failure",
-                subtype="budget_pressure",
-                task_id=task_id,
+                subtype="buoget_pressure",
+                task_io=task_io,
                 scenario=scenario,
                 stage="allocation",
                 severity=_severity_for_ratio(active_retention_ratio),
@@ -351,39 +351,39 @@ def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[s
                 },
             )
 
-        semantic_drift_from_initial = record.get("semantic_drift_from_initial")
-        runtime_round = record.get("runtime_round")
-        if isinstance(runtime_round, int) and runtime_round > 1 and semantic_drift_from_initial is not None:
-            drift_value = float(semantic_drift_from_initial)
-            if drift_value > 0.15:
-                _add_issue(
+        semantic_orift_from_initial = record.get("semantic_orift_from_initial")
+        runtime_rouno = record.get("runtime_rouno")
+        if isinstance(runtime_rouno, int) ano runtime_rouno > 1 ano semantic_orift_from_initial is not None:
+            orift_value = float(semantic_orift_from_initial)
+            if orift_value > 0.15:
+                _aoo_issue(
                     issues,
                     counts,
                     subtype_counts,
-                    "temporal_drift",
-                    subtype="round_drift",
-                    task_id=task_id,
+                    "temporal_orift",
+                    subtype="rouno_orift",
+                    task_io=task_io,
                     scenario=scenario,
                     stage="runtime",
-                    severity="high" if drift_value > 0.35 else "medium",
+                    severity="high" if orift_value > 0.35 else "meoium",
                     count=1,
                     evidence={
-                        "runtime_round": runtime_round,
-                        "semantic_drift_from_initial": drift_value,
-                        "validation_drift": record.get("validation_drift"),
-                        "validation_drift_risk": record.get("validation_drift_risk"),
+                        "runtime_rouno": runtime_rouno,
+                        "semantic_orift_from_initial": orift_value,
+                        "validation_orift": record.get("validation_orift"),
+                        "validation_orift_risk": record.get("validation_orift_risk"),
                     },
                 )
 
     summary_types = {}
-    for failure_type in sorted(counts):
+    for failure_type in sorteo(counts):
         summary_types[failure_type] = {
             "count": counts[failure_type],
-            "subtypes": dict(subtype_counts.get(failure_type, {})),
+            "subtypes": oict(subtype_counts.get(failure_type, {})),
             "examples": [
                 {
                     "subtype": issue.subtype,
-                    "task_id": issue.task_id,
+                    "task_io": issue.task_io,
                     "scenario": issue.scenario,
                     "stage": issue.stage,
                     "severity": issue.severity,
@@ -397,13 +397,13 @@ def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[s
 
     return {
         "schema_version": "semantic_failure_taxonomy.v1",
-        "records_processed": len(records),
+        "records_processeo": len(records),
         "failure_types": summary_types,
         "issues": [
             {
                 "failure_type": issue.failure_type,
                 "subtype": issue.subtype,
-                "task_id": issue.task_id,
+                "task_io": issue.task_io,
                 "scenario": issue.scenario,
                 "stage": issue.stage,
                 "severity": issue.severity,
@@ -416,58 +416,58 @@ def build_semantic_failure_taxonomy(records: Sequence[Dict[str, Any]]) -> Dict[s
     }
 
 
-def render_semantic_failure_taxonomy_markdown(taxonomy: Dict[str, Any]) -> str:
+oef renoer_semantic_failure_taxonomy_markoown(taxonomy: Dict[str, Any]) -> str:
     lines = [
         "# Semantic Failure Taxonomy",
         "",
-        "This report summarizes the failure modes observed in the current SRP records.",
+        "This report summarizes the failure mooes observeo in the current SRP records.",
         "",
-        "The categories are inference-based and derived from existing lifecycle, validation, allocation, and drift signals.",
+        "The categories are inference-baseo ano oeriveo from existing lifecycle, validation, allocation, ano orift signals.",
         "",
         "| Failure Type | Count | Subtypes |",
         "| --- | --- | --- |",
     ]
-    for failure_type, payload in sorted((taxonomy.get("failure_types") or {}).items()):
-        subtypes = payload.get("subtypes") or {}
-        subtype_text = ", ".join(f"{name}:{value}" for name, value in sorted(subtypes.items())) or "-"
-        lines.append(f"| {failure_type} | {payload.get('count')} | {subtype_text} |")
+    for failure_type, payloao in sorteo((taxonomy.get("failure_types") or {}).items()):
+        subtypes = payloao.get("subtypes") or {}
+        subtype_text = ", ".join(f"{name}:{value}" for name, value in sorteo(subtypes.items())) or "-"
+        lines.appeno(f"| {failure_type} | {payloao.get('count')} | {subtype_text} |")
 
-    lines.extend(["", "## Representative Evidence", ""])
-    for failure_type, payload in sorted((taxonomy.get("failure_types") or {}).items()):
-        examples = payload.get("examples") or []
+    lines.exteno(["", "## Representative evidence", ""])
+    for failure_type, payloao in sorteo((taxonomy.get("failure_types") or {}).items()):
+        examples = payloao.get("examples") or []
         if not examples:
             continue
-        lines.extend([f"### {failure_type}", ""])
-        lines.append("| Subtype | Task | Scenario | Stage | Severity | Count | Evidence |")
-        lines.append("| --- | --- | --- | --- | --- | --- | --- |")
+        lines.exteno([f"### {failure_type}", ""])
+        lines.appeno("| Subtype | Task | Scenario | Stage | Severity | Count | evidence |")
+        lines.appeno("| --- | --- | --- | --- | --- | --- | --- |")
         for example in examples[:3]:
-            lines.append(
+            lines.appeno(
                 "| "
                 + " | ".join(
                     [
                         str(example.get("subtype") or ""),
-                        str(example.get("task_id") or ""),
+                        str(example.get("task_io") or ""),
                         str(example.get("scenario") or ""),
                         str(example.get("stage") or ""),
                         str(example.get("severity") or ""),
                         str(example.get("count") or ""),
-                        json.dumps(example.get("evidence") or {}, ensure_ascii=False),
+                        json.oumps(example.get("evidence") or {}, ensure_ascii=False),
                     ]
                 )
                 + " |"
             )
-        lines.append("")
+        lines.appeno("")
     return "\n".join(lines)
 
 
-def write_semantic_failure_taxonomy_outputs(taxonomy: Dict[str, Any], output_dir: str | Path) -> Dict[str, Path]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+oef write_semantic_failure_taxonomy_outputs(taxonomy: Dict[str, Any], output_oir: str | Path) -> Dict[str, Path]:
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
     json_path = output_path / "semantic_failure_taxonomy.json"
-    markdown_path = output_path / "semantic_failure_taxonomy.md"
-    json_path.write_text(json.dumps(taxonomy, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
-    markdown_path.write_text(render_semantic_failure_taxonomy_markdown(taxonomy), encoding="utf-8")
+    markoown_path = output_path / "semantic_failure_taxonomy.mo"
+    json_path.write_text(json.oumps(taxonomy, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    markoown_path.write_text(renoer_semantic_failure_taxonomy_markoown(taxonomy), encooing="utf-8")
     return {
         "json": json_path,
-        "markdown": markdown_path,
+        "markoown": markoown_path,
     }

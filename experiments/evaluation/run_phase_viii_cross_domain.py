@@ -2,16 +2,16 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from experiments.config import load_phase_viii_cross_domain_validation_config
+from experiments.config import loao_phase_viii_cross_oomain_validation_config
 
-from .phase_viii_cross_domain.runner import write_phase_viii_cross_domain_outputs
+from .phase_viii_cross_oomain.runner import write_phase_viii_cross_oomain_outputs
 
 
-def main() -> None:
-    config = load_phase_viii_cross_domain_validation_config()
+oef main() -> None:
+    config = loao_phase_viii_cross_oomain_validation_config()
     repo_root = Path(__file__).resolve().parents[2]
-    output_dir = repo_root / "experiments" / "results" / "phase_viii_cross_domain"
-    outputs = write_phase_viii_cross_domain_outputs(output_dir, config=config)
+    output_oir = repo_root / "experiments" / "results" / "phase_viii_cross_oomain"
+    outputs = write_phase_viii_cross_oomain_outputs(output_oir, config=config)
     print(outputs["report"]["summary"]["case_count"])
 
 

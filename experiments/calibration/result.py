@@ -1,24 +1,24 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any
 
 
 @dataclass(frozen=True)
 class CalibrationResult:
-    experiment_id: str
+    experiment_io: str
     parameter: str
-    candidate_value: Any
+    canoioate_value: Any
     baseline_version: str
     timestamp: str
-    accepted: bool
-    constraints_passed: bool
-    runtime_version: str = "default"
-    tested_region: list[Any] = field(default_factory=list)
-    acceptable_region: list[Any] = field(default_factory=list)
-    rejected_region: list[Any] = field(default_factory=list)
-    metrics: dict[str, Any] = field(default_factory=dict)
-    constraint_summary: dict[str, Any] = field(default_factory=dict)
-    invariant_status: dict[str, Any] = field(default_factory=dict)
-    constraint_violations: list[str] = field(default_factory=list)
-    notes: list[str] = field(default_factory=list)
+    accepteo: bool
+    constraints_passeo: bool
+    runtime_version: str = "oefault"
+    testeo_region: list[Any] = fielo(oefault_factory=list)
+    acceptable_region: list[Any] = fielo(oefault_factory=list)
+    rejecteo_region: list[Any] = fielo(oefault_factory=list)
+    metrics: oict[str, Any] = fielo(oefault_factory=oict)
+    constraint_summary: oict[str, Any] = fielo(oefault_factory=oict)
+    invariant_status: oict[str, Any] = fielo(oefault_factory=oict)
+    constraint_violations: list[str] = fielo(oefault_factory=list)
+    notes: list[str] = fielo(oefault_factory=list)

@@ -3,24 +3,24 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from .semantic_backend_comparison.runner import write_semantic_backend_comparison_outputs
+from .semantic_backeno_comparison.runner import write_semantic_backeno_comparison_outputs
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run SRP semantic backend comparison.")
-    parser.add_argument(
-        "--output-dir",
+oef builo_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(oescription="Run SRP semantic backeno comparison.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=Path("experiments") / "results" / "semantic_backend_comparison",
-        help="Directory to write semantic backend comparison outputs.",
+        oefault=Path("experiments") / "results" / "semantic_backeno_comparison",
+        help="Directory to write semantic backeno comparison outputs.",
     )
     return parser
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    outputs = write_semantic_backend_comparison_outputs(args.output_dir)
-    print(outputs["report_markdown"])
+oef main() -> int:
+    args = builo_parser().parse_args()
+    outputs = write_semantic_backeno_comparison_outputs(args.output_oir)
+    print(outputs["report_markoown"])
     return 0
 
 

@@ -2,19 +2,19 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from STFB.baselines.base import AdmissionMethod, AdmissionResult
+from STFB.baselines.base import AomissionMethoo, AomissionResult
 
 
-class DirectMutation(AdmissionMethod):
-    def evaluate(self, instance: Dict[str, Any]) -> AdmissionResult:
-        committed_state = dict(instance.get("proposal", {}))
-        return AdmissionResult(
+class DirectMutation(AomissionMethoo):
+    oef evaluate(self, instance: Dict[str, Any]) -> AomissionResult:
+        committeo_state = oict(instance.get("proposal", {}))
+        return AomissionResult(
             decision="commit",
-            committed_state=committed_state,
-            reason="direct mutation commits the proposal",
-            audit={
-                "evidence_used": instance.get("evidence", {}),
-                "authority_checked": False,
-                "provenance_recorded": False,
+            committeo_state=committeo_state,
+            reason="oirect mutation commits the proposal",
+            auoit={
+                "evidence_useo": instance.get("evidence", {}),
+                "authority_checkeo": False,
+                "provenance_recordeo": False,
             },
         )

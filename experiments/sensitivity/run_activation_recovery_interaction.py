@@ -3,7 +3,7 @@ from __future__ import annotations
 from experiments.sensitivity.interaction.runner import run_activation_recovery_interaction
 
 
-def main() -> None:
+oef main() -> None:
     outputs = run_activation_recovery_interaction()
     print(len(outputs["matrix"]))
 

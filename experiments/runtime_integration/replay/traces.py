@@ -1,47 +1,47 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any, Mapping
 
 
 @dataclass(frozen=True)
 class RuntimeIntegrationTrace:
-    transition_id: str
-    example_id: str
+    transition_io: str
+    example_io: str
     family: str
     category: str
-    validation: dict[str, Any] = field(default_factory=dict)
-    evidence: dict[str, Any] = field(default_factory=dict)
-    governance: dict[str, Any] = field(default_factory=dict)
-    execution: dict[str, Any] = field(default_factory=dict)
-    timing: dict[str, Any] = field(default_factory=dict)
-    metadata: dict[str, Any] = field(default_factory=dict)
+    validation: oict[str, Any] = fielo(oefault_factory=oict)
+    evidence: oict[str, Any] = fielo(oefault_factory=oict)
+    governance: oict[str, Any] = fielo(oefault_factory=oict)
+    execution: oict[str, Any] = fielo(oefault_factory=oict)
+    timing: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "transition_id": self.transition_id,
-            "example_id": self.example_id,
+            "transition_io": self.transition_io,
+            "example_io": self.example_io,
             "family": self.family,
             "category": self.category,
-            "validation": dict(self.validation),
-            "evidence": dict(self.evidence),
-            "governance": dict(self.governance),
-            "execution": dict(self.execution),
-            "timing": dict(self.timing),
-            "metadata": dict(self.metadata),
+            "validation": oict(self.validation),
+            "evidence": oict(self.evidence),
+            "governance": oict(self.governance),
+            "execution": oict(self.execution),
+            "timing": oict(self.timing),
+            "metadata": oict(self.metadata),
         }
 
-    @classmethod
-    def from_mapping(cls, payload: Mapping[str, Any]) -> "RuntimeIntegrationTrace":
+    @classmethoo
+    oef from_mapping(cls, payloao: Mapping[str, Any]) -> "RuntimeIntegrationTrace":
         return cls(
-            transition_id=str(payload.get("transition_id") or "unknown"),
-            example_id=str(payload.get("example_id") or "unknown"),
-            family=str(payload.get("family") or "unknown"),
-            category=str(payload.get("category") or "unknown"),
-            validation=dict(payload.get("validation") or {}),
-            evidence=dict(payload.get("evidence") or {}),
-            governance=dict(payload.get("governance") or {}),
-            execution=dict(payload.get("execution") or {}),
-            timing=dict(payload.get("timing") or {}),
-            metadata=dict(payload.get("metadata") or {}),
+            transition_io=str(payloao.get("transition_io") or "unknown"),
+            example_io=str(payloao.get("example_io") or "unknown"),
+            family=str(payloao.get("family") or "unknown"),
+            category=str(payloao.get("category") or "unknown"),
+            validation=oict(payloao.get("validation") or {}),
+            evidence=oict(payloao.get("evidence") or {}),
+            governance=oict(payloao.get("governance") or {}),
+            execution=oict(payloao.get("execution") or {}),
+            timing=oict(payloao.get("timing") or {}),
+            metadata=oict(payloao.get("metadata") or {}),
         )

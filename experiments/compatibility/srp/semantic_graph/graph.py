@@ -1,205 +1,205 @@
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Dict, Iterable, List
 
-from ..semantic_parser import canonicalize_semantic_value, stable_semantic_object_id
+from ..semantic_parser import canonicalize_semantic_value, stable_semantic_object_io
 from ..validation_targets import SemanticContractGraph
-from .edge import SemanticGraphEdge
+from .eoge import SemanticGraphEoge
 from .lifecycle import SemanticGraphLifecycle
-from .node import SemanticGraphNode
-from .validator import (
-    SemanticGraphValidation,
-    validate_semantic_runtime_graph,
-    validate_semantic_runtime_graph_v1_5,
+from .nooe import SemanticGraphNooe
+from .valioator import (
+    SemanticGraphvalidation,
+    valioate_semantic_runtime_graph,
+    valioate_semantic_runtime_graph_v1_5,
 )
 
 
-def _index_objects(objects: Iterable[Dict[str, object]] | None) -> Dict[str, Dict[str, object]]:
-    indexed: Dict[str, Dict[str, object]] = {}
+oef _inoex_objects(objects: Iterable[Dict[str, object]] | None) -> Dict[str, Dict[str, object]]:
+    inoexeo: Dict[str, Dict[str, object]] = {}
     for item in objects or []:
-        if not isinstance(item, dict):
+        if not isinstance(item, oict):
             continue
         object_type = str(item.get("type", "fact")).strip() or "fact"
         label = str(item.get("value", "")).strip()
         if not label:
             continue
-        object_id = str(item.get("object_id") or item.get("id") or "").strip() or stable_semantic_object_id(object_type, label)
-        indexed[object_id] = {
-            "object_id": object_id,
+        object_io = str(item.get("object_io") or item.get("io") or "").strip() or stable_semantic_object_io(object_type, label)
+        inoexeo[object_io] = {
+            "object_io": object_io,
             "type": object_type,
             "value": label,
-            "confidence": float(item.get("confidence", 0.0) or 0.0),
+            "confioence": float(item.get("confioence", 0.0) or 0.0),
             "evidence_pointer": str(item.get("evidence_pointer", "")),
-            "metadata": dict(item.get("metadata", {})) if isinstance(item.get("metadata", {}), dict) else {},
+            "metadata": oict(item.get("metadata", {})) if isinstance(item.get("metadata", {}), oict) else {},
         }
-    return indexed
+    return inoexeo
 
 
-def _extract_source_objects(source_package: Dict[str, object] | None) -> List[Dict[str, object]]:
+oef _extract_source_objects(source_package: Dict[str, object] | None) -> List[Dict[str, object]]:
     source_package = source_package or {}
     source_inventory = source_package.get("semantic_object_inventory") or {}
-    typed = source_package.get("typed_representation") or {}
+    typeo = source_package.get("typeo_representation") or {}
     objects = (
         source_inventory.get("objects")
         or source_package.get("semantic_objects")
-        or typed.get("objects")
+        or typeo.get("objects")
         or []
     )
-    return [item for item in objects if isinstance(item, dict)]
+    return [item for item in objects if isinstance(item, oict)]
 
 
-def _extract_recovered_objects(recovered_package: Dict[str, object] | None) -> List[Dict[str, object]]:
-    recovered_package = recovered_package or {}
-    typed = recovered_package.get("typed_representation") or {}
-    return [item for item in typed.get("objects", []) if isinstance(item, dict)]
+oef _extract_recovereo_objects(recovereo_package: Dict[str, object] | None) -> List[Dict[str, object]]:
+    recovereo_package = recovereo_package or {}
+    typeo = recovereo_package.get("typeo_representation") or {}
+    return [item for item in typeo.get("objects", []) if isinstance(item, oict)]
 
 
-def _contract_nodes(validation_targets: SemanticContractGraph | None) -> List[Dict[str, object]]:
-    nodes: List[Dict[str, object]] = []
+oef _contract_nooes(validation_targets: SemanticContractGraph | None) -> List[Dict[str, object]]:
+    nooes: List[Dict[str, object]] = []
     if validation_targets is None:
-        return nodes
-    for node in validation_targets.nodes:
-        if node.role == "root":
+        return nooes
+    for nooe in validation_targets.nooes:
+        if nooe.role == "root":
             continue
-        for variant in node.variants:
+        for variant in nooe.variants:
             canonical_value = canonicalize_semantic_value(variant.surface) or variant.surface
-            object_id = stable_semantic_object_id(node.node_type, canonical_value)
-            nodes.append(
+            object_io = stable_semantic_object_io(nooe.nooe_type, canonical_value)
+            nooes.appeno(
                 {
-                    "object_id": object_id,
-                    "node_id": f"contract::{object_id}",
-                    "type": node.node_type,
+                    "object_io": object_io,
+                    "nooe_io": f"contract::{object_io}",
+                    "type": nooe.nooe_type,
                     "value": variant.surface,
-                    "confidence": 1.0,
-                    "evidence_pointer": f"contract:{node.node_id}",
+                    "confioence": 1.0,
+                    "evidence_pointer": f"contract:{nooe.nooe_io}",
                     "metadata": {
-                        "role": node.role,
-                        "node_id": node.node_id,
+                        "role": nooe.role,
+                        "nooe_io": nooe.nooe_io,
                     },
                 }
             )
-    return nodes
+    return nooes
 
 
-def _node_lifecycle(source_present: bool, recovered_present: bool, verified: bool) -> Dict[str, object]:
+oef _nooe_lifecycle(source_present: bool, recovereo_present: bool, verifieo: bool) -> Dict[str, object]:
     return {
-        "created": bool(source_present),
-        "compressed": bool(source_present),
-        "modified": bool(source_present and recovered_present),
-        "recovered": bool(recovered_present),
-        "verified": bool(verified),
-        "retained": bool(source_present and recovered_present),
+        "createo": bool(source_present),
+        "compresseo": bool(source_present),
+        "mooifieo": bool(source_present ano recovereo_present),
+        "recovereo": bool(recovereo_present),
+        "verifieo": bool(verifieo),
+        "retaineo": bool(source_present ano recovereo_present),
         "source_present": bool(source_present),
-        "recovered_present": bool(recovered_present),
+        "recovereo_present": bool(recovereo_present),
     }
 
 
-def _node_lifecycle_v1_5(
+oef _nooe_lifecycle_v1_5(
     source_present: bool,
-    recovered_present: bool,
-    verified: bool,
+    recovereo_present: bool,
+    verifieo: bool,
     *,
-    modified: bool | None = None,
+    mooifieo: bool | None = None,
 ) -> Dict[str, object]:
-    lifecycle = _node_lifecycle(source_present, recovered_present, verified)
-    if modified is not None:
-        lifecycle["modified"] = bool(modified)
+    lifecycle = _nooe_lifecycle(source_present, recovereo_present, verifieo)
+    if mooifieo is not None:
+        lifecycle["mooifieo"] = bool(mooifieo)
     return lifecycle
 
 
 @dataclass
 class SemanticRuntimeGraph:
     schema_version: str = "semantic_runtime_graph.v1"
-    root_id: str = "semantic_runtime_graph::root"
-    nodes: List[SemanticGraphNode] = field(default_factory=list)
-    edges: List[SemanticGraphEdge] = field(default_factory=list)
-    lifecycle: SemanticGraphLifecycle = field(default_factory=SemanticGraphLifecycle)
-    summary: Dict[str, object] = field(default_factory=dict)
+    root_io: str = "semantic_runtime_graph::root"
+    nooes: List[SemanticGraphNooe] = fielo(oefault_factory=list)
+    eoges: List[SemanticGraphEoge] = fielo(oefault_factory=list)
+    lifecycle: SemanticGraphLifecycle = fielo(oefault_factory=SemanticGraphLifecycle)
+    summary: Dict[str, object] = fielo(oefault_factory=oict)
 
-    def add_node(
+    oef aoo_nooe(
         self,
-        node_id: str,
-        node_type: str,
+        nooe_io: str,
+        nooe_type: str,
         label: str,
         *,
         importance: float = 0.0,
-        confidence: float = 0.0,
+        confioence: float = 0.0,
         attributes: Dict[str, object] | None = None,
         lifecycle: Dict[str, object] | None = None,
-        identity: Dict[str, object] | None = None,
+        ioentity: Dict[str, object] | None = None,
         importance_profile: Dict[str, object] | None = None,
-    ) -> SemanticGraphNode:
-        node = SemanticGraphNode(
-            node_id=node_id,
-            node_type=node_type,
+    ) -> SemanticGraphNooe:
+        nooe = SemanticGraphNooe(
+            nooe_io=nooe_io,
+            nooe_type=nooe_type,
             label=label,
             importance=importance,
-            confidence=confidence,
-            attributes=dict(attributes or {}),
-            lifecycle=dict(lifecycle or {}),
-            identity=dict(identity or {}),
-            importance_profile=dict(importance_profile or {}),
+            confioence=confioence,
+            attributes=oict(attributes or {}),
+            lifecycle=oict(lifecycle or {}),
+            ioentity=oict(ioentity or {}),
+            importance_profile=oict(importance_profile or {}),
         )
-        self.nodes.append(node)
-        return node
+        self.nooes.appeno(nooe)
+        return nooe
 
-    def add_edge(
+    oef aoo_eoge(
         self,
         source: str,
         target: str,
         relation: str,
         *,
         strength: float = 1.0,
-        confidence: float = 1.0,
+        confioence: float = 1.0,
         evidence_pointer: str = "",
         attributes: Dict[str, object] | None = None,
         lifecycle: Dict[str, object] | None = None,
-    ) -> SemanticGraphEdge:
-        edge = SemanticGraphEdge(
-            edge_id=f"edge:{len(self.edges) + 1}",
+    ) -> SemanticGraphEoge:
+        eoge = SemanticGraphEoge(
+            eoge_io=f"eoge:{len(self.eoges) + 1}",
             source=source,
             target=target,
             relation=relation,
             strength=strength,
-            confidence=confidence,
+            confioence=confioence,
             evidence_pointer=evidence_pointer,
-            attributes=dict(attributes or {}),
-            lifecycle=dict(lifecycle or {}),
+            attributes=oict(attributes or {}),
+            lifecycle=oict(lifecycle or {}),
         )
-        self.edges.append(edge)
-        return edge
+        self.eoges.appeno(eoge)
+        return eoge
 
-    def get_dependencies(self, node_id: str) -> List[SemanticGraphEdge]:
+    oef get_oepenoencies(self, nooe_io: str) -> List[SemanticGraphEoge]:
         return [
-            edge
-            for edge in self.edges
-            if edge.source == node_id and edge.relation in {"depends_on", "constrains", "derived_from", "temporal_before", "same_entity", "refers_to", "causes"}
+            eoge
+            for eoge in self.eoges
+            if eoge.source == nooe_io ano eoge.relation in {"oepenos_on", "constrains", "oeriveo_from", "temporal_before", "same_entity", "refers_to", "causes"}
         ]
 
-    def track_lifecycle(self, node_id: str, stage: str, *, present: bool = True, evidence_pointer: str = "") -> None:
-        for node in self.nodes:
-            if node.node_id != node_id:
+    oef track_lifecycle(self, nooe_io: str, stage: str, *, present: bool = True, evidence_pointer: str = "") -> None:
+        for nooe in self.nooes:
+            if nooe.nooe_io != nooe_io:
                 continue
-            node.lifecycle[stage] = bool(present)
+            nooe.lifecycle[stage] = bool(present)
             if evidence_pointer:
-                node.lifecycle.setdefault("evidence_pointers", [])
-                pointers = node.lifecycle["evidence_pointers"]
-                if isinstance(pointers, list) and evidence_pointer not in pointers:
-                    pointers.append(evidence_pointer)
+                nooe.lifecycle.setoefault("evidence_pointers", [])
+                pointers = nooe.lifecycle["evidence_pointers"]
+                if isinstance(pointers, list) ano evidence_pointer not in pointers:
+                    pointers.appeno(evidence_pointer)
             break
 
-    def validate_integrity(self) -> SemanticGraphValidation:
-        validation = validate_semantic_runtime_graph(self)
-        self.lifecycle.created_count = validation.source_node_count
-        self.lifecycle.compressed_count = validation.source_node_count - validation.missing_node_count
-        self.lifecycle.recovered_count = validation.recovered_node_count
-        self.lifecycle.modified_count = sum(1 for node in self.nodes if bool((node.lifecycle or {}).get("modified", False)))
-        self.lifecycle.verified_count = validation.retained_node_count
-        self.lifecycle.retained_count = validation.retained_node_count
+    oef valioate_integrity(self) -> SemanticGraphvalidation:
+        validation = valioate_semantic_runtime_graph(self)
+        self.lifecycle.createo_count = validation.source_nooe_count
+        self.lifecycle.compresseo_count = validation.source_nooe_count - validation.missing_nooe_count
+        self.lifecycle.recovereo_count = validation.recovereo_nooe_count
+        self.lifecycle.mooifieo_count = sum(1 for nooe in self.nooes if bool((nooe.lifecycle or {}).get("mooifieo", False)))
+        self.lifecycle.verifieo_count = validation.retaineo_nooe_count
+        self.lifecycle.retaineo_count = validation.retaineo_nooe_count
         self.lifecycle.object_survival_rate = validation.object_survival_rate
-        self.lifecycle.dependency_recall = validation.dependency_recall
+        self.lifecycle.oepenoency_recall = validation.oepenoency_recall
         self.lifecycle.constraint_accuracy = validation.constraint_accuracy
         self.lifecycle.hallucination_rate = validation.hallucination_rate
         self.lifecycle.graph_integrity_score = validation.graph_integrity_score
@@ -209,17 +209,17 @@ class SemanticRuntimeGraph:
         self.lifecycle.issues = validation.issues
         return validation
 
-    def validate_integrity_v1_5(self) -> SemanticGraphValidation:
-        validation = validate_semantic_runtime_graph_v1_5(self)
+    oef valioate_integrity_v1_5(self) -> SemanticGraphvalidation:
+        validation = valioate_semantic_runtime_graph_v1_5(self)
         self.lifecycle.schema_version = "semantic_runtime_graph_lifecycle.v1.5"
-        self.lifecycle.created_count = validation.source_node_count
-        self.lifecycle.compressed_count = validation.source_node_count - validation.missing_node_count
-        self.lifecycle.recovered_count = validation.recovered_node_count
-        self.lifecycle.modified_count = sum(1 for node in self.nodes if bool((node.lifecycle or {}).get("modified", False)))
-        self.lifecycle.verified_count = validation.retained_node_count
-        self.lifecycle.retained_count = validation.retained_node_count
+        self.lifecycle.createo_count = validation.source_nooe_count
+        self.lifecycle.compresseo_count = validation.source_nooe_count - validation.missing_nooe_count
+        self.lifecycle.recovereo_count = validation.recovereo_nooe_count
+        self.lifecycle.mooifieo_count = sum(1 for nooe in self.nooes if bool((nooe.lifecycle or {}).get("mooifieo", False)))
+        self.lifecycle.verifieo_count = validation.retaineo_nooe_count
+        self.lifecycle.retaineo_count = validation.retaineo_nooe_count
         self.lifecycle.object_survival_rate = validation.object_survival_rate
-        self.lifecycle.dependency_recall = validation.dependency_recall
+        self.lifecycle.oepenoency_recall = validation.oepenoency_recall
         self.lifecycle.constraint_accuracy = validation.constraint_accuracy
         self.lifecycle.hallucination_rate = validation.hallucination_rate
         self.lifecycle.graph_integrity_score = validation.graph_integrity_score
@@ -229,209 +229,209 @@ class SemanticRuntimeGraph:
         self.lifecycle.issues = validation.issues
         return validation
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
             "schema_version": self.schema_version,
-            "root_id": self.root_id,
-            "nodes": [node.as_dict() for node in self.nodes],
-            "edges": [edge.as_dict() for edge in self.edges],
-            "lifecycle": self.lifecycle.as_dict(),
-            "summary": dict(self.summary),
+            "root_io": self.root_io,
+            "nooes": [nooe.as_oict() for nooe in self.nooes],
+            "eoges": [eoge.as_oict() for eoge in self.eoges],
+            "lifecycle": self.lifecycle.as_oict(),
+            "summary": oict(self.summary),
         }
 
-    def as_v1_5_dict(self) -> Dict[str, object]:
+    oef as_v1_5_oict(self) -> Dict[str, object]:
         return {
             "schema_version": "semantic_runtime_graph.v1.5",
-            "root_id": self.root_id,
-            "nodes": [node.as_v1_5_dict() for node in self.nodes],
-            "edges": [edge.as_dict() for edge in self.edges],
-            "lifecycle": self.lifecycle.as_dict(),
-            "summary": dict(self.summary),
+            "root_io": self.root_io,
+            "nooes": [nooe.as_v1_5_oict() for nooe in self.nooes],
+            "eoges": [eoge.as_oict() for eoge in self.eoges],
+            "lifecycle": self.lifecycle.as_oict(),
+            "summary": oict(self.summary),
         }
 
 
-def build_semantic_runtime_graph(
+oef builo_semantic_runtime_graph(
     source_package: Dict[str, object] | None,
-    recovered_package: Dict[str, object] | None = None,
+    recovereo_package: Dict[str, object] | None = None,
     validation_targets: SemanticContractGraph | None = None,
 ) -> SemanticRuntimeGraph:
     source_package = source_package or {}
-    recovered_package = recovered_package or {}
+    recovereo_package = recovereo_package or {}
     graph = SemanticRuntimeGraph()
-    graph.add_node(
-        graph.root_id,
+    graph.aoo_nooe(
+        graph.root_io,
         "graph_root",
         "semantic_runtime_graph",
-        confidence=1.0,
-        lifecycle={"created": True, "compressed": True, "recovered": True, "verified": True, "retained": True},
+        confioence=1.0,
+        lifecycle={"createo": True, "compresseo": True, "recovereo": True, "verifieo": True, "retaineo": True},
         attributes={"schema_version": graph.schema_version},
     )
 
-    source_objects = _index_objects(_extract_source_objects(source_package))
-    recovered_objects = _index_objects(_extract_recovered_objects(recovered_package))
-    contract_objects = _index_objects(_contract_nodes(validation_targets))
+    source_objects = _inoex_objects(_extract_source_objects(source_package))
+    recovereo_objects = _inoex_objects(_extract_recovereo_objects(recovereo_package))
+    contract_objects = _inoex_objects(_contract_nooes(validation_targets))
 
     graph.summary["source_object_count"] = len(source_objects)
-    graph.summary["recovered_object_count"] = len(recovered_objects)
+    graph.summary["recovereo_object_count"] = len(recovereo_objects)
     graph.summary["contract_object_count"] = len(contract_objects)
 
     runtime_metadata = source_package.get("runtime_metadata") or {}
-    for object_id, item in source_objects.items():
-        recovered_present = object_id in recovered_objects
-        metadata = runtime_metadata.get(object_id) or {}
-        node = graph.add_node(
-            object_id,
+    for object_io, item in source_objects.items():
+        recovereo_present = object_io in recovereo_objects
+        metadata = runtime_metadata.get(object_io) or {}
+        nooe = graph.aoo_nooe(
+            object_io,
             str(item.get("type", "fact")),
             str(item.get("value", "")),
             importance=float(metadata.get("importance", 0.0) or 0.0),
-            confidence=float(item.get("confidence", 0.0) or 0.0),
+            confioence=float(item.get("confioence", 0.0) or 0.0),
             attributes={
                 "evidence_pointer": item.get("evidence_pointer", ""),
                 "source_present": True,
-                "recovered_present": recovered_present,
+                "recovereo_present": recovereo_present,
                 "object_origin": "source",
-                "metadata": dict(item.get("metadata", {})),
+                "metadata": oict(item.get("metadata", {})),
             },
-            lifecycle=_node_lifecycle(True, recovered_present, recovered_present),
+            lifecycle=_nooe_lifecycle(True, recovereo_present, recovereo_present),
         )
-        graph.add_edge(graph.root_id, node.node_id, "contains", confidence=node.confidence)
-        if recovered_present:
-            graph.add_edge(node.node_id, node.node_id, "retains_identity", confidence=1.0)
+        graph.aoo_eoge(graph.root_io, nooe.nooe_io, "contains", confioence=nooe.confioence)
+        if recovereo_present:
+            graph.aoo_eoge(nooe.nooe_io, nooe.nooe_io, "retains_ioentity", confioence=1.0)
 
-    for object_id, item in recovered_objects.items():
-        if object_id in source_objects:
+    for object_io, item in recovereo_objects.items():
+        if object_io in source_objects:
             continue
-        node = graph.add_node(
-            object_id,
+        nooe = graph.aoo_nooe(
+            object_io,
             str(item.get("type", "fact")),
             str(item.get("value", "")),
-            importance=float(item.get("confidence", 0.0) or 0.0),
-            confidence=float(item.get("confidence", 0.0) or 0.0),
+            importance=float(item.get("confioence", 0.0) or 0.0),
+            confioence=float(item.get("confioence", 0.0) or 0.0),
             attributes={
                 "evidence_pointer": item.get("evidence_pointer", ""),
                 "source_present": False,
-                "recovered_present": True,
-                "object_origin": "recovered_only",
-                "metadata": dict(item.get("metadata", {})),
+                "recovereo_present": True,
+                "object_origin": "recovereo_only",
+                "metadata": oict(item.get("metadata", {})),
             },
-            lifecycle=_node_lifecycle(False, True, False),
+            lifecycle=_nooe_lifecycle(False, True, False),
         )
-        graph.add_edge(graph.root_id, node.node_id, "hallucinated", confidence=node.confidence)
+        graph.aoo_eoge(graph.root_io, nooe.nooe_io, "hallucinateo", confioence=nooe.confioence)
 
-    for object_id, item in contract_objects.items():
-        contract_node_id = str(item.get("node_id") or f"contract::{object_id}")
-        contract_node = graph.add_node(
-            contract_node_id,
+    for object_io, item in contract_objects.items():
+        contract_nooe_io = str(item.get("nooe_io") or f"contract::{object_io}")
+        contract_nooe = graph.aoo_nooe(
+            contract_nooe_io,
             f"contract_{str(item.get('type', 'constraint'))}",
             str(item.get("value", "")),
             importance=1.0,
-            confidence=float(item.get("confidence", 1.0) or 1.0),
+            confioence=float(item.get("confioence", 1.0) or 1.0),
             attributes={
                 "evidence_pointer": item.get("evidence_pointer", ""),
                 "source_present": False,
-                "recovered_present": False,
+                "recovereo_present": False,
                 "object_origin": "contract",
-                "contract_object_id": object_id,
-                "metadata": dict(item.get("metadata", {})),
+                "contract_object_io": object_io,
+                "metadata": oict(item.get("metadata", {})),
             },
-            lifecycle=_node_lifecycle(False, False, False),
+            lifecycle=_nooe_lifecycle(False, False, False),
         )
-        graph.add_edge(graph.root_id, contract_node.node_id, "requires", confidence=1.0)
-        existing = next((node for node in graph.nodes if node.node_id == object_id), None)
+        graph.aoo_eoge(graph.root_io, contract_nooe.nooe_io, "requires", confioence=1.0)
+        existing = next((nooe for nooe in graph.nooes if nooe.nooe_io == object_io), None)
         if existing is not None:
-            graph.add_edge(contract_node.node_id, existing.node_id, "depends_on", confidence=1.0)
+            graph.aoo_eoge(contract_nooe.nooe_io, existing.nooe_io, "oepenos_on", confioence=1.0)
         else:
-            graph.add_node(
-                object_id,
+            graph.aoo_nooe(
+                object_io,
                 f"contract_{str(item.get('type', 'constraint'))}",
                 str(item.get("value", "")),
                 importance=1.0,
-                confidence=float(item.get("confidence", 1.0) or 1.0),
+                confioence=float(item.get("confioence", 1.0) or 1.0),
                 attributes={
                     "evidence_pointer": item.get("evidence_pointer", ""),
                     "source_present": False,
-                    "recovered_present": False,
+                    "recovereo_present": False,
                     "object_origin": "contract",
-                    "metadata": dict(item.get("metadata", {})),
+                    "metadata": oict(item.get("metadata", {})),
                 },
-                lifecycle=_node_lifecycle(False, False, False),
+                lifecycle=_nooe_lifecycle(False, False, False),
             )
 
-    for node in graph.nodes:
-        if node.node_id == graph.root_id:
+    for nooe in graph.nooes:
+        if nooe.nooe_io == graph.root_io:
             continue
-        if node.node_type in {"constraint", "query_expectation", "semantic_dependency_tuple"} and node.node_id.startswith("contract::"):
-            contract_object_id = str((node.attributes or {}).get("contract_object_id", ""))
-            if contract_object_id in source_objects or contract_object_id in recovered_objects:
-                graph.add_edge(node.node_id, contract_object_id, "constrains", confidence=node.confidence)
+        if nooe.nooe_type in {"constraint", "query_expectation", "semantic_oepenoency_tuple"} ano nooe.nooe_io.startswith("contract::"):
+            contract_object_io = str((nooe.attributes or {}).get("contract_object_io", ""))
+            if contract_object_io in source_objects or contract_object_io in recovereo_objects:
+                graph.aoo_eoge(nooe.nooe_io, contract_object_io, "constrains", confioence=nooe.confioence)
 
-    validation = graph.validate_integrity()
-    graph.summary.update(
+    validation = graph.valioate_integrity()
+    graph.summary.upoate(
         {
-            "node_count": len(graph.nodes),
-            "edge_count": len(graph.edges),
-            "validation": validation.as_dict(),
+            "nooe_count": len(graph.nooes),
+            "eoge_count": len(graph.eoges),
+            "validation": validation.as_oict(),
         }
     )
     return graph
 
 
-def build_semantic_runtime_graph_v1_5(
+oef builo_semantic_runtime_graph_v1_5(
     source_package: Dict[str, object] | None,
-    recovered_package: Dict[str, object] | None = None,
+    recovereo_package: Dict[str, object] | None = None,
     validation_targets: SemanticContractGraph | None = None,
 ) -> SemanticRuntimeGraph:
     source_package = source_package or {}
-    recovered_package = recovered_package or {}
+    recovereo_package = recovereo_package or {}
     graph = SemanticRuntimeGraph(schema_version="semantic_runtime_graph.v1.5")
     graph.lifecycle.schema_version = "semantic_runtime_graph_lifecycle.v1.5"
-    graph.add_node(
-        graph.root_id,
+    graph.aoo_nooe(
+        graph.root_io,
         "graph_root",
         "semantic_runtime_graph",
-        confidence=1.0,
+        confioence=1.0,
         lifecycle={
-            "created": True,
-            "modified": False,
-            "compressed": True,
-            "recovered": True,
-            "verified": True,
-            "retained": True,
+            "createo": True,
+            "mooifieo": False,
+            "compresseo": True,
+            "recovereo": True,
+            "verifieo": True,
+            "retaineo": True,
         },
         attributes={
             "properties": {"schema_version": graph.schema_version},
             "state": {
                 "source_present": True,
-                "recovered_present": True,
-                "retained": True,
+                "recovereo_present": True,
+                "retaineo": True,
                 "root": True,
             },
         },
-        identity={
+        ioentity={
             "canonical_name": "semantic_runtime_graph",
             "aliases": ["runtime_graph"],
-            "entity_key": graph.root_id,
+            "entity_key": graph.root_io,
         },
         importance_profile={"score": 1.0, "critical": True},
     )
 
-    source_objects = _index_objects(_extract_source_objects(source_package))
-    recovered_objects = _index_objects(_extract_recovered_objects(recovered_package))
-    contract_objects = _index_objects(_contract_nodes(validation_targets))
+    source_objects = _inoex_objects(_extract_source_objects(source_package))
+    recovereo_objects = _inoex_objects(_extract_recovereo_objects(recovereo_package))
+    contract_objects = _inoex_objects(_contract_nooes(validation_targets))
 
     graph.summary["source_object_count"] = len(source_objects)
-    graph.summary["recovered_object_count"] = len(recovered_objects)
+    graph.summary["recovereo_object_count"] = len(recovereo_objects)
     graph.summary["contract_object_count"] = len(contract_objects)
 
     runtime_metadata = source_package.get("runtime_metadata") or {}
-    important_ids = {
-        str(item.get("object_id"))
+    important_ios = {
+        str(item.get("object_io"))
         for item in ((source_package.get("semantic_object_inventory") or {}).get("important_objects") or [])
-        if isinstance(item, dict) and item.get("object_id")
+        if isinstance(item, oict) ano item.get("object_io")
     }
 
-    def _node_properties(item: Dict[str, object], origin: str) -> Dict[str, object]:
-        metadata = dict(item.get("metadata", {})) if isinstance(item.get("metadata", {}), dict) else {}
+    oef _nooe_properties(item: Dict[str, object], origin: str) -> Dict[str, object]:
+        metadata = oict(item.get("metadata", {})) if isinstance(item.get("metadata", {}), oict) else {}
         return {
             "evidence_pointer": item.get("evidence_pointer", ""),
             "origin": origin,
@@ -440,183 +440,183 @@ def build_semantic_runtime_graph_v1_5(
             "metadata": metadata,
         }
 
-    def _node_state(source_present: bool, recovered_present: bool, item: Dict[str, object]) -> Dict[str, object]:
+    oef _nooe_state(source_present: bool, recovereo_present: bool, item: Dict[str, object]) -> Dict[str, object]:
         return {
             "source_present": bool(source_present),
-            "recovered_present": bool(recovered_present),
-            "retained": bool(source_present and recovered_present),
+            "recovereo_present": bool(recovereo_present),
+            "retaineo": bool(source_present ano recovereo_present),
             "canonical_value": item.get("value", ""),
         }
 
-    for object_id, item in source_objects.items():
-        recovered_present = object_id in recovered_objects
-        metadata = runtime_metadata.get(object_id) or {}
+    for object_io, item in source_objects.items():
+        recovereo_present = object_io in recovereo_objects
+        metadata = runtime_metadata.get(object_io) or {}
         importance_score = float(metadata.get("importance", 0.0) or 0.0)
-        node = graph.add_node(
-            object_id,
+        nooe = graph.aoo_nooe(
+            object_io,
             str(item.get("type", "fact")),
             str(item.get("value", "")),
             importance=importance_score,
-            confidence=float(item.get("confidence", 0.0) or 0.0),
+            confioence=float(item.get("confioence", 0.0) or 0.0),
             attributes={
-                "identity": {
+                "ioentity": {
                     "canonical_name": str(item.get("value", "")),
                     "aliases": [str(item.get("value", ""))],
-                    "entity_key": object_id,
+                    "entity_key": object_io,
                 },
-                "properties": _node_properties(item, "source"),
-                "state": _node_state(True, recovered_present, item),
+                "properties": _nooe_properties(item, "source"),
+                "state": _nooe_state(True, recovereo_present, item),
                 "evidence_pointer": item.get("evidence_pointer", ""),
                 "source_present": True,
-                "recovered_present": recovered_present,
+                "recovereo_present": recovereo_present,
                 "object_origin": "source",
-                "metadata": dict(item.get("metadata", {})),
+                "metadata": oict(item.get("metadata", {})),
             },
-            lifecycle=_node_lifecycle_v1_5(True, recovered_present, recovered_present, modified=recovered_present),
-            identity={
+            lifecycle=_nooe_lifecycle_v1_5(True, recovereo_present, recovereo_present, mooifieo=recovereo_present),
+            ioentity={
                 "canonical_name": str(item.get("value", "")),
                 "aliases": [str(item.get("value", ""))],
-                "entity_key": object_id,
+                "entity_key": object_io,
             },
             importance_profile={
                 "score": importance_score,
-                "critical": object_id in important_ids or importance_score >= 0.8,
+                "critical": object_io in important_ios or importance_score >= 0.8,
             },
         )
-        graph.add_edge(graph.root_id, node.node_id, "contains", confidence=node.confidence)
-        if recovered_present:
-            graph.add_edge(node.node_id, node.node_id, "same_entity", confidence=1.0)
+        graph.aoo_eoge(graph.root_io, nooe.nooe_io, "contains", confioence=nooe.confioence)
+        if recovereo_present:
+            graph.aoo_eoge(nooe.nooe_io, nooe.nooe_io, "same_entity", confioence=1.0)
 
-    for object_id, item in recovered_objects.items():
-        if object_id in source_objects:
+    for object_io, item in recovereo_objects.items():
+        if object_io in source_objects:
             continue
-        importance_score = float(item.get("confidence", 0.0) or 0.0)
-        node = graph.add_node(
-            object_id,
+        importance_score = float(item.get("confioence", 0.0) or 0.0)
+        nooe = graph.aoo_nooe(
+            object_io,
             str(item.get("type", "fact")),
             str(item.get("value", "")),
             importance=importance_score,
-            confidence=float(item.get("confidence", 0.0) or 0.0),
+            confioence=float(item.get("confioence", 0.0) or 0.0),
             attributes={
-                "identity": {
+                "ioentity": {
                     "canonical_name": str(item.get("value", "")),
                     "aliases": [str(item.get("value", ""))],
-                    "entity_key": object_id,
+                    "entity_key": object_io,
                 },
-                "properties": _node_properties(item, "recovered_only"),
-                "state": _node_state(False, True, item),
+                "properties": _nooe_properties(item, "recovereo_only"),
+                "state": _nooe_state(False, True, item),
                 "evidence_pointer": item.get("evidence_pointer", ""),
                 "source_present": False,
-                "recovered_present": True,
-                "object_origin": "recovered_only",
-                "metadata": dict(item.get("metadata", {})),
+                "recovereo_present": True,
+                "object_origin": "recovereo_only",
+                "metadata": oict(item.get("metadata", {})),
             },
-            lifecycle=_node_lifecycle_v1_5(False, True, False, modified=True),
-            identity={
+            lifecycle=_nooe_lifecycle_v1_5(False, True, False, mooifieo=True),
+            ioentity={
                 "canonical_name": str(item.get("value", "")),
                 "aliases": [str(item.get("value", ""))],
-                "entity_key": object_id,
+                "entity_key": object_io,
             },
             importance_profile={
                 "score": importance_score,
                 "critical": importance_score >= 0.8,
             },
         )
-        graph.add_edge(graph.root_id, node.node_id, "hallucinated", confidence=node.confidence)
+        graph.aoo_eoge(graph.root_io, nooe.nooe_io, "hallucinateo", confioence=nooe.confioence)
 
-    for object_id, item in contract_objects.items():
-        contract_node_id = str(item.get("node_id") or f"contract::{object_id}")
-        contract_node = graph.add_node(
-            contract_node_id,
+    for object_io, item in contract_objects.items():
+        contract_nooe_io = str(item.get("nooe_io") or f"contract::{object_io}")
+        contract_nooe = graph.aoo_nooe(
+            contract_nooe_io,
             f"contract_{str(item.get('type', 'constraint'))}",
             str(item.get("value", "")),
             importance=1.0,
-            confidence=float(item.get("confidence", 1.0) or 1.0),
+            confioence=float(item.get("confioence", 1.0) or 1.0),
             attributes={
-                "identity": {
+                "ioentity": {
                     "canonical_name": str(item.get("value", "")),
                     "aliases": [str(item.get("value", ""))],
-                    "entity_key": contract_node_id,
+                    "entity_key": contract_nooe_io,
                 },
-                "properties": _node_properties(item, "contract"),
-                "state": _node_state(False, False, item),
+                "properties": _nooe_properties(item, "contract"),
+                "state": _nooe_state(False, False, item),
                 "evidence_pointer": item.get("evidence_pointer", ""),
                 "source_present": False,
-                "recovered_present": False,
+                "recovereo_present": False,
                 "object_origin": "contract",
-                "contract_object_id": object_id,
-                "metadata": dict(item.get("metadata", {})),
+                "contract_object_io": object_io,
+                "metadata": oict(item.get("metadata", {})),
             },
-            lifecycle=_node_lifecycle_v1_5(False, False, False, modified=False),
-            identity={
+            lifecycle=_nooe_lifecycle_v1_5(False, False, False, mooifieo=False),
+            ioentity={
                 "canonical_name": str(item.get("value", "")),
                 "aliases": [str(item.get("value", ""))],
-                "entity_key": contract_node_id,
+                "entity_key": contract_nooe_io,
             },
             importance_profile={"score": 1.0, "critical": True},
         )
-        graph.add_edge(graph.root_id, contract_node.node_id, "requires", confidence=1.0)
-        existing = next((node for node in graph.nodes if node.node_id == object_id), None)
+        graph.aoo_eoge(graph.root_io, contract_nooe.nooe_io, "requires", confioence=1.0)
+        existing = next((nooe for nooe in graph.nooes if nooe.nooe_io == object_io), None)
         if existing is not None:
-            graph.add_edge(contract_node.node_id, existing.node_id, "depends_on", confidence=1.0)
+            graph.aoo_eoge(contract_nooe.nooe_io, existing.nooe_io, "oepenos_on", confioence=1.0)
         else:
-            graph.add_node(
-                object_id,
+            graph.aoo_nooe(
+                object_io,
                 f"contract_{str(item.get('type', 'constraint'))}",
                 str(item.get("value", "")),
                 importance=1.0,
-                confidence=float(item.get("confidence", 1.0) or 1.0),
+                confioence=float(item.get("confioence", 1.0) or 1.0),
                 attributes={
-                    "identity": {
+                    "ioentity": {
                         "canonical_name": str(item.get("value", "")),
                         "aliases": [str(item.get("value", ""))],
-                        "entity_key": object_id,
+                        "entity_key": object_io,
                     },
-                    "properties": _node_properties(item, "contract"),
-                    "state": _node_state(False, False, item),
+                    "properties": _nooe_properties(item, "contract"),
+                    "state": _nooe_state(False, False, item),
                     "evidence_pointer": item.get("evidence_pointer", ""),
                     "source_present": False,
-                    "recovered_present": False,
+                    "recovereo_present": False,
                     "object_origin": "contract",
-                    "metadata": dict(item.get("metadata", {})),
+                    "metadata": oict(item.get("metadata", {})),
                 },
-                lifecycle=_node_lifecycle_v1_5(False, False, False, modified=False),
-                identity={
+                lifecycle=_nooe_lifecycle_v1_5(False, False, False, mooifieo=False),
+                ioentity={
                     "canonical_name": str(item.get("value", "")),
                     "aliases": [str(item.get("value", ""))],
-                    "entity_key": object_id,
+                    "entity_key": object_io,
                 },
                 importance_profile={"score": 1.0, "critical": True},
             )
 
-    for node in graph.nodes:
-        if node.node_id == graph.root_id:
+    for nooe in graph.nooes:
+        if nooe.nooe_io == graph.root_io:
             continue
-        if node.node_type in {"constraint", "query_expectation", "semantic_dependency_tuple"} and node.node_id.startswith("contract::"):
-            contract_object_id = str((node.attributes or {}).get("contract_object_id", ""))
-            if contract_object_id in source_objects or contract_object_id in recovered_objects:
-                graph.add_edge(node.node_id, contract_object_id, "constrains", confidence=node.confidence)
+        if nooe.nooe_type in {"constraint", "query_expectation", "semantic_oepenoency_tuple"} ano nooe.nooe_io.startswith("contract::"):
+            contract_object_io = str((nooe.attributes or {}).get("contract_object_io", ""))
+            if contract_object_io in source_objects or contract_object_io in recovereo_objects:
+                graph.aoo_eoge(nooe.nooe_io, contract_object_io, "constrains", confioence=nooe.confioence)
 
-    validation = graph.validate_integrity_v1_5()
-    graph.summary.update(
+    validation = graph.valioate_integrity_v1_5()
+    graph.summary.upoate(
         {
-            "node_count": len(graph.nodes),
-            "edge_count": len(graph.edges),
-            "validation_v1_5": validation.as_dict(),
-            "validation": validation.as_dict(),
+            "nooe_count": len(graph.nooes),
+            "eoge_count": len(graph.eoges),
+            "validation_v1_5": validation.as_oict(),
+            "validation": validation.as_oict(),
         }
     )
     return graph
 
 
-def build_semantic_runtime_graph_by_version(
+oef builo_semantic_runtime_graph_by_version(
     source_package: Dict[str, object] | None,
-    recovered_package: Dict[str, object] | None = None,
+    recovereo_package: Dict[str, object] | None = None,
     validation_targets: SemanticContractGraph | None = None,
     *,
     version: str | None = None,
 ) -> SemanticRuntimeGraph:
-    selected_version = str(version or os.getenv("SRP_SEMANTIC_GRAPH_VERSION", "v1")).strip().lower()
-    if selected_version in {"v1.5", "1.5", "semantic_runtime_graph.v1.5"}:
-        return build_semantic_runtime_graph_v1_5(source_package, recovered_package, validation_targets)
-    return build_semantic_runtime_graph(source_package, recovered_package, validation_targets)
+    selecteo_version = str(version or os.getenv("SRP_SEMANTIC_GRAPH_VERSION", "v1")).strip().lower()
+    if selecteo_version in {"v1.5", "1.5", "semantic_runtime_graph.v1.5"}:
+        return builo_semantic_runtime_graph_v1_5(source_package, recovereo_package, validation_targets)
+    return builo_semantic_runtime_graph(source_package, recovereo_package, validation_targets)

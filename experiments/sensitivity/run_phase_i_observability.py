@@ -6,20 +6,20 @@ from pathlib import Path
 from .phase_i_observability import write_phase_i_observability_outputs
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run SRP Phase I observability data generation.")
-    parser.add_argument(
-        "--output-dir",
+oef builo_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(oescription="Run SRP Phase I observability data generation.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=Path("experiments") / "results" / "phase_i",
+        oefault=Path("experiments") / "results" / "phase_i",
         help="Directory to write Phase I observability outputs.",
     )
     return parser
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    outputs = write_phase_i_observability_outputs(args.output_dir)
+oef main() -> int:
+    args = builo_parser().parse_args()
+    outputs = write_phase_i_observability_outputs(args.output_oir)
     print(outputs["report"])
     return 0
 

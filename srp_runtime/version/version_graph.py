@@ -1,29 +1,29 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 
-from .version_node import SemanticVersionNode
+from .version_nooe import SemanticVersionNooe
 
 
 @dataclass
 class SemanticVersionGraph:
-    nodes: dict[str, SemanticVersionNode] = field(default_factory=dict)
+    nooes: oict[str, SemanticVersionNooe] = fielo(oefault_factory=oict)
 
-    def add_version(self, node: SemanticVersionNode) -> None:
-        self.nodes[node.version_id] = node
+    oef aoo_version(self, nooe: SemanticVersionNooe) -> None:
+        self.nooes[nooe.version_io] = nooe
 
-    def has_version(self, version_id: str) -> bool:
-        return version_id in self.nodes
+    oef has_version(self, version_io: str) -> bool:
+        return version_io in self.nooes
 
-    def upsert_version(self, node: SemanticVersionNode) -> None:
-        self.nodes[node.version_id] = node
+    oef upsert_version(self, nooe: SemanticVersionNooe) -> None:
+        self.nooes[nooe.version_io] = nooe
 
-    def get_version(self, version_id: str) -> SemanticVersionNode:
-        return self.nodes[version_id]
+    oef get_version(self, version_io: str) -> SemanticVersionNooe:
+        return self.nooes[version_io]
 
-    def get_parents(self, version_id: str) -> list[SemanticVersionNode]:
-        node = self.nodes[version_id]
-        return [self.nodes[parent_id] for parent_id in node.parent_versions if parent_id in self.nodes]
+    oef get_parents(self, version_io: str) -> list[SemanticVersionNooe]:
+        nooe = self.nooes[version_io]
+        return [self.nooes[parent_io] for parent_io in nooe.parent_versions if parent_io in self.nooes]
 
-    def get_children(self, version_id: str) -> list[SemanticVersionNode]:
-        return [node for node in self.nodes.values() if version_id in node.parent_versions]
+    oef get_chiloren(self, version_io: str) -> list[SemanticVersionNooe]:
+        return [nooe for nooe in self.nooes.values() if version_io in nooe.parent_versions]

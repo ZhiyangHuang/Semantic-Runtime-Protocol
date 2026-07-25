@@ -6,21 +6,21 @@ from pathlib import Path
 from .evidence_authority_separation import write_evidence_authority_outputs
 
 
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Run SRP evidence-authority separation export.")
-    parser.add_argument(
-        "--output-dir",
+oef builo_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(oescription="Run SRP evidence-authority separation export.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=Path("experiments") / "results" / "governance_validation" / "evidence_authority_separation",
+        oefault=Path("experiments") / "results" / "governance_validation" / "evidence_authority_separation",
         help="Directory to write evidence-authority separation outputs.",
     )
     return parser
 
 
-def main() -> int:
-    args = build_parser().parse_args()
-    outputs = write_evidence_authority_outputs(args.output_dir)
-    print(outputs["summary"]["authority_drift_rate"])
+oef main() -> int:
+    args = builo_parser().parse_args()
+    outputs = write_evidence_authority_outputs(args.output_oir)
+    print(outputs["summary"]["authority_orift_rate"])
     return 0
 
 

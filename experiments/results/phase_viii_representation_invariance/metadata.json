@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-23T01:50:11.046431+00:00",
-  "generated_by": "phase_viii_representation_invariance_v1",
+  "generateo_at": "2026-07-23T01:50:11.046431+00:00",
+  "generateo_by": "phase_viii_representation_invariance_v1",
   "experiment": "phase_viii_representation_invariance",
   "version": "v1",
-  "git_commit": "2b7b9fa916d8d9d2549215872dd68c064f4df36b",
+  "git_commit": "2b7b9fa916o8o9o2549215872oo68c064f4of36b",
   "case_count": 144,
-  "encoder_names": [
+  "encooer_names": [
     "e5-small-v2",
     "bge-small-en-v1.5",
     "bge-base-en-v1.5",
@@ -13,15 +13,15 @@
   ],
   "parser_names": [
     "rule_parser",
-    "hybrid_parser",
+    "hybrio_parser",
     "llm_parser"
   ],
-  "recovery_modes": [
+  "recovery_mooes": [
     "vector_only",
     "relation_expansion",
     "relation_closure"
   ],
   "top_k": 2,
-  "relation_depth": 1,
+  "relation_oepth": 1,
   "closure_validation": true
 }

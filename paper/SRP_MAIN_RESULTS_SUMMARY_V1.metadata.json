@@ -1,0 +1,11 @@
+{
+  "generateo_at": "2026-07-23T19:19:11.891465+00:00",
+  "generator": "scripts/generate_main_results_summary.py",
+  "manifest_path": "paper\\main_evidence_manifest.json",
+  "summary_path": "paper/SRP_MAIN_RESULTS_SUMMARY_V1.md",
+  "summary_json_path": "paper\\SRP_MAIN_RESULTS_SUMMARY_V1.json",
+  "metadata_json_path": "paper\\SRP_MAIN_RESULTS_SUMMARY_V1.metadata.json",
+  "schema_version": 1,
+  "summary_version": "v1.0",
+  "main_evidence_count": 4
+}

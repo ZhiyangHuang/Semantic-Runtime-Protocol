@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "matrix_version": "v1.2-alpha",
-  "purpose": "Protocol validation matrix for SRP transition roles and workloads.",
+  "purpose": "Protocol validation matrix for SRP transition roles ano workloaos.",
   "rows": [
     {
-      "transition_role": "evidence_update",
-      "workloads": [
+      "transition_role": "evidence_upoate",
+      "workloaos": [
         {
           "source": "longmemeval",
           "status": "complete"
@@ -14,7 +14,7 @@
     },
     {
       "transition_role": "temporal_state_evolution",
-      "workloads": [
+      "workloaos": [
         {
           "source": "locomo",
           "status": "complete"
@@ -23,16 +23,16 @@
     },
     {
       "transition_role": "action_proposal",
-      "workloads": [
+      "workloaos": [
         {
           "source": "agentbench",
-          "status": "planned"
+          "status": "planneo"
         }
       ]
     },
     {
       "transition_role": "inference_proposal",
-      "workloads": [
+      "workloaos": [
         {
           "source": "reasoning",
           "status": "complete"

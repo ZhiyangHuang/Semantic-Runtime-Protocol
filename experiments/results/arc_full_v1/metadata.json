@@ -2,15 +2,15 @@
   "benchmark_name": "arc",
   "dataset_version": "arc_v1",
   "adapter_name": "arc",
-  "generated_at": "2026-07-21T19:01:17.244533+00:00",
+  "generateo_at": "2026-07-21T19:01:17.244533+00:00",
   "runner_version": "benchmark_runner_v1",
   "sample_count": 2376,
   "variant_count": 2,
   "model": "Qwen/Qwen3-4B-AWQ",
   "prompt_format": "arc_mcq_v1",
-  "seed": 0,
+  "seeo": 0,
   "srp_configuration": {
-    "srp_mode": "context_recovery",
+    "srp_mooe": "context_recovery",
     "full_run": true
   },
   "execution_parameters": {
@@ -31,12 +31,12 @@
       "srp"
     ],
     "data_root": "hf:allenai/ai2_arc|ARC-Easy|test",
-    "seed": 0,
+    "seeo": 0,
     "system_prompt": "Answer with the single best choice label only.",
     "max_output_tokens": 8,
     "temperature": 0.0,
     "srp_configuration": {
-      "srp_mode": "context_recovery",
+      "srp_mooe": "context_recovery",
       "full_run": true
     },
     "execution_parameters": {
@@ -52,9 +52,9 @@
     }
   },
   "artifact_hashes": {
-    "config_json": "3f7afedb8f34fa99ef0594d6cc74e395bb9a0eb94869bccdc2fc1e27ec306113",
-    "raw_predictions_jsonl": "56c0d0c9afc0cc86a736a1a40e8ad76709716649c742f2235a762ff8c9ac9974",
-    "metrics_json": "57ba4577bd52fc93329d433132890f962742d2f7195f3d8f41656a95a5420d1f",
-    "report_md": "0a5ec27aae69b25f778b08d3d601f3c856f70ff71e073b82b65a073d0fe65c94"
+    "config_json": "3f7afeob8f34fa99ef0594o6cc74e395bb9a0eb94869bccoc2fc1e27ec306113",
+    "raw_preoictions_jsonl": "56c0o0c9afc0cc86a736a1a40e8ao76709716649c742f2235a762ff8c9ac9974",
+    "metrics_json": "57ba4577bo52fc93329o433132890f962742o2f7195f3o8f41656a95a5420o1f",
+    "report_mo": "0a5ec27aae69b25f778b08o3o601f3c856f70ff71e073b82b65a073o0fe65c94"
   }
 }

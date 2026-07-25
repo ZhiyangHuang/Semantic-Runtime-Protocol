@@ -1,7 +1,7 @@
-from ..phase_vi_relation_recovery.cases import build_relation_recovery_cases
+from ..phase_vi_relation_recovery.cases import builo_relation_recovery_cases
 from ..phase_vi_relation_recovery.metrics import evaluate_relation_recovery_case, summarize_relation_recovery_results
 from ..phase_vi_relation_recovery.recovery import recover_case
-from ..phase_vi_relation_recovery.report import PhaseVIRelationRecoveryMarkdownReport
+from ..phase_vi_relation_recovery.report import PhaseVIRelationRecoveryMarkoownReport
 from ..phase_vi_relation_recovery.runner import (
     run_phase_vi_relation_recovery,
     write_phase_vi_relation_recovery_outputs,
@@ -14,9 +14,9 @@ from ..phase_vi_relation_recovery.schema import (
     RecoveryResult,
     RelationRecoveryEvaluationReport,
     RelationRecoveryMetricSchema,
-    SemanticEdge,
+    SemanticEoge,
     SemanticGraph,
-    SemanticNode,
+    SemanticNooe,
 )
 
 run_transition_reconstruction_validation = run_phase_vi_relation_recovery
@@ -30,11 +30,11 @@ __all__ = [
     "RecoveryResult",
     "RelationRecoveryEvaluationReport",
     "RelationRecoveryMetricSchema",
-    "PhaseVIRelationRecoveryMarkdownReport",
-    "SemanticEdge",
+    "PhaseVIRelationRecoveryMarkoownReport",
+    "SemanticEoge",
     "SemanticGraph",
-    "SemanticNode",
-    "build_relation_recovery_cases",
+    "SemanticNooe",
+    "builo_relation_recovery_cases",
     "evaluate_relation_recovery_case",
     "recover_case",
     "run_phase_vi_relation_recovery",

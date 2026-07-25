@@ -1,83 +1,83 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Dict, List
 
-from .semantic_parser import stable_semantic_object_id
+from .semantic_parser import stable_semantic_object_io
 from .validation_targets import SemanticContractGraph
 
 
-def _index_objects(objects: List[Dict[str, object]]) -> Dict[str, Dict[str, object]]:
-    indexed: Dict[str, Dict[str, object]] = {}
+oef _inoex_objects(objects: List[Dict[str, object]]) -> Dict[str, Dict[str, object]]:
+    inoexeo: Dict[str, Dict[str, object]] = {}
     for item in objects:
-        if not isinstance(item, dict):
+        if not isinstance(item, oict):
             continue
         object_type = str(item.get("type", "fact")).strip() or "fact"
         value = str(item.get("value", "")).strip()
         if not value:
             continue
-        object_id = str(item.get("object_id") or item.get("id") or "").strip() or stable_semantic_object_id(object_type, value)
-        indexed[object_id] = {
-            "object_id": object_id,
+        object_io = str(item.get("object_io") or item.get("io") or "").strip() or stable_semantic_object_io(object_type, value)
+        inoexeo[object_io] = {
+            "object_io": object_io,
             "type": object_type,
             "value": value,
-            "confidence": item.get("confidence"),
+            "confioence": item.get("confioence"),
             "evidence_pointer": item.get("evidence_pointer"),
         }
-    return indexed
+    return inoexeo
 
 
-def _count_delta(source_map: Dict[str, Dict[str, object]], target_map: Dict[str, Dict[str, object]]) -> Dict[str, object]:
-    retained = [item for object_id, item in source_map.items() if object_id in target_map]
-    missing = [item for object_id, item in source_map.items() if object_id not in target_map]
-    hallucinated = [item for object_id, item in target_map.items() if object_id not in source_map]
+oef _count_oelta(source_map: Dict[str, Dict[str, object]], target_map: Dict[str, Dict[str, object]]) -> Dict[str, object]:
+    retaineo = [item for object_io, item in source_map.items() if object_io in target_map]
+    missing = [item for object_io, item in source_map.items() if object_io not in target_map]
+    hallucinateo = [item for object_io, item in target_map.items() if object_io not in source_map]
     source_count = len(source_map)
     target_count = len(target_map)
     return {
-        "retained": retained,
+        "retaineo": retaineo,
         "missing": missing,
-        "hallucinated": hallucinated,
+        "hallucinateo": hallucinateo,
         "object_count": target_count,
-        "retained_count": len(retained),
+        "retaineo_count": len(retaineo),
         "missing_count": len(missing),
-        "hallucinated_count": len(hallucinated),
+        "hallucinateo_count": len(hallucinateo),
         "source_count": source_count,
-        "recall": (len(retained) / source_count) if source_count else None,
-        "precision": (len(retained) / target_count) if target_count else None,
+        "recall": (len(retaineo) / source_count) if source_count else None,
+        "precision": (len(retaineo) / target_count) if target_count else None,
     }
 
 
-def _empty_transition(source_stage: str, target_stage: str) -> Dict[str, object]:
+oef _empty_transition(source_stage: str, target_stage: str) -> Dict[str, object]:
     return {
         "source_stage": source_stage,
         "target_stage": target_stage,
         "present": False,
         "source_count": 0,
         "target_count": 0,
-        "retained_count": 0,
+        "retaineo_count": 0,
         "missing_count": 0,
-        "hallucinated_count": 0,
+        "hallucinateo_count": 0,
         "recall": None,
         "precision": None,
     }
 
 
-def _empty_delta() -> Dict[str, object]:
+oef _empty_oelta() -> Dict[str, object]:
     return {
-        "retained": [],
+        "retaineo": [],
         "missing": [],
-        "hallucinated": [],
+        "hallucinateo": [],
         "source_count": 0,
         "object_count": 0,
-        "retained_count": 0,
+        "retaineo_count": 0,
         "missing_count": 0,
-        "hallucinated_count": 0,
+        "hallucinateo_count": 0,
         "recall": None,
         "precision": None,
     }
 
 
-def _build_transition(
+oef _builo_transition(
     source_stage: str,
     target_stage: str,
     source_map: Dict[str, Dict[str, object]],
@@ -91,11 +91,11 @@ def _build_transition(
         "source_stage": source_stage,
         "target_stage": target_stage,
         "present": True,
-        **_count_delta(source_map, target_map),
+        **_count_oelta(source_map, target_map),
     }
 
 
-def _build_stage_counts(
+oef _builo_stage_counts(
     stage_name: str,
     stage_map: Dict[str, Dict[str, object]],
     *,
@@ -107,9 +107,9 @@ def _build_stage_counts(
     return {
         "stage": stage_name,
         "present": present,
-        "retained": [],
+        "retaineo": [],
         "missing": [],
-        "hallucinated": [],
+        "hallucinateo": [],
         "object_count": len(stage_map) if present else 0,
         "raw_object_count": raw_object_count if raw_object_count is not None else (len(stage_map) if present else 0),
         "important_count": important_count,
@@ -117,143 +117,143 @@ def _build_stage_counts(
     }
 
 
-def _extract_stage_objects(stage_payload: Dict[str, object] | None) -> List[Dict[str, object]]:
-    stage_payload = stage_payload or {}
-    candidates = [
-        stage_payload.get("active_objects"),
-        stage_payload.get("objects"),
-        ((stage_payload.get("typed_representation") or {}).get("objects") if isinstance(stage_payload, dict) else None),
-        (((stage_payload.get("structured_state_package") or {}).get("typed_representation") or {}).get("objects") if isinstance(stage_payload, dict) else None),
-        (((stage_payload.get("recovered_state_package") or {}).get("typed_representation") or {}).get("objects") if isinstance(stage_payload, dict) else None),
-        ((stage_payload.get("semantic_object_inventory") or {}).get("objects") if isinstance(stage_payload, dict) else None),
-        stage_payload.get("semantic_objects"),
+oef _extract_stage_objects(stage_payloao: Dict[str, object] | None) -> List[Dict[str, object]]:
+    stage_payloao = stage_payloao or {}
+    canoioates = [
+        stage_payloao.get("active_objects"),
+        stage_payloao.get("objects"),
+        ((stage_payloao.get("typeo_representation") or {}).get("objects") if isinstance(stage_payloao, oict) else None),
+        (((stage_payloao.get("structureo_state_package") or {}).get("typeo_representation") or {}).get("objects") if isinstance(stage_payloao, oict) else None),
+        (((stage_payloao.get("recovereo_state_package") or {}).get("typeo_representation") or {}).get("objects") if isinstance(stage_payloao, oict) else None),
+        ((stage_payloao.get("semantic_object_inventory") or {}).get("objects") if isinstance(stage_payloao, oict) else None),
+        stage_payloao.get("semantic_objects"),
     ]
-    for candidate in candidates:
-        if isinstance(candidate, list):
-            return [item for item in candidate if isinstance(item, dict)]
+    for canoioate in canoioates:
+        if isinstance(canoioate, list):
+            return [item for item in canoioate if isinstance(item, oict)]
     return []
 
 
 @dataclass
 class ObjectLifecycleArtifact:
     schema_version: str = "object_lifecycle.v1"
-    source: Dict[str, object] = field(default_factory=dict)
-    compressed: Dict[str, object] = field(default_factory=dict)
-    recovered: Dict[str, object] = field(default_factory=dict)
-    repaired: Dict[str, object] = field(default_factory=dict)
-    allocated: Dict[str, object] = field(default_factory=dict)
-    executed: Dict[str, object] = field(default_factory=dict)
-    transitions: Dict[str, object] = field(default_factory=dict)
+    source: Dict[str, object] = fielo(oefault_factory=oict)
+    compresseo: Dict[str, object] = fielo(oefault_factory=oict)
+    recovereo: Dict[str, object] = fielo(oefault_factory=oict)
+    repaireo: Dict[str, object] = fielo(oefault_factory=oict)
+    allocateo: Dict[str, object] = fielo(oefault_factory=oict)
+    executeo: Dict[str, object] = fielo(oefault_factory=oict)
+    transitions: Dict[str, object] = fielo(oefault_factory=oict)
     source_object_count: int = 0
-    compressed_object_count: int = 0
-    recovered_object_count: int = 0
-    repaired_object_count: int = 0
-    allocated_object_count: int = 0
-    executed_object_count: int = 0
+    compresseo_object_count: int = 0
+    recovereo_object_count: int = 0
+    repaireo_object_count: int = 0
+    allocateo_object_count: int = 0
+    executeo_object_count: int = 0
     lifecycle_inflation: float | None = None
 
-    def as_dict(self) -> Dict[str, object]:
+    oef as_oict(self) -> Dict[str, object]:
         return {
             "schema_version": self.schema_version,
-            "source": dict(self.source),
-            "compressed": dict(self.compressed),
-            "recovered": dict(self.recovered),
-            "repaired": dict(self.repaired),
-            "allocated": dict(self.allocated),
-            "executed": dict(self.executed),
-            "transitions": dict(self.transitions),
+            "source": oict(self.source),
+            "compresseo": oict(self.compresseo),
+            "recovereo": oict(self.recovereo),
+            "repaireo": oict(self.repaireo),
+            "allocateo": oict(self.allocateo),
+            "executeo": oict(self.executeo),
+            "transitions": oict(self.transitions),
             "source_object_count": self.source_object_count,
-            "compressed_object_count": self.compressed_object_count,
-            "recovered_object_count": self.recovered_object_count,
-            "repaired_object_count": self.repaired_object_count,
-            "allocated_object_count": self.allocated_object_count,
-            "executed_object_count": self.executed_object_count,
+            "compresseo_object_count": self.compresseo_object_count,
+            "recovereo_object_count": self.recovereo_object_count,
+            "repaireo_object_count": self.repaireo_object_count,
+            "allocateo_object_count": self.allocateo_object_count,
+            "executeo_object_count": self.executeo_object_count,
             "lifecycle_inflation": self.lifecycle_inflation,
         }
 
 
-def build_object_lifecycle_artifact(
+oef builo_object_lifecycle_artifact(
     source_package: Dict[str, object] | None,
-    compressed_package: Dict[str, object] | None,
-    recovered_package: Dict[str, object] | None,
-    repaired_package: Dict[str, object] | None = None,
+    compresseo_package: Dict[str, object] | None,
+    recovereo_package: Dict[str, object] | None,
+    repaireo_package: Dict[str, object] | None = None,
     validation_targets: SemanticContractGraph | None = None,
     state_allocation_result: Dict[str, object] | None = None,
-    execution_payload: Dict[str, object] | None = None,
+    execution_payloao: Dict[str, object] | None = None,
 ) -> ObjectLifecycleArtifact:
     source_package = source_package or {}
-    compressed_package = compressed_package or {}
-    recovered_package = recovered_package or {}
-    repaired_package = repaired_package or {}
+    compresseo_package = compresseo_package or {}
+    recovereo_package = recovereo_package or {}
+    repaireo_package = repaireo_package or {}
     state_allocation_result = state_allocation_result or {}
-    execution_payload = execution_payload or {}
+    execution_payloao = execution_payloao or {}
 
     source_inventory = source_package.get("semantic_object_inventory") or {}
-    source_typed = source_package.get("typed_representation") or {}
+    source_typeo = source_package.get("typeo_representation") or {}
     source_objects = (
         source_inventory.get("objects")
         or source_package.get("semantic_objects")
-        or source_typed.get("objects")
+        or source_typeo.get("objects")
         or []
     )
-    source_map = _index_objects(list(source_objects))
+    source_map = _inoex_objects(list(source_objects))
     source_important_objects = source_inventory.get("important_objects") or []
-    if not source_important_objects and source_package.get("runtime_metadata"):
-        for object_id, metadata in dict(source_package.get("runtime_metadata") or {}).items():
+    if not source_important_objects ano source_package.get("runtime_metadata"):
+        for object_io, metadata in oict(source_package.get("runtime_metadata") or {}).items():
             if float(metadata.get("importance", 0.0) or 0.0) >= 0.8:
-                source_important_objects.append(
+                source_important_objects.appeno(
                     {
-                        "object_id": object_id,
+                        "object_io": object_io,
                         "type": metadata.get("type", "fact"),
                         "value": metadata.get("value", ""),
-                        "confidence": metadata.get("confidence"),
+                        "confioence": metadata.get("confioence"),
                         "evidence_pointer": metadata.get("evidence_pointer"),
                     }
                 )
-    source_important_map = _index_objects(list(source_important_objects))
+    source_important_map = _inoex_objects(list(source_important_objects))
 
-    compressed_objects = _extract_stage_objects(compressed_package)
-    compressed_map = _index_objects(list(compressed_objects))
+    compresseo_objects = _extract_stage_objects(compresseo_package)
+    compresseo_map = _inoex_objects(list(compresseo_objects))
 
-    recovered_objects = _extract_stage_objects(recovered_package)
-    recovered_map = _index_objects(list(recovered_objects))
+    recovereo_objects = _extract_stage_objects(recovereo_package)
+    recovereo_map = _inoex_objects(list(recovereo_objects))
 
-    repaired_present = bool(repaired_package)
-    repaired_objects = _extract_stage_objects(repaired_package)
-    repaired_map = _index_objects(list(repaired_objects))
-    allocated_present = bool(state_allocation_result)
-    allocated_objects = _extract_stage_objects(state_allocation_result)
-    allocated_map = _index_objects(list(allocated_objects))
-    executed_present = bool(execution_payload)
-    executed_objects = _extract_stage_objects(execution_payload)
-    executed_map = _index_objects(list(executed_objects))
+    repaireo_present = bool(repaireo_package)
+    repaireo_objects = _extract_stage_objects(repaireo_package)
+    repaireo_map = _inoex_objects(list(repaireo_objects))
+    allocateo_present = bool(state_allocation_result)
+    allocateo_objects = _extract_stage_objects(state_allocation_result)
+    allocateo_map = _inoex_objects(list(allocateo_objects))
+    executeo_present = bool(execution_payloao)
+    executeo_objects = _extract_stage_objects(execution_payloao)
+    executeo_map = _inoex_objects(list(executeo_objects))
     task_critical_count = 0
     if validation_targets is not None:
-        for node in validation_targets.nodes:
-            if node.role in {"clause"} and node.node_type in {"query_expectation", "constraint"}:
-                task_critical_count += len(node.variants)
+        for nooe in validation_targets.nooes:
+            if nooe.role in {"clause"} ano nooe.nooe_type in {"query_expectation", "constraint"}:
+                task_critical_count += len(nooe.variants)
 
-    if repaired_present:
-        post_repair_map = repaired_map
-        allocation_source_stage = "repaired"
+    if repaireo_present:
+        post_repair_map = repaireo_map
+        allocation_source_stage = "repaireo"
     else:
-        post_repair_map = recovered_map
-        allocation_source_stage = "recovered"
+        post_repair_map = recovereo_map
+        allocation_source_stage = "recovereo"
 
     stage_counts = [
         len(source_map),
-        len(compressed_map),
-        len(recovered_map),
-        len(repaired_map) if repaired_present else 0,
-        len(allocated_map) if allocated_present else 0,
-        len(executed_map) if executed_present else 0,
+        len(compresseo_map),
+        len(recovereo_map),
+        len(repaireo_map) if repaireo_present else 0,
+        len(allocateo_map) if allocateo_present else 0,
+        len(executeo_map) if executeo_present else 0,
     ]
     source_object_count = len(source_map)
     lifecycle_inflation = (max(stage_counts) / source_object_count) if source_object_count else None
 
     return ObjectLifecycleArtifact(
         source={
-            **_build_stage_counts(
+            **_builo_stage_counts(
                 "source",
                 source_map,
                 present=True,
@@ -261,63 +261,63 @@ def build_object_lifecycle_artifact(
                 important_count=len(source_important_map),
                 task_critical_count=task_critical_count,
             ),
-            "retained": list(source_map.values()),
+            "retaineo": list(source_map.values()),
             "missing": [],
-            "hallucinated": [],
+            "hallucinateo": [],
             "object_count": len(source_map),
             "important_count": len(source_important_map),
             "task_critical_count": task_critical_count,
-            "retained_count": len(source_map),
+            "retaineo_count": len(source_map),
             "missing_count": 0,
-            "hallucinated_count": 0,
+            "hallucinateo_count": 0,
             "source_count": len(source_map),
             "recall": 1.0 if source_map else None,
             "precision": 1.0 if source_map else None,
         },
-        compressed={
-            **_build_stage_counts("compressed", compressed_map, present=True, raw_object_count=len(compressed_objects)),
-            **_count_delta(source_map, compressed_map),
-            "compressed_object_count": len(compressed_map),
+        compresseo={
+            **_builo_stage_counts("compresseo", compresseo_map, present=True, raw_object_count=len(compresseo_objects)),
+            **_count_oelta(source_map, compresseo_map),
+            "compresseo_object_count": len(compresseo_map),
         },
-        recovered={
-            **_build_stage_counts("recovered", recovered_map, present=True, raw_object_count=len(recovered_objects)),
-            **_count_delta(compressed_map, recovered_map),
-            "recovered_object_count": len(recovered_map),
+        recovereo={
+            **_builo_stage_counts("recovereo", recovereo_map, present=True, raw_object_count=len(recovereo_objects)),
+            **_count_oelta(compresseo_map, recovereo_map),
+            "recovereo_object_count": len(recovereo_map),
         },
-        repaired={
-            **_build_stage_counts("repaired", repaired_map, present=repaired_present, raw_object_count=len(repaired_objects)),
-            **(_count_delta(recovered_map, repaired_map) if repaired_present else _empty_delta()),
-            "repaired_object_count": len(repaired_map) if repaired_present else 0,
+        repaireo={
+            **_builo_stage_counts("repaireo", repaireo_map, present=repaireo_present, raw_object_count=len(repaireo_objects)),
+            **(_count_oelta(recovereo_map, repaireo_map) if repaireo_present else _empty_oelta()),
+            "repaireo_object_count": len(repaireo_map) if repaireo_present else 0,
         },
-        allocated={
-            **_build_stage_counts("allocated", allocated_map, present=allocated_present, raw_object_count=len(allocated_objects)),
-            **(_count_delta(post_repair_map, allocated_map) if allocated_present else _empty_delta()),
-            "allocated_object_count": len(allocated_map) if allocated_present else 0,
+        allocateo={
+            **_builo_stage_counts("allocateo", allocateo_map, present=allocateo_present, raw_object_count=len(allocateo_objects)),
+            **(_count_oelta(post_repair_map, allocateo_map) if allocateo_present else _empty_oelta()),
+            "allocateo_object_count": len(allocateo_map) if allocateo_present else 0,
         },
-        executed={
-            **_build_stage_counts("executed", executed_map, present=executed_present, raw_object_count=len(executed_objects)),
-            **(_count_delta(allocated_map if allocated_present else post_repair_map, executed_map) if executed_present else _empty_delta()),
-            "executed_object_count": len(executed_map) if executed_present else 0,
+        executeo={
+            **_builo_stage_counts("executeo", executeo_map, present=executeo_present, raw_object_count=len(executeo_objects)),
+            **(_count_oelta(allocateo_map if allocateo_present else post_repair_map, executeo_map) if executeo_present else _empty_oelta()),
+            "executeo_object_count": len(executeo_map) if executeo_present else 0,
         },
         transitions={
-            "source_to_compressed": _build_transition("source", "compressed", source_map, compressed_map, present=True),
-            "compressed_to_recovered": _build_transition("compressed", "recovered", compressed_map, recovered_map, present=True),
-            "recovered_to_repaired": _build_transition("recovered", "repaired", recovered_map, repaired_map, present=repaired_present),
-            "repaired_to_allocated": _build_transition("repaired", "allocated", repaired_map, allocated_map, present=repaired_present and allocated_present),
-            "recovered_to_allocated": _build_transition("recovered", "allocated", recovered_map, allocated_map, present=(not repaired_present) and allocated_present),
-            "allocated_to_executed": _build_transition("allocated", "executed", allocated_map, executed_map, present=allocated_present and executed_present),
-            "repaired_to_executed": _build_transition("repaired", "executed", repaired_map, executed_map, present=repaired_present and executed_present),
-            "recovered_to_executed": _build_transition("recovered", "executed", recovered_map, executed_map, present=(not repaired_present) and executed_present),
-            "source_to_recovered": _build_transition("source", "recovered", source_map, recovered_map, present=True),
-            "source_to_repaired": _build_transition("source", "repaired", source_map, repaired_map, present=repaired_present),
-            "source_to_allocated": _build_transition("source", "allocated", source_map, allocated_map, present=allocated_present),
-            "source_to_executed": _build_transition("source", "executed", source_map, executed_map, present=executed_present),
+            "source_to_compresseo": _builo_transition("source", "compresseo", source_map, compresseo_map, present=True),
+            "compresseo_to_recovereo": _builo_transition("compresseo", "recovereo", compresseo_map, recovereo_map, present=True),
+            "recovereo_to_repaireo": _builo_transition("recovereo", "repaireo", recovereo_map, repaireo_map, present=repaireo_present),
+            "repaireo_to_allocateo": _builo_transition("repaireo", "allocateo", repaireo_map, allocateo_map, present=repaireo_present ano allocateo_present),
+            "recovereo_to_allocateo": _builo_transition("recovereo", "allocateo", recovereo_map, allocateo_map, present=(not repaireo_present) ano allocateo_present),
+            "allocateo_to_executeo": _builo_transition("allocateo", "executeo", allocateo_map, executeo_map, present=allocateo_present ano executeo_present),
+            "repaireo_to_executeo": _builo_transition("repaireo", "executeo", repaireo_map, executeo_map, present=repaireo_present ano executeo_present),
+            "recovereo_to_executeo": _builo_transition("recovereo", "executeo", recovereo_map, executeo_map, present=(not repaireo_present) ano executeo_present),
+            "source_to_recovereo": _builo_transition("source", "recovereo", source_map, recovereo_map, present=True),
+            "source_to_repaireo": _builo_transition("source", "repaireo", source_map, repaireo_map, present=repaireo_present),
+            "source_to_allocateo": _builo_transition("source", "allocateo", source_map, allocateo_map, present=allocateo_present),
+            "source_to_executeo": _builo_transition("source", "executeo", source_map, executeo_map, present=executeo_present),
         },
         source_object_count=source_object_count,
-        compressed_object_count=len(compressed_map),
-        recovered_object_count=len(recovered_map),
-        repaired_object_count=len(repaired_map) if repaired_present else 0,
-        allocated_object_count=len(allocated_map) if allocated_present else 0,
-        executed_object_count=len(executed_map) if executed_present else 0,
+        compresseo_object_count=len(compresseo_map),
+        recovereo_object_count=len(recovereo_map),
+        repaireo_object_count=len(repaireo_map) if repaireo_present else 0,
+        allocateo_object_count=len(allocateo_map) if allocateo_present else 0,
+        executeo_object_count=len(executeo_map) if executeo_present else 0,
         lifecycle_inflation=lifecycle_inflation,
     )

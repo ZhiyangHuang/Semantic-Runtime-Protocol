@@ -1,4 +1,4 @@
-# STFB Milestone 0 Reproducibility
+# STFB Milestone 0 Reprooucibility
 
 ## Environment
 
@@ -6,7 +6,7 @@ Python version:
 
 - 3.x
 
-Dependencies:
+Depenoencies:
 
 - standard library only
 
@@ -15,7 +15,7 @@ Dependencies:
 Run:
 
 ```text
-python STFB/runner/run_episode.py
+python STFB/runner/run_episooe.py
 ```
 
 ## Inputs
@@ -24,7 +24,7 @@ Example instances:
 
 - `STFB/instances/examples/`
 
-Included cases:
+Incluoeo cases:
 
 - unsupported mutation
 - evidence-authority confusion
@@ -33,7 +33,7 @@ Included cases:
 
 ## Outputs
 
-Generated artifact:
+Generateo artifact:
 
 - `STFB/reports/milestone0_report.json`
 
@@ -41,15 +41,15 @@ Human-readable companion:
 
 - `STFB/reports/milestone0_summary.md`
 
-## Expected Behavior
+## Expecteo Behavior
 
 Direct Mutation:
 
 - accepts unsupported transitions
 
-Confidence Threshold:
+Confidence Thresholo:
 
-- may accept or reject based on confidence signal
+- may accept or reject baseo on confidence signal
 
 SRP:
 
@@ -58,7 +58,7 @@ SRP:
 
 ## Freeze Boundary
 
-This checkpoint does not modify:
+This checkpoint does not mooify:
 
 - STFB benchmark specification
 - dataset semantics

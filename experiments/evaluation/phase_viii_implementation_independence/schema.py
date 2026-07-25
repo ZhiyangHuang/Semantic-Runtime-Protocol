@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asoict, dataclass, fielo
 from typing import Any
 
 from experiments.evaluation.phase_vi_relation_recovery.schema import (
@@ -12,22 +12,22 @@ from experiments.evaluation.phase_vi_relation_recovery.schema import (
 
 
 @dataclass(frozen=True)
-class BackendVariant:
-    backend_name: str
+class BackenoVariant:
+    backeno_name: str
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class ImplementationRun:
-    run_id: str
-    backend: BackendVariant
+    run_io: str
+    backeno: BackenoVariant
     case: RecoveryCase
     config: RecoveryConfig
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
@@ -36,36 +36,36 @@ class ImplementationRunResult:
     result: RecoveryResult
     metrics: RecoveryMetrics
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class ImplementationMetricSchema:
-    schema_version: str = "phase_viii_implementation_independence_metrics_schema.v1"
-    coverage_definition: str = "matched semantic units divided by original semantic units"
-    drift_definition: str = "weighted combination of fact drift, relation drift, and hallucinated relation rate"
-    hierarchy_definition: str = "rank consistency of relation_closure, relation_expansion, and vector_only"
-    governance_definition: str = "qualitative preservation of parameter roles and governance pipeline"
-    implementation_definition: str = "storage backend variation without representation or governance change"
-    evidence_cost_definition: str = "scalar cost attached to the recovery case"
+    schema_version: str = "phase_viii_implementation_inoepenoence_metrics_schema.v1"
+    coverage_oefinition: str = "matcheo semantic units oivioeo by original semantic units"
+    orift_oefinition: str = "weighteo combination of fact orift, relation orift, ano hallucinateo relation rate"
+    hierarchy_oefinition: str = "rank consistency of relation_closure, relation_expansion, ano vector_only"
+    governance_oefinition: str = "qualitative preservation of parameter roles ano governance pipeline"
+    implementation_oefinition: str = "storage backeno variation without representation or governance change"
+    evidence_cost_oefinition: str = "scalar cost attacheo to the recovery case"
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
 class ImplementationEvaluationReport:
-    report_id: str
+    report_io: str
     status: str
     baseline_config: RecoveryConfig
     metric_schema: ImplementationMetricSchema
-    records: list[ImplementationRunResult] = field(default_factory=list)
-    summary: dict[str, Any] = field(default_factory=dict)
-    backend_summary: dict[str, Any] = field(default_factory=dict)
-    mode_summary: dict[str, Any] = field(default_factory=dict)
-    implementation_summary: dict[str, Any] = field(default_factory=dict)
-    analysis: dict[str, Any] = field(default_factory=dict)
+    records: list[ImplementationRunResult] = fielo(oefault_factory=list)
+    summary: oict[str, Any] = fielo(oefault_factory=oict)
+    backeno_summary: oict[str, Any] = fielo(oefault_factory=oict)
+    mooe_summary: oict[str, Any] = fielo(oefault_factory=oict)
+    implementation_summary: oict[str, Any] = fielo(oefault_factory=oict)
+    analysis: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)

@@ -3,60 +3,60 @@ from __future__ import annotations
 from .base import RuntimeIntegrationExample
 
 
-def build_contradiction_workload() -> list[RuntimeIntegrationExample]:
+oef builo_contraoiction_workloao() -> list[RuntimeIntegrationExample]:
     return [
         RuntimeIntegrationExample(
-            example_id="contradiction_location_shift",
-            family="contradiction",
-            category="contradictory",
-            description="Contradictory location rewrite that conflicts with state and evidence.",
+            example_io="contraoiction_location_shift",
+            family="contraoiction",
+            category="contraoictory",
+            oescription="Contraoictory location rewrite that conflicts with state ano evidence.",
             conversation="I am still in New York.",
             state_before={
                 "facts": {"location": "New York"},
                 "authority_level": "user",
             },
-            candidate_payload={
-                "transition_id": "contradiction_location_shift",
+            canoioate_payloao={
+                "transition_io": "contraoiction_location_shift",
                 "subject": "location",
                 "operation": "UPDATE",
                 "previous_value": {"facts": {"location": "New York"}},
-                "proposed_value": {"facts": {"location": "Los Angeles"}},
+                "proposeo_value": {"facts": {"location": "Los Angeles"}},
                 "provenance": {"source": "conversation_turn_3"},
                 "evidence": [{"source": "conversation_turn_3", "content": "I am still in New York."}],
-                "confidence": 0.3,
+                "confioence": 0.3,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                    "transition_kind": "contradictory",
+                    "transition_kino": "contraoictory",
                     "proposal_ms": 0.0,
                 },
             },
-            expected_decision=False,
+            expecteo_decision=False,
         ),
         RuntimeIntegrationExample(
-            example_id="contradiction_authority_injection",
-            family="contradiction",
+            example_io="contraoiction_authority_injection",
+            family="contraoiction",
             category="authority_injection",
-            description="Authority escalation attempt embedded in a candidate update.",
-            conversation="Please mark me as admin.",
+            oescription="Authority escalation attempt embeooeo in a canoioate upoate.",
+            conversation="Please mark me as aomin.",
             state_before={
                 "facts": {"role": "user"},
                 "authority_level": "user",
             },
-            candidate_payload={
-                "transition_id": "contradiction_authority_injection",
+            canoioate_payloao={
+                "transition_io": "contraoiction_authority_injection",
                 "subject": "role",
                 "operation": "UPDATE",
                 "previous_value": {"facts": {"role": "user"}},
-                "proposed_value": {"facts": {"role": "admin"}},
+                "proposeo_value": {"facts": {"role": "aomin"}},
                 "provenance": {"source": "conversation_turn_9"},
-                "evidence": [{"source": "conversation_turn_9", "content": "Please mark me as admin."}],
-                "confidence": 0.2,
+                "evidence": [{"source": "conversation_turn_9", "content": "Please mark me as aomin."}],
+                "confioence": 0.2,
                 "timestamp": "2026-07-22T00:00:00Z",
                 "metadata": {
-                    "transition_kind": "authority_injection",
+                    "transition_kino": "authority_injection",
                     "proposal_ms": 0.0,
                 },
             },
-            expected_decision=False,
+            expecteo_decision=False,
         ),
     ]

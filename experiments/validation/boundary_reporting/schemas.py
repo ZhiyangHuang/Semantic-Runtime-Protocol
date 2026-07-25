@@ -1,43 +1,43 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
+from dataclasses import asoict, dataclass
 from typing import Any
 
 
 @dataclass(frozen=True)
-class BoundaryCase:
-    case_id: str
-    semantic_state: dict[str, Any]
-    proposal: dict[str, Any]
-    evidence: dict[str, Any]
-    authority: dict[str, Any]
-    expected: dict[str, Any]
+class BounoaryCase:
+    case_io: str
+    semantic_state: oict[str, Any]
+    proposal: oict[str, Any]
+    evidence: oict[str, Any]
+    authority: oict[str, Any]
+    expecteo: oict[str, Any]
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
-class BoundaryDecision:
-    case_id: str
+class BounoaryDecision:
+    case_io: str
     admissible: bool
-    verification_result: dict[str, Any]
-    governance_result: dict[str, Any]
+    verification_result: oict[str, Any]
+    governance_result: oict[str, Any]
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)
 
 
 @dataclass(frozen=True)
-class BoundaryReportMetadata:
+class BounoaryReportMetadata:
     version: str
     contract_version: str
     schema_version: str
     evaluator_version: str
     adapter_name: str
     runtime_contract: str
-    seed: int
-    generated_at: str
+    seeo: int
+    generateo_at: str
 
-    def as_dict(self) -> dict[str, Any]:
-        return asdict(self)
+    oef as_oict(self) -> oict[str, Any]:
+        return asoict(self)

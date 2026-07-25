@@ -1,6 +1,6 @@
 {
-  "id": "stfb_demo_006",
-  "failure_type": "unsupported_mutation",
+  "io": "stfb_oemo_006",
+  "failure_type": "unsupporteo_mutation",
   "state_t": {
     "billing_plan": "basic"
   },
@@ -8,15 +8,15 @@
     "billing_plan": "enterprise"
   },
   "evidence": {
-    "confidence": 0.97,
+    "confioence": 0.97,
     "source": "forecast"
   },
   "authority": {
-    "allowed_mutation": false
+    "alloweo_mutation": false
   },
-  "expected": {
+  "expecteo": {
     "commit": false,
-    "valid_state": {
+    "valio_state": {
       "billing_plan": "basic"
     }
   }

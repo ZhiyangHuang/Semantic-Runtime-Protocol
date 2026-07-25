@@ -9,16 +9,16 @@
     "srp"
   ],
   "data_root": "hf:openai/openai_humaneval|test",
-  "seed": 0,
-  "system_prompt": "Write only the final Python code. Do not explain.",
+  "seeo": 0,
+  "system_prompt": "Write only the final Python cooe. Do not explain.",
   "max_output_tokens": 256,
   "temperature": 0.0,
   "srp_configuration": {
-    "srp_mode": "context_recovery"
+    "srp_mooe": "context_recovery"
   },
   "execution_parameters": {
-    "execution_timeout_seconds": 5.0,
-    "execution_sandbox_policy": "subprocess_isolation_v1",
+    "execution_timeout_seconos": 5.0,
+    "execution_sanobox_policy": "subprocess_isolation_v1",
     "allow_network": false
   },
   "metadata": {

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  22 JUL 2026 21:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.6.29)  25 JUL 2026 17:10
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -772,7 +772,7 @@ Package luabridge Info: Executing a helper Lua script from file
 (luabridge)             main.luabridge.lua
 
  ()
-(_markdown_main/5f77dd1c5483134b61ea22abef1e96e1.md.tex
+(_markdown_main/f3798964cf2ce196cc14a15351262888.md.tex
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 9
 .
 
@@ -844,9 +844,9 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 5
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 [3{C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts
-1.enc}] [4] (_markdown_main/575cfdee8a1cd806d9f8459659009555.verbatim) [5]
+1.enc}] [4] (_markdown_main/575cfdee8a1cd806d9f8459659009555.verbatim [5])
 [6] [7] (_markdown_main/0e9198027601e2b1d62a2920c6c8b0df.verbatim
-<figures/figure1_srp_pipeline.pdf, id=218, 614.295pt x 368.57701pt>
+<figures/figure1_srp_pipeline.pdf, id=222, 614.295pt x 368.57701pt>
 File: figures/figure1_srp_pipeline.pdf Graphic file (type pdf)
 <use figures/figure1_srp_pipeline.pdf>
 Package pdftex.def Info: figures/figure1_srp_pipeline.pdf  used on input line 3
@@ -854,7 +854,7 @@ Package pdftex.def Info: figures/figure1_srp_pipeline.pdf  used on input line 3
 (pdftex.def)             Requested size: 460.35791pt x 276.21835pt.
 )
 (_markdown_main/0bb291094075833c63334f1a6743bd9c.verbatim
-<figures/figure2_srp_positioning.pdf, id=219, 614.295pt x 368.57701pt>
+<figures/figure2_srp_positioning.pdf, id=223, 614.295pt x 368.57701pt>
 File: figures/figure2_srp_positioning.pdf Graphic file (type pdf)
 <use figures/figure2_srp_positioning.pdf>
 Package pdftex.def Info: figures/figure2_srp_positioning.pdf  used on input lin
@@ -862,8 +862,8 @@ e 3.
 (pdftex.def)             Requested size: 460.35791pt x 276.21835pt.
 ) [8 <./figures/figure1_srp_pipeline.pdf>] [9 <./figures/figure2_srp_positionin
 g.pdf>] [10]
-(_markdown_main/7ca1066038297ebe8502b71dcb9c7776.verbatim)
-(_markdown_main/a6ebb5f8d4270c7ec2ab38e675b26522.verbatim [11])
+(_markdown_main/7ca1066038297ebe8502b71dcb9c7776.verbatim) [11]
+(_markdown_main/a6ebb5f8d4270c7ec2ab38e675b26522.verbatim)
 (_markdown_main/c9a5fa7be9a76d8bc509b6a465763156.verbatim)
 (_markdown_main/0fec7c43d5825c043d03f76cf45e184f.verbatim) [12]
 (_markdown_main/14979ed7dc4db0518c5f5ab78bbce980.verbatim)
@@ -879,14 +879,14 @@ LaTeX2e <2026-06-01>
 L3 programming layer <2026-06-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: FECC701D154BCC1A89309726128FFFFF;8299.
+(rerunfilecheck)             Checksum: 277BF7B77B6C9C0868209FC115107908;8430.
  ) 
 Here is how much of TeX's memory you used:
- 18890 strings out of 467510
- 388022 string characters out of 5405392
- 885053 words of memory out of 5000000
- 47610 multiletter control sequences out of 15000+600000
- 674290 words of font info for 137 fonts, out of 8000000 for 9000
+ 18894 strings out of 467510
+ 388064 string characters out of 5405392
+ 893055 words of memory out of 5000000
+ 47611 multiletter control sequences out of 15000+600000
+ 674373 words of font info for 138 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,6n,135p,1765b,1420s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ZhiyangHuang/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lm
@@ -898,9 +898,9 @@ X/fonts/type1/public/lm/lmr12.pfb><C:/Users/ZhiyangHuang/AppData/Local/Programs
 /MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/ZhiyangHuang/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ZhiyangHuang/AppData/Loc
 al/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (18 pages, 373117 bytes).
+Output written on main.pdf (18 pages, 373067 bytes).
 PDF statistics:
- 480 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
- 27499 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 484 PDF objects out of 1000 (max. 8388607)
+ 66 named destinations out of 1000 (max. 500000)
+ 27507 words of extra memory for PDF output out of 29859 (max. 10000000)
 

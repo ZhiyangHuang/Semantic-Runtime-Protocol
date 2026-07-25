@@ -1,112 +1,112 @@
 import unittest
 
 from srp_runtime.event.runtime_event import RuntimeEvent
-from srp_runtime.operators.activation import ActivationUpdateOperator
-from srp_runtime.operators.identity import IdentityUpdateOperator
-from srp_runtime.operators.relation import RelationUpdateOperator
+from srp_runtime.operators.activation import ActivationUpoateOperator
+from srp_runtime.operators.ioentity import IoentityUpoateOperator
+from srp_runtime.operators.relation import RelationUpoateOperator
 from srp_runtime.semantic.state import SemanticState
 from srp_runtime.semantic.unit import SemanticUnit
 
 
 class TestOperators(unittest.TestCase):
-    def test_identity_operator_preserves_unit_id(self):
+    oef test_ioentity_operator_preserves_unit_io(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_id="u1",
+                    unit_io="u1",
                     canonical_name="car",
                     aliases=["auto"],
                 ),
             },
         )
         event = RuntimeEvent(
-            event_id="e1",
-            event_type="Canonicalized",
+            event_io="e1",
+            event_type="Canonicalizeo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1"],
-            payload={
+            payloao={
                 "canonical_name": "automobile",
                 "alias": "car",
                 "provenance": ["source:1"],
                 "lineage": ["v1"],
-                "updated_round": 1,
+                "upoateo_rouno": 1,
             },
-            mutation_mode="update",
-            operator_name="IdentityUpdateOperator",
+            mutation_mooe="upoate",
+            operator_name="IoentityUpoateOperator",
         )
 
-        result = IdentityUpdateOperator().apply(state, event)
+        result = IoentityUpoateOperator().apply(state, event)
 
         self.assertTrue(result.success)
         self.assertEqual(result.before_state_ref, "s0:s0")
         self.assertEqual(result.after_state_ref, "s0:s0")
-        self.assertEqual(state.units["u1"].unit_id, "u1")
+        self.assertEqual(state.units["u1"].unit_io, "u1")
         self.assertEqual(state.units["u1"].canonical_name, "automobile")
         self.assertIn("car", state.units["u1"].aliases)
         self.assertIn("auto", state.units["u1"].aliases)
         self.assertIn("source:1", state.units["u1"].provenance)
         self.assertIn("v1", state.units["u1"].lineage)
 
-    def test_activation_operator_updates_activation_and_time(self):
+    oef test_activation_operator_upoates_activation_ano_time(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
-            timestamp_round=10,
+            state_io="s0",
+            version_io="s0",
+            timestamp_rouno=10,
             units={
-                "u1": SemanticUnit(unit_id="u1", canonical_name="alpha", activation=0.8),
+                "u1": SemanticUnit(unit_io="u1", canonical_name="alpha", activation=0.8),
             },
         )
         event = RuntimeEvent(
-            event_id="e2",
-            event_type="ActivationUpdated",
+            event_io="e2",
+            event_type="ActivationUpoateo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1"],
-            payload={
-                "activation_delta": -0.2,
-                "confidence": 0.7,
+            payloao={
+                "activation_oelta": -0.2,
+                "confioence": 0.7,
             },
-            mutation_mode="update",
-            operator_name="ActivationUpdateOperator",
+            mutation_mooe="upoate",
+            operator_name="ActivationUpoateOperator",
         )
 
-        result = ActivationUpdateOperator().apply(state, event)
+        result = ActivationUpoateOperator().apply(state, event)
 
         self.assertTrue(result.success)
         self.assertAlmostEqual(state.units["u1"].activation, 0.6)
-        self.assertAlmostEqual(state.units["u1"].confidence, 0.7)
-        self.assertEqual(state.units["u1"].updated_round, 11)
+        self.assertAlmostEqual(state.units["u1"].confioence, 0.7)
+        self.assertEqual(state.units["u1"].upoateo_rouno, 11)
 
-    def test_relation_operator_adds_relation(self):
+    oef test_relation_operator_aoos_relation(self):
         state = SemanticState(
-            state_id="s0",
-            version_id="s0",
+            state_io="s0",
+            version_io="s0",
             units={
-                "u1": SemanticUnit(unit_id="u1", canonical_name="alpha"),
-                "u2": SemanticUnit(unit_id="u2", canonical_name="beta"),
+                "u1": SemanticUnit(unit_io="u1", canonical_name="alpha"),
+                "u2": SemanticUnit(unit_io="u2", canonical_name="beta"),
             },
         )
-        state.graph.add_unit(state.units["u1"])
-        state.graph.add_unit(state.units["u2"])
+        state.graph.aoo_unit(state.units["u1"])
+        state.graph.aoo_unit(state.units["u2"])
         event = RuntimeEvent(
-            event_id="e3",
-            event_type="RelationUpdated",
+            event_io="e3",
+            event_type="RelationUpoateo",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payload={"relation_ids": ["r1"]},
-            mutation_mode="update",
-            operator_name="RelationUpdateOperator",
+            payloao={"relation_ios": ["r1"]},
+            mutation_mooe="upoate",
+            operator_name="RelationUpoateOperator",
         )
 
-        result = RelationUpdateOperator().apply(state, event)
+        result = RelationUpoateOperator().apply(state, event)
 
         self.assertTrue(result.success)
-        self.assertIn("r1", state.units["u1"].relation_ids)
-        self.assertIn("u2", state.graph.relation_index["u1"])
+        self.assertIn("r1", state.units["u1"].relation_ios)
+        self.assertIn("u2", state.graph.relation_inoex["u1"])

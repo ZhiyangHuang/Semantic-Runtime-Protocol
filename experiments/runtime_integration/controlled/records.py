@@ -1,40 +1,40 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, fielo
 from typing import Any
 
 
 @dataclass(frozen=True)
-class ControlledAdmissionRecord:
-    transition_id: str
-    example_id: str
+class ControlleoAomissionRecoro:
+    transition_io: str
+    example_io: str
     family: str
     category: str
-    candidate: dict[str, Any]
-    decision: dict[str, Any]
-    state_before: dict[str, Any]
-    state_after_commit: dict[str, Any]
-    state_after_rollback: dict[str, Any]
-    committed: bool
+    canoioate: oict[str, Any]
+    decision: oict[str, Any]
+    state_before: oict[str, Any]
+    state_after_commit: oict[str, Any]
+    state_after_rollback: oict[str, Any]
+    committeo: bool
     rollback_success: bool
-    invalid_commit: bool
-    latency_ms: dict[str, float]
-    metadata: dict[str, Any] = field(default_factory=dict)
+    invalio_commit: bool
+    latency_ms: oict[str, float]
+    metadata: oict[str, Any] = fielo(oefault_factory=oict)
 
-    def as_dict(self) -> dict[str, Any]:
+    oef as_oict(self) -> oict[str, Any]:
         return {
-            "transition_id": self.transition_id,
-            "example_id": self.example_id,
+            "transition_io": self.transition_io,
+            "example_io": self.example_io,
             "family": self.family,
             "category": self.category,
-            "candidate": dict(self.candidate),
-            "decision": dict(self.decision),
-            "state_before": dict(self.state_before),
-            "state_after_commit": dict(self.state_after_commit),
-            "state_after_rollback": dict(self.state_after_rollback),
-            "committed": self.committed,
+            "canoioate": oict(self.canoioate),
+            "decision": oict(self.decision),
+            "state_before": oict(self.state_before),
+            "state_after_commit": oict(self.state_after_commit),
+            "state_after_rollback": oict(self.state_after_rollback),
+            "committeo": self.committeo,
             "rollback_success": self.rollback_success,
-            "invalid_commit": self.invalid_commit,
-            "latency_ms": dict(self.latency_ms),
-            "metadata": dict(self.metadata),
+            "invalio_commit": self.invalio_commit,
+            "latency_ms": oict(self.latency_ms),
+            "metadata": oict(self.metadata),
         }

@@ -1,93 +1,91 @@
 # Semantic Runtime Protocol
 
-SRP is a semantic runtime governance framework that controls the admissibility of semantic state transitions through explicit validation, evidence, and authorization boundaries.
-
-This repository is organized around a small set of decoupled layers:
-
-- `fixed.md` is the canonical manuscript source for the current release pass.
-- `paper/` holds the synchronized manuscript mirror and release snapshot.
-- `srp_runtime/` holds the active runtime implementation.
-- `experiments/` holds reproducible validation and evidence-generation entrypoints.
-- `artifacts/` holds curated evidence bundles.
-- `arxiv_package/` holds submission packaging only.
-- `audit/` holds the current release records, the claim map, and provenance.
-- `experiments/compatibility/` holds compatibility code only.
-- `configs/` holds frozen runtime and validation configurations.
-- `scripts/` holds release tooling.
-
-## Primary Terminology
-
-The repository now prefers paper-aligned terminology in active entrypoints:
-
-- `governance_sensitivity` is the primary name for sensitivity analysis over governance boundaries and authorization behavior.
-- `transition_reconstruction` is the primary name for reconstruction-focused implementation instances under SRP.
-
-Compatibility aliases remain available only so historical scripts do not break:
-
-- `recovery`-named entrypoints remain as compatibility aliases for `transition_reconstruction`
+This is the single root entry point for the repository.
 
 ## Start Here
 
-1. Read the canonical manuscript source: [fixed.md](fixed.md)
-2. Read the release snapshot: [paper/SRP_PAPER_FINAL_V1.md](paper/SRP_PAPER_FINAL_V1.md)
-3. Read the paper-facing summary: [paper/SRP_MAIN_RESULTS_SUMMARY_V1.md](paper/SRP_MAIN_RESULTS_SUMMARY_V1.md)
-4. Read the audit entry point: [audit/README.md](audit/README.md)
-5. Read the current release summary: [audit/CURRENT_RELEASE.md](audit/CURRENT_RELEASE.md)
-6. Read the evidence policy: [audit/EVIDENCE_POLICY.md](audit/EVIDENCE_POLICY.md)
-7. Read the claim ledger: [audit/CLAIM_EVIDENCE_MAP.md](audit/CLAIM_EVIDENCE_MAP.md)
-8. Read the real-validation report: [audit/REAL_VALIDATION_REPORT.md](audit/REAL_VALIDATION_REPORT.md)
-9. Review the release checklist and verification:
-   - [audit/RELEASE_CHECKLIST.md](audit/RELEASE_CHECKLIST.md)
-   - [audit/VERIFY_REPORT.md](audit/VERIFY_REPORT.md)
+1. [paper/SRP_MANUSCRIPT_V1.md](paper/SRP_MANUSCRIPT_V1.md)
+1. [paper/SRP_MAIN_RESULTS_SUMMARY_V1.md](paper/SRP_MAIN_RESULTS_SUMMARY_V1.md)
+1. [paper/docs/release/README.md](paper/docs/release/README.md)
+1. [paper/docs/release/EVIDENCE_SURFACE.md](paper/docs/release/EVIDENCE_SURFACE.md)
+1. [paper/docs/README.md](paper/docs/README.md)
+1. [STFB/README.md](STFB/README.md)
 
-## Recommended Entry Points
+## Current Release
 
-- `python -m experiments.validation.admissibility_boundary_validation.runner`
-- `python -m experiments.evaluation.transition_reconstruction_validation.runner`
-- `python -m experiments.evaluation.configuration_sensitivity_validation.runner`
-- `python -m experiments.evaluation.configuration_stability_validation.runner`
-- `python -m experiments.evaluation.representation_invariance_validation.runner`
-- `python -m experiments.evaluation.implementation_independence_validation.runner`
-- `python -m experiments.evaluation.cross_domain_validation.runner`
-- `python -m experiments.compatibility.run_governance_sensitivity`
-- `python -m experiments.compatibility.run_transition_reconstruction`
+The current frozen release surface is centered on the release review and evidence surface:
 
-Historical aliases remain available for compatibility only, and the primary release-facing names now also include `representation_invariance_validation`, `implementation_independence_validation`, and `cross_domain_validation`:
-- `python -m experiments.validation.phase_ii_boundary.runner`
-- `python -m experiments.evaluation.phase_vi_relation_recovery.runner`
-- `python -m experiments.evaluation.phase_vii_parameter_sensitivity.runner`
-- `python -m experiments.evaluation.phase_vii_parameter_stability.runner`
-- `python -m experiments.evaluation.phase_viii_representation_invariance.runner`
-- `python -m experiments.evaluation.phase_viii_implementation_independence.runner`
-- `python -m experiments.evaluation.phase_viii_cross_domain.runner`
+- [paper/docs/release/README.md](paper/docs/release/README.md)
 
-## Auxiliary Reproducibility Entry Points
+The release gate is checked with:
 
-These support the release evidence bundle and calibration history, but they are not part of the trimmed paper-facing regeneration flow:
-
-- `python experiments/evaluation/run_locomo_manual_sanity.py`
-- `python experiments/external_validation/calibration_report.py`
-- `python experiments/evaluation/run_longmemeval_evidence.py`
-- `python experiments/evaluation/run_longmemeval_scorer_alignment_audit.py`
-
-## Release Verification
-
-Run the release hygiene check before tagging or pushing a release branch:
-
-```bash
+```text
 python scripts/verify_release.py
 ```
 
-## Reproducibility
+## Repository Layout
 
-The repo includes frozen configs, reproducible validation entrypoints, and a compact reviewer-facing audit surface. If something can be regenerated exactly from code and configuration, prefer the regeneration path over storing a raw dump in Git.
+- [paper/](paper/) contains the manuscript and release-facing paper summaries.
+- [paper/docs/release/](paper/docs/release/) contains the release review and evidence surface.
+- [paper/docs/evidence/](paper/docs/evidence/) contains evidence bundles and release-facing evidence notes.
+- [paper/docs/plans/](paper/docs/plans/) contains the active specs and roadmap notes.
+- [configs/](configs/) contains frozen runtime values and consolidation notes.
+- [STFB/](STFB/) contains the benchmark and reproduction package.
+- [experiments/](experiments/) contains the executable evaluation and validation code.
+- [data/](data/) contains registry-backed source data used by the validation code.
+- [configs/root.env](configs/root.env) contains the default local runtime values.
 
-For benchmark suites, this release uses a registry-based policy: the repository keeps manifests, sample definitions, adapters, and results, while benchmark payloads remain with the original sources.
+## Evidence Surface
 
-## Benchmark Release Surface
+The canonical benchmark summaries are now folded into [paper/docs/release/EVIDENCE_SURFACE.md](paper/docs/release/EVIDENCE_SURFACE.md).
 
-The release-facing benchmark entry points are now organized under:
+Current benchmark family status:
 
-- `docs/benchmarks/` for the canonical benchmark reports
-- `docs/release/` for the current release evidence review
-- `docs/archive/benchmark_history/` for planning, smoke, and iteration history
+- `MMLU v3`: authoritative MMLU artifact
+- `ARC v1`: authoritative ARC artifact
+- `LongMemEval v5`: authoritative bridge artifact with external-validation separation preserved
+- `HumanEval full`: closed and ready for release evidence review
+
+The evidence surface also records the main support layers:
+
+- mechanism validation
+- external transition validation
+- broad capability stress evaluation
+
+## Planning Surface
+
+Active planning and protocol docs live under [paper/docs/plans/](paper/docs/plans/):
+
+- [paper/docs/plans/STFB_SPEC.md](paper/docs/plans/STFB_SPEC.md)
+- [paper/docs/plans/STFB_ROADMAP.md](paper/docs/plans/STFB_ROADMAP.md)
+- [paper/docs/plans/GOVERNANCE_PLAN.md](paper/docs/plans/GOVERNANCE_PLAN.md)
+
+## Transition Role Checks
+
+The transition-role protocol validation pair is part of the release gate:
+
+- [experiments/transition_role/validate_registry.py](experiments/transition_role/validate_registry.py)
+- [experiments/transition_role/validate_matrix.py](experiments/transition_role/validate_matrix.py)
+
+## Release Snapshots
+
+Two phase-viii summary snapshots were previously carried at the repository root and are now folded into this entry page:
+
+- Representation invariance snapshot:
+  - cases evaluated: `144`
+  - mean semantic coverage: `0.559689`
+  - mean semantic drift: `0.302338`
+  - hierarchy consistency rate: `1`
+  - governance consistency rate: `1`
+- Implementation independence snapshot:
+  - cases evaluated: `36`
+  - mean semantic coverage: `0.623016`
+  - mean semantic drift: `0.220833`
+  - hierarchy consistency rate: `1`
+  - governance consistency rate: `1`
+
+## Notes
+
+- The root directory is intentionally kept small.
+- Historical surface notes and phase summaries are folded into this page or into the release docs under [paper/docs/release/](paper/docs/release/).
+- If a detail is missing here, it should usually live in the release surface rather than as a separate root-level markdown file.

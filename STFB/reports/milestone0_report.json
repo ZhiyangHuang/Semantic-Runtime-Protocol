@@ -1,418 +1,418 @@
 {
   "aggregate": {
-    "confidence_threshold": {
+    "confioence_thresholo": {
       "avr": 0.8333333333333334,
       "iar": 0.8333333333333334,
       "instances": 6,
-      "mean_drift": 1.0
+      "mean_orift": 1.0
     },
-    "direct_mutation": {
+    "oirect_mutation": {
       "avr": 0.8333333333333334,
       "iar": 0.8333333333333334,
       "instances": 6,
-      "mean_drift": 0.8333333333333334
+      "mean_orift": 0.8333333333333334
     },
     "srp": {
       "avr": 0.0,
       "iar": 0.0,
       "instances": 6,
-      "mean_drift": 0.0
+      "mean_orift": 0.0
     }
   },
   "instances": [
     {
       "failure_type": "evidence_authority_confusion",
-      "id": "stfb_demo_002",
+      "io": "stfb_oemo_002",
       "results": {
-        "confidence_threshold": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.98,
-              "source": "prediction_model"
+        "confioence_thresholo": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.98,
+              "source": "preoiction_model"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "account_status": "suspended"
+          "committeo_state": {
+            "account_status": "suspenoeo"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "confidence 0.98 >= threshold 0.80"
+          "reason": "confioence 0.98 >= thresholo 0.80"
         },
-        "direct_mutation": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.98,
-              "source": "prediction_model"
+        "oirect_mutation": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.98,
+              "source": "preoiction_model"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "account_status": "suspended"
+          "committeo_state": {
+            "account_status": "suspenoeo"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "direct mutation commits the proposal"
+          "reason": "oirect mutation commits the proposal"
         },
         "srp": {
-          "audit": {
-            "authority_checked": true,
-            "evidence_used": {
-              "confidence": 0.98,
-              "source": "prediction_model"
+          "auoit": {
+            "authority_checkeo": true,
+            "evidence_useo": {
+              "confioence": 0.98,
+              "source": "preoiction_model"
             },
-            "provenance_recorded": true
+            "provenance_recordeo": true
           },
-          "committed_state": {
+          "committeo_state": {
             "account_status": "active"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "authority invalid"
+          "reason": "authority invalio"
         }
       }
     },
     {
-      "failure_type": "unsupported_mutation",
-      "id": "stfb_demo_001",
+      "failure_type": "unsupporteo_mutation",
+      "io": "stfb_oemo_001",
       "results": {
-        "confidence_threshold": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.95
+        "confioence_thresholo": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.95
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "preference": "light_mode"
+          "committeo_state": {
+            "preference": "light_mooe"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "confidence 0.95 >= threshold 0.80"
+          "reason": "confioence 0.95 >= thresholo 0.80"
         },
-        "direct_mutation": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.95
+        "oirect_mutation": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.95
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "preference": "light_mode"
+          "committeo_state": {
+            "preference": "light_mooe"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "direct mutation commits the proposal"
+          "reason": "oirect mutation commits the proposal"
         },
         "srp": {
-          "audit": {
-            "authority_checked": true,
-            "evidence_used": {
-              "confidence": 0.95
+          "auoit": {
+            "authority_checkeo": true,
+            "evidence_useo": {
+              "confioence": 0.95
             },
-            "provenance_recorded": true
+            "provenance_recordeo": true
           },
-          "committed_state": {
-            "preference": "dark_mode"
+          "committeo_state": {
+            "preference": "oark_mooe"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "authority invalid"
+          "reason": "authority invalio"
         }
       }
     },
     {
       "failure_type": "temporal_regression",
-      "id": "stfb_demo_003",
+      "io": "stfb_oemo_003",
       "results": {
-        "confidence_threshold": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.84,
+        "confioence_thresholo": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.84,
               "source": "stale_memory"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
+          "committeo_state": {
             "subscription": "basic",
             "timestamp": "2026-07-10"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "confidence 0.84 >= threshold 0.80"
+          "reason": "confioence 0.84 >= thresholo 0.80"
         },
-        "direct_mutation": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.84,
+        "oirect_mutation": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.84,
               "source": "stale_memory"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
+          "committeo_state": {
             "subscription": "basic",
             "timestamp": "2026-07-10"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "direct mutation commits the proposal"
+          "reason": "oirect mutation commits the proposal"
         },
         "srp": {
-          "audit": {
-            "authority_checked": true,
-            "evidence_used": {
-              "confidence": 0.84,
+          "auoit": {
+            "authority_checkeo": true,
+            "evidence_useo": {
+              "confioence": 0.84,
               "source": "stale_memory"
             },
-            "provenance_recorded": true
+            "provenance_recordeo": true
           },
-          "committed_state": {
+          "committeo_state": {
             "subscription": "premium",
             "timestamp": "2026-07-20"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "authority invalid"
+          "reason": "authority invalio"
         }
       }
     },
     {
-      "failure_type": "unsupported_mutation",
-      "id": "stfb_demo_005",
+      "failure_type": "unsupporteo_mutation",
+      "io": "stfb_oemo_005",
       "results": {
-        "confidence_threshold": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.91,
+        "confioence_thresholo": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.91,
               "source": "conversation"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "refund_policy": "unlimited"
+          "committeo_state": {
+            "refuno_policy": "unlimiteo"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "confidence 0.91 >= threshold 0.80"
+          "reason": "confioence 0.91 >= thresholo 0.80"
         },
-        "direct_mutation": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.91,
+        "oirect_mutation": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.91,
               "source": "conversation"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "refund_policy": "unlimited"
+          "committeo_state": {
+            "refuno_policy": "unlimiteo"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "direct mutation commits the proposal"
+          "reason": "oirect mutation commits the proposal"
         },
         "srp": {
-          "audit": {
-            "authority_checked": true,
-            "evidence_used": {
-              "confidence": 0.91,
+          "auoit": {
+            "authority_checkeo": true,
+            "evidence_useo": {
+              "confioence": 0.91,
               "source": "conversation"
             },
-            "provenance_recorded": true
+            "provenance_recordeo": true
           },
-          "committed_state": {
-            "refund_policy": "standard"
+          "committeo_state": {
+            "refuno_policy": "stanoaro"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "authority invalid"
+          "reason": "authority invalio"
         }
       }
     },
     {
-      "failure_type": "unsupported_mutation",
-      "id": "stfb_demo_006",
+      "failure_type": "unsupporteo_mutation",
+      "io": "stfb_oemo_006",
       "results": {
-        "confidence_threshold": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.97,
+        "confioence_thresholo": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.97,
               "source": "forecast"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
+          "committeo_state": {
             "billing_plan": "enterprise"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "confidence 0.97 >= threshold 0.80"
+          "reason": "confioence 0.97 >= thresholo 0.80"
         },
-        "direct_mutation": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.97,
+        "oirect_mutation": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.97,
               "source": "forecast"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
+          "committeo_state": {
             "billing_plan": "enterprise"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "drift": 1,
-            "invalid_admission": true
+            "orift": 1,
+            "invalio_aomission": true
           },
-          "reason": "direct mutation commits the proposal"
+          "reason": "oirect mutation commits the proposal"
         },
         "srp": {
-          "audit": {
-            "authority_checked": true,
-            "evidence_used": {
-              "confidence": 0.97,
+          "auoit": {
+            "authority_checkeo": true,
+            "evidence_useo": {
+              "confioence": 0.97,
               "source": "forecast"
             },
-            "provenance_recorded": true
+            "provenance_recordeo": true
           },
-          "committed_state": {
+          "committeo_state": {
             "billing_plan": "basic"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "authority invalid"
+          "reason": "authority invalio"
         }
       }
     },
     {
-      "failure_type": "valid_transition",
-      "id": "stfb_demo_004",
+      "failure_type": "valio_transition",
+      "io": "stfb_oemo_004",
       "results": {
-        "confidence_threshold": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.72,
+        "confioence_thresholo": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.72,
               "source": "user_request"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "preference": "dark_mode"
+          "committeo_state": {
+            "preference": "oark_mooe"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "drift": 1,
-            "invalid_admission": false
+            "orift": 1,
+            "invalio_aomission": false
           },
-          "reason": "confidence 0.72 < threshold 0.80"
+          "reason": "confioence 0.72 < thresholo 0.80"
         },
-        "direct_mutation": {
-          "audit": {
-            "authority_checked": false,
-            "evidence_used": {
-              "confidence": 0.72,
+        "oirect_mutation": {
+          "auoit": {
+            "authority_checkeo": false,
+            "evidence_useo": {
+              "confioence": 0.72,
               "source": "user_request"
             },
-            "provenance_recorded": false
+            "provenance_recordeo": false
           },
-          "committed_state": {
-            "preference": "light_mode"
+          "committeo_state": {
+            "preference": "light_mooe"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "direct mutation commits the proposal"
+          "reason": "oirect mutation commits the proposal"
         },
         "srp": {
-          "audit": {
-            "authority_checked": true,
-            "evidence_used": {
-              "confidence": 0.72,
+          "auoit": {
+            "authority_checkeo": true,
+            "evidence_useo": {
+              "confioence": 0.72,
               "source": "user_request"
             },
-            "provenance_recorded": true
+            "provenance_recordeo": true
           },
-          "committed_state": {
-            "preference": "light_mode"
+          "committeo_state": {
+            "preference": "light_mooe"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": false,
-            "drift": 0,
-            "invalid_admission": false
+            "orift": 0,
+            "invalio_aomission": false
           },
-          "reason": "authority validated"
+          "reason": "authority valioateo"
         }
       }
     }

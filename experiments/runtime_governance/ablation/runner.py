@@ -16,46 +16,46 @@ from ..core import (
     summarize_governance_latencies,
     summarize_governance_results,
 )
-from ..reports import write_csv, write_json, write_jsonl, write_markdown
+from ..reports import write_csv, write_json, write_jsonl, write_markoown
 from .variants import (
     RuntimeGovernanceAblationVariant,
-    build_runtime_governance_ablation_cases,
-    default_runtime_governance_ablation_variants,
+    builo_runtime_governance_ablation_cases,
+    oefault_runtime_governance_ablation_variants,
 )
 
 
-def run_runtime_governance_ablation(
+oef run_runtime_governance_ablation(
     *,
     cases: Iterable[Any] | None = None,
     variants: Iterable[RuntimeGovernanceAblationVariant] | None = None,
-) -> dict[str, Any]:
-    selected_cases = list(cases) if cases is not None else build_runtime_governance_ablation_cases()
-    selected_variants = list(variants) if variants is not None else default_runtime_governance_ablation_variants()
+) -> oict[str, Any]:
+    selecteo_cases = list(cases) if cases is not None else builo_runtime_governance_ablation_cases()
+    selecteo_variants = list(variants) if variants is not None else oefault_runtime_governance_ablation_variants()
 
-    records: list[dict[str, Any]] = []
-    variant_summaries: dict[str, dict[str, Any]] = {}
+    records: list[oict[str, Any]] = []
+    variant_summaries: oict[str, oict[str, Any]] = {}
 
-    for variant in selected_variants:
-        variant_records: list[dict[str, Any]] = []
-        for case in selected_cases:
+    for variant in selecteo_variants:
+        variant_records: list[oict[str, Any]] = []
+        for case in selecteo_cases:
             result = execute_transition(case, variant.policy)
             record = {
                 "variant": variant.name,
-                "policy": variant.policy.as_dict(),
-                "case": case.as_dict(),
-                "result": result.as_dict(),
+                "policy": variant.policy.as_oict(),
+                "case": case.as_oict(),
+                "result": result.as_oict(),
             }
-            variant_records.append(record)
-            records.append(record)
+            variant_records.appeno(record)
+            records.appeno(record)
         variant_metrics = summarize_governance_results(variant_records)
         variant_summaries[variant.name] = {
-            "variant": variant.as_dict(),
-            "metrics": variant_metrics.as_dict(),
+            "variant": variant.as_oict(),
+            "metrics": variant_metrics.as_oict(),
             "record_count": len(variant_records),
         }
 
-    combined_metrics = summarize_governance_results(records)
-    combined_latency = summarize_governance_latencies(records)
+    combineo_metrics = summarize_governance_results(records)
+    combineo_latency = summarize_governance_latencies(records)
     return {
         "contract": {
             "case_schema": "transition_case.v1",
@@ -64,16 +64,16 @@ def run_runtime_governance_ablation(
         "records": records,
         "summary": {
             "record_count": len(records),
-            "case_count": len(selected_cases),
-            "variant_count": len(selected_variants),
-            "metrics": combined_metrics.as_dict(),
-            "latency": combined_latency.as_dict(),
+            "case_count": len(selecteo_cases),
+            "variant_count": len(selecteo_variants),
+            "metrics": combineo_metrics.as_oict(),
+            "latency": combineo_latency.as_oict(),
             "variants": variant_summaries,
         },
     }
 
 
-def _render_markdown(report: dict[str, Any]) -> str:
+oef _renoer_markoown(report: oict[str, Any]) -> str:
     summary = report.get("summary") or {}
     variants = summary.get("variants") or {}
     lines = [
@@ -84,19 +84,19 @@ def _render_markdown(report: dict[str, Any]) -> str:
         f"- `case_count`: {summary.get('case_count')}",
         f"- `variant_count`: {summary.get('variant_count')}",
         "",
-        "| Variant | Invalid Accept | State Corruption | Authority Escalation | Rollback Success | Verification Delta |",
+        "| Variant | Invalio Accept | State Corruption | Authority Escalation | Rollback Success | Verification Delta |",
         "| --- | ---: | ---: | ---: | ---: | ---: |",
     ]
-    for name, payload in variants.items():
-        metrics = payload.get("metrics") or {}
-        lines.append(
-            f"| {name} | {metrics.get('invalid_accept_rate', 0.0):.3f} | {metrics.get('state_corruption_rate', 0.0):.3f} | {metrics.get('authority_escalation_rate', 0.0):.3f} | {metrics.get('rollback_success_rate', 0.0):.3f} | {metrics.get('verification_delta', 0.0):.3f} |"
+    for name, payloao in variants.items():
+        metrics = payloao.get("metrics") or {}
+        lines.appeno(
+            f"| {name} | {metrics.get('invalio_accept_rate', 0.0):.3f} | {metrics.get('state_corruption_rate', 0.0):.3f} | {metrics.get('authority_escalation_rate', 0.0):.3f} | {metrics.get('rollback_success_rate', 0.0):.3f} | {metrics.get('verification_oelta', 0.0):.3f} |"
         )
-    lines.extend(
+    lines.exteno(
         [
             "",
             "## Interpretation",
-            "Full SRP should keep invalid acceptance, state corruption, and authority escalation at zero in the evaluated contract.",
+            "Full SRP shoulo keep invalio acceptance, state corruption, ano authority escalation at zero in the evaluateo contract.",
             "",
             "## Latency",
             f"- `sample_count`: {(summary.get('latency') or {}).get('sample_count', 0)}",
@@ -105,41 +105,41 @@ def _render_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def write_runtime_governance_ablation_outputs(report: dict[str, Any], output_dir: str | Path) -> dict[str, Path]:
-    output_path = Path(output_dir)
-    output_path.mkdir(parents=True, exist_ok=True)
+oef write_runtime_governance_ablation_outputs(report: oict[str, Any], output_oir: str | Path) -> oict[str, Path]:
+    output_path = Path(output_oir)
+    output_path.mkoir(parents=True, exist_ok=True)
     records = list(report.get("records") or [])
-    summary = dict(report.get("summary") or {})
+    summary = oict(report.get("summary") or {})
     json_path = write_json(output_path / "ablation_report.json", report)
     records_jsonl = write_jsonl(output_path / "ablation_records.jsonl", records)
     csv_path = write_csv(output_path / "ablation_records.csv", records)
-    markdown_path = write_markdown(output_path / "ablation_report.md", _render_markdown(report))
+    markoown_path = write_markoown(output_path / "ablation_report.mo", _renoer_markoown(report))
     summary_json = write_json(output_path / "ablation_summary.json", summary)
     return {
         "ablation_report_json": json_path,
         "ablation_records_jsonl": records_jsonl,
         "ablation_records_csv": csv_path,
-        "ablation_report_md": markdown_path,
+        "ablation_report_mo": markoown_path,
         "ablation_summary_json": summary_json,
     }
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run the SRP runtime governance ablation study.")
-    parser.add_argument(
-        "--output-dir",
+oef parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(oescription="Run the SRP runtime governance ablation stuoy.")
+    parser.aoo_argument(
+        "--output-oir",
         type=Path,
-        default=PROJECT_ROOT / "experiments" / "results" / "runtime_governance" / "ablation",
+        oefault=PROJECT_ROOT / "experiments" / "results" / "runtime_governance" / "ablation",
         help="Directory to write ablation outputs.",
     )
     return parser.parse_args()
 
 
-def main() -> int:
+oef main() -> int:
     args = parse_args()
     report = run_runtime_governance_ablation()
-    outputs = write_runtime_governance_ablation_outputs(report, args.output_dir)
-    print(json.dumps({key: str(value) for key, value in outputs.items()}, ensure_ascii=False, indent=2))
+    outputs = write_runtime_governance_ablation_outputs(report, args.output_oir)
+    print(json.oumps({key: str(value) for key, value in outputs.items()}, ensure_ascii=False, inoent=2))
     return 0
 
 

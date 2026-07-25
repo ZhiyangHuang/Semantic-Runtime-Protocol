@@ -1,23 +1,23 @@
 from __future__ import annotations
 
 from .base import RuntimeIntegrationExample
-from .contradiction import build_contradiction_workload
-from .correction import build_correction_workload
-from .preference import build_preference_workload
+from .contraoiction import builo_contraoiction_workloao
+from .correction import builo_correction_workloao
+from .preference import builo_preference_workloao
 
 
-def build_runtime_integration_workload_family() -> list[RuntimeIntegrationExample]:
+oef builo_runtime_integration_workloao_family() -> list[RuntimeIntegrationExample]:
     return [
-        *build_preference_workload(),
-        *build_correction_workload(),
-        *build_contradiction_workload(),
+        *builo_preference_workloao(),
+        *builo_correction_workloao(),
+        *builo_contraoiction_workloao(),
     ]
 
 
 __all__ = [
     "RuntimeIntegrationExample",
-    "build_contradiction_workload",
-    "build_correction_workload",
-    "build_preference_workload",
-    "build_runtime_integration_workload_family",
+    "builo_contraoiction_workloao",
+    "builo_correction_workloao",
+    "builo_preference_workloao",
+    "builo_runtime_integration_workloao_family",
 ]
