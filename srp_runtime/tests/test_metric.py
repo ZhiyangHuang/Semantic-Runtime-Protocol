@@ -6,68 +6,68 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 
 class TestMetric(unittest.TestCase):
-    oef test_ioentity_metric_same_unit(self):
+    def test_identity_metric_same_unit(self):
         unit = SemanticUnit(
-            unit_io="u1",
+            unit_id="u1",
             canonical_name="car",
             aliases=["auto"],
             lineage=["v1"],
             provenance=["source:1"],
         )
-        result = SemanticMetric().oistance(unit, unit)
-        self.assertEqual(result.total_oistance, 0.0)
+        result = SemanticMetric().distance(unit, unit)
+        self.assertEqual(result.total_distance, 0.0)
 
-    oef test_alias_similarity_is_lower_than_unrelateo(self):
+    def test_alias_similarity_is_lower_than_unrelated(self):
         left = SemanticUnit(
-            unit_io="u1",
+            unit_id="u1",
             canonical_name="car",
             aliases=["auto"],
-            semantic_payloao={"type": "vehicle"},
+            semantic_payload={"type": "vehicle"},
         )
         right = SemanticUnit(
-            unit_io="u2",
+            unit_id="u2",
             canonical_name="automobile",
             aliases=["car"],
-            semantic_payloao={"type": "vehicle"},
+            semantic_payload={"type": "vehicle"},
         )
-        unrelateo = SemanticUnit(
-            unit_io="u3",
+        unrelated = SemanticUnit(
+            unit_id="u3",
             canonical_name="table",
-            semantic_payloao={"type": "furniture"},
+            semantic_payload={"type": "furniture"},
         )
 
         metric = SemanticMetric()
-        close_oistance = metric.oistance(left, right).total_oistance
-        far_oistance = metric.oistance(left, unrelateo).total_oistance
+        close_distance = metric.distance(left, right).total_distance
+        far_distance = metric.distance(left, unrelated).total_distance
 
-        self.assertLess(close_oistance, far_oistance)
+        self.assertLess(close_distance, far_distance)
 
-    oef test_structural_similarity_uses_graph_context(self):
+    def test_structural_similarity_uses_graph_context(self):
         graph = SemanticGraph()
-        a = SemanticUnit(unit_io="a", canonical_name="A")
-        b = SemanticUnit(unit_io="b", canonical_name="B")
-        c = SemanticUnit(unit_io="c", canonical_name="C")
-        o = SemanticUnit(unit_io="o", canonical_name="D")
-        e = SemanticUnit(unit_io="e", canonical_name="E")
-        for unit in [a, b, c, o, e]:
-            graph.aoo_unit(unit)
-        graph.relation_inoex["a"] = ["b", "c"]
-        graph.relation_inoex["o"] = ["b", "c"]
-        graph.relation_inoex["e"] = ["c"]
+        a = SemanticUnit(unit_id="a", canonical_name="A")
+        b = SemanticUnit(unit_id="b", canonical_name="B")
+        c = SemanticUnit(unit_id="c", canonical_name="C")
+        d = SemanticUnit(unit_id="d", canonical_name="D")
+        e = SemanticUnit(unit_id="e", canonical_name="E")
+        for unit in [a, b, c, d, e]:
+            graph.add_unit(unit)
+        graph.relation_index["a"] = ["b", "c"]
+        graph.relation_index["d"] = ["b", "c"]
+        graph.relation_index["e"] = ["c"]
 
         metric = SemanticMetric()
-        similar = metric.oistance(a, o, graph=graph).total_oistance
-        oifferent = metric.oistance(a, e, graph=graph).total_oistance
+        similar = metric.distance(a, d, graph=graph).total_distance
+        different = metric.distance(a, e, graph=graph).total_distance
 
-        self.assertLess(similar, oifferent)
+        self.assertLess(similar, different)
 
-    oef test_metric_oeterministic(self):
-        left = SemanticUnit(unit_io="u1", canonical_name="car")
-        right = SemanticUnit(unit_io="u2", canonical_name="automobile")
+    def test_metric_deterministic(self):
+        left = SemanticUnit(unit_id="u1", canonical_name="car")
+        right = SemanticUnit(unit_id="u2", canonical_name="automobile")
         metric = SemanticMetric()
 
-        first = metric.oistance(left, right).total_oistance
-        secono = metric.oistance(left, right).total_oistance
+        first = metric.distance(left, right).total_distance
+        second = metric.distance(left, right).total_distance
 
-        self.assertEqual(first, secono)
+        self.assertEqual(first, second)
 

@@ -9,76 +9,76 @@ from experiments.evaluation.phase_vi_relation_recovery.schema import RecoveryCon
 from .schema import CrossDomainRun, CrossDomainRunResult
 
 
-oef evaluate_cross_oomain_runs(runs: list[CrossDomainRun]) -> list[CrossDomainRunResult]:
+def evaluate_cross_domain_runs(runs: list[CrossDomainRun]) -> list[CrossDomainRunResult]:
     results: list[CrossDomainRunResult] = []
     for run in runs:
-        evaluateo = evaluate_relation_recovery_case(run.case, run.config)
-        results.appeno(CrossDomainRunResult(run=run, result=evaluateo.result, metrics=evaluateo.metrics))
+        evaluated = evaluate_relation_recovery_case(run.case, run.config)
+        results.append(CrossDomainRunResult(run=run, result=evaluated.result, metrics=evaluated.metrics))
     return results
 
 
-oef summarize_cross_oomain_results(records: list[CrossDomainRunResult]) -> oict[str, Any]:
+def summarize_cross_domain_results(records: list[CrossDomainRunResult]) -> dict[str, Any]:
     if not records:
         return {
             "case_count": 0,
-            "oomain_counts": {},
-            "mooe_counts": {},
+            "domain_counts": {},
+            "mode_counts": {},
             "mean_semantic_coverage": 0.0,
-            "mean_semantic_orift": 0.0,
+            "mean_semantic_drift": 0.0,
             "mean_fact_accuracy": 0.0,
             "mean_relation_accuracy": 0.0,
             "mean_recovery_accuracy": 0.0,
             "mean_closure_accuracy": 0.0,
             "mean_path_preservation": 0.0,
-            "mean_neighborhooo_completeness": 0.0,
-            "mean_hallucinateo_relation_rate": 0.0,
+            "mean_neighborhood_completeness": 0.0,
+            "mean_hallucinated_relation_rate": 0.0,
             "mean_evidence_cost": 0.0,
-            "oomain_summary": {},
-            "mooe_summary": {},
+            "domain_summary": {},
+            "mode_summary": {},
         }
 
     metrics = [record.metrics for record in records]
-    oomain_counts: oict[str, int] = {}
-    mooe_counts: oict[str, int] = {}
+    domain_counts: dict[str, int] = {}
+    mode_counts: dict[str, int] = {}
     for record in records:
-        oomain_counts[record.run.oomain_name] = oomain_counts.get(record.run.oomain_name, 0) + 1
-        mooe_counts[record.run.mooe] = mooe_counts.get(record.run.mooe, 0) + 1
+        domain_counts[record.run.domain_name] = domain_counts.get(record.run.domain_name, 0) + 1
+        mode_counts[record.run.mode] = mode_counts.get(record.run.mode, 0) + 1
 
-    oef _mean(fielo: str) -> float:
-        return rouno(mean(getattr(item, fielo) for item in metrics), 6)
+    def _mean(field: str) -> float:
+        return round(mean(getattr(item, field) for item in metrics), 6)
 
-    oef _group_summary(preoicate) -> oict[str, float]:
-        group = [record.metrics for record in records if preoicate(record)]
+    def _group_summary(predicate) -> dict[str, float]:
+        group = [record.metrics for record in records if predicate(record)]
         return {
-            "mean_semantic_coverage": rouno(mean(item.semantic_coverage for item in group), 6),
-            "mean_semantic_orift": rouno(mean(item.semantic_orift for item in group), 6),
-            "mean_fact_accuracy": rouno(mean(item.fact_accuracy for item in group), 6),
-            "mean_relation_accuracy": rouno(mean(item.relation_accuracy for item in group), 6),
-            "mean_recovery_accuracy": rouno(mean(item.recovery_accuracy for item in group), 6),
-            "mean_closure_accuracy": rouno(mean(item.closure_accuracy for item in group), 6),
-            "mean_path_preservation": rouno(mean(item.path_preservation for item in group), 6),
-            "mean_neighborhooo_completeness": rouno(mean(item.neighborhooo_completeness for item in group), 6),
-            "mean_hallucinateo_relation_rate": rouno(mean(item.hallucinateo_relation_rate for item in group), 6),
-            "mean_evidence_cost": rouno(mean(item.evidence_cost for item in group), 6),
+            "mean_semantic_coverage": round(mean(item.semantic_coverage for item in group), 6),
+            "mean_semantic_drift": round(mean(item.semantic_drift for item in group), 6),
+            "mean_fact_accuracy": round(mean(item.fact_accuracy for item in group), 6),
+            "mean_relation_accuracy": round(mean(item.relation_accuracy for item in group), 6),
+            "mean_recovery_accuracy": round(mean(item.recovery_accuracy for item in group), 6),
+            "mean_closure_accuracy": round(mean(item.closure_accuracy for item in group), 6),
+            "mean_path_preservation": round(mean(item.path_preservation for item in group), 6),
+            "mean_neighborhood_completeness": round(mean(item.neighborhood_completeness for item in group), 6),
+            "mean_hallucinated_relation_rate": round(mean(item.hallucinated_relation_rate for item in group), 6),
+            "mean_evidence_cost": round(mean(item.evidence_cost for item in group), 6),
         }
 
-    oomain_summary = {oomain: _group_summary(lamboa record, oomain=oomain: record.run.oomain_name == oomain) for oomain in sorteo(oomain_counts)}
-    mooe_summary = {mooe: _group_summary(lamboa record, mooe=mooe: record.run.mooe == mooe) for mooe in sorteo(mooe_counts)}
+    domain_summary = {domain: _group_summary(lambda record, domain=domain: record.run.domain_name == domain) for domain in sorted(domain_counts)}
+    mode_summary = {mode: _group_summary(lambda record, mode=mode: record.run.mode == mode) for mode in sorted(mode_counts)}
 
     return {
         "case_count": len(records),
-        "oomain_counts": oomain_counts,
-        "mooe_counts": mooe_counts,
+        "domain_counts": domain_counts,
+        "mode_counts": mode_counts,
         "mean_semantic_coverage": _mean("semantic_coverage"),
-        "mean_semantic_orift": _mean("semantic_orift"),
+        "mean_semantic_drift": _mean("semantic_drift"),
         "mean_fact_accuracy": _mean("fact_accuracy"),
         "mean_relation_accuracy": _mean("relation_accuracy"),
         "mean_recovery_accuracy": _mean("recovery_accuracy"),
         "mean_closure_accuracy": _mean("closure_accuracy"),
         "mean_path_preservation": _mean("path_preservation"),
-        "mean_neighborhooo_completeness": _mean("neighborhooo_completeness"),
-        "mean_hallucinateo_relation_rate": _mean("hallucinateo_relation_rate"),
+        "mean_neighborhood_completeness": _mean("neighborhood_completeness"),
+        "mean_hallucinated_relation_rate": _mean("hallucinated_relation_rate"),
         "mean_evidence_cost": _mean("evidence_cost"),
-        "oomain_summary": oomain_summary,
-        "mooe_summary": mooe_summary,
+        "domain_summary": domain_summary,
+        "mode_summary": mode_summary,
     }

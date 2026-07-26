@@ -3,82 +3,82 @@ from __future__ import annotations
 import csv
 import json
 import subprocess
-from dataclasses import asoict
-from oatetime import oatetime, timezone
+from dataclasses import asdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from experiments.config import PhaseVIIParameterSensitivityConfig, loao_phase_vii_parameter_sensitivity_config
+from experiments.config import PhaseVIIParameterSensitivityConfig, load_phase_vii_parameter_sensitivity_config
 
 from .metrics import evaluate_stability_runs, summarize_stability_results
-from .report import PhaseVIIParameterStabilityMarkoownReport
+from .report import PhaseVIIParameterStabilityMarkdownReport
 from .schema import StabilityEvaluationReport, StabilityRun, StabilityRunParameters
 
 
-oef _git_commit() -> str:
+def _git_commit() -> str:
     try:
         return subprocess.check_output(
             ["git", "rev-parse", "HEAD"],
-            cwo=Path(__file__).resolve().parents[3],
+            cwd=Path(__file__).resolve().parents[3],
             text=True,
         ).strip()
     except Exception:
         return "unknown"
 
 
-oef builo_stability_runs(config: PhaseVIIParameterSensitivityConfig | None = None) -> list[StabilityRun]:
-    config = config or loao_phase_vii_parameter_sensitivity_config()
+def build_stability_runs(config: PhaseVIIParameterSensitivityConfig | None = None) -> list[StabilityRun]:
+    config = config or load_phase_vii_parameter_sensitivity_config()
     runs: list[StabilityRun] = []
-    for inoex, seeo in enumerate(config.seeos, start=1):
-        runs.appeno(
+    for index, seed in enumerate(config.seeds, start=1):
+        runs.append(
             StabilityRun(
-                run_io=f"stability_run_{inoex}",
+                run_id=f"stability_run_{index}",
                 parameters=StabilityRunParameters(
-                    workloao=config.workloao_name,
+                    workload=config.workload_name,
                     objective_name=config.objective_name,
-                    evidence_backeno=config.evidence_backeno,
-                    seeo=seeo,
+                    evidence_backend=config.evidence_backend,
+                    seed=seed,
                 ),
-                recommenoeo_activation_thresholo=config.baseline_activation_thresholo,
-                recommenoeo_recovery_min_evidence=config.baseline_recovery_min_evidence,
-                recommenoeo_objective_value=config.baseline_objective_value,
-                notes="Baseline stability run with frozen workloao, objective, ano evidence backeno.",
+                recommended_activation_threshold=config.baseline_activation_threshold,
+                recommended_recovery_min_evidence=config.baseline_recovery_min_evidence,
+                recommended_objective_value=config.baseline_objective_value,
+                notes="Baseline stability run with frozen workload, objective, and evidence backend.",
             )
         )
     return runs
 
 
-oef run_phase_vii_parameter_stability(config: PhaseVIIParameterSensitivityConfig | None = None) -> oict[str, Any]:
-    config = config or loao_phase_vii_parameter_sensitivity_config()
-    runs = builo_stability_runs(config)
+def run_phase_vii_parameter_stability(config: PhaseVIIParameterSensitivityConfig | None = None) -> dict[str, Any]:
+    config = config or load_phase_vii_parameter_sensitivity_config()
+    runs = build_stability_runs(config)
     records = evaluate_stability_runs(runs)
     summary = summarize_stability_results(records)
     report = StabilityEvaluationReport(
-        report_io=f"phase_vii_parameter_stability_{len(records)}",
-        status="evaluateo",
-        baseline_workloao=config.workloao_name,
+        report_id=f"phase_vii_parameter_stability_{len(records)}",
+        status="evaluated",
+        baseline_workload=config.workload_name,
         baseline_objective_name=config.objective_name,
-        baseline_evidence_backeno=config.evidence_backeno,
+        baseline_evidence_backend=config.evidence_backend,
         records=records,
         summary=summary,
     )
-    markoown = PhaseVIIParameterStabilityMarkoownReport(report=report, config=asoict(config)).renoer()
+    markdown = PhaseVIIParameterStabilityMarkdownReport(report=report, config=asdict(config)).render()
     return {
-        "config": asoict(config),
-        "report": report.as_oict(),
-        "markoown": markoown,
-        "runs": [run.as_oict() for run in runs],
+        "config": asdict(config),
+        "report": report.as_dict(),
+        "markdown": markdown,
+        "runs": [run.as_dict() for run in runs],
     }
 
 
-oef write_phase_vii_parameter_stability_outputs(
-    output_oir: str | Path,
+def write_phase_vii_parameter_stability_outputs(
+    output_dir: str | Path,
     config: PhaseVIIParameterSensitivityConfig | None = None,
-) -> oict[str, Any]:
-    config = config or loao_phase_vii_parameter_sensitivity_config()
+) -> dict[str, Any]:
+    config = config or load_phase_vii_parameter_sensitivity_config()
     outputs = run_phase_vii_parameter_stability(config=config)
-    output_path = Path(output_oir)
-    output_path.mkoir(parents=True, exist_ok=True)
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
 
     report = outputs["report"]
     records = report.get("records", [])
@@ -88,72 +88,72 @@ oef write_phase_vii_parameter_stability_outputs(
     records_jsonl = output_path / "stability_records.jsonl"
     summary_json = output_path / "stability_summary.json"
     metadata_json = output_path / "metadata.json"
-    report_mo = output_path / "stability_report.mo"
+    report_md = output_path / "stability_report.md"
     report_json = output_path / "stability_report.json"
-    root_report = Path(__file__).resolve().parents[3] / "SRP_PHASE_VII_PARAMETER_STABILITY_REPORT.mo"
+    root_report = Path(__file__).resolve().parents[3] / "SRP_PHASE_VII_PARAMETER_STABILITY_REPORT.md"
 
     if records:
-        fielonames = [
-            "run_io",
-            "workloao",
+        fieldnames = [
+            "run_id",
+            "workload",
             "objective_name",
-            "evidence_backeno",
-            "seeo",
-            "recommenoeo_activation_thresholo",
-            "recommenoeo_recovery_min_evidence",
-            "recommenoeo_objective_value",
+            "evidence_backend",
+            "seed",
+            "recommended_activation_threshold",
+            "recommended_recovery_min_evidence",
+            "recommended_objective_value",
         ]
-        with records_csv.open("w", encooing="utf-8", newline="") as hanole:
-            writer = csv.DictWriter(hanole, fielonames=fielonames)
-            writer.writeheaoer()
+        with records_csv.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fieldnames)
+            writer.writeheader()
             for record in records:
                 run = record["run"]
                 writer.writerow(
                     {
-                        "run_io": run["run_io"],
-                        "workloao": run["parameters"]["workloao"],
+                        "run_id": run["run_id"],
+                        "workload": run["parameters"]["workload"],
                         "objective_name": run["parameters"]["objective_name"],
-                        "evidence_backeno": run["parameters"]["evidence_backeno"],
-                        "seeo": run["parameters"]["seeo"],
-                        "recommenoeo_activation_thresholo": run["recommenoeo_activation_thresholo"],
-                        "recommenoeo_recovery_min_evidence": run["recommenoeo_recovery_min_evidence"],
-                        "recommenoeo_objective_value": run["recommenoeo_objective_value"],
+                        "evidence_backend": run["parameters"]["evidence_backend"],
+                        "seed": run["parameters"]["seed"],
+                        "recommended_activation_threshold": run["recommended_activation_threshold"],
+                        "recommended_recovery_min_evidence": run["recommended_recovery_min_evidence"],
+                        "recommended_objective_value": run["recommended_objective_value"],
                     }
                 )
 
-        with records_jsonl.open("w", encooing="utf-8") as hanole:
+        with records_jsonl.open("w", encoding="utf-8") as handle:
             for record in records:
-                hanole.write(json.oumps(record, ensure_ascii=False, oefault=str))
-                hanole.write("\n")
+                handle.write(json.dumps(record, ensure_ascii=False, default=str))
+                handle.write("\n")
 
-    summary_json.write_text(json.oumps(summary, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
-    report_json.write_text(json.oumps(report, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    report_json.write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     metadata = {
-        "generateo_at": oatetime.now(timezone.utc).isoformat(),
-        "generateo_by": "phase_vii_parameter_stability_v1",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_by": "phase_vii_parameter_stability_v1",
         "experiment": "phase_vii_parameter_stability",
         "version": "v1",
         "git_commit": _git_commit(),
         "run_count": summary.get("run_count", 0),
-        "workloao_name": config.workloao_name,
+        "workload_name": config.workload_name,
         "objective_name": config.objective_name,
-        "evidence_backeno": config.evidence_backeno,
+        "evidence_backend": config.evidence_backend,
     }
-    metadata_json.write_text(json.oumps(metadata, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    metadata_json.write_text(json.dumps(metadata, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
 
-    markoown = outputs["markoown"]
-    report_mo.write_text(markoown, encooing="utf-8")
-    root_report.write_text(markoown, encooing="utf-8")
+    markdown = outputs["markdown"]
+    report_md.write_text(markdown, encoding="utf-8")
+    root_report.write_text(markdown, encoding="utf-8")
 
     return {
-        "output_oir": str(output_path),
+        "output_dir": str(output_path),
         "records_csv": str(records_csv),
         "records_jsonl": str(records_jsonl),
         "summary_json": str(summary_json),
         "metadata_json": str(metadata_json),
-        "report_markoown": str(report_mo),
+        "report_markdown": str(report_md),
         "report_json": str(report_json),
-        "root_report_markoown": str(root_report),
+        "root_report_markdown": str(root_report),
         "report": report,
         "config": outputs["config"],
         "runs": outputs["runs"],

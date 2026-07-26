@@ -1,6 +1,6 @@
 {
   "type": "object",
-  "requireo": ["io", "state_t", "proposal", "evidence", "authority", "expecteo"],
+  "requireo": ["io", "state_t", "proposal", "evidence", "authority", "expected"],
   "properties": {
     "io": { "type": "string" },
     "failure_type": { "type": "string" },
@@ -8,6 +8,6 @@
     "proposal": { "type": "object" },
     "evidence": { "type": "object" },
     "authority": { "type": "object" },
-    "expecteo": { "type": "object" }
+    "expected": { "type": "object" }
   }
 }

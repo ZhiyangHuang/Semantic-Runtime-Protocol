@@ -4,173 +4,173 @@ import unittest
 
 from srp_runtime.checkpoint import CheckpointManager
 from srp_runtime.commit import SemanticCommit
-from srp_runtime.version import ConflictDetector, SemanticVersionGraph, SemanticVersionNooe
+from srp_runtime.version import ConflictDetector, SemanticVersionGraph, SemanticVersionNode
 
 
-class VersionConflictvalidationTests(unittest.TestCase):
-    oef test_branch_is_not_conflict(self) -> None:
+class VersionConflictValidationTests(unittest.TestCase):
+    def test_branch_is_not_conflict(self) -> None:
         graph = SemanticVersionGraph()
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v0",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v0",
                 parent_versions=[],
-                commit_io="commit:seeo",
+                commit_id="commit:seed",
                 state_ref="state:v0",
-                createo_rouno=1,
+                created_round=1,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v1",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v1",
                 parent_versions=["v0"],
-                commit_io="commit:1",
+                commit_id="commit:1",
                 state_ref="state:v1",
-                createo_rouno=2,
+                created_round=2,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v2",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v2",
                 parent_versions=["v0"],
-                commit_io="commit:2",
+                commit_id="commit:2",
                 state_ref="state:v2",
-                createo_rouno=2,
+                created_round=2,
             )
         )
 
-        oetector = ConflictDetector()
-        conflicts = oetector.oetect_all(graph)
+        detector = ConflictDetector()
+        conflicts = detector.detect_all(graph)
 
         self.assertEqual(conflicts, [])
 
-    oef test_ouplicate_transition_proouces_conflict(self) -> None:
+    def test_duplicate_transition_produces_conflict(self) -> None:
         graph = SemanticVersionGraph()
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v0",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v0",
                 parent_versions=[],
-                commit_io="commit:seeo",
+                commit_id="commit:seed",
                 state_ref="state:v0",
-                createo_rouno=1,
+                created_round=1,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v1",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v1",
                 parent_versions=["v0"],
-                commit_io="commit:t100",
+                commit_id="commit:t100",
                 state_ref="state:v1",
-                createo_rouno=2,
+                created_round=2,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v2",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v2",
                 parent_versions=["v0"],
-                commit_io="commit:t100",
+                commit_id="commit:t100",
                 state_ref="state:v2",
-                createo_rouno=2,
+                created_round=2,
             )
         )
 
-        oetector = ConflictDetector()
-        conflicts = oetector.oetect_ouplicate_transition(graph)
+        detector = ConflictDetector()
+        conflicts = detector.detect_duplicate_transition(graph)
 
         self.assertEqual(len(conflicts), 1)
-        self.assertEqual(conflicts[0].conflict_type, "ouplicate_transition")
+        self.assertEqual(conflicts[0].conflict_type, "duplicate_transition")
         self.assertEqual(conflicts[0].source_version_a, "v1")
         self.assertEqual(conflicts[0].source_version_b, "v2")
 
-    oef test_oivergent_semantic_upoate_proouces_conflict(self) -> None:
+    def test_divergent_semantic_update_produces_conflict(self) -> None:
         graph = SemanticVersionGraph()
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v0",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v0",
                 parent_versions=[],
-                commit_io="commit:seeo",
+                commit_id="commit:seed",
                 state_ref="state:v0",
-                createo_rouno=1,
+                created_round=1,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v1",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v1",
                 parent_versions=["v0"],
-                commit_io="commit:1",
+                commit_id="commit:1",
                 state_ref="state:v1",
-                createo_rouno=2,
+                created_round=2,
                 metadata={
-                    "conflict_type": "semantic_oivergence",
+                    "conflict_type": "semantic_divergence",
                     "conflict_evidence_refs": ["trace:v1"],
                 },
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v2",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v2",
                 parent_versions=["v0"],
-                commit_io="commit:2",
+                commit_id="commit:2",
                 state_ref="state:v2",
-                createo_rouno=2,
+                created_round=2,
             )
         )
 
-        oetector = ConflictDetector()
-        conflicts = oetector.oetect_oivergence(graph)
+        detector = ConflictDetector()
+        conflicts = detector.detect_divergence(graph)
 
         self.assertEqual(len(conflicts), 1)
-        self.assertEqual(conflicts[0].conflict_type, "semantic_oivergence")
+        self.assertEqual(conflicts[0].conflict_type, "semantic_divergence")
         self.assertEqual(conflicts[0].source_version_a, "v0")
         self.assertEqual(conflicts[0].source_version_b, "v1")
         self.assertIn("trace:v1", conflicts[0].evidence_refs)
 
-    oef test_checkpoint_ooes_not_resolve_conflict(self) -> None:
+    def test_checkpoint_does_not_resolve_conflict(self) -> None:
         graph = SemanticVersionGraph()
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v0",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v0",
                 parent_versions=[],
-                commit_io="commit:seeo",
+                commit_id="commit:seed",
                 state_ref="state:v0",
-                createo_rouno=1,
+                created_round=1,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v1",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v1",
                 parent_versions=["v0"],
-                commit_io="commit:1",
+                commit_id="commit:1",
                 state_ref="state:v1",
-                createo_rouno=2,
+                created_round=2,
                 metadata={
-                    "conflict_type": "semantic_oivergence",
+                    "conflict_type": "semantic_divergence",
                     "conflict_evidence_refs": ["trace:v1"],
                 },
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v2",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v2",
                 parent_versions=["v0"],
-                commit_io="commit:2",
+                commit_id="commit:2",
                 state_ref="state:v2",
-                createo_rouno=2,
+                created_round=2,
             )
         )
 
-        oetector = ConflictDetector()
-        conflicts_before = oetector.oetect_oivergence(graph)
+        detector = ConflictDetector()
+        conflicts_before = detector.detect_divergence(graph)
         self.assertEqual(len(conflicts_before), 1)
 
         checkpoint_manager = CheckpointManager()
         semantic_commit = SemanticCommit(
-            commit_io="commit:checkpoint",
-            parent_version_io="v1",
-            new_version_io="v3",
-            event_io="event:checkpoint",
-            decision_io="decision:checkpoint",
-            transition_io="transition:checkpoint",
-            trace_io="trace:checkpoint",
+            commit_id="commit:checkpoint",
+            parent_version_id="v1",
+            new_version_id="v3",
+            event_id="event:checkpoint",
+            decision_id="decision:checkpoint",
+            transition_id="transition:checkpoint",
+            trace_id="trace:checkpoint",
             state_ref="state:v3",
             version_ref="v3",
             semantic_time=11,
@@ -182,48 +182,48 @@ class VersionConflictvalidationTests(unittest.TestCase):
             event_position=1,
         )
 
-        conflicts_after = oetector.oetect_oivergence(graph)
+        conflicts_after = detector.detect_divergence(graph)
         self.assertEqual(conflicts_before, conflicts_after)
 
-    oef test_conflict_oetection_oeterministic(self) -> None:
+    def test_conflict_detection_deterministic(self) -> None:
         graph = SemanticVersionGraph()
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v0",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v0",
                 parent_versions=[],
-                commit_io="commit:seeo",
+                commit_id="commit:seed",
                 state_ref="state:v0",
-                createo_rouno=1,
+                created_round=1,
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v1",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v1",
                 parent_versions=["v0"],
-                commit_io="commit:1",
+                commit_id="commit:1",
                 state_ref="state:v1",
-                createo_rouno=2,
+                created_round=2,
                 metadata={
-                    "conflict_type": "semantic_oivergence",
+                    "conflict_type": "semantic_divergence",
                     "conflict_evidence_refs": ["trace:v1"],
                 },
             )
         )
-        graph.aoo_version(
-            SemanticVersionNooe(
-                version_io="v2",
+        graph.add_version(
+            SemanticVersionNode(
+                version_id="v2",
                 parent_versions=["v0"],
-                commit_io="commit:2",
+                commit_id="commit:2",
                 state_ref="state:v2",
-                createo_rouno=2,
+                created_round=2,
             )
         )
 
-        oetector = ConflictDetector()
-        first = oetector.oetect_all(graph)
-        secono = oetector.oetect_all(graph)
+        detector = ConflictDetector()
+        first = detector.detect_all(graph)
+        second = detector.detect_all(graph)
 
-        self.assertEqual(first, secono)
+        self.assertEqual(first, second)
 
 
 if __name__ == "__main__":

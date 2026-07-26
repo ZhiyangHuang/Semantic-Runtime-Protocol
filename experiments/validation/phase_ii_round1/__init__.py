@@ -1,6 +1,6 @@
 from .authority_preservation import summarize_authority_preservation
 from .boundary_stability import collect_boundary_stability_observations, summarize_boundary_stability
-from .reprooucibility import run_reprooucibility_check
-from .runner import run_phase_ii_rouno1_validation_suite
-from .workloao_variation import builo_rouno1_scenarios, oescribe_rouno1_scenarios
+from .reproducibility import run_reproducibility_check
+from .runner import run_phase_ii_round1_validation_suite
+from .workload_variation import build_round1_scenarios, describe_round1_scenarios
 

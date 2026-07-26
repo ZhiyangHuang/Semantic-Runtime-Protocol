@@ -1,38 +1,38 @@
 from __future__ import annotations
 
-from experiments.evaluation.phase_vi_relation_recovery.schema import RecoveryCase, SemanticEoge, SemanticGraph, SemanticNooe
+from experiments.evaluation.phase_vi_relation_recovery.schema import RecoveryCase, SemanticEdge, SemanticGraph, SemanticNode
 
 
-oef builo_graph(
-    nooes: list[tuple[str, str]],
-    eoges: list[tuple[str, str, str, float]],
+def build_graph(
+    nodes: list[tuple[str, str]],
+    edges: list[tuple[str, str, str, float]],
 ) -> SemanticGraph:
-    semantic_nooes = tuple(SemanticNooe(nooe_io, content) for nooe_io, content in nooes)
-    semantic_eoges = tuple(SemanticEoge(source, target, relation_type, confioence) for source, target, relation_type, confioence in eoges)
-    return SemanticGraph(nooes=semantic_nooes, eoges=semantic_eoges)
+    semantic_nodes = tuple(SemanticNode(node_id, content) for node_id, content in nodes)
+    semantic_edges = tuple(SemanticEdge(source, target, relation_type, confidence) for source, target, relation_type, confidence in edges)
+    return SemanticGraph(nodes=semantic_nodes, edges=semantic_edges)
 
 
-oef make_case(
-    case_io: str,
+def make_case(
+    case_id: str,
     category: str,
     query: str,
     source_graph: SemanticGraph,
-    reference_nooe_ios: tuple[str, ...],
-    neighborhooo_nooe_ios: tuple[str, ...],
-    reference_eoge_keys: tuple[tuple[str, str, str], ...],
-    requireo_paths: tuple[tuple[str, ...], ...],
+    reference_node_ids: tuple[str, ...],
+    neighborhood_node_ids: tuple[str, ...],
+    reference_edge_keys: tuple[tuple[str, str, str], ...],
+    required_paths: tuple[tuple[str, ...], ...],
     evidence_cost: float,
     notes: str,
 ) -> RecoveryCase:
     return RecoveryCase(
-        case_io=case_io,
+        case_id=case_id,
         category=category,
         query=query,
         source_graph=source_graph,
-        reference_nooe_ios=reference_nooe_ios,
-        neighborhooo_nooe_ios=neighborhooo_nooe_ios,
-        reference_eoge_keys=reference_eoge_keys,
-        requireo_paths=requireo_paths,
+        reference_node_ids=reference_node_ids,
+        neighborhood_node_ids=neighborhood_node_ids,
+        reference_edge_keys=reference_edge_keys,
+        required_paths=required_paths,
         evidence_cost=evidence_cost,
         notes=notes,
     )

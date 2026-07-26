@@ -3,39 +3,39 @@
   "sources": [
     {
       "name": "longmemeval",
-      "oisplay_name": "LongMemEval",
+      "display_name": "LongMemEval",
       "role": "evidence_consistency",
-      "transition_role": "evidence_upoate",
+      "transition_role": "evidence_update",
       "adapter": "longmemeval",
       "source_type": "external",
-      "status": "planneo"
+      "status": "planned"
     },
     {
       "name": "locomo",
-      "oisplay_name": "LoCoMo",
+      "display_name": "LoCoMo",
       "role": "transition_admissibility",
       "transition_role": "temporal_state_evolution",
       "adapter": "locomo",
       "source_type": "external",
-      "status": "planneo"
+      "status": "planned"
     },
     {
       "name": "agentbench",
-      "oisplay_name": "AgentBench",
+      "display_name": "AgentBench",
       "role": "mutation_authorization",
       "transition_role": "action_proposal",
       "adapter": "agentbench",
       "source_type": "external",
-      "status": "planneo"
+      "status": "planned"
     },
     {
       "name": "reasoning",
-      "oisplay_name": "Reasoning Sources",
-      "role": "reasoning_inouced_transition",
+      "display_name": "Reasoning Sources",
+      "role": "reasoning_induced_transition",
       "transition_role": "inference_proposal",
       "adapter": "reasoning",
       "source_type": "external",
-      "status": "planneo"
+      "status": "planned"
     }
   ]
 }

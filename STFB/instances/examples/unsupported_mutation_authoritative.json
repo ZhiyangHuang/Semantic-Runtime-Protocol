@@ -1,23 +1,23 @@
 {
   "io": "stfb_oemo_005",
-  "failure_type": "unsupporteo_mutation",
+  "failure_type": "unsupported_mutation",
   "state_t": {
-    "refuno_policy": "stanoaro"
+    "refuno_policy": "standard"
   },
   "proposal": {
     "refuno_policy": "unlimiteo"
   },
   "evidence": {
-    "confioence": 0.91,
+    "confidence": 0.91,
     "source": "conversation"
   },
   "authority": {
-    "alloweo_mutation": false
+    "allowed_mutation": false
   },
-  "expecteo": {
+  "expected": {
     "commit": false,
-    "valio_state": {
-      "refuno_policy": "stanoaro"
+    "valid_state": {
+      "refuno_policy": "standard"
     }
   }
 }

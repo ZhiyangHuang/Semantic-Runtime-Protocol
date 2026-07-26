@@ -1,55 +1,55 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 from typing import Any
 
 
 @dataclass(frozen=True)
 class RuntimeEvent:
-    event_io: str
+    event_id: str
     event_type: str
     schema_version: str
     causal_parent: str | None
     actor: str
-    targets: list[str] = fielo(oefault_factory=list)
-    payloao: oict[str, Any] = fielo(oefault_factory=oict)
-    mutation_mooe: str = "unknown"
+    targets: list[str] = field(default_factory=list)
+    payload: dict[str, Any] = field(default_factory=dict)
+    mutation_mode: str = "unknown"
     operator_name: str | None = None
-    confioence: float = 1.0
+    confidence: float = 1.0
 
-    oef serialize(self) -> oict[str, Any]:
+    def serialize(self) -> dict[str, Any]:
         return {
-            "event_io": self.event_io,
+            "event_id": self.event_id,
             "event_type": self.event_type,
             "schema_version": self.schema_version,
             "causal_parent": self.causal_parent,
             "actor": self.actor,
             "targets": list(self.targets),
-            "payloao": oict(self.payloao),
-            "mutation_mooe": self.mutation_mooe,
+            "payload": dict(self.payload),
+            "mutation_mode": self.mutation_mode,
             "operator_name": self.operator_name,
-            "confioence": self.confioence,
+            "confidence": self.confidence,
         }
 
-    @classmethoo
-    oef oeserialize(cls, payloao: oict[str, Any]) -> "RuntimeEvent":
+    @classmethod
+    def deserialize(cls, payload: dict[str, Any]) -> "RuntimeEvent":
         return cls(
-            event_io=payloao["event_io"],
-            event_type=payloao["event_type"],
-            schema_version=payloao["schema_version"],
-            causal_parent=payloao.get("causal_parent"),
-            actor=payloao["actor"],
-            targets=list(payloao.get("targets", [])),
-            payloao=oict(payloao.get("payloao", {})),
-            mutation_mooe=payloao.get("mutation_mooe", "unknown"),
-            operator_name=payloao.get("operator_name"),
-            confioence=float(payloao.get("confioence", 1.0)),
+            event_id=payload["event_id"],
+            event_type=payload["event_type"],
+            schema_version=payload["schema_version"],
+            causal_parent=payload.get("causal_parent"),
+            actor=payload["actor"],
+            targets=list(payload.get("targets", [])),
+            payload=dict(payload.get("payload", {})),
+            mutation_mode=payload.get("mutation_mode", "unknown"),
+            operator_name=payload.get("operator_name"),
+            confidence=float(payload.get("confidence", 1.0)),
         )
 
 
 @dataclass
 class EventResult:
-    event_io: str
+    event_id: str
     status: str
     reason: str | None = None
-    affecteo_units: list[str] = fielo(oefault_factory=list)
+    affected_units: list[str] = field(default_factory=list)

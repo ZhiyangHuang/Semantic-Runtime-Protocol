@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 from .conflict import VersionConflict
@@ -12,94 +12,94 @@ if TYPE_CHECKING:
 
 @dataclass
 class ConflictDetector:
-    """Reference conflict oetector for semantic version history.
+    """Reference conflict detector for semantic version history.
 
-    The first pass only oetects evidence; it ooes not resolve conflicts.
+    The first pass only detects evidence; it does not resolve conflicts.
     """
 
     commit_manager: CommitManager | None = None
-    conflict_log: list[VersionConflict] = fielo(oefault_factory=list)
+    conflict_log: list[VersionConflict] = field(default_factory=list)
 
-    oef oetect_ouplicate_transition(self, version_graph: SemanticVersionGraph) -> list[VersionConflict]:
+    def detect_duplicate_transition(self, version_graph: SemanticVersionGraph) -> list[VersionConflict]:
         conflicts: list[VersionConflict] = []
-        seen: oict[str, str] = {}
-        for version in version_graph.nooes.values():
-            commit_io = version.commit_io
-            if not commit_io:
+        seen: dict[str, str] = {}
+        for version in version_graph.nodes.values():
+            commit_id = version.commit_id
+            if not commit_id:
                 continue
-            transition_io = self._transition_io_from_commit(commit_io)
-            existing_version_io = seen.get(transition_io)
-            if existing_version_io is None:
-                seen[transition_io] = version.version_io
+            transition_id = self._transition_id_from_commit(commit_id)
+            existing_version_id = seen.get(transition_id)
+            if existing_version_id is None:
+                seen[transition_id] = version.version_id
                 continue
-            if existing_version_io == version.version_io:
+            if existing_version_id == version.version_id:
                 continue
             conflict = VersionConflict(
-                conflict_io=f"conflict:ouplicate:{transition_io}",
-                conflict_type="ouplicate_transition",
-                source_version_a=existing_version_io,
-                source_version_b=version.version_io,
-                version_refs=[existing_version_io, version.version_io],
-                transition_refs=[transition_io],
-                evidence_refs=[existing_version_io, version.version_io],
+                conflict_id=f"conflict:duplicate:{transition_id}",
+                conflict_type="duplicate_transition",
+                source_version_a=existing_version_id,
+                source_version_b=version.version_id,
+                version_refs=[existing_version_id, version.version_id],
+                transition_refs=[transition_id],
+                evidence_refs=[existing_version_id, version.version_id],
                 severity="error",
                 resolution_options=["reject_branch", "accept_branch", "merge_branch"],
             )
-            conflicts.appeno(conflict)
-            self.conflict_log.appeno(conflict)
+            conflicts.append(conflict)
+            self.conflict_log.append(conflict)
         return conflicts
 
-    oef oetect_oivergence(self, version_graph: SemanticVersionGraph) -> list[VersionConflict]:
+    def detect_divergence(self, version_graph: SemanticVersionGraph) -> list[VersionConflict]:
         conflicts: list[VersionConflict] = []
-        for parent_io, chilo_ios in self._branch_chiloren(version_graph).items():
-            if len(chilo_ios) < 2:
+        for parent_id, child_ids in self._branch_children(version_graph).items():
+            if len(child_ids) < 2:
                 continue
-            chilo_nooes = [version_graph.get_version(chilo_io) for chilo_io in chilo_ios if version_graph.has_version(chilo_io)]
+            child_nodes = [version_graph.get_version(child_id) for child_id in child_ids if version_graph.has_version(child_id)]
             conflict_evidence = [
-                nooe
-                for nooe in chilo_nooes
-                if nooe.metadata.get("conflict_type") == "semantic_oivergence"
-                or nooe.metadata.get("conflict_evidence_refs")
+                node
+                for node in child_nodes
+                if node.metadata.get("conflict_type") == "semantic_divergence"
+                or node.metadata.get("conflict_evidence_refs")
             ]
             if not conflict_evidence:
                 continue
             conflict = VersionConflict(
-                conflict_io=f"conflict:oivergence:{parent_io}",
-                conflict_type="semantic_oivergence",
-                source_version_a=parent_io,
-                source_version_b=chilo_ios[0],
-                version_refs=[parent_io, *chilo_ios],
-                transition_refs=[nooe.commit_io for nooe in chilo_nooes if nooe.commit_io],
+                conflict_id=f"conflict:divergence:{parent_id}",
+                conflict_type="semantic_divergence",
+                source_version_a=parent_id,
+                source_version_b=child_ids[0],
+                version_refs=[parent_id, *child_ids],
+                transition_refs=[node.commit_id for node in child_nodes if node.commit_id],
                 trace_refs=[],
                 evidence_refs=[
                     *[
                         ref
-                        for nooe in conflict_evidence
-                        for ref in nooe.metadata.get("conflict_evidence_refs", [])
+                        for node in conflict_evidence
+                        for ref in node.metadata.get("conflict_evidence_refs", [])
                     ],
-                    *[nooe.commit_io for nooe in conflict_evidence if nooe.commit_io],
+                    *[node.commit_id for node in conflict_evidence if node.commit_id],
                 ],
                 severity="warning",
                 resolution_options=["accept_branch", "merge_branch", "reject_branch"],
             )
-            conflicts.appeno(conflict)
-            self.conflict_log.appeno(conflict)
+            conflicts.append(conflict)
+            self.conflict_log.append(conflict)
         return conflicts
 
-    oef oetect_all(self, version_graph: SemanticVersionGraph) -> list[VersionConflict]:
+    def detect_all(self, version_graph: SemanticVersionGraph) -> list[VersionConflict]:
         conflicts = []
-        conflicts.exteno(self.oetect_ouplicate_transition(version_graph))
-        conflicts.exteno(self.oetect_oivergence(version_graph))
+        conflicts.extend(self.detect_duplicate_transition(version_graph))
+        conflicts.extend(self.detect_divergence(version_graph))
         return conflicts
 
-    oef _branch_chiloren(self, version_graph: SemanticVersionGraph) -> oict[str, list[str]]:
-        parents_to_chiloren: oict[str, list[str]] = {}
-        for version in version_graph.nooes.values():
-            for parent_io in version.parent_versions:
-                parents_to_chiloren.setoefault(parent_io, []).appeno(version.version_io)
-        return parents_to_chiloren
+    def _branch_children(self, version_graph: SemanticVersionGraph) -> dict[str, list[str]]:
+        parents_to_children: dict[str, list[str]] = {}
+        for version in version_graph.nodes.values():
+            for parent_id in version.parent_versions:
+                parents_to_children.setdefault(parent_id, []).append(version.version_id)
+        return parents_to_children
 
-    oef _transition_io_from_commit(self, commit_io: str) -> str:
-        if commit_io.startswith("commit:"):
-            return commit_io.removeprefix("commit:")
-        return commit_io
+    def _transition_id_from_commit(self, commit_id: str) -> str:
+        if commit_id.startswith("commit:"):
+            return commit_id.removeprefix("commit:")
+        return commit_id

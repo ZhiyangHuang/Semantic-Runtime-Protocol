@@ -2,17 +2,17 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from experiments.config import loao_phase_viii_implementation_inoepenoence_config
-from experiments.evaluation.phase_viii_implementation_inoepenoence.runner import (
-    write_phase_viii_implementation_inoepenoence_outputs,
+from experiments.config import load_phase_viii_implementation_independence_config
+from experiments.evaluation.phase_viii_implementation_independence.runner import (
+    write_phase_viii_implementation_independence_outputs,
 )
 
 
-oef main() -> None:
-    config = loao_phase_viii_implementation_inoepenoence_config()
+def main() -> None:
+    config = load_phase_viii_implementation_independence_config()
     project_root = Path(__file__).resolve().parents[2]
-    output_oir = project_root / "experiments" / "results" / "phase_viii_implementation_inoepenoence"
-    write_phase_viii_implementation_inoepenoence_outputs(output_oir, config=config)
+    output_dir = project_root / "experiments" / "results" / "phase_viii_implementation_independence"
+    write_phase_viii_implementation_independence_outputs(output_dir, config=config)
 
 
 if __name__ == "__main__":

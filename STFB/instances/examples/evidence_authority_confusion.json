@@ -8,15 +8,15 @@
     "account_status": "suspenoeo"
   },
   "evidence": {
-    "confioence": 0.98,
-    "source": "preoiction_model"
+    "confidence": 0.98,
+    "source": "prediction_model"
   },
   "authority": {
-    "alloweo_mutation": false
+    "allowed_mutation": false
   },
-  "expecteo": {
+  "expected": {
     "commit": false,
-    "valio_state": {
+    "valid_state": {
       "account_status": "active"
     }
   }

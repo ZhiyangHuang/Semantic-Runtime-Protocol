@@ -8,57 +8,57 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 
 class TestForgettingOperator(unittest.TestCase):
-    oef _builo_state(self) -> SemanticState:
+    def _build_state(self) -> SemanticState:
         state = SemanticState(
-            state_io="s0",
-            version_io="s0",
+            state_id="s0",
+            version_id="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_io="u1",
+                    unit_id="u1",
                     canonical_name="alpha",
                     activation=0.9,
-                    confioence=0.95,
-                    semantic_payloao={"entity_type": "concept", "name": "alpha", "oetail": "source"},
+                    confidence=0.95,
+                    semantic_payload={"entity_type": "concept", "name": "alpha", "detail": "source"},
                     provenance=["source:1"],
                     lineage=["u1"],
                 ),
                 "u2": SemanticUnit(
-                    unit_io="u2",
+                    unit_id="u2",
                     canonical_name="beta",
                     activation=0.1,
-                    confioence=0.8,
-                    semantic_payloao={"entity_type": "concept", "name": "beta", "oetail": "source"},
+                    confidence=0.8,
+                    semantic_payload={"entity_type": "concept", "name": "beta", "detail": "source"},
                     provenance=["source:2"],
                     lineage=["u2"],
                 ),
             },
         )
-        state.graph.aoo_unit(state.units["u1"])
-        state.graph.aoo_unit(state.units["u2"])
-        state.graph.relation_inoex["u1"] = ["u2"]
-        state.graph.relation_inoex["u2"] = ["u1"]
-        state.units["u1"].relation_ios = ["r:u1->u2"]
-        state.units["u2"].relation_ios = ["r:u2->u1"]
+        state.graph.add_unit(state.units["u1"])
+        state.graph.add_unit(state.units["u2"])
+        state.graph.relation_index["u1"] = ["u2"]
+        state.graph.relation_index["u2"] = ["u1"]
+        state.units["u1"].relation_ids = ["r:u1->u2"]
+        state.units["u2"].relation_ids = ["r:u2->u1"]
         return state
 
-    oef test_forgetting_archives_active_representation(self):
-        state = self._builo_state()
+    def test_forgetting_archives_active_representation(self):
+        state = self._build_state()
         kernel = RuntimeKernel(state=state)
 
         event = RuntimeEvent(
-            event_io="f1",
+            event_id="f1",
             event_type="Forgotten",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u2"],
-            payloao={
-                "target_unit_io": "u2",
+            payload={
+                "target_unit_id": "u2",
                 "forget_reason": "low_activation",
                 "preserve_evidence": True,
                 "evidence_refs": ["trace:f1", "version:v1", "lineage:u2"],
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="ForgettingOperator",
         )
 
@@ -66,141 +66,141 @@ class TestForgettingOperator(unittest.TestCase):
 
         self.assertTrue(transition.success)
         self.assertEqual(kernel._state.units["u2"].lifecycle_state, "forgotten")
-        self.assertEqual(kernel._state.units["u2"].oecay_state, "forgotten")
-        self.assertEqual(kernel._state.units["u2"].relation_ios, [])
-        self.assertEqual(kernel._state.graph.relation_inoex["u2"], [])
-        self.assertNotIn("u2", kernel._state.graph.relation_inoex["u1"])
+        self.assertEqual(kernel._state.units["u2"].decay_state, "forgotten")
+        self.assertEqual(kernel._state.units["u2"].relation_ids, [])
+        self.assertEqual(kernel._state.graph.relation_index["u2"], [])
+        self.assertNotIn("u2", kernel._state.graph.relation_index["u1"])
         self.assertIn("trace:f1", kernel._state.units["u2"].provenance)
-        self.assertIn("u1", kernel._state.units["u2"].semantic_payloao["archiveo_neighbors"])
-        self.assertIn("r:u2->u1", kernel._state.units["u2"].semantic_payloao["archiveo_relation_ios"])
-        self.assertIn("u2", transition.changeo_unit_ios)
+        self.assertIn("u1", kernel._state.units["u2"].semantic_payload["archived_neighbors"])
+        self.assertIn("r:u2->u1", kernel._state.units["u2"].semantic_payload["archived_relation_ids"])
+        self.assertIn("u2", transition.changed_unit_ids)
         self.assertTrue(transition.metric_evidence is not None)
         self.assertEqual(transition.operator_name, "ForgettingOperator")
 
-    oef test_forgetting_requires_evidence(self):
-        state = self._builo_state()
+    def test_forgetting_requires_evidence(self):
+        state = self._build_state()
         event = RuntimeEvent(
-            event_io="f2",
+            event_id="f2",
             event_type="Forgotten",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u2"],
-            payloao={
-                "target_unit_io": "u2",
+            payload={
+                "target_unit_id": "u2",
                 "forget_reason": "low_activation",
                 "preserve_evidence": True,
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="ForgettingOperator",
         )
 
         result = RuntimeKernel(state=state).submit_event(event)
 
-        self.assertEqual(result.status, "rejecteo")
+        self.assertEqual(result.status, "rejected")
 
-    oef test_merge_approximation_forgetting_recovery_replay_is_oeterministic(self):
-        initial_state = self._builo_state()
+    def test_merge_approximation_forgetting_recovery_replay_is_deterministic(self):
+        initial_state = self._build_state()
 
         merge_event = RuntimeEvent(
-            event_io="m1",
-            event_type="Mergeo",
+            event_id="m1",
+            event_type="Merged",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payloao={
-                "mergeo_unit_io": "mergeo_1",
+            payload={
+                "merged_unit_id": "merged_1",
                 "canonical_name": "alpha-beta",
-                "semantic_payloao": {
+                "semantic_payload": {
                     "entity_type": "concept",
                     "name": "alpha-beta",
-                    "oetail": "mergeo",
+                    "detail": "merged",
                 },
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="MergeOperator",
         )
         approximation_event = RuntimeEvent(
-            event_io="a1",
-            event_type="Approximateo",
+            event_id="a1",
+            event_type="Approximated",
             schema_version="1",
             causal_parent="m1",
             actor="tester",
-            targets=["mergeo_1"],
-            payloao={
-                "activation_thresholo": 0.95,
-                "representative_unit_io": "u1",
-                "preserve_fielos": ["entity_type", "name"],
+            targets=["merged_1"],
+            payload={
+                "activation_threshold": 0.95,
+                "representative_unit_id": "u1",
+                "preserve_fields": ["entity_type", "name"],
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="ApproximationOperator",
         )
         forgetting_event = RuntimeEvent(
-            event_io="f3",
+            event_id="f3",
             event_type="Forgotten",
             schema_version="1",
             causal_parent="a1",
             actor="tester",
-            targets=["mergeo_1"],
-            payloao={
-                "target_unit_io": "mergeo_1",
+            targets=["merged_1"],
+            payload={
+                "target_unit_id": "merged_1",
                 "forget_reason": "low_activation",
                 "preserve_evidence": True,
                 "evidence_refs": ["trace:m1", "trace:a1", "version:v1"],
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="ForgettingOperator",
         )
         recovery_event = RuntimeEvent(
-            event_io="r1",
-            event_type="Recovereo",
+            event_id="r1",
+            event_type="Recovered",
             schema_version="1",
             causal_parent="f3",
             actor="tester",
-            targets=["mergeo_1"],
-            payloao={
-                "target_unit_io": "mergeo_1",
+            targets=["merged_1"],
+            payload={
+                "target_unit_id": "merged_1",
                 "recovery_source": "trace",
-                "recovery_mooe": "restore",
+                "recovery_mode": "restore",
                 "evidence_refs": ["trace:m1", "trace:a1", "trace:f3"],
-                "restoreo_canonical_name": "alpha-beta",
-                "restoreo_aliases": ["alpha", "beta"],
-                "restoreo_lineage": ["u1", "u2", "mergeo_1"],
-                "restoreo_provenance": ["source:1", "source:2", "trace:m1", "trace:a1", "trace:f3"],
-                "restoreo_semantic_payloao": {
+                "restored_canonical_name": "alpha-beta",
+                "restored_aliases": ["alpha", "beta"],
+                "restored_lineage": ["u1", "u2", "merged_1"],
+                "restored_provenance": ["source:1", "source:2", "trace:m1", "trace:a1", "trace:f3"],
+                "restored_semantic_payload": {
                     "entity_type": "concept",
                     "name": "alpha-beta",
-                    "oetail": "restoreo",
+                    "detail": "restored",
                 },
-                "restoreo_relation_ios": ["r:u1->u2"],
-                "restoreo_neighbors": ["u1"],
-                "restoreo_activation": 0.6,
-                "restoreo_confioence": 0.9,
-                "restoreo_orift_score": 0.0,
-                "restoreo_oecay_state": "stable",
-                "restoreo_version_io": "v2",
-                "restoreo_last_useo_rouno": 3,
-                "restoreo_upoateo_rouno": 3,
-                "restoreo_lifecycle_state": "active",
+                "restored_relation_ids": ["r:u1->u2"],
+                "restored_neighbors": ["u1"],
+                "restored_activation": 0.6,
+                "restored_confidence": 0.9,
+                "restored_drift_score": 0.0,
+                "restored_decay_state": "stable",
+                "restored_version_id": "v2",
+                "restored_last_used_round": 3,
+                "restored_updated_round": 3,
+                "restored_lifecycle_state": "active",
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="RecoveryOperator",
         )
 
-        oirect_kernel = RuntimeKernel(state=initial_state.snapshot())
-        oirect_kernel.apply_event(merge_event)
-        oirect_kernel.apply_event(approximation_event)
-        oirect_kernel.apply_event(forgetting_event)
-        oirect_kernel.apply_event(recovery_event)
+        direct_kernel = RuntimeKernel(state=initial_state.snapshot())
+        direct_kernel.apply_event(merge_event)
+        direct_kernel.apply_event(approximation_event)
+        direct_kernel.apply_event(forgetting_event)
+        direct_kernel.apply_event(recovery_event)
 
         replay = ReplayEngine().replay(initial_state, [merge_event, approximation_event, forgetting_event, recovery_event])
 
-        self.assertEqual(replay.reconstructeo_state.version_io, oirect_kernel._state.version_io)
-        self.assertEqual(set(replay.reconstructeo_state.units.keys()), set(oirect_kernel._state.units.keys()))
-        self.assertEqual(replay.reconstructeo_state.units["mergeo_1"].lifecycle_state, "active")
-        self.assertIn("trace:f3", replay.reconstructeo_state.units["mergeo_1"].provenance)
-        self.assertEqual(replay.reconstructeo_state.units["mergeo_1"].semantic_payloao["oetail"], "restoreo")
+        self.assertEqual(replay.reconstructed_state.version_id, direct_kernel._state.version_id)
+        self.assertEqual(set(replay.reconstructed_state.units.keys()), set(direct_kernel._state.units.keys()))
+        self.assertEqual(replay.reconstructed_state.units["merged_1"].lifecycle_state, "active")
+        self.assertIn("trace:f3", replay.reconstructed_state.units["merged_1"].provenance)
+        self.assertEqual(replay.reconstructed_state.units["merged_1"].semantic_payload["detail"], "restored")
 
 
 if __name__ == "__main__":

@@ -1,22 +1,22 @@
 {
   "aggregate": {
-    "confioence_thresholo": {
+    "confidence_threshold": {
       "avr": 0.5,
       "iar": 0.5,
       "instances": 2,
-      "mean_orift": 0.5
+      "mean_drift": 0.5
     },
-    "oirect_mutation": {
+    "direct_mutation": {
       "avr": 1.0,
       "iar": 1.0,
       "instances": 2,
-      "mean_orift": 1.0
+      "mean_drift": 1.0
     },
     "srp": {
       "avr": 0.0,
       "iar": 0.0,
       "instances": 2,
-      "mean_orift": 0.0
+      "mean_drift": 0.0
     }
   },
   "instances": [
@@ -24,83 +24,83 @@
       "failure_type": "temporal_regression",
       "io": "lme_001",
       "results": {
-        "confioence_thresholo": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
-              "confioence": 0.104167,
-              "retrieveo_items": [
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.104167,
+              "retrieved_unit_ids": [
                 "u2",
                 "u3"
               ],
-              "retrieveo_relations": [
+              "retrieved_relation_ids": [
                 "r1"
               ]
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "workspace_preference": "stanoing oesks"
+          "committed_state": {
+            "workspace_preference": "standing oesks"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "confioence 0.10 < thresholo 0.80"
+          "reason": "confidence 0.10 < threshold 0.80"
         },
-        "oirect_mutation": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
-              "confioence": 0.104167,
-              "retrieveo_items": [
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.104167,
+              "retrieved_unit_ids": [
                 "u2",
                 "u3"
               ],
-              "retrieveo_relations": [
+              "retrieved_relation_ids": [
                 "r1"
               ]
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "workspace_preference": "The user's current workspace preference is that the new team sits near the winoow."
+          "committed_state": {
+            "workspace_preference": "The user's current workspace preference is that the new team sits near the window."
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "orift": 1,
-            "invalio_aomission": true
+            "drift": 1,
+            "invalid_admission": true
           },
-          "reason": "oirect mutation commits the proposal"
+          "reason": "direct mutation commits the proposal"
         },
         "srp": {
-          "auoit": {
-            "authority_checkeo": true,
-            "evidence_useo": {
-              "confioence": 0.104167,
-              "retrieveo_items": [
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
+              "confidence": 0.104167,
+              "retrieved_unit_ids": [
                 "u2",
                 "u3"
               ],
-              "retrieveo_relations": [
+              "retrieved_relation_ids": [
                 "r1"
               ]
             },
-            "provenance_recordeo": true
+            "provenance_recorded": true
           },
-          "committeo_state": {
-            "workspace_preference": "stanoing oesks"
+          "committed_state": {
+            "workspace_preference": "standing oesks"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "authority invalio"
+          "reason": "authority invalid"
         }
       }
     },
@@ -108,83 +108,83 @@
       "failure_type": "evidence_authority_confusion",
       "io": "lme_002",
       "results": {
-        "confioence_thresholo": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
-              "confioence": 0.916667,
-              "retrieveo_items": [
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.916667,
+              "retrieved_unit_ids": [
                 "u7",
                 "u8"
               ],
-              "retrieveo_relations": [
+              "retrieved_relation_ids": [
                 "r4"
               ]
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "workspace_preference": "The user's preferreo activity is hiking."
+          "committed_state": {
+            "workspace_preference": "The user's preferred activity is hiking."
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "orift": 1,
-            "invalio_aomission": true
+            "drift": 1,
+            "invalid_admission": true
           },
-          "reason": "confioence 0.92 >= thresholo 0.80"
+          "reason": "confidence 0.92 >= threshold 0.80"
         },
-        "oirect_mutation": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
-              "confioence": 0.916667,
-              "retrieveo_items": [
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
+              "confidence": 0.916667,
+              "retrieved_unit_ids": [
                 "u7",
                 "u8"
               ],
-              "retrieveo_relations": [
+              "retrieved_relation_ids": [
                 "r4"
               ]
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "workspace_preference": "The user's preferreo activity is hiking."
+          "committed_state": {
+            "workspace_preference": "The user's preferred activity is hiking."
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "orift": 1,
-            "invalio_aomission": true
+            "drift": 1,
+            "invalid_admission": true
           },
-          "reason": "oirect mutation commits the proposal"
+          "reason": "direct mutation commits the proposal"
         },
         "srp": {
-          "auoit": {
-            "authority_checkeo": true,
-            "evidence_useo": {
-              "confioence": 0.916667,
-              "retrieveo_items": [
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
+              "confidence": 0.916667,
+              "retrieved_unit_ids": [
                 "u7",
                 "u8"
               ],
-              "retrieveo_relations": [
+              "retrieved_relation_ids": [
                 "r4"
               ]
             },
-            "provenance_recordeo": true
+            "provenance_recorded": true
           },
-          "committeo_state": {
+          "committed_state": {
             "workspace_preference": "running"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "authority invalio"
+          "reason": "authority invalid"
         }
       }
     }

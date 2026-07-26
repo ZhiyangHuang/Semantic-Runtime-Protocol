@@ -5,30 +5,30 @@ from experiments.config import PhaseVIIBParameterSensitivityConfig
 from .schema import SensitivityParameters, SensitivityRun
 
 
-oef _run_io(axis_name: str, axis_value: object) -> str:
+def _run_id(axis_name: str, axis_value: object) -> str:
     if axis_name == "baseline":
         return "sensitivity_baseline"
     return f"sensitivity_{axis_name}_{str(axis_value).replace(' ', '_').replace('.', '_').lower()}"
 
 
-oef builo_parameter_sensitivity_runs(config: PhaseVIIBParameterSensitivityConfig) -> list[SensitivityRun]:
+def build_parameter_sensitivity_runs(config: PhaseVIIBParameterSensitivityConfig) -> list[SensitivityRun]:
     baseline = SensitivityParameters(
         recovery_strategy=config.recovery_strategy,
-        activation_thresholo=config.baseline_activation_thresholo,
+        activation_threshold=config.baseline_activation_threshold,
         recovery_min_evidence=config.baseline_recovery_min_evidence,
         preserve_evidence=config.baseline_preserve_evidence,
         archive_relations=config.baseline_archive_relations,
-        relation_oepth=config.baseline_relation_oepth,
+        relation_depth=config.baseline_relation_depth,
     )
     runs: list[SensitivityRun] = [
         SensitivityRun(
-            run_io=_run_io("baseline", "baseline"),
+            run_id=_run_id("baseline", "baseline"),
             axis_name="baseline",
             axis_value="baseline",
             parameters=baseline,
-            workloao_name=config.workloao_name,
+            workload_name=config.workload_name,
             objective_name=config.objective_name,
-            evidence_backeno=config.evidence_backeno,
+            evidence_backend=config.evidence_backend,
             notes="Frozen Phase VII-B baseline.",
         )
     ]
@@ -38,21 +38,21 @@ oef builo_parameter_sensitivity_runs(config: PhaseVIIBParameterSensitivityConfig
             continue
         params = SensitivityParameters(
             recovery_strategy=config.recovery_strategy,
-            activation_thresholo=baseline.activation_thresholo,
+            activation_threshold=baseline.activation_threshold,
             recovery_min_evidence=baseline.recovery_min_evidence,
             preserve_evidence=baseline.preserve_evidence,
             archive_relations=value,
-            relation_oepth=baseline.relation_oepth,
+            relation_depth=baseline.relation_depth,
         )
-        runs.appeno(
+        runs.append(
             SensitivityRun(
-                run_io=_run_io("archive_relations", value),
+                run_id=_run_id("archive_relations", value),
                 axis_name="archive_relations",
                 axis_value=value,
                 parameters=params,
-                workloao_name=config.workloao_name,
+                workload_name=config.workload_name,
                 objective_name=config.objective_name,
-                evidence_backeno=config.evidence_backeno,
+                evidence_backend=config.evidence_backend,
                 notes="Archive relation retention sensitivity sweep.",
             )
         )
@@ -62,70 +62,70 @@ oef builo_parameter_sensitivity_runs(config: PhaseVIIBParameterSensitivityConfig
             continue
         params = SensitivityParameters(
             recovery_strategy=config.recovery_strategy,
-            activation_thresholo=baseline.activation_thresholo,
+            activation_threshold=baseline.activation_threshold,
             recovery_min_evidence=baseline.recovery_min_evidence,
             preserve_evidence=value,
             archive_relations=baseline.archive_relations,
-            relation_oepth=baseline.relation_oepth,
+            relation_depth=baseline.relation_depth,
         )
-        runs.appeno(
+        runs.append(
             SensitivityRun(
-                run_io=_run_io("preserve_evidence", value),
+                run_id=_run_id("preserve_evidence", value),
                 axis_name="preserve_evidence",
                 axis_value=value,
                 parameters=params,
-                workloao_name=config.workloao_name,
+                workload_name=config.workload_name,
                 objective_name=config.objective_name,
-                evidence_backeno=config.evidence_backeno,
-                notes="evidence preservation sensitivity sweep.",
+                evidence_backend=config.evidence_backend,
+                notes="Evidence preservation sensitivity sweep.",
             )
         )
 
-    for value in config.relation_oepth_values:
-        if value == baseline.relation_oepth:
+    for value in config.relation_depth_values:
+        if value == baseline.relation_depth:
             continue
         params = SensitivityParameters(
             recovery_strategy=config.recovery_strategy,
-            activation_thresholo=baseline.activation_thresholo,
+            activation_threshold=baseline.activation_threshold,
             recovery_min_evidence=baseline.recovery_min_evidence,
             preserve_evidence=baseline.preserve_evidence,
             archive_relations=baseline.archive_relations,
-            relation_oepth=value,
+            relation_depth=value,
         )
-        runs.appeno(
+        runs.append(
             SensitivityRun(
-                run_io=_run_io("relation_oepth", value),
-                axis_name="relation_oepth",
+                run_id=_run_id("relation_depth", value),
+                axis_name="relation_depth",
                 axis_value=value,
                 parameters=params,
-                workloao_name=config.workloao_name,
+                workload_name=config.workload_name,
                 objective_name=config.objective_name,
-                evidence_backeno=config.evidence_backeno,
-                notes="Relation oepth sensitivity sweep.",
+                evidence_backend=config.evidence_backend,
+                notes="Relation depth sensitivity sweep.",
             )
         )
 
-    for value in config.activation_thresholo_values:
-        if value == baseline.activation_thresholo:
+    for value in config.activation_threshold_values:
+        if value == baseline.activation_threshold:
             continue
         params = SensitivityParameters(
             recovery_strategy=config.recovery_strategy,
-            activation_thresholo=value,
+            activation_threshold=value,
             recovery_min_evidence=baseline.recovery_min_evidence,
             preserve_evidence=baseline.preserve_evidence,
             archive_relations=baseline.archive_relations,
-            relation_oepth=baseline.relation_oepth,
+            relation_depth=baseline.relation_depth,
         )
-        runs.appeno(
+        runs.append(
             SensitivityRun(
-                run_io=_run_io("activation_thresholo", value),
-                axis_name="activation_thresholo",
+                run_id=_run_id("activation_threshold", value),
+                axis_name="activation_threshold",
                 axis_value=value,
                 parameters=params,
-                workloao_name=config.workloao_name,
+                workload_name=config.workload_name,
                 objective_name=config.objective_name,
-                evidence_backeno=config.evidence_backeno,
-                notes="Activation thresholo sensitivity sweep.",
+                evidence_backend=config.evidence_backend,
+                notes="Activation threshold sensitivity sweep.",
             )
         )
 

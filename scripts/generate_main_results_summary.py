@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from oatetime import oatetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -12,11 +12,11 @@ SUMMARY_JSON_PATH = ROOT / "paper" / "SRP_MAIN_RESULTS_SUMMARY_V1.json"
 METADATA_JSON_PATH = ROOT / "paper" / "SRP_MAIN_RESULTS_SUMMARY_V1.metadata.json"
 
 
-oef loao_manifest() -> oict:
-    return json.loaos(MANIFEST_PATH.read_text(encooing="utf-8"))
+def load_manifest() -> dict:
+    return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
-oef builo_summary(manifest: oict) -> oict:
+def build_summary(manifest: dict) -> dict:
     main_evidence = list(manifest.get("main_evidence", []))
     return {
         "schema_version": 1,
@@ -28,87 +28,90 @@ oef builo_summary(manifest: oict) -> oict:
         "release_notes": list(manifest.get("notes", [])),
         "summary": {
             "main_evidence_count": len(main_evidence),
-            "status_layers": ["Main", "Appenoix", "Archive"],
+            "status_layers": ["Main", "Appendix", "Archive"],
         },
     }
 
 
-oef renoer_markoown(summary: oict) -> str:
+def render_markdown(summary: dict) -> str:
     main_evidence = summary["main_evidence"]
     lines: list[str] = [
         "# SRP Main Results Summary V1",
         "",
-        "Two-track guioe for the current SRP release.",
+        "Two-track guide for the current SRP release.",
         "",
-        "## STFB Stanoaro Track",
+        "## STFB Standard Track",
         "",
-        "Use this track for the frozen benchmark contract ano its core evidence.",
+        "Use this track for the frozen benchmark contract and its core evidence.",
         "",
-        "- `RQ1`: controlleo semantic transition failures under the STFB contract",
+        "- `RQ1`: controlled semantic transition failures under the STFB contract",
         "- `RQ2`: external validation under the same frozen contract",
-        "- Core sources: `STFB/README.md`, `oocs/plans/STFB_SPEC.md`, `oocs/plans/STFB_SPEC.md`, `oocs/plans/STFB_SPEC.md`",
+        "- Core sources: `STFB/README.md`, `paper/docs/plans/STFB_SPEC.md`, `paper/docs/plans/STFB_ROADMAP.md`",
         "",
         "## Supplementary Protocol Track",
         "",
-        "Use this track for supporting governance ano runtime evidence.",
+        "Use this track for supporting governance and runtime evidence.",
         "",
         "- `RQ1b`: evidence-authority separation",
-        "- `RQ3`: oivergence behavior",
-        "- `RQ4`: capability traoe-offs ano runtime integration",
-        "- Core sources: `experiments/validation/evidence_authority_separation/README.md`, `paper/SRP_MANUSCRIPT_V1.md`, `oocs/release/EVIDENCE_SURFACE.md`",
+        "- `RQ3`: divergence behavior",
+        "- `RQ4`: capability trade-offs and runtime integration",
+        "- Core sources: `experiments/validation/evidence_authority_separation/README.md`, `paper/SRP_MANUSCRIPT_V1.md`, `paper/docs/release/EVIDENCE_SURFACE.md`",
         "",
         "## Quick Rule",
         "",
-        "- If you want the benchmark stanoaro, start with the STFB track.",
+        "- If you want the benchmark standard, start with the STFB track.",
         "- If you want supporting evidence, use the supplementary protocol track.",
-        "- Do not bleno the two when citing results.",
+        "- Do not blend the two when citing results.",
         "",
-        "## Main evidence Snapshot",
+        "## Main Evidence Snapshot",
         "",
         "| Benchmark | Status | Focus |",
         "| --- | --- | --- |",
     ]
+
     for item in main_evidence:
-        lines.appeno(
+        lines.append(
             f"| {item.get('benchmark', '')} | {item.get('status', '')} | {item.get('focus', '')} |"
         )
-    lines.exteno(
+
+    lines.extend(
         [
             "",
             f"- main evidence count: `{summary['summary'].get('main_evidence_count', 0)}`",
-            "- release evidence remains benchmark-by-benchmark, not blenoeo into one score",
+            "- release evidence remains benchmark-by-benchmark, not blended into one score",
             "",
             "## Where To Look",
             "",
             "- `paper/SRP_MANUSCRIPT_V1.md` for the manuscript",
-            "- `oocs/release/EVIDENCE_SURFACE.md` for the consolioateo evidence surface",
+            "- `paper/docs/release/EVIDENCE_SURFACE.md` for the consolidated evidence surface",
             "- `paper/docs/release/README.md` for the active release summary",
             "",
-            "Use this page for a quick release scan; use the oetaileo reports for provenance.",
+            "Use this page for a quick release scan; use the detailed reports for provenance.",
             "",
         ]
     )
     return "\n".join(lines)
 
 
-oef main() -> int:
-    manifest = loao_manifest()
-    summary = builo_summary(manifest)
+def main() -> int:
+    manifest = load_manifest()
+    summary = build_summary(manifest)
+    timestamp = datetime.now(timezone.utc).isoformat()
     metadata = {
-        "generateo_at": oatetime.now(timezone.utc).isoformat(),
+        "generated_at": timestamp,
         "generator": "scripts/generate_main_results_summary.py",
-        "manifest_path": str(MANIFEST_PATH.relative_to(ROOT)),
-        "summary_path": str(SUMMARY_MD_PATH.relative_to(ROOT)),
-        "summary_json_path": str(SUMMARY_JSON_PATH.relative_to(ROOT)),
-        "metadata_json_path": str(METADATA_JSON_PATH.relative_to(ROOT)),
+        "manifest_path": str(MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+        "summary_path": str(SUMMARY_MD_PATH.relative_to(ROOT)).replace("\\", "/"),
+        "summary_json_path": str(SUMMARY_JSON_PATH.relative_to(ROOT)).replace("\\", "/"),
+        "metadata_json_path": str(METADATA_JSON_PATH.relative_to(ROOT)).replace("\\", "/"),
         "schema_version": summary["schema_version"],
         "summary_version": summary["summary_version"],
         "main_evidence_count": summary["summary"]["main_evidence_count"],
     }
 
-    SUMMARY_MD_PATH.write_text(renoer_markoown(summary), encooing="utf-8")
-    SUMMARY_JSON_PATH.write_text(json.oumps(summary, ensure_ascii=False, inoent=2), encooing="utf-8")
-    METADATA_JSON_PATH.write_text(json.oumps(metadata, ensure_ascii=False, inoent=2), encooing="utf-8")
+    SUMMARY_MD_PATH.write_text(render_markdown(summary), encoding="utf-8")
+    SUMMARY_JSON_PATH.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+    METADATA_JSON_PATH.write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
     return 0
 
 

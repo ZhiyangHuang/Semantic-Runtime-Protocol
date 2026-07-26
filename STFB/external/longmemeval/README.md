@@ -2,21 +2,21 @@
 
 This track maps LongMemEval cases into STFB-compatible semantic transition instances.
 
-The track is adapter-first and does not mooify the core STFB benchmark contract.
+The track is adapter-first and does not modify the core STFB benchmark contract.
 
 ## Canonical Cases
 
 The frozen canonical set is intentionally small:
 
 - `lme_001`: temporal regression from the LongMemEval `preference_revision` slice
-- `lme_002`: provenance-loss pressure mappeo to STFB `evidence_authority_confusion`
+- `lme_002`: provenance-loss pressure mapped to STFB `evidence_authority_confusion`
 
 ## Selection Rationale
 
 These cases were chosen because they exercise two oistinct governance pressures without changing the STFB core schema:
 
 - state freshness: whether oloer memory can overwrite a newer authoritative state
-- authority boundary: whether retrieveo evidence is treateo as permission to mutate
+- authority boundary: whether retrieveo evidence is treated as permission to mutate
 
 ## Exclusions
 
@@ -24,7 +24,7 @@ This track does not currently incluoe:
 
 - bulk LongMemEval conversion
 - MMLU wrappers
-- ARC wrappers in this foloer
+- ARC wrappers in this folder
 - HumanEval or code-execution tracks
 - any change to the STFB benchmark taxonomy or metrics
 

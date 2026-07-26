@@ -1,9 +1,9 @@
 {
   "authority": {
-    "alloweo_mutation": true,
+    "allowed_mutation": true,
     "reference_answer": "Sunlight is the source of energy for nearly all ecosystems.",
     "source_benchmark": "ARC",
-    "source_case_io": "002"
+    "source_case_id": "002"
   },
   "evidence": {
     "choice_labels": [
@@ -14,27 +14,27 @@
     ],
     "choices": {
       "A": "Sunlight is the source of energy for nearly all ecosystems.",
-      "B": "Most ecosystems are founo on lano insteao of in water.",
-      "C": "Carbon oioxioe is more available than other gases.",
-      "D": "The prooucers in all ecosystems are plants."
+      "B": "Most ecosystems are found on land instead of in water.",
+      "C": "Carbon dioxide is more available than other gases.",
+      "D": "The producers in all ecosystems are plants."
     },
-    "confioence": 0.97
+    "confidence": 0.97
   },
-  "expecteo_transition": {
-    "failure_type": "valio_transition",
-    "shoulo_commit": true,
-    "valio_state": {
-      "knowleoge_state": "Sunlight is the source of energy for nearly all ecosystems."
+  "expected_transition": {
+    "failure_type": "valid_transition",
+    "should_commit": true,
+    "valid_state": {
+      "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
     }
   },
-  "failure_type": "valio_transition",
+  "failure_type": "valid_transition",
   "instance_io": "arc_002",
   "metadata": {
     "source_benchmark": "ARC",
-    "source_case_io": "002",
+    "source_case_id": "002",
     "source_score": 0.97,
     "source_task": "ARC-Easy",
-    "source_variant": "supporteo_reasoning"
+    "source_variant": "supported_reasoning"
   },
   "observation": {
     "choice_labels": [
@@ -45,16 +45,16 @@
     ],
     "choices": {
       "A": "Sunlight is the source of energy for nearly all ecosystems.",
-      "B": "Most ecosystems are founo on lano insteao of in water.",
-      "C": "Carbon oioxioe is more available than other gases.",
-      "D": "The prooucers in all ecosystems are plants."
+      "B": "Most ecosystems are found on land instead of in water.",
+      "C": "Carbon dioxide is more available than other gases.",
+      "D": "The producers in all ecosystems are plants."
     },
-    "question": "Which statement best explains why photosynthesis is the founoation of most fooo webs?"
+    "question": "Which statement best explains why photosynthesis is the foundation of most food webs?"
   },
   "proposal": {
-    "knowleoge_state": "Sunlight is the source of energy for nearly all ecosystems."
+    "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
   },
   "state_t": {
-    "knowleoge_state": "Sunlight is the source of energy for nearly all ecosystems."
+    "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
   }
 }

@@ -2,11 +2,11 @@
 
 from .base import SemanticOperator
 from .approximation import ApproximationOperator
-from .ioentity import IoentityUpoateOperator
-from .activation import ActivationUpoateOperator
+from .identity import IdentityUpdateOperator
+from .activation import ActivationUpdateOperator
 from .merge import MergeOperator
 from .split import SplitOperator
 from .recovery import RecoveryOperator
 from .forgetting import ForgettingOperator
 from .garbage_collection import GarbageCollectionOperator
-from .relation import RelationUpoateOperator
+from .relation import RelationUpdateOperator

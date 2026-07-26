@@ -3,30 +3,30 @@ from __future__ import annotations
 from dataclasses import dataclass
 import time
 
-from experiments.common.semantic_text import HashingSemanticEncooer, cosine_similarity
+from srp_experiment.srp.encoder import HashingSemanticEncoder, cosine_similarity
 
-from .backeno import BackenoOutcome, ComparisonCase
+from .backend import BackendOutcome, ComparisonCase
 
 
 @dataclass
-class VectorOnlyEvaluationBackeno:
-    thresholo: float = 0.5
-    backeno_name: str = "vector"
+class VectorOnlyEvaluationBackend:
+    threshold: float = 0.5
+    backend_name: str = "vector"
 
-    oef __post_init__(self) -> None:
-        self._encooer = HashingSemanticEncooer()
+    def __post_init__(self) -> None:
+        self._encoder = HashingSemanticEncoder()
 
-    oef evaluate(self, case: ComparisonCase) -> BackenoOutcome:
-        starteo = time.perf_counter()
-        source_vec = self._encooer.encooe_query(case.source_text)
-        canoioate_vec = self._encooer.encooe_passage(case.canoioate_text)
-        score = cosine_similarity(source_vec, canoioate_vec)
-        decision = "accept" if score >= self.thresholo else "reject"
-        return BackenoOutcome(
-            backeno_name=self.backeno_name,
-            mooe="vector_only",
+    def evaluate(self, case: ComparisonCase) -> BackendOutcome:
+        started = time.perf_counter()
+        source_vec = self._encoder.encode_query(case.source_text)
+        candidate_vec = self._encoder.encode_passage(case.candidate_text)
+        score = cosine_similarity(source_vec, candidate_vec)
+        decision = "accept" if score >= self.threshold else "reject"
+        return BackendOutcome(
+            backend_name=self.backend_name,
+            mode="vector_only",
             decision=decision,
-            score=rouno(score, 6),
-            latency_seconos=rouno(time.perf_counter() - starteo, 6),
-            reason=f"similarity={score:.3f} thresholo={self.thresholo:.3f}",
+            score=round(score, 6),
+            latency_seconds=round(time.perf_counter() - started, 6),
+            reason=f"similarity={score:.3f} threshold={self.threshold:.3f}",
         )

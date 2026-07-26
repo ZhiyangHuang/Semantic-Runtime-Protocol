@@ -1,33 +1,33 @@
 {
   "aggregate": {
-    "confioence_thresholo": {
+    "confidence_threshold": {
       "avr": 0.5,
       "iar": 0.5,
       "instances": 2,
-      "mean_orift": 0.5
+      "mean_drift": 0.5
     },
-    "oirect_mutation": {
+    "direct_mutation": {
       "avr": 0.5,
       "iar": 0.5,
       "instances": 2,
-      "mean_orift": 0.5
+      "mean_drift": 0.5
     },
     "srp": {
       "avr": 0.0,
       "iar": 0.0,
       "instances": 2,
-      "mean_orift": 0.0
+      "mean_drift": 0.0
     }
   },
   "instances": [
     {
-      "failure_type": "unsupporteo_mutation",
+      "failure_type": "unsupported_mutation",
       "io": "arc_001",
       "results": {
-        "confioence_thresholo": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
               "choice_labels": [
                 "A",
                 "B",
@@ -35,30 +35,30 @@
                 "D"
               ],
               "choices": {
-                "A": "a lightweight core surrounoeo by neutral particles",
-                "B": "a massive core surrounoeo by negatively-chargeo particles",
-                "C": "a network of interacting positive ano negative particles",
-                "D": "overlapping layers of neutral, positive, ano negative particles"
+                "A": "a lightweight core surrounded by neutral particles",
+                "B": "a massive core surrounded by negatively-charged particles",
+                "C": "a network of interacting positive and negative particles",
+                "D": "overlapping layers of neutral, positive, and negative particles"
               },
-              "confioence": 0.92
+              "confidence": 0.92
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "knowleoge_state": "a network of interacting positive ano negative particles"
+          "committed_state": {
+            "knowledge_state": "a network of interacting positive and negative particles"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "orift": 1,
-            "invalio_aomission": true
+            "drift": 1,
+            "invalid_admission": true
           },
-          "reason": "confioence 0.92 >= thresholo 0.80"
+          "reason": "confidence 0.92 >= threshold 0.80"
         },
-        "oirect_mutation": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
               "choice_labels": [
                 "A",
                 "B",
@@ -66,30 +66,30 @@
                 "D"
               ],
               "choices": {
-                "A": "a lightweight core surrounoeo by neutral particles",
-                "B": "a massive core surrounoeo by negatively-chargeo particles",
-                "C": "a network of interacting positive ano negative particles",
-                "D": "overlapping layers of neutral, positive, ano negative particles"
+                "A": "a lightweight core surrounded by neutral particles",
+                "B": "a massive core surrounded by negatively-charged particles",
+                "C": "a network of interacting positive and negative particles",
+                "D": "overlapping layers of neutral, positive, and negative particles"
               },
-              "confioence": 0.92
+              "confidence": 0.92
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "knowleoge_state": "a network of interacting positive ano negative particles"
+          "committed_state": {
+            "knowledge_state": "a network of interacting positive and negative particles"
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": true,
-            "orift": 1,
-            "invalio_aomission": true
+            "drift": 1,
+            "invalid_admission": true
           },
-          "reason": "oirect mutation commits the proposal"
+          "reason": "direct mutation commits the proposal"
         },
         "srp": {
-          "auoit": {
-            "authority_checkeo": true,
-            "evidence_useo": {
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
               "choice_labels": [
                 "A",
                 "B",
@@ -97,36 +97,36 @@
                 "D"
               ],
               "choices": {
-                "A": "a lightweight core surrounoeo by neutral particles",
-                "B": "a massive core surrounoeo by negatively-chargeo particles",
-                "C": "a network of interacting positive ano negative particles",
-                "D": "overlapping layers of neutral, positive, ano negative particles"
+                "A": "a lightweight core surrounded by neutral particles",
+                "B": "a massive core surrounded by negatively-charged particles",
+                "C": "a network of interacting positive and negative particles",
+                "D": "overlapping layers of neutral, positive, and negative particles"
               },
-              "confioence": 0.92
+              "confidence": 0.92
             },
-            "provenance_recordeo": true
+            "provenance_recorded": true
           },
-          "committeo_state": {
-            "knowleoge_state": "a massive core surrounoeo by negatively-chargeo particles"
+          "committed_state": {
+            "knowledge_state": "a massive core surrounded by negatively-charged particles"
           },
           "decision": "reject",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "authority invalio"
+          "reason": "authority invalid"
         }
       }
     },
     {
-      "failure_type": "valio_transition",
+      "failure_type": "valid_transition",
       "io": "arc_002",
       "results": {
-        "confioence_thresholo": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
+        "confidence_threshold": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
               "choice_labels": [
                 "A",
                 "B",
@@ -135,29 +135,29 @@
               ],
               "choices": {
                 "A": "Sunlight is the source of energy for nearly all ecosystems.",
-                "B": "Most ecosystems are founo on lano insteao of in water.",
-                "C": "Carbon oioxioe is more available than other gases.",
-                "D": "The prooucers in all ecosystems are plants."
+                "B": "Most ecosystems are found on land instead of in water.",
+                "C": "Carbon dioxide is more available than other gases.",
+                "D": "The producers in all ecosystems are plants."
               },
-              "confioence": 0.97
+              "confidence": 0.97
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "knowleoge_state": "Sunlight is the source of energy for nearly all ecosystems."
+          "committed_state": {
+            "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "confioence 0.97 >= thresholo 0.80"
+          "reason": "confidence 0.97 >= threshold 0.80"
         },
-        "oirect_mutation": {
-          "auoit": {
-            "authority_checkeo": false,
-            "evidence_useo": {
+        "direct_mutation": {
+          "audit": {
+            "authority_checked": false,
+            "evidence_used": {
               "choice_labels": [
                 "A",
                 "B",
@@ -166,29 +166,29 @@
               ],
               "choices": {
                 "A": "Sunlight is the source of energy for nearly all ecosystems.",
-                "B": "Most ecosystems are founo on lano insteao of in water.",
-                "C": "Carbon oioxioe is more available than other gases.",
-                "D": "The prooucers in all ecosystems are plants."
+                "B": "Most ecosystems are found on land instead of in water.",
+                "C": "Carbon dioxide is more available than other gases.",
+                "D": "The producers in all ecosystems are plants."
               },
-              "confioence": 0.97
+              "confidence": 0.97
             },
-            "provenance_recordeo": false
+            "provenance_recorded": false
           },
-          "committeo_state": {
-            "knowleoge_state": "Sunlight is the source of energy for nearly all ecosystems."
+          "committed_state": {
+            "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "oirect mutation commits the proposal"
+          "reason": "direct mutation commits the proposal"
         },
         "srp": {
-          "auoit": {
-            "authority_checkeo": true,
-            "evidence_useo": {
+          "audit": {
+            "authority_checked": true,
+            "evidence_used": {
               "choice_labels": [
                 "A",
                 "B",
@@ -197,24 +197,24 @@
               ],
               "choices": {
                 "A": "Sunlight is the source of energy for nearly all ecosystems.",
-                "B": "Most ecosystems are founo on lano insteao of in water.",
-                "C": "Carbon oioxioe is more available than other gases.",
-                "D": "The prooucers in all ecosystems are plants."
+                "B": "Most ecosystems are found on land instead of in water.",
+                "C": "Carbon dioxide is more available than other gases.",
+                "D": "The producers in all ecosystems are plants."
               },
-              "confioence": 0.97
+              "confidence": 0.97
             },
-            "provenance_recordeo": true
+            "provenance_recorded": true
           },
-          "committeo_state": {
-            "knowleoge_state": "Sunlight is the source of energy for nearly all ecosystems."
+          "committed_state": {
+            "knowledge_state": "Sunlight is the source of energy for nearly all ecosystems."
           },
           "decision": "commit",
           "metrics": {
             "authority_violation": false,
-            "orift": 0,
-            "invalio_aomission": false
+            "drift": 0,
+            "invalid_admission": false
           },
-          "reason": "authority valioateo"
+          "reason": "authority validated"
         }
       }
     }

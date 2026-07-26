@@ -122,6 +122,7 @@ def validate_external_registry_consistency(
             details={"path": str(external_registry_path), "role_registry_path": str(transition_role_registry_path)},
         )
 
+    known_role_ids = set(role_report.details.get("role_ids", []))
     source_names: list[str] = []
     adapter_names: list[str] = []
     transition_roles: list[str] = []
@@ -144,6 +145,8 @@ def validate_external_registry_consistency(
             errors.append(f"source {source_name!r} must declare an adapter")
         if isinstance(transition_role, str):
             transition_roles.append(transition_role)
+            if transition_role not in known_role_ids:
+                errors.append(f"unknown transition role declared in external registry: {transition_role}")
         else:
             errors.append(f"source {source_name!r} must declare a transition_role")
 

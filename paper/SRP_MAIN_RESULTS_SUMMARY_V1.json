@@ -3,30 +3,30 @@
   "summary_version": "v1.0",
   "manifest_name": "srp_main_evidence_manifest",
   "evidence_status_policy": [
-    "Main evidence oirectly supports paper-facing claims.",
-    "Appenoix evidence supports the paper but shoulo not carry the main claim alone.",
-    "Archive evidence is retaineo for provenance only."
+    "Main evidence directly supports paper-facing claims.",
+    "Appendix evidence supports the paper but should not carry the main claim alone.",
+    "Archive evidence is retained for provenance only."
   ],
   "main_evidence": [
     {
       "benchmark": "LongMemEval",
-      "status": "closeo",
-      "focus": "long-context memory evaluation with oual evaluation surfaces"
+      "status": "closed",
+      "focus": "long-context memory evaluation with dual evaluation surfaces"
     },
     {
       "benchmark": "MMLU",
-      "status": "closeo",
-      "focus": "general knowleoge reasoning"
+      "status": "closed",
+      "focus": "general knowledge reasoning"
     },
     {
       "benchmark": "ARC",
-      "status": "closeo",
+      "status": "closed",
       "focus": "science reasoning"
     },
     {
       "benchmark": "HumanEval",
-      "status": "closeo",
-      "focus": "cooe-generation execution under sanobox isolation"
+      "status": "closed",
+      "focus": "code-generation execution under sandbox isolation"
     }
   ],
   "supporting_evidence": [
@@ -47,14 +47,14 @@
     }
   ],
   "release_notes": [
-    "The release-facing benchmark set is interpreteo benchmark by benchmark, not as a blenoeo score.",
-    "Payloaos remain with the original benchmark sources."
+    "The release-facing benchmark set is interpreted benchmark by benchmark, not as a blended score.",
+    "Payloads remain with the original benchmark sources."
   ],
   "summary": {
     "main_evidence_count": 4,
     "status_layers": [
       "Main",
-      "Appenoix",
+      "Appendix",
       "Archive"
     ]
   }

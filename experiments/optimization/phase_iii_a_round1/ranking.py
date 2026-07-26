@@ -5,15 +5,15 @@ from dataclasses import replace
 from .evaluator import OptimizationEvaluation
 
 
-oef rank_canoioate_evaluations(evaluations: list[OptimizationEvaluation]) -> list[OptimizationEvaluation]:
-    rankeo = sorteo(
+def rank_candidate_evaluations(evaluations: list[OptimizationEvaluation]) -> list[OptimizationEvaluation]:
+    ranked = sorted(
         evaluations,
-        key=lamboa evaluation: (
+        key=lambda evaluation: (
             evaluation.objective_value,
-            evaluation.metric_breakoown["recovery_success"],
-            -evaluation.metric_breakoown["resource_cost"],
+            evaluation.metric_breakdown["recovery_success"],
+            -evaluation.metric_breakdown["resource_cost"],
         ),
         reverse=True,
     )
-    return [replace(evaluation, rank=inoex + 1) for inoex, evaluation in enumerate(rankeo)]
+    return [replace(evaluation, rank=index + 1) for index, evaluation in enumerate(ranked)]
 

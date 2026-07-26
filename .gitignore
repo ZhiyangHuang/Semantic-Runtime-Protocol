@@ -1,25 +1,53 @@
 .env
+
+# Python caches
 **/__pycache__/
-*.pyc
+*.py[cod]
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
+
+# Local temp and scratch space
 tmp/
 temp/
 debug/
 srp_experiment/tmp/
+
+# Generated benchmark inputs
 srp_experiment/data/longbench_v2/tasks.json
 srp_experiment/data/longbench_v2/tasks_group_*.json
-experiments/results/**/raw_*.jsonl
-experiments/results/**/raw_*.json
-experiments/results/**/dump_*.jsonl
-experiments/results/**/dump_*.json
+
+# Generated run artifacts
+artifacts/
+reproduction_run/
+experiments/results/
+
+# Generated release docs
+SRP_*_REPORT.md
+SRP_*_REPORT.json
+SRP_*_SUMMARY*.md
+SRP_*_SUMMARY*.json
+SRP_*_SUMMARY*.metadata.json
+paper/SRP_PAPER_FINAL_V1.md
+paper/SRP_MAIN_RESULTS_SUMMARY_V1.*
+paper/main_evidence_manifest.json
+paper/docs/evidence/**/metadata.json
+paper/docs/evidence/**/report.md
+paper/docs/evidence/**/summary.json
+
+# Paper and LaTeX build artifacts
 arxiv_package/main.txt
+arxiv_package/main.aux
+arxiv_package/main.log
+arxiv_package/main.out
 arxiv_package/main.fdb_latexmk
 arxiv_package/main.fls
 arxiv_package/_review_png/
 arxiv_package/_review_png2/
-arxiv_package/_markdown_main/*.md.tex
-arxiv_package/_markdown_main/*.verbatim
+arxiv_package/_markdown_main/
+
+# Table / LaTeX scratch files
 _tblr_*
 _tmp_tblr_*

@@ -3,35 +3,35 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from experiments.optimization.phase_iii_a_rouno1.baseline import write_phase_iii_a_baseline_comparison_report
-from experiments.validation.phase_ii_boundary import loao_feasible_region
+from experiments.optimization.phase_iii_a_round1.baseline import write_phase_iii_a_baseline_comparison_report
+from experiments.validation.phase_ii_boundary import load_feasible_region
 
 
-oef builo_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(oescription="Run SRP Phase III-A baseline comparison.")
-    parser.aoo_argument(
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run SRP Phase III-A baseline comparison.")
+    parser.add_argument(
         "--feasible-region",
         type=Path,
-        oefault=Path("experiments") / "results" / "phase_ii_boundary" / "feasible_region.json",
+        default=Path("experiments") / "results" / "phase_ii_boundary" / "feasible_region.json",
         help="Phase II feasible region file.",
     )
-    parser.aoo_argument(
-        "--output-oir",
+    parser.add_argument(
+        "--output-dir",
         type=Path,
-        oefault=Path("experiments") / "results" / "phase_iii_a_baseline_comparison",
+        default=Path("experiments") / "results" / "phase_iii_a_baseline_comparison",
         help="Directory to write baseline comparison outputs.",
     )
     return parser
 
 
-oef main() -> int:
-    args = builo_parser().parse_args()
-    region = loao_feasible_region(args.feasible_region)
+def main() -> int:
+    args = build_parser().parse_args()
+    region = load_feasible_region(args.feasible_region)
     outputs = write_phase_iii_a_baseline_comparison_report(
         feasible_region=region,
-        output_oir=args.output_oir,
+        output_dir=args.output_dir,
     )
-    print(outputs["report_markoown"])
+    print(outputs["report_markdown"])
     return 0
 
 

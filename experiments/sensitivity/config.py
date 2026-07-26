@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 from typing import Any, Sequence
 
 
@@ -8,10 +8,10 @@ from typing import Any, Sequence
 class SensitivityExperimentConfig:
     parameter: str
     values: Sequence[Any]
-    baseline: str = "oefault"
-    scenario: str = "activation_upoate"
-    dataset: str = "fixeo_kernel_state"
+    baseline: str = "default"
+    scenario: str = "activation_update"
+    dataset: str = "fixed_kernel_state"
     cycles: int = 1
     notes: str = ""
-    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 

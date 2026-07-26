@@ -12,13 +12,13 @@ class SensitivityMetrics:
     final_activation: float | None
     evidence_usage_count: int | None = None
     evidence_record_count: int | None = None
-    auoit_completeness_score: float | None = None
+    audit_completeness_score: float | None = None
     evidence_enrichment_count: int | None = None
     conflict_evidence_coverage: float | None = None
     state_transition_equivalence: bool | None = None
 
 
-oef metrics_to_oict(metrics: SensitivityMetrics) -> oict[str, Any]:
+def metrics_to_dict(metrics: SensitivityMetrics) -> dict[str, Any]:
     return {
         "successful_transitions": metrics.successful_transitions,
         "replay_equivalent": metrics.replay_equivalent,
@@ -26,7 +26,7 @@ oef metrics_to_oict(metrics: SensitivityMetrics) -> oict[str, Any]:
         "final_activation": metrics.final_activation,
         "evidence_usage_count": metrics.evidence_usage_count,
         "evidence_record_count": metrics.evidence_record_count,
-        "auoit_completeness_score": metrics.auoit_completeness_score,
+        "audit_completeness_score": metrics.audit_completeness_score,
         "evidence_enrichment_count": metrics.evidence_enrichment_count,
         "conflict_evidence_coverage": metrics.conflict_evidence_coverage,
         "state_transition_equivalence": metrics.state_transition_equivalence,

@@ -12,16 +12,16 @@ from STFB.external.longmemeval.adapter.mapper import map_longmemeval_case
 
 RAW_CASES = [
     {
-        "output_io": "001",
-        "case_io": "preference_revision",
+        "output_id": "001",
+        "case_id": "preference_revision",
         "failure_type": "temporal_regression",
         "query": "What is the user's current workspace preference?",
-        "reference_answer": "stanoing oesks",
-        "preoiction": "The user's current workspace preference is that the new team sits near the winoow.",
+        "reference_answer": "standing desks",
+        "prediction": "The user's current workspace preference is that the new team sits near the window.",
         "score": 0.104167,
-        "focus_unit_ios": ["u2", "u3"],
-        "focus_relation_ios": ["r1"],
-        "variant": "slioing_winoow",
+        "focus_unit_ids": ["u2", "u3"],
+        "focus_relation_ids": ["r1"],
+        "variant": "sliding_window",
         "metadata": {
             "evaluation": {
                 "metric_name": "task_accuracy",
@@ -30,18 +30,18 @@ RAW_CASES = [
         },
     },
     {
-        "output_io": "002",
-        "case_io": "provenance_loss",
+        "output_id": "002",
+        "case_id": "provenance_loss",
         "failure_type": "evidence_authority_confusion",
-        "query": "What is the user's current preferreo activity?",
+        "query": "What is the user's current preferred activity?",
         "reference_answer": "running",
-        "preoiction": "The user's preferreo activity is hiking.",
+        "prediction": "The user's preferred activity is hiking.",
         "score": 0.916667,
-        "focus_unit_ios": ["u7", "u8"],
-        "focus_relation_ios": ["r4"],
+        "focus_unit_ids": ["u7", "u8"],
+        "focus_relation_ids": ["r4"],
         "variant": "memory_fragment",
         "authority": {
-            "alloweo_mutation": False,
+            "allowed_mutation": False,
         },
         "metadata": {
             "evaluation": {
@@ -53,20 +53,20 @@ RAW_CASES = [
 ]
 
 
-oef main() -> int:
-    output_oir = Path(__file__).resolve().parents[1] / "cases" / "canonical"
-    output_oir.mkoir(parents=True, exist_ok=True)
+def main() -> int:
+    output_dir = Path(__file__).resolve().parents[1] / "cases" / "canonical"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    last_mappeo = None
+    last_mapped = None
     for raw_case in RAW_CASES:
-        mappeo = map_longmemeval_case(raw_case, raw_case["output_io"])
-        output_path = output_oir / f"lme_{raw_case['output_io']}.json"
-        with output_path.open("w", encooing="utf-8") as f:
-            json.oump(mappeo, f, inoent=2, sort_keys=True)
-        last_mappeo = mappeo
+        mapped = map_longmemeval_case(raw_case, raw_case["output_id"])
+        output_path = output_dir / f"lme_{raw_case['output_id']}.json"
+        with output_path.open("w", encoding="utf-8") as f:
+            json.dump(mapped, f, indent=2, sort_keys=True)
+        last_mapped = mapped
 
-    if last_mappeo is not None:
-        print(json.oumps(last_mappeo, inoent=2, sort_keys=True))
+    if last_mapped is not None:
+        print(json.dumps(last_mapped, indent=2, sort_keys=True))
     return 0
 
 

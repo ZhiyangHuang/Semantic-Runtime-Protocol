@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 import copy
 from typing import Any
 
@@ -10,24 +10,24 @@ from .unit import SemanticUnit
 
 @dataclass
 class SemanticState:
-    state_io: str
-    units: oict[str, SemanticUnit] = fielo(oefault_factory=oict)
-    graph: SemanticGraph = fielo(oefault_factory=SemanticGraph)
-    version_io: str = ""
-    timestamp_rouno: int = 0
+    state_id: str
+    units: dict[str, SemanticUnit] = field(default_factory=dict)
+    graph: SemanticGraph = field(default_factory=SemanticGraph)
+    version_id: str = ""
+    timestamp_round: int = 0
 
-    oef snapshot(self) -> "SemanticState":
-        return copy.oeepcopy(self)
+    def snapshot(self) -> "SemanticState":
+        return copy.deepcopy(self)
 
-    oef state_ref(self) -> str:
-        version_part = self.version_io if self.version_io else str(self.timestamp_rouno)
-        return f"{self.state_io}:{version_part}"
+    def state_ref(self) -> str:
+        version_part = self.version_id if self.version_id else str(self.timestamp_round)
+        return f"{self.state_id}:{version_part}"
 
 
 @dataclass(frozen=True)
 class SemanticStateView:
-    state_io: str
-    version_io: str
-    timestamp_rouno: int
-    unit_ios: list[str] = fielo(oefault_factory=list)
-    graph_summary: oict[str, Any] = fielo(oefault_factory=oict)
+    state_id: str
+    version_id: str
+    timestamp_round: int
+    unit_ids: list[str] = field(default_factory=list)
+    graph_summary: dict[str, Any] = field(default_factory=dict)

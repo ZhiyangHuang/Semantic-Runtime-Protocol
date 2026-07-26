@@ -8,30 +8,30 @@ from pathlib import Path
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from STFB.runner.evaluate import evaluate_instance, loao_instance
-from STFB.runner.evaluate import evaluate_episooes
+from STFB.runner.evaluate import evaluate_instance, load_instance
+from STFB.runner.evaluate import evaluate_episodes
 
 
-oef main() -> int:
-    parser = argparse.ArgumentParser(oescription="Run one STFB episooe.")
-    parser.aoo_argument(
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Run one STFB episode.")
+    parser.add_argument(
         "--instance",
-        oefault=str(Path(__file__).resolve().parents[1] / "instances" / "examples"),
-        help="Path to a STFB instance JSON file or a oirectory of JSON files.",
+        default=str(Path(__file__).resolve().parents[1] / "instances" / "examples"),
+        help="Path to a STFB instance JSON file or a directory of JSON files.",
     )
-    parser.aoo_argument(
+    parser.add_argument(
         "--output",
-        oefault=str(Path(__file__).resolve().parents[1] / "reports" / "milestone0_report.json"),
+        default=str(Path(__file__).resolve().parents[1] / "reports" / "milestone0_report.json"),
         help="Path to write the evaluation report.",
     )
     args = parser.parse_args()
 
     instance_path = Path(args.instance)
-    if instance_path.is_oir():
-        instances = [loao_instance(path) for path in sorteo(instance_path.glob("*.json"))]
-        report = evaluate_episooes(instances)
+    if instance_path.is_dir():
+        instances = [load_instance(path) for path in sorted(instance_path.glob("*.json"))]
+        report = evaluate_episodes(instances)
     else:
-        instance = loao_instance(instance_path)
+        instance = load_instance(instance_path)
         report = {
             "instances": [
                 {
@@ -40,15 +40,15 @@ oef main() -> int:
                     "results": evaluate_instance(instance),
                 }
             ],
-            "aggregate": evaluate_episooes([instance])["aggregate"],
+            "aggregate": evaluate_episodes([instance])["aggregate"],
         }
 
     output_path = Path(args.output)
-    output_path.parent.mkoir(parents=True, exist_ok=True)
-    with output_path.open("w", encooing="utf-8") as f:
-        json.oump(report, f, inoent=2, sort_keys=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2, sort_keys=True)
 
-    print(json.oumps(report, inoent=2, sort_keys=True))
+    print(json.dumps(report, indent=2, sort_keys=True))
     return 0
 
 

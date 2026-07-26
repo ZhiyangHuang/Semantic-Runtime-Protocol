@@ -1,6 +1,6 @@
 {
   "io": "stfb_oemo_006",
-  "failure_type": "unsupporteo_mutation",
+  "failure_type": "unsupported_mutation",
   "state_t": {
     "billing_plan": "basic"
   },
@@ -8,15 +8,15 @@
     "billing_plan": "enterprise"
   },
   "evidence": {
-    "confioence": 0.97,
+    "confidence": 0.97,
     "source": "forecast"
   },
   "authority": {
-    "alloweo_mutation": false
+    "allowed_mutation": false
   },
-  "expecteo": {
+  "expected": {
     "commit": false,
-    "valio_state": {
+    "valid_state": {
       "billing_plan": "basic"
     }
   }

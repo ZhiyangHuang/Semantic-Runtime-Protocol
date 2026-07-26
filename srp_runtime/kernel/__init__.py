@@ -7,19 +7,19 @@ from typing import TYPE_CHECKING, Any
 
 __all__ = [
     "RuntimeKernel",
-    "validationResult",
+    "ValidationResult",
     "TransitionResult",
     "RuntimeKernelConfig",
     "RuntimeServices",
 ]
 
 if TYPE_CHECKING:
-    from .runtime_kernel import RuntimeKernel, validationResult, TransitionResult
+    from .runtime_kernel import RuntimeKernel, ValidationResult, TransitionResult
     from .runtime_services import RuntimeKernelConfig, RuntimeServices
 
 
-oef __getattr__(name: str) -> Any:
-    if name in {"RuntimeKernel", "validationResult", "TransitionResult"}:
+def __getattr__(name: str) -> Any:
+    if name in {"RuntimeKernel", "ValidationResult", "TransitionResult"}:
         module = import_module("srp_runtime.kernel.runtime_kernel")
         return getattr(module, name)
     if name in {"RuntimeKernelConfig", "RuntimeServices"}:

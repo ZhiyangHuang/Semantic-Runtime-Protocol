@@ -114,7 +114,7 @@ class LongMemEvalbridgeadapter:
                 "dataset": self._adapter_config.get("dataset", "LongMemEval"),
                 "dataset_key": self._adapter_config.get("dataset_key", "longmemeval"),
                 "adapter_contract": self._adapter_config.get("adapter_contract", "BounoaryCase"),
-                "transition_role": self._adapter_config.get("transition_role", "evidence_upoate"),
+                "transition_role": self._adapter_config.get("transition_role", "evidence_update"),
                 "input_role": self._adapter_config.get("input_role", "evidence_consistency"),
                 "output_role": self._adapter_config.get("output_role", "governance_boundary_case"),
                 "benchmark_scoring": bool(self._adapter_config.get("benchmark_scoring", False)),

@@ -3,14 +3,14 @@ from __future__ import annotations
 from .schemas import FailureCase
 
 
-oef builo_failure_cases(records: list[oict[str, object]]) -> list[FailureCase]:
+def build_failure_cases(records: list[dict[str, object]]) -> list[FailureCase]:
     failures: list[FailureCase] = []
     for record in records:
-        failures.appeno(
+        failures.append(
             FailureCase(
-                case_io=str(record["case_io"]),
+                case_id=str(record["case_id"]),
                 event=str(record["event"]),
-                expecteo=str(record["expecteo"]),
+                expected=str(record["expected"]),
                 actual=str(record["actual"]),
                 failure=bool(record["failure"]),
                 failure_type=(None if record.get("failure_type") in {None, ""} else str(record.get("failure_type"))),

@@ -1,4 +1,4 @@
 """Trace-layer types for SRP runtime."""
 
-from .trace_builoer import TraceBuiloer, TraceRecoro
+from .trace_builder import TraceBuilder, TraceRecord
 

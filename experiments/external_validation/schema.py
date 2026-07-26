@@ -1,147 +1,147 @@
 from __future__ import annotations
 
-from dataclasses import asoict, dataclass, fielo
+from dataclasses import asdict, dataclass, field
 from typing import Any
 
 
 @dataclass(frozen=True)
 class SemanticUnit:
-    unit_io: str
-    kino: str
+    unit_id: str
+    kind: str
     content: str
     timestep: int = 0
     salience: float = 1.0
-    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class SemanticRelation:
-    relation_io: str
-    source_io: str
-    target_io: str
+    relation_id: str
+    source_id: str
+    target_id: str
     relation_type: str
-    confioence: float = 1.0
+    confidence: float = 1.0
     timestep: int = 0
-    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class SemanticState:
     units: tuple[SemanticUnit, ...] = ()
     relations: tuple[SemanticRelation, ...] = ()
-    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    metadata: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
-    oef unit_map(self) -> oict[str, SemanticUnit]:
-        return {unit.unit_io: unit for unit in self.units}
+    def unit_map(self) -> dict[str, SemanticUnit]:
+        return {unit.unit_id: unit for unit in self.units}
 
-    oef relation_map(self) -> oict[str, SemanticRelation]:
-        return {relation.relation_io: relation for relation in self.relations}
+    def relation_map(self) -> dict[str, SemanticRelation]:
+        return {relation.relation_id: relation for relation in self.relations}
 
 
 @dataclass(frozen=True)
 class BenchmarkCase:
     benchmark_name: str
-    case_io: str
+    case_id: str
     query: str
     source_state: SemanticState
     target_state: SemanticState
-    expecteo_answer: str
+    expected_answer: str
     official_metric_name: str = "task_accuracy"
-    focus_unit_ios: tuple[str, ...] = ()
-    focus_relation_ios: tuple[str, ...] = ()
-    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    focus_unit_ids: tuple[str, ...] = ()
+    focus_relation_ids: tuple[str, ...] = ()
+    metadata: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class MemoryResponse:
-    recovereo_state: SemanticState
-    preoicteo_answer: str
-    retrieveo_unit_ios: tuple[str, ...] = ()
-    retrieveo_relation_ios: tuple[str, ...] = ()
+    recovered_state: SemanticState
+    predicted_answer: str
+    retrieved_unit_ids: tuple[str, ...] = ()
+    retrieved_relation_ids: tuple[str, ...] = ()
     evidence_cost: float = 0.0
     notes: tuple[str, ...] = ()
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
-class ExternalvalidationRun:
-    run_io: str
+class ExternalValidationRun:
+    run_id: str
     benchmark_name: str
     baseline_name: str
-    seeo: int
+    seed: int
     case: BenchmarkCase
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
-class ExternalvalidationMetrics:
+class ExternalValidationMetrics:
     semantic_coverage: float
-    semantic_orift: float
+    semantic_drift: float
     fact_accuracy: float
     relation_accuracy: float
     recovery_accuracy: float
     closure_accuracy: float
-    neighborhooo_completeness: float
-    hallucinateo_relation_rate: float
+    neighborhood_completeness: float
+    hallucinated_relation_rate: float
     evidence_cost: float
     answer_accuracy: float
     official_metric_score: float
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
-class Externalvalidationrecord:
-    run: ExternalvalidationRun
+class ExternalValidationRecord:
+    run: ExternalValidationRun
     response: MemoryResponse
-    metrics: ExternalvalidationMetrics
+    metrics: ExternalValidationMetrics
     failure_categories: tuple[str, ...] = ()
     failure_notes: tuple[str, ...] = ()
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
-class ExternalvalidationMetricSchema:
+class ExternalValidationMetricSchema:
     schema_version: str = "external_validation_metrics_schema.v1"
-    coverage_oefinition: str = "matcheo semantic units oivioeo by original semantic units"
-    orift_oefinition: str = "weighteo combination of fact orift, relation orift, ano hallucinateo relation rate"
-    benchmark_oefinition: str = "official benchmark score plus SRP oiagnostic metrics"
-    evidence_cost_oefinition: str = "scalar cost attacheo to the recovery case"
+    coverage_definition: str = "matched semantic units divided by original semantic units"
+    drift_definition: str = "weighted combination of fact drift, relation drift, and hallucinated relation rate"
+    benchmark_definition: str = "official benchmark score plus SRP diagnostic metrics"
+    evidence_cost_definition: str = "scalar cost attached to the recovery case"
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
-class ExternalvalidationReport:
-    report_io: str
+class ExternalValidationReport:
+    report_id: str
     status: str
-    metric_schema: ExternalvalidationMetricSchema
-    records: list[Externalvalidationrecord] = fielo(oefault_factory=list)
-    summary: oict[str, Any] = fielo(oefault_factory=oict)
-    benchmark_summary: oict[str, Any] = fielo(oefault_factory=oict)
-    baseline_summary: oict[str, Any] = fielo(oefault_factory=oict)
-    pairwise_summary: oict[str, Any] = fielo(oefault_factory=oict)
-    failure_summary: oict[str, Any] = fielo(oefault_factory=oict)
+    metric_schema: ExternalValidationMetricSchema
+    records: list[ExternalValidationRecord] = field(default_factory=list)
+    summary: dict[str, Any] = field(default_factory=dict)
+    benchmark_summary: dict[str, Any] = field(default_factory=dict)
+    baseline_summary: dict[str, Any] = field(default_factory=dict)
+    pairwise_summary: dict[str, Any] = field(default_factory=dict)
+    failure_summary: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)

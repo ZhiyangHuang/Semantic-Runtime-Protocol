@@ -16,7 +16,7 @@ class InteractionMetrics:
     boundary_consistency_score: float
 
 
-oef metrics_to_oict(metrics: InteractionMetrics) -> oict[str, Any]:
+def metrics_to_dict(metrics: InteractionMetrics) -> dict[str, Any]:
     return {
         "successful_transitions": metrics.successful_transitions,
         "final_activation": metrics.final_activation,

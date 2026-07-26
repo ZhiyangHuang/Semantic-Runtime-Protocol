@@ -22,7 +22,7 @@ class ExternalRegistryTests(unittest.TestCase):
         )
         self.assertEqual(
             transition_roles,
-            ["evidence_upoate", "temporal_state_evolution", "action_proposal", "inference_proposal"],
+            ["evidence_update", "temporal_state_evolution", "action_proposal", "inference_proposal"],
         )
 
         for adapter_name in adapter_names:

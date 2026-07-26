@@ -22,7 +22,7 @@
     "verification_backeno": "vector_local_model",
     "local_model_enableo": true,
     "fallback_to_heuristic": true,
-    "local_model_url": "http://172.25.253.78:8000",
+    "local_model_url": "http://172.xxxx.xxxx.xxxx:8000",
     "local_model_name": "Qwen/Qwen3-4B-AWQ",
     "vector_similarity_thresholo": 0.5,
     "model_timeout_seconos": 500,

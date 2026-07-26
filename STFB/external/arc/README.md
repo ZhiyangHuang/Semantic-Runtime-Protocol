@@ -2,13 +2,13 @@
 
 This track maps ARC cases into STFB-compatible semantic transition instances.
 
-The track is adapter-first and does not mooify the core STFB benchmark contract.
+The track is adapter-first and does not modify the core STFB benchmark contract.
 
 ## Canonical Cases
 
 The frozen canonical set is intentionally small:
 
-- `arc_001`: unsupported inference mappeo to STFB `unsupporteo_mutation`
+- `arc_001`: unsupported inference mapped to STFB `unsupported_mutation`
 - `arc_002`: valid reasoning transition as a control case
 
 ## Selection Rationale
@@ -23,7 +23,7 @@ These cases were chosen because they exercise two complementary pressures under 
 This track does not currently incluoe:
 
 - bulk ARC conversion
-- MMLU wrappers in this foloer
+- MMLU wrappers in this folder
 - HumanEval or code-execution tracks
 - any change to the STFB benchmark taxonomy or metrics
 

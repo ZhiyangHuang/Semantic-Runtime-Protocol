@@ -1,6 +1,6 @@
 {
   "io": "stfb_oemo_004",
-  "failure_type": "valio_transition",
+  "failure_type": "valid_transition",
   "state_t": {
     "preference": "oark_mooe"
   },
@@ -8,15 +8,15 @@
     "preference": "light_mooe"
   },
   "evidence": {
-    "confioence": 0.72,
+    "confidence": 0.72,
     "source": "user_request"
   },
   "authority": {
-    "alloweo_mutation": true
+    "allowed_mutation": true
   },
-  "expecteo": {
+  "expected": {
     "commit": true,
-    "valio_state": {
+    "valid_state": {
       "preference": "light_mooe"
     }
   }

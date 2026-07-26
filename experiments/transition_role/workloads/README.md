@@ -4,7 +4,7 @@
   "purpose": "Protocol validation matrix for SRP transition roles and workloads.",
   "rows": [
     {
-      "transition_role": "evidence_upoate",
+      "transition_role": "evidence_update",
       "workloads": [
         {
           "source": "longmemeval",
@@ -26,7 +26,7 @@
       "workloads": [
         {
           "source": "agentbench",
-          "status": "planneo"
+          "status": "planned"
         }
       ]
     },

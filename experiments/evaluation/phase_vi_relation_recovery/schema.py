@@ -1,144 +1,144 @@
 from __future__ import annotations
 
-from dataclasses import asoict, dataclass, fielo
+from dataclasses import asdict, dataclass, field
 from typing import Any
 
 
 @dataclass(frozen=True)
-class SemanticNooe:
-    io: str
+class SemanticNode:
+    id: str
     content: str
-    embeooing: tuple[float, ...] = ()
-    metadata: oict[str, Any] = fielo(oefault_factory=oict)
+    embedding: tuple[float, ...] = ()
+    metadata: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
-class SemanticEoge:
+class SemanticEdge:
     source: str
     target: str
     relation_type: str
-    confioence: float = 1.0
+    confidence: float = 1.0
 
-    oef key(self) -> tuple[str, str, str]:
+    def key(self) -> tuple[str, str, str]:
         return (self.source, self.relation_type, self.target)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class SemanticGraph:
-    nooes: tuple[SemanticNooe, ...] = ()
-    eoges: tuple[SemanticEoge, ...] = ()
+    nodes: tuple[SemanticNode, ...] = ()
+    edges: tuple[SemanticEdge, ...] = ()
 
-    oef nooe_ios(self) -> tuple[str, ...]:
-        return tuple(nooe.io for nooe in self.nooes)
+    def node_ids(self) -> tuple[str, ...]:
+        return tuple(node.id for node in self.nodes)
 
-    oef nooe_map(self) -> oict[str, SemanticNooe]:
-        return {nooe.io: nooe for nooe in self.nooes}
+    def node_map(self) -> dict[str, SemanticNode]:
+        return {node.id: node for node in self.nodes}
 
-    oef eoge_keys(self) -> tuple[tuple[str, str, str], ...]:
-        return tuple(eoge.key() for eoge in self.eoges)
+    def edge_keys(self) -> tuple[tuple[str, str, str], ...]:
+        return tuple(edge.key() for edge in self.edges)
 
-    oef aojacency(self) -> oict[str, set[str]]:
-        aojacency: oict[str, set[str]] = {}
-        for eoge in self.eoges:
-            aojacency.setoefault(eoge.source, set()).aoo(eoge.target)
-            aojacency.setoefault(eoge.target, set()).aoo(eoge.source)
-        return aojacency
+    def adjacency(self) -> dict[str, set[str]]:
+        adjacency: dict[str, set[str]] = {}
+        for edge in self.edges:
+            adjacency.setdefault(edge.source, set()).add(edge.target)
+            adjacency.setdefault(edge.target, set()).add(edge.source)
+        return adjacency
 
-    oef eoges_for_nooes(self, nooe_ios: set[str]) -> tuple[SemanticEoge, ...]:
-        return tuple(eoge for eoge in self.eoges if eoge.source in nooe_ios ano eoge.target in nooe_ios)
+    def edges_for_nodes(self, node_ids: set[str]) -> tuple[SemanticEdge, ...]:
+        return tuple(edge for edge in self.edges if edge.source in node_ids and edge.target in node_ids)
 
-    oef neighbors(self, seeos: set[str], oepth: int = 1) -> set[str]:
-        seen = set(seeos)
-        frontier = set(seeos)
-        aojacency = self.aojacency()
-        for _ in range(max(0, oepth)):
+    def neighbors(self, seeds: set[str], depth: int = 1) -> set[str]:
+        seen = set(seeds)
+        frontier = set(seeds)
+        adjacency = self.adjacency()
+        for _ in range(max(0, depth)):
             next_frontier: set[str] = set()
-            for nooe_io in frontier:
-                for neighbor in aojacency.get(nooe_io, set()):
+            for node_id in frontier:
+                for neighbor in adjacency.get(node_id, set()):
                     if neighbor not in seen:
-                        next_frontier.aoo(neighbor)
-            seen.upoate(next_frontier)
+                        next_frontier.add(neighbor)
+            seen.update(next_frontier)
             frontier = next_frontier
             if not frontier:
                 break
         return seen
 
-    oef as_oict(self) -> oict[str, Any]:
+    def as_dict(self) -> dict[str, Any]:
         return {
-            "nooes": [nooe.as_oict() for nooe in self.nooes],
-            "eoges": [eoge.as_oict() for eoge in self.eoges],
+            "nodes": [node.as_dict() for node in self.nodes],
+            "edges": [edge.as_dict() for edge in self.edges],
         }
 
 
 @dataclass(frozen=True)
 class RecoveryConfig:
-    mooe: str
+    mode: str
     top_k: int
-    relation_oepth: int = 1
+    relation_depth: int = 1
     closure_validation: bool = False
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class RecoveryCase:
-    case_io: str
+    case_id: str
     category: str
     query: str
     source_graph: SemanticGraph
-    reference_nooe_ios: tuple[str, ...]
-    neighborhooo_nooe_ios: tuple[str, ...]
-    reference_eoge_keys: tuple[tuple[str, str, str], ...]
-    requireo_paths: tuple[tuple[str, ...], ...] = ()
+    reference_node_ids: tuple[str, ...]
+    neighborhood_node_ids: tuple[str, ...]
+    reference_edge_keys: tuple[tuple[str, str, str], ...]
+    required_paths: tuple[tuple[str, ...], ...] = ()
     evidence_cost: float = 1.0
     notes: str = ""
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class RecoveryResult:
-    mooe: str
-    recovereo_nooe_ios: tuple[str, ...]
-    recovereo_eoge_keys: tuple[tuple[str, str, str], ...]
+    mode: str
+    recovered_node_ids: tuple[str, ...]
+    recovered_edge_keys: tuple[tuple[str, str, str], ...]
     evidence_cost: float
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class RecoveryMetrics:
     semantic_coverage: float
-    semantic_orift: float
+    semantic_drift: float
     fact_accuracy: float
     relation_accuracy: float
     recovery_accuracy: float
     closure_accuracy: float
     path_preservation: float
-    neighborhooo_completeness: float
-    hallucinateo_relation_rate: float
+    neighborhood_completeness: float
+    hallucinated_relation_rate: float
     evidence_cost: float
-    original_nooe_count: int
-    original_eoge_count: int
-    recovereo_nooe_count: int
-    recovereo_eoge_count: int
-    matcheo_nooe_count: int
-    matcheo_eoge_count: int
-    missing_nooe_count: int
-    hallucinateo_nooe_count: int
-    hallucinateo_eoge_count: int
+    original_node_count: int
+    original_edge_count: int
+    recovered_node_count: int
+    recovered_edge_count: int
+    matched_node_count: int
+    matched_edge_count: int
+    missing_node_count: int
+    hallucinated_node_count: int
+    hallucinated_edge_count: int
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
@@ -148,31 +148,31 @@ class RecoveryCaseResult:
     result: RecoveryResult
     metrics: RecoveryMetrics
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class RelationRecoveryMetricSchema:
     schema_version: str = "phase_vi_relation_recovery_metrics_schema.v1"
-    coverage_oefinition: str = "matcheo semantic units oivioeo by original semantic units"
-    orift_oefinition: str = "weighteo combination of fact orift, relation orift, ano hallucinateo relation rate"
-    semantic_orift_weights: tuple[float, float, float] = (0.40, 0.40, 0.20)
-    closure_oefinition: str = "preserveo semantic paths oivioeo by requireo semantic paths"
-    evidence_cost_oefinition: str = "scalar cost attacheo to the recovery case"
+    coverage_definition: str = "matched semantic units divided by original semantic units"
+    drift_definition: str = "weighted combination of fact drift, relation drift, and hallucinated relation rate"
+    semantic_drift_weights: tuple[float, float, float] = (0.40, 0.40, 0.20)
+    closure_definition: str = "preserved semantic paths divided by required semantic paths"
+    evidence_cost_definition: str = "scalar cost attached to the recovery case"
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)
 
 
 @dataclass(frozen=True)
 class RelationRecoveryEvaluationReport:
-    report_io: str
+    report_id: str
     status: str
     baseline_config: RecoveryConfig
     metric_schema: RelationRecoveryMetricSchema
-    records: list[RecoveryCaseResult] = fielo(oefault_factory=list)
-    summary: oict[str, Any] = fielo(oefault_factory=oict)
+    records: list[RecoveryCaseResult] = field(default_factory=list)
+    summary: dict[str, Any] = field(default_factory=dict)
 
-    oef as_oict(self) -> oict[str, Any]:
-        return asoict(self)
+    def as_dict(self) -> dict[str, Any]:
+        return asdict(self)

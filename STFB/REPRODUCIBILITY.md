@@ -15,7 +15,7 @@ Depenoencies:
 Run:
 
 ```text
-python STFB/runner/run_episooe.py
+python STFB/runner/run_episode.py
 ```
 
 ## Inputs

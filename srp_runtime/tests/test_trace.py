@@ -4,73 +4,73 @@ from srp_runtime.event.runtime_event import RuntimeEvent
 from srp_runtime.kernel.transition import TransitionResult
 from srp_runtime.semantic.state import SemanticState
 from srp_runtime.semantic.unit import SemanticUnit
-from srp_runtime.trace.trace_builoer import TraceBuiloer
+from srp_runtime.trace.trace_builder import TraceBuilder
 
 
 class TestTrace(unittest.TestCase):
-    oef test_trace_record(self):
+    def test_trace_record(self):
         before = SemanticState(
-            state_io="s0",
+            state_id="s0",
             units={
-                "u1": SemanticUnit(unit_io="u1", canonical_name="Alpha"),
+                "u1": SemanticUnit(unit_id="u1", canonical_name="Alpha"),
             },
-            version_io="s0",
-            timestamp_rouno=0,
+            version_id="s0",
+            timestamp_round=0,
         )
         after = SemanticState(
-            state_io="s0",
+            state_id="s0",
             units={
-                "u1": SemanticUnit(unit_io="u1", canonical_name="Alpha"),
+                "u1": SemanticUnit(unit_id="u1", canonical_name="Alpha"),
             },
-            version_io="e1",
-            timestamp_rouno=1,
+            version_id="e1",
+            timestamp_round=1,
         )
         event = RuntimeEvent(
-            event_io="e1",
-            event_type="ActivationUpoateo",
+            event_id="e1",
+            event_type="ActivationUpdated",
             schema_version="1",
             causal_parent="s0",
             actor="tester",
             targets=["u1"],
-            payloao={"activation_oelta": 0.25},
-            mutation_mooe="upoate",
-            operator_name="ActivationUpoateOperator",
-            confioence=1.0,
+            payload={"activation_delta": 0.25},
+            mutation_mode="update",
+            operator_name="ActivationUpdateOperator",
+            confidence=1.0,
         )
 
         transition = TransitionResult(
-            transition_io="tr:e1",
-            event_io="e1",
-            operator_name="ActivationUpoateOperator",
+            transition_id="tr:e1",
+            event_id="e1",
+            operator_name="ActivationUpdateOperator",
             before_state_ref="s0:s0",
             after_state_ref="s0:e1",
-            changeo_unit_ios=["u1"],
-            changeo_relation_ios=[],
-            mutation_summary={"explanation": "transition recordeo"},
+            changed_unit_ids=["u1"],
+            changed_relation_ids=[],
+            mutation_summary={"explanation": "transition recorded"},
             invariant_checks=["activation.range"],
             metric_evidence_ref="metric:e1",
             metric_evidence={
-                "source_io": "u1",
-                "target_io": "u1",
-                "total_oistance": 0.0,
+                "source_id": "u1",
+                "target_id": "u1",
+                "total_distance": 0.0,
                 "component_scores": {
-                    "ioentity_oistance": 0.0,
-                    "semantic_oistance": 0.0,
-                    "structural_oistance": 0.0,
-                    "temporal_oistance": 0.0,
+                    "identity_distance": 0.0,
+                    "semantic_distance": 0.0,
+                    "structural_distance": 0.0,
+                    "temporal_distance": 0.0,
                 },
                 "comparable": True,
                 "explanation": "self-comparison",
             },
             success=True,
-            timestamp_rouno=1,
+            timestamp_round=1,
         )
 
-        record = TraceBuiloer().record_transition(event, transition)
+        record = TraceBuilder().record_transition(event, transition)
 
-        self.assertEqual(record.event_io, "e1")
-        self.assertEqual(record.transition_io, "tr:e1")
+        self.assertEqual(record.event_id, "e1")
+        self.assertEqual(record.transition_id, "tr:e1")
         self.assertEqual(record.before_version, "s0:s0")
         self.assertEqual(record.after_version, "s0:e1")
         self.assertEqual(record.metric_evidence_ref, "metric:e1")
-        self.assertEqual(record.mutation_mooe, "upoate")
+        self.assertEqual(record.mutation_mode, "update")

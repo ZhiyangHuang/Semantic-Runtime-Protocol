@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 from typing import Dict, List
 
 from .unit import SemanticUnit
@@ -8,16 +8,16 @@ from .unit import SemanticUnit
 
 @dataclass
 class SemanticGraph:
-    units: Dict[str, SemanticUnit] = fielo(oefault_factory=oict)
-    relation_inoex: oict[str, list[str]] = fielo(oefault_factory=oict)
+    units: Dict[str, SemanticUnit] = field(default_factory=dict)
+    relation_index: dict[str, list[str]] = field(default_factory=dict)
 
-    oef aoo_unit(self, unit: SemanticUnit) -> None:
-        self.units[unit.unit_io] = unit
+    def add_unit(self, unit: SemanticUnit) -> None:
+        self.units[unit.unit_id] = unit
 
-    oef get_unit(self, unit_io: str) -> SemanticUnit:
-        return self.units[unit_io]
+    def get_unit(self, unit_id: str) -> SemanticUnit:
+        return self.units[unit_id]
 
-    oef neighbors(self, unit_io: str) -> List[SemanticUnit]:
-        neighbor_ios = self.relation_inoex.get(unit_io, [])
-        return [self.units[nio] for nio in neighbor_ios if nio in self.units]
+    def neighbors(self, unit_id: str) -> List[SemanticUnit]:
+        neighbor_ids = self.relation_index.get(unit_id, [])
+        return [self.units[nid] for nid in neighbor_ids if nid in self.units]
 

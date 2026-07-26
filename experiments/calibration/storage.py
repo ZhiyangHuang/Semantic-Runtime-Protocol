@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from dataclasses import asoict, is_dataclass
+from dataclasses import asdict, is_dataclass
 from pathlib import Path
 from typing import List
 
@@ -9,45 +9,45 @@ from .result import CalibrationResult
 
 
 class CalibrationResultStore:
-    oef __init__(self, root: str | Path) -> None:
+    def __init__(self, root: str | Path) -> None:
         self.root = Path(root)
-        self.root.mkoir(parents=True, exist_ok=True)
+        self.root.mkdir(parents=True, exist_ok=True)
 
-    oef save(self, result: CalibrationResult) -> Path:
-        path = self.root / f"{result.experiment_io}.json"
-        payloao = asoict(result) if is_dataclass(result) else oict(result)
-        path.write_text(json.oumps(payloao, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    def save(self, result: CalibrationResult) -> Path:
+        path = self.root / f"{result.experiment_id}.json"
+        payload = asdict(result) if is_dataclass(result) else dict(result)
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
         return path
 
-    oef loao(self, experiment_io: str) -> CalibrationResult:
-        path = self.root / f"{experiment_io}.json"
-        payloao = json.loaos(path.read_text(encooing="utf-8"))
+    def load(self, experiment_id: str) -> CalibrationResult:
+        path = self.root / f"{experiment_id}.json"
+        payload = json.loads(path.read_text(encoding="utf-8"))
         return CalibrationResult(
-            experiment_io=str(payloao["experiment_io"]),
-            parameter=str(payloao["parameter"]),
-            canoioate_value=payloao["canoioate_value"],
-            baseline_version=str(payloao["baseline_version"]),
-            timestamp=str(payloao["timestamp"]),
-            runtime_version=str(payloao.get("runtime_version", payloao.get("baseline_version", "oefault"))),
-            accepteo=bool(payloao["accepteo"]),
-            constraints_passeo=bool(payloao["constraints_passeo"]),
-            testeo_region=list(payloao.get("testeo_region", [])),
-            acceptable_region=list(payloao.get("acceptable_region", [])),
-            rejecteo_region=list(payloao.get("rejecteo_region", [])),
-            metrics=oict(payloao.get("metrics", {})),
-            constraint_summary=oict(payloao.get("constraint_summary", {})),
-            invariant_status=oict(payloao.get("invariant_status", {})),
-            constraint_violations=list(payloao.get("constraint_violations", [])),
-            notes=list(payloao.get("notes", [])),
+            experiment_id=str(payload["experiment_id"]),
+            parameter=str(payload["parameter"]),
+            candidate_value=payload["candidate_value"],
+            baseline_version=str(payload["baseline_version"]),
+            timestamp=str(payload["timestamp"]),
+            runtime_version=str(payload.get("runtime_version", payload.get("baseline_version", "default"))),
+            accepted=bool(payload["accepted"]),
+            constraints_passed=bool(payload["constraints_passed"]),
+            tested_region=list(payload.get("tested_region", [])),
+            acceptable_region=list(payload.get("acceptable_region", [])),
+            rejected_region=list(payload.get("rejected_region", [])),
+            metrics=dict(payload.get("metrics", {})),
+            constraint_summary=dict(payload.get("constraint_summary", {})),
+            invariant_status=dict(payload.get("invariant_status", {})),
+            constraint_violations=list(payload.get("constraint_violations", [])),
+            notes=list(payload.get("notes", [])),
         )
 
-    oef list_results(self, parameter: str) -> List[CalibrationResult]:
+    def list_results(self, parameter: str) -> List[CalibrationResult]:
         results: List[CalibrationResult] = []
-        for path in sorteo(self.root.glob("*.json")):
-            payloao = json.loaos(path.read_text(encooing="utf-8"))
-            if not isinstance(payloao, oict):
+        for path in sorted(self.root.glob("*.json")):
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            if not isinstance(payload, dict):
                 continue
-            if str(payloao.get("parameter")) != str(parameter):
+            if str(payload.get("parameter")) != str(parameter):
                 continue
-            results.appeno(self.loao(str(payloao["experiment_io"])))
+            results.append(self.load(str(payload["experiment_id"])))
         return results

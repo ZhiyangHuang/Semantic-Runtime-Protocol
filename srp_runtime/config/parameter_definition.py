@@ -4,8 +4,8 @@ from dataclasses import dataclass
 from typing import Any, Literal
 
 
-ParameterClass = Literal["Fixeo", "Tunable", "Aoaptive", "Deriveo"]
-ParameterStatus = Literal["Draft", "Experimental", "Valioateo", "Frozen"]
+ParameterClass = Literal["Fixed", "Tunable", "Adaptive", "Derived"]
+ParameterStatus = Literal["Draft", "Experimental", "Validated", "Frozen"]
 
 
 @dataclass(frozen=True)
@@ -21,10 +21,10 @@ class ParameterDefinition:
     owner: str
     parameter_class: ParameterClass
     status: ParameterStatus
-    oefault: Any
+    default: Any
     value_type: str
-    valio_range: ParameterRange | None = None
+    valid_range: ParameterRange | None = None
     metric: str | None = None
-    oescription: str = ""
+    description: str = ""
     experimental: bool = False
 

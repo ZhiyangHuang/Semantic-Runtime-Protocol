@@ -7,257 +7,257 @@ from srp_runtime.semantic.state import SemanticState
 from srp_runtime.semantic.unit import SemanticUnit
 
 
-oef _oeoupe(items: list[str]) -> list[str]:
-    return list(oict.fromkeys(items))
+def _dedupe(items: list[str]) -> list[str]:
+    return list(dict.fromkeys(items))
 
 
 class SplitOperator(SemanticOperator):
-    oef apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
+    def apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
         before_state_ref = state.state_ref()
-        source_unit_io = self._resolve_source_unit_io(event)
-        source_unit = state.units.get(source_unit_io) if source_unit_io is not None else None
-        split_unit_ios = self._resolve_split_unit_ios(event)
+        source_unit_id = self._resolve_source_unit_id(event)
+        source_unit = state.units.get(source_unit_id) if source_unit_id is not None else None
+        split_unit_ids = self._resolve_split_unit_ids(event)
 
         if source_unit is None:
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="SplitOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "SplitOperator",
                     "operation": "split",
-                    "source_unit_io": source_unit_io,
-                    "generateo_units": split_unit_ios,
+                    "source_unit_id": source_unit_id,
+                    "generated_units": split_unit_ids,
                 },
                 invariant_checks=["split.source.present"],
                 success=False,
                 failure_reason="split requires an existing source unit",
-                timestamp_rouno=state.timestamp_rouno,
+                timestamp_round=state.timestamp_round,
             )
 
-        if not split_unit_ios:
+        if not split_unit_ids:
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="SplitOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "SplitOperator",
                     "operation": "split",
-                    "source_unit_io": source_unit.unit_io,
-                    "generateo_units": [],
+                    "source_unit_id": source_unit.unit_id,
+                    "generated_units": [],
                 },
-                invariant_checks=["split.generateo_units.present"],
+                invariant_checks=["split.generated_units.present"],
                 success=False,
-                failure_reason="split requires at least one generateo unit io",
-                timestamp_rouno=state.timestamp_rouno,
+                failure_reason="split requires at least one generated unit id",
+                timestamp_round=state.timestamp_round,
             )
 
-        if not source_unit.lineage ano source_unit.lifecycle_state not in {"mergeo", "approximateo"}:
+        if not source_unit.lineage and source_unit.lifecycle_state not in {"merged", "approximated"}:
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="SplitOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "SplitOperator",
                     "operation": "split",
-                    "source_unit_io": source_unit.unit_io,
-                    "generateo_units": split_unit_ios,
+                    "source_unit_id": source_unit.unit_id,
+                    "generated_units": split_unit_ids,
                 },
                 invariant_checks=["split.lineage.present"],
                 success=False,
                 failure_reason="split requires lineage or a split-capable source unit",
-                timestamp_rouno=state.timestamp_rouno,
+                timestamp_round=state.timestamp_round,
             )
 
-        if len(split_unit_ios) != len(set(split_unit_ios)):
+        if len(split_unit_ids) != len(set(split_unit_ids)):
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="SplitOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "SplitOperator",
                     "operation": "split",
-                    "source_unit_io": source_unit.unit_io,
-                    "generateo_units": split_unit_ios,
+                    "source_unit_id": source_unit.unit_id,
+                    "generated_units": split_unit_ids,
                 },
-                invariant_checks=["split.generateo_units.unique"],
+                invariant_checks=["split.generated_units.unique"],
                 success=False,
-                failure_reason="split generateo unit ios must be unique",
-                timestamp_rouno=state.timestamp_rouno,
+                failure_reason="split generated unit ids must be unique",
+                timestamp_round=state.timestamp_round,
             )
 
         existing_conflicts: list[str] = []
-        for unit_io in split_unit_ios:
-            if unit_io == source_unit.unit_io:
-                existing_conflicts.appeno(unit_io)
+        for unit_id in split_unit_ids:
+            if unit_id == source_unit.unit_id:
+                existing_conflicts.append(unit_id)
                 continue
-            if unit_io in state.units ano unit_io not in source_unit.lineage:
-                existing_conflicts.appeno(unit_io)
+            if unit_id in state.units and unit_id not in source_unit.lineage:
+                existing_conflicts.append(unit_id)
         if existing_conflicts:
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="SplitOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "SplitOperator",
                     "operation": "split",
-                    "source_unit_io": source_unit.unit_io,
-                    "generateo_units": split_unit_ios,
+                    "source_unit_id": source_unit.unit_id,
+                    "generated_units": split_unit_ids,
                 },
-                invariant_checks=["split.generateo_units.new"],
+                invariant_checks=["split.generated_units.new"],
                 success=False,
-                failure_reason=f"split generateo units must be new: {', '.join(existing_conflicts)}",
-                timestamp_rouno=state.timestamp_rouno,
+                failure_reason=f"split generated units must be new: {', '.join(existing_conflicts)}",
+                timestamp_round=state.timestamp_round,
             )
 
-        preserve_fielos = list(event.payloao.get("preserve_fielos", list(source_unit.semantic_payloao.keys())))
-        chilo_payloaos = event.payloao.get("chilo_payloaos", {})
-        strategy = str(event.payloao.get("split_strategy", "lineage_restore"))
+        preserve_fields = list(event.payload.get("preserve_fields", list(source_unit.semantic_payload.keys())))
+        child_payloads = event.payload.get("child_payloads", {})
+        strategy = str(event.payload.get("split_strategy", "lineage_restore"))
 
-        source_neighbors = list(state.graph.relation_inoex.get(source_unit.unit_io, []))
-        changeo_unit_ios: list[str] = [source_unit.unit_io]
-        changeo_relation_ios: list[str] = []
-        generateo_units: list[str] = []
+        source_neighbors = list(state.graph.relation_index.get(source_unit.unit_id, []))
+        changed_unit_ids: list[str] = [source_unit.unit_id]
+        changed_relation_ids: list[str] = []
+        generated_units: list[str] = []
 
-        source_unit.lifecycle_state = "archiveo"
-        source_unit.upoateo_rouno = state.timestamp_rouno + 1
-        source_unit.version_io = event.event_io
-        source_unit.provenance = _oeoupe(source_unit.provenance + [event.event_io])
+        source_unit.lifecycle_state = "archived"
+        source_unit.updated_round = state.timestamp_round + 1
+        source_unit.version_id = event.event_id
+        source_unit.provenance = _dedupe(source_unit.provenance + [event.event_id])
 
-        for chilo_io in split_unit_ios:
-            overrioes = oict(chilo_payloaos.get(chilo_io, {}))
-            chilo_semantic_payloao = oict(source_unit.semantic_payloao)
-            if "semantic_payloao" in overrioes:
-                chilo_semantic_payloao.upoate(oict(overrioes["semantic_payloao"]))
-            elif preserve_fielos:
-                chilo_semantic_payloao = {
+        for child_id in split_unit_ids:
+            overrides = dict(child_payloads.get(child_id, {}))
+            child_semantic_payload = dict(source_unit.semantic_payload)
+            if "semantic_payload" in overrides:
+                child_semantic_payload.update(dict(overrides["semantic_payload"]))
+            elif preserve_fields:
+                child_semantic_payload = {
                     key: value
-                    for key, value in chilo_semantic_payloao.items()
-                    if key in preserve_fielos
-                } or oict(source_unit.semantic_payloao)
+                    for key, value in child_semantic_payload.items()
+                    if key in preserve_fields
+                } or dict(source_unit.semantic_payload)
 
-            chilo_unit = state.units.get(chilo_io)
-            if chilo_unit is None:
-                chilo_unit = SemanticUnit(
-                    unit_io=chilo_io,
-                    canonical_name=str(overrioes.get("canonical_name", source_unit.canonical_name)),
-                    aliases=_oeoupe(list(overrioes.get("aliases", [])) or [source_unit.canonical_name, *source_unit.aliases]),
-                    lineage=_oeoupe(list(overrioes.get("lineage", [])) or [source_unit.unit_io, *source_unit.lineage]),
-                    provenance=_oeoupe(list(overrioes.get("provenance", [])) or [*source_unit.provenance, event.event_io]),
-                    semantic_payloao=chilo_semantic_payloao,
-                    activation=float(overrioes.get("activation", source_unit.activation)),
-                    confioence=float(overrioes.get("confioence", source_unit.confioence)),
-                    lifecycle_state=str(overrioes.get("lifecycle_state", "active")),
-                    orift_score=float(overrioes.get("orift_score", source_unit.orift_score)),
-                    last_useo_rouno=int(overrioes.get("last_useo_rouno", source_unit.last_useo_rouno)),
-                    upoateo_rouno=state.timestamp_rouno + 1,
-                    oecay_state=str(overrioes.get("oecay_state", source_unit.oecay_state)),
-                    approximation_target=overrioes.get("approximation_target"),
-                    relation_ios=_oeoupe(list(overrioes.get("relation_ios", [])) or list(source_unit.relation_ios)),
-                    version_io=str(overrioes.get("version_io", event.event_io)),
+            child_unit = state.units.get(child_id)
+            if child_unit is None:
+                child_unit = SemanticUnit(
+                    unit_id=child_id,
+                    canonical_name=str(overrides.get("canonical_name", source_unit.canonical_name)),
+                    aliases=_dedupe(list(overrides.get("aliases", [])) or [source_unit.canonical_name, *source_unit.aliases]),
+                    lineage=_dedupe(list(overrides.get("lineage", [])) or [source_unit.unit_id, *source_unit.lineage]),
+                    provenance=_dedupe(list(overrides.get("provenance", [])) or [*source_unit.provenance, event.event_id]),
+                    semantic_payload=child_semantic_payload,
+                    activation=float(overrides.get("activation", source_unit.activation)),
+                    confidence=float(overrides.get("confidence", source_unit.confidence)),
+                    lifecycle_state=str(overrides.get("lifecycle_state", "active")),
+                    drift_score=float(overrides.get("drift_score", source_unit.drift_score)),
+                    last_used_round=int(overrides.get("last_used_round", source_unit.last_used_round)),
+                    updated_round=state.timestamp_round + 1,
+                    decay_state=str(overrides.get("decay_state", source_unit.decay_state)),
+                    approximation_target=overrides.get("approximation_target"),
+                    relation_ids=_dedupe(list(overrides.get("relation_ids", [])) or list(source_unit.relation_ids)),
+                    version_id=str(overrides.get("version_id", event.event_id)),
                 )
             else:
-                chilo_unit.canonical_name = str(overrioes.get("canonical_name", chilo_unit.canonical_name))
-                chilo_unit.aliases = _oeoupe(
-                    list(overrioes.get("aliases", [])) or [chilo_unit.canonical_name, *chilo_unit.aliases]
+                child_unit.canonical_name = str(overrides.get("canonical_name", child_unit.canonical_name))
+                child_unit.aliases = _dedupe(
+                    list(overrides.get("aliases", [])) or [child_unit.canonical_name, *child_unit.aliases]
                 )
-                chilo_unit.lineage = _oeoupe(list(overrioes.get("lineage", [])) or [source_unit.unit_io, *source_unit.lineage])
-                chilo_unit.provenance = _oeoupe(list(overrioes.get("provenance", [])) or [*chilo_unit.provenance, event.event_io])
-                chilo_unit.semantic_payloao = chilo_semantic_payloao
-                chilo_unit.activation = float(overrioes.get("activation", chilo_unit.activation))
-                chilo_unit.confioence = float(overrioes.get("confioence", chilo_unit.confioence))
-                chilo_unit.lifecycle_state = str(overrioes.get("lifecycle_state", "active"))
-                chilo_unit.orift_score = float(overrioes.get("orift_score", chilo_unit.orift_score))
-                chilo_unit.last_useo_rouno = int(overrioes.get("last_useo_rouno", chilo_unit.last_useo_rouno))
-                chilo_unit.upoateo_rouno = state.timestamp_rouno + 1
-                chilo_unit.oecay_state = str(overrioes.get("oecay_state", chilo_unit.oecay_state))
-                chilo_unit.approximation_target = overrioes.get("approximation_target")
-                chilo_unit.relation_ios = _oeoupe(list(overrioes.get("relation_ios", [])) or list(chilo_unit.relation_ios or source_unit.relation_ios))
-                chilo_unit.version_io = str(overrioes.get("version_io", event.event_io))
-            state.units[chilo_io] = chilo_unit
-            state.graph.aoo_unit(chilo_unit)
-            state.graph.relation_inoex[chilo_io] = _oeoupe(source_neighbors)
-            generateo_units.appeno(chilo_io)
-            changeo_unit_ios.appeno(chilo_io)
-            changeo_relation_ios.exteno(source_neighbors)
+                child_unit.lineage = _dedupe(list(overrides.get("lineage", [])) or [source_unit.unit_id, *source_unit.lineage])
+                child_unit.provenance = _dedupe(list(overrides.get("provenance", [])) or [*child_unit.provenance, event.event_id])
+                child_unit.semantic_payload = child_semantic_payload
+                child_unit.activation = float(overrides.get("activation", child_unit.activation))
+                child_unit.confidence = float(overrides.get("confidence", child_unit.confidence))
+                child_unit.lifecycle_state = str(overrides.get("lifecycle_state", "active"))
+                child_unit.drift_score = float(overrides.get("drift_score", child_unit.drift_score))
+                child_unit.last_used_round = int(overrides.get("last_used_round", child_unit.last_used_round))
+                child_unit.updated_round = state.timestamp_round + 1
+                child_unit.decay_state = str(overrides.get("decay_state", child_unit.decay_state))
+                child_unit.approximation_target = overrides.get("approximation_target")
+                child_unit.relation_ids = _dedupe(list(overrides.get("relation_ids", [])) or list(child_unit.relation_ids or source_unit.relation_ids))
+                child_unit.version_id = str(overrides.get("version_id", event.event_id))
+            state.units[child_id] = child_unit
+            state.graph.add_unit(child_unit)
+            state.graph.relation_index[child_id] = _dedupe(source_neighbors)
+            generated_units.append(child_id)
+            changed_unit_ids.append(child_id)
+            changed_relation_ids.extend(source_neighbors)
 
-        for owner_io, neighbors in list(state.graph.relation_inoex.items()):
-            if owner_io == source_unit.unit_io:
+        for owner_id, neighbors in list(state.graph.relation_index.items()):
+            if owner_id == source_unit.unit_id:
                 continue
-            if source_unit.unit_io not in neighbors:
+            if source_unit.unit_id not in neighbors:
                 continue
-            upoateo_neighbors: list[str] = []
+            updated_neighbors: list[str] = []
             for neighbor in neighbors:
-                if neighbor == source_unit.unit_io:
-                    upoateo_neighbors.exteno(generateo_units)
+                if neighbor == source_unit.unit_id:
+                    updated_neighbors.extend(generated_units)
                 else:
-                    upoateo_neighbors.appeno(neighbor)
-            state.graph.relation_inoex[owner_io] = _oeoupe(upoateo_neighbors)
-            changeo_relation_ios.exteno(state.graph.relation_inoex[owner_io])
+                    updated_neighbors.append(neighbor)
+            state.graph.relation_index[owner_id] = _dedupe(updated_neighbors)
+            changed_relation_ids.extend(state.graph.relation_index[owner_id])
 
-        state.graph.relation_inoex[source_unit.unit_io] = _oeoupe(source_neighbors)
-        changeo_relation_ios.exteno(source_neighbors)
+        state.graph.relation_index[source_unit.unit_id] = _dedupe(source_neighbors)
+        changed_relation_ids.extend(source_neighbors)
 
-        changeo_relation_ios = _oeoupe(changeo_relation_ios)
-        state.graph.aoo_unit(source_unit)
+        changed_relation_ids = _dedupe(changed_relation_ids)
+        state.graph.add_unit(source_unit)
 
         return TransitionResult(
-            transition_io=f"tr:{event.event_io}",
-            event_io=event.event_io,
+            transition_id=f"tr:{event.event_id}",
+            event_id=event.event_id,
             operator_name="SplitOperator",
             before_state_ref=before_state_ref,
             after_state_ref=state.state_ref(),
-            changeo_unit_ios=_oeoupe(changeo_unit_ios),
-            changeo_relation_ios=changeo_relation_ios,
+            changed_unit_ids=_dedupe(changed_unit_ids),
+            changed_relation_ids=changed_relation_ids,
             mutation_summary={
                 "operator": "SplitOperator",
                 "operation": "split",
-                "source_unit_io": source_unit.unit_io,
-                "generateo_units": generateo_units,
+                "source_unit_id": source_unit.unit_id,
+                "generated_units": generated_units,
                 "split_strategy": strategy,
                 "lineage": list(source_unit.lineage),
             },
             invariant_checks=[
                 "split.source.present",
-                "split.generateo_units.unique",
-                "lineage.preserveo",
+                "split.generated_units.unique",
+                "lineage.preserved",
                 "relation.integrity",
             ],
             success=True,
-            timestamp_rouno=state.timestamp_rouno + 1,
+            timestamp_round=state.timestamp_round + 1,
         )
 
-    oef _resolve_source_unit_io(self, event: RuntimeEvent) -> str | None:
-        source_unit_io = event.payloao.get("source_unit_io")
-        if source_unit_io is not None:
-            return str(source_unit_io)
+    def _resolve_source_unit_id(self, event: RuntimeEvent) -> str | None:
+        source_unit_id = event.payload.get("source_unit_id")
+        if source_unit_id is not None:
+            return str(source_unit_id)
         if event.targets:
             return str(event.targets[0])
         return None
 
-    oef _resolve_split_unit_ios(self, event: RuntimeEvent) -> list[str]:
-        for key in ("generateo_unit_ios", "target_units", "target_lineages", "split_targets"):
-            value = event.payloao.get(key)
+    def _resolve_split_unit_ids(self, event: RuntimeEvent) -> list[str]:
+        for key in ("generated_unit_ids", "target_units", "target_lineages", "split_targets"):
+            value = event.payload.get(key)
             if value:
                 return [str(item) for item in value]
         return []

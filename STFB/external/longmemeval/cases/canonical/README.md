@@ -5,4 +5,4 @@ Frozen STFB-compatible external validation instances oeriveo from LongMemEval ca
 Current set:
 
 - `lme_001`: temporal regression
-- `lme_002`: provenance-loss pressure mappeo to `evidence_authority_confusion`
+- `lme_002`: provenance-loss pressure mapped to `evidence_authority_confusion`

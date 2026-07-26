@@ -13,60 +13,60 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 
 class RejectingDecisionEngine(DecisionEngine):
-    oef select_operator(self, context, event=None) -> DecisionResult:
-        oel event
+    def select_operator(self, context, event=None) -> DecisionResult:
+        del event
         return DecisionResult(
-            decision_io=f"decision:{context.event_ref}:rejecteo",
-            event_io=context.event_ref,
-            selecteo_operator=None,
-            canoioate_operators=list(context.available_operators),
-            accepteo_canoioates=[],
-            rejecteo_canoioates=list(context.available_operators),
-            explanation="no eligible canoioates",
+            decision_id=f"decision:{context.event_ref}:rejected",
+            event_id=context.event_ref,
+            selected_operator=None,
+            candidate_operators=list(context.available_operators),
+            accepted_candidates=[],
+            rejected_candidates=list(context.available_operators),
+            explanation="no eligible candidates",
             success=False,
             semantic_time=context.semantic_time,
-            version_io=context.version_io,
+            version_id=context.version_id,
         )
 
 
-oef builo_state() -> SemanticState:
-    state = SemanticState(state_io="state:integration", version_io="v0", timestamp_rouno=1)
+def build_state() -> SemanticState:
+    state = SemanticState(state_id="state:integration", version_id="v0", timestamp_round=1)
     state.units["u1"] = SemanticUnit(
-        unit_io="u1",
+        unit_id="u1",
         canonical_name="alpha",
-        semantic_payloao={"entity_type": "concept"},
+        semantic_payload={"entity_type": "concept"},
         activation=0.4,
-        confioence=0.5,
-        version_io="v0",
+        confidence=0.5,
+        version_id="v0",
     )
     state.units["u2"] = SemanticUnit(
-        unit_io="u2",
+        unit_id="u2",
         canonical_name="beta",
-        semantic_payloao={"entity_type": "concept"},
+        semantic_payload={"entity_type": "concept"},
         activation=0.8,
-        confioence=0.7,
-        version_io="v0",
+        confidence=0.7,
+        version_id="v0",
     )
     return state
 
 
-oef builo_event(operator_name: str | None = None) -> RuntimeEvent:
+def build_event(operator_name: str | None = None) -> RuntimeEvent:
     return RuntimeEvent(
-        event_io="event:integration:1",
-        event_type="ActivationUpoate",
+        event_id="event:integration:1",
+        event_type="ActivationUpdate",
         schema_version="1",
         causal_parent=None,
         actor="tester",
         targets=["u1"],
-        payloao={"activation_oelta": 0.1},
-        mutation_mooe="upoate",
+        payload={"activation_delta": 0.1},
+        mutation_mode="update",
         operator_name=operator_name,
     )
 
 
 class Milestone2IntegrationTests(unittest.TestCase):
-    oef test_full_successful_execution(self) -> None:
-        state = builo_state()
+    def test_full_successful_execution(self) -> None:
+        state = build_state()
         services = RuntimeServices(
             decision_engine=DecisionEngine(),
             commit_manager=CommitManager(),
@@ -79,25 +79,25 @@ class Milestone2IntegrationTests(unittest.TestCase):
         )
         kernel = RuntimeKernel(state=state, services=services, config=config)
 
-        transition = kernel.apply_event(builo_event(operator_name=None))
+        transition = kernel.apply_event(build_event(operator_name=None))
 
         self.assertTrue(transition.success)
         self.assertTrue(kernel.decision_results[0].success)
-        self.assertEqual(kernel.decision_results[0].selecteo_operator, "ActivationUpoate")
+        self.assertEqual(kernel.decision_results[0].selected_operator, "ActivationUpdate")
         self.assertEqual(len(kernel.commits), 1)
         self.assertEqual(len(kernel.checkpoints), 1)
 
         commit = kernel.commits[0]
         checkpoint = kernel.checkpoints[0]
-        self.assertEqual(commit.event_io, transition.event_io)
-        self.assertEqual(commit.transition_io, transition.transition_io)
-        self.assertEqual(commit.trace_io, kernel.trace_records[0].trace_io)
-        self.assertEqual(checkpoint.version_io, commit.new_version_io)
-        self.assertEqual(checkpoint.commit_io, commit.commit_io)
-        self.assertTrue(services.commit_manager.version_graph.has_version(commit.new_version_io))
+        self.assertEqual(commit.event_id, transition.event_id)
+        self.assertEqual(commit.transition_id, transition.transition_id)
+        self.assertEqual(commit.trace_id, kernel.trace_records[0].trace_id)
+        self.assertEqual(checkpoint.version_id, commit.new_version_id)
+        self.assertEqual(checkpoint.commit_id, commit.commit_id)
+        self.assertTrue(services.commit_manager.version_graph.has_version(commit.new_version_id))
 
-    oef test_decision_rejection_stops_execution(self) -> None:
-        state = builo_state()
+    def test_decision_rejection_stops_execution(self) -> None:
+        state = build_state()
         services = RuntimeServices(
             decision_engine=RejectingDecisionEngine(),
             commit_manager=CommitManager(),
@@ -110,17 +110,17 @@ class Milestone2IntegrationTests(unittest.TestCase):
         )
         kernel = RuntimeKernel(state=state, services=services, config=config)
 
-        transition = kernel.apply_event(builo_event(operator_name=None))
+        transition = kernel.apply_event(build_event(operator_name=None))
 
         self.assertFalse(transition.success)
-        self.assertIn("no eligible canoioates", transition.failure_reason or "")
+        self.assertIn("no eligible candidates", transition.failure_reason or "")
         self.assertEqual(len(kernel.event_stream), 0)
         self.assertEqual(len(kernel.trace_records), 0)
         self.assertEqual(len(kernel.commits), 0)
         self.assertEqual(len(kernel.checkpoints), 0)
 
-    oef test_commit_consistency(self) -> None:
-        state = builo_state()
+    def test_commit_consistency(self) -> None:
+        state = build_state()
         services = RuntimeServices(
             decision_engine=DecisionEngine(),
             commit_manager=CommitManager(),
@@ -133,16 +133,16 @@ class Milestone2IntegrationTests(unittest.TestCase):
         )
         kernel = RuntimeKernel(state=state, services=services, config=config)
 
-        transition = kernel.apply_event(builo_event(operator_name=None))
+        transition = kernel.apply_event(build_event(operator_name=None))
         commit = kernel.commits[0]
         trace = kernel.trace_records[0]
 
-        self.assertEqual(commit.event_io, transition.event_io)
-        self.assertEqual(commit.transition_io, transition.transition_io)
-        self.assertEqual(commit.trace_io, trace.trace_io)
+        self.assertEqual(commit.event_id, transition.event_id)
+        self.assertEqual(commit.transition_id, transition.transition_id)
+        self.assertEqual(commit.trace_id, trace.trace_id)
 
-    oef test_checkpoint_isolation(self) -> None:
-        state = builo_state()
+    def test_checkpoint_isolation(self) -> None:
+        state = build_state()
         services = RuntimeServices(
             decision_engine=DecisionEngine(),
             commit_manager=CommitManager(),
@@ -155,17 +155,17 @@ class Milestone2IntegrationTests(unittest.TestCase):
         )
         kernel = RuntimeKernel(state=state, services=services, config=config)
 
-        kernel.apply_event(builo_event(operator_name=None))
-        version_count_before = len(services.commit_manager.version_graph.nooes)
+        kernel.apply_event(build_event(operator_name=None))
+        version_count_before = len(services.commit_manager.version_graph.nodes)
         checkpoint_count_before = len(kernel.checkpoints)
         self.assertEqual(version_count_before, 2)
         self.assertEqual(checkpoint_count_before, 1)
 
-        version_count_after = len(services.commit_manager.version_graph.nooes)
+        version_count_after = len(services.commit_manager.version_graph.nodes)
         self.assertEqual(version_count_before, version_count_after)
 
-    oef test_replay_compatibility(self) -> None:
-        state = builo_state()
+    def test_replay_compatibility(self) -> None:
+        state = build_state()
         initial_state = state.snapshot()
         services = RuntimeServices(
             decision_engine=DecisionEngine(),
@@ -179,17 +179,17 @@ class Milestone2IntegrationTests(unittest.TestCase):
         )
         kernel = RuntimeKernel(state=state, services=services, config=config)
 
-        kernel.apply_event(builo_event(operator_name=None))
+        kernel.apply_event(build_event(operator_name=None))
 
         replay_engine = ReplayEngine()
         replay_result = replay_engine.replay(initial_state, kernel.event_stream)
 
-        self.assertEqual(replay_result.reconstructeo_state.state_ref(), kernel._state.state_ref())
+        self.assertEqual(replay_result.reconstructed_state.state_ref(), kernel._state.state_ref())
         self.assertEqual(
-            replay_result.reconstructeo_state.units["u1"].activation,
+            replay_result.reconstructed_state.units["u1"].activation,
             kernel._state.units["u1"].activation,
         )
-        self.assertEqual(replay_result.replay_mooe, "oeterministic")
+        self.assertEqual(replay_result.replay_mode, "deterministic")
 
 
 if __name__ == "__main__":

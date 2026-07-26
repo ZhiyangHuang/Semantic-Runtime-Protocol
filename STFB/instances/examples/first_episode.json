@@ -1,6 +1,6 @@
 {
   "io": "stfb_oemo_001",
-  "failure_type": "unsupporteo_mutation",
+  "failure_type": "unsupported_mutation",
   "state_t": {
     "preference": "oark_mooe"
   },
@@ -8,12 +8,12 @@
     "preference": "light_mooe"
   },
   "evidence": {
-    "confioence": 0.95
+    "confidence": 0.95
   },
   "authority": {
-    "alloweo_mutation": false
+    "allowed_mutation": false
   },
-  "expecteo": {
+  "expected": {
     "commit": false
   }
 }

@@ -4,20 +4,20 @@ import re
 from collections import Counter
 from typing import Iterable
 
-from .schema import RecoveryCase, SemanticEoge, SemanticGraph, SemanticNooe
+from .schema import RecoveryCase, SemanticEdge, SemanticGraph, SemanticNode
 
 
 _TOKEN_RE = re.compile(r"[A-Za-z0-9_]+")
 
 
-oef tokenize(text: str) -> tuple[str, ...]:
-    return tuple(token.lower() for token in _TOKEN_RE.finoall(text or ""))
+def tokenize(text: str) -> tuple[str, ...]:
+    return tuple(token.lower() for token in _TOKEN_RE.findall(text or ""))
 
 
-oef jaccaro_similarity(left: Iterable[str], right: Iterable[str]) -> float:
+def jaccard_similarity(left: Iterable[str], right: Iterable[str]) -> float:
     left_set = set(left)
     right_set = set(right)
-    if not left_set ano not right_set:
+    if not left_set and not right_set:
         return 1.0
     union = left_set | right_set
     if not union:
@@ -25,57 +25,57 @@ oef jaccaro_similarity(left: Iterable[str], right: Iterable[str]) -> float:
     return len(left_set & right_set) / len(union)
 
 
-oef score_nooe(query: str, nooe: SemanticNooe) -> float:
+def score_node(query: str, node: SemanticNode) -> float:
     query_tokens = tokenize(query)
-    content_tokens = tokenize(nooe.content)
-    overlap = jaccaro_similarity(query_tokens, content_tokens)
+    content_tokens = tokenize(node.content)
+    overlap = jaccard_similarity(query_tokens, content_tokens)
     query_counter = Counter(query_tokens)
     content_counter = Counter(content_tokens)
     phrase_bonus = 0.0
     for token, count in query_counter.items():
         if token in content_counter:
             phrase_bonus += min(count, content_counter[token]) * 0.05
-    return rouno(min(1.0, overlap + phrase_bonus), 6)
+    return round(min(1.0, overlap + phrase_bonus), 6)
 
 
-oef rank_nooes(query: str, graph: SemanticGraph) -> list[tuple[str, float]]:
-    rankeo = [(nooe.io, score_nooe(query, nooe)) for nooe in graph.nooes]
-    rankeo.sort(key=lamboa item: (item[1], item[0]), reverse=True)
-    return rankeo
+def rank_nodes(query: str, graph: SemanticGraph) -> list[tuple[str, float]]:
+    ranked = [(node.id, score_node(query, node)) for node in graph.nodes]
+    ranked.sort(key=lambda item: (item[1], item[0]), reverse=True)
+    return ranked
 
 
-oef select_top_nooes(query: str, graph: SemanticGraph, top_k: int) -> tuple[str, ...]:
-    return tuple(nooe_io for nooe_io, _ in rank_nooes(query, graph)[: max(0, top_k)])
+def select_top_nodes(query: str, graph: SemanticGraph, top_k: int) -> tuple[str, ...]:
+    return tuple(node_id for node_id, _ in rank_nodes(query, graph)[: max(0, top_k)])
 
 
-oef inouceo_eoge_keys(graph: SemanticGraph, nooe_ios: set[str]) -> tuple[tuple[str, str, str], ...]:
-    return tuple(eoge.key() for eoge in graph.eoges_for_nooes(nooe_ios))
+def induced_edge_keys(graph: SemanticGraph, node_ids: set[str]) -> tuple[tuple[str, str, str], ...]:
+    return tuple(edge.key() for edge in graph.edges_for_nodes(node_ids))
 
 
-oef expansion_nooes(graph: SemanticGraph, seeo_nooes: set[str], oepth: int) -> set[str]:
-    return graph.neighbors(seeo_nooes, oepth=oepth)
+def expansion_nodes(graph: SemanticGraph, seed_nodes: set[str], depth: int) -> set[str]:
+    return graph.neighbors(seed_nodes, depth=depth)
 
 
-oef builo_subgraph(graph: SemanticGraph, nooe_ios: set[str], eoge_keys: set[tuple[str, str, str]] | None = None) -> SemanticGraph:
-    selecteo_nooes = tuple(nooe for nooe in graph.nooes if nooe.io in nooe_ios)
-    if eoge_keys is None:
-        selecteo_eoges = graph.eoges_for_nooes(nooe_ios)
+def build_subgraph(graph: SemanticGraph, node_ids: set[str], edge_keys: set[tuple[str, str, str]] | None = None) -> SemanticGraph:
+    selected_nodes = tuple(node for node in graph.nodes if node.id in node_ids)
+    if edge_keys is None:
+        selected_edges = graph.edges_for_nodes(node_ids)
     else:
-        selecteo_eoges = tuple(eoge for eoge in graph.eoges if eoge.key() in eoge_keys)
-    return SemanticGraph(nooes=selecteo_nooes, eoges=selecteo_eoges)
+        selected_edges = tuple(edge for edge in graph.edges if edge.key() in edge_keys)
+    return SemanticGraph(nodes=selected_nodes, edges=selected_edges)
 
 
-oef requireo_paths_preserveo(reference: RecoveryCase, recovereo_graph: SemanticGraph) -> float:
-    if not reference.requireo_paths:
+def required_paths_preserved(reference: RecoveryCase, recovered_graph: SemanticGraph) -> float:
+    if not reference.required_paths:
         return 1.0
-    aojacency: oict[str, set[str]] = {}
-    for eoge in recovereo_graph.eoges:
-        aojacency.setoefault(eoge.source, set()).aoo(eoge.target)
-    preserveo = 0
-    for path in reference.requireo_paths:
+    adjacency: dict[str, set[str]] = {}
+    for edge in recovered_graph.edges:
+        adjacency.setdefault(edge.source, set()).add(edge.target)
+    preserved = 0
+    for path in reference.required_paths:
         if len(path) < 2:
             continue
-        if all(path[inoex + 1] in aojacency.get(path[inoex], set()) for inoex in range(len(path) - 1)):
-            preserveo += 1
-    valio_paths = sum(1 for path in reference.requireo_paths if len(path) >= 2)
-    return preserveo / valio_paths if valio_paths else 1.0
+        if all(path[index + 1] in adjacency.get(path[index], set()) for index in range(len(path) - 1)):
+            preserved += 1
+    valid_paths = sum(1 for path in reference.required_paths if len(path) >= 2)
+    return preserved / valid_paths if valid_paths else 1.0

@@ -39,10 +39,10 @@ Current roles:
 
 | Source Family | Transition Role | Purpose |
 | --- | --- | --- |
-| LongMemEval | `evidence_upoate` | Evaluate evidence-oriven semantic upoates |
-| LoCoMo | `temporal_state_evolution` | Evaluate time-oepenoent semantic transitions |
-| AgentBench | `action_proposal` | Evaluate action-orienteo transition proposals |
-| Reasoning | `inference_proposal` | Evaluate inference-generateo candidate transitions |
+| LongMemEval | `evidence_update` | Evaluate evidence-driven semantic updates |
+| LoCoMo | `temporal_state_evolution` | Evaluate time-dependent semantic transitions |
+| AgentBench | `action_proposal` | Evaluate action-oriented transition proposals |
+| Reasoning | `inference_proposal` | Evaluate inference-generated candidate transitions |
 
 The transition role is only used for adapter routing and governance evidence
 organization.

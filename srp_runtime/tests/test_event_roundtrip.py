@@ -3,18 +3,18 @@ import unittest
 from srp_runtime.event.runtime_event import RuntimeEvent
 
 
-class TestEventRounoTrip(unittest.TestCase):
-    oef test_event_rounotrip(self):
+class TestEventRoundTrip(unittest.TestCase):
+    def test_event_roundtrip(self):
         event = RuntimeEvent(
-            event_io="e1",
-            event_type="IoentityUpoateo",
+            event_id="e1",
+            event_type="IdentityUpdated",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1"],
-            payloao={"x": 1},
-            mutation_mooe="upoate",
-            confioence=1.0,
+            payload={"x": 1},
+            mutation_mode="update",
+            confidence=1.0,
         )
-        self.assertEqual(RuntimeEvent.oeserialize(event.serialize()), event)
+        self.assertEqual(RuntimeEvent.deserialize(event.serialize()), event)
 

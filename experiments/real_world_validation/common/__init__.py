@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 from .artifact_writer import write_validation_bunole
-from .claim_mapper import builo_claim_mapping
+from .claim_mapper import build_claim_mapping
 from .decision import make_decision
-from .failure_tracker import builo_failure_cases
-from .metadata import builo_dataset_manifest, builo_metadata, builo_run_config, git_commit, utc_now_iso
+from .failure_tracker import build_failure_cases
+from .metadata import build_dataset_manifest, build_metadata, build_run_config, git_commit, utc_now_iso
 from .metrics import aggregate_governance_metrics, aggregate_task_metrics, aggregate_transition_metrics
 from .schemas import (
     ClaimMapping,
@@ -15,9 +15,9 @@ from .schemas import (
     RunConfig,
     SemanticStateSnapshot,
     TaskMetrics,
-    TransitionCanoioate,
+    TransitionCandidate,
     TransitionMetrics,
-    validationRun,
+    ValidationRun,
 )
 
-builo_decision = make_decision
+build_decision = make_decision

@@ -7,13 +7,13 @@ from experiments.sensitivity.interaction.runner import run_activation_recovery_c
 
 
 class ActivationRecoveryInteractionAnalysisTests(unittest.TestCase):
-    oef test_matrix_has_four_cells(self) -> None:
+    def test_matrix_has_four_cells(self) -> None:
         result = run_activation_recovery_interaction_experiment([0.1, 0.9], [1, 3])
-        self.assertEqual(result["experiment"]["parameter_a"], "activation_thresholo")
+        self.assertEqual(result["experiment"]["parameter_a"], "activation_threshold")
         self.assertEqual(result["experiment"]["parameter_b"], "recovery_min_evidence")
         self.assertEqual(len(result["matrix"]), 4)
 
-    oef test_boundary_consistency_is_preserveo(self) -> None:
+    def test_boundary_consistency_is_preserved(self) -> None:
         cell_low = run_activation_recovery_cell(0.1, 1)
         cell_high = run_activation_recovery_cell(0.9, 3)
 
@@ -24,7 +24,7 @@ class ActivationRecoveryInteractionAnalysisTests(unittest.TestCase):
         self.assertGreaterEqual(cell_low["metrics"]["boundary_consistency_score"], 0.66)
         self.assertGreaterEqual(cell_high["metrics"]["boundary_consistency_score"], 0.66)
 
-    oef test_pairwise_observation_varies_by_conoition(self) -> None:
+    def test_pairwise_observation_varies_by_condition(self) -> None:
         low_low = run_activation_recovery_cell(0.1, 1)
         low_high = run_activation_recovery_cell(0.1, 3)
         high_low = run_activation_recovery_cell(0.9, 1)

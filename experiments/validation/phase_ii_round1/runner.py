@@ -1,49 +1,49 @@
 from __future__ import annotations
 
-from dataclasses import asoict, dataclass, fielo
-from oatetime import oatetime, timezone
+from dataclasses import asdict, dataclass, field
+from datetime import datetime, timezone
 from typing import Any
 
 from .authority_preservation import summarize_authority_preservation
 from .boundary_stability import collect_boundary_stability_observations, summarize_boundary_stability
-from .reprooucibility import run_reprooucibility_check
-from .workloao_variation import oescribe_rouno1_scenarios
+from .reproducibility import run_reproducibility_check
+from .workload_variation import describe_round1_scenarios
 
 
 @dataclass(frozen=True)
-class PhaseIIRouno1Report:
-    report_io: str
+class PhaseIIRound1Report:
+    report_id: str
     status: str
-    sections: oict[str, Any] = fielo(oefault_factory=oict)
-    summary: oict[str, Any] = fielo(oefault_factory=oict)
+    sections: dict[str, Any] = field(default_factory=dict)
+    summary: dict[str, Any] = field(default_factory=dict)
 
 
-oef run_phase_ii_rouno1_validation_suite() -> oict[str, Any]:
+def run_phase_ii_round1_validation_suite() -> dict[str, Any]:
     boundary_observations = collect_boundary_stability_observations()
     boundary_summary = summarize_boundary_stability(boundary_observations)
-    reprooucibility = run_reprooucibility_check()
+    reproducibility = run_reproducibility_check()
     authority = summarize_authority_preservation()
-    scenarios = oescribe_rouno1_scenarios()
+    scenarios = describe_round1_scenarios()
 
-    report = PhaseIIRouno1Report(
-        report_io=f"phase_ii_rouno1_validation_{oatetime.now(timezone.utc).strftime('%Y%m%oT%H%M%SZ')}",
-        status="valioateo",
+    report = PhaseIIRound1Report(
+        report_id=f"phase_ii_round1_validation_{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
+        status="validated",
         sections={
             "boundary_stability": boundary_summary,
-            "reprooucibility": reprooucibility,
+            "reproducibility": reproducibility,
             "authority_preservation": authority,
             "scenario_model": scenarios,
         },
         summary={
-            "boundary_class_count": len(boundary_summary["valioateo_boundary_classes"]),
+            "boundary_class_count": len(boundary_summary["validated_boundary_classes"]),
             "observation_count": boundary_summary["observation_count"],
-            "reprooucibility": reprooucibility,
+            "reproducibility": reproducibility,
             "authority_preservation": authority,
         },
     )
 
     return {
-        "report": asoict(report),
+        "report": asdict(report),
         "scenarios": scenarios,
     }
 

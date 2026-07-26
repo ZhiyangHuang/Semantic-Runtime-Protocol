@@ -3,58 +3,58 @@ from __future__ import annotations
 from typing import Any, Dict
 
 
-oef map_arc_case(raw_case: Dict[str, Any], source_case_io: str) -> Dict[str, Any]:
+def map_arc_case(raw_case: Dict[str, Any], source_case_id: str) -> Dict[str, Any]:
     """Map an ARC case into a frozen STFB-compatible transition instance."""
     question = raw_case.get("question", "")
-    reference_answer = raw_case.get("reference_answer", raw_case.get("expecteo_answer", ""))
-    preoiction = raw_case.get("preoiction", "")
+    reference_answer = raw_case.get("reference_answer", raw_case.get("expected_answer", ""))
+    prediction = raw_case.get("prediction", "")
     score = float(raw_case.get("score", raw_case.get("metadata", {}).get("evaluation", {}).get("score", 0.0)))
     choices = raw_case.get("choices", {})
     choice_labels = raw_case.get("choice_labels", ["A", "B", "C", "D"])
-    alloweo_mutation = bool(raw_case.get("authority", {}).get("alloweo_mutation", False))
+    allowed_mutation = bool(raw_case.get("authority", {}).get("allowed_mutation", False))
 
-    valio_state = {
-        "knowleoge_state": reference_answer,
+    valid_state = {
+        "knowledge_state": reference_answer,
     }
-    expecteo_commit = bool(raw_case.get("expecteo_transition", {}).get("shoulo_commit", False))
-    if expecteo_commit:
-        valio_state = {
-            "knowleoge_state": preoiction,
+    expected_commit = bool(raw_case.get("expected_transition", {}).get("should_commit", False))
+    if expected_commit:
+        valid_state = {
+            "knowledge_state": prediction,
         }
 
     return {
-        "instance_io": f"arc_{source_case_io}",
-        "failure_type": raw_case.get("failure_type", "unsupporteo_mutation"),
+        "instance_io": f"arc_{source_case_id}",
+        "failure_type": raw_case.get("failure_type", "unsupported_mutation"),
         "state_t": {
-            "knowleoge_state": reference_answer,
+            "knowledge_state": reference_answer,
         },
         "observation": {
             "question": question,
             "choice_labels": list(choice_labels),
-            "choices": oict(choices),
+            "choices": dict(choices),
         },
         "proposal": {
-            "knowleoge_state": preoiction,
+            "knowledge_state": prediction,
         },
         "evidence": {
             "choice_labels": list(choice_labels),
-            "choices": oict(choices),
-            "confioence": score,
+            "choices": dict(choices),
+            "confidence": score,
         },
         "authority": {
             "source_benchmark": "ARC",
-            "source_case_io": source_case_io,
-            "alloweo_mutation": alloweo_mutation,
+            "source_case_id": source_case_id,
+            "allowed_mutation": allowed_mutation,
             "reference_answer": reference_answer,
         },
-        "expecteo_transition": {
-            "shoulo_commit": expecteo_commit,
-            "failure_type": raw_case.get("failure_type", "unsupporteo_mutation"),
-            "valio_state": valio_state,
+        "expected_transition": {
+            "should_commit": expected_commit,
+            "failure_type": raw_case.get("failure_type", "unsupported_mutation"),
+            "valid_state": valid_state,
         },
         "metadata": {
             "source_benchmark": "ARC",
-            "source_case_io": source_case_io,
+            "source_case_id": source_case_id,
             "source_task": raw_case.get("subset", "ARC-Easy"),
             "source_variant": raw_case.get("variant", ""),
             "source_score": score,

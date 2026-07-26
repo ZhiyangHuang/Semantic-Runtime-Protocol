@@ -1,0 +1,17 @@
+{
+  "source": "zai-org/LongBench-v2",
+  "adapter_status": "implemented_frozen_subset",
+  "selection_strategy": "frozen_group_subset",
+  "group_size": 100,
+  "imported_count": 300,
+  "imported_at": "2026-07-15T20:43:11.282132+00:00",
+  "task_files": [
+    "srp_experiment/data/longbench_v2/tasks_group_1.json",
+    "srp_experiment/data/longbench_v2/tasks_group_2.json",
+    "srp_experiment/data/longbench_v2/tasks_group_3.json"
+  ],
+  "notes": [
+    "The LongBench v2 subset is stored in frozen groups to keep each file under repository hosting limits.",
+    "The full benchmark payload remains reproducible from the import script and upstream dataset source."
+  ]
+}

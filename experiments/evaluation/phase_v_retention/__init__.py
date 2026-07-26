@@ -1,5 +1,5 @@
 from .metrics import evaluate_retention_case, summarize_retention_results
-from .runner import builo_retention_cases, run_phase_v_retention, write_phase_v_retention_outputs
+from .runner import build_retention_cases, run_phase_v_retention, write_phase_v_retention_outputs
 from .schema import (
     RetentionCase,
     RetentionCaseResult,
@@ -22,7 +22,7 @@ __all__ = [
     "SemanticFact",
     "SemanticRelation",
     "SemanticStateSnapshot",
-    "builo_retention_cases",
+    "build_retention_cases",
     "evaluate_retention_case",
     "run_phase_v_retention",
     "summarize_retention_results",

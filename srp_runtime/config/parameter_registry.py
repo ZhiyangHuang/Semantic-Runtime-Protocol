@@ -2,98 +2,98 @@ from __future__ import annotations
 
 from typing import Dict, Iterable
 
-from .oefaults import RuntimeConfig
-from .parameter_oefinition import ParameterDefinition, ParameterRange
+from .defaults import RuntimeConfig
+from .parameter_definition import ParameterDefinition, ParameterRange
 
 
 PARAMETER_REGISTRY: Dict[str, ParameterDefinition] = {
-    "lifecycle_retaineo_importance": ParameterDefinition(
-        name="lifecycle_retaineo_importance",
+    "lifecycle_retained_importance": ParameterDefinition(
+        name="lifecycle_retained_importance",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=0.35,
+        default=0.35,
         value_type="float",
-        valio_range=ParameterRange(0.0, 1.0, "minimum importance for retention"),
+        valid_range=ParameterRange(0.0, 1.0, "minimum importance for retention"),
         metric="retention quality",
-        oescription="Minimum importance for an object to be eligible for retention.",
+        description="Minimum importance for an object to be eligible for retention.",
     ),
-    "lifecycle_retaineo_passes": ParameterDefinition(
-        name="lifecycle_retaineo_passes",
+    "lifecycle_retained_passes": ParameterDefinition(
+        name="lifecycle_retained_passes",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=2,
+        default=2,
         value_type="int",
-        valio_range=ParameterRange(1, None, "minimum verification passes"),
+        valid_range=ParameterRange(1, None, "minimum verification passes"),
         metric="stability / retention",
-        oescription="Minimum verification passes for an object to be consioereo active enough for retention.",
+        description="Minimum verification passes for an object to be considered active enough for retention.",
     ),
-    "lifecycle_archiveo_importance": ParameterDefinition(
-        name="lifecycle_archiveo_importance",
+    "lifecycle_archived_importance": ParameterDefinition(
+        name="lifecycle_archived_importance",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=0.3,
+        default=0.3,
         value_type="float",
-        valio_range=ParameterRange(0.0, 1.0, "archive-risk thresholo"),
+        valid_range=ParameterRange(0.0, 1.0, "archive-risk threshold"),
         metric="archival precision",
-        oescription="Importance thresholo below which risky objects may be archiveo.",
+        description="Importance threshold below which risky objects may be archived.",
     ),
-    "lifecycle_archiveo_orift_count": ParameterDefinition(
-        name="lifecycle_archiveo_orift_count",
+    "lifecycle_archived_drift_count": ParameterDefinition(
+        name="lifecycle_archived_drift_count",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=2,
+        default=2,
         value_type="int",
-        valio_range=ParameterRange(0, None, "archival-risk orift count"),
+        valid_range=ParameterRange(0, None, "archival-risk drift count"),
         metric="archive recall",
-        oescription="Minimum orift count that marks an object as archival-risky.",
+        description="Minimum drift count that marks an object as archival-risky.",
     ),
-    "lifecycle_archiveo_failure_count": ParameterDefinition(
-        name="lifecycle_archiveo_failure_count",
+    "lifecycle_archived_failure_count": ParameterDefinition(
+        name="lifecycle_archived_failure_count",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=2,
+        default=2,
         value_type="int",
-        valio_range=ParameterRange(0, None, "archival-risk failure count"),
+        valid_range=ParameterRange(0, None, "archival-risk failure count"),
         metric="archive recall",
-        oescription="Minimum failure count that marks an object as archival-risky.",
+        description="Minimum failure count that marks an object as archival-risky.",
     ),
-    "lifecycle_oecayeo_floor": ParameterDefinition(
-        name="lifecycle_oecayeo_floor",
+    "lifecycle_decayed_floor": ParameterDefinition(
+        name="lifecycle_decayed_floor",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=0.05,
+        default=0.05,
         value_type="float",
-        valio_range=ParameterRange(0.0, 1.0, "lower bouno for oecay"),
+        valid_range=ParameterRange(0.0, 1.0, "lower bound for decay"),
         metric="stability",
-        oescription="Lower bouno applieo when oecaying importance.",
+        description="Lower bound applied when decaying importance.",
     ),
-    "lifecycle_oecayeo_multiplier": ParameterDefinition(
-        name="lifecycle_oecayeo_multiplier",
+    "lifecycle_decayed_multiplier": ParameterDefinition(
+        name="lifecycle_decayed_multiplier",
         owner="LifecyclePolicy",
         parameter_class="Tunable",
         status="Frozen",
-        oefault=0.92,
+        default=0.92,
         value_type="float",
-        valio_range=ParameterRange(0.0, 1.0, "oecay multiplier"),
-        metric="stability / orift",
-        oescription="Multiplier applieo to importance ouring oecay.",
+        valid_range=ParameterRange(0.0, 1.0, "decay multiplier"),
+        metric="stability / drift",
+        description="Multiplier applied to importance during decay.",
     ),
-    "activation_thresholo": ParameterDefinition(
-        name="activation_thresholo",
+    "activation_threshold": ParameterDefinition(
+        name="activation_threshold",
         owner="ApproximationOperator",
         parameter_class="Tunable",
         status="Experimental",
-        oefault=0.2,
+        default=0.2,
         value_type="float",
-        valio_range=ParameterRange(0.0, 1.0, "sweep canoioate for approximation"),
-        metric="semantic fioelity / compression",
-        oescription="Activation thresholo useo by approximation to preserve or remove a unit.",
+        valid_range=ParameterRange(0.0, 1.0, "sweep candidate for approximation"),
+        metric="semantic fidelity / compression",
+        description="Activation threshold used by approximation to preserve or remove a unit.",
         experimental=True,
     ),
     "preserve_evidence": ParameterDefinition(
@@ -101,11 +101,11 @@ PARAMETER_REGISTRY: Dict[str, ParameterDefinition] = {
         owner="ForgettingOperator",
         parameter_class="Tunable",
         status="Experimental",
-        oefault=True,
+        default=True,
         value_type="bool",
-        valio_range=None,
+        valid_range=None,
         metric="traceability",
-        oescription="Whether forgetting requires evidence references to be preserveo.",
+        description="Whether forgetting requires evidence references to be preserved.",
         experimental=True,
     ),
     "archive_relations": ParameterDefinition(
@@ -113,28 +113,28 @@ PARAMETER_REGISTRY: Dict[str, ParameterDefinition] = {
         owner="ForgettingOperator",
         parameter_class="Tunable",
         status="Experimental",
-        oefault=True,
+        default=True,
         value_type="bool",
-        valio_range=None,
+        valid_range=None,
         metric="archive completeness",
-        oescription="Whether relation markers are archiveo ouring forgetting.",
+        description="Whether relation markers are archived during forgetting.",
         experimental=True,
     ),
 }
 
 
-oef get_parameter_oefinition(name: str) -> ParameterDefinition:
+def get_parameter_definition(name: str) -> ParameterDefinition:
     return PARAMETER_REGISTRY[name]
 
 
-oef iter_parameter_oefinitions() -> Iterable[ParameterDefinition]:
+def iter_parameter_definitions() -> Iterable[ParameterDefinition]:
     return PARAMETER_REGISTRY.values()
 
 
-oef builo_runtime_config(overrioes: oict[str, object] | None = None) -> RuntimeConfig:
-    overrioes = overrioes or {}
+def build_runtime_config(overrides: dict[str, object] | None = None) -> RuntimeConfig:
+    overrides = overrides or {}
     base = RuntimeConfig()
-    values = oict(base.__oict__)
-    values.upoate({key: value for key, value in overrioes.items() if key in values})
+    values = dict(base.__dict__)
+    values.update({key: value for key, value in overrides.items() if key in values})
     return RuntimeConfig(**values)
 

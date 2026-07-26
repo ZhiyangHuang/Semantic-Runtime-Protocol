@@ -8,58 +8,58 @@ from srp_runtime.semantic.unit import SemanticUnit
 
 
 class TestSplitOperator(unittest.TestCase):
-    oef _builo_mergeo_state(self) -> SemanticState:
+    def _build_merged_state(self) -> SemanticState:
         state = SemanticState(
-            state_io="s0",
-            version_io="s0",
+            state_id="s0",
+            version_id="s0",
             units={
-                "mergeo_001": SemanticUnit(
-                    unit_io="mergeo_001",
+                "merged_001": SemanticUnit(
+                    unit_id="merged_001",
                     canonical_name="New York City",
                     aliases=["NYC"],
                     lineage=["u1", "u2"],
                     provenance=["source:a", "source:b", "merge:m1"],
-                    semantic_payloao={"entity_type": "location", "name": "New York City"},
+                    semantic_payload={"entity_type": "location", "name": "New York City"},
                     activation=0.8,
-                    confioence=0.9,
-                    lifecycle_state="mergeo",
-                    relation_ios=["r1", "r2"],
+                    confidence=0.9,
+                    lifecycle_state="merged",
+                    relation_ids=["r1", "r2"],
                 )
             },
         )
-        state.graph.aoo_unit(state.units["mergeo_001"])
-        state.graph.relation_inoex["mergeo_001"] = ["neighbor_1", "neighbor_2"]
-        state.units["mergeo_001"].version_io = "merge:m1"
+        state.graph.add_unit(state.units["merged_001"])
+        state.graph.relation_index["merged_001"] = ["neighbor_1", "neighbor_2"]
+        state.units["merged_001"].version_id = "merge:m1"
         return state
 
-    oef test_split_operator_restores_lineage_units(self):
-        state = self._builo_mergeo_state()
+    def test_split_operator_restores_lineage_units(self):
+        state = self._build_merged_state()
         kernel = RuntimeKernel(state=state)
         event = RuntimeEvent(
-            event_io="s1",
+            event_id="s1",
             event_type="Split",
             schema_version="1",
             causal_parent=None,
             actor="tester",
-            targets=["mergeo_001"],
-            payloao={
-                "source_unit_io": "mergeo_001",
+            targets=["merged_001"],
+            payload={
+                "source_unit_id": "merged_001",
                 "split_strategy": "lineage_restore",
-                "generateo_unit_ios": ["u1", "u2"],
-                "chilo_payloaos": {
+                "generated_unit_ids": ["u1", "u2"],
+                "child_payloads": {
                     "u1": {
                         "canonical_name": "NYC",
                         "aliases": ["New York City"],
-                        "lineage": ["mergeo_001", "u1"],
+                        "lineage": ["merged_001", "u1"],
                     },
                     "u2": {
                         "canonical_name": "New York City",
                         "aliases": ["NYC"],
-                        "lineage": ["mergeo_001", "u2"],
+                        "lineage": ["merged_001", "u2"],
                     },
                 },
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="SplitOperator",
         )
 
@@ -67,140 +67,140 @@ class TestSplitOperator(unittest.TestCase):
 
         self.assertTrue(transition.success)
         self.assertEqual(transition.operator_name, "SplitOperator")
-        self.assertEqual(kernel._state.units["mergeo_001"].lifecycle_state, "archiveo")
+        self.assertEqual(kernel._state.units["merged_001"].lifecycle_state, "archived")
         self.assertIn("u1", kernel._state.units)
         self.assertIn("u2", kernel._state.units)
-        self.assertEqual(kernel._state.units["u1"].lineage, ["mergeo_001", "u1"])
-        self.assertEqual(kernel._state.units["u2"].lineage, ["mergeo_001", "u2"])
+        self.assertEqual(kernel._state.units["u1"].lineage, ["merged_001", "u1"])
+        self.assertEqual(kernel._state.units["u2"].lineage, ["merged_001", "u2"])
         self.assertEqual(kernel._state.units["u1"].canonical_name, "NYC")
         self.assertEqual(kernel._state.units["u2"].canonical_name, "New York City")
         self.assertIsNotNone(transition.metric_evidence)
         self.assertEqual(transition.metric_evidence_ref, "metric:s1")
-        self.assertIn("mergeo_001", transition.changeo_unit_ios)
-        self.assertIn("u1", transition.changeo_unit_ios)
-        self.assertIn("u2", transition.changeo_unit_ios)
+        self.assertIn("merged_001", transition.changed_unit_ids)
+        self.assertIn("u1", transition.changed_unit_ids)
+        self.assertIn("u2", transition.changed_unit_ids)
 
-    oef test_split_operator_rejects_missing_lineage(self):
+    def test_split_operator_rejects_missing_lineage(self):
         state = SemanticState(
-            state_io="s0",
-            version_io="s0",
+            state_id="s0",
+            version_id="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_io="u1",
+                    unit_id="u1",
                     canonical_name="alpha",
-                    semantic_payloao={"entity_type": "concept"},
+                    semantic_payload={"entity_type": "concept"},
                 )
             },
         )
-        state.graph.aoo_unit(state.units["u1"])
+        state.graph.add_unit(state.units["u1"])
         event = RuntimeEvent(
-            event_io="s2",
+            event_id="s2",
             event_type="Split",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1"],
-            payloao={
-                "source_unit_io": "u1",
+            payload={
+                "source_unit_id": "u1",
                 "split_strategy": "lineage_restore",
-                "generateo_unit_ios": ["u1a", "u1b"],
+                "generated_unit_ids": ["u1a", "u1b"],
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="SplitOperator",
         )
 
         result = RuntimeKernel(state=state).submit_event(event)
 
-        self.assertEqual(result.status, "rejecteo")
+        self.assertEqual(result.status, "rejected")
 
-    oef test_merge_then_split_replay_is_oeterministic(self):
+    def test_merge_then_split_replay_is_deterministic(self):
         initial_state = SemanticState(
-            state_io="s0",
-            version_io="s0",
+            state_id="s0",
+            version_id="s0",
             units={
                 "u1": SemanticUnit(
-                    unit_io="u1",
+                    unit_id="u1",
                     canonical_name="NYC",
                     aliases=["New York City"],
                     lineage=["v1"],
                     provenance=["source:a"],
-                    semantic_payloao={"entity_type": "location"},
+                    semantic_payload={"entity_type": "location"},
                     activation=0.8,
-                    confioence=0.9,
-                    relation_ios=["r1"],
+                    confidence=0.9,
+                    relation_ids=["r1"],
                 ),
                 "u2": SemanticUnit(
-                    unit_io="u2",
+                    unit_id="u2",
                     canonical_name="New York City",
                     aliases=["NYC"],
                     lineage=["v2"],
                     provenance=["source:b"],
-                    semantic_payloao={"entity_type": "location"},
+                    semantic_payload={"entity_type": "location"},
                     activation=0.7,
-                    confioence=0.85,
-                    relation_ios=["r2"],
+                    confidence=0.85,
+                    relation_ids=["r2"],
                 ),
             },
         )
-        initial_state.graph.aoo_unit(initial_state.units["u1"])
-        initial_state.graph.aoo_unit(initial_state.units["u2"])
-        initial_state.graph.relation_inoex["u1"] = ["u2"]
-        initial_state.graph.relation_inoex["u2"] = ["u1"]
+        initial_state.graph.add_unit(initial_state.units["u1"])
+        initial_state.graph.add_unit(initial_state.units["u2"])
+        initial_state.graph.relation_index["u1"] = ["u2"]
+        initial_state.graph.relation_index["u2"] = ["u1"]
 
         merge_event = RuntimeEvent(
-            event_io="m1",
-            event_type="Mergeo",
+            event_id="m1",
+            event_type="Merged",
             schema_version="1",
             causal_parent=None,
             actor="tester",
             targets=["u1", "u2"],
-            payloao={
-                "mergeo_unit_io": "mergeo_001",
+            payload={
+                "merged_unit_id": "merged_001",
                 "canonical_name": "New York City",
                 "aliases": ["NYC"],
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="MergeOperator",
         )
         split_event = RuntimeEvent(
-            event_io="s3",
+            event_id="s3",
             event_type="Split",
             schema_version="1",
             causal_parent="m1",
             actor="tester",
-            targets=["mergeo_001"],
-            payloao={
-                "source_unit_io": "mergeo_001",
+            targets=["merged_001"],
+            payload={
+                "source_unit_id": "merged_001",
                 "split_strategy": "lineage_restore",
-                "generateo_unit_ios": ["u1", "u2"],
-                "chilo_payloaos": {
+                "generated_unit_ids": ["u1", "u2"],
+                "child_payloads": {
                     "u1": {
                         "canonical_name": "NYC",
                         "aliases": ["New York City"],
-                        "lineage": ["mergeo_001", "u1"],
+                        "lineage": ["merged_001", "u1"],
                     },
                     "u2": {
                         "canonical_name": "New York City",
                         "aliases": ["NYC"],
-                        "lineage": ["mergeo_001", "u2"],
+                        "lineage": ["merged_001", "u2"],
                     },
                 },
             },
-            mutation_mooe="upoate",
+            mutation_mode="update",
             operator_name="SplitOperator",
         )
 
-        oirect_kernel = RuntimeKernel(state=initial_state.snapshot())
-        oirect_kernel.apply_event(merge_event)
-        oirect_kernel.apply_event(split_event)
+        direct_kernel = RuntimeKernel(state=initial_state.snapshot())
+        direct_kernel.apply_event(merge_event)
+        direct_kernel.apply_event(split_event)
 
         replay = ReplayEngine().replay(initial_state, [merge_event, split_event])
 
-        self.assertEqual(replay.reconstructeo_state.version_io, oirect_kernel._state.version_io)
-        self.assertEqual(set(replay.reconstructeo_state.units.keys()), set(oirect_kernel._state.units.keys()))
-        self.assertEqual(replay.reconstructeo_state.units["mergeo_001"].lifecycle_state, "archiveo")
-        self.assertEqual(replay.reconstructeo_state.units["u1"].canonical_name, "NYC")
-        self.assertEqual(replay.reconstructeo_state.units["u2"].canonical_name, "New York City")
+        self.assertEqual(replay.reconstructed_state.version_id, direct_kernel._state.version_id)
+        self.assertEqual(set(replay.reconstructed_state.units.keys()), set(direct_kernel._state.units.keys()))
+        self.assertEqual(replay.reconstructed_state.units["merged_001"].lifecycle_state, "archived")
+        self.assertEqual(replay.reconstructed_state.units["u1"].canonical_name, "NYC")
+        self.assertEqual(replay.reconstructed_state.units["u2"].canonical_name, "New York City")
 
 
 if __name__ == "__main__":

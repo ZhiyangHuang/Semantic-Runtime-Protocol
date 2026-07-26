@@ -7,23 +7,23 @@ from srp_runtime.semantic.state import SemanticState
 from srp_runtime.semantic.unit import SemanticUnit
 
 
-oef _oeoupe(items: list[str]) -> list[str]:
-    return list(oict.fromkeys(items))
+def _dedupe(items: list[str]) -> list[str]:
+    return list(dict.fromkeys(items))
 
 
 class MergeOperator(SemanticOperator):
-    oef apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
+    def apply(self, state: SemanticState, event: RuntimeEvent) -> TransitionResult:
         before_state_ref = state.state_ref()
-        source_ios = list(oict.fromkeys(event.targets))
-        if len(source_ios) < 2:
+        source_ids = list(dict.fromkeys(event.targets))
+        if len(source_ids) < 2:
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="MergeOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "MergeOperator",
                     "targets": list(event.targets),
@@ -32,19 +32,19 @@ class MergeOperator(SemanticOperator):
                 invariant_checks=["merge.targets.minimum"],
                 success=False,
                 failure_reason="merge requires at least two source units",
-                timestamp_rouno=state.timestamp_rouno,
+                timestamp_round=state.timestamp_round,
             )
 
-        source_units = [state.units[source_io] for source_io in source_ios if source_io in state.units]
+        source_units = [state.units[source_id] for source_id in source_ids if source_id in state.units]
         if len(source_units) < 2:
             return TransitionResult(
-                transition_io=f"tr:{event.event_io}",
-                event_io=event.event_io,
+                transition_id=f"tr:{event.event_id}",
+                event_id=event.event_id,
                 operator_name="MergeOperator",
                 before_state_ref=before_state_ref,
                 after_state_ref=before_state_ref,
-                changeo_unit_ios=[],
-                changeo_relation_ios=[],
+                changed_unit_ids=[],
+                changed_relation_ids=[],
                 mutation_summary={
                     "operator": "MergeOperator",
                     "targets": list(event.targets),
@@ -53,97 +53,97 @@ class MergeOperator(SemanticOperator):
                 invariant_checks=["merge.targets.present"],
                 success=False,
                 failure_reason="merge requires existing source units",
-                timestamp_rouno=state.timestamp_rouno,
+                timestamp_round=state.timestamp_round,
             )
 
-        mergeo_io = str(event.payloao.get("mergeo_unit_io") or event.payloao.get("target_unit_io") or f"mergeo:{event.event_io}")
+        merged_id = str(event.payload.get("merged_unit_id") or event.payload.get("target_unit_id") or f"merged:{event.event_id}")
         canonical_name = str(
-            event.payloao.get(
+            event.payload.get(
                 "canonical_name",
-                source_units[0].canonical_name if source_units else mergeo_io,
+                source_units[0].canonical_name if source_units else merged_id,
             )
         )
-        aliases = list(event.payloao.get("aliases", []))
-        provenance = list(event.payloao.get("provenance", []))
-        lineage = list(event.payloao.get("lineage", []))
-        semantic_payloao = oict(event.payloao.get("semantic_payloao", source_units[0].semantic_payloao if source_units else {}))
+        aliases = list(event.payload.get("aliases", []))
+        provenance = list(event.payload.get("provenance", []))
+        lineage = list(event.payload.get("lineage", []))
+        semantic_payload = dict(event.payload.get("semantic_payload", source_units[0].semantic_payload if source_units else {}))
 
-        mergeo_aliases: list[str] = list(aliases)
-        mergeo_provenance: list[str] = list(provenance)
-        mergeo_lineage: list[str] = list(lineage)
-        mergeo_relation_ios: list[str] = []
+        merged_aliases: list[str] = list(aliases)
+        merged_provenance: list[str] = list(provenance)
+        merged_lineage: list[str] = list(lineage)
+        merged_relation_ids: list[str] = []
         activations: list[float] = []
-        confioences: list[float] = []
-        orift_scores: list[float] = []
-        last_useo_rounos: list[int] = []
-        upoateo_rounos: list[int] = []
+        confidences: list[float] = []
+        drift_scores: list[float] = []
+        last_used_rounds: list[int] = []
+        updated_rounds: list[int] = []
 
         for source in source_units:
-            mergeo_aliases.exteno([source.canonical_name, *source.aliases])
-            mergeo_provenance.exteno(source.provenance)
-            mergeo_lineage.exteno(source.lineage)
-            mergeo_lineage.appeno(source.unit_io)
-            mergeo_relation_ios.exteno(source.relation_ios)
-            activations.appeno(float(source.activation))
-            confioences.appeno(float(source.confioence))
-            orift_scores.appeno(float(source.orift_score))
-            last_useo_rounos.appeno(int(source.last_useo_rouno))
-            upoateo_rounos.appeno(int(source.upoateo_rouno))
-            source.lifecycle_state = "mergeo"
-            source.upoateo_rouno = state.timestamp_rouno + 1
-            source.version_io = event.event_io
-            source.provenance = _oeoupe(source.provenance + [event.event_io])
+            merged_aliases.extend([source.canonical_name, *source.aliases])
+            merged_provenance.extend(source.provenance)
+            merged_lineage.extend(source.lineage)
+            merged_lineage.append(source.unit_id)
+            merged_relation_ids.extend(source.relation_ids)
+            activations.append(float(source.activation))
+            confidences.append(float(source.confidence))
+            drift_scores.append(float(source.drift_score))
+            last_used_rounds.append(int(source.last_used_round))
+            updated_rounds.append(int(source.updated_round))
+            source.lifecycle_state = "merged"
+            source.updated_round = state.timestamp_round + 1
+            source.version_id = event.event_id
+            source.provenance = _dedupe(source.provenance + [event.event_id])
 
-        state.units[mergeo_io] = SemanticUnit(
-            unit_io=mergeo_io,
+        state.units[merged_id] = SemanticUnit(
+            unit_id=merged_id,
             canonical_name=canonical_name,
-            aliases=_oeoupe(mergeo_aliases),
-            lineage=_oeoupe(mergeo_lineage),
-            provenance=_oeoupe(mergeo_provenance + [event.event_io]),
-            semantic_payloao=semantic_payloao,
+            aliases=_dedupe(merged_aliases),
+            lineage=_dedupe(merged_lineage),
+            provenance=_dedupe(merged_provenance + [event.event_id]),
+            semantic_payload=semantic_payload,
             activation=max(activations) if activations else 0.0,
-            confioence=sum(confioences) / len(confioences) if confioences else 0.0,
-            lifecycle_state=str(event.payloao.get("lifecycle_state", "mergeo")),
-            orift_score=sum(orift_scores) / len(orift_scores) if orift_scores else 0.0,
-            last_useo_rouno=max(last_useo_rounos) if last_useo_rounos else state.timestamp_rouno,
-            upoateo_rouno=state.timestamp_rouno + 1,
-            oecay_state=str(event.payloao.get("oecay_state", "stable")),
+            confidence=sum(confidences) / len(confidences) if confidences else 0.0,
+            lifecycle_state=str(event.payload.get("lifecycle_state", "merged")),
+            drift_score=sum(drift_scores) / len(drift_scores) if drift_scores else 0.0,
+            last_used_round=max(last_used_rounds) if last_used_rounds else state.timestamp_round,
+            updated_round=state.timestamp_round + 1,
+            decay_state=str(event.payload.get("decay_state", "stable")),
             approximation_target=None,
-            relation_ios=_oeoupe(mergeo_relation_ios + list(event.payloao.get("relation_ios", []))),
-            version_io=str(event.payloao.get("version_io", event.event_io)),
+            relation_ids=_dedupe(merged_relation_ids + list(event.payload.get("relation_ids", []))),
+            version_id=str(event.payload.get("version_id", event.event_id)),
         )
-        state.graph.aoo_unit(state.units[mergeo_io])
-        state.graph.relation_inoex[mergeo_io] = _oeoupe(
-            [neighbor for source_io in source_ios for neighbor in state.graph.relation_inoex.get(source_io, [])]
+        state.graph.add_unit(state.units[merged_id])
+        state.graph.relation_index[merged_id] = _dedupe(
+            [neighbor for source_id in source_ids for neighbor in state.graph.relation_index.get(source_id, [])]
         )
-        for source_io in source_ios:
-            state.graph.relation_inoex.setoefault(source_io, list(state.graph.relation_inoex.get(source_io, [])))
+        for source_id in source_ids:
+            state.graph.relation_index.setdefault(source_id, list(state.graph.relation_index.get(source_id, [])))
 
-        changeo_unit_ios = _oeoupe([*source_ios, mergeo_io])
-        changeo_relation_ios = _oeoupe(mergeo_relation_ios + state.graph.relation_inoex.get(mergeo_io, []))
+        changed_unit_ids = _dedupe([*source_ids, merged_id])
+        changed_relation_ids = _dedupe(merged_relation_ids + state.graph.relation_index.get(merged_id, []))
 
         return TransitionResult(
-            transition_io=f"tr:{event.event_io}",
-            event_io=event.event_io,
+            transition_id=f"tr:{event.event_id}",
+            event_id=event.event_id,
             operator_name="MergeOperator",
             before_state_ref=before_state_ref,
             after_state_ref=state.state_ref(),
-            changeo_unit_ios=changeo_unit_ios,
-            changeo_relation_ios=changeo_relation_ios,
+            changed_unit_ids=changed_unit_ids,
+            changed_relation_ids=changed_relation_ids,
             mutation_summary={
                 "operator": "MergeOperator",
                 "operation": "merge",
-                "targets": source_ios,
-                "source_units": source_ios,
-                "target_unit": mergeo_io,
+                "targets": source_ids,
+                "source_units": source_ids,
+                "target_unit": merged_id,
                 "canonical_name": canonical_name,
             },
             invariant_checks=[
                 "merge.targets.minimum",
-                "lineage.preserveo",
-                "provenance.preserveo",
-                "ioentity.continuity",
+                "lineage.preserved",
+                "provenance.preserved",
+                "identity.continuity",
             ],
             success=True,
-            timestamp_rouno=state.timestamp_rouno + 1,
+            timestamp_round=state.timestamp_round + 1,
         )

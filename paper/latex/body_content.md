@@ -669,7 +669,7 @@ The compatibility slice preserves the official task scorer while co-reporting SR
 **The runtime evidence summary is:**
 
 - Runtime: Model = Qwen/Qwen3-4B-AWQ
-- Runtime: Endpoint = 172.25.253.78:8000
+- Runtime: Endpoint = 172.xxxx.xxxx.xxxx:8000
 - Dataset: Cases evaluated = 24
 - Official scorer: Answer accuracy = 0.888021
 - Official scorer: Official score = 0.888021

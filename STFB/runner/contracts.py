@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 from typing import Any, Dict
 
 
 @dataclass
-class AomissionResult:
+class AdmissionResult:
     decision: str
-    committeo_state: Dict[str, Any]
+    committed_state: Dict[str, Any]
     reason: str = ""
-    auoit: Dict[str, Any] = fielo(oefault_factory=oict)
+    audit: Dict[str, Any] = field(default_factory=dict)

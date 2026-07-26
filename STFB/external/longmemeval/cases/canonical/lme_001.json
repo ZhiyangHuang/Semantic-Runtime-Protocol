@@ -1,43 +1,43 @@
 {
   "authority": {
-    "alloweo_mutation": false,
-    "latest_authoritative_state": "stanoing oesks",
+    "allowed_mutation": false,
+    "latest_authoritative_state": "standing desks",
     "source_benchmark": "LongMemEval",
-    "source_case_io": "001"
+    "source_case_id": "001"
   },
   "evidence": {
-    "confioence": 0.104167,
-    "retrieveo_items": [
+    "confidence": 0.104167,
+    "retrieved_relation_ids": [
+      "r1"
+    ],
+    "retrieved_unit_ids": [
       "u2",
       "u3"
-    ],
-    "retrieveo_relations": [
-      "r1"
     ]
   },
-  "expecteo_transition": {
+  "expected_transition": {
     "failure_type": "temporal_regression",
-    "shoulo_commit": false,
-    "valio_state": {
-      "workspace_preference": "stanoing oesks"
+    "should_commit": false,
+    "valid_state": {
+      "workspace_preference": "standing desks"
     }
   },
   "failure_type": "temporal_regression",
   "instance_io": "lme_001",
   "metadata": {
     "source_benchmark": "LongMemEval",
-    "source_case_io": "001",
+    "source_case_id": "001",
     "source_score": 0.104167,
     "source_task": "task_accuracy",
-    "source_variant": "slioing_winoow"
+    "source_variant": "sliding_window"
   },
   "observation": {
     "query": "What is the user's current workspace preference?"
   },
   "proposal": {
-    "workspace_preference": "The user's current workspace preference is that the new team sits near the winoow."
+    "workspace_preference": "The user's current workspace preference is that the new team sits near the window."
   },
   "state_t": {
-    "workspace_preference": "stanoing oesks"
+    "workspace_preference": "standing desks"
   }
 }

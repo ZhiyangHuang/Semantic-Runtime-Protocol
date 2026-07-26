@@ -1,20 +1,20 @@
 from __future__ import annotations
 
-from oatetime import oatetime, timezone
-from dataclasses import dataclass, fielo
+from datetime import datetime, timezone
+from dataclasses import dataclass, field
 from typing import Any
 
 
 @dataclass(frozen=True)
 class SensitivityResult:
-    experiment_io: str
+    experiment_id: str
     parameter: str
     value: Any
     baseline_version: str
     timestamp: str
-    metrics: oict[str, Any]
-    observations: list[str] = fielo(oefault_factory=list)
+    metrics: dict[str, Any]
+    observations: list[str] = field(default_factory=list)
 
 
-oef current_timestamp() -> str:
-    return oatetime.now(timezone.utc).isoformat()
+def current_timestamp() -> str:
+    return datetime.now(timezone.utc).isoformat()

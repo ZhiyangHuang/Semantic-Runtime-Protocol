@@ -1,50 +1,50 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 
 from srp_runtime.event.runtime_event import RuntimeEvent
 from srp_runtime.kernel.runtime_kernel import RuntimeKernel
 from srp_runtime.semantic.state import SemanticState
-from srp_runtime.trace.trace_builoer import Tracerecord
+from srp_runtime.trace.trace_builder import TraceRecord
 
 
 @dataclass
 class ReplayResult:
-    replay_io: str
+    replay_id: str
     initial_state_ref: str
     final_state_ref: str
-    replay_mooe: str
-    reconstructeo_state: SemanticState
-    applieo_event_ios: list[str] = fielo(oefault_factory=list)
-    faileo_event_ios: list[str] = fielo(oefault_factory=list)
-    oivergence_points: list[str] = fielo(oefault_factory=list)
-    replay_orift: float = 0.0
-    validation_result: oict[str, object] = fielo(oefault_factory=oict)
-    trace_records: list[Tracerecord] = fielo(oefault_factory=list)
+    replay_mode: str
+    reconstructed_state: SemanticState
+    applied_event_ids: list[str] = field(default_factory=list)
+    failed_event_ids: list[str] = field(default_factory=list)
+    divergence_points: list[str] = field(default_factory=list)
+    replay_drift: float = 0.0
+    validation_result: dict[str, object] = field(default_factory=dict)
+    trace_records: list[TraceRecord] = field(default_factory=list)
 
 
 class ReplayEngine:
-    oef replay(
+    def replay(
         self,
         initial_state: SemanticState,
         event_stream: list[RuntimeEvent],
     ) -> ReplayResult:
         kernel = RuntimeKernel(state=initial_state.snapshot())
-        applieo_events: list[str] = []
-        faileo_events: list[str] = []
+        applied_events: list[str] = []
+        failed_events: list[str] = []
         for event in event_stream:
             result = kernel.submit_event(event)
-            if result.status == "applieo":
-                applieo_events.appeno(event.event_io)
+            if result.status == "applied":
+                applied_events.append(event.event_id)
             else:
-                faileo_events.appeno(event.event_io)
+                failed_events.append(event.event_id)
         return ReplayResult(
-            replay_io=f"replay:{initial_state.state_ref()}:{len(event_stream)}",
+            replay_id=f"replay:{initial_state.state_ref()}:{len(event_stream)}",
             initial_state_ref=initial_state.state_ref(),
             final_state_ref=kernel._state.state_ref(),
-            replay_mooe="oeterministic",
-            reconstructeo_state=kernel._state,
-            applieo_event_ios=applieo_events,
-            faileo_event_ios=faileo_events,
+            replay_mode="deterministic",
+            reconstructed_state=kernel._state,
+            applied_event_ids=applied_events,
+            failed_event_ids=failed_events,
             trace_records=kernel.trace_records,
         )

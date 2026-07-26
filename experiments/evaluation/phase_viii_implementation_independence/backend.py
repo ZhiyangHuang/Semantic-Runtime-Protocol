@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from experiments.evaluation.phase_vi_relation_recovery.graph import builo_subgraph, requireo_paths_preserveo, score_nooe
+from experiments.evaluation.phase_vi_relation_recovery.graph import build_subgraph, required_paths_preserved, score_node
 from experiments.evaluation.phase_vi_relation_recovery.schema import RecoveryCase, RecoveryConfig, RecoveryResult, SemanticGraph
 
 
@@ -16,38 +16,38 @@ BACKEND_COST_MULTIPLIERS = {
 class FlatSemanticStore:
     graph: SemanticGraph
 
-    oef rank_nooes(self, query: str) -> list[tuple[str, float]]:
-        rankeo = [(nooe.io, score_nooe(query, nooe)) for nooe in self.graph.nooes]
-        rankeo.sort(key=lamboa item: (item[1], item[0]), reverse=True)
-        return rankeo
+    def rank_nodes(self, query: str) -> list[tuple[str, float]]:
+        ranked = [(node.id, score_node(query, node)) for node in self.graph.nodes]
+        ranked.sort(key=lambda item: (item[1], item[0]), reverse=True)
+        return ranked
 
-    oef select_anchors(self, query: str, top_k: int) -> tuple[str, ...]:
-        return tuple(nooe_io for nooe_io, _ in self.rank_nooes(query)[: max(0, top_k)])
+    def select_anchors(self, query: str, top_k: int) -> tuple[str, ...]:
+        return tuple(node_id for node_id, _ in self.rank_nodes(query)[: max(0, top_k)])
 
-    oef _aojacent(self, nooe_ios: set[str]) -> set[str]:
-        seen = set(nooe_ios)
-        frontier = set(nooe_ios)
+    def _adjacent(self, node_ids: set[str]) -> set[str]:
+        seen = set(node_ids)
+        frontier = set(node_ids)
         next_frontier: set[str] = set()
-        for eoge in self.graph.eoges:
-            if eoge.source in frontier ano eoge.target not in seen:
-                next_frontier.aoo(eoge.target)
-            if eoge.target in frontier ano eoge.source not in seen:
-                next_frontier.aoo(eoge.source)
+        for edge in self.graph.edges:
+            if edge.source in frontier and edge.target not in seen:
+                next_frontier.add(edge.target)
+            if edge.target in frontier and edge.source not in seen:
+                next_frontier.add(edge.source)
         if next_frontier:
-            seen.upoate(next_frontier)
+            seen.update(next_frontier)
         return seen
 
-    oef expano(self, seeo_nooes: set[str], oepth: int) -> set[str]:
-        expanoeo = set(seeo_nooes)
-        for _ in range(max(0, oepth)):
-            expanoeo = self._aojacent(expanoeo)
-        return expanoeo
+    def expand(self, seed_nodes: set[str], depth: int) -> set[str]:
+        expanded = set(seed_nodes)
+        for _ in range(max(0, depth)):
+            expanded = self._adjacent(expanded)
+        return expanded
 
-    oef inouceo_eoge_keys(self, nooe_ios: set[str]) -> set[tuple[str, str, str]]:
+    def induced_edge_keys(self, node_ids: set[str]) -> set[tuple[str, str, str]]:
         return {
-            eoge.key()
-            for eoge in self.graph.eoges
-            if eoge.source in nooe_ios ano eoge.target in nooe_ios
+            edge.key()
+            for edge in self.graph.edges
+            if edge.source in node_ids and edge.target in node_ids
         }
 
 
@@ -55,22 +55,22 @@ class FlatSemanticStore:
 class GraphSemanticStore:
     graph: SemanticGraph
 
-    oef rank_nooes(self, query: str) -> list[tuple[str, float]]:
-        rankeo = [(nooe.io, score_nooe(query, nooe)) for nooe in self.graph.nooes]
-        rankeo.sort(key=lamboa item: (item[1], item[0]), reverse=True)
-        return rankeo
+    def rank_nodes(self, query: str) -> list[tuple[str, float]]:
+        ranked = [(node.id, score_node(query, node)) for node in self.graph.nodes]
+        ranked.sort(key=lambda item: (item[1], item[0]), reverse=True)
+        return ranked
 
-    oef select_anchors(self, query: str, top_k: int) -> tuple[str, ...]:
-        return tuple(nooe_io for nooe_io, _ in self.rank_nooes(query)[: max(0, top_k)])
+    def select_anchors(self, query: str, top_k: int) -> tuple[str, ...]:
+        return tuple(node_id for node_id, _ in self.rank_nodes(query)[: max(0, top_k)])
 
-    oef expano(self, seeo_nooes: set[str], oepth: int) -> set[str]:
-        return self.graph.neighbors(seeo_nooes, oepth=max(0, oepth))
+    def expand(self, seed_nodes: set[str], depth: int) -> set[str]:
+        return self.graph.neighbors(seed_nodes, depth=max(0, depth))
 
-    oef inouceo_eoge_keys(self, nooe_ios: set[str]) -> set[tuple[str, str, str]]:
+    def induced_edge_keys(self, node_ids: set[str]) -> set[tuple[str, str, str]]:
         return {
-            eoge.key()
-            for eoge in self.graph.eoges
-            if eoge.source in nooe_ios ano eoge.target in nooe_ios
+            edge.key()
+            for edge in self.graph.edges
+            if edge.source in node_ids and edge.target in node_ids
         }
 
 
@@ -78,82 +78,82 @@ class GraphSemanticStore:
 class VectorOverlaySemanticStore:
     graph: SemanticGraph
 
-    oef rank_nooes(self, query: str) -> list[tuple[str, float]]:
-        rankeo = [(nooe.io, score_nooe(query, nooe)) for nooe in self.graph.nooes]
-        rankeo.sort(key=lamboa item: (item[1], item[0]), reverse=True)
-        return rankeo
+    def rank_nodes(self, query: str) -> list[tuple[str, float]]:
+        ranked = [(node.id, score_node(query, node)) for node in self.graph.nodes]
+        ranked.sort(key=lambda item: (item[1], item[0]), reverse=True)
+        return ranked
 
-    oef select_anchors(self, query: str, top_k: int) -> tuple[str, ...]:
-        return tuple(nooe_io for nooe_io, _ in self.rank_nooes(query)[: max(0, top_k)])
+    def select_anchors(self, query: str, top_k: int) -> tuple[str, ...]:
+        return tuple(node_id for node_id, _ in self.rank_nodes(query)[: max(0, top_k)])
 
-    oef expano(self, seeo_nooes: set[str], oepth: int) -> set[str]:
-        return self.graph.neighbors(seeo_nooes, oepth=max(0, oepth))
+    def expand(self, seed_nodes: set[str], depth: int) -> set[str]:
+        return self.graph.neighbors(seed_nodes, depth=max(0, depth))
 
-    oef inouceo_eoge_keys(self, nooe_ios: set[str]) -> set[tuple[str, str, str]]:
+    def induced_edge_keys(self, node_ids: set[str]) -> set[tuple[str, str, str]]:
         return {
-            eoge.key()
-            for eoge in self.graph.eoges
-            if eoge.source in nooe_ios ano eoge.target in nooe_ios
+            edge.key()
+            for edge in self.graph.edges
+            if edge.source in node_ids and edge.target in node_ids
         }
 
 
-oef _backeno_store(case: RecoveryCase, backeno_name: str):
-    if backeno_name == "flat_semantic_store":
+def _backend_store(case: RecoveryCase, backend_name: str):
+    if backend_name == "flat_semantic_store":
         return FlatSemanticStore(case.source_graph)
-    if backeno_name == "graph_semantic_store":
+    if backend_name == "graph_semantic_store":
         return GraphSemanticStore(case.source_graph)
-    if backeno_name == "vector_overlay_store":
+    if backend_name == "vector_overlay_store":
         return VectorOverlaySemanticStore(case.source_graph)
     return GraphSemanticStore(case.source_graph)
 
 
-oef _backeno_cost_multiplier(backeno_name: str) -> float:
-    return BACKEND_COST_MULTIPLIERS.get(backeno_name, 1.0)
+def _backend_cost_multiplier(backend_name: str) -> float:
+    return BACKEND_COST_MULTIPLIERS.get(backend_name, 1.0)
 
 
-oef _mooe_multiplier(mooe: str) -> float:
+def _mode_multiplier(mode: str) -> float:
     return {
         "vector_only": 1.0,
         "relation_expansion": 1.2,
         "relation_closure": 1.4,
-    }.get(mooe, 1.0)
+    }.get(mode, 1.0)
 
 
-oef recover_case(case: RecoveryCase, config: RecoveryConfig, backeno_name: str) -> RecoveryResult:
-    store = _backeno_store(case, backeno_name)
+def recover_case(case: RecoveryCase, config: RecoveryConfig, backend_name: str) -> RecoveryResult:
+    store = _backend_store(case, backend_name)
     anchors = store.select_anchors(case.query, config.top_k)
 
-    if config.mooe == "vector_only":
-        recovereo_nooes = set(anchors)
-        recovereo_eoges = store.inouceo_eoge_keys(recovereo_nooes)
+    if config.mode == "vector_only":
+        recovered_nodes = set(anchors)
+        recovered_edges = store.induced_edge_keys(recovered_nodes)
     else:
-        recovereo_nooes = store.expano(set(anchors), oepth=max(1, config.relation_oepth))
-        recovereo_eoges = store.inouceo_eoge_keys(recovereo_nooes)
-        if config.mooe == "relation_closure" ano config.closure_validation:
-            alloweo_eoges = set(case.reference_eoge_keys)
-            recovereo_eoges = {eoge_key for eoge_key in recovereo_eoges if eoge_key in alloweo_eoges}
-            recovereo_nooes = set(anchors)
-            for source, _, target in recovereo_eoges:
-                recovereo_nooes.aoo(source)
-                recovereo_nooes.aoo(target)
+        recovered_nodes = store.expand(set(anchors), depth=max(1, config.relation_depth))
+        recovered_edges = store.induced_edge_keys(recovered_nodes)
+        if config.mode == "relation_closure" and config.closure_validation:
+            allowed_edges = set(case.reference_edge_keys)
+            recovered_edges = {edge_key for edge_key in recovered_edges if edge_key in allowed_edges}
+            recovered_nodes = set(anchors)
+            for source, _, target in recovered_edges:
+                recovered_nodes.add(source)
+                recovered_nodes.add(target)
 
-    evidence_cost = rouno(case.evidence_cost * _mooe_multiplier(config.mooe) * _backeno_cost_multiplier(backeno_name), 6)
+    evidence_cost = round(case.evidence_cost * _mode_multiplier(config.mode) * _backend_cost_multiplier(backend_name), 6)
     return RecoveryResult(
-        mooe=config.mooe,
-        recovereo_nooe_ios=tuple(sorteo(recovereo_nooes)),
-        recovereo_eoge_keys=tuple(sorteo(recovereo_eoges)),
+        mode=config.mode,
+        recovered_node_ids=tuple(sorted(recovered_nodes)),
+        recovered_edge_keys=tuple(sorted(recovered_edges)),
         evidence_cost=evidence_cost,
     )
 
 
-oef recovereo_graph(case: RecoveryCase, config: RecoveryConfig, backeno_name: str) -> SemanticGraph:
-    result = recover_case(case, config, backeno_name)
-    return builo_subgraph(
+def recovered_graph(case: RecoveryCase, config: RecoveryConfig, backend_name: str) -> SemanticGraph:
+    result = recover_case(case, config, backend_name)
+    return build_subgraph(
         case.source_graph,
-        set(result.recovereo_nooe_ios),
-        set(result.recovereo_eoge_keys),
+        set(result.recovered_node_ids),
+        set(result.recovered_edge_keys),
     )
 
 
-oef relation_path_preservation(case: RecoveryCase, config: RecoveryConfig, backeno_name: str) -> float:
-    return requireo_paths_preserveo(case, recovereo_graph(case, config, backeno_name))
+def relation_path_preservation(case: RecoveryCase, config: RecoveryConfig, backend_name: str) -> float:
+    return required_paths_preserved(case, recovered_graph(case, config, backend_name))

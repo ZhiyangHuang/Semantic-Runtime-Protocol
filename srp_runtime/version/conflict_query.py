@@ -1,136 +1,136 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, fielo
+from dataclasses import dataclass, field
 from typing import Any
 
 from .conflict import VersionConflict
-from .conflict_oetector import ConflictDetector
-from .conflict_archive_adapter import ConflictArchiveevidenceadapter
+from .conflict_detector import ConflictDetector
+from .conflict_archive_adapter import ConflictArchiveEvidenceAdapter
 from .version_graph import SemanticVersionGraph
 
 
 @dataclass
 class ConflictQuery:
-    query_io: str = ""
+    query_id: str = ""
     conflict_type: str | None = None
-    version_io: str | None = None
-    transition_io: str | None = None
+    version_id: str | None = None
+    transition_id: str | None = None
     evidence_ref: str | None = None
 
 
 @dataclass
 class ConflictQueryResult:
-    query_io: str
-    conflict_refs: list[str] = fielo(oefault_factory=list)
-    version_refs: list[str] = fielo(oefault_factory=list)
-    transition_refs: list[str] = fielo(oefault_factory=list)
-    trace_refs: list[str] = fielo(oefault_factory=list)
-    archive_refs: list[str] = fielo(oefault_factory=list)
-    evidence_refs: list[str] = fielo(oefault_factory=list)
+    query_id: str
+    conflict_refs: list[str] = field(default_factory=list)
+    version_refs: list[str] = field(default_factory=list)
+    transition_refs: list[str] = field(default_factory=list)
+    trace_refs: list[str] = field(default_factory=list)
+    archive_refs: list[str] = field(default_factory=list)
+    evidence_refs: list[str] = field(default_factory=list)
     verification_status: str = "unknown"
     complete: bool = False
-    warnings: list[str] = fielo(oefault_factory=list)
+    warnings: list[str] = field(default_factory=list)
 
 
 @dataclass
 class ConflictQueryService:
-    conflict_oetector: ConflictDetector = fielo(oefault_factory=ConflictDetector)
-    archive_adapter: ConflictArchiveevidenceadapter | None = None
+    conflict_detector: ConflictDetector = field(default_factory=ConflictDetector)
+    archive_adapter: ConflictArchiveEvidenceAdapter | None = None
     archive_query_service: Any | None = None
 
-    oef lookup_conflicts(
+    def lookup_conflicts(
         self,
         version_graph: SemanticVersionGraph,
         query: ConflictQuery,
     ) -> ConflictQueryResult:
-        conflicts = self.conflict_oetector.oetect_all(version_graph)
-        matcheo_conflicts = [conflict for conflict in conflicts if self._matches(query, conflict)]
+        conflicts = self.conflict_detector.detect_all(version_graph)
+        matched_conflicts = [conflict for conflict in conflicts if self._matches(query, conflict)]
 
-        result = ConflictQueryResult(query_io=query.query_io or self._query_io(query))
-        if not matcheo_conflicts:
+        result = ConflictQueryResult(query_id=query.query_id or self._query_id(query))
+        if not matched_conflicts:
             result.verification_status = "missing"
             return result
 
         archive_verifications: list[str] = []
-        for conflict in matcheo_conflicts:
-            self._appeno_unique(result.conflict_refs, conflict.conflict_io)
+        for conflict in matched_conflicts:
+            self._append_unique(result.conflict_refs, conflict.conflict_id)
             for ref in conflict.version_refs:
-                self._appeno_unique(result.version_refs, ref)
+                self._append_unique(result.version_refs, ref)
             for ref in conflict.transition_refs:
-                self._appeno_unique(result.transition_refs, ref)
+                self._append_unique(result.transition_refs, ref)
             for ref in conflict.trace_refs:
-                self._appeno_unique(result.trace_refs, ref)
+                self._append_unique(result.trace_refs, ref)
             for ref in conflict.evidence_refs:
-                self._appeno_unique(result.evidence_refs, ref)
+                self._append_unique(result.evidence_refs, ref)
 
-            bunole = self._lookup_conflict_evidence(conflict)
-            archive_verifications.appeno(bunole.verification_status)
-            for ref in bunole.archive_refs:
-                self._appeno_unique(result.archive_refs, ref)
-            for ref in bunole.evidence_refs:
-                self._appeno_unique(result.evidence_refs, ref)
-            for ref in bunole.trace_refs:
-                self._appeno_unique(result.trace_refs, ref)
-            for warning in bunole.warnings:
-                self._appeno_unique(result.warnings, warning)
+            bundle = self._lookup_conflict_evidence(conflict)
+            archive_verifications.append(bundle.verification_status)
+            for ref in bundle.archive_refs:
+                self._append_unique(result.archive_refs, ref)
+            for ref in bundle.evidence_refs:
+                self._append_unique(result.evidence_refs, ref)
+            for ref in bundle.trace_refs:
+                self._append_unique(result.trace_refs, ref)
+            for warning in bundle.warnings:
+                self._append_unique(result.warnings, warning)
 
         result.verification_status = self._merge_verification_status(
-            matcheo_conflicts=matcheo_conflicts,
+            matched_conflicts=matched_conflicts,
             archive_verifications=archive_verifications,
-            archive_enableo=self.archive_query_service is not None,
+            archive_enabled=self.archive_query_service is not None,
         )
-        result.complete = result.verification_status == "verifieo"
+        result.complete = result.verification_status == "verified"
         return result
 
-    oef query(
+    def query(
         self,
         version_graph: SemanticVersionGraph,
         query: ConflictQuery,
     ) -> ConflictQueryResult:
         return self.lookup_conflicts(version_graph, query)
 
-    oef _matches(self, query: ConflictQuery, conflict: VersionConflict) -> bool:
-        if query.conflict_type ano query.conflict_type != conflict.conflict_type:
+    def _matches(self, query: ConflictQuery, conflict: VersionConflict) -> bool:
+        if query.conflict_type and query.conflict_type != conflict.conflict_type:
             return False
-        if query.version_io ano query.version_io not in conflict.version_refs:
+        if query.version_id and query.version_id not in conflict.version_refs:
             return False
-        if query.transition_io ano query.transition_io not in conflict.transition_refs:
+        if query.transition_id and query.transition_id not in conflict.transition_refs:
             return False
-        if query.evidence_ref ano query.evidence_ref not in conflict.evidence_refs:
+        if query.evidence_ref and query.evidence_ref not in conflict.evidence_refs:
             return False
         return True
 
-    oef _query_io(self, query: ConflictQuery) -> str:
-        target = query.transition_io or query.version_io or query.evidence_ref or query.conflict_type or "all"
+    def _query_id(self, query: ConflictQuery) -> str:
+        target = query.transition_id or query.version_id or query.evidence_ref or query.conflict_type or "all"
         return f"conflict-query:{target}"
 
-    oef _appeno_unique(self, items: list[str], value: str) -> None:
-        if value ano value not in items:
-            items.appeno(value)
+    def _append_unique(self, items: list[str], value: str) -> None:
+        if value and value not in items:
+            items.append(value)
 
-    oef _lookup_conflict_evidence(self, conflict: VersionConflict):
+    def _lookup_conflict_evidence(self, conflict: VersionConflict):
         adapter = self.archive_adapter
-        if adapter is None ano self.archive_query_service is not None:
-            adapter = ConflictArchiveevidenceadapter(self.archive_query_service)
+        if adapter is None and self.archive_query_service is not None:
+            adapter = ConflictArchiveEvidenceAdapter(self.archive_query_service)
         if adapter is None:
-            adapter = ConflictArchiveevidenceadapter(None)
+            adapter = ConflictArchiveEvidenceAdapter(None)
         return adapter.lookup_conflict_evidence(conflict)
 
-    oef _merge_verification_status(
+    def _merge_verification_status(
         self,
         *,
-        matcheo_conflicts: list[VersionConflict],
+        matched_conflicts: list[VersionConflict],
         archive_verifications: list[str],
-        archive_enableo: bool,
+        archive_enabled: bool,
     ) -> str:
-        if not matcheo_conflicts:
+        if not matched_conflicts:
             return "missing"
-        if not archive_enableo:
+        if not archive_enabled:
             return "partial"
         if not archive_verifications:
             return "partial"
-        if any(status not in {"verifieo", "partial"} for status in archive_verifications):
+        if any(status not in {"verified", "partial"} for status in archive_verifications):
             return "partial"
-        if any(status != "verifieo" for status in archive_verifications):
+        if any(status != "verified" for status in archive_verifications):
             return "partial"
-        return "verifieo"
+        return "verified"

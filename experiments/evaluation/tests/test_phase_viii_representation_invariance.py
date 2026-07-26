@@ -6,38 +6,38 @@ from pathlib import Path
 
 from experiments.config import PhaseVIIIRepresentationInvarianceConfig
 from experiments.evaluation.phase_viii_representation_invariance.runner import (
-    builo_representation_invariance_runs,
+    build_representation_invariance_runs,
     run_phase_viii_representation_invariance,
     write_phase_viii_representation_invariance_outputs,
 )
 
 
 class PhaseVIIIRepresentationInvarianceTests(unittest.TestCase):
-    oef test_builo_runs(self) -> None:
+    def test_build_runs(self) -> None:
         config = PhaseVIIIRepresentationInvarianceConfig(
-            encooer_names=("toy-e5", "toy-bge"),
+            encoder_names=("toy-e5", "toy-bge"),
             parser_names=("rule_parser", "llm_parser"),
-            recovery_mooes=("vector_only", "relation_expansion", "relation_closure"),
+            recovery_modes=("vector_only", "relation_expansion", "relation_closure"),
         )
-        runs = builo_representation_invariance_runs(config)
+        runs = build_representation_invariance_runs(config)
         self.assertEqual(len(runs), 4 * 2 * 2 * 3)
-        self.assertEqual(runs[0].config.mooe, "vector_only")
+        self.assertEqual(runs[0].config.mode, "vector_only")
 
-    oef test_run_rounotrip(self) -> None:
+    def test_run_roundtrip(self) -> None:
         config = PhaseVIIIRepresentationInvarianceConfig(
-            encooer_names=("toy-e5",),
+            encoder_names=("toy-e5",),
             parser_names=("rule_parser",),
-            recovery_mooes=("vector_only", "relation_expansion", "relation_closure"),
+            recovery_modes=("vector_only", "relation_expansion", "relation_closure"),
         )
         outputs = run_phase_viii_representation_invariance(config)
         self.assertEqual(outputs["report"]["summary"]["case_count"], 4 * 1 * 1 * 3)
         self.assertIn("hierarchy_consistency_rate", outputs["report"]["summary"])
 
-    oef test_summary(self) -> None:
+    def test_summary(self) -> None:
         config = PhaseVIIIRepresentationInvarianceConfig(
-            encooer_names=("toy-e5", "toy-bge"),
+            encoder_names=("toy-e5", "toy-bge"),
             parser_names=("rule_parser",),
-            recovery_mooes=("vector_only", "relation_expansion", "relation_closure"),
+            recovery_modes=("vector_only", "relation_expansion", "relation_closure"),
         )
         outputs = run_phase_viii_representation_invariance(config)
         summary = outputs["report"]["summary"]
@@ -45,15 +45,15 @@ class PhaseVIIIRepresentationInvarianceTests(unittest.TestCase):
         self.assertGreaterEqual(summary["hierarchy_consistency_rate"], 0.0)
         self.assertLessEqual(summary["governance_consistency_rate"], 1.0)
 
-    oef test_write_outputs(self) -> None:
+    def test_write_outputs(self) -> None:
         config = PhaseVIIIRepresentationInvarianceConfig(
-            encooer_names=("toy-e5",),
+            encoder_names=("toy-e5",),
             parser_names=("rule_parser",),
-            recovery_mooes=("vector_only", "relation_expansion", "relation_closure"),
+            recovery_modes=("vector_only", "relation_expansion", "relation_closure"),
         )
-        with tempfile.TemporaryDirectory() as tmpoir:
-            outputs = write_phase_viii_representation_invariance_outputs(Path(tmpoir), config=config)
-            self.assertTrue(Path(outputs["report_markoown"]).exists())
+        with tempfile.TemporaryDirectory() as tmpdir:
+            outputs = write_phase_viii_representation_invariance_outputs(Path(tmpdir), config=config)
+            self.assertTrue(Path(outputs["report_markdown"]).exists())
             self.assertTrue(Path(outputs["report_json"]).exists())
             self.assertTrue(Path(outputs["summary_json"]).exists())
 

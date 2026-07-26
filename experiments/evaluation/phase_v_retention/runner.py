@@ -3,15 +3,15 @@ from __future__ import annotations
 import csv
 import json
 import subprocess
-from dataclasses import asoict
-from oatetime import oatetime, timezone
+from dataclasses import asdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from experiments.config import PhaseVRetentionConfig, loao_phase_v_retention_config
+from experiments.config import PhaseVRetentionConfig, load_phase_v_retention_config
 
 from .metrics import evaluate_retention_case, summarize_retention_results
-from .report import PhaseVRetentionMarkoownReport
+from .report import PhaseVRetentionMarkdownReport
 from .schema import (
     RetentionCase,
     RetentionEvaluationReport,
@@ -23,10 +23,10 @@ from .schema import (
 )
 
 
-oef builo_retention_cases(config: PhaseVRetentionConfig | None = None) -> list[RetentionCase]:
-    config = config or loao_phase_v_retention_config()
+def build_retention_cases(config: PhaseVRetentionConfig | None = None) -> list[RetentionCase]:
+    config = config or load_phase_v_retention_config()
     baseline = RetentionParameters(
-        activation_thresholo=config.baseline_activation_thresholo,
+        activation_threshold=config.baseline_activation_threshold,
         recovery_min_evidence=config.baseline_recovery_min_evidence,
         preserve_evidence=config.baseline_preserve_evidence,
         archive_relations=config.baseline_archive_relations,
@@ -34,189 +34,189 @@ oef builo_retention_cases(config: PhaseVRetentionConfig | None = None) -> list[R
 
     return [
         RetentionCase(
-            case_io="retention_case_1_exact",
+            case_id="retention_case_1_exact",
             category="exact_preservation",
             source_state=SemanticStateSnapshot(
-                state_io="source_exact",
+                state_id="source_exact",
                 facts=(
-                    SemanticFact("Alice", "prefers", "Python", confioence=0.95, critical=True),
-                    SemanticFact("Alice", "works_at", "OpenAI", confioence=0.93, critical=True),
-                    SemanticFact("Alice", "shares_notes_with", "Bob", confioence=0.80),
+                    SemanticFact("Alice", "prefers", "Python", confidence=0.95, critical=True),
+                    SemanticFact("Alice", "works_at", "OpenAI", confidence=0.93, critical=True),
+                    SemanticFact("Alice", "shares_notes_with", "Bob", confidence=0.80),
                 ),
                 relations=(
-                    SemanticRelation("Alice", "collaborates_with", "Bob", confioence=0.90, critical=True),
+                    SemanticRelation("Alice", "collaborates_with", "Bob", confidence=0.90, critical=True),
                 ),
                 evidence_refs=("source:1", "source:2", "source:3", "source:4"),
                 notes="Exact preservation baseline.",
             ),
-            recovereo_state=SemanticStateSnapshot(
-                state_io="recovereo_exact",
+            recovered_state=SemanticStateSnapshot(
+                state_id="recovered_exact",
                 facts=(
-                    SemanticFact("Alice", "prefers", "Python", confioence=0.95, critical=True),
-                    SemanticFact("Alice", "works_at", "OpenAI", confioence=0.93, critical=True),
-                    SemanticFact("Alice", "shares_notes_with", "Bob", confioence=0.80),
+                    SemanticFact("Alice", "prefers", "Python", confidence=0.95, critical=True),
+                    SemanticFact("Alice", "works_at", "OpenAI", confidence=0.93, critical=True),
+                    SemanticFact("Alice", "shares_notes_with", "Bob", confidence=0.80),
                 ),
                 relations=(
-                    SemanticRelation("Alice", "collaborates_with", "Bob", confioence=0.90, critical=True),
+                    SemanticRelation("Alice", "collaborates_with", "Bob", confidence=0.90, critical=True),
                 ),
-                evidence_refs=("recovereo:1", "recovereo:2", "recovereo:3", "recovereo:4"),
-                notes="Recovereo state matches source semantics.",
+                evidence_refs=("recovered:1", "recovered:2", "recovered:3", "recovered:4"),
+                notes="Recovered state matches source semantics.",
             ),
             parameters=baseline,
             evidence_cost=1.0,
             notes="No semantic loss.",
         ),
         RetentionCase(
-            case_io="retention_case_2_fact_loss",
+            case_id="retention_case_2_fact_loss",
             category="fact_loss",
             source_state=SemanticStateSnapshot(
-                state_io="source_fact_loss",
+                state_id="source_fact_loss",
                 facts=(
-                    SemanticFact("Alice", "prefers", "Python", confioence=0.92, critical=True),
-                    SemanticFact("Alice", "works_at", "OpenAI", confioence=0.90, critical=True),
-                    SemanticFact("Alice", "keeps", "a private notebook", confioence=0.70),
-                    SemanticFact("Alice", "reviews", "transition logs nightly", confioence=0.65),
+                    SemanticFact("Alice", "prefers", "Python", confidence=0.92, critical=True),
+                    SemanticFact("Alice", "works_at", "OpenAI", confidence=0.90, critical=True),
+                    SemanticFact("Alice", "keeps", "a private notebook", confidence=0.70),
+                    SemanticFact("Alice", "reviews", "transition logs nightly", confidence=0.65),
                 ),
                 relations=(
-                    SemanticRelation("Alice", "collaborates_with", "Bob", confioence=0.88, critical=True),
+                    SemanticRelation("Alice", "collaborates_with", "Bob", confidence=0.88, critical=True),
                 ),
                 evidence_refs=("source:1", "source:2", "source:3", "source:4", "source:5"),
-                notes="A low-frequency fact shoulo not oominate retention.",
+                notes="A low-frequency fact should not dominate retention.",
             ),
-            recovereo_state=SemanticStateSnapshot(
-                state_io="recovereo_fact_loss",
+            recovered_state=SemanticStateSnapshot(
+                state_id="recovered_fact_loss",
                 facts=(
-                    SemanticFact("Alice", "prefers", "Python", confioence=0.92, critical=True),
-                    SemanticFact("Alice", "works_at", "OpenAI", confioence=0.90, critical=True),
-                    SemanticFact("Alice", "keeps", "a private notebook", confioence=0.58),
+                    SemanticFact("Alice", "prefers", "Python", confidence=0.92, critical=True),
+                    SemanticFact("Alice", "works_at", "OpenAI", confidence=0.90, critical=True),
+                    SemanticFact("Alice", "keeps", "a private notebook", confidence=0.58),
                 ),
                 relations=(
-                    SemanticRelation("Alice", "collaborates_with", "Bob", confioence=0.74, critical=True),
+                    SemanticRelation("Alice", "collaborates_with", "Bob", confidence=0.74, critical=True),
                 ),
-                evidence_refs=("recovereo:1", "recovereo:2", "recovereo:3", "recovereo:4"),
-                notes="One noncritical fact was lost ouring retention.",
+                evidence_refs=("recovered:1", "recovered:2", "recovered:3", "recovered:4"),
+                notes="One noncritical fact was lost during retention.",
             ),
             parameters=baseline,
             evidence_cost=1.2,
-            notes="Shows recall loss without relation oamage.",
+            notes="Shows recall loss without relation damage.",
         ),
         RetentionCase(
-            case_io="retention_case_3_relation_orift",
-            category="relation_orift",
+            case_id="retention_case_3_relation_drift",
+            category="relation_drift",
             source_state=SemanticStateSnapshot(
-                state_io="source_relation_orift",
+                state_id="source_relation_drift",
                 facts=(
-                    SemanticFact("SRP", "valioates", "bounoaries", confioence=0.95, critical=True),
-                    SemanticFact("SRP", "ranks", "canoioates", confioence=0.92, critical=True),
-                    SemanticFact("Governance", "approves", "execution", confioence=0.93, critical=True),
+                    SemanticFact("SRP", "validates", "boundaries", confidence=0.95, critical=True),
+                    SemanticFact("SRP", "ranks", "candidates", confidence=0.92, critical=True),
+                    SemanticFact("Governance", "approves", "execution", confidence=0.93, critical=True),
                 ),
                 relations=(
-                    SemanticRelation("validation", "preceoes", "optimization", confioence=0.94, critical=True),
+                    SemanticRelation("validation", "precedes", "optimization", confidence=0.94, critical=True),
                 ),
                 evidence_refs=("source:1", "source:2", "source:3", "source:4"),
-                notes="Bounoary oroer shoulo remain stable.",
+                notes="Boundary order should remain stable.",
             ),
-            recovereo_state=SemanticStateSnapshot(
-                state_io="recovereo_relation_orift",
+            recovered_state=SemanticStateSnapshot(
+                state_id="recovered_relation_drift",
                 facts=(
-                    SemanticFact("SRP", "valioates", "bounoaries", confioence=0.95, critical=True),
-                    SemanticFact("SRP", "ranks", "canoioates", confioence=0.92, critical=True),
-                    SemanticFact("Governance", "approves", "execution", confioence=0.93, critical=True),
+                    SemanticFact("SRP", "validates", "boundaries", confidence=0.95, critical=True),
+                    SemanticFact("SRP", "ranks", "candidates", confidence=0.92, critical=True),
+                    SemanticFact("Governance", "approves", "execution", confidence=0.93, critical=True),
                 ),
                 relations=(
-                    SemanticRelation("optimization", "preceoes", "validation", confioence=0.60, critical=True),
+                    SemanticRelation("optimization", "precedes", "validation", confidence=0.60, critical=True),
                 ),
-                evidence_refs=("recovereo:1", "recovereo:2", "recovereo:3", "recovereo:4"),
-                notes="Relation oirection was inverteo.",
+                evidence_refs=("recovered:1", "recovered:2", "recovered:3", "recovered:4"),
+                notes="Relation direction was inverted.",
             ),
             parameters=baseline,
             evidence_cost=1.5,
-            notes="Captures relation orift with preserveo facts.",
+            notes="Captures relation drift with preserved facts.",
         ),
         RetentionCase(
-            case_io="retention_case_4_boundary_hallucination",
+            case_id="retention_case_4_boundary_hallucination",
             category="boundary_hallucination",
             source_state=SemanticStateSnapshot(
-                state_io="source_boundary_hallucination",
+                state_id="source_boundary_hallucination",
                 facts=(
-                    SemanticFact("evidence", "strengthens", "verification", confioence=0.90, critical=True),
-                    SemanticFact("Authority", "remains", "separate", confioence=0.93, critical=True),
-                    SemanticFact("Runtime", "ooes_not", "self_mooify", confioence=0.96, critical=True),
+                    SemanticFact("Evidence", "strengthens", "verification", confidence=0.90, critical=True),
+                    SemanticFact("Authority", "remains", "separate", confidence=0.93, critical=True),
+                    SemanticFact("Runtime", "does_not", "self_modify", confidence=0.96, critical=True),
                 ),
                 relations=(
-                    SemanticRelation("evidence", "supports", "verification", confioence=0.91, critical=True),
-                    SemanticRelation("governance", "authorizes", "execution", confioence=0.92, critical=True),
+                    SemanticRelation("evidence", "supports", "verification", confidence=0.91, critical=True),
+                    SemanticRelation("governance", "authorizes", "execution", confidence=0.92, critical=True),
                 ),
                 evidence_refs=("source:1", "source:2", "source:3", "source:4", "source:5"),
-                notes="Bounoary-sensitive case with execution authority.",
+                notes="Boundary-sensitive case with execution authority.",
             ),
-            recovereo_state=SemanticStateSnapshot(
-                state_io="recovereo_boundary_hallucination",
+            recovered_state=SemanticStateSnapshot(
+                state_id="recovered_boundary_hallucination",
                 facts=(
-                    SemanticFact("evidence", "strengthens", "verification", confioence=0.90, critical=True),
-                    SemanticFact("Authority", "remains", "separate", confioence=0.93, critical=True),
-                    SemanticFact("Runtime", "ooes_not", "self_mooify", confioence=0.96, critical=True),
-                    SemanticFact("Runtime", "may", "self_mooify", confioence=0.40),
+                    SemanticFact("Evidence", "strengthens", "verification", confidence=0.90, critical=True),
+                    SemanticFact("Authority", "remains", "separate", confidence=0.93, critical=True),
+                    SemanticFact("Runtime", "does_not", "self_modify", confidence=0.96, critical=True),
+                    SemanticFact("Runtime", "may", "self_modify", confidence=0.40),
                 ),
                 relations=(
-                    SemanticRelation("evidence", "supports", "verification", confioence=0.91, critical=True),
+                    SemanticRelation("evidence", "supports", "verification", confidence=0.91, critical=True),
                 ),
-                evidence_refs=("recovereo:1", "recovereo:2", "recovereo:3", "recovereo:4", "recovereo:5"),
-                notes="Recovereo state keeps most meaning but aoos a hallucinateo transition claim.",
+                evidence_refs=("recovered:1", "recovered:2", "recovered:3", "recovered:4", "recovered:5"),
+                notes="Recovered state keeps most meaning but adds a hallucinated transition claim.",
             ),
             parameters=baseline,
             evidence_cost=1.8,
-            notes="Bounoary-aojacent case with extra recovereo content.",
+            notes="Boundary-adjacent case with extra recovered content.",
         ),
     ]
 
 
-oef _git_commit() -> str:
+def _git_commit() -> str:
     try:
         return subprocess.check_output(
             ["git", "rev-parse", "HEAD"],
-            cwo=Path(__file__).resolve().parents[3],
+            cwd=Path(__file__).resolve().parents[3],
             text=True,
         ).strip()
     except Exception:
         return "unknown"
 
 
-oef run_phase_v_retention(config: PhaseVRetentionConfig | None = None) -> oict[str, Any]:
-    config = config or loao_phase_v_retention_config()
-    cases = builo_retention_cases(config)
-    records = [evaluate_retention_case(case, weights=config.semantic_orift_weights) for case in cases]
+def run_phase_v_retention(config: PhaseVRetentionConfig | None = None) -> dict[str, Any]:
+    config = config or load_phase_v_retention_config()
+    cases = build_retention_cases(config)
+    records = [evaluate_retention_case(case, weights=config.semantic_drift_weights) for case in cases]
     summary = summarize_retention_results(records)
     report = RetentionEvaluationReport(
-        report_io=f"phase_v_retention_{len(records)}",
-        status="evaluateo",
+        report_id=f"phase_v_retention_{len(records)}",
+        status="evaluated",
         baseline_parameters=RetentionParameters(
-            activation_thresholo=config.baseline_activation_thresholo,
+            activation_threshold=config.baseline_activation_threshold,
             recovery_min_evidence=config.baseline_recovery_min_evidence,
             preserve_evidence=config.baseline_preserve_evidence,
             archive_relations=config.baseline_archive_relations,
         ),
-        metric_schema=RetentionMetricSchema(semantic_orift_weights=config.semantic_orift_weights),
+        metric_schema=RetentionMetricSchema(semantic_drift_weights=config.semantic_drift_weights),
         records=records,
         summary=summary,
     )
-    markoown = PhaseVRetentionMarkoownReport(report=report, config=asoict(config)).renoer()
+    markdown = PhaseVRetentionMarkdownReport(report=report, config=asdict(config)).render()
     return {
-        "config": asoict(config),
-        "report": report.as_oict(),
-        "markoown": markoown,
-        "cases": [case.as_oict() for case in cases],
+        "config": asdict(config),
+        "report": report.as_dict(),
+        "markdown": markdown,
+        "cases": [case.as_dict() for case in cases],
     }
 
 
-oef write_phase_v_retention_outputs(
-    output_oir: str | Path,
+def write_phase_v_retention_outputs(
+    output_dir: str | Path,
     config: PhaseVRetentionConfig | None = None,
-) -> oict[str, Any]:
-    config = config or loao_phase_v_retention_config()
+) -> dict[str, Any]:
+    config = config or load_phase_v_retention_config()
     outputs = run_phase_v_retention(config=config)
-    output_path = Path(output_oir)
-    output_path.mkoir(parents=True, exist_ok=True)
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
 
     report = outputs["report"]
     records = report.get("records", [])
@@ -227,114 +227,114 @@ oef write_phase_v_retention_outputs(
     records_jsonl = output_path / "retention_records.jsonl"
     summary_json = output_path / "retention_summary.json"
     metadata_json = output_path / "metadata.json"
-    report_mo = output_path / "retention_report.mo"
+    report_md = output_path / "retention_report.md"
     report_json = output_path / "retention_report.json"
-    root_report = Path(__file__).resolve().parents[3] / "SRP_PHASE_V_RETENTION_REPORT.mo"
+    root_report = Path(__file__).resolve().parents[3] / "SRP_PHASE_V_RETENTION_REPORT.md"
 
     if records:
-        fielonames = [
-            "case_io",
+        fieldnames = [
+            "case_id",
             "category",
-            "source_state_io",
-            "recovereo_state_io",
+            "source_state_id",
+            "recovered_state_id",
             "semantic_coverage",
-            "semantic_orift",
+            "semantic_drift",
             "fact_accuracy",
             "relation_accuracy",
             "recovery_accuracy",
-            "fact_orift",
-            "relation_orift",
-            "confioence_orift",
+            "fact_drift",
+            "relation_drift",
+            "confidence_drift",
             "evidence_cost",
             "original_fact_count",
             "original_relation_count",
-            "recovereo_fact_count",
-            "recovereo_relation_count",
-            "matcheo_fact_count",
-            "matcheo_relation_count",
+            "recovered_fact_count",
+            "recovered_relation_count",
+            "matched_fact_count",
+            "matched_relation_count",
             "missing_count",
             "hallucination_count",
             "original_unit_count",
-            "recovereo_unit_count",
-            "matcheo_unit_count",
-            "activation_thresholo",
+            "recovered_unit_count",
+            "matched_unit_count",
+            "activation_threshold",
             "recovery_min_evidence",
             "preserve_evidence",
             "archive_relations",
         ]
-        with records_csv.open("w", encooing="utf-8", newline="") as hanole:
-            writer = csv.DictWriter(hanole, fielonames=fielonames)
-            writer.writeheaoer()
+        with records_csv.open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fieldnames)
+            writer.writeheader()
             for record in records:
                 case = record["case"]
                 metrics = record["metrics"]
                 writer.writerow(
                     {
-                        "case_io": case["case_io"],
+                        "case_id": case["case_id"],
                         "category": case["category"],
-                        "source_state_io": case["source_state"]["state_io"],
-                        "recovereo_state_io": case["recovereo_state"]["state_io"],
+                        "source_state_id": case["source_state"]["state_id"],
+                        "recovered_state_id": case["recovered_state"]["state_id"],
                         "semantic_coverage": metrics["semantic_coverage"],
-                        "semantic_orift": metrics["semantic_orift"],
+                        "semantic_drift": metrics["semantic_drift"],
                         "fact_accuracy": metrics["fact_accuracy"],
                         "relation_accuracy": metrics["relation_accuracy"],
                         "recovery_accuracy": metrics["recovery_accuracy"],
-                        "fact_orift": metrics["fact_orift"],
-                        "relation_orift": metrics["relation_orift"],
-                        "confioence_orift": metrics["confioence_orift"],
+                        "fact_drift": metrics["fact_drift"],
+                        "relation_drift": metrics["relation_drift"],
+                        "confidence_drift": metrics["confidence_drift"],
                         "evidence_cost": metrics["evidence_cost"],
                         "original_fact_count": metrics["original_fact_count"],
                         "original_relation_count": metrics["original_relation_count"],
-                        "recovereo_fact_count": metrics["recovereo_fact_count"],
-                        "recovereo_relation_count": metrics["recovereo_relation_count"],
-                        "matcheo_fact_count": metrics["matcheo_fact_count"],
-                        "matcheo_relation_count": metrics["matcheo_relation_count"],
+                        "recovered_fact_count": metrics["recovered_fact_count"],
+                        "recovered_relation_count": metrics["recovered_relation_count"],
+                        "matched_fact_count": metrics["matched_fact_count"],
+                        "matched_relation_count": metrics["matched_relation_count"],
                         "missing_count": metrics["missing_count"],
                         "hallucination_count": metrics["hallucination_count"],
                         "original_unit_count": metrics["original_unit_count"],
-                        "recovereo_unit_count": metrics["recovereo_unit_count"],
-                        "matcheo_unit_count": metrics["matcheo_unit_count"],
-                        "activation_thresholo": case["parameters"]["activation_thresholo"],
+                        "recovered_unit_count": metrics["recovered_unit_count"],
+                        "matched_unit_count": metrics["matched_unit_count"],
+                        "activation_threshold": case["parameters"]["activation_threshold"],
                         "recovery_min_evidence": case["parameters"]["recovery_min_evidence"],
                         "preserve_evidence": case["parameters"]["preserve_evidence"],
                         "archive_relations": case["parameters"]["archive_relations"],
                     }
                 )
 
-        with records_jsonl.open("w", encooing="utf-8") as hanole:
+        with records_jsonl.open("w", encoding="utf-8") as handle:
             for record in records:
-                hanole.write(json.oumps(record, ensure_ascii=False, oefault=str))
-                hanole.write("\n")
+                handle.write(json.dumps(record, ensure_ascii=False, default=str))
+                handle.write("\n")
 
-    summary_json.write_text(json.oumps(summary, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
-    report_json.write_text(json.oumps(report, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    summary_json.write_text(json.dumps(summary, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    report_json.write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     metadata = {
-        "generateo_at": oatetime.now(timezone.utc).isoformat(),
-        "generateo_by": "phase_v_retention_v1",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_by": "phase_v_retention_v1",
         "experiment": "phase_v_retention",
         "version": "v1",
         "git_commit": _git_commit(),
         "case_count": summary.get("case_count", 0),
-        "baseline_activation_thresholo": baseline.get("activation_thresholo"),
+        "baseline_activation_threshold": baseline.get("activation_threshold"),
         "baseline_recovery_min_evidence": baseline.get("recovery_min_evidence"),
         "baseline_preserve_evidence": baseline.get("preserve_evidence"),
         "baseline_archive_relations": baseline.get("archive_relations"),
     }
-    metadata_json.write_text(json.oumps(metadata, ensure_ascii=False, inoent=2, oefault=str), encooing="utf-8")
+    metadata_json.write_text(json.dumps(metadata, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
 
-    markoown = outputs["markoown"]
-    report_mo.write_text(markoown, encooing="utf-8")
-    root_report.write_text(markoown, encooing="utf-8")
+    markdown = outputs["markdown"]
+    report_md.write_text(markdown, encoding="utf-8")
+    root_report.write_text(markdown, encoding="utf-8")
 
     return {
-        "output_oir": str(output_path),
+        "output_dir": str(output_path),
         "records_csv": str(records_csv),
         "records_jsonl": str(records_jsonl),
         "summary_json": str(summary_json),
         "metadata_json": str(metadata_json),
-        "report_markoown": str(report_mo),
+        "report_markdown": str(report_md),
         "report_json": str(report_json),
-        "root_report_markoown": str(root_report),
+        "root_report_markdown": str(root_report),
         "report": report,
         "config": outputs["config"],
         "cases": outputs["cases"],

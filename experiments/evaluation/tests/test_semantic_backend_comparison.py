@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import unittest
 
-from experiments.config import SemanticBackenoComparisonConfig
-from experiments.evaluation.semantic_backeno_comparison.runner import run_semantic_backeno_comparison
+from experiments.config import SemanticBackendComparisonConfig
+from experiments.evaluation.semantic_backend_comparison.runner import run_semantic_backend_comparison
 
 
-class SemanticBackenoComparisonTests(unittest.TestCase):
-    oef test_comparison_proouces_report(self) -> None:
-        config = SemanticBackenoComparisonConfig(local_model_enableo=False, fallback_to_heuristic=True)
-        output = run_semantic_backeno_comparison(config=config)
+class SemanticBackendComparisonTests(unittest.TestCase):
+    def test_comparison_produces_report(self) -> None:
+        config = SemanticBackendComparisonConfig(local_model_enabled=False, fallback_to_heuristic=True)
+        output = run_semantic_backend_comparison(config=config)
 
         report = output["report"]
         self.assertEqual(report["summary"]["case_count"], 10)
@@ -20,33 +20,33 @@ class SemanticBackenoComparisonTests(unittest.TestCase):
         self.assertIn("authority_violation_case_count", report["summary"])
         self.assertIn("authority_violation_final_accept_rate", report["summary"])
         self.assertIn("review_rate", report["summary"])
-        self.assertIn("semantic evidence backeno", output["markoown"])
+        self.assertIn("semantic evidence backend", output["markdown"])
 
-    oef test_report_contains_authority_separation(self) -> None:
-        config = SemanticBackenoComparisonConfig(local_model_enableo=False, fallback_to_heuristic=True)
-        output = run_semantic_backeno_comparison(config=config)
+    def test_report_contains_authority_separation(self) -> None:
+        config = SemanticBackendComparisonConfig(local_model_enabled=False, fallback_to_heuristic=True)
+        output = run_semantic_backend_comparison(config=config)
 
-        self.assertIn("The local model ooes not mutate state", output["markoown"])
-        self.assertIn("The local model ooes not approve oeployment", output["markoown"])
-        self.assertIn("Authority violation cases", output["markoown"])
-        self.assertIn("Escalation Routing", output["markoown"])
+        self.assertIn("The local model does not mutate state", output["markdown"])
+        self.assertIn("The local model does not approve deployment", output["markdown"])
+        self.assertIn("Authority violation cases", output["markdown"])
+        self.assertIn("Escalation Routing", output["markdown"])
 
-    oef test_write_outputs(self) -> None:
+    def test_write_outputs(self) -> None:
         from pathlib import Path
         from tempfile import TemporaryDirectory
 
-        from experiments.evaluation.semantic_backeno_comparison.runner import write_semantic_backeno_comparison_outputs
+        from experiments.evaluation.semantic_backend_comparison.runner import write_semantic_backend_comparison_outputs
 
-        with TemporaryDirectory() as tmpoir:
-            outputs = write_semantic_backeno_comparison_outputs(Path(tmpoir) / "semantic_backeno_comparison")
+        with TemporaryDirectory() as tmpdir:
+            outputs = write_semantic_backend_comparison_outputs(Path(tmpdir) / "semantic_backend_comparison")
             self.assertTrue(Path(outputs["records_csv"]).exists())
             self.assertTrue(Path(outputs["records_jsonl"]).exists())
             self.assertTrue(Path(outputs["summary_json"]).exists())
             self.assertTrue(Path(outputs["metadata_json"]).exists())
-            self.assertTrue(Path(outputs["report_markoown"]).exists())
+            self.assertTrue(Path(outputs["report_markdown"]).exists())
             self.assertTrue(Path(outputs["report_json"]).exists())
-            self.assertTrue(Path(outputs["figures"]["backeno_summary_png"]).exists())
-            self.assertTrue(Path(outputs["figures"]["backeno_summary_pof"]).exists())
+            self.assertTrue(Path(outputs["figures"]["backend_summary_png"]).exists())
+            self.assertTrue(Path(outputs["figures"]["backend_summary_pdf"]).exists())
 
 
 if __name__ == "__main__":

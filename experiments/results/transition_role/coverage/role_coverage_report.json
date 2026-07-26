@@ -1,43 +1,45 @@
 {
   "schema_version": 1,
   "report_version": "v1.2-alpha",
-  "protocol_bounoary": "transition_role_protocol",
+  "protocol_boundary": "transition_role_protocol",
   "items": [
     {
-      "transition_role": "evidence_upoate",
-      "purpose": "govern semantic upoates oriven by external evidence without transferring execution authority.",
-      "oiagnostics": [
+      "transition_role": "evidence_update",
+      "purpose": "govern semantic updates driven by external evidence without transferring execution authority.",
+      "diagnostics": [
         "semantic_coverage",
-        "semantic_orift",
+        "semantic_drift",
         "transition_acceptance",
         "governance_consistency"
       ],
       "coverage_status": "complete",
-      "completeo_workloaos": 1,
-      "planneo_workloaos": 0,
-      "workloaos": [
+      "completed_workloads": 1,
+      "planned_workloads": 0,
+      "workloads": [
         {
           "source": "longmemeval",
           "status": "complete",
           "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\external_validation_longmemeval_reality_check_smoke_v2\\longmemeval_reality_check_report.md",
-          "artifact_exists": true
+          "artifact_exists": false
         }
       ],
-      "notes": []
+      "notes": [
+        "a workload is marked complete but no latest artifact was found"
+      ]
     },
     {
       "transition_role": "temporal_state_evolution",
-      "purpose": "govern semantic transitions that oepeno on time-oroereo state changes or conversational history.",
-      "oiagnostics": [
+      "purpose": "govern semantic transitions that depend on time-ordered state changes or conversational history.",
+      "diagnostics": [
         "semantic_coverage",
-        "semantic_orift",
+        "semantic_drift",
         "transition_acceptance",
         "governance_consistency"
       ],
       "coverage_status": "complete",
-      "completeo_workloaos": 1,
-      "planneo_workloaos": 0,
-      "workloaos": [
+      "completed_workloads": 1,
+      "planned_workloads": 0,
+      "workloads": [
         {
           "source": "locomo",
           "status": "complete",
@@ -49,20 +51,20 @@
     },
     {
       "transition_role": "action_proposal",
-      "purpose": "govern semantic transitions that originate from agent action proposals before mutation is authorizeo.",
-      "oiagnostics": [
+      "purpose": "govern semantic transitions that originate from agent action proposals before mutation is authorized.",
+      "diagnostics": [
         "semantic_coverage",
-        "semantic_orift",
+        "semantic_drift",
         "transition_acceptance",
         "governance_consistency"
       ],
-      "coverage_status": "planneo",
-      "completeo_workloaos": 0,
-      "planneo_workloaos": 1,
-      "workloaos": [
+      "coverage_status": "planned",
+      "completed_workloads": 0,
+      "planned_workloads": 1,
+      "workloads": [
         {
           "source": "agentbench",
-          "status": "planneo",
+          "status": "planned",
           "artifact_hint": "C:\\Users\\ZhiyangHuang\\Semantic-Runtime-Protocol\\experiments\\results\\transition_role\\action_proposal\\agentbench\\run_latest\\report.md",
           "artifact_exists": false
         }
@@ -71,17 +73,17 @@
     },
     {
       "transition_role": "inference_proposal",
-      "purpose": "govern semantic transitions generateo from reasoning or inference traces before they become runtime state.",
-      "oiagnostics": [
+      "purpose": "govern semantic transitions generated from reasoning or inference traces before they become runtime state.",
+      "diagnostics": [
         "semantic_coverage",
-        "semantic_orift",
+        "semantic_drift",
         "transition_acceptance",
         "governance_consistency"
       ],
       "coverage_status": "complete",
-      "completeo_workloaos": 1,
-      "planneo_workloaos": 0,
-      "workloaos": [
+      "completed_workloads": 1,
+      "planned_workloads": 0,
+      "workloads": [
         {
           "source": "reasoning",
           "status": "complete",
@@ -96,9 +98,9 @@
     "role_count": 4,
     "complete_roles": 3,
     "partial_roles": 0,
-    "planneo_roles": 1,
-    "no_workloao_roles": 0,
-    "completeo_workloaos": 3,
-    "planneo_workloaos": 1
+    "planned_roles": 1,
+    "no_workload_roles": 0,
+    "completed_workloads": 3,
+    "planned_workloads": 1
   }
 }

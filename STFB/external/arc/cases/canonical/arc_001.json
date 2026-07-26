@@ -1,9 +1,9 @@
 {
   "authority": {
-    "alloweo_mutation": false,
-    "reference_answer": "a massive core surrounoeo by negatively-chargeo particles",
+    "allowed_mutation": false,
+    "reference_answer": "a massive core surrounded by negatively-charged particles",
     "source_benchmark": "ARC",
-    "source_case_io": "001"
+    "source_case_id": "001"
   },
   "evidence": {
     "choice_labels": [
@@ -13,28 +13,28 @@
       "D"
     ],
     "choices": {
-      "A": "a lightweight core surrounoeo by neutral particles",
-      "B": "a massive core surrounoeo by negatively-chargeo particles",
-      "C": "a network of interacting positive ano negative particles",
-      "D": "overlapping layers of neutral, positive, ano negative particles"
+      "A": "a lightweight core surrounded by neutral particles",
+      "B": "a massive core surrounded by negatively-charged particles",
+      "C": "a network of interacting positive and negative particles",
+      "D": "overlapping layers of neutral, positive, and negative particles"
     },
-    "confioence": 0.92
+    "confidence": 0.92
   },
-  "expecteo_transition": {
-    "failure_type": "unsupporteo_mutation",
-    "shoulo_commit": false,
-    "valio_state": {
-      "knowleoge_state": "a massive core surrounoeo by negatively-chargeo particles"
+  "expected_transition": {
+    "failure_type": "unsupported_mutation",
+    "should_commit": false,
+    "valid_state": {
+      "knowledge_state": "a massive core surrounded by negatively-charged particles"
     }
   },
-  "failure_type": "unsupporteo_mutation",
+  "failure_type": "unsupported_mutation",
   "instance_io": "arc_001",
   "metadata": {
     "source_benchmark": "ARC",
-    "source_case_io": "001",
+    "source_case_id": "001",
     "source_score": 0.92,
     "source_task": "ARC-Easy",
-    "source_variant": "unsupporteo_inference"
+    "source_variant": "unsupported_inference"
   },
   "observation": {
     "choice_labels": [
@@ -44,17 +44,17 @@
       "D"
     ],
     "choices": {
-      "A": "a lightweight core surrounoeo by neutral particles",
-      "B": "a massive core surrounoeo by negatively-chargeo particles",
-      "C": "a network of interacting positive ano negative particles",
-      "D": "overlapping layers of neutral, positive, ano negative particles"
+      "A": "a lightweight core surrounded by neutral particles",
+      "B": "a massive core surrounded by negatively-charged particles",
+      "C": "a network of interacting positive and negative particles",
+      "D": "overlapping layers of neutral, positive, and negative particles"
     },
-    "question": "Which best oescribes the structure of an atom?"
+    "question": "Which best describes the structure of an atom?"
   },
   "proposal": {
-    "knowleoge_state": "a network of interacting positive ano negative particles"
+    "knowledge_state": "a network of interacting positive and negative particles"
   },
   "state_t": {
-    "knowleoge_state": "a massive core surrounoeo by negatively-chargeo particles"
+    "knowledge_state": "a massive core surrounded by negatively-charged particles"
   }
 }

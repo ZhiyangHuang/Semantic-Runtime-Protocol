@@ -9,19 +9,19 @@ from experiments.sensitivity.archive_relations_experiment import (
     run_single_archive_relations_case,
     write_archive_relations_outputs,
 )
-from experiments.sensitivity.experiment_inoex import SensitivityExperimentInoex, register_valioateo_sensitivity_experiments
+from experiments.sensitivity.experiment_index import SensitivityExperimentIndex, register_validated_sensitivity_experiments
 from experiments.sensitivity.storage import SensitivityResultStore
 
 
-class ArchiveRelationsSensitivityvalidationTests(unittest.TestCase):
-    oef test_oefault_equivalence(self) -> None:
+class ArchiveRelationsSensitivityValidationTests(unittest.TestCase):
+    def test_default_equivalence(self) -> None:
         baseline = run_single_archive_relations_case(False)
-        oefault_overrioe = run_single_archive_relations_case(False)
+        default_override = run_single_archive_relations_case(False)
 
-        self.assertEqual(baseline.metrics, oefault_overrioe.metrics)
-        self.assertEqual(baseline.parameter, oefault_overrioe.parameter)
+        self.assertEqual(baseline.metrics, default_override.metrics)
+        self.assertEqual(baseline.parameter, default_override.parameter)
 
-    oef test_parameter_effect_visibility(self) -> None:
+    def test_parameter_effect_visibility(self) -> None:
         off = run_single_archive_relations_case(False)
         on = run_single_archive_relations_case(True)
 
@@ -30,7 +30,7 @@ class ArchiveRelationsSensitivityvalidationTests(unittest.TestCase):
         self.assertLess(off.metrics["evidence_enrichment_count"], on.metrics["evidence_enrichment_count"])
         self.assertLess(off.metrics["conflict_evidence_coverage"], on.metrics["conflict_evidence_coverage"])
 
-    oef test_authority_isolation(self) -> None:
+    def test_authority_isolation(self) -> None:
         off = run_single_archive_relations_case(False)
         on = run_single_archive_relations_case(True)
 
@@ -38,37 +38,37 @@ class ArchiveRelationsSensitivityvalidationTests(unittest.TestCase):
         self.assertEqual(on.metrics["replay_equivalent"], True)
         self.assertEqual(off.metrics["successful_transitions"], on.metrics["successful_transitions"])
 
-    oef test_run_experiment(self) -> None:
+    def test_run_experiment(self) -> None:
         output = run_archive_relations_sensitivity([False, True])
         self.assertEqual(output["experiment"]["parameter"], "archive_relations")
         self.assertEqual(len(output["results"]), 2)
         self.assertEqual({item["value"] for item in output["results"]}, {False, True})
 
-    oef test_run_experiment_ano_store(self) -> None:
-        with tempfile.TemporaryDirectory() as tmpoir:
-            output = write_archive_relations_outputs([False, True], output_oir=tmpoir)
-            self.assertEqual(len(output["storeo_paths"]), 2)
-            for storeo_path in output["storeo_paths"]:
-                self.assertTrue(Path(storeo_path).exists())
+    def test_run_experiment_and_store(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            output = write_archive_relations_outputs([False, True], output_dir=tmpdir)
+            self.assertEqual(len(output["stored_paths"]), 2)
+            for stored_path in output["stored_paths"]:
+                self.assertTrue(Path(stored_path).exists())
 
-    oef test_register_archive_relations_artifact(self) -> None:
-        with tempfile.TemporaryDirectory() as tmpoir:
-            root = Path(tmpoir)
+    def test_register_archive_relations_artifact(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
             store = SensitivityResultStore(root / "results")
-            inoex = SensitivityExperimentInoex(root / "inoex.json")
+            index = SensitivityExperimentIndex(root / "index.json")
             results = run_archive_relations_sensitivity([False, True])
             for record in results["results"]:
                 result_path = store.save(run_single_archive_relations_case(record["value"]))
-                inoex.register_from_result(
-                    experiment_io=record["experiment_io"],
+                index.register_from_result(
+                    experiment_id=record["experiment_id"],
                     parameter=record["parameter"],
                     experiment_type="OFAT",
                     result_location=str(result_path),
-                    status="valioateo",
+                    status="validated",
                     result_count=2,
                 )
-            register_valioateo_sensitivity_experiments(inoex, root / "results")
-            self.assertIn("archive_relations", inoex.list_parameters(status="valioateo"))
+            register_validated_sensitivity_experiments(index, root / "results")
+            self.assertIn("archive_relations", index.list_parameters(status="validated"))
 
 
 if __name__ == "__main__":

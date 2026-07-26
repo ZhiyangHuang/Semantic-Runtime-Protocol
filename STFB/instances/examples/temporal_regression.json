@@ -10,15 +10,15 @@
     "timestamp": "2026-07-10"
   },
   "evidence": {
-    "confioence": 0.84,
+    "confidence": 0.84,
     "source": "stale_memory"
   },
   "authority": {
-    "alloweo_mutation": false
+    "allowed_mutation": false
   },
-  "expecteo": {
+  "expected": {
     "commit": false,
-    "valio_state": {
+    "valid_state": {
       "subscription": "premium",
       "timestamp": "2026-07-20"
     }
