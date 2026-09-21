@@ -1,0 +1,14 @@
+{
+  "dataset_version": "decision_dataset.v1",
+  "seed": 0,
+  "grouping_key": "group_id",
+  "train": [
+    "preference_update_supported"
+  ],
+  "validation": [
+    "authority_denied"
+  ],
+  "test": [
+    "ambiguous_future_intent_review"
+  ]
+}
